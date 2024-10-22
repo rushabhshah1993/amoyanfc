@@ -1,0 +1,17 @@
+{
+  "name": "afc-server",
+  "version": "1.0.0",
+  "description": "AFC server containing all the data related to Amoyan Fighting Championships",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rushabh Mulraj Shah",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.9.0",
+    "mongoose": "^8.7.2"
+  }
+}
