@@ -1,7 +1,7 @@
 import { Schema, Model } from "mongoose";
 
 /* Statistics <--Start--> */
-const strikesMapSchema = new Schema({
+export const strikesMapSchema = new Schema({
     head: {
         absorb: Number,
         strike: Number
@@ -16,18 +16,18 @@ const strikesMapSchema = new Schema({
     }
 });
 
-const grapplingSchema = new Schema({
+export const grapplingSchema = new Schema({
     accuracy: Number,
     defence: Number
 })
 
-const strikesPositionSchema = new Schema({
+export const strikesPositionSchema = new Schema({
     clinching: Number,
     ground: Number,
     standing: Number
 })
 
-const significantStrikeSchema = new Schema({
+export const significantStrikeSchema = new Schema({
     accuracy: Number,
     attempted: Number,
     defence: Number,
@@ -36,12 +36,12 @@ const significantStrikeSchema = new Schema({
     positions: strikesPositionSchema
 })
 
-const submissionSchema = new Schema({
+export const submissionSchema = new Schema({
     attemptsPer15Mins: Number,
     average: Number
 })
 
-const takedownSchema = new Schema({
+export const takedownSchema = new Schema({
     accuracy: Number,
     attempted: Number,
     avgTakedownsLandedPerMin: Number,
@@ -147,5 +147,4 @@ const fighterSchema = new Schema({
     competitionHistory: [competitionRecordSchema]
 });
 
-const Fighter =  Model('Fighter', fighterSchema);
-export default Fighter;
+export const Fighter =  Model('Fighter', fighterSchema);

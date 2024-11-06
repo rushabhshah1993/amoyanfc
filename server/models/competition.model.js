@@ -1,9 +1,77 @@
 import { Schema, Model } from "mongoose";
+import { 
+    grapplingSchema, significantStrikeSchema, 
+    strikesMapSchema, submissionSchema, 
+    takedownSchema 
+} from "./fighter.model";
 
-const competitionSchema = new Schema({
-    name: String,
-    description: String,
-    logo: String
+/* Fighter Stats Schema for Each Fight */
+const fightStatsSchema = new Schema({
+    fighterId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Fighter'
+    },
+    stats: {
+        avgFightTime: Number,
+        finishingMoves: [String],
+        grappling: grapplingSchema,
+        significantStrikes: significantStrikeSchema,
+        strikeMap: strikesMapSchema,
+        submissions: submissionSchema,
+        takedowns: takedownSchema
+    }
 });
 
-module.exports = Model('Competition', competitionSchema);
+/* Individual Fight Schema with Description and Stats */
+const fightSchema = new Schema({
+    fighter1: {
+        type: Schema.Types.ObjectId,
+        ref: 'Fighter'
+    },
+    fighter2: {
+        type: Schema.Types.ObjectId,
+        ref: 'Fighter'
+    },
+    winner: {
+        type: Schema.Types.ObjectId,
+        ref: 'Fighter'
+    }, // Optional, after fight is completed
+    date: Date,
+    userDescription: String, // User provided description of the fight
+    genAIDescription: String, // AI-generated description of the fight
+    fighterStats: [fightStatsSchema]
+})
+
+/* Division Schema for League Competitions */
+const leagueDivisionSchema = new Schema({
+    division: Number,
+    rounds: [
+        {
+            round: Number,
+            fights: [fightSchema] // Embedding the fight schema for each round
+        }
+    ]
+})
+
+/* Main Competition Schema */
+const competitionSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        enum: ['league', 'cup'],
+        required: true
+    },
+    season: {
+        type: Number,
+        required: true,
+    },
+    description: String,
+    logo: String,
+    divisions: [leagueDivisionSchema], // Only for league-type competitions
+    fights: [fightSchema] // For cup-type competitions
+});
+
+export const Competition = Model('Competition', competitionSchema);
