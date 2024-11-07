@@ -71,7 +71,18 @@ const competitionSchema = new Schema({
     description: String,
     logo: String,
     divisions: [leagueDivisionSchema], // Only for league-type competitions
-    fights: [fightSchema] // For cup-type competitions
+    fights: [fightSchema], // For cup-type competitions,
+    currentStage: { // For cup-type competitions
+        type: String,
+        enum: ['Not Started', 'Preliminary', 'Semifinals', 'Finals', 'Completed'],
+        default: 'Not Started'
+    },
+    isLive: { type: Boolean, default: false }, //Whether the competition is live
+    activeLeagueFights: [{
+        division: Number,
+        round: Number
+    }],
+    updatedAt: Date
 });
 
 export const Competition = Model('Competition', competitionSchema);
