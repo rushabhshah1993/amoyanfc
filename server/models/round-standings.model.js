@@ -31,7 +31,7 @@ const fightersStandingSchema = new Schema({
  * @property {Array.<Object>} standings - Defines a list of fighters sorted by their position for a particular round
  */
 const roundStandingsSchema = new Schema({
-    competitionId: { type: Schema.Types.ObjectId, ref: 'Competition', required: true },
+    competitionId: { type: Schema.Types.ObjectId, ref: 'CompetitionMeta', required: true },
     seasonId: { type: Schema.Types.ObjectId, ref: 'Season', required: true },
     divisionId: { type: Schema.Types.ObjectId, ref: 'Division', required: true },
     roundId: { type: Schema.Types.ObjectId, ref: 'Round', required: true },

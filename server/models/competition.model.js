@@ -26,7 +26,7 @@ import { competitionMetaSchema } from "./competition-meta.model";
 /**
  * Schema definition of an individual fighter's statistics after a fight has been completed
  * @typedef {Object} fightStatsSchema
- * @property {ObjectId} fighterId - Defines the unique fighterId of a fighter participating in a fight
+ * @property {ObjectId} fighterId - Defines the unique fighterId of a fighter participating in a fight, referring to the `Fighter` model
  * @property {Object} stats - Defines the object representing the various statistics of a fighter after a fight
  */
 const fightStatsSchema = new Schema({
@@ -206,11 +206,23 @@ const cupConfigurationSchema = new Schema({
 const seasonConfigurationSchema = new Schema({
     leagueConfiguration: leagueConfigurationSchema,
     cupConfiguration: cupConfigurationSchema
+});
+
+/**
+ * Schema definition for a league season closely tagged to a cup competition
+ * @typedef {Object} linkedLeagueSeasonSchema
+ * @property {ObjectId} competitionId - The unique competition ID which is closely associated to the cup competition
+ * @property {ObjectId} seasonId - The unique season ID of a competition which is closely associated to the cup competition
+ */
+const linkedLeagueSeasonSchema = new Schema({
+    competitionId: { type: Schema.Types.ObjectId, ref: 'CompetitionMeta' },
+    seasonId: { type: Schema.Types.ObjectId, ref: 'Season' }
 })
 
 /**
  * Schema definition for competition
  * @typedef {Object} Competition
+ * @property {String} competitionMeta - Provides information about a competition referring to the CompetitionMeta model
  * @property {String} competitionName - Name of the competition
  * @property {String} type - Indicates whether the competition is a cup-style competition or a league-style competition
  * @property {Boolean} isActive - Indicates whether the competition is currently live/active
@@ -218,6 +230,7 @@ const seasonConfigurationSchema = new Schema({
  * @property {Objcet} leagueData - Provides associated information specific to a league-style competition
  * @property {Object} cupData - Provides assocaited information specific to a cup-style competition
  * @property {Object} config - Provides the associated underlying configuration information for a particular competition
+ * @property {Object} linkedLeagueSeason - Specific for cup compeitions, it provides the associated league competition it is linked to, referred by `linkedLeagueSeasonSchema`
  * @property {Date} updatedAt - Provides the date the competition was updated
  */
 const competitionSchema = new Schema({
@@ -229,6 +242,7 @@ const competitionSchema = new Schema({
     leagueData: leagueDataSchema,
     cupData: cupDataSchema,
     config: seasonConfigurationSchema,
+    linkedLeagueSeason: linkedLeagueSeasonSchema,
     updatedAt: Date,
 });
 
@@ -260,7 +274,9 @@ competitionSchema.pre('save', function(next) {
 leagueDataSchema.pre('save', async function(next) {
     try {
         if(this.competitionId) {
-            const competition = await mongoose.model('Competition').findById(this.competitionId).select('isActive');
+            const competition = await mongoose.model('Competition')
+            .findOne({ 'competitionMeta.uniqueCompetitionId': this.competitionId })
+            .select('isActive');
             // If the competition is not active, clear the activeLeagueFights array
             if (competition && !competition.isActive) {
                 this.activeLeagueFights = [];
