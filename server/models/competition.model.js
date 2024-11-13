@@ -12,7 +12,6 @@ import { competitionMetaSchema } from "./competition-meta.model";
 
 
 
-/* Schema for fighter statistics for every fight */
 /**
  * Object definition for the `stats` object belonging to `fightStatsSchema`
  * @typedef {Object} stats
