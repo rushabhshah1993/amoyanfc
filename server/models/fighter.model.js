@@ -235,4 +235,8 @@ export const fighterSchema = new Schema({
     competitionHistory: [competitionRecordSchema],
 });
 
+/* Indexes */
+fighterSchema.index({ firstName: 1, lastName: 1 });
+fighterSchema.index({ globalRank: 1 });
+
 export const Fighter =  Model('Fighter', fighterSchema);

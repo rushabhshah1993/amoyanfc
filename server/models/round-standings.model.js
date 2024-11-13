@@ -39,4 +39,8 @@ const roundStandingsSchema = new Schema({
     standings: [fightersStandingSchema],
 }, {timestamps: true});
 
+/* Indexes */
+roundStandingsSchema.index({ roundId: 1, "standings.fighterId": 1 });
+roundStandingsSchema.index({ updatedAt: 1 }, { expireAfterSeconds: 3600 * 24 * 2 }); // 2 days
+
 export const RoundStandings = Model('RoundStandings', roundStandingsSchema);

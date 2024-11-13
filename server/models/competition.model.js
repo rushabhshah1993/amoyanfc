@@ -287,7 +287,14 @@ leagueDataSchema.pre('save', async function(next) {
     } catch(error) {
         next(error);
     }
-})
+});
+
+/* Indexes */
+competitionSchema.index({ competitionId: 1 });
+competitionSchema.index({ isActive: 1 });
+fightSchema.index({ competitionId: 1, fighter1: 1, fighter2: 1 });
+fightSchema.index({ date: -1 });
+fightSchema.index({ fighter1: 1, fighter2: 1, competitionId: 1 }, { unique: true });
 
 export const Competition = Model('Competition', competitionSchema);
 export const Division = Model('Division', leagueDivisionSchema);

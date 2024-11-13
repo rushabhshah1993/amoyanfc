@@ -72,4 +72,8 @@ const globalRankSchema = new Schema({
     fighters: [fighterSchema]
 }, {timestamps: true});
 
+
+/* Indexes */
+fighterSchema.index({ rank: 1 });
+
 export const GlobalRank = new Model('GlobalRank', globalRankSchema);
