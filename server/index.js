@@ -1,8 +1,10 @@
+/* Package imports */
 import express from 'express';
 import mongoose from 'mongoose';
 import { graphqlHTTP } from 'express-graphql';
 import schema from './schema/schema.js';
 
+/* Constants imports */
 import { PORT } from './constants.js';
 
 const app = express();

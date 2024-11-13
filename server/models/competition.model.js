@@ -10,6 +10,9 @@ import {
 } from "./fighter.model.js";
 import { competitionMetaSchema } from "./competition-meta.model.js";
 
+/* Constants imports */
+import { COMPETITION_TYPES, DEFAULT_CONFIG } from "../constants.js";
+
 
 
 /**
@@ -181,7 +184,7 @@ const leagueConfigurationSchema = new Schema({
             numberOfFighters: { type: Number, required: true },
         }
     ],
-    pointsPerWin: { type: Number, default: 3}
+    pointsPerWin: { type: Number, default: DEFAULT_CONFIG.POINTS_PER_WIN}
 });
 
 /**
@@ -236,7 +239,7 @@ const linkedLeagueSeasonSchema = new Schema({
 const competitionSchema = new Schema({
     competitionMeta: { type: competitionMetaSchema, ref: 'CompetitionMeta' },
     competitionName: { type: String, required: true },
-    type: { type: String, enum: ['League', 'Cup'], required: true },
+    type: { type: String, enum: Object.values(COMPETITION_TYPES), required: true },
     isActive: { type: Boolean, required: true, default: false },
     seasonMeta: seasonMetaSchema,
     leagueData: leagueDataSchema,

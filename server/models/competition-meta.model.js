@@ -2,6 +2,9 @@
 import mongoose from 'mongoose';
 import { Schema } from 'mongoose';
 
+/* Constants imports */
+import { COMPETITION_TYPES } from '../constants';
+
 /**
  * Schema definition for competition's meta information
  * @typedef {Object} competitionMetaSchema
@@ -12,7 +15,7 @@ import { Schema } from 'mongoose';
  */
 export const competitionMetaSchema = new Schema({
     competitionName: { type: String, required: true },
-    type: { type: String, enum: ['league', 'cup'], required: true },
+    type: { type: String, enum: Object.values(COMPETITION_TYPES), required: true },
     description: String,
     logo: { type: String, required: true },
 }, {timestamps: true});
