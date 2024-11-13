@@ -135,7 +135,7 @@ const seasonMetaSchema = new Schema({
  * @property {Number} round - The round number which represents the individual round of a division from an active season
  */
 /**
- * Schema definition for a detailed data for a league-style competition for an associated season
+ * Schema definition for a detailed season data for a league-style competition for an associated season
  * @typedef {Object} leagueData
  * @property {Array.<Object>} divisions - An array of divisions objects for individual division data for a season. Each division follows the 'leagueDivisionSchema`.
  * @property {Array.<Object>} activeLeagueFights - An array of objects defining which division and round are active for a given active season
@@ -274,3 +274,7 @@ leagueDataSchema.pre('save', async function(next) {
 })
 
 export const Competition = Model('Competition', competitionSchema);
+export const Division = Model('Division', leagueDivisionSchema);
+export const Season = Model('Season', leagueDataSchema);
+export const Round = Model('Round', roundsSchema);
+export const Fight = Model('Fight', fightSchema);
