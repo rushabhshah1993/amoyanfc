@@ -1,8 +1,14 @@
 /* Package imports */
 import express from 'express';
 import mongoose from 'mongoose';
-import { graphqlHTTP } from 'express-graphql';
-import schema from './schema/schema.js';
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+
+/* Schema imports */
+import { typeDefs } from './schema/index.js';
+
+/* Resolver imports */
+import { resolvers } from './resolvers/index.js';
 
 /* Constants imports */
 import { PORT } from './constants.js';
@@ -14,11 +20,17 @@ mongoose.connection.once('open', () => {
     console.log('Connected to database');
 })
 
-app.use('/graphql', graphqlHTTP({
-    schema,
-    graphiql: true
-}));
+const server = new ApolloServer({
+    typeDefs,
+    resolvers
+});
+
+const { url } = startStandaloneServer(server, {
+    listen: {
+        port: 4000
+    }
+});
 
 app.listen(PORT, () => {
-    console.log(`Listening for requests on port ${PORT}`);
+    console.log(`Listening for requests on ${url}`);
 });

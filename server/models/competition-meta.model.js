@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import { Schema } from 'mongoose';
 
 /* Constants imports */
-import { COMPETITION_TYPES } from '../constants';
+import { COMPETITION_TYPES } from './../constants.js';
 
 /**
  * Schema definition for competition's meta information
