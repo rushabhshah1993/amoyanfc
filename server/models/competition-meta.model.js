@@ -1,5 +1,6 @@
 /* Package imports */
-import { Schema, Model } from 'mongoose';
+import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
 /**
  * Schema definition for competition's meta information
@@ -16,4 +17,4 @@ export const competitionMetaSchema = new Schema({
     logo: { type: String, required: true },
 }, {timestamps: true});
 
-export const CompetitionMeta = Model('CompetitionMeta', competitionMetaSchema);
+export const CompetitionMeta = mongoose.model('CompetitionMeta', competitionMetaSchema);

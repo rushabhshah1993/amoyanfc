@@ -1,5 +1,1 @@
-const PORT = 4000;
-
-module.exports = {
-    PORT
-};
+export const PORT = 4000;

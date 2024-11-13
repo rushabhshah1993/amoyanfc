@@ -1,9 +1,9 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const graphqlHTTP = require('express-graphql').graphqlHTTP;
-const schema = require('./schema/schema');
+import express from 'express';
+import mongoose from 'mongoose';
+import { graphqlHTTP } from 'express-graphql';
+import schema from './schema/schema.js';
 
-const { PORT } = require('./constants');
+import { PORT } from './constants.js';
 
 const app = express();
 

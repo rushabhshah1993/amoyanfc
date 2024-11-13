@@ -7,8 +7,8 @@ import {
     grapplingSchema, significantStrikeSchema, 
     strikesMapSchema, submissionSchema, 
     takedownSchema 
-} from "./fighter.model";
-import { competitionMetaSchema } from "./competition-meta.model";
+} from "./fighter.model.js";
+import { competitionMetaSchema } from "./competition-meta.model.js";
 
 
 
@@ -274,7 +274,7 @@ competitionSchema.pre('save', function(next) {
 leagueDataSchema.pre('save', async function(next) {
     try {
         if(this.competitionId) {
-            const competition = await mongoose.model('Competition')
+            const competition = await Model('Competition')
             .findOne({ 'competitionMeta.uniqueCompetitionId': this.competitionId })
             .select('isActive');
             // If the competition is not active, clear the activeLeagueFights array

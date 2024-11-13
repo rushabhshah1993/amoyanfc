@@ -1,13 +1,14 @@
-const graphql = require('graphql');
+import graphql from 'graphql';
+
 const { 
     GraphQLObjectType, GraphQLString, GraphQLID,
     GraphQLList, GraphQLNonNull, GraphQLSchema
 } = graphql;
 
-const Competition = require('./../models/competition');
+import { CompetitionMeta } from "../models/competition-meta.model.js";
 
 const CompetitionType = new GraphQLObjectType({
-    name: 'Competition',
+    name: 'CompetitionMeta',
     fields: () => ({
         id: {type: GraphQLID},
         name: {type: GraphQLString},
@@ -25,12 +26,12 @@ const RootQuery = new GraphQLObjectType({
                 id: { type: GraphQLID }
             },
             resolve(parent, args) {
-                return Competition.findById(args.id)
+                return CompetitionMeta.findById(args.id)
             }
         },
         competitions: {
             type: new GraphQLList(CompetitionType),
-            resolve() { return Competition.find({}) }
+            resolve() { return CompetitionMeta.find({}) }
         }
     }
 });
@@ -46,7 +47,7 @@ const Mutation = new GraphQLObjectType({
                 logo: { type: new GraphQLNonNull(GraphQLString)},
             },
             resolve(parents, args) {
-                let competition = new Competition({
+                let competition = new CompetitionMeta({
                     name: args.name,
                     description: args.description,
                     logo: args.logo
@@ -58,7 +59,7 @@ const Mutation = new GraphQLObjectType({
     }
 });
 
-module.exports = new GraphQLSchema({
+export default new GraphQLSchema({
     query: RootQuery,
     mutation: Mutation
 });
