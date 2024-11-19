@@ -1,8 +1,11 @@
 /* Package imports */
 import express from 'express';
+import http from 'http';
+import cors from 'cors';
 import mongoose from 'mongoose';
 import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
+import { expressMiddleware } from '@apollo/server/express4';
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 
 /* Schema imports */
 import mergedTypeDefs from './schema/index.js';
@@ -15,6 +18,8 @@ import { PORT } from './constants.js';
 
 const app = express();
 
+const httpServer = http.createServer(app);
+
 mongoose.connect('mongodb+srv://rushabhshah1993:Deathrace1234@cluster0.xotii.mongodb.net/amoyanfc?retryWrites=true&w=majority');
 mongoose.connection.once('open', () => {
     console.log('Connected to database');
@@ -23,6 +28,7 @@ mongoose.connection.once('open', () => {
 const server = new ApolloServer({
     typeDefs: mergedTypeDefs,
     resolvers: mergedResolvers,
+    plugins: [ApolloServerPluginDrainHttpServer({httpServer})],
     formatError: (err) => {
         console.error("Error occurred: ", err);
         return {
@@ -33,8 +39,14 @@ const server = new ApolloServer({
     }
 });
 
-const { url } = await startStandaloneServer(server);
+await server.start();
 
-app.listen(PORT, () => {
-    console.log(`🚀 Server ready at ${url}`);
-});
+app.use(
+    '/graphql',
+    cors(),
+    express.json(),
+    expressMiddleware(server)
+);
+
+await new Promise((resolve) => httpServer.listen({port: PORT}, resolve))
+console.log(`🚀 Server listening on port ${PORT}`);

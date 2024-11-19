@@ -1,4 +1,4 @@
-export const PORT = 4001;
+export const PORT = 4000;
 
 // Compeitition Types
 export const COMPETITION_TYPES = {
