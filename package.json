@@ -1,9 +1,10 @@
 {
-  "name": "afc-server",
+  "name": "afc",
   "version": "1.0.0",
-  "description": "AFC server containing all the data related to Amoyan Fighting Championships",
+  "description": "The official application for Amoyan Entertainment",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",

@@ -5,10 +5,10 @@ import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 
 /* Schema imports */
-import { typeDefs } from './schema/index.js';
+import mergedTypeDefs from './schema/index.js';
 
 /* Resolver imports */
-import { resolvers } from './resolvers/index.js';
+import mergedResolvers from './resolvers/index.js';
 
 /* Constants imports */
 import { PORT } from './constants.js';
@@ -21,16 +21,12 @@ mongoose.connection.once('open', () => {
 })
 
 const server = new ApolloServer({
-    typeDefs,
-    resolvers
+    typeDefs: mergedTypeDefs,
+    resolvers: mergedResolvers
 });
 
-const { url } = startStandaloneServer(server, {
-    listen: {
-        port: 4000
-    }
-});
+const { url } = await startStandaloneServer(server);
 
 app.listen(PORT, () => {
-    console.log(`Listening for requests on ${url}`);
+    console.log(`🚀 Server ready at ${url}`);
 });

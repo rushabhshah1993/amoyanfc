@@ -1,5 +1,8 @@
+/* Package imports */
+import { mergeResolvers } from '@graphql-tools/merge';
+
 /* Resolver imports */
-import { competitionMetaResolvers } from "./competition-meta.resolver.js";
+import competitionMetaResolvers from "./competition-meta.resolver.js";
 
 export const resolvers = {
     Query: {
@@ -11,3 +14,7 @@ export const resolvers = {
         editCompetition: competitionMetaResolvers.Mutation.editCompetition
     }
 }
+
+const mergedResolvers = mergeResolvers([competitionMetaResolvers]);
+
+export default mergedResolvers;

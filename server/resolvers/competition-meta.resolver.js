@@ -1,7 +1,7 @@
 /* Package imports */
 import { CompetitionMeta } from "../models/competition-meta.model.js";
 
-export const competitionMetaResolvers = {
+const competitionMetaResolvers = {
     Query: {
         getAllCompetitions: async () => {
             return await CompetitionMeta.find({});
@@ -24,4 +24,6 @@ export const competitionMetaResolvers = {
             )
         }
     }
-}
+};
+
+export default competitionMetaResolvers;
