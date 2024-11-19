@@ -22,7 +22,15 @@ mongoose.connection.once('open', () => {
 
 const server = new ApolloServer({
     typeDefs: mergedTypeDefs,
-    resolvers: mergedResolvers
+    resolvers: mergedResolvers,
+    formatError: (err) => {
+        console.error("Error occurred: ", err);
+        return {
+            message: err.message,
+            code: err.extensions.code || "INTERNAL_SERVER_ERROR",
+            details: err.extensions.exception ? err.extensions.exception.stacktrace : null
+        }
+    }
 });
 
 const { url } = await startStandaloneServer(server);

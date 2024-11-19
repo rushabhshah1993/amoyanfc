@@ -1,4 +1,6 @@
-import { Schema, Model } from 'mongoose';
+/* Package imports */
+import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
 /**
  * Schema definition for articles
@@ -21,4 +23,4 @@ const articlesSchema = new Schema({
     publishedDate: { type: Date }
 }, { timestamps: true });
 
-export const Articles = Model('Articles', articlesSchema);
+export const Articles = mongoose.model('Articles', articlesSchema);

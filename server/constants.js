@@ -20,3 +20,11 @@ export const DEFAULT_CONFIG = {
     MAX_FIGHTERS: 16,
     POINTS_PER_WIN: 3,
 };
+
+// Singular keys for articles
+export const SINGULAR_KEYS = [
+    'tags',
+    'from',
+    'to'
+];
+
