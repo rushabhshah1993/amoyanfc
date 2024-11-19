@@ -51,12 +51,12 @@ const competitionMetaSchema = `#graphql
         """
         Adds a new competition to the system
         """
-        addCompetition(input: NewCompetitionInput!): CompetitionMeta
+        addCompetition(input: NewCompetitionInput!): CompetitionMeta!
 
         """
         Updates an existing competition's data
         """
-        editCompetition(input: ExistingCompetitionInput!): CompetitionMeta
+        editCompetition(id: ID!, input: ExistingCompetitionInput!): CompetitionMeta!
     }
 
     """
