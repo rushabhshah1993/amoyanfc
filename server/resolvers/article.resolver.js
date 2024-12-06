@@ -7,6 +7,9 @@ import { Articles } from './../models/articles.model.js';
 /* Error imports */
 import { NotFoundError } from './../error.js';
 
+/* Utility imports */
+import { createQueryObj } from '../utils.js';
+
 const articleResolvers = {
     Date: GraphQLDate,
     Number: GraphQLPositiveInt,

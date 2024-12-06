@@ -1,4 +1,4 @@
-import { SINGULAR_KEYS } from "./constants";
+import { SINGULAR_KEYS } from "./constants.js";
 
 export const createQueryObj = (query) => {
     let queryObj = {};

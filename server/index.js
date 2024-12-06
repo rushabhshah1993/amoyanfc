@@ -25,7 +25,6 @@ const app = express();
 
 const httpServer = http.createServer(app);
 
-
 const server = new ApolloServer({
     typeDefs: mergedTypeDefs,
     resolvers: mergedResolvers,
