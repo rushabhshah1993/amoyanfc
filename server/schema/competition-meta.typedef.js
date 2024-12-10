@@ -1,4 +1,4 @@
-const competitionMetaSchema = `#graphql
+const competitionMetaTypeDef = `#graphql
     """
     Represents a competition in the system
     """
@@ -116,4 +116,4 @@ const competitionMetaSchema = `#graphql
 `;
 
 
-export default competitionMetaSchema;
+export default competitionMetaTypeDef;

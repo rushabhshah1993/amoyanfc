@@ -1,4 +1,4 @@
-const articleSchema = `#graphql
+const articleTypeDef = `#graphql
     scalar Date
     scalar Number
 
@@ -173,4 +173,4 @@ const articleSchema = `#graphql
     }
 `;
 
-export default articleSchema;
+export default articleTypeDef;

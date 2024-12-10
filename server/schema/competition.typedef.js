@@ -1,0 +1,112 @@
+import competitionInputs from "../inputs/competition.inputs";
+
+const competitionTypeDef = `#graphql
+    """
+    Represents a detailed competition in the system, for instance, Season 9 of IFC or Season 2 of Brawl
+    """
+    type Competition {
+        """
+        Unique ID for the competition's seasonal information
+        """
+        id: ID!
+
+        """
+        Meta information about the competition
+        """
+        competitionMeta: CompetitionMeta!
+
+        """
+        Indicates whether the competition is currently active
+        """
+        isActive: Boolean!
+
+        """
+        Contextual information about the associated season.
+        For example, season 9 of IFC or season 2 of Brawl will have the season's associated information here.
+        It will contain information like the start date, end date, and participants that will be common for 
+        league and cup-style competitions. Additionally, it will contain more contextual information for league-style
+        competitions.
+        """
+        seasonMeta: SeasonMeta
+
+        """
+        Data specific to league-style competitions
+        """
+        leagueData: LeagueData
+
+        """
+        Data specific to cup-style competitions
+        """
+        cupData: CupData
+
+        """
+        Configuration data for the given competition
+        """
+        config: SeasonConfiguration
+
+        """
+        Information specific to cup-type competitions which are linked to a 
+        league-style competitions
+        """
+        linkedLeagueSeason: LinkedLeagueSeason
+
+        """
+        Date when the competition was created
+        """
+        createdAt: String
+
+        """
+        Date when the competition was last updated.
+        """
+        updatedAt: String
+    }
+
+    """
+    Data specific to cup-style competitions that 
+    represent a particular competition and its season
+    they are linked to
+    """
+    type LinkedLeagueSeason {
+        competition: Competition
+        season: SeasonMeta
+    }
+
+    """
+    Root query for fetching competition data.
+    """
+    type Query {
+        """
+        Fetch an individual competition's information
+        """
+        getCompetition(id: ID!): Competition
+
+        """
+        Fetch information for all competitions
+        """
+        getAllCompetitions: [Competition!]
+    }   
+
+    """
+    Root mutation for modifying the data
+    """
+    type Mutation {
+        """
+        Creates a new season for a given competition
+        """
+        createCompetitionSeason(input: NewCompetitionSeasonInput!): Competition!
+
+        """
+        Updates an existing competition's information
+        """
+        updateCompetitionSeason(id: ID!, input: ExistingCompetitionSeasonInput!): Competition!
+
+        """
+        Deletes an exisiting competition
+        """
+        deleteCompetitionSeason(id: ID!): String
+    }
+
+    ${competitionInputs}
+`;
+
+export default competitionTypeDef;

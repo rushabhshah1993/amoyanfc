@@ -51,6 +51,7 @@ const fightStatsSchema = new Schema({
  * @property {ObjectId} fighter1 - Defines the objectID for the first fighter in a fight
  * @property {ObjectId} fighter2 - Defines the objectID for the second fighter in a fight
  * @property {ObjectId} winner - Defines the objectID for the winner in a fight, it will be undefined if the fight is not fought
+ * @property {String} fightIdentifier - Defines a unique string that can be used as a backup to identify a round in a cup or league-style competition
  * @property {Date} date - Defines the date on which the fight will be fought, it will be undefined if the fight is not fought
  * @property {String} userDescription - Defines the description of the fight provided by the fighter, it will be undefined if the user has not provided any
  * @property {String} genAIDescription - Defines the description of the fight provided by ChatGPT
@@ -62,6 +63,7 @@ const fightSchema = new Schema({
     fighter1: { type: Schema.Types.ObjectId, ref: 'Fighter', required: true },
     fighter2: { type: Schema.Types.ObjectId, ref: 'Fighter', required: true },
     winner: { type: Schema.Types.ObjectId, ref: 'Fighter' },
+    fightIdentifier: String,
     date: Date,
     userDescription: String, 
     genAIDescription: String, 
@@ -218,16 +220,14 @@ const seasonConfigurationSchema = new Schema({
  * @property {ObjectId} seasonId - The unique season ID of a competition which is closely associated to the cup competition
  */
 const linkedLeagueSeasonSchema = new Schema({
-    competitionId: { type: Schema.Types.ObjectId, ref: 'CompetitionMeta' },
-    seasonId: { type: Schema.Types.ObjectId, ref: 'Season' }
+    competition: { type: competitionSchema, ref: 'CompetitionMeta' },
+    season: { type: seasonMetaSchema, ref: 'Season' }
 })
 
 /**
  * Schema definition for competition
  * @typedef {Object} Competition
  * @property {String} competitionMeta - Provides information about a competition referring to the CompetitionMeta model
- * @property {String} competitionName - Name of the competition
- * @property {String} type - Indicates whether the competition is a cup-style competition or a league-style competition
  * @property {Boolean} isActive - Indicates whether the competition is currently live/active
  * @property {Object} seasonMeta - Provides associated meta information like season number, number of participants, start and end for a season.
  * @property {Objcet} leagueData - Provides associated information specific to a league-style competition
@@ -238,14 +238,13 @@ const linkedLeagueSeasonSchema = new Schema({
  */
 const competitionSchema = new Schema({
     competitionMeta: { type: competitionMetaSchema, ref: 'CompetitionMeta' },
-    competitionName: { type: String, required: true },
-    type: { type: String, enum: Object.values(COMPETITION_TYPES), required: true },
     isActive: { type: Boolean, required: true, default: false },
     seasonMeta: seasonMetaSchema,
     leagueData: leagueDataSchema,
     cupData: cupDataSchema,
     config: seasonConfigurationSchema,
     linkedLeagueSeason: linkedLeagueSeasonSchema,
+    createdAt: Date,
     updatedAt: Date,
 });
 
