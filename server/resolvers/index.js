@@ -2,9 +2,14 @@
 import { mergeResolvers } from '@graphql-tools/merge';
 
 /* Resolver imports */
-import competitionMetaResolvers from "./competition-meta.resolver.js";
 import articleResolvers from './article.resolver.js';
+import competitionResolvers from './competition.resolver.js';
+import competitionMetaResolvers from "./competition-meta.resolver.js";
 
-const mergedResolvers = mergeResolvers([competitionMetaResolvers, articleResolvers]);
+const mergedResolvers = mergeResolvers([
+    articleResolvers,
+    competitionResolvers,
+    competitionMetaResolvers
+]);
 
 export default mergedResolvers;
