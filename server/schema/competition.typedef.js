@@ -78,12 +78,22 @@ const competitionTypeDef = `#graphql
         """
         Fetch an individual competition's information
         """
-        getCompetition(id: ID!): Competition
+        getCompetitionSeason(id: ID!): Competition
 
         """
         Fetch information for all competitions
         """
         getAllCompetitions: [Competition!]
+
+        """
+        Fetch a list of competitions by its competition-type (e.g. IFC, IC, CC, Brawl)
+        """
+        getAllSeasonsByCompetitionCategory(competitionMetaId: ID!): [Competition!]
+
+        """
+        Fetch a list of competitions based on the filters provided by the user
+        """
+        filterCompetitions(filter: CompetitionFilterInput!): [Competition!]
     }   
 
     """

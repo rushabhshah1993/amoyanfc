@@ -24,3 +24,14 @@ export const createQueryObj = (query) => {
         }
     }
 }
+
+export const catchAsyncErrors = resolver => async(parent, args, context, info) => {
+    try {
+        return await resolver(parent, args, context, info);
+    }
+    catch(error) {
+        console.error("Error:   ", error);
+        throw new Error(error.message || "Internal Server Error");
+    }
+}
+

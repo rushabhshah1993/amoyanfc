@@ -1,4 +1,4 @@
-/* Package imports */
+/* Model imports */
 import { CompetitionMeta } from "../models/competition-meta.model.js";
 
 /* Error imports */
@@ -7,10 +7,10 @@ import { NotFoundError } from "../error.js";
 const competitionMetaResolvers = {
     Query: {
         /***
-         * Fetches a list of all the competitions.
+         * Fetches a list of the meta information of all the competitions.
          * @returns {Promise<Array.<Object>>} - A list of all the competitions, if found
          */
-        getAllCompetitions: async () => {
+        getAllCompetitionsMeta: async () => {
             try {
                 const competitions = await CompetitionMeta.find({});
                 if(!competitions.length) {
@@ -31,17 +31,17 @@ const competitionMetaResolvers = {
          * @param {String} args.id - The unique ID for a competition
          * @returns {Promise<Object>} - A competition object, if found
          */
-        getCompetition: async(_, { id }) => {
+        getCompetitionMeta: async(_, { id }) => {
             try {
                 const competition = await CompetitionMeta.findById(id);
                 if(!competition) {
-                    throw new NotFoundError("Article not found");
+                    throw new NotFoundError("Competition information not found");
                 }
                 return competition;
             }
             catch(error) {
                 console.error("Error fetching competition:", error);
-                throw new Error("Error fetching competition");
+                throw new Error("Error fetching competition information");
             }
         }
     },

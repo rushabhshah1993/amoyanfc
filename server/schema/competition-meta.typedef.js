@@ -36,12 +36,12 @@ const competitionMetaTypeDef = `#graphql
         """
         Query to fetch an individual competition's data
         """
-        getCompetition(id: ID!): CompetitionMeta
+        getCompetitionMeta(id: ID!): CompetitionMeta
 
         """
         Query to fetch the entire list of competitions and their respective data
         """
-        getAllCompetitions: [CompetitionMeta]
+        getAllCompetitionsMeta: [CompetitionMeta]
     }
 
     """

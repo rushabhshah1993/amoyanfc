@@ -148,6 +148,25 @@ const competitionInputs = `#graphql
         competitionId: ID!
         seasonId: ID!
     }
+
+    input CompetitionFilterInput {
+        competitionMeta: CompetitionMetaInput
+        isActive: Boolean
+        seasonMeta: SeasonMetaInput
+        leagueData: LeagueDataInput
+        cupData: CupDataInput
+        config: SeasonConfigurationInput
+        linkedLeagueSeason: LinkedLeagueSeasonInput
+        createdAt: String
+    }
+
+    input CompetitionMetaInput {
+        id: ID
+        competitionName: String
+        type: String
+        description: String
+        logo: String
+    }
 `;
 
 export default competitionInputs;
