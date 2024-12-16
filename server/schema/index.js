@@ -2,12 +2,16 @@
 import { mergeTypeDefs } from '@graphql-tools/merge';
 
 /* Schema imports */
-import competitionMetaSchema from './competition-meta.typedef.js';
-import articleSchema from './article.typedef.js';
+import articleTypeDef from './article.typedef.js';
+import competitionMetaTypeDef from './competition-meta.typedef.js';
+import competitionTypeDef from './competition.typedef.js';
+import fighterTypeDef from './fighter.typedef.js';
 
 const mergedTypeDefs = mergeTypeDefs([
-    competitionMetaSchema,
-    articleSchema
+    articleTypeDef,
+    competitionTypeDef,
+    competitionMetaTypeDef,
+    fighterTypeDef
 ]);
 
 export default mergedTypeDefs;

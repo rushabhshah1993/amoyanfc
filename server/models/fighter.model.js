@@ -97,7 +97,7 @@ export const takedownSchema = new Schema({
 /**
  * Schema defintion for a historic fight statistics of a fighter over all the competitions
  * @typedef {Object} fightStatsSchema
- * @property {Number} avgFightTime - The average fight time taken by the fighter
+ * @property {Number} avgFightTime - The average fight time taken by the fighter in minutes
  * @property {Array.<String>} finishingMoves - A list of all the finishing moves made by the fighter
  * @property {Object} grappling - An object depicting the grappling statistics of a fighter, referring to the `grapplingSchema`.
  * @property {Object} significantStrikes - An object depicting the significant strikes statistics of a fighter, referring to the `significantStrikeSchema`.

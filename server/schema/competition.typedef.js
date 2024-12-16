@@ -1,4 +1,6 @@
+/* Input imports */
 import competitionInputs from "../inputs/competition.inputs";
+import fightStatsInput from "../inputs/fight-stats.input";
 
 const competitionTypeDef = `#graphql
     """
@@ -27,28 +29,28 @@ const competitionTypeDef = `#graphql
         league and cup-style competitions. Additionally, it will contain more contextual information for league-style
         competitions.
         """
-        seasonMeta: SeasonMeta
+        seasonMeta: SeasonMetaInput
 
         """
         Data specific to league-style competitions
         """
-        leagueData: LeagueData
+        leagueData: LeagueDataInput
 
         """
         Data specific to cup-style competitions
         """
-        cupData: CupData
+        cupData: CupDataInput
 
         """
         Configuration data for the given competition
         """
-        config: SeasonConfiguration
+        config: SeasonConfigurationInput
 
         """
         Information specific to cup-type competitions which are linked to a 
         league-style competitions
         """
-        linkedLeagueSeason: LinkedLeagueSeason
+        linkedLeagueSeason: LinkedLeagueSeasonInput
 
         """
         Date when the competition was created
@@ -68,7 +70,7 @@ const competitionTypeDef = `#graphql
     """
     type LinkedLeagueSeason {
         competition: Competition
-        season: SeasonMeta
+        season: SeasonMetaInput
     }
 
     """
@@ -117,6 +119,7 @@ const competitionTypeDef = `#graphql
     }
 
     ${competitionInputs}
+    ${fightStatsInput}
 `;
 
 export default competitionTypeDef;
