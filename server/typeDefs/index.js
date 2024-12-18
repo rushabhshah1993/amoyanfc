@@ -6,12 +6,14 @@ import articleTypeDef from './article.typedef.js';
 import competitionMetaTypeDef from './competition-meta.typedef.js';
 import competitionTypeDef from './competition.typedef.js';
 import fighterTypeDef from './fighter.typedef.js';
+import globalRankTypeDef from './global-rank.typeDef.js';
 
 const mergedTypeDefs = mergeTypeDefs([
     articleTypeDef,
     competitionTypeDef,
     competitionMetaTypeDef,
-    fighterTypeDef
+    fighterTypeDef,
+    globalRankTypeDef
 ]);
 
 export default mergedTypeDefs;
