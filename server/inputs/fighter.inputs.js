@@ -16,7 +16,7 @@ const fighterInputs = `#graphql
     }
 
     input OpponentHistoryInput {
-        opponentId: ID
+        opponentId: ID!
         totalFights: Int
         totalWins: Int
         totalLosses: Int
@@ -25,12 +25,14 @@ const fighterInputs = `#graphql
     }
 
     input CompetitionDetailsInput {
-        competitionId: ID
+        competitionId: ID!
         season: Int
         division: Int
         round: Int
+        fightId: ID!
         isWinner: Boolean
         competitionDetails: Competition
+        fight: Fight
     }
 
     input competitionHistoryInput {

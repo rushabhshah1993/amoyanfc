@@ -112,15 +112,23 @@ const fighterResolver = {
             })
         },
         opponentsHistory: async(parent) => {
-            return parent.opponentsHistory.map(async (record) => {
+            return parent.opponentsHistory.map(async (opponent) => {
                 return {
-                    ...record,
+                    ...opponent,
                     details: await Promise.all(
-                        record.details.map(async(detail) => {
+                        opponent.details.map(async(detail) => {
                             const competition = await Competition.findById(detail.competitionId);
+                            const fight = await Competition.aggregate([
+                                { $unwind: '$leagueData.divisions' },
+                                { $unwind: '$leagueData.divisions.rounds' },
+                                { $unwind: '$leagueData.divisions.rounds.fights' },
+                                { $match: { 'leagueData.divisions.rounds.fights._id': detail.fightId } },
+                                { $project: { 'leagueData.divisions.rounds.fights': 1 } },
+                            ]);
                             return {
                                 ...detail,
-                                competition
+                                competition,
+                                fight: fight[0]?.leagueData?.divisions?.rounds?.fights
                             }
                         })
                     )
