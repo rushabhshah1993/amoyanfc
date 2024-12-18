@@ -11,8 +11,8 @@ import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHt
 /* MongoDB connection imports */
 import { connectDB } from './db/connectDB.js';
 
-/* Schema imports */
-import mergedTypeDefs from './schema/index.js';
+/* Typedef imports */
+import mergedTypeDefs from './typeDefs/index.js';
 
 /* Resolver imports */
 import mergedResolvers from './resolvers/index.js';

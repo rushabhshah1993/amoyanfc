@@ -1,7 +1,7 @@
 /* Package imports */
 import { mergeTypeDefs } from '@graphql-tools/merge';
 
-/* Schema imports */
+/* Typedef imports */
 import articleTypeDef from './article.typedef.js';
 import competitionMetaTypeDef from './competition-meta.typedef.js';
 import competitionTypeDef from './competition.typedef.js';
