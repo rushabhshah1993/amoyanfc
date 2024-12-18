@@ -60,7 +60,7 @@ const fighterTypeDef = `#graphql
         """
         A list of all the competitions the fighter has fought and its numeric details
         """
-        competitionHistory: [competitionHistoryInput]
+        competitionHistory: [CompetitionHistoryInput]
 
         """
         Informs whether the fighter has been archived by the user
