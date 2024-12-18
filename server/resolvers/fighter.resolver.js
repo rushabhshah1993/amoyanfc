@@ -102,22 +102,30 @@ const fighterResolver = {
     },
     Fighter: {
         competitionHistory: async(parent) => {
-            // Map through the competitionHistory array and add the `competition` data
-            return parent.competitionHistory.map(async (record) => {
+            // Iterate over competitionHistory array to enrich each record with competition data
+            const enrichedHistory = parent.competitionHistory.map(async (record) => {
+                // Fetch competition details by ID from the CompetitionMeta model
                 const competition = await CompetitionMeta.findById(record.competitionId);
+
+                // Return the original record merged with competition details
                 return {
                     ...record,
                     competition
                 }
-            })
+            });
+            return enrichedHistory;
         },
         opponentsHistory: async(parent) => {
-            return parent.opponentsHistory.map(async (opponent) => {
-                return {
-                    ...opponent,
-                    details: await Promise.all(
+            // Iterate over opponentsHistory to add detailed competition and fight data
+            const enrichedOpponentsHistory = await Promise.all(
+                parent.opponentsHistory.map(async (opponent) => {
+                    // Map over details array for each opponent
+                    const enrichedDetails = await Promise.all(
                         opponent.details.map(async(detail) => {
+                            // Fetch competition details by ID from the Competition model
                             const competition = await Competition.findById(detail.competitionId);
+
+                            // Aggregate data to fetch specific fight details
                             const fight = await Competition.aggregate([
                                 { $unwind: '$leagueData.divisions' },
                                 { $unwind: '$leagueData.divisions.rounds' },
@@ -125,15 +133,24 @@ const fighterResolver = {
                                 { $match: { 'leagueData.divisions.rounds.fights._id': detail.fightId } },
                                 { $project: { 'leagueData.divisions.rounds.fights': 1 } },
                             ]);
+
+                            // Return enriched detail with competition and fight data
                             return {
                                 ...detail,
                                 competition,
                                 fight: fight[0]?.leagueData?.divisions?.rounds?.fights
                             }
                         })
-                    )
-                }
-            })
+                    );
+
+                    // Return the opponent with enriched details
+                    return {
+                        ...opponent,
+                        details: enrichedDetails,
+                    };
+                })
+            );
+            return enrichedOpponentsHistory;
         }
     }
 
