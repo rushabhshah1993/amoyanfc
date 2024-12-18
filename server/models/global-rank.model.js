@@ -41,7 +41,7 @@ const divisionAppearances = new Schema({
  */
 const leagueAppearances = new Schema({
     competitionId: { type: Schema.Types.ObjectId, ref: 'CompetitionMeta', required: true },
-    divisionAppearances: [divisionAppearances]
+    divisionAppearances: [divisionAppearances] 
 });
 
 /**
@@ -69,7 +69,8 @@ const fighterSchema = new Schema({
  * @property {Array.<Object>} fighters - A list of fighters sorted by rank, referred by `fighterSchema`
  */
 const globalRankSchema = new Schema({
-    fighters: [fighterSchema]
+    fighters: [fighterSchema],
+    isCurrent: Boolean
 }, {timestamps: true});
 
 
