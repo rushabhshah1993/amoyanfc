@@ -15,7 +15,7 @@ const competitionTypeDef = `#graphql
         """
         Meta information about the competition
         """
-        competitionMeta: CompetitionMeta!
+        competitionMetaId: ID!
 
         """
         Indicates whether the competition is currently active

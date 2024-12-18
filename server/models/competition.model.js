@@ -225,10 +225,10 @@ const linkedLeagueSeasonSchema = new Schema({
 })
 
 /**
- * Schema definition for competition
+ * Schema definition for an individual season of a competition
  * @typedef {Object} Competition
- * @property {String} competitionMeta - Provides information about a competition referring to the CompetitionMeta model
- * @property {Boolean} isActive - Indicates whether the competition is currently live/active
+ * @property {String} competitionMetaID - Provides the ID for a referencing the competition meta this season is attached to
+ * @property {Boolean} isActive - Indicates whether the competition season is currently live/active
  * @property {Object} seasonMeta - Provides associated meta information like season number, number of participants, start and end for a season.
  * @property {Objcet} leagueData - Provides associated information specific to a league-style competition
  * @property {Object} cupData - Provides assocaited information specific to a cup-style competition
@@ -237,7 +237,7 @@ const linkedLeagueSeasonSchema = new Schema({
  * @property {Date} updatedAt - Provides the date the competition was updated
  */
 const competitionSchema = new Schema({
-    competitionMeta: { type: competitionMetaSchema, ref: 'CompetitionMeta' },
+    competitionMetaId: { type: Schema.Types.ObjectId, ref: 'CompetitionMeta', required: true },
     isActive: { type: Boolean, required: true, default: false },
     seasonMeta: seasonMetaSchema,
     leagueData: leagueDataSchema,

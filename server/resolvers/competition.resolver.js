@@ -51,8 +51,7 @@ const competitionResolvers = {
             if(!competitions.length) {
                 throw new NotFoundError(`Competition with the type ${competitionName} not found`);
             }
-            return competitions;
-            
+            return competitions;    
         }),
         /**
          * Fetch a list of competitions based on the arguments provided by the query
@@ -64,7 +63,7 @@ const competitionResolvers = {
         filterCompetitions: catchAsyncErrors(async(_, args) => {
             const competitions = await Competition.find(filter);
             if(!competitions.length) {
-                throw new NotFoundError(`Competition with the type ${competitionName} not found`);
+                throw new NotFoundError(`Competition not found`);
             }
             return competitions;
         })
@@ -115,6 +114,14 @@ const competitionResolvers = {
             const deletedCompetition = await Competition.findByIdAndDelete(id);
             if(!deletedCompetition) throw new Error("Failed to find and delete the competition season");
             return `Successfully deleted season ${competition.seasonMeta.seasonNumber} of ${competitionMeta.competitionName}`;
+        })
+    },
+    CompetitionMeta: {
+        competitionMeta: catchAsyncErrors(async(parent) => {
+            const competitionMetaId = parent.competitionMetaId;
+            const competitionMetaInformation = await Competition.findById(competitionMetaId);
+            if(!competitionMetaInformation) throw new NotFoundError('Competition information not found');
+            return competitionMetaInformation;
         })
     }
 };
