@@ -63,7 +63,7 @@ const competitionResolvers = {
         filterCompetitions: catchAsyncErrors(async(_, args) => {
             const competitions = await Competition.find(args);
             if(!competitions.length) {
-                throw new NotFoundError(`Competition not found`);
+                throw new NotFoundError(`Competition(s) not found`);
             }
             return competitions;
         })

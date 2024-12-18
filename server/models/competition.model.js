@@ -8,10 +8,9 @@ import {
     strikesMapSchema, submissionSchema, 
     takedownSchema 
 } from "./fighter.model.js";
-import { competitionMetaSchema } from "./competition-meta.model.js";
 
 /* Constants imports */
-import { COMPETITION_TYPES, DEFAULT_CONFIG } from "../constants.js";
+import { DEFAULT_CONFIG } from "../constants.js";
 
 
 

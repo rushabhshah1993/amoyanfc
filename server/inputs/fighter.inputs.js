@@ -35,13 +35,53 @@ const fighterInputs = `#graphql
         fight: Fight
     }
 
-    input competitionHistoryInput {
+    input CompetitionHistoryInput {
         competitionId: ID
         totalFights: Int
         totalWins: Int
         totalLosses: Int
         winPercentage: Float
         competition: Competition
+    }
+
+    input FighterFilterInput {
+        firstName: String
+        lastName: String
+        startDateRange: String
+        endDateRange: String
+        skillset: [String]
+        globalRank: Int
+        streaksCount: 
+        competitionName: String 
+        isArchived: Boolean
+    }
+
+    input NewFighterInput {
+        firstName: String!
+        lastName: String!
+        dateOfBirth: String
+        profileImage: String
+        skillset: [String]!
+        globalRank: Int
+        fightStats: FightStatsInput
+        streaks: [StreakInput]
+        opponentsHistory: [OpponentHistoryInput]
+        competitionHistory: [CompetitionHistoryInput]
+        isArchived: Boolean
+    }
+
+    input FighterInput {
+        firstName: String
+        lastName: String
+        dateOfBirth: String
+        profileImage: String
+        skillset: [String]
+        globalRank: Int
+        fightStats: FightStatsInput
+        streaks: [StreakInput]
+        opponentsHistory: [OpponentHistoryInput]
+        competitionHistory: [CompetitionHistoryInput]
+        isArchived: Boolean
     }
 `;
 
