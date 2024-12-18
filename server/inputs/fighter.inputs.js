@@ -10,9 +10,9 @@ const fighterInputs = `#graphql
     }
 
     input LeagueFightSchemaInput {
-        seasonId: ID
-        divisionId: ID
-        roundId: ID
+        season: Int
+        division: Int
+        round: Int
     }
 
     input OpponentHistoryInput {
@@ -26,10 +26,11 @@ const fighterInputs = `#graphql
 
     input CompetitionDetailsInput {
         competitionId: ID
-        seasonId: ID
-        divisionId: ID
-        roundId: ID
+        season: Int
+        division: Int
+        round: Int
         isWinner: Boolean
+        competitionDetails: Competition
     }
 
     input competitionHistoryInput {
@@ -38,6 +39,7 @@ const fighterInputs = `#graphql
         totalWins: Int
         totalLosses: Int
         winPercentage: Float
+        competition: Competition
     }
 `;
 

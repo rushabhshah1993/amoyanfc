@@ -4,7 +4,7 @@ import fightStatsInput from "../inputs/fight-stats.input";
 
 const competitionTypeDef = `#graphql
     """
-    Represents a detailed competition in the system, for instance, Season 9 of IFC or Season 2 of Brawl
+    Represents a detailed competition's season in the system, for instance, Season 9 of IFC or Season 2 of Brawl
     """
     type Competition {
         """

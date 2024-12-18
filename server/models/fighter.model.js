@@ -119,14 +119,14 @@ const fightsStatsSchema = new Schema({
 /**
  * Schema definition for a fighter's fight identification against an opponent
  * @typedef {Object} leagueFightSchema
- * @property {ObjectId} seasonId - The unique identification of a season in which the fight was fought
- * @property {ObjectId} divisionId - The unique identification of a division in which the fight was fought
- * @property {ObjectId} roundId - The unique identification of a round in which the fight was fought
+ * @property {ObjectId} season - The unique identification of a season in which the fight was fought
+ * @property {ObjectId} division - The unique identification of a division in which the fight was fought
+ * @property {ObjectId} round - The unique identification of a round in which the fight was fought
  */
 const leagueFightSchema = new Schema({
-    seasonId: { type: Schema.Types.ObjectId, ref: 'Season' },
-    divisionId: { type: Schema.Types.ObjectId, ref: 'Division' },
-    roundId: { type: Schema.Types.ObjectId, ref: 'Round' }
+    season: { type: Number },
+    division: { type: Number },
+    round: { type: Number }
 })
 
 /**
@@ -159,16 +159,16 @@ const streakSchema = new Schema({
  * Schema definition for a competition details - specific to a fighter's history with a specific opponent
  * @typedef {Object} competitionDetailsSchema
  * @property {ObjectId} competitionId - A unique competition ID for a competition
- * @property {ObjectId} seasonId - A unique competition ID for a season in a competition
- * @property {ObjectId} divisionId - A unique competition ID for a division in a season
- * @property {ObjectId} roundId - A unique competition ID for a round in a division
+ * @property {Number} season - A unique competition ID for a season in a competition
+ * @property {Number} division - A unique competition ID for a division in a season
+ * @property {Number} round - A unique competition ID for a round in a division
  * @property {Boolean} isWinner - Whether the fighter won against an opponent in this fight
  */
 const competitionDetailsSchema = new Schema({
     competitionId: { type: Schema.Types.ObjectId, ref: 'CompetitionMeta' },
-    seasonId: { type: Schema.Types.ObjectId, ref: 'Season' },
-    divisionId: { type: Schema.Types.ObjectId, ref: 'Division' },
-    roundId: { type: Schema.Types.ObjectId, ref: 'Round' },
+    season: { type: Number },
+    divisionId: { type: Number },
+    roundId: { type: Number },
     isWinner: Boolean
 })
 
@@ -233,6 +233,7 @@ export const fighterSchema = new Schema({
     streaks: [streakSchema],
     opponentsHistory: [opponentHistorySchema],
     competitionHistory: [competitionRecordSchema],
+    isArchived: Boolean
 });
 
 /* Indexes */

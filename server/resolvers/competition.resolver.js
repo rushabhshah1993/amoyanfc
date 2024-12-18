@@ -61,7 +61,7 @@ const competitionResolvers = {
          * @returns {Promise<Array.<Object>>} - A list of competition seasons based on the arguments provided by the query
          */
         filterCompetitions: catchAsyncErrors(async(_, args) => {
-            const competitions = await Competition.find(filter);
+            const competitions = await Competition.find(args);
             if(!competitions.length) {
                 throw new NotFoundError(`Competition not found`);
             }
