@@ -39,12 +39,17 @@ const articleTypeDef = `#graphql
         """
         Represents the list of tags associated with an article
         """
-        tags: [String!]
+        tags: [String]
 
         """
         Represents the date on which the article was published
         """
         publishedDate: Date!
+
+        """
+        Represents a list of fighters by their IDs, if they are tagged in the article
+        """
+        fightersTagged: [String]
     }
 
     """
@@ -129,12 +134,17 @@ const articleTypeDef = `#graphql
         """
         Represents the list of tags associated with an article. Optional in nature.
         """
-        tags: [String!]
+        tags: [String]
 
         """
         Represents the date on which the article was published.
         """
         publishedDate: Date!
+
+        """
+        Represents a list of fighters by their IDs, if they are tagged in the article. Optional in nature.
+        """
+        fightersTagged: [String]
     }
 
     """
@@ -169,7 +179,12 @@ const articleTypeDef = `#graphql
         """
         Represents the list of tags associated with an article. Optional for update.
         """
-        tags: [String!]
+        tags: [String]
+
+        """
+        Represents a list of fighters by their IDs, if they are tagged in the article. Optional for update.
+        """
+        fightersTagged: [String]
     }
 `;
 
