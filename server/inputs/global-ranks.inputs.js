@@ -6,6 +6,7 @@ const globalRanksInputs = `#graphql
         titles: TitleInput
         cupAppearances: CupAppsInput
         leagueAppearances: LeagueAppsInput
+        fighter: Fighter
     }
 
     input TitleInput {
