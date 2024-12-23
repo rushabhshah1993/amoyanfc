@@ -7,13 +7,15 @@ import competitionResolver from './competition.resolver.js';
 import competitionMetaResolver from "./competition-meta.resolver.js";
 import globalRankResolver from './global-rank.resolver.js';
 import fighterResolver from './fighter.resolver.js';
+import roundStandingsResolver from './round-standings.resolver.js';
 
 const mergedResolvers = mergeResolvers([
     articleResolver,
     competitionResolver,
     competitionMetaResolver,
     fighterResolver,
-    globalRankResolver
+    globalRankResolver,
+    roundStandingsResolver
 ]);
 
 export default mergedResolvers;

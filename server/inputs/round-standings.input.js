@@ -9,9 +9,10 @@ const roundStandingsInput = `#graphql
     }
 
     input RoundFilterInput {
-        seasonNumber: Int!
-        divisionNumber: Int!
-        roundNumber: Int!
+        seasonNumber: Int
+        divisionNumber: Int
+        roundNumber: Int
+        fightId: ID
     }
 
     input RoundStandingInput {
