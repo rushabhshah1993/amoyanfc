@@ -10,7 +10,7 @@ import { NotFoundError } from './../error.js';
 /* Utility imports */
 import { createQueryObj } from '../utils.js';
 
-const articleResolvers = {
+const articleResolver = {
     Date: GraphQLDate,
     Number: GraphQLPositiveInt,
 
@@ -153,4 +153,4 @@ const articleResolvers = {
     }
 }
 
-export default articleResolvers;
+export default articleResolver;

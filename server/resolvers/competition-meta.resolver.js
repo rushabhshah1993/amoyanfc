@@ -4,7 +4,7 @@ import { CompetitionMeta } from "../models/competition-meta.model.js";
 /* Error imports */
 import { NotFoundError } from "../error.js";
 
-const competitionMetaResolvers = {
+const competitionMetaResolver = {
     Query: {
         /***
          * Fetches a list of the meta information of all the competitions.
@@ -101,4 +101,4 @@ const competitionMetaResolvers = {
     }
 };
 
-export default competitionMetaResolvers;
+export default competitionMetaResolver;

@@ -24,7 +24,7 @@ const fighterResolver = {
          * @returns {Promise<Array.<Object>>} - A list (array of objects) of all the fighters where isDeleted property is false
          */
         getActiveFighters: catchAsyncErrors(async() => {
-            const activeFighters = await Fighter.find({isDeleted: false});
+            const activeFighters = await Fighter.find({isArchived: false});
             if(!activeFighters) throw new NotFoundError("No active fighters found");
             return activeFighters;
         }),
@@ -151,6 +151,9 @@ const fighterResolver = {
                 })
             );
             return enrichedOpponentsHistory;
+        },
+        globalRank: async(parent) => {
+            // const currentGlobalRank = 
         }
     }
 

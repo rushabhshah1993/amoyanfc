@@ -8,7 +8,7 @@ import { NotFoundError } from '../error.js';
 /* Utility imports */
 import { catchAsyncErrors } from '../utils.js';
 
-const competitionResolvers = {
+const competitionResolver = {
     Query: {
         /**
          * Fetches a list of all the competitions.
@@ -126,4 +126,4 @@ const competitionResolvers = {
     }
 };
 
-export default competitionResolvers;
+export default competitionResolver;
