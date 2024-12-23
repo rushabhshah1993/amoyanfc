@@ -5,6 +5,9 @@ import { Competition } from "../models/competition.model.js";
 
 /* Model imports */
 import { Fighter } from "../models/fighter.model.js";
+import { GlobalRank } from "../models/global-rank.model.js";
+
+/* Utility imports */
 import { catchAsyncErrors } from "../utils.js";
 
 const fighterResolver = {
@@ -153,11 +156,11 @@ const fighterResolver = {
             return enrichedOpponentsHistory;
         },
         globalRank: async(parent) => {
-            // const currentGlobalRank = 
+            const currentGlobalRankList = await GlobalRank.find({isCurrent: true});
+            const fighterRank = currentGlobalRankList?.fighters.find(fighter => fighter.fighterId !== parent.id);
+            return fighterRank;
         }
     }
-
-    // @TODO: Add global rank property
 };
 
 export default fighterResolver;

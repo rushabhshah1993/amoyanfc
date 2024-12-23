@@ -1,5 +1,5 @@
 /* Inputs imports */
-import globalRankInputs from './../inputs/global-ranks.inputs.js';
+import globalRankInputs from '../inputs/global-ranks.inputs.js';
 
 const globalRankTypeDef = `#graphql
     """
