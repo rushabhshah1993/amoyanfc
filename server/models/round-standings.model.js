@@ -32,9 +32,9 @@ const fightersStandingSchema = new Schema({
  */
 const roundStandingsSchema = new Schema({
     competitionId: { type: Schema.Types.ObjectId, ref: 'CompetitionMeta', required: true },
-    seasonId: { type: Schema.Types.ObjectId, ref: 'Season', required: true },
-    divisionId: { type: Schema.Types.ObjectId, ref: 'Division', required: true },
-    roundId: { type: Schema.Types.ObjectId, ref: 'Round', required: true },
+    seasonNumber: { type: Number, required: true },
+    divisionNumber: { type: Number, required: true },
+    roundNumber: { type: Number, required: true },
     fightId: { type: Schema.Types.ObjectId, ref: 'Fight', required: true },
     standings: [fightersStandingSchema],
 }, {timestamps: true});

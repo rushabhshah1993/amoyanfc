@@ -7,13 +7,15 @@ import competitionMetaTypeDef from './competition-meta.typedef.js';
 import competitionTypeDef from './competition.typedef.js';
 import fighterTypeDef from './fighter.typedef.js';
 import globalRankTypeDef from './global-rank.typeDef.js';
+import roundStandingsTypeDef from './round-standings.typedef.js';
 
 const mergedTypeDefs = mergeTypeDefs([
     articleTypeDef,
     competitionTypeDef,
     competitionMetaTypeDef,
     fighterTypeDef,
-    globalRankTypeDef
+    globalRankTypeDef,
+    roundStandingsTypeDef
 ]);
 
 export default mergedTypeDefs;
