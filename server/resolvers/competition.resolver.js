@@ -116,14 +116,14 @@ const competitionResolver = {
             return `Successfully deleted season ${competition.seasonMeta.seasonNumber} of ${competitionMeta.competitionName}`;
         })
     },
-    // CompetitionMeta: {
-    //     competitionMeta: catchAsyncErrors(async(parent) => {
-    //         const competitionMetaId = parent.competitionMetaId;
-    //         const competitionMetaInformation = await CompetitionMeta.findById(competitionMetaId);
-    //         if(!competitionMetaInformation) throw new NotFoundError('Competition information not found');
-    //         return competitionMetaInformation;
-    //     })
-    // }
+    Competition: {
+        competitionMeta: catchAsyncErrors(async(parent) => {
+            const competitionMetaId = parent.competitionMetaId;
+            const competitionMetaInformation = await CompetitionMeta.findById(competitionMetaId);
+            if(!competitionMetaInformation) throw new NotFoundError('Competition information not found');
+            return competitionMetaInformation;
+        })
+    }
 };
 
 export default competitionResolver;
