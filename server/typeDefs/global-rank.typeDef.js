@@ -18,7 +18,7 @@ const globalRankTypeDef = `#graphql
         """
         List of fighters sorted by their rank
         """
-        fighters: [FighterInput!]!
+        fighters: [Fighter!]!
 
         """
         ISO date string representing the time this list was created

@@ -6,7 +6,7 @@ const fighterInputs = `#graphql
         end: LeagueFightSchemaInput
         count: Int
         active: Boolean
-        opponents: [Fighter]
+        opponents: [FighterInput]
     }
 
     input LeagueFightSchemaInput {
@@ -31,8 +31,8 @@ const fighterInputs = `#graphql
         round: Int
         fightId: ID!
         isWinner: Boolean
-        competitionDetails: Competition
-        fight: Fight
+        competitionDetails: CompetitionSeasonInput
+        fight: FightInput
     }
 
     input CompetitionHistoryInput {
@@ -41,7 +41,7 @@ const fighterInputs = `#graphql
         totalWins: Int
         totalLosses: Int
         winPercentage: Float
-        competition: Competition
+        competition: CompetitionSeasonInput
     }
 
     input FighterFilterInput {

@@ -6,25 +6,24 @@ const globalRanksInputs = `#graphql
         titles: TitleInput
         cupAppearances: CupAppsInput
         leagueAppearances: LeagueAppsInput
-        fighter: Fighter
     }
 
     input TitleInput {
         competitionId: ID!
         numberOfTitles: Int!
-        competition: CompetitionMeta
+        # competition: CompetitionMeta
     }
 
     input CupAppsInput {
         competitionId: ID!
         appearances: Int
-        competition: CompetitionMeta
+        # competition: CompetitionMeta
     }
 
     input LeagueAppsInput {
         competitionId: ID!
         divisionAppearances: [DivisionAppsInput]
-        competition: CompetitionMeta
+        # competition: CompetitionMeta
     }
 
     input DivisionAppsInput {

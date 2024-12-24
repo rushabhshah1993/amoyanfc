@@ -15,7 +15,7 @@ const fighterTypes = `#graphql
         round: Int
     }
 
-    input OpponentHistoryData {
+    type OpponentHistoryData {
         opponentId: ID!
         totalFights: Int
         totalWins: Int
@@ -24,14 +24,14 @@ const fighterTypes = `#graphql
         details: [CompetitionDetailsData]
     }
 
-    input CompetitionDetailsData {
+    type CompetitionDetailsData {
         competitionId: ID!
         season: Int
         division: Int
         round: Int
         fightId: ID!
         isWinner: Boolean
-        competitionDetails: Competition
+        competitionDetails: CompetitionSeason
         fight: Fight
     }
 

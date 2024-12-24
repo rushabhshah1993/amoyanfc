@@ -1,5 +1,5 @@
 const roundStandingsInput = `#graphql
-    input RoundStandingInput {
+    input IndividualRoundStandingInput {
         fighterId: ID!
         fightsCount: Int!
         wins: Int!
@@ -21,7 +21,7 @@ const roundStandingsInput = `#graphql
         divisionNumber: Int
         roundNumber: Int
         fightId: ID
-        standings: [RoundStandingInput]
+        standings: [IndividualRoundStandingInput]
     }
 `;
 

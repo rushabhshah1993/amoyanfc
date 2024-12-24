@@ -1,5 +1,6 @@
 /* Input imports */
 import roundStandingsInput from "../inputs/round-standings.input.js";
+import roundStandingsTypes from "../types/round-standings.types.js";
 
 const roundStandingsTypeDef = `#graphql
     """
@@ -40,7 +41,7 @@ const roundStandingsTypeDef = `#graphql
         """
         List of standings of the fighters on the application of the change
         """
-        standings: [RoundStandingInput!]
+        standings: [IndividualRoundStandingData!]
 
         """
         Representation of the fight reference
@@ -94,6 +95,7 @@ const roundStandingsTypeDef = `#graphql
     }
 
     ${roundStandingsInput}
+    ${roundStandingsTypes}
 `;
 
 export default roundStandingsTypeDef;
