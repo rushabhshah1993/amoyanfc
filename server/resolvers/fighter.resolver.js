@@ -97,7 +97,7 @@ const fighterResolver = {
         archiveFighter: catchAsyncErrors(async(_, { id }) => {
             const archiveFighter = await Fighter.findByIdAndUpdate(
                 id,
-                {isDeleted: true}
+                {isArchived: true}
             );
             if(!archiveFighter) throw new NotFoundError("Fighter not found");
             return "Successfully archived fighter's information";
