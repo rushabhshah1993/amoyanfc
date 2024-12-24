@@ -31,7 +31,7 @@ const fighterTypes = `#graphql
         round: Int
         fightId: ID!
         isWinner: Boolean
-        competitionDetails: CompetitionSeason
+        competitionDetails: Competition
         fight: Fight
     }
 

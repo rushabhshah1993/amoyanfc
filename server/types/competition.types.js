@@ -1,15 +1,4 @@
 const competitionTypes = `#graphql
-    type CompetitionSeason {
-        competitionMetaId: ID!
-        isActive: Boolean
-        seasonMeta: CompetitionSeasonMeta
-        leagueData: CompetitionLeagueData
-        cupData: CompetitionCupData
-        config: CompetitionSeasonConfiguration
-        linkedLeagueSeason: CompetitionLinkedLeagueSeason
-        createdAt: String
-    }
-
     type CompetitionSeasonMeta {
         seasonNumber: Int!
         startDate: String
