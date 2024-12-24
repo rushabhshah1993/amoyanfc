@@ -51,15 +51,12 @@ const competitionMetaResolver = {
          * 
          * @param {Object} _ - Unused parent resolver
          * @param {Object} args - Arguments passed to this mutation
-         * @param {String} args.competitionName - The name of the competition
-         * @param {String} args.type - The type of the competition (league/cup)
-         * @param {String} args.description - The description of the competition
-         * @param {String} args.logo - The URL denoting the logo of the competition
+         * @param {String} args.input - Data required to create a new competition
          * @returns {Array.<Object>} The newly saved competition
          */
-        addCompetition: async (_, args) => {
+        addCompetition: async (_, { input }) => {
             try {
-                const newCompetition = new CompetitionMeta(...args);
+                const newCompetition = new CompetitionMeta(input);
                 return await newCompetition.save();
             }
             catch(error) {
@@ -74,18 +71,13 @@ const competitionMetaResolver = {
          * @param {Object} args - Arguments passed to this mutation
          * @param {String} args.id - The unique ID of the competition to be updated
          * @param {Object} args.input - The input object containing the fields to be updated
-         * @param {String} [args.input.competitionName] - The updated name of the competition
-         * @param {String} [args.input.type] - The updated type of the competition
-         * @param {String} [args.input.description] - The updated description of the competition
-         * @param {String} [args.input.logo] - The updated URL pointing to the logo of the competition
          * @returns {Array.<Object>} The updated object of the competition
          */
-        editCompetition: async (_, args) => {
+        editCompetition: async (_, { id, input }) => {
             try {
-                const { competitionName, type, description, logo } = args.input;
                 const updatedCompetition = await CompetitionMeta.findByIdAndUpdate(
-                    args.id,
-                    { competitionName, type, description, logo },
+                    id,
+                    input,
                     { new: true }
                 )
                 if(!updatedCompetition) {

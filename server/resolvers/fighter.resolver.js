@@ -39,7 +39,7 @@ const fighterResolver = {
          * @param {String} args.id - Unique ID identifying a fighter 
          * @returns {Promise<Object>} - An object containing fighter's details
          */
-        getFigherInformation: catchAsyncErrors(async(_, { id }) => {
+        getFighterInformation: catchAsyncErrors(async(_, { id }) => {
             const fighter = await Fighter.findById(id);
             if(!fighter) throw new NotFoundError("Fighter not found");
             return fighter;

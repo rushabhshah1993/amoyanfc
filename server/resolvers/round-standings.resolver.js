@@ -72,28 +72,28 @@ const roundStandingsResolver = {
             return "Successfully deleted standings";
         }
     },
-    CompetitionMeta: {
-        competitionMeta: async(parent) => {
-            const competitionInformation = await CompetitionMeta.findById(parent.competitionId);
-            return competitionInformation;
-        }
-    },
-    Fight: {
-        fight: async(parent) => {
-            if(!parent.seasonNumber && !parent.divisionNumber && !parent.roundNumber && !parent.fightId) {
-                throw new Error("Essential information missing for fetching fight information");
-            }
-            const fightInfo = await Competition.aggregate([
-                { $unwind: '$leagueData.divisions' },
-                { $unwind: '$leagueData.divisions.rounds' },
-                { $unwind: '$leagueData.divisions.rounds.fights' },
-                { $match: {'$leagueData.divisions.rounds.fights._id': parent.fightId }},
-                { $project: { 'leagueData.divisions.rounds.fights': 1 } }
-            ])
+    // CompetitionMeta: {
+    //     competitionMeta: async(parent) => {
+    //         const competitionInformation = await CompetitionMeta.findById(parent.competitionId);
+    //         return competitionInformation;
+    //     }
+    // },
+    // Fight: {
+    //     fight: async(parent) => {
+    //         if(!parent.seasonNumber && !parent.divisionNumber && !parent.roundNumber && !parent.fightId) {
+    //             throw new Error("Essential information missing for fetching fight information");
+    //         }
+    //         const fightInfo = await Competition.aggregate([
+    //             { $unwind: '$leagueData.divisions' },
+    //             { $unwind: '$leagueData.divisions.rounds' },
+    //             { $unwind: '$leagueData.divisions.rounds.fights' },
+    //             { $match: {'$leagueData.divisions.rounds.fights._id': parent.fightId }},
+    //             { $project: { 'leagueData.divisions.rounds.fights': 1 } }
+    //         ])
 
-            return fightInfo;
-        }
-    }
+    //         return fightInfo;
+    //     }
+    // }
 };
 
 export default roundStandingsResolver;

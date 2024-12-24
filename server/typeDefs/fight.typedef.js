@@ -62,7 +62,7 @@ const fightTypeDef = `#graphql
         It represents the statistics shared by ChatGPT
         at the conclusion of a fight.
         """
-        fighterStats: FightStats
+        fighterStats: FightStatsInput
 
         """
         The property that defines whether the fight is 

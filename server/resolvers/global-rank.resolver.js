@@ -85,18 +85,18 @@ const globalRankResolver = {
             return "Succssfully deleted the list";
         })
     },
-    Fighter: {
-        fighters: catchAsyncErrors(async(parent) => {
-            const enrichedFighters = parent.fighters.map(async(fighter) => {
-                const fighterDetails = await Fighter.findById(fighter.fighterId);
-                return {
-                    ...fighter,
-                    fighterDetails
-                }
-            });
-            return enrichedFighters;
-        })
-    }
+    // Fighter: {
+    //     fighters: catchAsyncErrors(async(parent) => {
+    //         const enrichedFighters = parent.fighters.map(async(fighter) => {
+    //             const fighterDetails = await Fighter.findById(fighter.fighterId);
+    //             return {
+    //                 ...fighter,
+    //                 fighterDetails
+    //             }
+    //         });
+    //         return enrichedFighters;
+    //     })
+    // }
 }
 
 export default globalRankResolver;

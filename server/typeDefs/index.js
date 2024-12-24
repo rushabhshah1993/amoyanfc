@@ -5,6 +5,7 @@ import { mergeTypeDefs } from '@graphql-tools/merge';
 import articleTypeDef from './article.typedef.js';
 import competitionMetaTypeDef from './competition-meta.typedef.js';
 import competitionTypeDef from './competition.typedef.js';
+import fightTypeDef from './fight.typedef.js';
 import fighterTypeDef from './fighter.typedef.js';
 import globalRankTypeDef from './global-rank.typeDef.js';
 import roundStandingsTypeDef from './round-standings.typedef.js';
@@ -13,6 +14,7 @@ const mergedTypeDefs = mergeTypeDefs([
     articleTypeDef,
     competitionTypeDef,
     competitionMetaTypeDef,
+    fightTypeDef,
     fighterTypeDef,
     globalRankTypeDef,
     roundStandingsTypeDef

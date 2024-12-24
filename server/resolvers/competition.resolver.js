@@ -76,8 +76,8 @@ const competitionResolver = {
          * @param {Object} args - Arguments passed to this mutation
          * @returns {Promise<Object>} The updated object of the new season of a competition
          */
-        createCompetitionSeason: catchAsyncErrors(async(_, args) => {
-            const newCompetition = new Competition(...args);
+        createCompetitionSeason: catchAsyncErrors(async(_, { input }) => {
+            const newCompetition = new Competition(input);
             return await newCompetition.save();
         }),
 
@@ -90,10 +90,10 @@ const competitionResolver = {
          * @param {Object} args.input - The input object containing the fields to be updated
          * @returns {Promise<Object>} The updated object of the competition season
          */
-        updateCompetitionSeason: catchAsyncErrors(async(_, args) => {
+        updateCompetitionSeason: catchAsyncErrors(async(_, { id, input }) => {
             const updatedCompetitionSeason = await Competition.findByIdAndUpdate(
-                args.id,
-                {...args.input},
+                id,
+                input,
                 { new: true }
             );
             if(!updatedCompetitionSeason) throw new NotFoundError("Competition not found");
@@ -110,20 +110,20 @@ const competitionResolver = {
          */
         deleteCompetitionSeason: catchAsyncErrors(async(_, { id }) => {
             const competition = await Competition.findById(id);
-            const competitionMeta = await CompetitionMeta.findById(competition.competitionMeta.id);
+            const competitionMeta = await CompetitionMeta.findById(competition.competitionMetaId);
             const deletedCompetition = await Competition.findByIdAndDelete(id);
             if(!deletedCompetition) throw new Error("Failed to find and delete the competition season");
             return `Successfully deleted season ${competition.seasonMeta.seasonNumber} of ${competitionMeta.competitionName}`;
         })
     },
-    CompetitionMeta: {
-        competitionMeta: catchAsyncErrors(async(parent) => {
-            const competitionMetaId = parent.competitionMetaId;
-            const competitionMetaInformation = await Competition.findById(competitionMetaId);
-            if(!competitionMetaInformation) throw new NotFoundError('Competition information not found');
-            return competitionMetaInformation;
-        })
-    }
+    // CompetitionMeta: {
+    //     competitionMeta: catchAsyncErrors(async(parent) => {
+    //         const competitionMetaId = parent.competitionMetaId;
+    //         const competitionMetaInformation = await CompetitionMeta.findById(competitionMetaId);
+    //         if(!competitionMetaInformation) throw new NotFoundError('Competition information not found');
+    //         return competitionMetaInformation;
+    //     })
+    // }
 };
 
 export default competitionResolver;
