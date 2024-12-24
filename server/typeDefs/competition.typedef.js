@@ -2,6 +2,9 @@
 import competitionInputs from "../inputs/competition.inputs.js";
 import fightStatsInput from "../inputs/fight-stats.input.js";
 
+/* Types imports */
+import competitionTypes from "../types/competition.types.js";
+
 const competitionTypeDef = `#graphql
     """
     Represents a detailed competition's season in the system, for instance, Season 9 of IFC or Season 2 of Brawl
@@ -29,28 +32,28 @@ const competitionTypeDef = `#graphql
         league and cup-style competitions. Additionally, it will contain more contextual information for league-style
         competitions.
         """
-        seasonMeta: SeasonMetaInput
+        seasonMeta: CompetitionSeasonMeta
 
         """
         Data specific to league-style competitions
         """
-        leagueData: LeagueDataInput
+        leagueData: CompetitionLeagueData
 
         """
         Data specific to cup-style competitions
         """
-        cupData: CupDataInput
+        cupData: CompetitionCupData
 
         """
         Configuration data for the given competition
         """
-        config: SeasonConfigurationInput
+        config: CompetitionSeasonConfiguration
 
         """
         Information specific to cup-type competitions which are linked to a 
         league-style competitions
         """
-        linkedLeagueSeason: LinkedLeagueSeasonInput
+        linkedLeagueSeason: CompetitionLinkedLeagueSeason
 
         """
         Date when the competition was created
@@ -70,7 +73,7 @@ const competitionTypeDef = `#graphql
     """
     type LinkedLeagueSeason {
         competition: Competition
-        season: SeasonMetaInput
+        season: CompetitionSeasonMeta
     }
 
     """
@@ -118,6 +121,7 @@ const competitionTypeDef = `#graphql
         deleteCompetitionSeason(id: ID!): String
     }
 
+    ${competitionTypes}
     ${competitionInputs}
     ${fightStatsInput}
 `;

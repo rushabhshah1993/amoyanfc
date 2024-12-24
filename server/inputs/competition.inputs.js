@@ -10,6 +10,25 @@ const competitionInputs = `#graphql
         createdAt: String
     }
 
+    input CompetitionFilterInput {
+        competitionMeta: CompetitionMetaInput
+        isActive: Boolean
+        seasonMeta: SeasonMetaInput
+        leagueData: LeagueDataInput
+        cupData: CupDataInput
+        config: SeasonConfigurationInput
+        linkedLeagueSeason: LinkedLeagueSeasonInput
+        createdAt: String
+    }
+
+    input CompetitionMetaInput {
+        id: ID
+        competitionName: String
+        type: String
+        description: String
+        logo: String
+    }
+
     input SeasonMetaInput {
         seasonNumber: Int!
         startDate: String
@@ -18,23 +37,18 @@ const competitionInputs = `#graphql
         cupParticipants: CupParticipantsInput
     }
 
-    input CupParticipantsInput {
+    input LeagueDivisionInput {
+        divisionNumber: Int
         fighters: [ID!]
     }
 
-    input LeagueDivisionInput {
-        divisionNumber: Int
+    input CupParticipantsInput {
         fighters: [ID!]
     }
 
     input LeagueDataInput {
         divisions: [DivisionInput]
         activeLeagueFights: [ActiveLeagueFightsInput]
-    }
-
-    input CupDataInput {
-        fights: [FightInput],
-        currentStage: String
     }
 
     input DivisionInput {
@@ -50,6 +64,16 @@ const competitionInputs = `#graphql
         fights: [FightInput]
     }
 
+    input ActiveLeagueFightsInput {
+        division: Int
+        round: Int
+    }
+
+    input CupDataInput {
+        fights: [FightInput],
+        currentStage: String
+    }
+
     input FightInput {
         fighter1: ID
         fighter2: ID
@@ -61,11 +85,6 @@ const competitionInputs = `#graphql
         isSimulated: Boolean
         fighterStats: [FightStatsInput]
         fightStatus: String
-    }
-
-    input ActiveLeagueFightsInput {
-        division: Int
-        round: Int
     }
 
     input SeasonConfigurationInput {
@@ -93,25 +112,6 @@ const competitionInputs = `#graphql
     input LinkedLeagueSeasonInput {
         competitionId: ID!
         seasonId: ID!
-    }
-
-    input CompetitionFilterInput {
-        competitionMeta: CompetitionMetaInput
-        isActive: Boolean
-        seasonMeta: SeasonMetaInput
-        leagueData: LeagueDataInput
-        cupData: CupDataInput
-        config: SeasonConfigurationInput
-        linkedLeagueSeason: LinkedLeagueSeasonInput
-        createdAt: String
-    }
-
-    input CompetitionMetaInput {
-        id: ID
-        competitionName: String
-        type: String
-        description: String
-        logo: String
     }
 `;
 
