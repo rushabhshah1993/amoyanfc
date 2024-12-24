@@ -65,7 +65,7 @@ const roundStandingsTypeDef = `#graphql
         """
         Get the round standings by their unique ID
         """
-        getRoundStandingsById(id: ID!) : RoundStandings
+        getRoundStandingsById(id: ID!): RoundStandings
 
         """
         Get the round standings on the basis of season, division, round combination

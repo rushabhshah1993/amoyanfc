@@ -1,6 +1,6 @@
 /* Input imports */
-import fightStatsInput from "../inputs/fight-stats.input";
-import fighterInputs from "../inputs/fighter.inputs";
+import fightStatsInput from "../inputs/fight-stats.input.js";
+import fighterInputs from "../inputs/fighter.inputs.js";
 
 const fighterTypeDef = `#graphql
     """
@@ -75,12 +75,12 @@ const fighterTypeDef = `#graphql
         """
         Fetch all the fighters
         """
-        getAllFighters(): [Fighter!]
+        getAllFighters: [Fighter!]
 
         """
         Fetches all the fighters who are not archived
         """
-        getActiveFighters(): [Fighter]
+        getActiveFighters: [Fighter]
 
         """
         Fetch an individidual fighter

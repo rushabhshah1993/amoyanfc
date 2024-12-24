@@ -1,5 +1,5 @@
 const competitionInputs = `#graphql
-    input NewCompetitionSeasonInput {
+    input CompetitionSeasonInput {
         competitionMetaId: ID!
         isActive: Boolean
         seasonMeta: SeasonMetaInput

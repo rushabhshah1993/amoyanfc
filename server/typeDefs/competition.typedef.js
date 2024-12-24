@@ -1,6 +1,6 @@
 /* Input imports */
-import competitionInputs from "../inputs/competition.inputs";
-import fightStatsInput from "../inputs/fight-stats.input";
+import competitionInputs from "../inputs/competition.inputs.js";
+import fightStatsInput from "../inputs/fight-stats.input.js";
 
 const competitionTypeDef = `#graphql
     """
@@ -105,12 +105,12 @@ const competitionTypeDef = `#graphql
         """
         Creates a new season for a given competition
         """
-        createCompetitionSeason(input: NewCompetitionSeasonInput!): Competition!
+        createCompetitionSeason(input: CompetitionSeasonInput!): Competition!
 
         """
         Updates an existing competition's information
         """
-        updateCompetitionSeason(id: ID!, input: ExistingCompetitionSeasonInput!): Competition!
+        updateCompetitionSeason(id: ID!, input: CompetitionSeasonInput!): Competition!
 
         """
         Deletes an exisiting competition

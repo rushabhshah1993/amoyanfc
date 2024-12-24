@@ -1,5 +1,6 @@
 /* Package imports */
-import { Schema, Model } from 'mongoose';
+import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
 /**
  * Schema definition for fightersStandingSchema - an individual object defining a user and her information at every round
@@ -43,4 +44,4 @@ const roundStandingsSchema = new Schema({
 roundStandingsSchema.index({ roundId: 1, "standings.fighterId": 1 });
 roundStandingsSchema.index({ updatedAt: 1 }, { expireAfterSeconds: 3600 * 24 * 2 }); // 2 days
 
-export const RoundStandings = Model('RoundStandings', roundStandingsSchema);
+export const RoundStandings = mongoose.model('RoundStandings', roundStandingsSchema);

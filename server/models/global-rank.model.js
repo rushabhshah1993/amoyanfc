@@ -1,4 +1,6 @@
-import { Model, Schema } from 'mongoose';
+/* Package imports */
+import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
 /**
  * Schema definition for the number of titles won by a fighter in a competition
@@ -77,4 +79,4 @@ const globalRankSchema = new Schema({
 /* Indexes */
 fighterSchema.index({ rank: 1 });
 
-export const GlobalRank = new Model('GlobalRank', globalRankSchema);
+export const GlobalRank = mongoose.model('GlobalRank', globalRankSchema);

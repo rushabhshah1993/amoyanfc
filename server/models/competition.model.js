@@ -1,5 +1,5 @@
 /* Package imports */
-import { Schema, Model } from "mongoose";
+import mongoose, { Schema, Model } from "mongoose";
 
 /* Schema imports */
 import { 
@@ -219,8 +219,8 @@ const seasonConfigurationSchema = new Schema({
  * @property {ObjectId} seasonId - The unique season ID of a competition which is closely associated to the cup competition
  */
 const linkedLeagueSeasonSchema = new Schema({
-    competition: { type: competitionSchema, ref: 'CompetitionMeta' },
-    season: { type: seasonMetaSchema, ref: 'Season' }
+    competition: { type: Schema.Types.ObjectId, ref: 'CompetitionMeta' },
+    season: { type: Schema.Types.ObjectId, ref: 'Season' }
 })
 
 /**
@@ -298,8 +298,8 @@ fightSchema.index({ competitionId: 1, fighter1: 1, fighter2: 1 });
 fightSchema.index({ date: -1 });
 fightSchema.index({ fighter1: 1, fighter2: 1, competitionId: 1 }, { unique: true });
 
-export const Competition = Model('Competition', competitionSchema);
-export const Division = Model('Division', leagueDivisionSchema);
-export const Season = Model('Season', leagueDataSchema);
-export const Round = Model('Round', roundsSchema);
-export const Fight = Model('Fight', fightSchema);
+export const Competition = mongoose.model('Competition', competitionSchema);
+export const Division = mongoose.model('Division', leagueDivisionSchema);
+export const Season = mongoose.model('Season', leagueDataSchema);
+export const Round = mongoose.model('Round', roundsSchema);
+export const Fight = mongoose.model('Fight', fightSchema);

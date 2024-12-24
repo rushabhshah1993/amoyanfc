@@ -1,4 +1,5 @@
-import { Schema, Model } from "mongoose";
+import mongoose from 'mongoose';
+import { Schema } from "mongoose";
 
 /* Statistics <--Start--> */
 /**
@@ -241,4 +242,4 @@ export const fighterSchema = new Schema({
 fighterSchema.index({ firstName: 1, lastName: 1 });
 fighterSchema.index({ globalRank: 1 });
 
-export const Fighter =  Model('Fighter', fighterSchema);
+export const Fighter =  mongoose.model('Fighter', fighterSchema);

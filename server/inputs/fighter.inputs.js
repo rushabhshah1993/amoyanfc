@@ -51,7 +51,7 @@ const fighterInputs = `#graphql
         endDateRange: String
         skillset: [String]
         globalRank: Int
-        streaksCount: 
+        streaksCount: Int
         competitionName: String 
         isArchived: Boolean
     }
