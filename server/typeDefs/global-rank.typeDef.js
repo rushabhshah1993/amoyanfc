@@ -1,6 +1,9 @@
 /* Inputs imports */
 import globalRankInputs from '../inputs/global-ranks.inputs.js';
 
+/* Types imports */
+import globalRankTypes from '../types/global-rank.types.js';
+
 const globalRankTypeDef = `#graphql
     """
     Represents a list of global ranks that includes a fighter's performance
@@ -18,7 +21,7 @@ const globalRankTypeDef = `#graphql
         """
         List of fighters sorted by their rank
         """
-        fighters: [Fighter!]!
+        fighters: [FighterGlobalRankData!]!
 
         """
         ISO date string representing the time this list was created
@@ -76,6 +79,7 @@ const globalRankTypeDef = `#graphql
         deleteGlobalRankList(id: ID!): String
     }
 
+    ${globalRankTypes}
     ${globalRankInputs}
 `;
 

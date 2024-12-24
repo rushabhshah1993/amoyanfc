@@ -7,6 +7,7 @@ import { NotFoundError } from "../error.js";
 
 /* Utility imports */
 import { catchAsyncErrors } from "../utils.js";
+import { CompetitionMeta } from "../models/competition-meta.model.js";
 
 const globalRankResolver = {
     Query: {
@@ -85,18 +86,37 @@ const globalRankResolver = {
             return "Succssfully deleted the list";
         })
     },
-    // Fighter: {
-    //     fighters: catchAsyncErrors(async(parent) => {
-    //         const enrichedFighters = parent.fighters.map(async(fighter) => {
-    //             const fighterDetails = await Fighter.findById(fighter.fighterId);
-    //             return {
-    //                 ...fighter,
-    //                 fighterDetails
-    //             }
-    //         });
-    //         return enrichedFighters;
-    //     })
-    // }
+    GlobalRank: {
+        fighters: catchAsyncErrors(async(parent) => {
+            const enrichedFighters = parent.fighters.map(async(fighter) => {
+                const fighterDetails = await Fighter.findById(fighter.fighterId);
+
+                const titlesData = fighter.titles.map(async (title) => {
+                    const competitionInfo = await CompetitionMeta.findById(title.competitionId);
+                    return competitionInfo;
+                });
+
+                const cupAppsData = fighter.cupAppearances.map(async (cupApp) => {
+                    const competitionInfo = await CompetitionMeta.findById(cupApp.competitionId);
+                    return competitionInfo;
+                });
+
+                const leagueAppsData = fighter.leagueAppearances.map(async (leagueApp) => {
+                    const competitionInfo = await CompetitionMeta.findById(leagueApp.competitionId);
+                    return competitionInfo;
+                });
+
+                return {
+                    ...fighter,
+                    titles: titlesData,
+                    cupAppearances: cupAppsData,
+                    leagueAppearances: leagueAppsData,
+                    fighterDetails
+                }
+            });
+            return enrichedFighters;
+        })
+    }
 }
 
 export default globalRankResolver;
