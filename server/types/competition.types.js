@@ -59,7 +59,7 @@ const competitionTypes = `#graphql
         userDescription: String
         genAIDescription: String
         isSimulated: Boolean
-        fighterStats: [FightStatsInput]
+        fighterStats: [FightStats]
         fightStatus: String
     }
 

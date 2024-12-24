@@ -2,6 +2,9 @@
 import fightStatsInput from "../inputs/fight-stats.input.js";
 import fighterInputs from "../inputs/fighter.inputs.js";
 
+/* Types imports */
+import fighterTypes from "../types/fighter.types.js";
+
 const fighterTypeDef = `#graphql
     """
     Represents the detailed information about a fighter
@@ -45,22 +48,22 @@ const fighterTypeDef = `#graphql
         """
         Depicts the various fight statistics of a fighter
         """
-        fightStats: FightStatsInput
+        fightStats: FightStats
 
         """
         A list of all the streaks maintained by the fighter
         """
-        streaks: [StreakInput]
+        streaks: [StreakData]
 
         """
         A list of all the opponents the fighter has fought and details of every fight fought with the oppponent
         """
-        opponentsHistory: [OpponentHistoryInput]
+        opponentsHistory: [OpponentHistoryData]
 
         """
         A list of all the competitions the fighter has fought and its numeric details
         """
-        competitionHistory: [CompetitionHistoryInput]
+        competitionHistory: [CompetitionHistoryData]
 
         """
         Informs whether the fighter has been archived by the user
@@ -115,6 +118,7 @@ const fighterTypeDef = `#graphql
     }
 
     ${fightStatsInput}
+    ${fighterTypes}
     ${fighterInputs}
 `;
 
