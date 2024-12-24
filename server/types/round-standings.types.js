@@ -6,6 +6,7 @@ const roundStandingsTypes = `#graphql
         points: Int!
         rank: Int!
         totalFightersCount: Int!
+        fighter: Fighter
     }
 `;
 
