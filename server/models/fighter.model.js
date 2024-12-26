@@ -208,6 +208,32 @@ const competitionRecordSchema = new Schema({
     totalWins: { type: Number, default: 0 },
     totalLosses: { type: Number, default: 0 },
     winPercentage: { type: Number, default: 0 }
+});
+
+/**
+ * Schema definition for fighter's location
+ * @typedef {Object} locationSchema
+ * @property {String} city - City in which the fighter is currently residing
+ * @property {String} country - Country in which the fighter is currently residing
+ */
+const locationSchema = new Schema({
+    city: String,
+    country: String
+});
+
+/**
+ * Schema definition for a competition record
+ * @typedef {Object} debutInformationSchema
+ * @property {ObjectId} competitionId - Refers to the ID of a competition
+ * @property {Number} season - Season of the above competition in which the fighter made debut
+ * @property {Number} fightId - First fight of the fighter
+ * @property {Number} dateOfDebut - Date on which the fighter made debut
+ */
+const debutInformationSchema = new Schema({
+    competitionId: { type: Schema.Types.ObjectId, ref: 'CompetitionMeta' },
+    season: { type: Number },
+    fightId: { type: Schema.Types.ObjectId, ref: 'Fight' },
+    dateOfDebut: { type: Date} 
 })
 
 /**
@@ -235,7 +261,10 @@ export const fighterSchema = new Schema({
     streaks: [streakSchema],
     opponentsHistory: [opponentHistorySchema],
     competitionHistory: [competitionRecordSchema],
-    isArchived: Boolean
+    isArchived: Boolean,
+    location: locationSchema,
+    debutInformation: debutInformationSchema,
+    images: [String]
 });
 
 /* Indexes */

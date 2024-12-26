@@ -64,8 +64,8 @@ const fighterResolver = {
          * @param {Object} args - Arguments provided to this mutation
          * @returns {Promise<Object>} The fighter object saved to the DB
          */
-        addNewFighter: catchAsyncErrors(async(_, args) => {
-            const newFighter = new Fighter(...args);
+        addNewFighter: catchAsyncErrors(async(_, { input }) => {
+            const newFighter = new Fighter(input);
             return await newFighter.save();
         }),
 

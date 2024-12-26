@@ -70,6 +70,18 @@ const fighterInputs = `#graphql
         isArchived: Boolean
     }
 
+    input LocationInput {
+        city: String
+        country: String
+    }
+
+    input DebutInput {
+        competitionId: ID
+        season: Int
+        fightId: ID
+        dateOfDebut: String
+    }
+
     input FighterInput {
         firstName: String
         lastName: String
@@ -82,6 +94,9 @@ const fighterInputs = `#graphql
         opponentsHistory: [OpponentHistoryInput]
         competitionHistory: [CompetitionHistoryInput]
         isArchived: Boolean
+        location: LocationInput
+        debutInformation: DebutInput
+        images: [String]
     }
 `;
 

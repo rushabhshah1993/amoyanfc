@@ -69,6 +69,21 @@ const fighterTypeDef = `#graphql
         Informs whether the fighter has been archived by the user
         """
         isArchived: Boolean
+
+        """
+        Fighter's current location
+        """
+        location: LocationData
+
+        """
+        Fighter's debut information
+        """
+        debutInformation: DebutData
+
+        """
+        All images of the fighter
+        """
+        images: [String]
     }
 
     """

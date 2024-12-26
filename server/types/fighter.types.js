@@ -43,6 +43,18 @@ const fighterTypes = `#graphql
         winPercentage: Float
         competition: Competition
     }
+
+    type LocationData {
+        city: String
+        country: String
+    }
+
+    type DebutData {
+        competitionId: ID
+        season: Int
+        fightId: ID
+        dateOfDebut: String
+    }
 `;
 
 export default fighterTypes;
