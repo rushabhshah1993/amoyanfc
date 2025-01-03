@@ -237,17 +237,6 @@ const debutInformationSchema = new Schema({
 });
 
 /**
- * Schema definition for a earnings information
- * @typedef {Object} earningsSchema
- * @property {Number} earnings - Season of the above competition in which the fighter made debut
- * @property {Array.<Object>} earningsBreakdown - List of earnings by competition season
- */
-const earningsSchema = new Schema({
-    earnings: { type: Number, default: 0 },
-    earningsBreakdown: [earningsByCompetitionSchema]
-})
-
-/**
  * Schema definition for earnings by competition record
  * @typedef {Object} earningsByCompetitionSchema
  * @property {ObjectId} competitionMetaId - Refers to the ID of a competition
@@ -270,6 +259,17 @@ const earningsByCompetitionSchema = new Schema({
     wonFighterOfTheSeason: { type: Boolean, default: false },
     fighterOfTheSeasonAwardMoneyInEur: { type: Number, default: 0 },
     totalEarningsInEur: { type: Number, default: 0 }
+})
+
+/**
+ * Schema definition for a earnings information
+ * @typedef {Object} earningsSchema
+ * @property {Number} earnings - Season of the above competition in which the fighter made debut
+ * @property {Array.<Object>} earningsBreakdown - List of earnings by competition season
+ */
+const earningsSchema = new Schema({
+    earnings: { type: Number, default: 0 },
+    earningsBreakdown: [earningsByCompetitionSchema]
 })
 
 /**
