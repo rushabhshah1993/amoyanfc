@@ -268,7 +268,7 @@ const earningsByCompetitionSchema = new Schema({
  * @property {Array.<Object>} earningsBreakdown - List of earnings by competition season
  */
 const earningsSchema = new Schema({
-    earnings: { type: Number, default: 0 },
+    earningsInEur: { type: Number, default: 0 },
     earningsBreakdown: [earningsByCompetitionSchema]
 })
 

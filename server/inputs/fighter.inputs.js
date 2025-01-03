@@ -83,7 +83,7 @@ const fighterInputs = `#graphql
     }
 
     input FighterEarningsInput {
-        earnings: Float
+        earningsInEur: Float
         earningsBreakdown: [EarningsBreakdownInput]
     }
 

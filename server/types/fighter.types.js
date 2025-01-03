@@ -57,7 +57,7 @@ const fighterTypes = `#graphql
     }
 
     type EarningData {
-        earnings: Float
+        earningsInEur: Float
         earningsBreakdown: [EarningsBreakdown]
     }
 
