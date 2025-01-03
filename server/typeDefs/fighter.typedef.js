@@ -84,6 +84,11 @@ const fighterTypeDef = `#graphql
         All images of the fighter
         """
         images: [String]
+
+        """
+        Fighter's earning
+        """
+        earnings: [EarningData]
     }
 
     """

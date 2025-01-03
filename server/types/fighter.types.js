@@ -55,6 +55,23 @@ const fighterTypes = `#graphql
         fightId: ID
         dateOfDebut: String
     }
+
+    type EarningData {
+        earnings: Float
+        earningsBreakdown: [EarningsBreakdown]
+    }
+
+    type EarningsBreakdown {
+        competitionMetaId: ID
+        competitionId: ID
+        season: Int
+        perFightFeeInEur: Float
+        totalFights: Int
+        winningPrizeInEur: Float
+        wonFighterOfTheSeason: Boolean
+        fighterOfTheSeasonAwardMoneyInEur: Float
+        totalEarningInEurs: Float
+    }
 `;
 
 export default fighterTypes;

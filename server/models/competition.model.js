@@ -185,6 +185,19 @@ const leagueConfigurationSchema = new Schema({
             numberOfFighters: { type: Number, required: true },
         }
     ],
+    perFightFeePerDivision: [
+        {
+            divisionNumber: { type: Number },
+            fightFeeInEur: { type: Number }
+        }
+    ],
+    winningFeePerDivision: [
+        {
+            divisionNumber: { type: Number },
+            prizeMoneyInEur: { type: Number }
+        }
+    ],
+    fighterOfTheSeasonPrizeMoneyInEur: { type: Number },
     pointsPerWin: { type: Number, default: DEFAULT_CONFIG.POINTS_PER_WIN}
 });
 
@@ -198,6 +211,8 @@ const leagueConfigurationSchema = new Schema({
 const cupConfigurationSchema = new Schema({
     knockoutRounds: { type: Number, required: true },
     numberOfFighters: { type: Number, required: true },
+    perFightFeeInEur: { type: Number },
+    winningFeeInEur: { type: Number },
     stages: { type: [String], default: []}
 })
 

@@ -234,6 +234,42 @@ const debutInformationSchema = new Schema({
     season: { type: Number },
     fightId: { type: Schema.Types.ObjectId, ref: 'Fight' },
     dateOfDebut: { type: Date} 
+});
+
+/**
+ * Schema definition for a earnings information
+ * @typedef {Object} earningsSchema
+ * @property {Number} earnings - Season of the above competition in which the fighter made debut
+ * @property {Array.<Object>} earningsBreakdown - List of earnings by competition season
+ */
+const earningsSchema = new Schema({
+    earnings: { type: Number, default: 0 },
+    earningsBreakdown: [earningsByCompetitionSchema]
+})
+
+/**
+ * Schema definition for earnings by competition record
+ * @typedef {Object} earningsByCompetitionSchema
+ * @property {ObjectId} competitionMetaId - Refers to the ID of a competition
+ * @property {ObjectId} competitionId - Refers to the ID of a competition
+ * @property {Number} season - Season of the above competition in which the fighter made debut
+ * @property {Number} perFightFee - Pre-decided fight fee for the competition season
+ * @property {Number} totalFights - Total number of fights fought in the season
+ * @property {Number} winningPrize - Winning prize money in EUR, if won
+ * @property {Boolean} wonFighterOfTheSeason - Boolean value to denote if the fighter won the "Fighter of the Season" award
+ * @property {Number} fighterOfTheSeasonAwardMoney - Pre-decided winning fee for the FOTS award
+ * @property {Number} totalEarnings - Total earnings
+ */
+const earningsByCompetitionSchema = new Schema({
+    competitionMetaId: { type: Schema.Types.ObjectId, ref: 'CompetitionMeta' },
+    competitionId: { type: Schema.Types.ObjectId, ref: 'Competition' },
+    season: { type: Number },
+    perFightFeeInEur: { type: Number },
+    totalFights: { type: Number },
+    winningPrizeInEur: { type: Number, default: 0 },
+    wonFighterOfTheSeason: { type: Boolean, default: false },
+    fighterOfTheSeasonAwardMoneyInEur: { type: Number, default: 0 },
+    totalEarningsInEur: { type: Number, default: 0 }
 })
 
 /**
@@ -264,7 +300,8 @@ export const fighterSchema = new Schema({
     isArchived: Boolean,
     location: locationSchema,
     debutInformation: debutInformationSchema,
-    images: [String]
+    images: [String],
+    earnings: earningsSchema
 });
 
 /* Indexes */

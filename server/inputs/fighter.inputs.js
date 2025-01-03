@@ -82,6 +82,23 @@ const fighterInputs = `#graphql
         dateOfDebut: String
     }
 
+    input FighterEarningsInput {
+        earnings: Float
+        earningsBreakdown: [EarningsBreakdownInput]
+    }
+
+    input EarningsBreakdownInput {
+        competitionMetaId: ID
+        competitionId: ID
+        season: Int
+        perFightFeeInEur: Float
+        totalFights: Int
+        winningPrizeInEur: Float
+        wonFighterOfTheSeason: Boolean
+        fighterOfTheSeasonAwardMoneyInEur: Float
+        totalEarningsInEur: Float
+    }
+
     input FighterInput {
         firstName: String
         lastName: String
@@ -97,6 +114,7 @@ const fighterInputs = `#graphql
         location: LocationInput
         debutInformation: DebutInput
         images: [String]
+        earnings: [FighterEarningsInput]
     }
 `;
 

@@ -95,7 +95,20 @@ const competitionInputs = `#graphql
     input LeagueConfigurationInput {
         numberOfDivisions: Int
         fightersPerDivision: [FightersPerDivisionInput]
+        perFightFeePerDivision: [PerFightFeePerDivision]
+        winningFeePerDivision: [WinningFeePerDivision]
+        fighterOfTheSeasonPrizeMoneyInEur: Float
         pointsPerWin: Int
+    }
+
+    input PerFightFeePerDivision {
+        divisionNumber: Int
+        fightFeeInEur: Float
+    }
+
+    input WinningFeePerDivision {
+        divisionNumber: Int
+        prizeMoneyInEur: Float
     }
 
     input FightersPerDivisionInput {
@@ -106,6 +119,8 @@ const competitionInputs = `#graphql
     input CupConfigurationInput {
         knockoutRounds: Int
         numberOfFighters: Int
+        perFightFeeInEur: Float
+        winningFeeInEur: Float
         stages: [String]
     }
 

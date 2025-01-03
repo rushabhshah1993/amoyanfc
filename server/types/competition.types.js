@@ -65,7 +65,20 @@ const competitionTypes = `#graphql
     type SeasonLeagueConfiguration {
         numberOfDivisions: Int
         fightersPerDivision: [FightersPerDivision]
+        perFightFeePerDivision: [PerFightFeePerDivision]
+        winningFeePerDivision: [WinningFeePerDivision]
+        fighterOfTheSeasonPrizeMoneyInEur: Float
         pointsPerWin: Int
+    }
+
+    type PerFightFeePerDivision {
+        divisionNumber: Int
+        fightFeeInEur: Float
+    }
+
+    type WinningFeePerDivision {
+        divisionNumber: Int
+        prizeMoneyInEur: Float
     }
 
     type FightersPerDivision {
@@ -76,6 +89,8 @@ const competitionTypes = `#graphql
     type SeasonCupConfiguration {
         knockoutRounds: Int
         numberOfFighters: Int
+        perFightFeeInEur: Float
+        winningFeeInEur: Float
         stages: [String]
     }
 
