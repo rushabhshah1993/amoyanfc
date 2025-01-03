@@ -204,6 +204,7 @@ const opponentHistorySchema = new Schema({
  */
 const competitionRecordSchema = new Schema({
     competitionId: { type: Schema.Types.ObjectId, ref: 'CompetitionMeta' },
+    numberOfSeasonAppearances: { type: Number, default: 0 },
     totalFights: { type: Number, default: 0 },
     totalWins: { type: Number, default: 0 },
     totalLosses: { type: Number, default: 0 },

@@ -37,6 +37,7 @@ const fighterInputs = `#graphql
 
     input CompetitionHistoryInput {
         competitionId: ID
+        numberOfSeasonAppearances: Int
         totalFights: Int
         totalWins: Int
         totalLosses: Int

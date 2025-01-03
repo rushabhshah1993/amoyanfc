@@ -37,6 +37,7 @@ const fighterTypes = `#graphql
 
     type CompetitionHistoryData {
         competitionId: ID
+        numberOfSeasonAppearances: Int
         totalFights: Int
         totalWins: Int
         totalLosses: Int
