@@ -18,6 +18,7 @@ export const competitionMetaSchema = new Schema({
     type: { type: String, enum: Object.values(COMPETITION_TYPES), required: true },
     description: String,
     logo: { type: String, required: true },
+    shortName: { type: String }
 }, {timestamps: true});
 
 export const CompetitionMeta = mongoose.model('CompetitionMeta', competitionMetaSchema);

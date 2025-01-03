@@ -27,6 +27,11 @@ const competitionMetaTypeDef = `#graphql
         Represents the URL for the competition's logo
         """
         logo: String!
+
+        """
+        Optional short name for the competition
+        """
+        shortName: String
     }
 
     """
@@ -76,12 +81,17 @@ const competitionMetaTypeDef = `#graphql
         """
         The competition's description. This is optional.
         """
-        description: String,
+        description: String
 
         """
         A URL string specifying the location of the competition's logo.
         """
         logo: String!
+
+        """
+        Optional short name for the competition
+        """
+        shortName: String
     }
 
     """
@@ -112,6 +122,11 @@ const competitionMetaTypeDef = `#graphql
         The updated URL pointing to the competition's logo. Optional for update.
         """
         logo: String
+
+        """
+        Optional short name for the competition
+        """
+        shortName: String
     }
 `;
 
