@@ -106,7 +106,7 @@ const fighterResolver = {
     Fighter: {
         competitionHistory: async(parent) => {
             // Iterate over competitionHistory array to enrich each record with competition data
-            const enrichedHistory = parent.competitionHistory.map(async (record) => {
+            const enrichedHistory = await Promise.all(parent.competitionHistory.map(async (record) => {
                 // Fetch competition details by ID from the CompetitionMeta model
                 const competition = await CompetitionMeta.findById(record.competitionId);
 
@@ -115,7 +115,7 @@ const fighterResolver = {
                     ...record,
                     competition
                 }
-            });
+            }));
             return enrichedHistory;
         },
         opponentsHistory: async(parent) => {
