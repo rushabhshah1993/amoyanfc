@@ -194,6 +194,29 @@ const opponentHistorySchema = new Schema({
 })
 
 /**
+ * Schema defintion for a detailed title information
+ * @typedef {Object} titlesDetailSchema
+ * @property {Number} seasonNumber - The season in which the title was won
+ * @property {Number} divisionNumber - An optional property for cup-style tournaments. The league division in which it was won.
+ */
+const titlesDetailSchema = new Schema({
+    competitionSeasonId: { type: Schema.Types.ObjectId, ref: 'Competition' },
+    seasonNumber: { type: Number },
+    divisionNumber: { type: Number } 
+})
+
+/**
+ * Schema definition for titles won by a fighter
+ * @typedef {Object} titlesSchema
+ * @property {Number} totalTitles - Number of titles won for a given competition
+ * @property {Array.<Object>} details - An array of object that lists down details of the titles
+ */
+const titlesSchema = new Schema({
+    totalTitles: { type: Number, default: 0 },
+    details: [titlesDetailSchema]
+})
+
+/**
  * Schema definition for a competition record
  * @typedef {Object} competitionRecordSchema
  * @property {ObjectId} competitionId - Refers to the ID of a competition
@@ -208,7 +231,8 @@ const competitionRecordSchema = new Schema({
     totalFights: { type: Number, default: 0 },
     totalWins: { type: Number, default: 0 },
     totalLosses: { type: Number, default: 0 },
-    winPercentage: { type: Number, default: 0 }
+    winPercentage: { type: Number, default: 0 },
+    titles: titlesSchema
 });
 
 /**

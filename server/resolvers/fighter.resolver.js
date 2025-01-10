@@ -159,6 +159,19 @@ const fighterResolver = {
             const currentGlobalRankList = await GlobalRank.find({isCurrent: true});
             const fighterRank = currentGlobalRankList?.fighters.find(fighter => fighter.fighterId !== parent.id);
             return fighterRank;
+        },
+        competitionHistory: async(parent) => {
+            const titleDetails = await Promise.all(
+                parent.competitionHistory.titles.titleDetails.map(async title => {
+                    const competitionInfo = await Competition.findById(title.competitionSeasonId);
+
+                    return {
+                        ...title,
+                        competitionInfo
+                    }
+                })
+            )
+            return titleDetails
         }
     }
 };
