@@ -105,33 +105,38 @@ const fighterResolver = {
     },
     Fighter: {
         competitionHistory: async(parent) => {
-            // Iterate over competitionHistory array to enrich each record with competition data
-            const enrichedHistory = await Promise.all(parent.competitionHistory.map(async (record) => {
-                // Fetch competition details by ID from the CompetitionMeta model
-                const competition = await CompetitionMeta.findById(record.competitionId);
+            const enrichedHistory = await Promise.all(
+                parent.competitionHistory.map(async (record) => {
+                    const competitionMetaInfo = await CompetitionMeta.findById(record.competitionId).lean();
 
-                let enrichedTitlesInfo = {
-                    ...record.titles
-                };
-                if(record.titles) {
-                    enrichedTitlesInfo = await Promise.all(
-                        record.titles?.titleDetails.map(async title => {
-                            const competitionSeasonInfo = await Competition.findById(title.competitionSeasonId);
-    
-                            return {
-                                ...title,
-                                competitionSeasonInfo
-                            }
-                        })
-                    )
-                }
-                // Return the original record merged with competition details
-                return {
-                    ...record,
-                    titles: enrichedTitlesInfo,
-                    competition
-                }
-            }));
+                    let enrichedTitlesInfo = null;
+                    if(record.titles && record.titles.details) {
+                        enrichedTitlesInfo = {
+                            ...record.titles,
+                            details: await Promise.all(
+                                record.titles?.details.map(async title => {
+                                    const competitionSeasonInfo = await Competition.findById(title.competitionSeasonId);
+            
+                                    return {
+                                        ...title,
+                                        competitionSeasonInfo
+                                    }
+                                })
+                            )
+                        }
+                    }
+                    return {
+                        ...record,
+                        numberOfSeasonAppearances: record.numberOfSeasonAppearances,
+                        totalFights: record.totalFights,
+                        totalWins: record.totalWins,
+                        totalLosses: record.totalLosses,
+                        winPercentage: record.winPercentage,
+                        competitionMeta: competitionMetaInfo,
+                        titles: record.titles
+                    }
+                })   
+            );
             return enrichedHistory;
         },
         opponentsHistory: async(parent) => {
