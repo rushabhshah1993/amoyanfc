@@ -21,7 +21,6 @@ const fighterInputs = `#graphql
         totalWins: Int
         totalLosses: Int
         winPercentage: Float
-        titles: [TitlesInput]
         details: [CompetitionDetailsInput]
     }
 
@@ -54,6 +53,7 @@ const fighterInputs = `#graphql
         totalWins: Int
         totalLosses: Int
         winPercentage: Float
+        titles: [TitlesInput]
         competition: CompetitionSeasonInput
     }
 

@@ -110,9 +110,25 @@ const fighterResolver = {
                 // Fetch competition details by ID from the CompetitionMeta model
                 const competition = await CompetitionMeta.findById(record.competitionId);
 
+                let enrichedTitlesInfo = {
+                    ...record.titles
+                };
+                if(record.titles) {
+                    enrichedTitlesInfo = await Promise.all(
+                        record.titles?.titleDetails.map(async title => {
+                            const competitionSeasonInfo = await Competition.findById(title.competitionSeasonId);
+    
+                            return {
+                                ...title,
+                                competitionSeasonInfo
+                            }
+                        })
+                    )
+                }
                 // Return the original record merged with competition details
                 return {
                     ...record,
+                    titles: enrichedTitlesInfo,
                     competition
                 }
             }));
@@ -159,19 +175,6 @@ const fighterResolver = {
             const currentGlobalRankList = await GlobalRank.find({isCurrent: true});
             const fighterRank = currentGlobalRankList?.fighters.find(fighter => fighter.fighterId !== parent.id);
             return fighterRank;
-        },
-        competitionHistory: async(parent) => {
-            const titleDetails = await Promise.all(
-                parent.competitionHistory.titles.titleDetails.map(async title => {
-                    const competitionInfo = await Competition.findById(title.competitionSeasonId);
-
-                    return {
-                        ...title,
-                        competitionInfo
-                    }
-                })
-            )
-            return titleDetails
         }
     }
 };
