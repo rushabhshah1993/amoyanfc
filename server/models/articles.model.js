@@ -20,7 +20,7 @@ const articlesSchema = new Schema({
     content: { type: String, required: true },
     thumbnail: { type: String },
     tags: { type: [String] },
-    publishedDate: { type: Date },
+    publishedDate: { type: Date, required: true, default: () => Date.now(), immutable: true },
     fightersTagged: { type: [String] }
 }, { timestamps: true });
 

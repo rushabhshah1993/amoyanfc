@@ -258,9 +258,9 @@ const competitionSchema = new Schema({
     cupData: cupDataSchema,
     config: seasonConfigurationSchema,
     linkedLeagueSeason: linkedLeagueSeasonSchema,
-    createdAt: Date,
-    updatedAt: Date,
-});
+    createdAt: { type: Date, immutable: true },
+    updatedAt: { type: Date, default: () =>  Date.now() },
+}, { autoIndex: false });
 
 /**
  * @typedef {Array.<Competition>} Competitions
