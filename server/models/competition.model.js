@@ -10,7 +10,7 @@ import {
 } from "./fighter.model.js";
 
 /* Constants imports */
-import { DEFAULT_CONFIG } from "../constants.js";
+import { COMPETITION_TYPES, DEFAULT_CONFIG } from "../constants.js";
 
 
 
@@ -268,22 +268,37 @@ const competitionSchema = new Schema({
  */
 
 
-/* Pre-save middlewares */
-seasonConfigurationSchema.pre('save', function(next) {
-    if(this.type === 'League' && this.cupConfiguration) {
-        return next(new Error('Cup configuration should not be set for league competitions.'));
-    }
-    if(this.type === 'Cup' && this.leagueConfiguration) {
-        return next(new Error('League configuration should not be set for cup competitions.'));
-    }
-});
 
-competitionSchema.pre('save', function(next) {
-    if(this.type === 'League' && this.cupData) {
-        return next(new Error('Cup data information should not be provided for league competitions.'));
+/* Pre-save middlewares */
+competitionSchema.pre('save', async function(next) {
+    try {
+        let competitionMeta = await this.model('CompetitionMeta').findById(this.competitionMetaId);
+    
+        if (!competitionMeta) {
+            return next(new Error('Invalid competitionMetaId reference.'));
+        }
+    
+        if (competitionMeta.type === COMPETITION_TYPES.LEAGUE && this.config?.cupConfiguration) {
+            return next(new Error('Cup configuration should not be set for league competitions.'));
+        }
+    
+        if (competitionMeta.type === COMPETITION_TYPES.CUP && this.config?.leagueConfiguration) {
+            return next(new Error('League configuration should not be set for cup competitions.'));
+        }
+    
+        if(competitionMeta.type === COMPETITION_TYPES.LEAGUE && this.cupData) {
+            return next(new Error('Cup data information should not be provided for league competitions.'));
+        }
+    
+        if(competitionMeta.type === COMPETITION_TYPES.CUP && this.leagueData) {
+            return next(new Error('League data information should not be provided for cup competitions.'));
+        }
+    
+        next();
     }
-    if(this.type === 'Cup' && this.leagueData) {
-        return next(new Error('League data information should not be provided for cup competitions.'));
+    catch(error) {
+        console.error(error);
+        next(error);
     }
 });
 

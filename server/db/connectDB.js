@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 
 export const connectDB = async() => {
     try {
-        mongoose.set("debug", true);
         const connection = await mongoose.connect(process.env.MONGO_URI, {
             serverSelectionTimeoutMS: 10000, // Wait for 10s for the server to respond
             socketTimeoutMS: 45000, // After 45 seconds of inactivity, the socket will be closed.
