@@ -23,8 +23,11 @@ const HomePage = () => {
           <div className="loading">No competitions found.</div>
         ) : (
           <div className="competition-grid">
-            {competitions.map((competition) => (
-              <CompetitionCard key={competition._id} competition={competition} />
+            {competitions.map((competition, index) => (
+              <CompetitionCard 
+                key={competition._id || `competition-${index}`} 
+                competition={competition} 
+              />
             ))}
           </div>
         )}
