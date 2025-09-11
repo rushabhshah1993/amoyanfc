@@ -1,0 +1,166 @@
+{
+  "id": "507f1f77bcf86cd799439021",
+  "firstName": "Alex",
+  "lastName": "Thunder",
+  "dateOfBirth": "1992-05-15T00:00:00Z",
+  "profileImage": "https://example.com/fighters/alex-thunder.jpg",
+  "skillset": ["Brazilian Jiu-Jitsu", "Muay Thai", "Wrestling"],
+  "globalRank": {
+    "id": "507f1f77bcf86cd799439031",
+    "rank": 1,
+    "score": 2850.5
+  },
+  "fightStats": {
+    "avgFightTime": 12.3,
+    "finishingMoves": ["Rear Naked Choke", "Armbar", "TKO"],
+    "grappling": {
+      "accuracy": 82.5,
+      "defence": 45
+    },
+    "significantStrikes": {
+      "accuracy": 76.8,
+      "attempted": 180,
+      "defence": 35,
+      "landed": 138,
+      "landedPerMinute": 2.1,
+      "positions": {
+        "clinching": 25,
+        "ground": 60,
+        "standing": 53
+      }
+    },
+    "strikeMap": {
+      "head": { "absorb": 12, "strike": 45 },
+      "torso": { "absorb": 8, "strike": 32 },
+      "leg": { "absorb": 5, "strike": 18 }
+    },
+    "submissions": {
+      "attemptsPer15Mins": 2.3,
+      "average": 1.8
+    },
+    "takedowns": {
+      "accuracy": 75.0,
+      "attempted": 16,
+      "avgTakedownsLandedPerMin": 0.32,
+      "defence": 6,
+      "landed": 12
+    }
+  },
+  "streaks": [
+    {
+      "competitionId": "507f1f77bcf86cd799439011",
+      "type": "win",
+      "start": { "season": 9, "division": 1, "round": 1 },
+      "end": { "season": 9, "division": 1, "round": 3 },
+      "count": 3,
+      "active": true,
+      "opponents": [
+        "507f1f77bcf86cd799439022",
+        "507f1f77bcf86cd799439023",
+        "507f1f77bcf86cd799439024"
+      ]
+    }
+  ],
+  "opponentsHistory": [
+    {
+      "opponentId": "507f1f77bcf86cd799439022",
+      "totalFights": 3,
+      "totalWins": 2,
+      "totalLosses": 1,
+      "winPercentage": 66.7,
+      "details": [
+        {
+          "competitionId": "507f1f77bcf86cd799439011",
+          "season": 9,
+          "divisionId": 1,
+          "roundId": 1,
+          "fightId": "507f1f77bcf86cd799439041",
+          "isWinner": true
+        },
+        {
+          "competitionId": "507f1f77bcf86cd799439011",
+          "season": 8,
+          "divisionId": 1,
+          "roundId": 5,
+          "fightId": "507f1f77bcf86cd799439042",
+          "isWinner": false
+        },
+        {
+          "competitionId": "507f1f77bcf86cd799439011",
+          "season": 7,
+          "divisionId": 1,
+          "roundId": 3,
+          "fightId": "507f1f77bcf86cd799439043",
+          "isWinner": true
+        }
+      ]
+    }
+  ],
+  "competitionHistory": [
+    {
+      "competitionId": "507f1f77bcf86cd799439011",
+      "numberOfSeasonAppearances": 3,
+      "totalFights": 15,
+      "totalWins": 12,
+      "totalLosses": 3,
+      "winPercentage": 80.0,
+      "titles": {
+        "totalTitles": 2,
+        "details": [
+          {
+            "competitionSeasonId": "507f1f77bcf86cd799439012",
+            "seasonNumber": 9,
+            "divisionNumber": 1
+          },
+          {
+            "competitionSeasonId": "507f1f77bcf86cd799439013",
+            "seasonNumber": 8,
+            "divisionNumber": 1
+          }
+        ]
+      }
+    }
+  ],
+  "isArchived": false,
+  "location": {
+    "city": "Los Angeles",
+    "country": "United States"
+  },
+  "debutInformation": {
+    "competitionId": "507f1f77bcf86cd799439011",
+    "season": 7,
+    "fightId": "507f1f77bcf86cd799439040",
+    "dateOfDebut": "2022-03-15T20:00:00Z"
+  },
+  "images": [
+    "https://example.com/fighters/alex-thunder-1.jpg",
+    "https://example.com/fighters/alex-thunder-2.jpg"
+  ],
+  "earnings": {
+    "earningsInEur": 125000,
+    "earningsBreakdown": [
+      {
+        "competitionMetaId": "507f1f77bcf86cd799439011",
+        "competitionId": "507f1f77bcf86cd799439012",
+        "season": 9,
+        "perFightFeeInEur": 5000,
+        "totalFights": 3,
+        "winningPrizeInEur": 50000,
+        "wonFighterOfTheSeason": false,
+        "fighterOfTheSeasonAwardMoneyInEur": 0,
+        "totalEarningsInEur": 65000
+      },
+      {
+        "competitionMetaId": "507f1f77bcf86cd799439011",
+        "competitionId": "507f1f77bcf86cd799439013",
+        "season": 8,
+        "perFightFeeInEur": 4000,
+        "totalFights": 5,
+        "winningPrizeInEur": 50000,
+        "wonFighterOfTheSeason": true,
+        "fighterOfTheSeasonAwardMoneyInEur": 10000,
+        "totalEarningsInEur": 60000
+      }
+    ]
+  }
+}

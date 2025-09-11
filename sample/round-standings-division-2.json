@@ -1,0 +1,44 @@
+{
+  "id": "507f1f77bcf86cd799439052",
+  "competitionId": "507f1f77bcf86cd799439011",
+  "seasonNumber": 9,
+  "divisionNumber": 2,
+  "roundNumber": 2,
+  "fightId": "507f1f77bcf86cd799439045",
+  "standings": [
+    {
+      "fighterId": "507f1f77bcf86cd799439025",
+      "fightsCount": 2,
+      "wins": 2,
+      "points": 6,
+      "rank": 1,
+      "totalFightersCount": 4
+    },
+    {
+      "fighterId": "507f1f77bcf86cd799439026",
+      "fightsCount": 2,
+      "wins": 1,
+      "points": 3,
+      "rank": 2,
+      "totalFightersCount": 4
+    },
+    {
+      "fighterId": "507f1f77bcf86cd799439027",
+      "fightsCount": 2,
+      "wins": 1,
+      "points": 3,
+      "rank": 3,
+      "totalFightersCount": 4
+    },
+    {
+      "fighterId": "507f1f77bcf86cd799439028",
+      "fightsCount": 2,
+      "wins": 0,
+      "points": 0,
+      "rank": 4,
+      "totalFightersCount": 4
+    }
+  ],
+  "createdAt": "2024-03-10T18:45:00Z",
+  "updatedAt": "2024-03-10T18:45:00Z"
+}

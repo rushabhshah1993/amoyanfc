@@ -1,0 +1,110 @@
+{
+  "id": "507f1f77bcf86cd799439031",
+  "fighters": [
+    {
+      "fighterId": "507f1f77bcf86cd799439021",
+      "score": 2850.5,
+      "rank": 1,
+      "titles": [
+        {
+          "competitionId": "507f1f77bcf86cd799439011",
+          "numberOfTitles": 2
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "507f1f77bcf86cd799439015",
+          "appearances": 1
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "507f1f77bcf86cd799439011",
+          "divisionAppearances": [
+            { "division": 1, "appearances": 3 },
+            { "division": 2, "appearances": 1 }
+          ]
+        }
+      ]
+    },
+    {
+      "fighterId": "507f1f77bcf86cd799439022",
+      "score": 2650.0,
+      "rank": 2,
+      "titles": [
+        {
+          "competitionId": "507f1f77bcf86cd799439011",
+          "numberOfTitles": 1
+        }
+      ],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "507f1f77bcf86cd799439011",
+          "divisionAppearances": [
+            { "division": 1, "appearances": 4 }
+          ]
+        }
+      ]
+    },
+    {
+      "fighterId": "507f1f77bcf86cd799439023",
+      "score": 2400.0,
+      "rank": 3,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "507f1f77bcf86cd799439015",
+          "appearances": 2
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "507f1f77bcf86cd799439011",
+          "divisionAppearances": [
+            { "division": 1, "appearances": 2 },
+            { "division": 2, "appearances": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "fighterId": "507f1f77bcf86cd799439024",
+      "score": 2200.5,
+      "rank": 4,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "507f1f77bcf86cd799439011",
+          "divisionAppearances": [
+            { "division": 2, "appearances": 3 }
+          ]
+        }
+      ]
+    },
+    {
+      "fighterId": "507f1f77bcf86cd799439025",
+      "score": 2000.0,
+      "rank": 5,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "507f1f77bcf86cd799439015",
+          "appearances": 1
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "507f1f77bcf86cd799439011",
+          "divisionAppearances": [
+            { "division": 2, "appearances": 2 }
+          ]
+        }
+      ]
+    }
+  ],
+  "isCurrent": true,
+  "createdAt": "2024-03-01T00:00:00Z",
+  "updatedAt": "2024-03-15T20:30:00Z"
+}

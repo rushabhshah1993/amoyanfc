@@ -1,0 +1,142 @@
+{
+  "id": "507f1f77bcf86cd799439070",
+  "competitionMetaId": "507f1f77bcf86cd799439015",
+  "competitionMeta": {
+    "id": "507f1f77bcf86cd799439015",
+    "competitionName": "Champions Cup",
+    "type": "cup",
+    "logo": "https://example.com/logos/champions-cup.png"
+  },
+  "isActive": true,
+  "seasonMeta": {
+    "seasonNumber": 1,
+    "startDate": "2024-06-01T00:00:00Z",
+    "endDate": "2024-08-31T23:59:59Z",
+    "leagueDivisions": null,
+    "cupParticipants": {
+      "fighters": [
+        "507f1f77bcf86cd799439021",
+        "507f1f77bcf86cd799439022",
+        "507f1f77bcf86cd799439023",
+        "507f1f77bcf86cd799439024",
+        "507f1f77bcf86cd799439025",
+        "507f1f77bcf86cd799439026",
+        "507f1f77bcf86cd799439027",
+        "507f1f77bcf86cd799439028"
+      ]
+    }
+  },
+  "leagueData": null,
+  "cupData": {
+    "fights": [
+      {
+        "fighter1": "507f1f77bcf86cd799439021",
+        "fighter2": "507f1f77bcf86cd799439022",
+        "winner": "507f1f77bcf86cd799439021",
+        "fightIdentifier": "CC-S1-PRELIM-F1",
+        "date": "2024-06-15T20:00:00Z",
+        "userDescription": "Preliminary round matchup",
+        "genAIDescription": "A technical battle showcasing both fighters' skills",
+        "isSimulated": false,
+        "fighterStats": [
+          {
+            "fighterId": "507f1f77bcf86cd799439021",
+            "stats": {
+              "fightTime": 8.2,
+              "finishingMove": "TKO",
+              "grappling": {
+                "accuracy": 90.0,
+                "defence": 5
+              },
+              "significantStrikes": {
+                "accuracy": 85.0,
+                "attempted": 20,
+                "defence": 3,
+                "landed": 17,
+                "landedPerMinute": 2.1,
+                "positions": {
+                  "clinching": 2,
+                  "ground": 8,
+                  "standing": 7
+                }
+              },
+              "strikeMap": {
+                "head": { "absorb": 1, "strike": 8 },
+                "torso": { "absorb": 1, "strike": 5 },
+                "leg": { "absorb": 0, "strike": 4 }
+              },
+              "submissions": {
+                "attemptsPer15Mins": 1.8,
+                "average": 0.5
+              },
+              "takedowns": {
+                "accuracy": 100.0,
+                "attempted": 2,
+                "avgTakedownsLandedPerMin": 0.24,
+                "defence": 0,
+                "landed": 2
+              }
+            }
+          },
+          {
+            "fighterId": "507f1f77bcf86cd799439022",
+            "stats": {
+              "fightTime": 8.2,
+              "finishingMove": null,
+              "grappling": {
+                "accuracy": 60.0,
+                "defence": 3
+              },
+              "significantStrikes": {
+                "accuracy": 70.0,
+                "attempted": 15,
+                "defence": 8,
+                "landed": 10,
+                "landedPerMinute": 1.2,
+                "positions": {
+                  "clinching": 1,
+                  "ground": 3,
+                  "standing": 6
+                }
+              },
+              "strikeMap": {
+                "head": { "absorb": 3, "strike": 4 },
+                "torso": { "absorb": 2, "strike": 3 },
+                "leg": { "absorb": 1, "strike": 2 }
+              },
+              "submissions": {
+                "attemptsPer15Mins": 0.7,
+                "average": 0.2
+              },
+              "takedowns": {
+                "accuracy": 50.0,
+                "attempted": 2,
+                "avgTakedownsLandedPerMin": 0.12,
+                "defence": 1,
+                "landed": 1
+              }
+            }
+          }
+        ],
+        "fightStatus": "completed"
+      }
+    ],
+    "currentStage": "Preliminary"
+  },
+  "config": {
+    "leagueConfiguration": null,
+    "cupConfiguration": {
+      "knockoutRounds": 3,
+      "numberOfFighters": 8,
+      "perFightFeeInEur": 10000,
+      "winningFeeInEur": 100000,
+      "stages": ["Preliminary", "Semi-finals", "Finals"]
+    }
+  },
+  "linkedLeagueSeason": {
+    "competitionId": "507f1f77bcf86cd799439011",
+    "seasonId": "507f1f77bcf86cd799439012"
+  },
+  "createdAt": "2024-06-01T00:00:00Z",
+  "updatedAt": "2024-06-15T20:30:00Z"
+}

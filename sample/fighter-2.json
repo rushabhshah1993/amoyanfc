@@ -1,0 +1,146 @@
+{
+  "id": "507f1f77bcf86cd799439022",
+  "firstName": "Marcus",
+  "lastName": "Steel",
+  "dateOfBirth": "1990-08-22T00:00:00Z",
+  "profileImage": "https://example.com/fighters/marcus-steel.jpg",
+  "skillset": ["Boxing", "Kickboxing", "Judo"],
+  "globalRank": {
+    "id": "507f1f77bcf86cd799439031",
+    "rank": 2,
+    "score": 2650.0
+  },
+  "fightStats": {
+    "avgFightTime": 14.7,
+    "finishingMoves": ["KO", "TKO", "Decision"],
+    "grappling": {
+      "accuracy": 65.0,
+      "defence": 28
+    },
+    "significantStrikes": {
+      "accuracy": 82.3,
+      "attempted": 220,
+      "defence": 42,
+      "landed": 181,
+      "landedPerMinute": 2.8,
+      "positions": {
+        "clinching": 15,
+        "ground": 25,
+        "standing": 141
+      }
+    },
+    "strikeMap": {
+      "head": { "absorb": 8, "strike": 65 },
+      "torso": { "absorb": 12, "strike": 48 },
+      "leg": { "absorb": 6, "strike": 25 }
+    },
+    "submissions": {
+      "attemptsPer15Mins": 0.8,
+      "average": 0.3
+    },
+    "takedowns": {
+      "accuracy": 45.0,
+      "attempted": 12,
+      "avgTakedownsLandedPerMin": 0.15,
+      "defence": 8,
+      "landed": 5
+    }
+  },
+  "streaks": [
+    {
+      "competitionId": "507f1f77bcf86cd799439011",
+      "type": "lose",
+      "start": { "season": 9, "division": 1, "round": 1 },
+      "end": { "season": 9, "division": 1, "round": 1 },
+      "count": 1,
+      "active": false,
+      "opponents": ["507f1f77bcf86cd799439021"]
+    }
+  ],
+  "opponentsHistory": [
+    {
+      "opponentId": "507f1f77bcf86cd799439021",
+      "totalFights": 3,
+      "totalWins": 1,
+      "totalLosses": 2,
+      "winPercentage": 33.3,
+      "details": [
+        {
+          "competitionId": "507f1f77bcf86cd799439011",
+          "season": 9,
+          "divisionId": 1,
+          "roundId": 1,
+          "fightId": "507f1f77bcf86cd799439041",
+          "isWinner": false
+        },
+        {
+          "competitionId": "507f1f77bcf86cd799439011",
+          "season": 8,
+          "divisionId": 1,
+          "roundId": 5,
+          "fightId": "507f1f77bcf86cd799439042",
+          "isWinner": true
+        },
+        {
+          "competitionId": "507f1f77bcf86cd799439011",
+          "season": 7,
+          "divisionId": 1,
+          "roundId": 3,
+          "fightId": "507f1f77bcf86cd799439043",
+          "isWinner": false
+        }
+      ]
+    }
+  ],
+  "competitionHistory": [
+    {
+      "competitionId": "507f1f77bcf86cd799439011",
+      "numberOfSeasonAppearances": 4,
+      "totalFights": 18,
+      "totalWins": 11,
+      "totalLosses": 7,
+      "winPercentage": 61.1,
+      "titles": {
+        "totalTitles": 1,
+        "details": [
+          {
+            "competitionSeasonId": "507f1f77bcf86cd799439014",
+            "seasonNumber": 7,
+            "divisionNumber": 1
+          }
+        ]
+      }
+    }
+  ],
+  "isArchived": false,
+  "location": {
+    "city": "London",
+    "country": "United Kingdom"
+  },
+  "debutInformation": {
+    "competitionId": "507f1f77bcf86cd799439011",
+    "season": 6,
+    "fightId": "507f1f77bcf86cd799439044",
+    "dateOfDebut": "2021-09-10T19:00:00Z"
+  },
+  "images": [
+    "https://example.com/fighters/marcus-steel-1.jpg",
+    "https://example.com/fighters/marcus-steel-2.jpg"
+  ],
+  "earnings": {
+    "earningsInEur": 95000,
+    "earningsBreakdown": [
+      {
+        "competitionMetaId": "507f1f77bcf86cd799439011",
+        "competitionId": "507f1f77bcf86cd799439012",
+        "season": 9,
+        "perFightFeeInEur": 5000,
+        "totalFights": 1,
+        "winningPrizeInEur": 0,
+        "wonFighterOfTheSeason": false,
+        "fighterOfTheSeasonAwardMoneyInEur": 0,
+        "totalEarningsInEur": 5000
+      }
+    ]
+  }
+}

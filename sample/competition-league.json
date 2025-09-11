@@ -1,0 +1,173 @@
+{
+  "id": "507f1f77bcf86cd799439012",
+  "competitionMetaId": "507f1f77bcf86cd799439011",
+  "competitionMeta": {
+    "id": "507f1f77bcf86cd799439011",
+    "competitionName": "International Fighting Championship",
+    "type": "league",
+    "logo": "https://example.com/logos/ifc-logo.png"
+  },
+  "isActive": true,
+  "seasonMeta": {
+    "seasonNumber": 9,
+    "startDate": "2024-03-01T00:00:00Z",
+    "endDate": "2024-12-31T23:59:59Z",
+    "leagueDivisions": [
+      {
+        "divisionNumber": 1,
+        "fighters": [
+          "507f1f77bcf86cd799439021",
+          "507f1f77bcf86cd799439022",
+          "507f1f77bcf86cd799439023",
+          "507f1f77bcf86cd799439024"
+        ]
+      },
+      {
+        "divisionNumber": 2,
+        "fighters": [
+          "507f1f77bcf86cd799439025",
+          "507f1f77bcf86cd799439026",
+          "507f1f77bcf86cd799439027",
+          "507f1f77bcf86cd799439028"
+        ]
+      }
+    ],
+    "cupParticipants": null
+  },
+  "leagueData": {
+    "divisions": [
+      {
+        "divisionNumber": 1,
+        "divisionName": "Championship Division",
+        "totalRounds": 12,
+        "currentRound": 3,
+        "rounds": [
+          {
+            "roundNumber": 1,
+            "fights": [
+              {
+                "fighter1": "507f1f77bcf86cd799439021",
+                "fighter2": "507f1f77bcf86cd799439022",
+                "winner": "507f1f77bcf86cd799439021",
+                "fightIdentifier": "IFC-S9-D1-R1-F1",
+                "date": "2024-03-15T20:00:00Z",
+                "userDescription": "Epic showdown between two champions",
+                "genAIDescription": "A technical masterclass with both fighters showing exceptional skill",
+                "isSimulated": false,
+                "fighterStats": [
+                  {
+                    "fighterId": "507f1f77bcf86cd799439021",
+                    "stats": {
+                      "fightTime": 15.5,
+                      "finishingMove": "Rear Naked Choke",
+                      "grappling": {
+                        "accuracy": 85.5,
+                        "defence": 12
+                      },
+                      "significantStrikes": {
+                        "accuracy": 78.2,
+                        "attempted": 45,
+                        "defence": 8,
+                        "landed": 35,
+                        "landedPerMinute": 2.3,
+                        "positions": {
+                          "clinching": 5,
+                          "ground": 15,
+                          "standing": 15
+                        }
+                      },
+                      "strikeMap": {
+                        "head": { "absorb": 3, "strike": 12 },
+                        "torso": { "absorb": 2, "strike": 8 },
+                        "leg": { "absorb": 1, "strike": 5 }
+                      },
+                      "submissions": {
+                        "attemptsPer15Mins": 2.1,
+                        "average": 1.5
+                      },
+                      "takedowns": {
+                        "accuracy": 70.0,
+                        "attempted": 4,
+                        "avgTakedownsLandedPerMin": 0.26,
+                        "defence": 1,
+                        "landed": 3
+                      }
+                    }
+                  },
+                  {
+                    "fighterId": "507f1f77bcf86cd799439022",
+                    "stats": {
+                      "fightTime": 15.5,
+                      "finishingMove": null,
+                      "grappling": {
+                        "accuracy": 72.0,
+                        "defence": 8
+                      },
+                      "significantStrikes": {
+                        "accuracy": 65.4,
+                        "attempted": 38,
+                        "defence": 12,
+                        "landed": 25,
+                        "landedPerMinute": 1.6,
+                        "positions": {
+                          "clinching": 3,
+                          "ground": 8,
+                          "standing": 14
+                        }
+                      },
+                      "strikeMap": {
+                        "head": { "absorb": 5, "strike": 8 },
+                        "torso": { "absorb": 3, "strike": 6 },
+                        "leg": { "absorb": 2, "strike": 3 }
+                      },
+                      "submissions": {
+                        "attemptsPer15Mins": 1.2,
+                        "average": 0.8
+                      },
+                      "takedowns": {
+                        "accuracy": 60.0,
+                        "attempted": 3,
+                        "avgTakedownsLandedPerMin": 0.19,
+                        "defence": 2,
+                        "landed": 1
+                      }
+                    }
+                  }
+                ],
+                "fightStatus": "completed"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "activeLeagueFights": [
+      { "division": 1, "round": 3 },
+      { "division": 2, "round": 2 }
+    ]
+  },
+  "cupData": null,
+  "config": {
+    "leagueConfiguration": {
+      "numberOfDivisions": 2,
+      "fightersPerDivision": [
+        { "divisionNumber": 1, "numberOfFighters": 4 },
+        { "divisionNumber": 2, "numberOfFighters": 4 }
+      ],
+      "perFightFeePerDivision": [
+        { "divisionNumber": 1, "fightFeeInEur": 5000 },
+        { "divisionNumber": 2, "fightFeeInEur": 3000 }
+      ],
+      "winningFeePerDivision": [
+        { "divisionNumber": 1, "prizeMoneyInEur": 50000 },
+        { "divisionNumber": 2, "prizeMoneyInEur": 25000 }
+      ],
+      "fighterOfTheSeasonPrizeMoneyInEur": 100000,
+      "pointsPerWin": 3
+    },
+    "cupConfiguration": null
+  },
+  "linkedLeagueSeason": null,
+  "createdAt": "2024-03-01T00:00:00Z",
+  "updatedAt": "2024-03-15T20:30:00Z"
+}
