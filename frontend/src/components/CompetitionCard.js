@@ -1,11 +1,20 @@
 import React from 'react';
+import RobustGoogleDriveImage from './RobustGoogleDriveImage';
 
 const CompetitionCard = ({ competition }) => {
   return (
     <div className="competition-card">
       {competition.logo && (
         <div className="competition-logo">
-          <img src={competition.logo} alt={`${competition.competitionName} logo`} />
+          <RobustGoogleDriveImage
+            src={competition.logo}
+            alt={`${competition.competitionName} logo`}
+            fallback={
+              <div className="logo-placeholder">
+                <span>{competition.competitionName.charAt(0)}</span>
+              </div>
+            }
+          />
         </div>
       )}
       <h3>{competition.competitionName}</h3>
