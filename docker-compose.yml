@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: amoyanfc-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: amoyanfc
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - amoyanfc-network
+
+  app:
+    build: .
+    container_name: amoyanfc-app
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/amoyanfc
+      - PORT=4000
+    depends_on:
+      - mongodb
+    networks:
+      - amoyanfc-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  amoyanfc-network:
+    driver: bridge

@@ -20,7 +20,12 @@ import mergedResolvers from './resolvers/index.js';
 /* Constants imports */
 import { PORT } from './constants.js';
 
-dotenv.config();
+dotenv.config({ path: '../.env' });
+
+// Debug: Check if environment variables are loaded
+console.log('MONGODB_URI loaded:', process.env.MONGODB_URI ? 'Yes' : 'No');
+console.log('PORT loaded:', process.env.PORT || 'Using default');
+
 const app = express();
 
 const httpServer = http.createServer(app);
