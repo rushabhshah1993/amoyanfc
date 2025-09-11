@@ -51,6 +51,10 @@ export const extractFileId = (url) => {
     /\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/,
     // https://docs.google.com/presentation/d/FILE_ID/edit
     /\/presentation\/d\/([a-zA-Z0-9-_]+)/,
+    // https://lh3.googleusercontent.com/d/FILE_ID
+    /lh3\.googleusercontent\.com\/d\/([a-zA-Z0-9-_]+)/,
+    // https://drive.usercontent.google.com/download?id=FILE_ID
+    /drive\.usercontent\.google\.com\/download\?id=([a-zA-Z0-9-_]+)/,
     // Direct file ID (if someone just passes the ID)
     /^([a-zA-Z0-9-_]+)$/
   ];
@@ -62,6 +66,7 @@ export const extractFileId = (url) => {
     }
   }
 
+  console.log('No file ID found');
   return null;
 };
 
@@ -115,7 +120,9 @@ export const isGoogleDriveUrl = (url) => {
     /drive\.google\.com/,
     /docs\.google\.com/,
     /sheets\.google\.com/,
-    /slides\.google\.com/
+    /slides\.google\.com/,
+    /lh3\.googleusercontent\.com/,
+    /drive\.usercontent\.google\.com/
   ];
 
   return googleDrivePatterns.some(pattern => pattern.test(url));

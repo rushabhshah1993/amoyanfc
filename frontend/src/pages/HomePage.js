@@ -12,23 +12,23 @@ const HomePage = () => {
   const competitions = data?.getAllCompetitionsMeta || [];
 
   return (
-    <div className="container">
+    <div className="home-page">
       <div className="header">
         <h1>Amoyan Fighting Championship</h1>
         <p>Brutal combat sports competition</p>
       </div>
       
-      <h2>Available Competitions</h2>
-      
-      {competitions.length === 0 ? (
-        <div className="loading">No competitions found.</div>
-      ) : (
-        <div className="competition-grid">
-          {competitions.map((competition) => (
-            <CompetitionCard key={competition._id} competition={competition} />
-          ))}
-        </div>
-      )}
+      <div className="competitions-section">
+        {competitions.length === 0 ? (
+          <div className="loading">No competitions found.</div>
+        ) : (
+          <div className="competition-grid">
+            {competitions.map((competition) => (
+              <CompetitionCard key={competition._id} competition={competition} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
