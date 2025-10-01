@@ -9,6 +9,7 @@ import fightTypeDef from './fight.typedef.js';
 import fighterTypeDef from './fighter.typedef.js';
 import globalRankTypeDef from './global-rank.typeDef.js';
 import roundStandingsTypeDef from './round-standings.typedef.js';
+import { authTypeDef } from './auth.typedef.js';
 
 const mergedTypeDefs = mergeTypeDefs([
     articleTypeDef,
@@ -17,7 +18,8 @@ const mergedTypeDefs = mergeTypeDefs([
     fightTypeDef,
     fighterTypeDef,
     globalRankTypeDef,
-    roundStandingsTypeDef
+    roundStandingsTypeDef,
+    authTypeDef
 ]);
 
 export default mergedTypeDefs;

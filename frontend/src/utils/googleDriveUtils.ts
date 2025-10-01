@@ -4,10 +4,10 @@
 
 /**
  * Converts a Google Drive image URL to the direct view format
- * @param {string} googleDriveUrl - The original Google Drive URL
- * @returns {string} - The converted URL for direct image viewing
+ * @param googleDriveUrl - The original Google Drive URL
+ * @returns The converted URL for direct image viewing
  */
-export const convertGoogleDriveUrl = (googleDriveUrl) => {
+export const convertGoogleDriveUrl = (googleDriveUrl: string): string => {
   if (!googleDriveUrl || typeof googleDriveUrl !== 'string') {
     return '';
   }
@@ -35,10 +35,10 @@ export const convertGoogleDriveUrl = (googleDriveUrl) => {
 
 /**
  * Extracts file ID from various Google Drive URL formats
- * @param {string} url - Google Drive URL
- * @returns {string|null} - File ID or null if not found
+ * @param url - Google Drive URL
+ * @returns File ID or null if not found
  */
-export const extractFileId = (url) => {
+export const extractFileId = (url: string): string | null => {
   // Common Google Drive URL patterns
   const patterns = [
     // https://drive.google.com/file/d/FILE_ID/view
@@ -72,11 +72,14 @@ export const extractFileId = (url) => {
 
 /**
  * Converts multiple Google Drive URLs in an object
- * @param {Object} obj - Object containing Google Drive URLs
- * @param {Array<string>} fields - Array of field names that contain Google Drive URLs
- * @returns {Object} - Object with converted URLs
+ * @param obj - Object containing Google Drive URLs
+ * @param fields - Array of field names that contain Google Drive URLs
+ * @returns Object with converted URLs
  */
-export const convertGoogleDriveUrlsInObject = (obj, fields = ['logo', 'image', 'photo']) => {
+export const convertGoogleDriveUrlsInObject = (
+  obj: Record<string, any>, 
+  fields: string[] = ['logo', 'image', 'photo']
+): Record<string, any> => {
   if (!obj || typeof obj !== 'object') {
     return obj;
   }
@@ -94,11 +97,14 @@ export const convertGoogleDriveUrlsInObject = (obj, fields = ['logo', 'image', '
 
 /**
  * Converts Google Drive URLs in an array of objects
- * @param {Array<Object>} array - Array of objects containing Google Drive URLs
- * @param {Array<string>} fields - Array of field names that contain Google Drive URLs
- * @returns {Array<Object>} - Array with converted URLs
+ * @param array - Array of objects containing Google Drive URLs
+ * @param fields - Array of field names that contain Google Drive URLs
+ * @returns Array with converted URLs
  */
-export const convertGoogleDriveUrlsInArray = (array, fields = ['logo', 'image', 'photo']) => {
+export const convertGoogleDriveUrlsInArray = (
+  array: Record<string, any>[], 
+  fields: string[] = ['logo', 'image', 'photo']
+): Record<string, any>[] => {
   if (!Array.isArray(array)) {
     return array;
   }
@@ -108,10 +114,10 @@ export const convertGoogleDriveUrlsInArray = (array, fields = ['logo', 'image', 
 
 /**
  * Validates if a URL is a Google Drive URL
- * @param {string} url - URL to validate
- * @returns {boolean} - True if it's a Google Drive URL
+ * @param url - URL to validate
+ * @returns True if it's a Google Drive URL
  */
-export const isGoogleDriveUrl = (url) => {
+export const isGoogleDriveUrl = (url: string): boolean => {
   if (!url || typeof url !== 'string') {
     return false;
   }
@@ -130,18 +136,21 @@ export const isGoogleDriveUrl = (url) => {
 
 /**
  * Gets different sizes of the same Google Drive image
- * @param {string} googleDriveUrl - Original Google Drive URL
- * @param {string} size - Size option: 'small', 'medium', 'large', 'original'
- * @returns {string} - URL for the specified size
+ * @param googleDriveUrl - Original Google Drive URL
+ * @param size - Size option: 'small', 'medium', 'large', 'original'
+ * @returns URL for the specified size
  */
-export const getGoogleDriveImageSize = (googleDriveUrl, size = 'original') => {
+export const getGoogleDriveImageSize = (
+  googleDriveUrl: string, 
+  size: 'small' | 'medium' | 'large' | 'original' = 'original'
+): string => {
   const fileId = extractFileId(googleDriveUrl);
   
   if (!fileId) {
     return googleDriveUrl;
   }
 
-  const sizeParams = {
+  const sizeParams: Record<string, string> = {
     small: 'w200-h200',
     medium: 'w400-h400',
     large: 'w800-h800',
@@ -152,3 +161,4 @@ export const getGoogleDriveImageSize = (googleDriveUrl, size = 'original') => {
   
   return `https://drive.google.com/uc?${sizeParam}&id=${fileId}`;
 };
+
