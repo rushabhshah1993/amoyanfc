@@ -111,18 +111,6 @@
     }
 }
 
-/* Specific styles for fighter images */
-.s3-image.fighter-image {
-    border-radius: 50%;
-    border: 3px solid var(--border-color);
-    transition: border-color 0.3s ease, transform 0.2s ease;
-}
-
-.s3-image.fighter-image:hover {
-    border-color: var(--loading-color);
-    transform: scale(1.05);
-}
-
 /* Placeholder styles for when no image is provided */
 .s3-image-placeholder {
     display: flex;
