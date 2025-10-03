@@ -13,3 +13,27 @@ export const GET_COMPETITIONS = gql`
     }
 `;
 
+export const GET_ALL_FIGHTERS = gql`
+    query GetAllFighters {
+        getAllFighters {
+            id
+            firstName
+            lastName
+            profileImage
+            physicalAttributes {
+                heightCm
+                heightFeet
+                weightKg
+                armReach
+                legReach
+                bodyType
+                koPower
+                durability
+                strength
+                endurance
+                agility
+            }
+        }
+    }
+`;
+

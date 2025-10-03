@@ -1,0 +1,166 @@
+:root {
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --loading-color: #4285f4;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --border-color: #404040;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --error-color: #f56565;
+    --success-color: #68d391;
+    --loading-color: #64b5f6;
+}
+
+.s3-image {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    border-radius: inherit;
+}
+
+.s3-image.loaded {
+    opacity: 1;
+}
+
+.s3-image-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+    background: var(--bg-primary);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.s3-image-loading .loading-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: var(--loading-color);
+    animation: spin 1s linear infinite;
+}
+
+.s3-image-loading span {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.s3-image-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+    background: var(--bg-primary);
+    border-radius: 8px;
+    color: var(--error-color);
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.s3-image-error .error-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: var(--error-color);
+}
+
+.s3-image-error span {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Loading animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Hover effects for interactive images */
+.s3-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .s3-image-loading,
+    .s3-image-error {
+        min-height: 100px;
+        font-size: 12px;
+    }
+    
+    .s3-image-loading .loading-icon,
+    .s3-image-error .error-icon {
+        font-size: 20px;
+    }
+}
+
+/* Specific styles for fighter images */
+.s3-image.fighter-image {
+    border-radius: 50%;
+    border: 3px solid var(--border-color);
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.s3-image.fighter-image:hover {
+    border-color: var(--loading-color);
+    transform: scale(1.05);
+}
+
+/* Placeholder styles for when no image is provided */
+.s3-image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: inherit;
+    font-size: 48px;
+    border: 3px solid var(--border-color);
+    transition: border-color 0.3s ease;
+}
+
+.s3-image-placeholder.hidden {
+    display: none;
+}
+
+/* Performance optimizations */
+.s3-image {
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Accessibility improvements */
+.s3-image:focus {
+    outline: 2px solid var(--loading-color);
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .s3-image-loading,
+    .s3-image-error {
+        border-width: 2px;
+    }
+    
+    .s3-image.fighter-image {
+        border-width: 4px;
+    }
+}
