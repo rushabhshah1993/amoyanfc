@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { gql, FetchPolicy } from '@apollo/client';
+import { gql } from '@apollo/client';
 import client from '../../services/apolloClient';
 
 // Types
@@ -23,17 +23,6 @@ export interface AuthState {
 }
 
 // GraphQL queries
-const GET_ME = gql`
-    query GetMe {
-        me {
-            googleId
-            email
-            name
-            picture
-        }
-    }
-`;
-
 const IS_AUTHENTICATED = gql`
     query IsAuthenticated {
         isAuthenticated

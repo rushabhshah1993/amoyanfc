@@ -16,8 +16,8 @@
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: background-color 0.2s ease;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    transition: background-color 0.2s ease, box-shadow 0.3s ease;
     width: 100%;
     max-width: 300px;
     margin: 0 auto;
@@ -29,11 +29,13 @@
 
 .google-login-button:focus {
     outline: none;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 0 0 3px rgba(66, 133, 244, 0.3);
+    box-shadow: 0 2px 4px var(--shadow-color), 0 0 0 3px rgba(66, 133, 244, 0.3);
 }
 
 .google-icon {
     margin-right: 12px;
     font-size: 18px;
 }
+
+
 

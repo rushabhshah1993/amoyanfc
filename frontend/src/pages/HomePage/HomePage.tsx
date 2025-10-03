@@ -1,11 +1,12 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt, faUser, faSpinner, faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faSpinner, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { useQuery } from '@apollo/client';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { logoutUser } from '../../store/slices/authSlice';
 import { GET_COMPETITIONS } from '../../services/queries';
 import CompetitionCard from '../../components/CompetitionCard/CompetitionCard';
+import ThemeToggle from '../../components/ThemeToggle/ThemeToggle';
 import './HomePage.css';
 
 interface Competition {
@@ -43,32 +44,32 @@ const HomePage: React.FC = () => {
         <div className="home-page">
             <div className="header">
                 <div className="header-content">
-                    <div className="header-info">
-                        <h1 className="page-title">Amoyan Fighting Championship</h1>
-                        <p className="page-subtitle">Brutal combat sports competition</p>
-                    </div>
-                    <div className="user-section">
-                        {user && (
-                            <div className="user-info">
-                                {user.picture && (
-                                    <img 
-                                        src={user.picture} 
-                                        alt={user.name} 
-                                        className="user-avatar"
-                                    />
-                                )}
-                                <span className="user-name">
-                                    {user.name}
-                                </span>
-                            </div>
-                        )}
-                        <button 
-                            onClick={handleLogout}
-                            className="logout-button"
-                        >
-                            <FontAwesomeIcon icon={faSignOutAlt} />
-                            Logout
-                        </button>
+                    <h1 className="page-title">Amoyan Fighting Championship</h1>
+                    <div className="header-controls">
+                        <ThemeToggle />
+                        <div className="user-section">
+                            {user && (
+                                <div className="user-info">
+                                    {user.picture && (
+                                        <img 
+                                            src={user.picture} 
+                                            alt={user.name} 
+                                            className="user-avatar"
+                                        />
+                                    )}
+                                    <span className="user-name">
+                                        {user.name}
+                                    </span>
+                                </div>
+                            )}
+                            <button 
+                                onClick={handleLogout}
+                                className="logout-button"
+                            >
+                                <FontAwesomeIcon icon={faSignOutAlt} />
+                                Logout
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
