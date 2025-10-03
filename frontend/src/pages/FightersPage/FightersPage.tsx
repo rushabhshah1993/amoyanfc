@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useQuery } from '@apollo/client';
@@ -29,6 +30,7 @@ interface Fighter {
 }
 
 const FightersPage: React.FC = () => {
+    const navigate = useNavigate();
     const { loading, error, data } = useQuery(GET_ALL_FIGHTERS);
 
     if (loading) return (
@@ -63,7 +65,11 @@ const FightersPage: React.FC = () => {
                 ) : (
                     <div className="fighters-grid">
                         {sortedFighters.map((fighter) => (
-                            <div key={fighter.id} className="fighter-card">
+                            <div 
+                                key={fighter.id} 
+                                className="fighter-card"
+                                onClick={() => navigate(`/fighter/${fighter.id}`)}
+                            >
                                 <div className="fighter-image-container">
                                     <S3Image
                                         src={fighter.profileImage}

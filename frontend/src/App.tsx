@@ -10,6 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
 import FightersPage from './pages/FightersPage/FightersPage';
+import FighterPage from './pages/FighterPage/FighterPage';
 
 const AppContent: React.FC = () => {
   const { isDarkMode } = useAppSelector((state: RootState) => state.theme);
@@ -47,6 +48,7 @@ const AppContent: React.FC = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/fighters" element={<FightersPage />} />
+            <Route path="/fighter/:id" element={<FighterPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Router>

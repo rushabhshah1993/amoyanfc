@@ -1,0 +1,257 @@
+.fighter-page {
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.fighter-header {
+    margin-bottom: 2rem;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: var(--primary-hover-color);
+    transform: translateY(-1px);
+}
+
+.back-button:active {
+    transform: translateY(0);
+}
+
+.fighter-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.fighter-image-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.fighter-main-image {
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    max-height: 600px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.fighter-main-image:hover {
+    transform: scale(1.02);
+}
+
+.fighter-image-placeholder,
+.fighter-image-loading {
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    max-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    color: var(--text-secondary);
+    font-size: 4rem;
+    border: 2px dashed var(--border-color);
+}
+
+.fighter-image-loading {
+    font-size: 2rem;
+}
+
+.fighter-info-section {
+    padding: 1rem 0;
+}
+
+.fighter-name {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    line-height: 1.2;
+}
+
+.fighter-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.detail-label {
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-value {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.physical-attributes {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.attributes-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.attributes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.attribute-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    background-color: var(--background-color);
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.attribute-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.attribute-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    gap: 1rem;
+    color: var(--text-secondary);
+}
+
+.loading-spinner {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    color: var(--error-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .fighter-main-image {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .fighter-image-placeholder,
+[data-theme="dark"] .fighter-image-loading {
+    background-color: var(--card-background);
+    border-color: var(--border-color);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .fighter-page {
+        padding: 1rem;
+    }
+    
+    .fighter-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .fighter-main-image {
+        max-height: 400px;
+        height: 400px;
+    }
+    
+    .fighter-image-placeholder,
+    .fighter-image-loading {
+        max-height: 400px;
+        height: 400px;
+    }
+    
+    .fighter-name {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .attributes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .fighter-page {
+        padding: 0.5rem;
+    }
+    
+    .fighter-content {
+        gap: 1.5rem;
+    }
+    
+    .fighter-name {
+        font-size: 1.5rem;
+    }
+    
+    .detail-item,
+    .physical-attributes {
+        padding: 1rem;
+    }
+}

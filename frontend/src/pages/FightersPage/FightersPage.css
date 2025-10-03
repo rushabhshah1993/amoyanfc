@@ -47,6 +47,7 @@
     transition: transform 0.2s;
     text-align: center;
     border: none;
+    cursor: pointer;
 }
 
 .fighter-card:hover {

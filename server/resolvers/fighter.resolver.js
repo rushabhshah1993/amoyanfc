@@ -1,3 +1,6 @@
+/* Package imports */
+import { GraphQLDate } from 'graphql-scalars';
+
 /* Error imports */
 import { NotFoundError } from "../error.js";
 import { CompetitionMeta } from "../models/competition-meta.model.js";
@@ -11,6 +14,8 @@ import { GlobalRank } from "../models/global-rank.model.js";
 import { catchAsyncErrors } from "../utils.js";
 
 const fighterResolver = {
+    Date: GraphQLDate,
+    
     Query: {
         /**
          * Fetches a list of all the fighters.

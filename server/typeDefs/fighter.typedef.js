@@ -6,6 +6,8 @@ import fighterInputs from "../inputs/fighter.inputs.js";
 import fighterTypes from "../types/fighter.types.js";
 
 const fighterTypeDef = `#graphql
+    scalar Date
+
     """
     Represents the detailed information about a fighter
     """
@@ -26,9 +28,9 @@ const fighterTypeDef = `#graphql
         lastName: String!
 
         """
-        ISO date string for the birth date of the fighter
+        Birth date of the fighter
         """
-        dateOfBirth: String
+        dateOfBirth: Date
 
         """
         URL string for the profile image of the fighter
