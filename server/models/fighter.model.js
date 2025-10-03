@@ -298,6 +298,35 @@ const earningsSchema = new Schema({
 })
 
 /**
+ * Schema definition for physical attributes of a fighter
+ * @typedef {Object} physicalAttributesSchema
+ * @property {Number} heightCm - Height in centimeters
+ * @property {String} heightFeet - Height in feet and inches format (e.g., "5'10\"")
+ * @property {Number} weightKg - Weight in kilograms
+ * @property {Number} armReach - Arm reach in centimeters
+ * @property {Number} legReach - Leg reach in centimeters
+ * @property {String} bodyType - Body type description (e.g., "Athletic", "Stocky", "Lean")
+ * @property {Number} koPower - Knockout power rating (1-10 scale)
+ * @property {Number} durability - Durability rating (1-10 scale)
+ * @property {Number} strength - Strength rating (1-10 scale)
+ * @property {Number} endurance - Endurance rating (1-10 scale)
+ * @property {Number} agility - Agility rating (1-10 scale)
+ */
+const physicalAttributesSchema = new Schema({
+    heightCm: { type: Number },
+    heightFeet: { type: String },
+    weightKg: { type: Number },
+    armReach: { type: Number },
+    legReach: { type: Number },
+    bodyType: { type: String },
+    koPower: { type: Number, min: 1, max: 10 },
+    durability: { type: Number, min: 1, max: 10 },
+    strength: { type: Number, min: 1, max: 10 },
+    endurance: { type: Number, min: 1, max: 10 },
+    agility: { type: Number, min: 1, max: 10 }
+})
+
+/**
  * Schema definition for fighter schema - a complete information on a fighter
  * @typedef {Object} fighterSchema
  * @property {String} firstName - The first name of a fighter
@@ -310,6 +339,7 @@ const earningsSchema = new Schema({
  * @property {Array.<Object>} streaks - Provides a list of objects showing a fighter's streak across an individual competition, referring the `streakSchema`
  * @property {Array.<Object>} opponentsHistory - Provides a list of objects showing a fighter's performance against every opponent, referring the `opponentHistorySchema`
  * @property {Array.<Object>} competitionHistory - Provides a list of objects showcasing fighter's performance in every competition, referring to the `competitionRecordSchema`
+ * @property {Object} physicalAttributes - Provides physical attributes of the fighter, referring to the `physicalAttributesSchema`
  */
 export const fighterSchema = new Schema({
     firstName: { type: String, required: true },
@@ -326,7 +356,8 @@ export const fighterSchema = new Schema({
     location: locationSchema,
     debutInformation: debutInformationSchema,
     images: [String],
-    earnings: earningsSchema
+    earnings: earningsSchema,
+    physicalAttributes: physicalAttributesSchema
 });
 
 /* Indexes */

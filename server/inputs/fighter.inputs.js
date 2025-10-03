@@ -81,6 +81,7 @@ const fighterInputs = `#graphql
         opponentsHistory: [OpponentHistoryInput]
         competitionHistory: [CompetitionHistoryInput]
         isArchived: Boolean
+        physicalAttributes: PhysicalAttributesInput
     }
 
     input LocationInput {
@@ -112,6 +113,20 @@ const fighterInputs = `#graphql
         totalEarningsInEur: Float
     }
 
+    input PhysicalAttributesInput {
+        heightCm: Float
+        heightFeet: String
+        weightKg: Float
+        armReach: Float
+        legReach: Float
+        bodyType: String
+        koPower: Int
+        durability: Int
+        strength: Int
+        endurance: Int
+        agility: Int
+    }
+
     input FighterInput {
         firstName: String
         lastName: String
@@ -128,6 +143,7 @@ const fighterInputs = `#graphql
         debutInformation: DebutInput
         images: [String]
         earnings: [FighterEarningsInput]
+        physicalAttributes: PhysicalAttributesInput
     }
 `;
 

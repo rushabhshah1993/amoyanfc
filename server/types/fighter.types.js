@@ -86,6 +86,20 @@ const fighterTypes = `#graphql
         fighterOfTheSeasonAwardMoneyInEur: Float
         totalEarningInEurs: Float
     }
+
+    type PhysicalAttributesData {
+        heightCm: Float
+        heightFeet: String
+        weightKg: Float
+        armReach: Float
+        legReach: Float
+        bodyType: String
+        koPower: Int
+        durability: Int
+        strength: Int
+        endurance: Int
+        agility: Int
+    }
 `;
 
 export default fighterTypes;

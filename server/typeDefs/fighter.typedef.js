@@ -89,6 +89,11 @@ const fighterTypeDef = `#graphql
         Fighter's earning
         """
         earnings: [EarningData]
+
+        """
+        Fighter's physical attributes
+        """
+        physicalAttributes: PhysicalAttributesData
     }
 
     """
