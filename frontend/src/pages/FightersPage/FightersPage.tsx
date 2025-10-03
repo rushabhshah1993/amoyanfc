@@ -42,6 +42,11 @@ const FightersPage: React.FC = () => {
 
     const fighters: Fighter[] = data?.getAllFighters || [];
 
+    // Sort fighters alphabetically by first name (create new array to avoid mutating read-only array)
+    const sortedFighters = [...fighters].sort((a, b) => 
+        a.firstName.toLowerCase().localeCompare(b.firstName.toLowerCase())
+    );
+
     return (
         <div className="fighters-page">
             <div className="fighters-section">
@@ -50,14 +55,14 @@ const FightersPage: React.FC = () => {
                     <p className="section-subtitle">Meet our talented fighters</p>
                 </div>
                 
-                {fighters.length === 0 ? (
+                {sortedFighters.length === 0 ? (
                     <div className="no-fighters">
                         <FontAwesomeIcon icon={faUser} className="no-fighters-icon" />
                         No fighters found.
                     </div>
                 ) : (
                     <div className="fighters-grid">
-                        {fighters.map((fighter) => (
+                        {sortedFighters.map((fighter) => (
                             <div key={fighter.id} className="fighter-card">
                                 <div className="fighter-image-container">
                                     <S3Image
