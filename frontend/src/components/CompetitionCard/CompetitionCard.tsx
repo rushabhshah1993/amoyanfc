@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrophy, faCalendarAlt, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faTrophy, faCalendarAlt, faUsers, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import RobustGoogleDriveImage from '../RobustGoogleDriveImage/RobustGoogleDriveImage';
 import './CompetitionCard.css';
 
@@ -18,6 +18,23 @@ interface CompetitionCardProps {
 }
 
 const CompetitionCard: React.FC<CompetitionCardProps> = ({ competition }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [needsTruncation, setNeedsTruncation] = useState(false);
+    const descriptionRef = useRef<HTMLParagraphElement>(null);
+
+    useEffect(() => {
+        if (descriptionRef.current && competition?.description) {
+            const element = descriptionRef.current;
+            const lineHeight = parseInt(window.getComputedStyle(element).lineHeight);
+            const maxHeight = lineHeight * 3; // 3 lines
+            setNeedsTruncation(element.scrollHeight > maxHeight);
+        }
+    }, [competition?.description]);
+
+    const toggleExpanded = () => {
+        setIsExpanded(!isExpanded);
+    };
+
     if (!competition) {
         return (
             <div className="competition-card error-card">
@@ -37,13 +54,36 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({ competition }) => {
             </div>
             <div className="competition-info">
                 <h3 className="competition-name">
-                    <FontAwesomeIcon icon={faTrophy} className="competition-icon" />
                     {competition.competitionName}
                 </h3>
                 {competition.description && (
-                    <p className="competition-description">
-                        {competition.description}
-                    </p>
+                    <div className="description-container">
+                        <p 
+                            ref={descriptionRef}
+                            className={`competition-description ${isExpanded ? 'expanded' : ''}`}
+                        >
+                            {competition.description}
+                            {needsTruncation && (
+                                <button 
+                                    className="view-more-btn inline"
+                                    onClick={toggleExpanded}
+                                    type="button"
+                                >
+                                    {isExpanded ? (
+                                        <>
+                                            <span> View Less</span>
+                                            <FontAwesomeIcon icon={faChevronUp} />
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span>... View More</span>
+                                            <FontAwesomeIcon icon={faChevronDown} />
+                                        </>
+                                    )}
+                                </button>
+                            )}
+                        </p>
+                    </div>
                 )}
                 <div className="competition-meta">
                     {competition.startDate && (

@@ -4,14 +4,9 @@
     box-shadow: 0 4px 6px var(--shadow-color);
     overflow: hidden;
     transition: all 0.3s ease;
-    cursor: pointer;
     border: 1px solid var(--border-color);
 }
 
-.competition-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px var(--shadow-color);
-}
 
 .competition-logo {
     width: 100%;
@@ -26,7 +21,7 @@
 }
 
 .competition-info {
-    padding: 20px;
+    padding: 8px;
 }
 
 .competition-name {
@@ -45,8 +40,12 @@
     font-size: 16px;
 }
 
+.description-container {
+    margin-bottom: 16px;
+}
+
 .competition-description {
-    margin: 0 0 16px 0;
+    margin: 0;
     color: var(--text-secondary);
     font-size: 14px;
     line-height: 1.5;
@@ -55,6 +54,47 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     transition: color 0.3s ease;
+    text-align: left;
+}
+
+.competition-description.expanded {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
+.view-more-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.3s ease;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+
+.view-more-btn.inline {
+    margin-left: 4px;
+}
+
+.view-more-btn:hover {
+    color: var(--text-primary);
+}
+
+.view-more-btn svg {
+    font-size: 10px;
+    transition: transform 0.2s ease;
+}
+
+.view-more-btn:hover svg {
+    transform: scale(1.1);
 }
 
 .competition-meta {
