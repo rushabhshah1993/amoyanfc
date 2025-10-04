@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faArrowLeft, faUser } from '@fortawesome/free-solid-svg-icons';
 import { GET_FIGHTER_INFORMATION } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
+import { getCountryFlag } from '../../utils/countryFlags';
 import './FighterPage.css';
 
 interface Location {
@@ -163,8 +164,8 @@ const FighterPage: React.FC = () => {
                                 <span className="detail-label">Location</span>
                                 <span className="detail-value">
                                     {fighter.location.city && fighter.location.country 
-                                        ? `${fighter.location.city}, ${fighter.location.country}`
-                                        : fighter.location.city || fighter.location.country || 'N/A'
+                                        ? `${fighter.location.city}, ${getCountryFlag(fighter.location.country)} ${fighter.location.country}`
+                                        : fighter.location.city || (fighter.location.country ? `${getCountryFlag(fighter.location.country)} ${fighter.location.country}` : 'N/A')
                                     }
                                 </span>
                             </div>
