@@ -63,17 +63,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 155,
+        "heightFeet": "5'1",
+        "weightKg": 51,
+        "armReach": 159,
+        "legReach": 89,
+        "bodyType": "Endurance-focused, light mesomorph/ectomorph mix → cardio and agility specialist",
+        "koPower": 6,
+        "durability": 7.5,
+        "strength": 6.5,
+        "endurance": 9.5,
+        "agility": 8.5
       }
     },
     {
@@ -132,25 +132,24 @@
       "lastName": "Arez",
       "skillset": [
         "Boxing",
-        "MMA",
-        "Brawler"
+        "MMA"
       ],
       "location": {
         "city": "Mumbai",
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 170,
+        "heightFeet": "5'7",
+        "weightKg": 62,
+        "armReach": 174,
+        "legReach": 79,
+        "bodyType": "Lean-muscular, balanced frame (built for speed & stamina over bulk)",
+        "koPower": 7.5,
+        "durability": 7,
+        "strength": 7.5,
+        "endurance": 8.5,
+        "agility": 8
       }
     },
     {
@@ -190,17 +189,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 167,
+        "heightFeet": "5'6",
+        "weightKg": 66,
+        "armReach": 171,
+        "legReach": 95,
+        "bodyType": "Athletic mesomorph, highly conditioned, built for power + endurance balance",
+        "koPower": 8,
+        "durability": 8.5,
+        "strength": 8.5,
+        "endurance": 8.5,
+        "agility": 7.5
       }
     },
     {
@@ -234,7 +233,6 @@
       "lastName": "Valecha",
       "skillset": [
         "MMA",
-        "Brawler",
         "Boxing"
       ],
       "location": {
@@ -242,17 +240,17 @@
         "country": "United Kingdom"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 167,
+        "heightFeet": "5'6",
+        "weightKg": 65,
+        "armReach": 169,
+        "legReach": 96,
+        "bodyType": "Muscular, power-oriented lower body dominance",
+        "koPower": 8.5,
+        "durability": 8,
+        "strength": 9,
+        "endurance": 6.5,
+        "agility": 7.5
       }
     },
     {
@@ -390,25 +388,24 @@
       "firstName": "Komal",
       "lastName": "Madamwar",
       "skillset": [
-        "MMA",
-        "Brawler"
+        "MMA"
       ],
       "location": {
         "city": "Charlotte",
         "country": "United States of America"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 170,
+        "heightFeet": "5'7",
+        "weightKg": 63,
+        "armReach": 172,
+        "legReach": 101,
+        "bodyType": "Ectomorph-Lean (long limbs, defined muscle tone, strong endurance potential)",
+        "koPower": 6.5,
+        "durability": 7.5,
+        "strength": 7,
+        "endurance": 8.5,
+        "agility": 8
       }
     },
     {
@@ -524,17 +521,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 150,
+        "heightFeet": "4'11",
+        "weightKg": 47,
+        "armReach": 151,
+        "legReach": 70,
+        "bodyType": "Agile, compact, highly mobile.",
+        "koPower": 6,
+        "durability": 7,
+        "strength": 6.5,
+        "endurance": 8.5,
+        "agility": 9
       }
     },
     {
@@ -567,25 +564,25 @@
       "firstName": "Amruta",
       "lastName": "Date",
       "skillset": [
-        "Judo",
-        "Taekwondo"
+        "Taekwondo",
+        "Judo"
       ],
       "location": {
         "city": "Mumbai",
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 160,
+        "heightFeet": "5'3",
+        "weightKg": 55,
+        "armReach": 163,
+        "legReach": 95,
+        "bodyType": "Compact and agile — favors mobility, cardio, and precision",
+        "koPower": 6,
+        "durability": 7.5,
+        "strength": 6.5,
+        "endurance": 8.5,
+        "agility": 9
       }
     },
     {
@@ -655,17 +652,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 168,
+        "heightFeet": "5'6",
+        "weightKg": 57,
+        "armReach": 171,
+        "legReach": 79,
+        "bodyType": "Tall, rangy, lean, with strength from consistent lifting + mobility from Capoeira",
+        "koPower": 7.5,
+        "durability": 7,
+        "strength": 8,
+        "endurance": 9,
+        "agility": 8.5
       }
     },
     {
@@ -681,17 +678,17 @@
         "country": "United States of America"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 163,
+        "heightFeet": "5'4",
+        "weightKg": 59,
+        "armReach": 166,
+        "legReach": 98,
+        "bodyType": "Compact, strong, explosive — more power-oriented than rangy",
+        "koPower": 8,
+        "durability": 8.5,
+        "strength": 9,
+        "endurance": 8,
+        "agility": 7.5
       }
     },
     {
@@ -733,17 +730,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 173,
+        "heightFeet": "5'8",
+        "weightKg": 60,
+        "armReach": 176,
+        "legReach": 95,
+        "bodyType": "Tall and lean, endurance-focused with strong core stability (Pilates influence)",
+        "koPower": 7,
+        "durability": 7,
+        "strength": 6.5,
+        "endurance": 9,
+        "agility": 8.5
       }
     },
     {
@@ -751,24 +748,24 @@
       "firstName": "Kriti",
       "lastName": "Kapoor",
       "skillset": [
-        "Taekwondo"
+        "MMA"
       ],
       "location": {
         "city": "London",
         "country": "United Kingdom"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 165,
+        "heightFeet": "5'5",
+        "weightKg": 57,
+        "armReach": 167,
+        "legReach": 94,
+        "bodyType": "Lean & toned — stamina-driven with explosive sprinting ability",
+        "koPower": 6.5,
+        "durability": 7.5,
+        "strength": 7,
+        "endurance": 9.5,
+        "agility": 9
       }
     },
     {
@@ -860,17 +857,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 170,
+        "heightFeet": "5'7",
+        "weightKg": 62,
+        "armReach": 173,
+        "legReach": 102,
+        "bodyType": "Rangy striker — prioritizes reach, accuracy, and conditioning",
+        "koPower": 7,
+        "durability": 7.5,
+        "strength": 7,
+        "endurance": 8,
+        "agility": 7.5
       }
     },
     {
@@ -954,24 +951,25 @@
       "firstName": "Sayali",
       "lastName": "Raut",
       "skillset": [
-        "MMA"
+        "MMA",
+        "Muay Thai"
       ],
       "location": {
         "city": "Mumbai",
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 155,
+        "heightFeet": "5'1",
+        "weightKg": 51,
+        "armReach": 157,
+        "legReach": 73,
+        "bodyType": "Balanced and conditioned, suited for endurance and striking exchanges.",
+        "koPower": 7.5,
+        "durability": 8,
+        "strength": 7,
+        "endurance": 8.5,
+        "agility": 7.5
       }
     },
     {
@@ -989,17 +987,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 152,
+        "heightFeet": "5'0",
+        "weightKg": 51,
+        "armReach": 155,
+        "legReach": 69,
+        "bodyType": "Compact-athletic, high endurance, wiry strength",
+        "koPower": 6,
+        "durability": 8,
+        "strength": 7,
+        "endurance": 9,
+        "agility": 7.5
       }
     },
     {
@@ -1014,17 +1012,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 168,
+        "heightFeet": "5'6",
+        "weightKg": 61,
+        "armReach": 171,
+        "legReach": 78,
+        "bodyType": "Lean-muscular, strong core, athletic proportions",
+        "koPower": 8,
+        "durability": 7,
+        "strength": 7.5,
+        "endurance": 7.5,
+        "agility": 7
       }
     },
     {
@@ -1033,25 +1031,24 @@
       "lastName": "Punamiya",
       "skillset": [
         "Sambo",
-        "MMA",
-        "Brawler"
+        "MMA"
       ],
       "location": {
         "city": "Mumbai",
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 180,
+        "heightFeet": "5'11",
+        "weightKg": 71,
+        "armReach": 183,
+        "legReach": 109,
+        "bodyType": "Tall and powerful — leverages reach, grappling strength, and length in clinch/ground control",
+        "koPower": 7.5,
+        "durability": 8,
+        "strength": 8.5,
+        "endurance": 8,
+        "agility": 7
       }
     },
     {
@@ -1066,17 +1063,17 @@
         "country": "Turkey"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 163,
+        "heightFeet": "5'4",
+        "weightKg": 58,
+        "armReach": 167,
+        "legReach": 98,
+        "bodyType": "Functional and powerful — explosive core + lower body strength with balanced endurance",
+        "koPower": 7,
+        "durability": 8,
+        "strength": 8,
+        "endurance": 9,
+        "agility": 7.5
       }
     },
     {
@@ -1118,17 +1115,17 @@
         "country": "New Zealand"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 160,
+        "heightFeet": "5'3",
+        "weightKg": 57,
+        "armReach": 162,
+        "legReach": 96,
+        "bodyType": "Compact but powerful — strong core, functional strength, flexible from Pilates training",
+        "koPower": 7.5,
+        "durability": 8,
+        "strength": 7.5,
+        "endurance": 8,
+        "agility": 7
       }
     },
     {
@@ -1144,17 +1141,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 175,
+        "heightFeet": "5'9",
+        "weightKg": 64,
+        "armReach": 178,
+        "legReach": 98,
+        "bodyType": "Tall, strong, agile — powerful lower body, flexible from dance background",
+        "koPower": 8,
+        "durability": 8,
+        "strength": 8,
+        "endurance": 8,
+        "agility": 8.5
       }
     },
     {
@@ -1220,17 +1217,17 @@
         "country": "United States of America"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 163,
+        "heightFeet": "5'4",
+        "weightKg": 54,
+        "armReach": 165,
+        "legReach": 88,
+        "bodyType": "Balanced-athletic, sturdy lower body from kickboxing training",
+        "koPower": 7.5,
+        "durability": 8,
+        "strength": 7,
+        "endurance": 7.5,
+        "agility": 7.5
       }
     },
     {
@@ -1291,25 +1288,24 @@
       "skillset": [
         "Taekwondo",
         "MMA",
-        "Brawler",
-        "Judo"
+        "Boxing"
       ],
       "location": {
         "city": "New York",
         "country": "United States of America"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 164,
+        "heightFeet": "5'5",
+        "weightKg": 58,
+        "armReach": 165,
+        "legReach": 165,
+        "bodyType": 78,
+        "koPower": 9,
+        "durability": 8,
+        "strength": 8.5,
+        "endurance": 7.5,
+        "agility": 8.5
       }
     },
     {
@@ -1345,25 +1341,24 @@
       "skillset": [
         "MMA",
         "Muay Thai",
-        "Karate",
-        "Brawler"
+        "Karate"
       ],
       "location": {
-        "city": "Mumbai",
+        "city": "Bangalore",
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 150,
+        "heightFeet": "4'11",
+        "weightKg": 48,
+        "armReach": 151,
+        "legReach": 67,
+        "bodyType": "Compact-athletic; strong legs (Karate roots), excellent balance and flexibility (Pilates)",
+        "koPower": 7,
+        "durability": 9,
+        "strength": 7.5,
+        "endurance": 8.5,
+        "agility": 8
       }
     },
     {
@@ -1375,8 +1370,8 @@
         "Brazilian Jiu-Jitsu (BJJ)"
       ],
       "location": {
-        "city": "Bangalore",
-        "country": "India"
+        "city": "Cincinnati",
+        "country": "United States of America"
       },
       "physicalAttributes": {
         "heightCm": null,
