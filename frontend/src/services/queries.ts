@@ -20,6 +20,10 @@ export const GET_ALL_FIGHTERS = gql`
             firstName
             lastName
             profileImage
+            location {
+                city
+                country
+            }
             physicalAttributes {
                 heightCm
                 heightFeet

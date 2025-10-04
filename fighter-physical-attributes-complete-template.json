@@ -1,0 +1,1483 @@
+{
+  "fighters": [
+    {
+      "id": "676d7151eb38b2b97c6da955",
+      "firstName": "Anushka",
+      "lastName": "Kamat",
+      "skillset": [
+        "Boxing",
+        "MMA"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "2001-07-21",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d731ceb38b2b97c6da96f",
+      "firstName": "Jinal",
+      "lastName": "Virani",
+      "skillset": [
+        "Kickboxing"
+      ],
+      "location": {
+        "city": "Ahmedabad",
+        "country": "India"
+      },
+      "dateOfBirth": "1997-06-02",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d736eeb38b2b97c6da975",
+      "firstName": "Kinjal",
+      "lastName": "Solanki",
+      "skillset": [
+        "MMA"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1993-01-26",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d74aeeb38b2b97c6da98b",
+      "firstName": "Ophelia",
+      "lastName": "Trelawney",
+      "skillset": [
+        "MMA"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": null,
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d74bceb38b2b97c6da98d",
+      "firstName": "Priyanka",
+      "lastName": "Gandhi",
+      "skillset": [
+        "MMA"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1995-06-23",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7631eb38b2b97c6da9ab",
+      "firstName": "Venessa",
+      "lastName": "Arez",
+      "skillset": [
+        "Boxing",
+        "MMA",
+        "Brawler"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1999-09-02",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d764eeb38b2b97c6da9ad",
+      "firstName": "Vidhi",
+      "lastName": "Parmar",
+      "skillset": [
+        "MMA"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1993-11-02",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d6fa0eb38b2b97c6da94b",
+      "firstName": "Aishwarya",
+      "lastName": "Sharma",
+      "skillset": [
+        "MMA"
+      ],
+      "location": {
+        "city": "Navi Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1996-12-05",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d70e7eb38b2b97c6da94f",
+      "firstName": "Ananya",
+      "lastName": "Suvarna",
+      "skillset": [
+        "MMA"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "2003-09-19",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7201eb38b2b97c6da95f",
+      "firstName": "Drishti",
+      "lastName": "Valecha",
+      "skillset": [
+        "MMA",
+        "Brawler",
+        "Boxing"
+      ],
+      "location": {
+        "city": "London",
+        "country": "United Kingdom"
+      },
+      "dateOfBirth": "1995-08-14",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7250eb38b2b97c6da965",
+      "firstName": "Isha",
+      "lastName": "Haria",
+      "skillset": [
+        "MMA"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1992-01-20",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d72dceb38b2b97c6da96b",
+      "firstName": "Jacqueline",
+      "lastName": "Furtado",
+      "skillset": [
+        "Boxing",
+        "MMA"
+      ],
+      "location": {
+        "city": "Abu Dhabi",
+        "country": "United Arab Emirates"
+      },
+      "dateOfBirth": "1993-08-23",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7136eb38b2b97c6da953",
+      "firstName": "Anmol",
+      "lastName": "Pandya",
+      "skillset": [
+        "MMA",
+        "Kickboxing"
+      ],
+      "location": {
+        "city": "Sydney",
+        "country": "Australia"
+      },
+      "dateOfBirth": "1993-10-03",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d72c5eb38b2b97c6da969",
+      "firstName": "Ishita",
+      "lastName": "Shah",
+      "skillset": [
+        "MMA",
+        "Brazilian Jiu-Jitsu (BJJ)",
+        "Muay Thai"
+      ],
+      "location": {
+        "city": "Philadelphia",
+        "country": "United States of America"
+      },
+      "dateOfBirth": "1993-03-27",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7304eb38b2b97c6da96d",
+      "firstName": "Jinali",
+      "lastName": "Shah",
+      "skillset": [
+        "MMA",
+        "Brazilian Jiu-Jitsu (BJJ)"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1995-09-05",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7399eb38b2b97c6da977",
+      "firstName": "Komal",
+      "lastName": "Madamwar",
+      "skillset": [
+        "MMA",
+        "Brawler"
+      ],
+      "location": {
+        "city": "Charlotte",
+        "country": "United States of America"
+      },
+      "dateOfBirth": "1994-08-28",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d743eeb38b2b97c6da97f",
+      "firstName": "Kruppa",
+      "lastName": "Savla",
+      "skillset": [
+        "Kickboxing"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1994-08-31",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d759ceb38b2b97c6da9a1",
+      "firstName": "Sofiya",
+      "lastName": "Khan",
+      "skillset": [
+        "MMA",
+        "Kalaripattayu"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1995-10-14",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d6f89eb38b2b97c6da949",
+      "firstName": "Aashna",
+      "lastName": "Jogani",
+      "skillset": [
+        "Kickboxing"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1996-08-10",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7241eb38b2b97c6da963",
+      "firstName": "Hinal",
+      "lastName": "Parekh",
+      "skillset": [
+        "Kickboxing"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1992-10-20",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d74caeb38b2b97c6da98f",
+      "firstName": "Rucha",
+      "lastName": "Bhide",
+      "skillset": [
+        "Karate"
+      ],
+      "location": {
+        "city": "Thane",
+        "country": "India"
+      },
+      "dateOfBirth": "1999-10-06",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d75faeb38b2b97c6da9a7",
+      "firstName": "Trishala",
+      "lastName": "Sharma",
+      "skillset": [
+        "Kickboxing"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1996-08-19",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d6fc5eb38b2b97c6da94d",
+      "firstName": "Amruta",
+      "lastName": "Date",
+      "skillset": [
+        "Judo",
+        "Taekwondo"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1996-09-07",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7279eb38b2b97c6da967",
+      "firstName": "Isha",
+      "lastName": "Nagar",
+      "skillset": [
+        "MMA",
+        "Kickboxing"
+      ],
+      "location": {
+        "city": "London",
+        "country": "United Kingdom"
+      },
+      "dateOfBirth": "2000-01-09",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d735aeb38b2b97c6da973",
+      "firstName": "Kanchan",
+      "lastName": "Choudhary",
+      "skillset": [
+        "MMA",
+        "Kickboxing",
+        "Brazilian Jiu-Jitsu (BJJ)"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1996-07-28",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d73ddeb38b2b97c6da979",
+      "firstName": "Kripa",
+      "lastName": "Jalan",
+      "skillset": [
+        "Muay Thai",
+        "Capoeira",
+        "MMA"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1993-08-06",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d749feb38b2b97c6da989",
+      "firstName": "Neha",
+      "lastName": "Gupta",
+      "skillset": [
+        "MMA",
+        "Kickboxing"
+      ],
+      "location": {
+        "city": "San Francisco",
+        "country": "United States of America"
+      },
+      "dateOfBirth": "1994-06-01",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d751aeb38b2b97c6da995",
+      "firstName": "Roopanshi",
+      "lastName": "Bhatt",
+      "skillset": [
+        "MMA",
+        "Brawler"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1990-06-04",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d757aeb38b2b97c6da99d",
+      "firstName": "Shraddha",
+      "lastName": "Bhansali",
+      "skillset": [
+        "Kickboxing",
+        "MMA"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1993-10-22",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d742deb38b2b97c6da97d",
+      "firstName": "Kriti",
+      "lastName": "Kapoor",
+      "skillset": [
+        "Taekwondo"
+      ],
+      "location": {
+        "city": "London",
+        "country": "United Kingdom"
+      },
+      "dateOfBirth": "1997-07-29",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d745feb38b2b97c6da983",
+      "firstName": "Mhafrin",
+      "lastName": "Basta",
+      "skillset": [
+        "MMA"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1994-06-14",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d748eeb38b2b97c6da987",
+      "firstName": "Natasha",
+      "lastName": "Arez",
+      "skillset": [
+        "Kickboxing",
+        "Boxing"
+      ],
+      "location": {
+        "city": "Ontario",
+        "country": "Canada"
+      },
+      "dateOfBirth": "1993-12-15",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7505eb38b2b97c6da993",
+      "firstName": "Ritu",
+      "lastName": "Chanchlani",
+      "skillset": [
+        "Kickboxing"
+      ],
+      "location": {
+        "city": "Ulhasnagar",
+        "country": "India"
+      },
+      "dateOfBirth": "1994-05-23",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7554eb38b2b97c6da999",
+      "firstName": "Sachi",
+      "lastName": "Maker-Biyani",
+      "skillset": [
+        "Kickboxing",
+        "MMA"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1989-07-10",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7568eb38b2b97c6da99b",
+      "firstName": "Shalini",
+      "lastName": "Chaturvedi",
+      "skillset": [
+        "Kickboxing"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1993-12-10",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d75c8eb38b2b97c6da9a3",
+      "firstName": "Supriya",
+      "lastName": "Adep",
+      "skillset": [
+        "MMA",
+        "Brazilian Jiu-Jitsu (BJJ)"
+      ],
+      "location": {
+        "city": "Hyderabad",
+        "country": "India"
+      },
+      "dateOfBirth": "1991-07-21",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d767ceb38b2b97c6da9b1",
+      "firstName": "Yashada",
+      "lastName": "Jogelekar-Bapat",
+      "skillset": [
+        "MMA"
+      ],
+      "location": {
+        "city": "Pune",
+        "country": "India"
+      },
+      "dateOfBirth": "1993-07-29",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d6ecceb38b2b97c6da945",
+      "firstName": "Sayali",
+      "lastName": "Raut",
+      "skillset": [
+        "MMA"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1993-09-02",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7172eb38b2b97c6da957",
+      "firstName": "Ashwini",
+      "lastName": "Date",
+      "skillset": [
+        "Krav Maga",
+        "Boxing",
+        "Taekwondo",
+        "MMA"
+      ],
+      "location": {
+        "city": "Bangalore",
+        "country": "India"
+      },
+      "dateOfBirth": "1992-03-21",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7190eb38b2b97c6da959",
+      "firstName": "Bandgee",
+      "lastName": "Kallra",
+      "skillset": [
+        "Kickboxing"
+      ],
+      "location": {
+        "city": "New Delhi",
+        "country": "India"
+      },
+      "dateOfBirth": "1993-02-10",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d740ceb38b2b97c6da97b",
+      "firstName": "Krishi",
+      "lastName": "Punamiya",
+      "skillset": [
+        "Sambo",
+        "MMA",
+        "Brawler"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1995-09-19",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7452eb38b2b97c6da981",
+      "firstName": "Mahima",
+      "lastName": "Thakur",
+      "skillset": [
+        "MMA"
+      ],
+      "location": {
+        "city": "Istanbul",
+        "country": "Turkey"
+      },
+      "dateOfBirth": "1993-09-24",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7475eb38b2b97c6da985",
+      "firstName": "Mridula",
+      "lastName": "Jadhav",
+      "skillset": [
+        "MMA",
+        "Kickboxing"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1993-12-06",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d75dfeb38b2b97c6da9a5",
+      "firstName": "Tanvi",
+      "lastName": "Shah",
+      "skillset": [
+        "MMA",
+        "Kickboxing"
+      ],
+      "location": {
+        "city": "Wellington",
+        "country": "New Zealand"
+      },
+      "dateOfBirth": "1995-05-01",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d70fbeb38b2b97c6da951",
+      "firstName": "Anika",
+      "lastName": "Beri",
+      "skillset": [
+        "MMA",
+        "Kickboxing"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1995-01-25",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d71b4eb38b2b97c6da95b",
+      "firstName": "Darshita",
+      "lastName": "Bhatt",
+      "skillset": [
+        "Brazilian Jiu-Jitsu (BJJ)"
+      ],
+      "location": {
+        "city": "Panaji",
+        "country": "India"
+      },
+      "dateOfBirth": "1993-05-17",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d71ceeb38b2b97c6da95d",
+      "firstName": "Diana",
+      "lastName": "Chan",
+      "skillset": [
+        "MMA"
+      ],
+      "location": {
+        "city": "Melbourne",
+        "country": "Australia"
+      },
+      "dateOfBirth": "1988-12-20",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d721aeb38b2b97c6da961",
+      "firstName": "Hetal",
+      "lastName": "Boricha",
+      "skillset": [
+        "MMA",
+        "Kickboxing"
+      ],
+      "location": {
+        "city": "Albuquerque",
+        "country": "United States of America"
+      },
+      "dateOfBirth": "1994-05-18",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7333eb38b2b97c6da971",
+      "firstName": "July",
+      "lastName": "Mehta",
+      "skillset": [
+        "MMA"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1993-11-29",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d74efeb38b2b97c6da991",
+      "firstName": "Rashna",
+      "lastName": "Irani",
+      "skillset": [
+        "MMA",
+        "Kung-Fu"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1993-07-11",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d753ceb38b2b97c6da997",
+      "firstName": "Rushika",
+      "lastName": "Mangrola",
+      "skillset": [
+        "Taekwondo",
+        "MMA",
+        "Brawler",
+        "Judo"
+      ],
+      "location": {
+        "city": "New York",
+        "country": "United States of America"
+      },
+      "dateOfBirth": "1996-01-13",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7588eb38b2b97c6da99f",
+      "firstName": "Sneha",
+      "lastName": "Sagar",
+      "skillset": [
+        "MMA",
+        "Karate"
+      ],
+      "location": {
+        "city": "Kalyan",
+        "country": "India"
+      },
+      "dateOfBirth": "1993-05-12",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7613eb38b2b97c6da9a9",
+      "firstName": "Unnati",
+      "lastName": "Vora",
+      "skillset": [
+        "MMA",
+        "Muay Thai",
+        "Karate",
+        "Brawler"
+      ],
+      "location": {
+        "city": "Mumbai",
+        "country": "India"
+      },
+      "dateOfBirth": "1992-02-13",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    },
+    {
+      "id": "676d7663eb38b2b97c6da9af",
+      "firstName": "Vinaya",
+      "lastName": "Rao",
+      "skillset": [
+        "MMA",
+        "Brazilian Jiu-Jitsu (BJJ)"
+      ],
+      "location": {
+        "city": "Bangalore",
+        "country": "India"
+      },
+      "dateOfBirth": "1993-10-05",
+      "physicalAttributes": {
+        "heightCm": null,
+        "heightFeet": null,
+        "weightKg": null,
+        "armReach": null,
+        "legReach": null,
+        "bodyType": null,
+        "koPower": null,
+        "durability": null,
+        "strength": null,
+        "endurance": null,
+        "agility": null
+      }
+    }
+  ],
+  "instructions": {
+    "description": "Template for adding physical attributes to all fighters",
+    "totalFighters": 54,
+    "usage": [
+      "1. Fill in the physicalAttributes object for each fighter",
+      "2. Use GraphQL editFighter mutation to update each fighter",
+      "3. All rating fields should be 1-10 scale",
+      "4. Height: provide both cm and feet/inches",
+      "5. Weight: in kilograms",
+      "6. Reach: in centimeters"
+    ],
+    "exampleMutation": {
+      "query": "mutation EditFighter($id: ID!, $input: FighterInput!) { editFighter(id: $id, input: $input) { id firstName lastName physicalAttributes { heightCm heightFeet weightKg armReach legReach bodyType koPower durability strength endurance agility } } }",
+      "variables": {
+        "id": "676d7151eb38b2b97c6da955",
+        "input": {
+          "physicalAttributes": {
+            "heightCm": 165,
+            "heightFeet": "5'5\"",
+            "weightKg": 60,
+            "armReach": 170,
+            "legReach": 95,
+            "bodyType": "Athletic",
+            "koPower": 6,
+            "durability": 7,
+            "strength": 6,
+            "endurance": 7,
+            "agility": 8
+          }
+        }
+      }
+    }
+  }
+}

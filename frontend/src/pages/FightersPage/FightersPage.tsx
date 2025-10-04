@@ -5,6 +5,7 @@ import { faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_FIGHTERS } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
+import { getCountryFlag } from '../../utils/countryFlags';
 import './FightersPage.css';
 
 interface PhysicalAttributes {
@@ -21,13 +22,20 @@ interface PhysicalAttributes {
     agility?: number;
 }
 
+interface Location {
+    city?: string;
+    country?: string;
+}
+
 interface Fighter {
     id: string;
     firstName: string;
     lastName: string;
     profileImage?: string;
+    location?: Location;
     physicalAttributes?: PhysicalAttributes;
 }
+
 
 const FightersPage: React.FC = () => {
     const navigate = useNavigate();
@@ -54,7 +62,6 @@ const FightersPage: React.FC = () => {
             <div className="fighters-section">
                 <div className="section-header">
                     <h2 className="section-title">Fighters</h2>
-                    <p className="section-subtitle">Meet our talented fighters</p>
                 </div>
                 
                 {sortedFighters.length === 0 ? (
@@ -93,9 +100,25 @@ const FightersPage: React.FC = () => {
                                     />
                                 </div>
                                 <div className="fighter-info">
-                                    <h3 className="fighter-name">
-                                        {fighter.firstName} {fighter.lastName}
-                                    </h3>
+                                    <div className="fighter-name">
+                                        <span className="fighter-first-name">{fighter.firstName}</span>
+                                        <span className="fighter-last-name">{fighter.lastName}</span>
+                                    </div>
+                                    {fighter.location && (fighter.location.city || fighter.location.country) && (
+                                        <div className="fighter-location">
+                                            {fighter.location.country && (
+                                                <span className="country-flag">
+                                                    {getCountryFlag(fighter.location.country)}
+                                                </span>
+                                            )}
+                                            <span className="location-text">
+                                                {fighter.location.city && fighter.location.country 
+                                                    ? `${fighter.location.city}, ${fighter.location.country}`
+                                                    : fighter.location.city || fighter.location.country
+                                                }
+                                            </span>
+                                        </div>
+                                    )}
                                     {fighter.physicalAttributes && (
                                         <div className="fighter-stats">
                                             {fighter.physicalAttributes.heightFeet && (

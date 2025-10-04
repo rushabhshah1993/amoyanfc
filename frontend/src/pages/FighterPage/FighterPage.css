@@ -1,8 +1,9 @@
 .fighter-page {
     min-height: 100vh;
     padding: 2rem;
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .fighter-header {
@@ -14,7 +15,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    background-color: var(--primary-color);
+    background-color: #4285f4;
     color: white;
     border: none;
     border-radius: 8px;
@@ -25,7 +26,7 @@
 }
 
 .back-button:hover {
-    background-color: var(--primary-hover-color);
+    background-color: #3367d6;
     transform: translateY(-1px);
 }
 
@@ -71,11 +72,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--card-background);
+    background-color: var(--bg-secondary);
     border-radius: 12px;
     color: var(--text-secondary);
     font-size: 4rem;
     border: 2px dashed var(--border-color);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .fighter-image-loading {
@@ -89,9 +91,9 @@
 .fighter-name {
     font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 2rem;
-    color: var(--text-color);
+    color: var(--text-primary);
     line-height: 1.2;
+    transition: color 0.3s ease;
 }
 
 .fighter-details {
@@ -105,9 +107,10 @@
     flex-direction: column;
     gap: 0.5rem;
     padding: 1rem;
-    background-color: var(--card-background);
+    background-color: var(--bg-secondary);
     border-radius: 8px;
     border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .detail-label {
@@ -120,23 +123,26 @@
 
 .detail-value {
     font-size: 1.1rem;
-    color: var(--text-color);
+    color: var(--text-primary);
     font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .physical-attributes {
     margin-top: 2rem;
     padding: 1.5rem;
-    background-color: var(--card-background);
+    background-color: var(--bg-secondary);
     border-radius: 12px;
     border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .attributes-title {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
-    color: var(--text-color);
+    color: var(--text-primary);
+    transition: color 0.3s ease;
 }
 
 .attributes-grid {
@@ -150,9 +156,10 @@
     flex-direction: column;
     gap: 0.25rem;
     padding: 0.75rem;
-    background-color: var(--background-color);
+    background-color: var(--bg-primary);
     border-radius: 6px;
     border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .attribute-label {
@@ -166,7 +173,8 @@
 .attribute-value {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--text-color);
+    color: var(--text-primary);
+    transition: color 0.3s ease;
 }
 
 .loading {
@@ -177,11 +185,12 @@
     min-height: 50vh;
     gap: 1rem;
     color: var(--text-secondary);
+    transition: color 0.3s ease;
 }
 
 .loading-spinner {
     font-size: 2rem;
-    color: var(--primary-color);
+    color: #4285f4;
 }
 
 .error {
@@ -189,7 +198,7 @@
     align-items: center;
     justify-content: center;
     min-height: 50vh;
-    color: var(--error-color);
+    color: #dc3545;
     font-size: 1.2rem;
     font-weight: 500;
 }
@@ -201,7 +210,7 @@
 
 [data-theme="dark"] .fighter-image-placeholder,
 [data-theme="dark"] .fighter-image-loading {
-    background-color: var(--card-background);
+    background-color: var(--bg-secondary);
     border-color: var(--border-color);
 }
 
