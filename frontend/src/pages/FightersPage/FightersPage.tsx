@@ -119,25 +119,6 @@ const FightersPage: React.FC = () => {
                                             </span>
                                         </div>
                                     )}
-                                    {fighter.physicalAttributes && (
-                                        <div className="fighter-stats">
-                                            {fighter.physicalAttributes.heightFeet && (
-                                                <span className="stat">
-                                                    Height: {fighter.physicalAttributes.heightFeet}
-                                                </span>
-                                            )}
-                                            {fighter.physicalAttributes.weightKg && (
-                                                <span className="stat">
-                                                    Weight: {fighter.physicalAttributes.weightKg}kg
-                                                </span>
-                                            )}
-                                            {fighter.physicalAttributes.bodyType && (
-                                                <span className="stat">
-                                                    Body Type: {fighter.physicalAttributes.bodyType}
-                                                </span>
-                                            )}
-                                        </div>
-                                    )}
                                 </div>
                             </div>
                         ))}

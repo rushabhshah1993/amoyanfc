@@ -50,10 +50,6 @@
     cursor: pointer;
 }
 
-.fighter-card:hover {
-    transform: translateY(-8px);
-}
-
 .fighter-image-container {
     position: relative;
     margin-bottom: 24px;

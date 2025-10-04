@@ -93,8 +93,8 @@
 
 /* Hover effects for interactive images */
 .s3-image:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 12px var(--shadow-color);
+    transform: scale(1.1);
+    /* box-shadow: 0 4px 12px var(--shadow-color); */
 }
 
 /* Responsive adjustments */

@@ -38,17 +38,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 178,
+        "heightFeet": "5'10",
+        "weightKg": 64,
+        "armReach": 179,
+        "legReach": 108,
+        "bodyType": "Rangy, agile, fluid - more endurance and technical leverage than brute strength",
+        "koPower": 6.5,
+        "durability": 6.5,
+        "strength": 6.5,
+        "endurance": 8.5,
+        "agility": 9
       }
     },
     {
@@ -625,17 +625,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 173,
+        "heightFeet": "5'8",
+        "weightKg": 63,
+        "armReach": 175,
+        "legReach": 106,
+        "bodyType": "Agile striker - long, rangy frmae with endurance focus",
+        "koPower": 7,
+        "durability": 6.5,
+        "strength": 6.5,
+        "endurance": 8.5,
+        "agility": 8
       }
     },
     {
@@ -906,17 +906,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 171,
+        "heightFeet": "5'7",
+        "weightKg": 61,
+        "armReach": 171,
+        "legReach": 101,
+        "bodyType": "Agile yet powerful - build for endurance and versatility",
+        "koPower": 6.5,
+        "durability": 7,
+        "strength": 7.5,
+        "endurance": 8,
+        "agility": 7.5
       }
     },
     {

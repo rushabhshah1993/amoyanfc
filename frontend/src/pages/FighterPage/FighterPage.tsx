@@ -152,14 +152,15 @@ const FighterPage: React.FC = () => {
                 </div>
 
                 <div className="fighter-info-section">
-                    <h1 className="fighter-name">
-                        {fighter.firstName} {fighter.lastName}
-                    </h1>
+                    <div className="fighter-name-section">
+                        <h1 className="fighter-first-name">{fighter.firstName}</h1>
+                        <h2 className="fighter-last-name">{fighter.lastName}</h2>
+                    </div>
 
                     <div className="fighter-details">
                         {fighter.location && (
                             <div className="detail-item">
-                                <span className="detail-label">Location:</span>
+                                <span className="detail-label">Location</span>
                                 <span className="detail-value">
                                     {fighter.location.city && fighter.location.country 
                                         ? `${fighter.location.city}, ${fighter.location.country}`
@@ -171,7 +172,7 @@ const FighterPage: React.FC = () => {
 
                         {fighter.skillset && fighter.skillset.length > 0 && (
                             <div className="detail-item">
-                                <span className="detail-label">Fighting Style:</span>
+                                <span className="detail-label">Fighting Style</span>
                                 <span className="detail-value">
                                     {fighter.skillset.join(', ')}
                                 </span>
@@ -180,68 +181,111 @@ const FighterPage: React.FC = () => {
 
                         {fighter.dateOfBirth ? (
                             <div className="detail-item">
-                                <span className="detail-label">Birthday:</span>
+                                <span className="detail-label">Birthday</span>
                                 <span className="detail-value">
                                     {formatDate(fighter.dateOfBirth)} ({calculateAge(fighter.dateOfBirth)} years old)
                                 </span>
                             </div>
                         ) : (
                             <div className="detail-item">
-                                <span className="detail-label">Birthday:</span>
+                                <span className="detail-label">Birthday</span>
                                 <span className="detail-value">Not available</span>
                             </div>
                         )}
 
-                        {fighter.physicalAttributes && (
-                            <div className="physical-attributes">
-                                <h3 className="attributes-title">Physical Attributes</h3>
-                                <div className="attributes-grid">
-                                    {fighter.physicalAttributes.heightFeet && (
-                                        <div className="attribute-item">
-                                            <span className="attribute-label">Height:</span>
-                                            <span className="attribute-value">
-                                                {fighter.physicalAttributes.heightFeet}
-                                            </span>
-                                        </div>
-                                    )}
-                                    {fighter.physicalAttributes.weightKg && (
-                                        <div className="attribute-item">
-                                            <span className="attribute-label">Weight:</span>
-                                            <span className="attribute-value">
-                                                {fighter.physicalAttributes.weightKg} kg
-                                            </span>
-                                        </div>
-                                    )}
-                                    {fighter.physicalAttributes.bodyType && (
-                                        <div className="attribute-item">
-                                            <span className="attribute-label">Body Type:</span>
-                                            <span className="attribute-value">
-                                                {fighter.physicalAttributes.bodyType}
-                                            </span>
-                                        </div>
-                                    )}
-                                    {fighter.physicalAttributes.armReach && (
-                                        <div className="attribute-item">
-                                            <span className="attribute-label">Arm Reach:</span>
-                                            <span className="attribute-value">
-                                                {fighter.physicalAttributes.armReach} cm
-                                            </span>
-                                        </div>
-                                    )}
-                                    {fighter.physicalAttributes.legReach && (
-                                        <div className="attribute-item">
-                                            <span className="attribute-label">Leg Reach:</span>
-                                            <span className="attribute-value">
-                                                {fighter.physicalAttributes.legReach} cm
-                                            </span>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        )}
                     </div>
                 </div>
             </div>
+
+            {fighter.physicalAttributes && (
+                <div className="physical-attributes-section">
+                    <div className="physical-attributes-content">
+                        <h2 className="physical-attributes-title">Physical Attributes</h2>
+                        <div className="physical-attributes-grid">
+                            {fighter.physicalAttributes.heightFeet && (
+                                <div className="physical-attribute-item">
+                                    <span className="physical-attribute-label">Height</span>
+                                    <span className="physical-attribute-value">
+                                        {fighter.physicalAttributes.heightFeet}
+                                    </span>
+                                </div>
+                            )}
+                            {fighter.physicalAttributes.weightKg && (
+                                <div className="physical-attribute-item">
+                                    <span className="physical-attribute-label">Weight</span>
+                                    <span className="physical-attribute-value">
+                                        {fighter.physicalAttributes.weightKg} kg
+                                    </span>
+                                </div>
+                            )}
+                            {fighter.physicalAttributes.bodyType && (
+                                <div className="physical-attribute-item">
+                                    <span className="physical-attribute-label">Body Type</span>
+                                    <span className="physical-attribute-value">
+                                        {fighter.physicalAttributes.bodyType}
+                                    </span>
+                                </div>
+                            )}
+                            {fighter.physicalAttributes.armReach && (
+                                <div className="physical-attribute-item">
+                                    <span className="physical-attribute-label">Arm Reach</span>
+                                    <span className="physical-attribute-value">
+                                        {fighter.physicalAttributes.armReach} cm
+                                    </span>
+                                </div>
+                            )}
+                            {fighter.physicalAttributes.legReach && (
+                                <div className="physical-attribute-item">
+                                    <span className="physical-attribute-label">Leg Reach</span>
+                                    <span className="physical-attribute-value">
+                                        {fighter.physicalAttributes.legReach} cm
+                                    </span>
+                                </div>
+                            )}
+                            {fighter.physicalAttributes.koPower && (
+                                <div className="physical-attribute-item">
+                                    <span className="physical-attribute-label">KO Power</span>
+                                    <span className="physical-attribute-value">
+                                        {fighter.physicalAttributes.koPower}/10
+                                    </span>
+                                </div>
+                            )}
+                            {fighter.physicalAttributes.durability && (
+                                <div className="physical-attribute-item">
+                                    <span className="physical-attribute-label">Durability</span>
+                                    <span className="physical-attribute-value">
+                                        {fighter.physicalAttributes.durability}/10
+                                    </span>
+                                </div>
+                            )}
+                            {fighter.physicalAttributes.strength && (
+                                <div className="physical-attribute-item">
+                                    <span className="physical-attribute-label">Strength</span>
+                                    <span className="physical-attribute-value">
+                                        {fighter.physicalAttributes.strength}/10
+                                    </span>
+                                </div>
+                            )}
+                            {fighter.physicalAttributes.endurance && (
+                                <div className="physical-attribute-item">
+                                    <span className="physical-attribute-label">Endurance</span>
+                                    <span className="physical-attribute-value">
+                                        {fighter.physicalAttributes.endurance}/10
+                                    </span>
+                                </div>
+                            )}
+                            {fighter.physicalAttributes.agility && (
+                                <div className="physical-attribute-item">
+                                    <span className="physical-attribute-label">Agility</span>
+                                    <span className="physical-attribute-value">
+                                        {fighter.physicalAttributes.agility}/10
+                                    </span>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

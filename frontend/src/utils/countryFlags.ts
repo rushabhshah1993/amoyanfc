@@ -39,6 +39,7 @@ export const getCountryFlag = (country: string): string => {
         'Nigeria': '🇳🇬',
         'Egypt': '🇪🇬',
         'Morocco': '🇲🇦',
+        'Tanzania': '🇹🇿',
         'Argentina': '🇦🇷',
         'Chile': '🇨🇱',
         'Colombia': '🇨🇴',

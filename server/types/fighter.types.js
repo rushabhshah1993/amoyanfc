@@ -94,11 +94,11 @@ const fighterTypes = `#graphql
         armReach: Float
         legReach: Float
         bodyType: String
-        koPower: Int
-        durability: Int
-        strength: Int
-        endurance: Int
-        agility: Int
+        koPower: Float
+        durability: Float
+        strength: Float
+        endurance: Float
+        agility: Float
     }
 `;
 
