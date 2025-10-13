@@ -13,13 +13,13 @@ import { Schema } from 'mongoose';
  * @property {Number} totalFightersCount - The total number of fighters in that round
  */
 const fightersStandingSchema = new Schema({
-    fighterId: { type: Schema.Types.ObjectId, ref: 'Fighter', required: true },
+    fighterId: { type: String, required: true }, // String to accept ObjectId as string
     fightsCount: { type: Number, required: true },
     wins: { type: Number, required: true },
     points: { type: Number, required: true},
     rank: { type: Number, required: true },
     totalFightersCount: { type: Number, required: true }
-})
+}, { _id: false }) // Disable _id for subdocuments
 
 /**
  * Schema definition for roundStandings - specific for league style competitions
@@ -36,12 +36,16 @@ const roundStandingsSchema = new Schema({
     seasonNumber: { type: Number, required: true },
     divisionNumber: { type: Number, required: true },
     roundNumber: { type: Number, required: true },
-    fightId: { type: Schema.Types.ObjectId, ref: 'Fight', required: true },
+    fightId: { type: String, required: true }, // Changed to String to store fightIdentifier
+    fightIdentifier: { type: String, required: true }, // Human-readable identifier
     standings: [fightersStandingSchema],
 }, {timestamps: true});
 
 /* Indexes */
-roundStandingsSchema.index({ roundId: 1, "standings.fighterId": 1 });
-roundStandingsSchema.index({ updatedAt: 1 }, { expireAfterSeconds: 3600 * 24 * 2 }); // 2 days
+roundStandingsSchema.index({ competitionId: 1, seasonNumber: 1, roundNumber: 1 });
+roundStandingsSchema.index({ fightIdentifier: 1 }, { unique: true });
+roundStandingsSchema.index({ "standings.fighterId": 1 });
+// TTL index commented out for now - can be enabled later for real-time/cache scenarios
+// roundStandingsSchema.index({ updatedAt: 1 }, { expireAfterSeconds: 3600 * 24 * 2 }); // 2 days
 
 export const RoundStandings = mongoose.model('RoundStandings', roundStandingsSchema);

@@ -151,6 +151,8 @@ const LeagueSeasonPage: React.FC = () => {
                                 <div 
                                     key={division.meta.divisionNumber}
                                     className="division-detail-card"
+                                    onClick={() => navigate(`/competition/${competitionId}/season/${seasonId}/division/${division.meta.divisionNumber}`)}
+                                    style={{ cursor: 'pointer' }}
                                 >
                                     <div className="division-detail-left">
                                         {winner ? (

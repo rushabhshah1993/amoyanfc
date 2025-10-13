@@ -1,6 +1,26 @@
-# Google Drive Image Utilities
+# Frontend Utilities
 
+This directory contains utility functions for the Amoyan FC application.
+
+## Available Utilities
+
+### 1. Google Drive Image Utilities (`googleDriveUtils.ts`)
 This utility provides functions to convert Google Drive image URLs to the proper format for direct viewing in web applications.
+
+### 2. Round Standings Calculator (`standingsCalculator.ts`)
+Comprehensive utility for calculating league standings with head-to-head tiebreaking logic. See [standingsCalculator.README.md](./standingsCalculator.README.md) for detailed documentation.
+
+### 3. S3 Image Utilities (`s3ImageUtils.ts`)
+Utilities for working with AWS S3 images and CloudFront CDN.
+
+### 4. Country Flags Utilities (`countryFlags.ts`)
+Utilities for displaying country flags based on country codes.
+
+---
+
+## Google Drive Image Utilities
+
+Functions to convert Google Drive image URLs to the proper format for direct viewing in web applications.
 
 ## Features
 

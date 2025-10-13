@@ -1,0 +1,462 @@
+[
+  {
+    "competitionId": "67780dcc09a4c4b25127f8f6",
+    "seasonNumber": 1,
+    "divisionNumber": 1,
+    "roundNumber": 1,
+    "fightId": "IFC-S1-D1-R1-F1",
+    "fightIdentifier": "IFC-S1-D1-R1-F1",
+    "standings": [
+      {
+        "fighterId": "676d7631eb38b2b97c6da9ab",
+        "fightsCount": 1,
+        "wins": 1,
+        "points": 3,
+        "rank": 1,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d6fa0eb38b2b97c6da94b",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 2,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d70fbeb38b2b97c6da951",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 3,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d7136eb38b2b97c6da953",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 4,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d721aeb38b2b97c6da961",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 5,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d740ceb38b2b97c6da97b",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 6,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d7452eb38b2b97c6da981",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 7,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d749feb38b2b97c6da989",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 8,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d751aeb38b2b97c6da995",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 9,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d6ecceb38b2b97c6da945",
+        "fightsCount": 1,
+        "wins": 0,
+        "points": 0,
+        "rank": 10,
+        "totalFightersCount": 10
+      }
+    ],
+    "createdAt": "2025-10-13T19:35:08.399Z",
+    "updatedAt": "2025-10-13T19:35:08.400Z"
+  },
+  {
+    "competitionId": "67780dcc09a4c4b25127f8f6",
+    "seasonNumber": 1,
+    "divisionNumber": 1,
+    "roundNumber": 1,
+    "fightId": "IFC-S1-D1-R1-F2",
+    "fightIdentifier": "IFC-S1-D1-R1-F2",
+    "standings": [
+      {
+        "fighterId": "676d721aeb38b2b97c6da961",
+        "fightsCount": 1,
+        "wins": 1,
+        "points": 3,
+        "rank": 1,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d7631eb38b2b97c6da9ab",
+        "fightsCount": 1,
+        "wins": 1,
+        "points": 3,
+        "rank": 2,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d6fa0eb38b2b97c6da94b",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 3,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d70fbeb38b2b97c6da951",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 4,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d7136eb38b2b97c6da953",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 5,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d740ceb38b2b97c6da97b",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 6,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d7452eb38b2b97c6da981",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 7,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d749feb38b2b97c6da989",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 8,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d751aeb38b2b97c6da995",
+        "fightsCount": 1,
+        "wins": 0,
+        "points": 0,
+        "rank": 9,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d6ecceb38b2b97c6da945",
+        "fightsCount": 1,
+        "wins": 0,
+        "points": 0,
+        "rank": 10,
+        "totalFightersCount": 10
+      }
+    ],
+    "createdAt": "2025-10-13T19:35:08.400Z",
+    "updatedAt": "2025-10-13T19:35:08.400Z"
+  },
+  {
+    "competitionId": "67780dcc09a4c4b25127f8f6",
+    "seasonNumber": 1,
+    "divisionNumber": 1,
+    "roundNumber": 1,
+    "fightId": "IFC-S1-D1-R1-F3",
+    "fightIdentifier": "IFC-S1-D1-R1-F3",
+    "standings": [
+      {
+        "fighterId": "676d721aeb38b2b97c6da961",
+        "fightsCount": 1,
+        "wins": 1,
+        "points": 3,
+        "rank": 1,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d7452eb38b2b97c6da981",
+        "fightsCount": 1,
+        "wins": 1,
+        "points": 3,
+        "rank": 2,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d7631eb38b2b97c6da9ab",
+        "fightsCount": 1,
+        "wins": 1,
+        "points": 3,
+        "rank": 3,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d6fa0eb38b2b97c6da94b",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 4,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d70fbeb38b2b97c6da951",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 5,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d7136eb38b2b97c6da953",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 6,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d740ceb38b2b97c6da97b",
+        "fightsCount": 1,
+        "wins": 0,
+        "points": 0,
+        "rank": 7,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d749feb38b2b97c6da989",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 8,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d751aeb38b2b97c6da995",
+        "fightsCount": 1,
+        "wins": 0,
+        "points": 0,
+        "rank": 9,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d6ecceb38b2b97c6da945",
+        "fightsCount": 1,
+        "wins": 0,
+        "points": 0,
+        "rank": 10,
+        "totalFightersCount": 10
+      }
+    ],
+    "createdAt": "2025-10-13T19:35:08.400Z",
+    "updatedAt": "2025-10-13T19:35:08.400Z"
+  },
+  {
+    "competitionId": "67780dcc09a4c4b25127f8f6",
+    "seasonNumber": 1,
+    "divisionNumber": 1,
+    "roundNumber": 1,
+    "fightId": "IFC-S1-D1-R1-F4",
+    "fightIdentifier": "IFC-S1-D1-R1-F4",
+    "standings": [
+      {
+        "fighterId": "676d70fbeb38b2b97c6da951",
+        "fightsCount": 1,
+        "wins": 1,
+        "points": 3,
+        "rank": 1,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d721aeb38b2b97c6da961",
+        "fightsCount": 1,
+        "wins": 1,
+        "points": 3,
+        "rank": 2,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d7452eb38b2b97c6da981",
+        "fightsCount": 1,
+        "wins": 1,
+        "points": 3,
+        "rank": 3,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d7631eb38b2b97c6da9ab",
+        "fightsCount": 1,
+        "wins": 1,
+        "points": 3,
+        "rank": 4,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d6fa0eb38b2b97c6da94b",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 5,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d7136eb38b2b97c6da953",
+        "fightsCount": 1,
+        "wins": 0,
+        "points": 0,
+        "rank": 6,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d740ceb38b2b97c6da97b",
+        "fightsCount": 1,
+        "wins": 0,
+        "points": 0,
+        "rank": 7,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d749feb38b2b97c6da989",
+        "fightsCount": 0,
+        "wins": 0,
+        "points": 0,
+        "rank": 8,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d751aeb38b2b97c6da995",
+        "fightsCount": 1,
+        "wins": 0,
+        "points": 0,
+        "rank": 9,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d6ecceb38b2b97c6da945",
+        "fightsCount": 1,
+        "wins": 0,
+        "points": 0,
+        "rank": 10,
+        "totalFightersCount": 10
+      }
+    ],
+    "createdAt": "2025-10-13T19:35:08.400Z",
+    "updatedAt": "2025-10-13T19:35:08.400Z"
+  },
+  {
+    "competitionId": "67780dcc09a4c4b25127f8f6",
+    "seasonNumber": 1,
+    "divisionNumber": 1,
+    "roundNumber": 1,
+    "fightId": "IFC-S1-D1-R1-F5",
+    "fightIdentifier": "IFC-S1-D1-R1-F5",
+    "standings": [
+      {
+        "fighterId": "676d70fbeb38b2b97c6da951",
+        "fightsCount": 1,
+        "wins": 1,
+        "points": 3,
+        "rank": 1,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d721aeb38b2b97c6da961",
+        "fightsCount": 1,
+        "wins": 1,
+        "points": 3,
+        "rank": 2,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d7452eb38b2b97c6da981",
+        "fightsCount": 1,
+        "wins": 1,
+        "points": 3,
+        "rank": 3,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d749feb38b2b97c6da989",
+        "fightsCount": 1,
+        "wins": 1,
+        "points": 3,
+        "rank": 4,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d7631eb38b2b97c6da9ab",
+        "fightsCount": 1,
+        "wins": 1,
+        "points": 3,
+        "rank": 5,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d6fa0eb38b2b97c6da94b",
+        "fightsCount": 1,
+        "wins": 0,
+        "points": 0,
+        "rank": 6,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d7136eb38b2b97c6da953",
+        "fightsCount": 1,
+        "wins": 0,
+        "points": 0,
+        "rank": 7,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d740ceb38b2b97c6da97b",
+        "fightsCount": 1,
+        "wins": 0,
+        "points": 0,
+        "rank": 8,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d751aeb38b2b97c6da995",
+        "fightsCount": 1,
+        "wins": 0,
+        "points": 0,
+        "rank": 9,
+        "totalFightersCount": 10
+      },
+      {
+        "fighterId": "676d6ecceb38b2b97c6da945",
+        "fightsCount": 1,
+        "wins": 0,
+        "points": 0,
+        "rank": 10,
+        "totalFightersCount": 10
+      }
+    ],
+    "createdAt": "2025-10-13T19:35:08.400Z",
+    "updatedAt": "2025-10-13T19:35:08.400Z"
+  }
+]

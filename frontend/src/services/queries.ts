@@ -163,9 +163,78 @@ export const GET_SEASON_DETAILS = gql`
                     divisionName
                     currentRound
                     totalRounds
+                    rounds {
+                        roundNumber
+                        fights {
+                            fighter1
+                            fighter2
+                            winner
+                            fightIdentifier
+                            date
+                            fightStatus
+                        }
+                    }
                 }
             }
         }
     }
 `;
 
+// Round Standings Queries
+export const GET_ROUND_STANDINGS_BY_ROUND = gql`
+    query GetRoundStandingsByRound(
+        $competitionId: ID!
+        $seasonNumber: Int!
+        $divisionNumber: Int!
+        $roundNumber: Int!
+    ) {
+        getRoundStandingsByRound(
+            competitionId: $competitionId
+            seasonNumber: $seasonNumber
+            divisionNumber: $divisionNumber
+            roundNumber: $roundNumber
+        ) {
+            id
+            competitionId
+            seasonNumber
+            divisionNumber
+            roundNumber
+            fightId
+            fightIdentifier
+            standings {
+                fighterId
+                fightsCount
+                wins
+                points
+                rank
+                totalFightersCount
+            }
+            createdAt
+            updatedAt
+        }
+    }
+`;
+
+export const GET_FINAL_SEASON_STANDINGS = gql`
+    query GetFinalSeasonStandings(
+        $competitionId: ID!
+        $seasonNumber: Int!
+        $divisionNumber: Int!
+    ) {
+        getFinalSeasonStandings(
+            competitionId: $competitionId
+            seasonNumber: $seasonNumber
+            divisionNumber: $divisionNumber
+        ) {
+            id
+            standings {
+                fighterId
+                fightsCount
+                wins
+                points
+                rank
+                totalFightersCount
+            }
+        }
+    }
+`;
