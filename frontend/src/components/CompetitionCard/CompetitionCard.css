@@ -5,6 +5,17 @@
     overflow: hidden;
     transition: all 0.3s ease;
     border: 1px solid var(--border-color);
+    cursor: pointer;
+}
+
+.competition-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px var(--shadow-color);
+    border-color: #4285f4;
+}
+
+.competition-card:active {
+    transform: translateY(-4px);
 }
 
 

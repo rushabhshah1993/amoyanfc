@@ -71,3 +71,16 @@ export const GET_FIGHTER_INFORMATION = gql`
     }
 `;
 
+export const GET_COMPETITION_META = gql`
+    query GetCompetitionMeta($id: ID!) {
+        getCompetitionMeta(id: $id) {
+            id
+            competitionName
+            type
+            logo
+            description
+            shortName
+        }
+    }
+`;
+

@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy, faCalendarAlt, faUsers, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import RobustGoogleDriveImage from '../RobustGoogleDriveImage/RobustGoogleDriveImage';
 import './CompetitionCard.css';
 
 interface Competition {
-    _id?: string;
+    id?: string;
     competitionName: string;
     description?: string;
     logo?: string;
@@ -18,6 +19,7 @@ interface CompetitionCardProps {
 }
 
 const CompetitionCard: React.FC<CompetitionCardProps> = ({ competition }) => {
+    const navigate = useNavigate();
     const [isExpanded, setIsExpanded] = useState(false);
     const [needsTruncation, setNeedsTruncation] = useState(false);
     const descriptionRef = useRef<HTMLParagraphElement>(null);
@@ -31,8 +33,15 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({ competition }) => {
         }
     }, [competition?.description]);
 
-    const toggleExpanded = () => {
+    const toggleExpanded = (e: React.MouseEvent) => {
+        e.stopPropagation();
         setIsExpanded(!isExpanded);
+    };
+
+    const handleCardClick = () => {
+        if (competition?.id) {
+            navigate(`/competition/${competition.id}`);
+        }
     };
 
     if (!competition) {
@@ -45,7 +54,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({ competition }) => {
     }
 
     return (
-        <div className="competition-card">
+        <div className="competition-card" onClick={handleCardClick}>
             <div className="competition-logo">
                 <RobustGoogleDriveImage
                     src={competition.logo}

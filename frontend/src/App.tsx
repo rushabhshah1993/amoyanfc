@@ -11,6 +11,7 @@ import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
 import FightersPage from './pages/FightersPage/FightersPage';
 import FighterPage from './pages/FighterPage/FighterPage';
+import CompetitionPage from './pages/CompetitionPage/CompetitionPage';
 
 const AppContent: React.FC = () => {
   const { isDarkMode } = useAppSelector((state: RootState) => state.theme);
@@ -49,6 +50,7 @@ const AppContent: React.FC = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/fighters" element={<FightersPage />} />
             <Route path="/fighter/:id" element={<FighterPage />} />
+            <Route path="/competition/:id" element={<CompetitionPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Router>
