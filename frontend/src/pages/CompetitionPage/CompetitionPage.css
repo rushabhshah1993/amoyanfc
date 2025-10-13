@@ -148,115 +148,125 @@
     transition: color 0.3s ease;
 }
 
-.seasons-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.seasons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
 }
 
-.season-item {
-    display: flex;
-    flex-direction: column;
-}
-
-.season-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.25rem 1.5rem;
-    background-color: var(--bg-primary);
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
+.season-box {
+    position: relative;
+    height: 250px;
+    border-radius: 16px;
+    overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 2px solid var(--border-color);
 }
 
-.season-card:hover {
+.season-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     border-color: #4285f4;
-    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.15);
-    transform: translateY(-2px);
 }
 
-[data-theme="dark"] .season-card:hover {
-    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.25);
+[data-theme="dark"] .season-box:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-.season-card-left {
+.season-box-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.season-box-image {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.season-box-placeholder {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
-    gap: 1rem;
-}
-
-.season-number {
-    font-size: 1.5rem;
+    justify-content: center;
+    font-size: 2.5rem;
     font-weight: 700;
-    color: var(--text-primary);
-    margin: 0;
-    transition: color 0.3s ease;
+    color: white;
 }
 
-.active-badge {
-    padding: 0.25rem 0.75rem;
+.season-box-empty {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: var(--text-secondary);
+    opacity: 0.3;
+}
+
+.season-box-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        rgba(0, 0, 0, 0.7) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    transition: background 0.3s ease;
+}
+
+.season-box:hover .season-box-overlay {
+    background: linear-gradient(
+        to bottom,
+        rgba(66, 133, 244, 0.8) 0%,
+        rgba(66, 133, 244, 0.5) 50%,
+        rgba(66, 133, 244, 0.8) 100%
+    );
+}
+
+.season-box-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.season-box-badge {
+    margin-top: 0.75rem;
+    padding: 0.4rem 1rem;
     background-color: #34a853;
     color: white;
     font-size: 0.75rem;
     font-weight: 600;
-    border-radius: 12px;
+    border-radius: 20px;
     text-transform: uppercase;
-}
-
-.season-card-right {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.winners-thumbnails {
-    display: flex;
-    align-items: center;
-    margin-right: 0.5rem;
-}
-
-.winner-thumbnail {
-    width: 50px;
-    height: 50px;
-    border: 2px solid var(--bg-primary);
-    overflow: hidden;
-    transition: all 0.3s ease;
-    margin-left: -10px;
-}
-
-.winner-thumbnail:first-child {
-    margin-left: 0;
-}
-
-.winner-thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.winner-thumbnail-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: white;
-}
-
-.season-arrow {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    transition: all 0.3s ease;
-}
-
-.season-card:hover .season-arrow {
-    color: #4285f4;
-    transform: translateX(4px);
+    text-shadow: none;
+    z-index: 1;
 }
 
 .season-content {
@@ -572,18 +582,17 @@
         font-size: 1.5rem;
     }
 
-    .season-card {
-        padding: 1rem 1.25rem;
+    .seasons-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 
-    .season-number {
-        font-size: 1.3rem;
+    .season-box {
+        height: 200px;
     }
 
-    .winner-thumbnail {
-        width: 40px;
-        height: 40px;
-        margin-left: -8px;
+    .season-box-title {
+        font-size: 1.5rem;
     }
 
     .season-info-card {
@@ -658,39 +667,26 @@
         font-size: 1.3rem;
     }
 
-    .season-card {
-        padding: 1rem;
-        flex-direction: column;
-        align-items: flex-start;
+    .seasons-grid {
+        grid-template-columns: 1fr;
         gap: 1rem;
     }
 
-    .season-card-left {
-        width: 100%;
+    .season-box {
+        height: 180px;
     }
 
-    .season-card-right {
-        width: 100%;
-        justify-content: space-between;
+    .season-box-title {
+        font-size: 1.3rem;
     }
 
-    .season-number {
-        font-size: 1.2rem;
+    .season-box-badge {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.75rem;
     }
 
-    .active-badge {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.6rem;
-    }
-
-    .winner-thumbnail {
-        width: 35px;
-        height: 35px;
-        margin-left: -6px;
-    }
-
-    .winner-thumbnail-placeholder {
-        font-size: 0.75rem;
+    .season-box-placeholder {
+        font-size: 2rem;
     }
 
     .season-info-card {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -63,7 +63,6 @@ interface Season {
 const CompetitionPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
-    const [selectedSeason, setSelectedSeason] = useState<Season | null>(null);
     
     const { loading, error, data } = useQuery(GET_COMPETITION_META, {
         variables: { id },
@@ -164,16 +163,17 @@ const CompetitionPage: React.FC = () => {
                             <FontAwesomeIcon icon={faTrophy} />
                             {competition.type.toUpperCase()}
                         </div>
+                        {competition.description && (
+                            <div className="competition-description-section">
+                                <p className="competition-description">
+                                    {competition.description}
+                                </p>
+                            </div>
+                        )}
                     </div>
                 </div>
 
-                {competition.description && (
-                    <div className="competition-description-section">
-                        <p className="competition-description">
-                            {competition.description}
-                        </p>
-                    </div>
-                )}
+                
 
                 {/* League Seasons Section */}
                 {competition.type === 'league' && (
@@ -197,7 +197,7 @@ const CompetitionPage: React.FC = () => {
                             <div className="seasons-section">
                                 <h2 className="seasons-title">Seasons</h2>
                                 
-                                <div className="seasons-list">
+                                <div className="seasons-grid">
                                     {seasonsData.getAllSeasonsByCompetitionCategory
                                         .slice()
                                         .sort((a: Season, b: Season) => 
@@ -205,131 +205,49 @@ const CompetitionPage: React.FC = () => {
                                         )
                                         .map((season: Season) => {
                                             const winners = getSeasonWinners(season);
-                                            const isExpanded = selectedSeason?.id === season.id;
 
                                             return (
-                                                <div key={season.id} className="season-item">
-                                                    <div 
-                                                        className="season-card"
-                                                        onClick={() => setSelectedSeason(isExpanded ? null : season)}
-                                                    >
-                                                        <div className="season-card-left">
-                                                            <h3 className="season-number">
-                                                                Season {season.seasonMeta.seasonNumber}
-                                                            </h3>
-                                                            {season.isActive && (
-                                                                <span className="active-badge">Active</span>
-                                                            )}
-                                                        </div>
-
-                                                        <div className="season-card-right">
-                                                            {winners.length > 0 && (
-                                                                <div className="winners-thumbnails">
-                                                                    {winners.map((winner, index) => (
-                                                                        <div 
-                                                                            key={winner.id} 
-                                                                            className="winner-thumbnail"
-                                                                            style={{ zIndex: winners.length - index }}
-                                                                        >
-                                                                            {winner.profileImage ? (
-                                                                                <img 
-                                                                                    src={winner.profileImage} 
-                                                                                    alt={`${winner.firstName} ${winner.lastName}`}
-                                                                                />
-                                                                            ) : (
-                                                                                <div className="winner-thumbnail-placeholder">
-                                                                                    {winner.firstName.charAt(0)}{winner.lastName.charAt(0)}
-                                                                                </div>
-                                                                            )}
+                                                <div 
+                                                    key={season.id} 
+                                                    className="season-box"
+                                                    onClick={() => navigate(`/competition/${id}/season/${season.id}`)}
+                                                >
+                                                    {/* Background Images */}
+                                                    <div className="season-box-background">
+                                                        {winners.length > 0 ? (
+                                                            winners.map((winner) => (
+                                                                <div 
+                                                                    key={winner.id} 
+                                                                    className="season-box-image"
+                                                                    style={{
+                                                                        backgroundImage: winner.profileImage 
+                                                                            ? `url(${winner.profileImage})`
+                                                                            : 'linear-gradient(135deg, #4285f4 0%, #34a853 100%)'
+                                                                    }}
+                                                                >
+                                                                    {!winner.profileImage && (
+                                                                        <div className="season-box-placeholder">
+                                                                            {winner.firstName.charAt(0)}{winner.lastName.charAt(0)}
                                                                         </div>
-                                                                    ))}
+                                                                    )}
                                                                 </div>
-                                                            )}
-                                                            <FontAwesomeIcon 
-                                                                icon={faArrowRight} 
-                                                                className="season-arrow"
-                                                            />
-                                                        </div>
+                                                            ))
+                                                        ) : (
+                                                            <div className="season-box-empty">
+                                                                <FontAwesomeIcon icon={faTrophy} />
+                                                            </div>
+                                                        )}
                                                     </div>
 
-                                                    {isExpanded && season.seasonMeta.leagueDivisions && 
-                                                     season.seasonMeta.leagueDivisions.length > 0 && (
-                                                        <div className="season-content">
-                                                            <div className="divisions-grid">
-                                                                {season.seasonMeta.leagueDivisions.map((divisionMeta) => {
-                                                                    const divisionData = season.leagueData?.divisions?.find(
-                                                                        d => d.divisionNumber === divisionMeta.divisionNumber
-                                                                    );
-                                                                    
-                                                                    // Get winner or leader
-                                                                    const displayFighter = season.isActive 
-                                                                        ? null // TODO: Calculate current leader from standings
-                                                                        : divisionMeta.winners?.[0];
-
-                                                                    return (
-                                                                        <div 
-                                                                            key={divisionMeta.divisionNumber}
-                                                                            className="division-card"
-                                                                            onClick={(e) => {
-                                                                                e.stopPropagation();
-                                                                                navigate(`/competition/${id}/season/${season.id}/division/${divisionMeta.divisionNumber}`);
-                                                                            }}
-                                                                        >
-                                                                            <div className="division-header">
-                                                                                <h3 className="division-title">
-                                                                                    Division {divisionMeta.divisionNumber}
-                                                                                </h3>
-                                                                                {divisionData?.divisionName && 
-                                                                                 divisionData.divisionName !== `Division ${divisionMeta.divisionNumber}` && (
-                                                                                    <p className="division-name">{divisionData.divisionName}</p>
-                                                                                )}
-                                                                            </div>
-
-                                                                            {displayFighter && (
-                                                                                <div className="division-winner">
-                                                                                    <div className="fighter-avatar">
-                                                                                        {displayFighter.profileImage ? (
-                                                                                            <img 
-                                                                                                src={displayFighter.profileImage} 
-                                                                                                alt={`${displayFighter.firstName} ${displayFighter.lastName}`}
-                                                                                            />
-                                                                                        ) : (
-                                                                                            <div className="fighter-avatar-placeholder">
-                                                                                                {displayFighter.firstName.charAt(0)}{displayFighter.lastName.charAt(0)}
-                                                                                            </div>
-                                                                                        )}
-                                                                                    </div>
-                                                                                    <div className="fighter-info">
-                                                                                        <p className="fighter-label">
-                                                                                            {season.isActive ? 'Current Leader' : 'Winner'}
-                                                                                        </p>
-                                                                                        <p className="fighter-name">
-                                                                                            {displayFighter.firstName} {displayFighter.lastName}
-                                                                                        </p>
-                                                                                    </div>
-                                                                                </div>
-                                                                            )}
-
-                                                                            {season.isActive && divisionData?.currentRound && (
-                                                                                <div className="division-progress">
-                                                                                    <p className="current-round">
-                                                                                        Round {divisionData.currentRound} of {divisionData.totalRounds}
-                                                                                    </p>
-                                                                                </div>
-                                                                            )}
-
-                                                                            <div className="division-footer">
-                                                                                <p className="fighters-count">
-                                                                                    {divisionMeta.fighters.length} Fighters
-                                                                                </p>
-                                                                                <span className="view-details">View Details →</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    );
-                                                                })}
-                                                            </div>
-                                                        </div>
-                                                    )}
+                                                    {/* Overlay */}
+                                                    <div className="season-box-overlay">
+                                                        <h3 className="season-box-title">
+                                                            Season {season.seasonMeta.seasonNumber}
+                                                        </h3>
+                                                        {season.isActive && (
+                                                            <span className="season-box-badge">Active</span>
+                                                        )}
+                                                    </div>
                                                 </div>
                                             );
                                         })
