@@ -13,17 +13,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 173,
+        "heightFeet": "5'8",
+        "weightKg": 62,
+        "armReach": 177,
+        "legReach": 98,
+        "bodyType": "Mesomorphic–Ectomorphic - Lean muscle tone, long limbs, built for speed and striking efficiency",
+        "koPower": 7.5,
+        "durability": 7,
+        "strength": 7,
+        "endurance": 8,
+        "agility": 8.5
       }
     },
     {
@@ -74,31 +74,6 @@
         "strength": 6.5,
         "endurance": 9.5,
         "agility": 8.5
-      }
-    },
-    {
-      "id": "676d74aeeb38b2b97c6da98b",
-      "firstName": "Ophelia",
-      "lastName": "Trelawney",
-      "skillset": [
-        "MMA"
-      ],
-      "location": {
-        "city": "Mumbai",
-        "country": "India"
-      },
-      "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
       }
     },
     {
@@ -265,17 +240,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 162,
+        "heightFeet": "5'4",
+        "weightKg": 60,
+        "armReach": 160,
+        "legReach": 97,
+        "bodyType": "Compact & powerful – lower centre of gravity gives her better balance and explosiveness in grappling exchanges",
+        "koPower": 7.5,
+        "durability": 8,
+        "strength": 8,
+        "endurance": 7,
+        "agility": 6
       }
     },
     {
@@ -291,17 +266,17 @@
         "country": "United Arab Emirates"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 157,
+        "heightFeet": "5'2",
+        "weightKg": 57,
+        "armReach": 160,
+        "legReach": 88,
+        "bodyType": "Mesomorph - Naturally strong with defined musculature",
+        "koPower": 7.5,
+        "durability": 8,
+        "strength": 7.5,
+        "endurance": 8,
+        "agility": 7.5
       }
     },
     {
@@ -370,17 +345,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 155,
+        "heightFeet": "5'1",
+        "weightKg": 48,
+        "armReach": 151,
+        "legReach": 91,
+        "bodyType": "Compact and toned — ideal for core-driven power, fast reactions, and ground contro",
+        "koPower": 7,
+        "durability": 7.5,
+        "strength": 7.5,
+        "endurance": 8.5,
+        "agility": 9
       }
     },
     {
@@ -420,17 +395,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 160,
+        "heightFeet": "5'3",
+        "weightKg": 50,
+        "armReach": 159,
+        "legReach": 90,
+        "bodyType": "Agile and elastic — fluid motion and coordination translate well to striking transitions and defensive movement",
+        "koPower": 6.5,
+        "durability": 7,
+        "strength": 6.5,
+        "endurance": 8.5,
+        "agility": 9
       }
     },
     {
@@ -496,17 +471,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 157,
+        "heightFeet": "5'2",
+        "weightKg": 50,
+        "armReach": 156,
+        "legReach": 93,
+        "bodyType": "Light & agile striker – favors movement and quick striking combinations over grappling strength",
+        "koPower": 6.5,
+        "durability": 7,
+        "strength": 6,
+        "endurance": 8,
+        "agility": 8.5
       }
     },
     {
@@ -546,17 +521,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 155,
+        "heightFeet": "5'1",
+        "weightKg": 56,
+        "armReach": 157,
+        "legReach": 86,
+        "bodyType": "Mesomorphic - Muscular, stable core, ideal for power moves and clinch",
+        "koPower": 8,
+        "durability": 8,
+        "strength": 7.5,
+        "endurance": 8,
+        "agility": 8
       }
     },
     {
@@ -598,17 +573,17 @@
         "country": "United Kingdom"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 173,
+        "heightFeet": "5'8",
+        "weightKg": 63,
+        "armReach": 174,
+        "legReach": 105,
+        "bodyType": "Agile & rangy striker – built for mobility and high-volume output rather than raw power",
+        "koPower": 6.5,
+        "durability": 7,
+        "strength": 6,
+        "endurance": 8.5,
+        "agility": 8
       }
     },
     {
@@ -880,17 +855,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 152,
+        "heightFeet": "5'0",
+        "weightKg": 53,
+        "armReach": 152,
+        "legReach": 75,
+        "bodyType": "Compact & Explosive",
+        "koPower": 6.5,
+        "durability": 7,
+        "strength": 7.5,
+        "endurance": 8,
+        "agility": 8.5
       }
     },
     {
@@ -1240,17 +1215,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 160,
+        "heightFeet": "5'3",
+        "weightKg": 55,
+        "armReach": 162,
+        "legReach": 89,
+        "bodyType": "Ectomeso (lean-muscular) - Fast, durable, and fluid in motion",
+        "koPower": 7,
+        "durability": 8,
+        "strength": 7.5,
+        "endurance": 8.5,
+        "agility": 8
       }
     },
     {
@@ -1266,17 +1241,17 @@
         "country": "India"
       },
       "physicalAttributes": {
-        "heightCm": null,
-        "heightFeet": null,
-        "weightKg": null,
-        "armReach": null,
-        "legReach": null,
-        "bodyType": null,
-        "koPower": null,
-        "durability": null,
-        "strength": null,
-        "endurance": null,
-        "agility": null
+        "heightCm": 154,
+        "heightFeet": "5'1",
+        "weightKg": 55,
+        "armReach": 153,
+        "legReach": 76,
+        "bodyType": "Compact & Explosive",
+        "koPower": 7,
+        "durability": 7.5,
+        "strength": 7.5,
+        "endurance": 8,
+        "agility": 7.5
       }
     },
     {
