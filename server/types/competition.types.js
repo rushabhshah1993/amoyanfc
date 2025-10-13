@@ -3,17 +3,19 @@ const competitionTypes = `#graphql
         seasonNumber: Int!
         startDate: String
         endDate: String
-        leagueDivision: [SeasonMetaLeagueDivision]
+        winners: [Fighter]
+        leagueDivisions: [SeasonMetaLeagueDivision]
         cupParticipants: SeasonMetaCupParticipants
     }
 
     type SeasonMetaCupParticipants {
-        fighters: [ID!]
+        fighters: [Fighter]
     }
 
     type SeasonMetaLeagueDivision {
         divisionNumber: Int
-        fighters: [ID!]
+        fighters: [Fighter]
+        winners: [Fighter]
     }
 
     type CompetitionLeagueData {

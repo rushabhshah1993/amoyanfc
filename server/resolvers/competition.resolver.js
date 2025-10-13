@@ -1,6 +1,7 @@
 /* Model imports */
 import { Competition } from './../models/competition.model.js';
 import { CompetitionMeta } from '../models/competition-meta.model.js';
+import { Fighter } from '../models/fighter.model.js';
 
 /* Error imports */
 import { NotFoundError } from '../error.js';
@@ -45,9 +46,9 @@ const competitionResolver = {
          * @returns {Promise<Array.<Object>>} - A list of competition seasons belonging to a specific competition category
          */
         getAllSeasonsByCompetitionCategory: catchAsyncErrors(async(_, { competitionMetaId }) => {
-            const competitionType = await CompetitionMeta.findById(id);
+            const competitionType = await CompetitionMeta.findById(competitionMetaId);
             const competitionName = competitionType.competitionName;
-            const competitions = await Competition.find({"competitionMeta.id": competitionMetaId});
+            const competitions = await Competition.find({ competitionMetaId: competitionMetaId });
             if(!competitions.length) {
                 throw new NotFoundError(`Competition with the type ${competitionName} not found`);
             }
@@ -122,6 +123,32 @@ const competitionResolver = {
             const competitionMetaInformation = await CompetitionMeta.findById(competitionMetaId);
             if(!competitionMetaInformation) throw new NotFoundError('Competition information not found');
             return competitionMetaInformation;
+        })
+    },
+    CompetitionSeasonMeta: {
+        winners: catchAsyncErrors(async(parent) => {
+            if (!parent.winners || parent.winners.length === 0) return [];
+            const fighters = await Fighter.find({ _id: { $in: parent.winners } });
+            return fighters;
+        })
+    },
+    SeasonMetaLeagueDivision: {
+        fighters: catchAsyncErrors(async(parent) => {
+            if (!parent.fighters || parent.fighters.length === 0) return [];
+            const fighters = await Fighter.find({ _id: { $in: parent.fighters } });
+            return fighters;
+        }),
+        winners: catchAsyncErrors(async(parent) => {
+            if (!parent.winners || parent.winners.length === 0) return [];
+            const fighters = await Fighter.find({ _id: { $in: parent.winners } });
+            return fighters;
+        })
+    },
+    SeasonMetaCupParticipants: {
+        fighters: catchAsyncErrors(async(parent) => {
+            if (!parent.fighters || parent.fighters.length === 0) return [];
+            const fighters = await Fighter.find({ _id: { $in: parent.fighters } });
+            return fighters;
         })
     }
 };

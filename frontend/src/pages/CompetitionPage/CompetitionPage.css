@@ -130,6 +130,326 @@
     transition: color 0.3s ease;
 }
 
+/* Seasons Section */
+.seasons-section {
+    background-color: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.seasons-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 1.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.seasons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.season-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.season-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.season-card:hover {
+    border-color: #4285f4;
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.15);
+    transform: translateY(-2px);
+}
+
+[data-theme="dark"] .season-card:hover {
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.25);
+}
+
+.season-card-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.season-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.active-badge {
+    padding: 0.25rem 0.75rem;
+    background-color: #34a853;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+.season-card-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.winners-thumbnails {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+}
+
+.winner-thumbnail {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--bg-primary);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-left: -10px;
+}
+
+.winner-thumbnail:first-child {
+    margin-left: 0;
+}
+
+.winner-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.winner-thumbnail-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: white;
+}
+
+.season-arrow {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.season-card:hover .season-arrow {
+    color: #4285f4;
+    transform: translateX(4px);
+}
+
+.season-content {
+    margin-top: 2rem;
+}
+
+.season-info-card {
+    background-color: var(--bg-primary);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.season-info-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1rem 0;
+    transition: color 0.3s ease;
+}
+
+/* Divisions Grid */
+.divisions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .divisions-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.division-card {
+    background-color: var(--bg-primary);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.division-card:hover {
+    transform: translateY(-4px);
+    border-color: #4285f4;
+    box-shadow: 0 8px 24px rgba(66, 133, 244, 0.15);
+}
+
+[data-theme="dark"] .division-card:hover {
+    box-shadow: 0 8px 24px rgba(66, 133, 244, 0.25);
+}
+
+.division-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+.division-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.division-name {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0.25rem 0 0 0;
+    transition: color 0.3s ease;
+}
+
+.division-winner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.fighter-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--border-color);
+    transition: border-color 0.3s ease;
+}
+
+.fighter-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fighter-avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+}
+
+.fighter-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.fighter-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 0 0 0.25rem 0;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.fighter-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.3s ease;
+}
+
+.division-progress {
+    padding: 0.75rem 0;
+}
+
+.current-round {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.division-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.fighters-count {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.view-details {
+    font-size: 0.85rem;
+    color: #4285f4;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.division-card:hover .view-details {
+    transform: translateX(4px);
+}
+
+.seasons-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 3rem 0;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.seasons-loading svg {
+    font-size: 1.5rem;
+    color: #4285f4;
+}
+
 .coming-soon-section {
     display: flex;
     justify-content: center;
@@ -244,6 +564,58 @@
         font-size: 1.2rem;
     }
 
+    .seasons-section {
+        padding: 1.5rem;
+    }
+
+    .seasons-title {
+        font-size: 1.5rem;
+    }
+
+    .season-card {
+        padding: 1rem 1.25rem;
+    }
+
+    .season-number {
+        font-size: 1.3rem;
+    }
+
+    .winner-thumbnail {
+        width: 40px;
+        height: 40px;
+        margin-left: -8px;
+    }
+
+    .season-info-card {
+        padding: 1.5rem;
+    }
+
+    .season-info-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .divisions-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
+    }
+
+    .division-card {
+        padding: 1.25rem;
+    }
+
+    .division-title {
+        font-size: 1.2rem;
+    }
+
+    .fighter-avatar {
+        width: 50px;
+        height: 50px;
+    }
+
+    .fighter-name {
+        font-size: 1rem;
+    }
+
     .coming-soon-card {
         padding: 3rem 2rem;
     }
@@ -276,6 +648,83 @@
 
     .competition-subtitle {
         font-size: 1rem;
+    }
+
+    .seasons-section {
+        padding: 1rem;
+    }
+
+    .seasons-title {
+        font-size: 1.3rem;
+    }
+
+    .season-card {
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .season-card-left {
+        width: 100%;
+    }
+
+    .season-card-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .season-number {
+        font-size: 1.2rem;
+    }
+
+    .active-badge {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .winner-thumbnail {
+        width: 35px;
+        height: 35px;
+        margin-left: -6px;
+    }
+
+    .winner-thumbnail-placeholder {
+        font-size: 0.75rem;
+    }
+
+    .season-info-card {
+        padding: 1rem;
+    }
+
+    .season-info-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .divisions-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .division-card {
+        padding: 1rem;
+    }
+
+    .division-title {
+        font-size: 1.1rem;
+    }
+
+    .fighter-avatar {
+        width: 45px;
+        height: 45px;
+    }
+
+    .fighter-avatar-placeholder {
+        font-size: 1rem;
+    }
+
+    .fighter-name {
+        font-size: 0.95rem;
     }
 
     .coming-soon-card {

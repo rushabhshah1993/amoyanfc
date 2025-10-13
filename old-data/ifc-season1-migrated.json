@@ -5,6 +5,7 @@
     "seasonNumber": 1,
     "startDate": null,
     "endDate": null,
+    "winners": [],
     "leagueDivisions": [
       {
         "divisionNumber": 1,
@@ -19,6 +20,9 @@
           "676d749feb38b2b97c6da989",
           "676d751aeb38b2b97c6da995",
           "676d7631eb38b2b97c6da9ab"
+        ],
+        "winners": [
+          "676d7452eb38b2b97c6da981"
         ]
       }
     ],

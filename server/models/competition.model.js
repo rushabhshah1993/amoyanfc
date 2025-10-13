@@ -103,6 +103,7 @@ const leagueDivisionSchema = new Schema({
  * @typedef {Object} leagueDivisions
  * @property {Number} divisionNumber - Defines the unique division number for an associated season
  * @property {Array.<ObjectId>} fighters - Defines a list (array) of ObjectId references to participating fighters for an associated season's division
+ * @property {Array.<ObjectId>} winners - Defines a list (array) of ObjectId references to fighters who won this division (usually one winner, array for potential ties)
  */
 /**
  * Object definition for cupParticipants object in a seasonMetaSchema
@@ -115,6 +116,7 @@ const leagueDivisionSchema = new Schema({
  * @property {Number} seasonNumber - Defines a unique identity for an associated season of a competition
  * @property {Date} startDate - Defines the date when the season started
  * @property {Date} endDate - Defines the date when the season ended
+ * @property {Array.<ObjectId>} winners - Defines an array of ObjectId references to fighters who won the season (used for cup competitions or league competitions without divisions)
  * @property {Object} leagueDivisions - Defines an object representing an array of objects for the associated season's league data's meta information like the list of fighters per division. If the given competition is not a league-style competition, it will be an empty array or undefined.
  * @property {Object} cupParticipants Defines an object representing the associated season's cup data's meta information like the list of participating fighters referenced by their ObjectIds. If it's not a cup-style competition, it will be an empty array or undefined.
  */
@@ -122,9 +124,11 @@ const seasonMetaSchema = new Schema({
     seasonNumber: Number,
     startDate: Date,
     endDate: Date,
+    winners: [{ type: Schema.Types.ObjectId, ref: 'Fighter' }], // For cup competitions or leagues without divisions
     leagueDivisions: [{ // Specific for league-competitions
         divisionNumber: Number,
-        fighters: [{ type: Schema.Types.ObjectId, ref: 'Fighter' }]
+        fighters: [{ type: Schema.Types.ObjectId, ref: 'Fighter' }],
+        winners: [{ type: Schema.Types.ObjectId, ref: 'Fighter' }] // Winners for this specific division
     }],
     cupParticipants: { // Specific for cup-competitions
         fighters: [{ type: Schema.Types.ObjectId, ref: 'Fighter' }]
