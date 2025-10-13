@@ -1,0 +1,409 @@
+.league-season-page {
+    min-height: 100vh;
+    padding: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.league-season-header {
+    padding: 1rem 2rem;
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #3367d6;
+    transform: translateY(-1px);
+}
+
+.back-button:active {
+    transform: translateY(0);
+}
+
+.league-season-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.season-header-info {
+    margin-bottom: 2rem;
+}
+
+.season-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: color 0.3s ease;
+}
+
+.active-indicator {
+    padding: 0.4rem 1rem;
+    background-color: #34a853;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+/* Divisions Section */
+.divisions-section {
+    margin-bottom: 3rem;
+}
+
+.division-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.division-detail-card {
+    background-color: var(--bg-secondary);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    min-height: 400px;
+}
+
+.division-detail-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: #4285f4;
+}
+
+[data-theme="dark"] .division-detail-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Left Side - Winner Image */
+.division-detail-left {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg-primary);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.winner-large-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.winner-large-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.winner-large-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    font-weight: 700;
+    color: white;
+}
+
+.winner-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+    padding: 1.5rem;
+    color: white;
+}
+
+.winner-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+
+.winner-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.no-winner-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    color: var(--text-secondary);
+    gap: 1rem;
+}
+
+.no-winner-placeholder svg {
+    font-size: 4rem;
+    opacity: 0.3;
+}
+
+.no-winner-placeholder p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Right Side - Division Info */
+.division-detail-right {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex: 1;
+}
+
+.division-detail-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.division-detail-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.division-round-info {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+/* Participants Section */
+.participants-section {
+    flex: 1;
+}
+
+.participants-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 0 0 1rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.participants-thumbnails {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 0.75rem;
+}
+
+.participant-thumbnail {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.participant-thumbnail:hover {
+    transform: scale(1.1);
+    border-color: #4285f4;
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+}
+
+.participant-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.participant-thumbnail-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: white;
+}
+
+/* Timeline Section */
+.timeline-section {
+    margin-top: 3rem;
+    padding: 3rem;
+    background-color: var(--bg-secondary);
+    border-radius: 16px;
+    border: 2px dashed var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.coming-soon-placeholder {
+    text-align: center;
+    padding: 2rem;
+}
+
+.coming-soon-placeholder p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+/* Loading & Error States */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    gap: 1rem;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.loading-spinner {
+    font-size: 2rem;
+    color: #4285f4;
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    color: #dc3545;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .division-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .season-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .league-season-content {
+        padding: 1rem;
+    }
+
+    .division-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .season-title {
+        font-size: 1.75rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .division-detail-left {
+        height: 250px;
+    }
+
+    .winner-name {
+        font-size: 1.25rem;
+    }
+
+    .participants-thumbnails {
+        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .participant-thumbnail {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .league-season-header {
+        padding: 0.5rem 1rem;
+    }
+
+    .season-title {
+        font-size: 1.5rem;
+    }
+
+    .active-indicator {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.75rem;
+    }
+
+    .division-detail-left {
+        height: 200px;
+    }
+
+    .division-detail-right {
+        padding: 1rem;
+    }
+
+    .division-detail-title {
+        font-size: 1.25rem;
+    }
+
+    .participants-thumbnails {
+        grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+    }
+
+    .participant-thumbnail {
+        width: 45px;
+        height: 45px;
+    }
+
+    .timeline-section {
+        padding: 2rem 1rem;
+    }
+}
+

@@ -126,3 +126,46 @@ export const GET_ALL_SEASONS_BY_COMPETITION = gql`
     }
 `;
 
+export const GET_SEASON_DETAILS = gql`
+    query GetCompetitionSeason($id: ID!) {
+        getCompetitionSeason(id: $id) {
+            id
+            isActive
+            seasonMeta {
+                seasonNumber
+                startDate
+                endDate
+                winners {
+                    id
+                    firstName
+                    lastName
+                    profileImage
+                }
+                leagueDivisions {
+                    divisionNumber
+                    fighters {
+                        id
+                        firstName
+                        lastName
+                        profileImage
+                    }
+                    winners {
+                        id
+                        firstName
+                        lastName
+                        profileImage
+                    }
+                }
+            }
+            leagueData {
+                divisions {
+                    divisionNumber
+                    divisionName
+                    currentRound
+                    totalRounds
+                }
+            }
+        }
+    }
+`;
+
