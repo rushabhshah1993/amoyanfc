@@ -3,7 +3,6 @@ import mongoose, { Schema, Model } from "mongoose";
 
 /* Schema imports */
 import { 
-    fighterSchema,
     grapplingSchema, significantStrikeSchema, 
     strikesMapSchema, submissionSchema, 
     takedownSchema 
@@ -103,12 +102,12 @@ const leagueDivisionSchema = new Schema({
  * Object definition for leagueDivisions object in a seasonMetaSchema
  * @typedef {Object} leagueDivisions
  * @property {Number} divisionNumber - Defines the unique division number for an associated season
- * @property {Array.<Object>} fighters - Defines a list (array) of participating fighters for an associated season's division's fighters following the `fighterSchema`
+ * @property {Array.<ObjectId>} fighters - Defines a list (array) of ObjectId references to participating fighters for an associated season's division
  */
 /**
  * Object definition for cupParticipants object in a seasonMetaSchema
  * @typedef {Object} cupParticipants
- * @property {Array.<Object>} fighters - Defines a list (array) of participating fighters for an associated season's cup competition following the `fighterSchema`
+ * @property {Array.<ObjectId>} fighters - Defines a list (array) of ObjectId references to participating fighters for an associated season's cup competition
  */
 /**
  * Schema definition for a meta information for an associated season
@@ -117,7 +116,7 @@ const leagueDivisionSchema = new Schema({
  * @property {Date} startDate - Defines the date when the season started
  * @property {Date} endDate - Defines the date when the season ended
  * @property {Object} leagueDivisions - Defines an object representing an array of objects for the associated season's league data's meta information like the list of fighters per division. If the given competition is not a league-style competition, it will be an empty array or undefined.
- * @property {Object} cupParticipants Defines an object representing the associated season's cup data's meta information like the list of participating fighters which follows the `fighterSchema`. If it's not a cup-style competition, it will be an empty array or undefined.
+ * @property {Object} cupParticipants Defines an object representing the associated season's cup data's meta information like the list of participating fighters referenced by their ObjectIds. If it's not a cup-style competition, it will be an empty array or undefined.
  */
 const seasonMetaSchema = new Schema({
     seasonNumber: Number,
@@ -125,10 +124,10 @@ const seasonMetaSchema = new Schema({
     endDate: Date,
     leagueDivisions: [{ // Specific for league-competitions
         divisionNumber: Number,
-        fighters: [fighterSchema]
+        fighters: [{ type: Schema.Types.ObjectId, ref: 'Fighter' }]
     }],
     cupParticipants: { // Specific for cup-competitions
-        fighters: [fighterSchema]
+        fighters: [{ type: Schema.Types.ObjectId, ref: 'Fighter' }]
     }
 });
 
