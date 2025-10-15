@@ -1,0 +1,93 @@
+{
+    "complete": true,
+    "current": false,
+    "divisions": false,
+    "finalPositions": [
+        {
+            "fighterId": "F034",
+            "fights": 9,
+            "lost": 1,
+            "points": 24,
+            "rank": 1,
+            "wins": 8
+        },
+        {
+            "fighterId": "F030",
+            "fights": 9,
+            "lost": 3,
+            "points": 18,
+            "rank": 2,
+            "wins": 6
+        },
+        {
+            "fighterId": "F016",
+            "fights": 9,
+            "lost": 3,
+            "points": 18,
+            "rank": 3,
+            "wins": 6
+        },
+        {
+            "fighterId": "F010",
+            "fights": 9,
+            "lost": 4,
+            "points": 15,
+            "rank": 4,
+            "wins": 5
+        },
+        {
+            "fighterId": "F015",
+            "fights": 9,
+            "lost": 5,
+            "points": 12,
+            "rank": 5,
+            "wins": 4
+        },
+        {
+            "fighterId": "F021",
+            "fights": 9,
+            "lost": 5,
+            "points": 12,
+            "rank": 6,
+            "wins": 4
+        },
+        {
+            "fighterId": "F023",
+            "fights": 9,
+            "lost": 5,
+            "points": 12,
+            "rank": 7,
+            "wins": 4
+        },
+        {
+            "fighterId": "F029",
+            "fights": 9,
+            "lost": 5,
+            "points": 12,
+            "rank": 8,
+            "wins": 4
+        },
+        {
+            "fighterId": "F014",
+            "fights": 9,
+            "lost": 6,
+            "points": 9,
+            "rank": 9,
+            "wins": 3
+        },
+        {
+            "fighterId": "F025",
+            "fights": 9,
+            "lost": 7,
+            "points": 6,
+            "rank": 10,
+            "wins": 2
+        }
+    ],
+    "id": "S0003",
+    "label": "Season 3",
+    "seasonId": "S0003",
+    "winners": [
+        "F034"
+    ]
+}
