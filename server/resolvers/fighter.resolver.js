@@ -110,39 +110,99 @@ const fighterResolver = {
     },
     Fighter: {
         competitionHistory: async(parent) => {
+            if (!parent.competitionHistory || parent.competitionHistory.length === 0) {
+                return [];
+            }
+
             const enrichedHistory = await Promise.all(
                 parent.competitionHistory.map(async (record) => {
-                    const competitionMetaInfo = await CompetitionMeta.findById(record.competitionId).lean();
+                    const competitionMetaInfo = await CompetitionMeta.findById(record.competitionId);
+                    
+                    console.log('CompetitionMeta for ID', record.competitionId, ':', competitionMetaInfo);
+                    console.log('Has id field?', competitionMetaInfo?.id);
+                    console.log('Has _id field?', competitionMetaInfo?._id);
 
                     let enrichedTitlesInfo = null;
-                    if(record.titles && record.titles.details) {
+                    if(record.titles && record.titles.details && record.titles.details.length > 0) {
                         enrichedTitlesInfo = {
-                            ...record.titles,
+                            totalTitles: record.titles.totalTitles || 0,
                             details: await Promise.all(
-                                record.titles?.details.map(async title => {
-                                    const competitionSeasonInfo = await Competition.findById(title.competitionSeasonId);
+                                record.titles.details.map(async title => {
+                                    const competition = await Competition.findById(title.competitionSeasonId);
             
                                     return {
-                                        ...title,
-                                        competitionSeasonInfo
+                                        competitionSeasonId: title.competitionSeasonId,
+                                        seasonNumber: title.seasonNumber,
+                                        divisionNumber: title.divisionNumber,
+                                        competition
                                     }
                                 })
                             )
                         }
                     }
                     return {
-                        ...record,
-                        numberOfSeasonAppearances: record.numberOfSeasonAppearances,
-                        totalFights: record.totalFights,
-                        totalWins: record.totalWins,
-                        totalLosses: record.totalLosses,
-                        winPercentage: record.winPercentage,
-                        competitionMeta: competitionMetaInfo,
-                        titles: record.titles
+                        record,
+                        competitionMetaInfo,
+                        enrichedTitlesInfo
                     }
                 })   
             );
-            return enrichedHistory;
+            
+            // Filter out entries where competitionMeta is null and explicitly construct return objects
+            const validHistory = enrichedHistory
+                .filter(item => {
+                    if (!item.competitionMetaInfo) {
+                        console.log('Filtering out entry - no competitionMetaInfo');
+                        return false;
+                    }
+                    // Check if the competitionMeta has required fields
+                    if (!item.competitionMetaInfo.id && !item.competitionMetaInfo._id) {
+                        console.log('Filtering out entry - no id field:', item.competitionMetaInfo);
+                        return false;
+                    }
+                    return true;
+                })
+                .map(item => {
+                    // Ensure id field exists (mongoose virtual getter)
+                    const meta = item.competitionMetaInfo;
+                    const metaWithId = {
+                        ...meta.toObject?.() || meta,
+                        id: meta.id || meta._id?.toString() || meta._id
+                    };
+                    
+                    // Handle titles - use enriched if available, otherwise use record.titles with plain conversion
+                    let titlesData = { totalTitles: 0, details: [] };
+                    if (item.enrichedTitlesInfo) {
+                        titlesData = item.enrichedTitlesInfo;
+                    } else if (item.record.titles) {
+                        const recordTitles = item.record.titles.toObject?.() || item.record.titles;
+                        titlesData = {
+                            totalTitles: recordTitles.totalTitles || 0,
+                            details: (recordTitles.details || []).map(d => ({
+                                competitionSeasonId: d.competitionSeasonId,
+                                seasonNumber: d.seasonNumber,
+                                divisionNumber: d.divisionNumber,
+                                competition: null
+                            }))
+                        };
+                    }
+                    
+                    console.log('Titles data for competition', item.record.competitionId, ':', titlesData);
+                    
+                    return {
+                        competitionId: item.record.competitionId,
+                        numberOfSeasonAppearances: item.record.numberOfSeasonAppearances || 0,
+                        totalFights: item.record.totalFights || 0,
+                        totalWins: item.record.totalWins || 0,
+                        totalLosses: item.record.totalLosses || 0,
+                        winPercentage: item.record.winPercentage || 0,
+                        competitionMeta: metaWithId,
+                        titles: titlesData
+                    };
+                });
+
+            console.log('Returning', validHistory.length, 'valid competition history entries');
+            return validHistory;
         },
         opponentsHistory: async(parent) => {
             // Return empty array if no opponents history exists

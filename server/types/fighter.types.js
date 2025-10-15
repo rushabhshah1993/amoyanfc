@@ -43,7 +43,7 @@ const fighterTypes = `#graphql
         totalLosses: Int
         winPercentage: Float
         titles: TitlesData
-        competitionMeta: CompetitionMeta
+        competitionMeta: CompetitionMeta!
     }
 
     type TitlesData {

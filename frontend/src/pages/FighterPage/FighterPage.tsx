@@ -7,6 +7,7 @@ import { GET_FIGHTER_INFORMATION, GET_ALL_FIGHTERS } from '../../services/querie
 import S3Image from '../../components/S3Image/S3Image';
 import PhysicalAttributes from '../../components/PhysicalAttributes/PhysicalAttributes';
 import OpponentsGrid from '../../components/OpponentsGrid/OpponentsGrid';
+import CompetitionHistory from '../../components/CompetitionHistory/CompetitionHistory';
 import { getCountryFlag } from '../../utils/countryFlags';
 import './FighterPage.css';
 
@@ -25,6 +26,7 @@ interface Fighter {
     location?: Location;
     physicalAttributes?: any;
     opponentsHistory?: any[];
+    competitionHistory?: any[];
 }
 
 const FighterPage: React.FC = () => {
@@ -192,6 +194,8 @@ const FighterPage: React.FC = () => {
             </div>
 
             <PhysicalAttributes attributes={fighter.physicalAttributes} />
+
+            <CompetitionHistory competitionHistory={fighter.competitionHistory || []} />
 
             <OpponentsGrid
                 currentFighterId={fighter.id}

@@ -82,6 +82,36 @@ export const GET_FIGHTER_INFORMATION = gql`
                     isWinner
                 }
             }
+            competitionHistory {
+                competitionId
+                numberOfSeasonAppearances
+                totalFights
+                totalWins
+                totalLosses
+                winPercentage
+                competitionMeta {
+                    id
+                    competitionName
+                    logo
+                }
+                titles {
+                    totalTitles
+                    details {
+                        competitionSeasonId
+                        seasonNumber
+                        divisionNumber
+                        competition {
+                            id
+                            seasonMeta {
+                                seasonNumber
+                                leagueDivisions {
+                                    divisionNumber
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 `;
