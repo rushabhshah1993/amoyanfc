@@ -11,6 +11,7 @@ import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
 import FightersPage from './pages/FightersPage/FightersPage';
 import FighterPage from './pages/FighterPage/FighterPage';
+import VersusPage from './pages/VersusPage/VersusPage';
 import CompetitionPage from './pages/CompetitionPage/CompetitionPage';
 import LeagueSeasonPage from './pages/LeagueSeasonPage/LeagueSeasonPage';
 import DivisionPage from './pages/DivisionPage/DivisionPage';
@@ -52,6 +53,7 @@ const AppContent: React.FC = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/fighters" element={<FightersPage />} />
             <Route path="/fighter/:id" element={<FighterPage />} />
+            <Route path="/versus/:fighter1Id/:fighter2Id" element={<VersusPage />} />
             <Route path="/competition/:id" element={<CompetitionPage />} />
             <Route path="/competition/:competitionId/season/:seasonId" element={<LeagueSeasonPage />} />
             <Route path="/competition/:competitionId/season/:seasonId/division/:divisionNumber" element={<DivisionPage />} />

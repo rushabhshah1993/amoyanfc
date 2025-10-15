@@ -158,9 +158,14 @@ const fighterResolver = {
             // Iterate over opponentsHistory to add detailed competition and fight data
             const enrichedOpponentsHistory = await Promise.all(
                 validOpponents.map(async (opponent) => {
+                    // Filter out invalid detail entries (null competitionId or fightId)
+                    const validDetails = (opponent.details || []).filter(detail => 
+                        detail && detail.competitionId && detail.fightId
+                    );
+
                     // Map over details array for each opponent
                     const enrichedDetails = await Promise.all(
-                        (opponent.details || []).map(async(detail) => {
+                        validDetails.map(async(detail) => {
                             // Fetch competition details by ID from the Competition model
                             const competition = await Competition.findById(detail.competitionId);
 
@@ -175,7 +180,12 @@ const fighterResolver = {
 
                             // Return enriched detail with competition and fight data
                             return {
-                                ...detail,
+                                competitionId: detail.competitionId,
+                                season: detail.season,
+                                division: detail.divisionId,
+                                round: detail.roundId,
+                                fightId: detail.fightId,
+                                isWinner: detail.isWinner,
                                 competition,
                                 fight: fight[0]?.leagueData?.divisions?.rounds?.fights
                             }

@@ -1,0 +1,264 @@
+.versus-page {
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.versus-page .versus-header {
+    padding: 1rem 2rem;
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.versus-page .back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.versus-page .back-button:hover {
+    background-color: #3367d6;
+    transform: translateY(-1px);
+}
+
+.versus-page .back-button:active {
+    transform: translateY(0);
+}
+
+/* Fighters Comparison Section */
+.versus-page .fighters-comparison {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding: 3rem 4rem;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.versus-page .fighter-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.versus-page .fighter-image-container {
+    width: 400px;
+    height: 550px;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.versus-page .fighter-image-container:hover {
+    transform: scale(1.02);
+}
+
+.versus-page .versus-fighter-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.versus-page .versus-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    font-size: 4rem;
+}
+
+.versus-page .fighter-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: center;
+    margin: 0;
+}
+
+.versus-page .versus-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.versus-page .versus-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4285f4;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Loading and Error States */
+.versus-page .loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    gap: 1rem;
+    color: var(--text-secondary);
+}
+
+.versus-page .loading-spinner {
+    font-size: 2rem;
+    color: #4285f4;
+}
+
+.versus-page .error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    color: #dc3545;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .versus-page .fighters-comparison {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .versus-page .versus-divider {
+        transform: rotate(90deg);
+    }
+
+    .versus-page .fighter-image-container {
+        width: 250px;
+        height: 350px;
+    }
+
+    .versus-page .competition-card {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .versus-page .competition-summary {
+        border-right: none;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 1.5rem;
+    }
+
+    .versus-page .fighter-record {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .versus-page .versus-header {
+        padding: 1rem;
+    }
+
+    .versus-page .head-to-head-section {
+        padding: 2rem 1rem;
+    }
+
+    .versus-page .section-title {
+        font-size: 2rem;
+    }
+
+    .versus-page .fighter-image-container {
+        width: 200px;
+        height: 300px;
+    }
+
+    .versus-page .fighter-name {
+        font-size: 1.5rem;
+    }
+
+    .versus-page .versus-text {
+        font-size: 2rem;
+    }
+
+    .versus-page .competition-card {
+        padding: 1.5rem;
+    }
+
+    .versus-page .total-encounters {
+        font-size: 3rem;
+    }
+
+    .versus-page .fight-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .versus-page .fight-winner-thumbnail {
+        width: 100%;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .versus-page .fighters-comparison {
+        padding: 1.5rem 1rem;
+    }
+
+    .versus-page .fighter-image-container {
+        width: 150px;
+        height: 225px;
+    }
+
+    .versus-page .fighter-name {
+        font-size: 1.2rem;
+    }
+
+    .versus-page .versus-text {
+        font-size: 1.5rem;
+    }
+
+    .versus-page .head-to-head-section {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .versus-page .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .versus-page .competition-card {
+        padding: 1rem;
+    }
+
+    .versus-page .total-encounters {
+        font-size: 2.5rem;
+    }
+
+    .versus-page .record-thumbnail {
+        width: 50px;
+        height: 50px;
+    }
+
+    .versus-page .record-wins {
+        font-size: 1.2rem;
+    }
+
+    .versus-page .fight-winner-thumbnail {
+        height: 150px;
+    }
+}

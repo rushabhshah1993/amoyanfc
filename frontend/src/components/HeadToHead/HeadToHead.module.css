@@ -1,0 +1,252 @@
+/* Head to Head Section */
+.headToHeadSection {
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Empty State */
+.emptyState {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    border: 2px dashed var(--border-color);
+}
+
+.emptyMessage {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Competition Cards */
+.competitionsList {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.competitionWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.competitionName {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    padding-left: 0.5rem;
+    border-left: 4px solid #4285f4;
+}
+
+.competitionCard {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.competitionCard:hover {
+    border-color: #4285f4;
+}
+
+.fighterThumbnail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Competition Header with Total Fights and Clashes Label */
+.competitionHeader {
+    display: grid;
+    grid-template-columns: 15% 85%;
+}
+
+.totalFightsSection {
+    border-right: 2px solid var(--border-color);
+}
+
+.totalFightsLabel {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.totalEncounters {
+    font-size: 6rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.clashesHeader {
+    display: flex;
+    align-items: center;
+}
+
+.clashesLabel {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+/* Fighter Records Section */
+.fighterRecordsSection {
+    display: grid;
+    grid-template-columns: 15% 85%;
+}
+
+.recordsSummary {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-right: 2px solid var(--border-color);
+    justify-content: center;
+}
+
+.recordItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.recordThumbnail {
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.recordFighterImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.recordImagePlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.recordWins {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Scrollable Fight Cards */
+.fightsScrollContainer {
+    overflow-x: auto;
+    padding: 1.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: #4285f4 var(--bg-primary);
+}
+
+.fightsScrollContainer::-webkit-scrollbar {
+    height: 8px;
+}
+
+.fightsScrollContainer::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+    border-radius: 4px;
+}
+
+.fightsScrollContainer::-webkit-scrollbar-thumb {
+    background: #4285f4;
+    border-radius: 4px;
+}
+
+.fightsScrollContainer::-webkit-scrollbar-thumb:hover {
+    background: #3367d6;
+}
+
+.fightsList {
+    display: flex;
+    padding: 16px 0;
+    gap: 16px;
+}
+
+.fightCard {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    align-items: center;
+    padding: 8px;
+    border-radius: 10px;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+    gap: 1rem;
+}
+
+.fightCard:hover {
+    transform: translateY(-4px);
+    border-color: #4285f4;
+    box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3);
+}
+
+.fightWinnerThumbnail {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.fightWinnerImage {
+    width: 100%;
+    height: 10rem;
+    object-fit: contain;
+}
+
+.fightImagePlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 3rem;
+}
+
+.fightDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.fightLocation {
+    color: var(--text-secondary);
+}
+
+.fightWinnerName {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}

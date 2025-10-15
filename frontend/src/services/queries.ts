@@ -73,6 +73,14 @@ export const GET_FIGHTER_INFORMATION = gql`
                 totalWins
                 totalLosses
                 winPercentage
+                details {
+                    competitionId
+                    season
+                    division
+                    round
+                    fightId
+                    isWinner
+                }
             }
         }
     }

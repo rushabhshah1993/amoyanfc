@@ -73,7 +73,7 @@ const OpponentsGrid: React.FC<OpponentsGridProps> = ({
                             <div 
                                 key={opponent.id}
                                 className={`opponent-card ${isFought ? 'opponent-fought' : 'opponent-not-fought'}`}
-                                onClick={() => isFought && navigate(`/fighter/${opponent.id}`)}
+                                onClick={() => isFought && navigate(`/versus/${currentFighterId}/${opponent.id}`)}
                                 title={isFought 
                                     ? `${opponent.firstName} ${opponent.lastName} - ${stats?.totalFights} fight(s): ${stats?.totalWins}W-${stats?.totalLosses}L` 
                                     : `${opponent.firstName} ${opponent.lastName} - Not yet faced`
