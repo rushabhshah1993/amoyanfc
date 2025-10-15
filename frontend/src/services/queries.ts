@@ -67,6 +67,13 @@ export const GET_FIGHTER_INFORMATION = gql`
                 endurance
                 agility
             }
+            opponentsHistory {
+                opponentId
+                totalFights
+                totalWins
+                totalLosses
+                winPercentage
+            }
         }
     }
 `;

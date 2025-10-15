@@ -145,12 +145,22 @@ const fighterResolver = {
             return enrichedHistory;
         },
         opponentsHistory: async(parent) => {
+            // Return empty array if no opponents history exists
+            if (!parent.opponentsHistory || parent.opponentsHistory.length === 0) {
+                return [];
+            }
+
+            // Filter out any entries with null/undefined opponentId
+            const validOpponents = parent.opponentsHistory.filter(opponent => 
+                opponent && opponent.opponentId
+            );
+
             // Iterate over opponentsHistory to add detailed competition and fight data
             const enrichedOpponentsHistory = await Promise.all(
-                parent.opponentsHistory.map(async (opponent) => {
+                validOpponents.map(async (opponent) => {
                     // Map over details array for each opponent
                     const enrichedDetails = await Promise.all(
-                        opponent.details.map(async(detail) => {
+                        (opponent.details || []).map(async(detail) => {
                             // Fetch competition details by ID from the Competition model
                             const competition = await Competition.findById(detail.competitionId);
 
@@ -174,7 +184,11 @@ const fighterResolver = {
 
                     // Return the opponent with enriched details
                     return {
-                        ...opponent,
+                        opponentId: opponent.opponentId,
+                        totalFights: opponent.totalFights || 0,
+                        totalWins: opponent.totalWins || 0,
+                        totalLosses: opponent.totalLosses || 0,
+                        winPercentage: opponent.winPercentage || 0,
                         details: enrichedDetails,
                     };
                 })

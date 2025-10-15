@@ -1,0 +1,210 @@
+/* Opponents Section */
+.opponents-section {
+    background-color: var(--bg-primary);
+    padding: 3rem 4rem;
+    border-top: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.opponents-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.opponents-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.opponents-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.opponents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1.5rem;
+}
+
+.opponent-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.opponent-fought {
+    cursor: pointer;
+    border-color: #4285f4;
+}
+
+.opponent-fought:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3);
+    border-color: #3367d6;
+}
+
+.opponent-not-fought {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.opponent-not-fought:hover {
+    opacity: 0.5;
+}
+
+.opponent-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.opponent-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.opponent-fought .opponent-image:hover {
+    transform: scale(1.1);
+}
+
+.opponent-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    font-size: 2rem;
+}
+
+.opponent-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.opponent-info {
+    width: 100%;
+    text-align: center;
+}
+
+.opponent-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.opponent-record {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.opponent-win-rate {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .opponent-fought:hover {
+    box-shadow: 0 8px 20px rgba(66, 133, 244, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .opponents-section {
+        padding: 2rem 1rem;
+    }
+    
+    .opponents-title {
+        font-size: 1.5rem;
+    }
+    
+    .opponents-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 1rem;
+    }
+    
+    .opponent-card {
+        padding: 0.75rem;
+    }
+    
+    .opponent-name {
+        font-size: 0.85rem;
+    }
+    
+    .opponent-record {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .opponents-section {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .opponents-title {
+        font-size: 1.3rem;
+    }
+    
+    .opponents-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .opponents-grid {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 0.75rem;
+    }
+    
+    .opponent-card {
+        padding: 0.5rem;
+        gap: 0.5rem;
+    }
+    
+    .opponent-name {
+        font-size: 0.8rem;
+    }
+    
+    .opponent-record {
+        font-size: 0.7rem;
+    }
+}
+

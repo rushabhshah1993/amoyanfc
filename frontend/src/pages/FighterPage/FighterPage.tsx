@@ -3,28 +3,16 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faArrowLeft, faUser } from '@fortawesome/free-solid-svg-icons';
-import { GET_FIGHTER_INFORMATION } from '../../services/queries';
+import { GET_FIGHTER_INFORMATION, GET_ALL_FIGHTERS } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
+import PhysicalAttributes from '../../components/PhysicalAttributes/PhysicalAttributes';
+import OpponentsGrid from '../../components/OpponentsGrid/OpponentsGrid';
 import { getCountryFlag } from '../../utils/countryFlags';
 import './FighterPage.css';
 
 interface Location {
     city?: string;
     country?: string;
-}
-
-interface PhysicalAttributes {
-    heightCm?: number;
-    heightFeet?: string;
-    weightKg?: number;
-    armReach?: number;
-    legReach?: number;
-    bodyType?: string;
-    koPower?: number;
-    durability?: number;
-    strength?: number;
-    endurance?: number;
-    agility?: number;
 }
 
 interface Fighter {
@@ -35,7 +23,8 @@ interface Fighter {
     profileImage?: string;
     skillset?: string[];
     location?: Location;
-    physicalAttributes?: PhysicalAttributes;
+    physicalAttributes?: any;
+    opponentsHistory?: any[];
 }
 
 const FighterPage: React.FC = () => {
@@ -46,6 +35,9 @@ const FighterPage: React.FC = () => {
         variables: { id },
         skip: !id
     });
+
+    // Fetch all fighters for the opponents grid
+    const { loading: loadingAllFighters, data: allFightersData } = useQuery(GET_ALL_FIGHTERS);
 
     const calculateAge = (dateOfBirth: string): number => {
         if (!dateOfBirth) return 0;
@@ -115,6 +107,7 @@ const FighterPage: React.FC = () => {
     }
 
     const fighter: Fighter = data.getFighterInformation;
+    const allFighters: Fighter[] = allFightersData?.getAllFighters || [];
 
     return (
         <div className="fighter-page">
@@ -198,95 +191,14 @@ const FighterPage: React.FC = () => {
                 </div>
             </div>
 
-            {fighter.physicalAttributes && (
-                <div className="physical-attributes-section">
-                    <div className="physical-attributes-content">
-                        <h2 className="physical-attributes-title">Physical Attributes</h2>
-                        <div className="physical-attributes-grid">
-                            {fighter.physicalAttributes.heightFeet && (
-                                <div className="physical-attribute-item">
-                                    <span className="physical-attribute-label">Height</span>
-                                    <span className="physical-attribute-value">
-                                        {fighter.physicalAttributes.heightFeet}
-                                    </span>
-                                </div>
-                            )}
-                            {fighter.physicalAttributes.weightKg && (
-                                <div className="physical-attribute-item">
-                                    <span className="physical-attribute-label">Weight</span>
-                                    <span className="physical-attribute-value">
-                                        {fighter.physicalAttributes.weightKg} kg
-                                    </span>
-                                </div>
-                            )}
-                            {fighter.physicalAttributes.bodyType && (
-                                <div className="physical-attribute-item">
-                                    <span className="physical-attribute-label">Body Type</span>
-                                    <span className="physical-attribute-value">
-                                        {fighter.physicalAttributes.bodyType}
-                                    </span>
-                                </div>
-                            )}
-                            {fighter.physicalAttributes.armReach && (
-                                <div className="physical-attribute-item">
-                                    <span className="physical-attribute-label">Arm Reach</span>
-                                    <span className="physical-attribute-value">
-                                        {fighter.physicalAttributes.armReach} cm
-                                    </span>
-                                </div>
-                            )}
-                            {fighter.physicalAttributes.legReach && (
-                                <div className="physical-attribute-item">
-                                    <span className="physical-attribute-label">Leg Reach</span>
-                                    <span className="physical-attribute-value">
-                                        {fighter.physicalAttributes.legReach} cm
-                                    </span>
-                                </div>
-                            )}
-                            {fighter.physicalAttributes.koPower && (
-                                <div className="physical-attribute-item">
-                                    <span className="physical-attribute-label">KO Power</span>
-                                    <span className="physical-attribute-value">
-                                        {fighter.physicalAttributes.koPower}/10
-                                    </span>
-                                </div>
-                            )}
-                            {fighter.physicalAttributes.durability && (
-                                <div className="physical-attribute-item">
-                                    <span className="physical-attribute-label">Durability</span>
-                                    <span className="physical-attribute-value">
-                                        {fighter.physicalAttributes.durability}/10
-                                    </span>
-                                </div>
-                            )}
-                            {fighter.physicalAttributes.strength && (
-                                <div className="physical-attribute-item">
-                                    <span className="physical-attribute-label">Strength</span>
-                                    <span className="physical-attribute-value">
-                                        {fighter.physicalAttributes.strength}/10
-                                    </span>
-                                </div>
-                            )}
-                            {fighter.physicalAttributes.endurance && (
-                                <div className="physical-attribute-item">
-                                    <span className="physical-attribute-label">Endurance</span>
-                                    <span className="physical-attribute-value">
-                                        {fighter.physicalAttributes.endurance}/10
-                                    </span>
-                                </div>
-                            )}
-                            {fighter.physicalAttributes.agility && (
-                                <div className="physical-attribute-item">
-                                    <span className="physical-attribute-label">Agility</span>
-                                    <span className="physical-attribute-value">
-                                        {fighter.physicalAttributes.agility}/10
-                                    </span>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            )}
+            <PhysicalAttributes attributes={fighter.physicalAttributes} />
+
+            <OpponentsGrid
+                currentFighterId={fighter.id}
+                allFighters={allFighters}
+                opponentsHistory={fighter.opponentsHistory || []}
+                loading={loadingAllFighters}
+            />
         </div>
     );
 };

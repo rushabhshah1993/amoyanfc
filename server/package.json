@@ -9,7 +9,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "import:season2": "node scripts/import-season2-to-db.js",
     "import:season2-standings": "node scripts/import-season2-standings-to-db.js",
-    "calculate:season2-standings": "node scripts/calculate-season2-standings.js"
+    "calculate:season2-standings": "node scripts/calculate-season2-standings.js",
+    "import:season3": "node scripts/import-season3-to-db.js",
+    "import:season3-standings": "node scripts/import-season3-standings-to-db.js",
+    "calculate:season3-standings": "node scripts/calculate-season3-standings.js",
+    "update:fighters-history": "node scripts/update-fighters-history.js"
   },
   "type": "module",
   "author": "Rushabh Mulraj Shah",

@@ -1,0 +1,104 @@
+/* Physical Attributes Section */
+.physical-attributes-section {
+    background-color: var(--bg-secondary);
+    padding: 3rem 4rem;
+    border-top: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.physical-attributes-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.physical-attributes-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.physical-attributes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.physical-attribute-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.physical-attribute-label {
+    font-weight: 400;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+.physical-attribute-value {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .physical-attributes-section {
+        padding: 2rem 1rem;
+    }
+    
+    .physical-attributes-title {
+        font-size: 1.5rem;
+    }
+    
+    .physical-attributes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+    
+    .physical-attribute-item {
+        padding: 1rem 0.5rem;
+    }
+    
+    .physical-attribute-value {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .physical-attributes-section {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .physical-attributes-title {
+        font-size: 1.3rem;
+    }
+    
+    .physical-attributes-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .physical-attribute-item {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .physical-attribute-value {
+        font-size: 1rem;
+    }
+}
+
