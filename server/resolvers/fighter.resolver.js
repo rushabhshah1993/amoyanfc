@@ -265,6 +265,48 @@ const fighterResolver = {
             );
             return enrichedOpponentsHistory;
         },
+        streaks: async(parent) => {
+            if (!parent.streaks || parent.streaks.length === 0) {
+                return [];
+            }
+
+            const enrichedStreaks = await Promise.all(
+                parent.streaks.map(async (streak) => {
+                    const competitionMeta = await CompetitionMeta.findById(streak.competitionId);
+                    
+                    // Populate opponents
+                    const opponents = await Promise.all(
+                        (streak.opponents || []).map(async (opponentId) => {
+                            if (!opponentId) return null;
+                            const opponent = await Fighter.findById(opponentId);
+                            return opponent ? {
+                                id: opponent.id || opponent._id?.toString(),
+                                firstName: opponent.firstName,
+                                lastName: opponent.lastName
+                            } : null;
+                        })
+                    );
+
+                    return {
+                        competitionId: streak.competitionId,
+                        type: streak.type,
+                        start: streak.start,
+                        end: streak.end,
+                        count: streak.count,
+                        active: streak.active,
+                        opponents: opponents.filter(opponent => opponent !== null),
+                        competitionMeta: competitionMeta ? {
+                            id: competitionMeta.id || competitionMeta._id?.toString(),
+                            competitionName: competitionMeta.competitionName,
+                            logo: competitionMeta.logo
+                        } : null
+                    };
+                })
+            );
+
+            // Filter out streaks with null competitionMeta
+            return enrichedStreaks.filter(streak => streak.competitionMeta !== null);
+        },
         globalRank: async(parent) => {
             const currentGlobalRankList = await GlobalRank.find({isCurrent: true});
             const fighterRank = currentGlobalRankList?.fighters.find(fighter => fighter.fighterId !== parent.id);

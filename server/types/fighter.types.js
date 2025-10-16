@@ -7,6 +7,7 @@ const fighterTypes = `#graphql
         count: Int
         active: Boolean
         opponents: [Fighter]
+        competitionMeta: CompetitionMeta
     }
 
     type LeagueFightSchemaData {

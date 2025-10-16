@@ -112,6 +112,32 @@ export const GET_FIGHTER_INFORMATION = gql`
                     }
                 }
             }
+            streaks {
+                competitionId
+                type
+                start {
+                    season
+                    division
+                    round
+                }
+                end {
+                    season
+                    division
+                    round
+                }
+                count
+                active
+                opponents {
+                    id
+                    firstName
+                    lastName
+                }
+                competitionMeta {
+                    id
+                    competitionName
+                    logo
+                }
+            }
         }
     }
 `;

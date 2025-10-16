@@ -8,12 +8,48 @@ import S3Image from '../../components/S3Image/S3Image';
 import PhysicalAttributes from '../../components/PhysicalAttributes/PhysicalAttributes';
 import OpponentsGrid from '../../components/OpponentsGrid/OpponentsGrid';
 import CompetitionHistory from '../../components/CompetitionHistory/CompetitionHistory';
+import Streaks from '../../components/Streaks/Streaks';
 import { getCountryFlag } from '../../utils/countryFlags';
 import './FighterPage.css';
 
 interface Location {
     city?: string;
     country?: string;
+}
+
+interface StreakStart {
+    season: number;
+    division: number;
+    round: number;
+}
+
+interface StreakEnd {
+    season: number;
+    division: number;
+    round: number;
+}
+
+interface CompetitionMeta {
+    id: string;
+    competitionName: string;
+    logo?: string;
+}
+
+interface Opponent {
+    id: string;
+    firstName: string;
+    lastName: string;
+}
+
+interface Streak {
+    competitionId: string;
+    type: 'win' | 'lose';
+    start: StreakStart;
+    end?: StreakEnd;
+    count: number;
+    active: boolean;
+    opponents: Opponent[];
+    competitionMeta: CompetitionMeta;
 }
 
 interface Fighter {
@@ -27,6 +63,7 @@ interface Fighter {
     physicalAttributes?: any;
     opponentsHistory?: any[];
     competitionHistory?: any[];
+    streaks?: Streak[];
 }
 
 const FighterPage: React.FC = () => {
@@ -212,6 +249,8 @@ const FighterPage: React.FC = () => {
                 opponentsHistory={fighter.opponentsHistory || []}
                 loading={loadingAllFighters}
             />
+
+            <Streaks streaks={fighter.streaks || []} />
         </div>
     );
 };
