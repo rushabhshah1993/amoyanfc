@@ -1,9 +1,7 @@
 /**
- * Import IFC Season 1 Round Standings to MongoDB
+ * SAFE Import IFC Season 1 Round Standings to MongoDB
  * This script imports the migrated round standings data into the database
- * 
- * ⚠️  WARNING: This script DELETES existing data before importing!
- * Use import-round-standings-safe.js for safe imports that don't delete data.
+ * WITHOUT deleting existing data - it will skip import if data already exists
  */
 
 import dotenv from 'dotenv';
@@ -22,17 +20,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 /**
- * Environment protection - warn about destructive operations
+ * Environment protection - prevent accidental production data loss
  */
 function checkEnvironment() {
   if (process.env.NODE_ENV === 'production') {
-    console.log('⚠️  WARNING: You are running a DESTRUCTIVE import script in PRODUCTION!');
-    console.log('   This script will DELETE existing data before importing.');
-    console.log('   Consider using the safe import script instead: import-round-standings-safe.js');
-    console.log('   Press Ctrl+C within 10 seconds to cancel...');
-    
-    // Wait 10 seconds in production
-    return new Promise(resolve => setTimeout(resolve, 10000));
+    console.log('❌ SAFE IMPORT: This script is disabled in production environment');
+    console.log('   Use development environment for data imports');
+    console.log('   If you need to import in production, use the regular import script with caution');
+    process.exit(1);
   }
 }
 
@@ -75,17 +70,18 @@ function loadStandingsData() {
 }
 
 /**
- * Import standings to database
+ * SAFE Import standings to database - will NOT delete existing data
  */
-async function importStandings() {
+async function safeImportStandings() {
   console.log('\n' + '='.repeat(70));
-  console.log('IFC SEASON 1 - ROUND STANDINGS IMPORT TO MONGODB');
+  console.log('🛡️  SAFE IMPORT - IFC SEASON 1 ROUND STANDINGS');
   console.log('='.repeat(70));
-  console.log('⚠️  WARNING: This script DELETES existing data before importing!');
+  console.log('⚠️  This script will NOT delete existing data');
+  console.log('   If data already exists, import will be skipped');
 
   try {
     // Environment check
-    await checkEnvironment();
+    checkEnvironment();
 
     // Connect to database
     await connectDB();
@@ -94,12 +90,11 @@ async function importStandings() {
     const standingsData = loadStandingsData();
 
     console.log('\n' + '='.repeat(70));
-    console.log('IMPORT OPTIONS');
+    console.log('SAFETY CHECK');
     console.log('='.repeat(70));
 
     // Check if data already exists
     const existingCount = await RoundStandings.countDocuments({
-      competitionId: standingsData[0].competitionId,
       seasonNumber: standingsData[0].seasonNumber
     });
 
@@ -107,20 +102,39 @@ async function importStandings() {
     console.log(`📊 New standings to import: ${standingsData.length}`);
 
     if (existingCount > 0) {
-      console.log('\n⚠️  WARNING: Existing standings found for IFC Season 1!');
-      console.log('   This script will DELETE existing data and import fresh data.');
-      console.log('   Press Ctrl+C within 5 seconds to cancel...');
+      console.log('\n✅ SAFE MODE: Data already exists!');
+      console.log(`   Found ${existingCount} existing Season 1 standings`);
+      console.log('   Skipping import to prevent data loss');
+      console.log('   If you need to replace existing data, use the regular import script');
       
-      // Wait 5 seconds
-      await new Promise(resolve => setTimeout(resolve, 5000));
+      // Show existing data summary
+      console.log('\n' + '='.repeat(70));
+      console.log('EXISTING DATA SUMMARY');
+      console.log('='.repeat(70));
       
-      console.log('\n🗑️  Deleting existing standings...');
-      const deleteResult = await RoundStandings.deleteMany({
+      const sampleStanding = await RoundStandings.findOne({
         competitionId: standingsData[0].competitionId,
         seasonNumber: standingsData[0].seasonNumber
       });
-      console.log(`✅ Deleted ${deleteResult.deletedCount} existing documents`);
+
+      if (sampleStanding) {
+        console.log(`\nSample Fight: ${sampleStanding.fightIdentifier}`);
+        console.log(`Round: ${sampleStanding.roundNumber}`);
+        console.log(`Fighters: ${sampleStanding.standings.length}`);
+        console.log('\nTop 3:');
+        sampleStanding.standings.slice(0, 3).forEach(s => {
+          console.log(`  ${s.rank}. Fighter ${s.fighterId} - ${s.points} points (${s.wins} wins)`);
+        });
+      }
+
+      console.log('\n' + '='.repeat(70));
+      console.log('✨ SAFE IMPORT COMPLETE - NO DATA MODIFIED ✨');
+      console.log('='.repeat(70));
+      return;
     }
+
+    console.log('\n✅ SAFE TO IMPORT: No existing data found');
+    console.log('   Proceeding with import...');
 
     console.log('\n' + '='.repeat(70));
     console.log('IMPORTING DATA');
@@ -230,7 +244,7 @@ async function importStandings() {
     }
 
     console.log('\n' + '='.repeat(70));
-    console.log('✨ IMPORT SUCCESSFUL! ✨');
+    console.log('✨ SAFE IMPORT SUCCESSFUL! ✨');
     console.log('='.repeat(70));
     console.log('\nYou can now query the round standings using:');
     console.log('  - GraphQL queries');
@@ -238,7 +252,7 @@ async function importStandings() {
     console.log('  - Frontend components\n');
 
   } catch (error) {
-    console.error('\n❌ Import failed:', error);
+    console.error('\n❌ Safe import failed:', error);
     console.error(error.stack);
     process.exit(1);
   } finally {
@@ -248,6 +262,5 @@ async function importStandings() {
   }
 }
 
-// Run the import
-importStandings();
-
+// Run the safe import
+safeImportStandings();

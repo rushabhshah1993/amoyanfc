@@ -14,7 +14,10 @@
     "import:season3-standings": "node scripts/import-season3-standings-to-db.js",
     "calculate:season3-standings": "node scripts/calculate-season3-standings.js",
     "update:fighters-history": "node scripts/update-fighters-history.js",
-    "update:fighters-titles": "node scripts/update-fighters-titles.js"
+    "update:fighters-titles": "node scripts/update-fighters-titles.js",
+    "import:safe-round-standings": "node scripts/import-round-standings-safe.js",
+    "import:safe-season2": "node scripts/import-season2-safe.js",
+    "import:safe-season3": "node scripts/import-season3-safe.js"
   },
   "type": "module",
   "author": "Rushabh Mulraj Shah",

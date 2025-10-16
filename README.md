@@ -104,6 +104,21 @@ amoyanfc/
 | `npm run build` | Build the frontend for production |
 | `npm run install:all` | Install dependencies for all workspaces |
 
+### Data Import Scripts
+
+⚠️ **Important**: Some import scripts delete existing data! See [Import Scripts Safety Guide](server/scripts/IMPORT-SCRIPTS-SAFETY-GUIDE.md) for details.
+
+#### Safe Import Scripts (Recommended)
+- `npm run import:safe-round-standings` - Import round standings (won't delete existing data)
+- `npm run import:safe-season2` - Import Season 2 data (won't delete existing data)
+- `npm run import:safe-season3` - Import Season 3 data (won't delete existing data)
+
+#### Destructive Import Scripts (Use with Caution)
+- `npm run import:season2` - Import Season 2 data (⚠️ deletes existing data)
+- `npm run import:season2-standings` - Import Season 2 standings (⚠️ deletes existing data)
+- `npm run import:season3` - Import Season 3 data (⚠️ deletes existing data)
+- `npm run import:season3-standings` - Import Season 3 standings (⚠️ deletes existing data)
+
 ## 🔧 Environment Variables
 
 Create a `.env` file in the root directory:
