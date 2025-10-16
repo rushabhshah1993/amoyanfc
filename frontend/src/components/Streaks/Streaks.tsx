@@ -201,12 +201,10 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                                                                 <span className={styles.streakPeriod}>
                                                                     S{streak.start.season} D{streak.start.division} R{streak.start.round} - 
                                                                     {streak.active ? (
-                                                                        <>
-                                                                            <span className={styles.liveIndicator}>
-                                                                                <span className={styles.liveDot}></span>
-                                                                                Live
-                                                                            </span>
-                                                                        </>
+                                                                        <span className={styles.liveIndicator}>
+                                                                            <span className={styles.liveDot}></span>
+                                                                            Live
+                                                                        </span>
                                                                     ) : (
                                                                         ` S${streak.end?.season} D${streak.end?.division} R${streak.end?.round}`
                                                                     )}
@@ -248,17 +246,15 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                                                                 <span className={styles.streakPeriod}>
                                                                     S{streak.start.season} D{streak.start.division} R{streak.start.round} - 
                                                                     {streak.active ? (
-                                                                        <>
-                                                                            <span className={styles.liveIndicator}>
-                                                                                <span className={styles.liveDot}></span>
-                                                                                Live
-                                                                            </span>
-                                                                        </>
+                                                                        <span className={styles.liveIndicator}>
+                                                                            <span className={styles.liveDot}></span>
+                                                                            Live
+                                                                        </span>
                                                                     ) : (
                                                                         ` S${streak.end?.season} D${streak.end?.division} R${streak.end?.round}`
                                                                     )}
                                                                 </span>
-                                                                <span className={styles.streakCount}>({streak.count})</span>
+                                                                <span className={styles.streakCount}>{streak.count}</span>
                                                             </div>
                                                             <div className={styles.opponentsGrid}>
                                                                 {streak.opponents.map((opponent, oppIndex) => (
