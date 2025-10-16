@@ -1,9 +1,9 @@
-.streaks-section {
+.streaksSection {
     margin: 2rem 0;
     padding: 0 1rem;
 }
 
-.section-title {
+.sectionTitle {
     font-size: 1.8rem;
     font-weight: 600;
     color: var(--text-primary);
@@ -11,7 +11,7 @@
     text-align: center;
 }
 
-.empty-state {
+.emptyState {
     text-align: center;
     padding: 3rem 1rem;
     color: var(--text-secondary);
@@ -20,18 +20,18 @@
     border: 2px dashed var(--border-color);
 }
 
-.empty-state p {
+.emptyState p {
     font-size: 1.1rem;
     margin: 0;
 }
 
-.streaks-container {
+.streaksContainer {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.streak-card {
+.streakCard {
     background: var(--background-secondary);
     border-radius: 12px;
     border: 1px solid var(--border-color);
@@ -40,12 +40,12 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.streak-card:hover {
+.streakCard:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
 }
 
-.streak-card-header {
+.streakCardHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -56,57 +56,57 @@
     transition: background-color 0.2s ease;
 }
 
-.streak-card-header:hover {
+.streakCardHeader:hover {
     background: var(--background-hover);
 }
 
-.competition-info {
+.competitionInfo {
     display: flex;
     align-items: center;
     gap: 0.75rem;
 }
 
-.competition-logo {
+.competitionLogo {
     width: 32px;
     height: 32px;
     object-fit: contain;
     border-radius: 6px;
 }
 
-.competition-name {
+.competitionName {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--text-primary);
     margin: 0;
 }
 
-.expand-icon {
+.expandIcon {
     font-size: 1.1rem;
     color: var(--text-secondary);
     transition: transform 0.3s ease;
 }
 
-.streak-stats {
+.streakStats {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
     padding: 1.5rem;
 }
 
-.streak-stats-left,
-.streak-stats-right {
+.streakStatsLeft,
+.streakStatsRight {
     padding: 0 0.75rem;
 }
 
-.streak-stats-left {
+.streakStatsLeft {
     border-right: 1px solid var(--border-color);
 }
 
-.streak-stat {
+.streakStat {
     text-align: center;
 }
 
-.streak-stat-header {
+.streakStatHeader {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -114,29 +114,29 @@
     margin-bottom: 1rem;
 }
 
-.streak-stat-title {
+.streakStatTitle {
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
 }
 
-.win-icon {
+.winIcon {
     color: #10b981;
     font-size: 1.1rem;
 }
 
-.lose-icon {
+.loseIcon {
     color: #ef4444;
     font-size: 1.1rem;
 }
 
-.streak-stat-values {
+.streakStatValues {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: space-between;
 }
 
-.streak-stat-item {
+.streakStatItem {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -146,13 +146,13 @@
     border: 1px solid var(--border-color);
 }
 
-.streak-stat-label {
+.streakStatLabel {
     font-size: 0.9rem;
     color: var(--text-secondary);
     font-weight: 500;
 }
 
-.streak-stat-value {
+.streakStatValue {
     font-size: 1.25rem;
     font-weight: 700;
     padding: 0.25rem 0.5rem;
@@ -161,35 +161,35 @@
     text-align: center;
 }
 
-.streak-stat-value.highest {
+.streakStatValue.highest {
     background: linear-gradient(135deg, #10b981, #059669);
     color: white;
 }
 
-.streak-stat-value.lowest {
+.streakStatValue.lowest {
     background: linear-gradient(135deg, #6b7280, #4b5563);
     color: white;
 }
 
-.streak-card-content {
+.streakCardContent {
     padding: 1.5rem;
     background: var(--background-primary);
     border-top: 1px solid var(--border-color);
 }
 
-.streak-details {
+.streakDetails {
     display: grid;
     grid-template-columns: 50% 50%;
     gap: 2rem;
 }
 
-.streak-section {
+.streakSection {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.streak-section-title {
+.streakSectionTitle {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -201,20 +201,20 @@
     border-bottom: 2px solid var(--border-color);
 }
 
-.streak-list {
+.streakList {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.streak-item {
+.streakItem {
     background: var(--background-secondary);
     border-radius: 8px;
     border: 1px solid var(--border-color);
     padding: 1rem;
 }
 
-.streak-title {
+.streakTitle {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -223,13 +223,13 @@
     border-bottom: 1px solid var(--border-color);
 }
 
-.streak-period {
+.streakPeriod {
     font-size: 0.95rem;
     font-weight: 500;
     color: var(--text-primary);
 }
 
-.live-indicator {
+.liveIndicator {
     display: flex;
     align-items: center;
     gap: 0.25rem;
@@ -237,7 +237,7 @@
     font-weight: 600;
 }
 
-.live-dot {
+.liveDot {
     width: 8px;
     height: 8px;
     background: #10b981;
@@ -250,7 +250,7 @@
     51%, 100% { opacity: 0.3; }
 }
 
-.streak-count {
+.streakCount {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--text-secondary);
@@ -260,28 +260,30 @@
     border: 1px solid var(--border-color);
 }
 
-.opponents-grid {
+.opponentsGrid {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: 0.5rem;
 }
 
-.opponent-thumbnail {
+.opponentThumbnail {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.opponent-image {
-    border-radius: 50%;
+.opponentImage {
     transition: transform 0.2s ease;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
 }
 
-.opponent-image:hover {
+.opponentImage:hover {
     transform: scale(1.1);
 }
 
-.empty-streak {
+.emptyStreak {
     text-align: center;
     padding: 2rem 1rem;
     color: var(--text-secondary);
@@ -291,144 +293,154 @@
     border: 2px dashed var(--border-color);
 }
 
-.empty-streak p {
+.emptyStreak p {
     margin: 0;
     font-size: 0.95rem;
 }
 
 /* Dark theme adjustments */
-[data-theme="dark"] .streak-card {
+[data-theme="dark"] .streakCard {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-[data-theme="dark"] .streak-card:hover {
+[data-theme="dark"] .streakCard:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
-[data-theme="dark"] .streak-stat-value.highest {
+[data-theme="dark"] .streakStatValue.highest {
     background: linear-gradient(135deg, #34d399, #10b981);
 }
 
-[data-theme="dark"] .streak-stat-value.lowest {
+[data-theme="dark"] .streakStatValue.lowest {
     background: linear-gradient(135deg, #9ca3af, #6b7280);
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
-    .streaks-section {
+    .streaksSection {
         margin: 1.5rem 0;
         padding: 0 0.5rem;
     }
     
-    .section-title {
+    .sectionTitle {
         font-size: 1.5rem;
         margin-bottom: 1rem;
     }
     
-    .streak-card-header {
+    .streakCardHeader {
         padding: 1rem;
     }
     
-    .competition-name {
+    .competitionName {
         font-size: 1.1rem;
     }
     
-    .streak-stats {
+    .streakStats {
         grid-template-columns: 1fr;
         padding: 1rem;
         gap: 1rem;
     }
     
-    .streak-stats-left {
+    .streakStatsLeft {
         border-right: none;
         border-bottom: 1px solid var(--border-color);
         padding-bottom: 1rem;
     }
     
-    .streak-stats-right {
+    .streakStatsRight {
         padding-top: 1rem;
     }
     
-    .streak-stat-item {
+    .streakStatItem {
         padding: 0.75rem;
     }
     
-    .streak-stat-value {
+    .streakStatValue {
         font-size: 1.1rem;
     }
     
-    .opponents-grid {
-        grid-template-columns: repeat(6, 1fr);
+    .opponentsGrid {
+        grid-template-columns: repeat(8, 1fr);
         gap: 0.4rem;
     }
     
+    .opponentImage {
+        width: 65px;
+        height: 65px;
+    }
     
-    .streak-item {
+    
+    .streakItem {
         padding: 0.75rem;
     }
     
-    .streak-title {
+    .streakTitle {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
     }
     
-    .streak-period {
+    .streakPeriod {
         font-size: 0.9rem;
     }
     
-    .streak-count {
+    .streakCount {
         font-size: 0.85rem;
     }
 }
 
 @media (max-width: 480px) {
-    .competition-info {
+    .competitionInfo {
         gap: 0.5rem;
     }
     
-    .competition-logo {
+    .competitionLogo {
         width: 28px;
         height: 28px;
     }
     
-    .competition-name {
+    .competitionName {
         font-size: 1rem;
     }
     
-    .streak-stat-header {
+    .streakStatHeader {
         gap: 0.25rem;
     }
     
-    .streak-stat-title {
+    .streakStatTitle {
         font-size: 0.9rem;
     }
     
-    .streak-stat-item {
+    .streakStatItem {
         flex-direction: column;
         gap: 0.5rem;
         text-align: center;
     }
     
-    .opponents-grid {
-        grid-template-columns: repeat(4, 1fr);
+    .opponentsGrid {
+        grid-template-columns: repeat(8, 1fr);
         gap: 0.3rem;
     }
     
+    .opponentImage {
+        width: 50px;
+        height: 50px;
+    }
     
-    .streak-item {
+    
+    .streakItem {
         padding: 0.5rem;
     }
     
-    .streak-period {
+    .streakPeriod {
         font-size: 0.85rem;
     }
     
-    .streak-count {
+    .streakCount {
         font-size: 0.8rem;
     }
     
-    .streak-section-title {
+    .streakSectionTitle {
         font-size: 1rem;
     }
 }

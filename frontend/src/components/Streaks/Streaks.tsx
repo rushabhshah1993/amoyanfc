@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp, faTrophy, faSkullCrossbones } from '@fortawesome/free-solid-svg-icons';
 import S3Image from '../S3Image/S3Image';
-import './Streaks.css';
+import styles from './Streaks.module.css';
 
 interface StreakStart {
     season: number;
@@ -90,9 +90,9 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
 
     if (streaks.length === 0) {
         return (
-            <div className="streaks-section">
-                <h2 className="section-title">Fighting Streaks</h2>
-                <div className="empty-state">
+            <div className={styles.streaksSection}>
+                <h2 className={styles.sectionTitle}>Fighting Streaks</h2>
+                <div className={styles.emptyState}>
                     <p>This fighter's fights have not yet been added to the system.</p>
                 </div>
             </div>
@@ -100,9 +100,9 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
     }
 
     return (
-        <div className="streaks-section">
-            <h2 className="section-title">Fighting Streaks</h2>
-            <div className="streaks-container">
+        <div className={styles.streaksSection}>
+            <h2 className={styles.sectionTitle}>Fighting Streaks</h2>
+            <div className={styles.streaksContainer}>
                 {Object.entries(competitionStreaks).map(([competitionId, { competitionMeta, streaks: competitionStreaksList }]) => {
                     const isExpanded = expandedCompetitions.has(competitionId);
                     const winStats = calculateStreakStats(competitionStreaksList, 'win');
@@ -124,61 +124,61 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                     const loseStreaks = sortedStreaks.filter(streak => streak.type === 'lose');
 
                     return (
-                        <div key={competitionId} className="streak-card">
+                        <div key={competitionId} className={styles.streakCard}>
                             <div 
-                                className="streak-card-header"
+                                className={styles.streakCardHeader}
                                 onClick={() => toggleCompetition(competitionId)}
                             >
-                                <div className="competition-info">
+                                <div className={styles.competitionInfo}>
                                     {competitionMeta.logo && (
                                         <img 
                                             src={competitionMeta.logo} 
                                             alt={competitionMeta.competitionName}
-                                            className="competition-logo"
+                                            className={styles.competitionLogo}
                                         />
                                     )}
-                                    <h3 className="competition-name">{competitionMeta.competitionName}</h3>
+                                    <h3 className={styles.competitionName}>{competitionMeta.competitionName}</h3>
                                 </div>
                                 <FontAwesomeIcon 
                                     icon={isExpanded ? faChevronUp : faChevronDown} 
-                                    className="expand-icon"
+                                    className={styles.expandIcon}
                                 />
                             </div>
 
-                            <div className="streak-stats">
-                                <div className="streak-stats-left">
-                                    <div className="streak-stat win-streaks">
-                                        <div className="streak-stat-header">
-                                            <FontAwesomeIcon icon={faTrophy} className="win-icon" />
-                                            <span className="streak-stat-title">Win Streaks</span>
+                            <div className={styles.streakStats}>
+                                <div className={styles.streakStatsLeft}>
+                                    <div className={`${styles.streakStat} ${styles.winStreaks}`}>
+                                        <div className={styles.streakStatHeader}>
+                                            <FontAwesomeIcon icon={faTrophy} className={styles.winIcon} />
+                                            <span className={styles.streakStatTitle}>Win Streaks</span>
                                         </div>
-                                        <div className="streak-stat-values">
-                                            <div className="streak-stat-item">
-                                                <span className="streak-stat-label">Highest</span>
-                                                <span className="streak-stat-value highest">{winStats.highest}</span>
+                                        <div className={styles.streakStatValues}>
+                                            <div className={styles.streakStatItem}>
+                                                <span className={styles.streakStatLabel}>Highest</span>
+                                                <span className={`${styles.streakStatValue} ${styles.highest}`}>{winStats.highest}</span>
                                             </div>
-                                            <div className="streak-stat-item">
-                                                <span className="streak-stat-label">Lowest</span>
-                                                <span className="streak-stat-value lowest">{winStats.lowest}</span>
+                                            <div className={styles.streakStatItem}>
+                                                <span className={styles.streakStatLabel}>Lowest</span>
+                                                <span className={`${styles.streakStatValue} ${styles.lowest}`}>{winStats.lowest}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="streak-stats-right">
-                                    <div className="streak-stat lose-streaks">
-                                        <div className="streak-stat-header">
-                                            <FontAwesomeIcon icon={faSkullCrossbones} className="lose-icon" />
-                                            <span className="streak-stat-title">Lose Streaks</span>
+                                <div className={styles.streakStatsRight}>
+                                    <div className={`${styles.streakStat} ${styles.loseStreaks}`}>
+                                        <div className={styles.streakStatHeader}>
+                                            <FontAwesomeIcon icon={faSkullCrossbones} className={styles.loseIcon} />
+                                            <span className={styles.streakStatTitle}>Lose Streaks</span>
                                         </div>
-                                        <div className="streak-stat-values">
-                                            <div className="streak-stat-item">
-                                                <span className="streak-stat-label">Highest</span>
-                                                <span className="streak-stat-value highest">{loseStats.highest}</span>
+                                        <div className={styles.streakStatValues}>
+                                            <div className={styles.streakStatItem}>
+                                                <span className={styles.streakStatLabel}>Highest</span>
+                                                <span className={`${styles.streakStatValue} ${styles.highest}`}>{loseStats.highest}</span>
                                             </div>
-                                            <div className="streak-stat-item">
-                                                <span className="streak-stat-label">Lowest</span>
-                                                <span className="streak-stat-value lowest">{loseStats.lowest}</span>
+                                            <div className={styles.streakStatItem}>
+                                                <span className={styles.streakStatLabel}>Lowest</span>
+                                                <span className={`${styles.streakStatValue} ${styles.lowest}`}>{loseStats.lowest}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -186,24 +186,24 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                             </div>
 
                             {isExpanded && (
-                                <div className="streak-card-content">
-                                    <div className="streak-details">
-                                        <div className="streak-section">
-                                            <h4 className="streak-section-title">
-                                                <FontAwesomeIcon icon={faTrophy} className="win-icon" />
+                                <div className={styles.streakCardContent}>
+                                    <div className={styles.streakDetails}>
+                                        <div className={styles.streakSection}>
+                                            <h4 className={styles.streakSectionTitle}>
+                                                <FontAwesomeIcon icon={faTrophy} className={styles.winIcon} />
                                                 Win Streaks
                                             </h4>
                                             {winStreaks.length > 0 ? (
-                                                <div className="streak-list">
+                                                <div className={styles.streakList}>
                                                     {winStreaks.map((streak, index) => (
-                                                        <div key={index} className="streak-item">
-                                                            <div className="streak-title">
-                                                                <span className="streak-period">
+                                                        <div key={index} className={styles.streakItem}>
+                                                            <div className={styles.streakTitle}>
+                                                                <span className={styles.streakPeriod}>
                                                                     S{streak.start.season} D{streak.start.division} R{streak.start.round} - 
                                                                     {streak.active ? (
                                                                         <>
-                                                                            <span className="live-indicator">
-                                                                                <span className="live-dot"></span>
+                                                                            <span className={styles.liveIndicator}>
+                                                                                <span className={styles.liveDot}></span>
                                                                                 Live
                                                                             </span>
                                                                         </>
@@ -211,17 +211,15 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                                                                         ` S${streak.end?.season} D${streak.end?.division} R${streak.end?.round}`
                                                                     )}
                                                                 </span>
-                                                                <span className="streak-count">({streak.count})</span>
+                                                                <span className={styles.streakCount}>({streak.count})</span>
                                                             </div>
-                                                            <div className="opponents-grid">
+                                                            <div className={styles.opponentsGrid}>
                                                                 {streak.opponents.map((opponent, oppIndex) => (
-                                                                    <div key={oppIndex} className="opponent-thumbnail">
+                                                                    <div key={oppIndex} className={styles.opponentThumbnail}>
                                                                         <S3Image
                                                                             src={opponent.profileImage}
                                                                             alt={`${opponent.firstName} ${opponent.lastName}`}
-                                                                            className="opponent-image"
-                                                                            width={60}
-                                                                            height={60}
+                                                                            className={styles.opponentImage}
                                                                             lazy={true}
                                                                         />
                                                                     </div>
@@ -231,28 +229,28 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                                                     ))}
                                                 </div>
                                             ) : (
-                                                <div className="empty-streak">
+                                                <div className={styles.emptyStreak}>
                                                     <p>No fight data available</p>
                                                 </div>
                                             )}
                                         </div>
 
-                                        <div className="streak-section">
-                                            <h4 className="streak-section-title">
-                                                <FontAwesomeIcon icon={faSkullCrossbones} className="lose-icon" />
+                                        <div className={styles.streakSection}>
+                                            <h4 className={styles.streakSectionTitle}>
+                                                <FontAwesomeIcon icon={faSkullCrossbones} className={styles.loseIcon} />
                                                 Lose Streaks
                                             </h4>
                                             {loseStreaks.length > 0 ? (
-                                                <div className="streak-list">
+                                                <div className={styles.streakList}>
                                                     {loseStreaks.map((streak, index) => (
-                                                        <div key={index} className="streak-item">
-                                                            <div className="streak-title">
-                                                                <span className="streak-period">
+                                                        <div key={index} className={styles.streakItem}>
+                                                            <div className={styles.streakTitle}>
+                                                                <span className={styles.streakPeriod}>
                                                                     S{streak.start.season} D{streak.start.division} R{streak.start.round} - 
                                                                     {streak.active ? (
                                                                         <>
-                                                                            <span className="live-indicator">
-                                                                                <span className="live-dot"></span>
+                                                                            <span className={styles.liveIndicator}>
+                                                                                <span className={styles.liveDot}></span>
                                                                                 Live
                                                                             </span>
                                                                         </>
@@ -260,17 +258,15 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                                                                         ` S${streak.end?.season} D${streak.end?.division} R${streak.end?.round}`
                                                                     )}
                                                                 </span>
-                                                                <span className="streak-count">({streak.count})</span>
+                                                                <span className={styles.streakCount}>({streak.count})</span>
                                                             </div>
-                                                            <div className="opponents-grid">
+                                                            <div className={styles.opponentsGrid}>
                                                                 {streak.opponents.map((opponent, oppIndex) => (
-                                                                    <div key={oppIndex} className="opponent-thumbnail">
+                                                                    <div key={oppIndex} className={styles.opponentThumbnail}>
                                                                         <S3Image
                                                                             src={opponent.profileImage}
                                                                             alt={`${opponent.firstName} ${opponent.lastName}`}
-                                                                            className="opponent-image"
-                                                                            width={60}
-                                                                            height={60}
+                                                                            className={styles.opponentImage}
                                                                             lazy={true}
                                                                         />
                                                                     </div>
@@ -280,7 +276,7 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                                                     ))}
                                                 </div>
                                             ) : (
-                                                <div className="empty-streak">
+                                                <div className={styles.emptyStreak}>
                                                     <p>No fight data available</p>
                                                 </div>
                                             )}
