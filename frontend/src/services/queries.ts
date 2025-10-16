@@ -100,15 +100,6 @@ export const GET_FIGHTER_INFORMATION = gql`
                         competitionSeasonId
                         seasonNumber
                         divisionNumber
-                        competition {
-                            id
-                            seasonMeta {
-                                seasonNumber
-                                leagueDivisions {
-                                    divisionNumber
-                                }
-                            }
-                        }
                     }
                 }
             }

@@ -8,13 +8,6 @@ interface TitleDetail {
     competitionSeasonId: string;
     seasonNumber: number;
     divisionNumber: number;
-    competition?: {
-        id: string;
-        seasonMeta: {
-            seasonNumber: number;
-            leagueDivisions?: { divisionNumber: number }[];
-        };
-    };
 }
 
 interface CompetitionHistoryItem {
@@ -59,18 +52,9 @@ const CompetitionHistory: React.FC<CompetitionHistoryProps> = ({ competitionHist
         const divisionStrings = Object.entries(divisionGroups).map(([divNum, seasons]) => {
             const seasonList = seasons.sort((a, b) => a - b).map(s => `S${s}`).join(', ');
             
-            // Check if any of these seasons have multiple divisions
-            const hasDivisions = titles.details.some(detail => {
-                if (!seasons.includes(detail.seasonNumber)) return false;
-                const seasonInfo = detail.competition;
-                return seasonInfo?.seasonMeta?.leagueDivisions && 
-                       seasonInfo.seasonMeta.leagueDivisions.length > 1;
-            });
-            
-            if (hasDivisions) {
-                return `${seasonList} (Division ${divNum})`;
-            }
-            return seasonList;
+            // Always show division number for IFC titles (since IFC always has multiple divisions)
+            // This ensures division numbers are displayed consistently
+            return `${seasonList} (Division ${divNum})`;
         });
 
         return `${titleCount} • ${divisionStrings.join(' | ')}`;
