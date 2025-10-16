@@ -39,6 +39,7 @@ interface Opponent {
     id: string;
     firstName: string;
     lastName: string;
+    profileImage?: string;
 }
 
 interface Streak {

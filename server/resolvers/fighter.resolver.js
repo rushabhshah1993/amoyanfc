@@ -282,7 +282,8 @@ const fighterResolver = {
                             return opponent ? {
                                 id: opponent.id || opponent._id?.toString(),
                                 firstName: opponent.firstName,
-                                lastName: opponent.lastName
+                                lastName: opponent.lastName,
+                                profileImage: opponent.profileImage
                             } : null;
                         })
                     );

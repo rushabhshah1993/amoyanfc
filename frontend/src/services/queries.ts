@@ -131,6 +131,7 @@ export const GET_FIGHTER_INFORMATION = gql`
                     id
                     firstName
                     lastName
+                    profileImage
                 }
                 competitionMeta {
                     id

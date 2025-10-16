@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp, faTrophy, faSkullCrossbones } from '@fortawesome/free-solid-svg-icons';
+import S3Image from '../S3Image/S3Image';
 import './Streaks.css';
 
 interface StreakStart {
@@ -25,6 +26,7 @@ interface Opponent {
     id: string;
     firstName: string;
     lastName: string;
+    profileImage?: string;
 }
 
 interface Streak {
@@ -105,6 +107,21 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                     const isExpanded = expandedCompetitions.has(competitionId);
                     const winStats = calculateStreakStats(competitionStreaksList, 'win');
                     const loseStats = calculateStreakStats(competitionStreaksList, 'lose');
+                    
+                    // Sort streaks chronologically (oldest first) and separate by type
+                    const sortedStreaks = [...competitionStreaksList].sort((a, b) => {
+                        // Sort by season, then division, then round
+                        if (a.start.season !== b.start.season) {
+                            return a.start.season - b.start.season;
+                        }
+                        if (a.start.division !== b.start.division) {
+                            return a.start.division - b.start.division;
+                        }
+                        return a.start.round - b.start.round;
+                    });
+                    
+                    const winStreaks = sortedStreaks.filter(streak => streak.type === 'win');
+                    const loseStreaks = sortedStreaks.filter(streak => streak.type === 'lose');
 
                     return (
                         <div key={competitionId} className="streak-card">
@@ -170,9 +187,104 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
 
                             {isExpanded && (
                                 <div className="streak-card-content">
-                                    {/* This will be populated when you explain what should be shown when expanded */}
-                                    <div className="expanded-content">
-                                        <p>Detailed streak information will be shown here.</p>
+                                    <div className="streak-details">
+                                        <div className="streak-section">
+                                            <h4 className="streak-section-title">
+                                                <FontAwesomeIcon icon={faTrophy} className="win-icon" />
+                                                Win Streaks
+                                            </h4>
+                                            {winStreaks.length > 0 ? (
+                                                <div className="streak-list">
+                                                    {winStreaks.map((streak, index) => (
+                                                        <div key={index} className="streak-item">
+                                                            <div className="streak-title">
+                                                                <span className="streak-period">
+                                                                    S{streak.start.season} D{streak.start.division} R{streak.start.round} - 
+                                                                    {streak.active ? (
+                                                                        <>
+                                                                            <span className="live-indicator">
+                                                                                <span className="live-dot"></span>
+                                                                                Live
+                                                                            </span>
+                                                                        </>
+                                                                    ) : (
+                                                                        ` S${streak.end?.season} D${streak.end?.division} R${streak.end?.round}`
+                                                                    )}
+                                                                </span>
+                                                                <span className="streak-count">({streak.count})</span>
+                                                            </div>
+                                                            <div className="opponents-grid">
+                                                                {streak.opponents.map((opponent, oppIndex) => (
+                                                                    <div key={oppIndex} className="opponent-thumbnail">
+                                                                        <S3Image
+                                                                            src={opponent.profileImage}
+                                                                            alt={`${opponent.firstName} ${opponent.lastName}`}
+                                                                            className="opponent-image"
+                                                                            width={60}
+                                                                            height={60}
+                                                                            lazy={true}
+                                                                        />
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                <div className="empty-streak">
+                                                    <p>No fight data available</p>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        <div className="streak-section">
+                                            <h4 className="streak-section-title">
+                                                <FontAwesomeIcon icon={faSkullCrossbones} className="lose-icon" />
+                                                Lose Streaks
+                                            </h4>
+                                            {loseStreaks.length > 0 ? (
+                                                <div className="streak-list">
+                                                    {loseStreaks.map((streak, index) => (
+                                                        <div key={index} className="streak-item">
+                                                            <div className="streak-title">
+                                                                <span className="streak-period">
+                                                                    S{streak.start.season} D{streak.start.division} R{streak.start.round} - 
+                                                                    {streak.active ? (
+                                                                        <>
+                                                                            <span className="live-indicator">
+                                                                                <span className="live-dot"></span>
+                                                                                Live
+                                                                            </span>
+                                                                        </>
+                                                                    ) : (
+                                                                        ` S${streak.end?.season} D${streak.end?.division} R${streak.end?.round}`
+                                                                    )}
+                                                                </span>
+                                                                <span className="streak-count">({streak.count})</span>
+                                                            </div>
+                                                            <div className="opponents-grid">
+                                                                {streak.opponents.map((opponent, oppIndex) => (
+                                                                    <div key={oppIndex} className="opponent-thumbnail">
+                                                                        <S3Image
+                                                                            src={opponent.profileImage}
+                                                                            alt={`${opponent.firstName} ${opponent.lastName}`}
+                                                                            className="opponent-image"
+                                                                            width={60}
+                                                                            height={60}
+                                                                            lazy={true}
+                                                                        />
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                <div className="empty-streak">
+                                                    <p>No fight data available</p>
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             )}
