@@ -17,7 +17,11 @@
     "update:fighters-titles": "node scripts/update-fighters-titles.js",
     "import:safe-round-standings": "node scripts/import-round-standings-safe.js",
     "import:safe-season2": "node scripts/import-season2-safe.js",
-    "import:safe-season3": "node scripts/import-season3-safe.js"
+    "import:safe-season3": "node scripts/import-season3-safe.js",
+    "backup:fighters": "node scripts/backup-fighters-data.js",
+    "restore:fighters": "node scripts/restore-fighters-data.js restore",
+    "list:backups": "node scripts/restore-fighters-data.js list",
+    "validate:backup": "node scripts/restore-fighters-data.js validate"
   },
   "type": "module",
   "author": "Rushabh Mulraj Shah",

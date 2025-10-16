@@ -1,0 +1,28 @@
+FIGHTERS DATA BACKUP SUMMARY
+============================
+Backup Date: 2025-10-16T07:25:44.119Z
+Total Fighters: 53
+Database: gql-db
+Collection: fighters
+Backup File: fighters-backup-2025-10-16.json
+File Size: 2.15 MB
+
+BACKUP CONTENTS:
+- Complete fighter profiles with all personal information
+- Fight statistics and performance data
+- Win/loss streaks across competitions
+- Head-to-head records against opponents
+- Competition history and titles
+- Physical attributes and ratings
+- Earnings information
+- Debut information
+- Profile images and media
+
+VALIDATION:
+- All fighters exported successfully
+- No data truncation or errors
+- Complete schema compliance maintained
+
+RESTORE INSTRUCTIONS:
+To restore this backup, use the restore-fighters-data.js script
+or manually import the JSON data into your MongoDB collection.
