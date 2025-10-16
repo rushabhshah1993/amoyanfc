@@ -142,8 +142,8 @@ function updateOpponentsHistory(fighter, opponentId, competitionId, season, divi
   opponentRecord.details.push({
     competitionId: competitionId,
     season: season,
-    division: division,
-    round: round,
+    divisionId: division,
+    roundId: round,
     fightId: fightId,
     isWinner: isWinner
   });
