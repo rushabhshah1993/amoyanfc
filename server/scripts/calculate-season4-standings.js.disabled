@@ -1,0 +1,347 @@
+/**
+ * Calculate Season 4 Round Standings
+ * This script processes all fights in Season 4 and calculates standings after each fight
+ * Handles multiple divisions with separate standings for each division
+ */
+
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Constants
+const POINTS_PER_WIN = 3;
+const COMPETITION_ID = '67780dcc09a4c4b25127f8f6';
+const SEASON_NUMBER = 4;
+
+/**
+ * Parse a fight identifier string into its components
+ */
+function parseFightIdentifier(fightIdentifier) {
+  const parts = fightIdentifier.split('-');
+  
+  if (parts.length !== 5) {
+    throw new Error(`Invalid fight identifier format: ${fightIdentifier}`);
+  }
+
+  return {
+    competition: parts[0],
+    seasonNumber: parseInt(parts[1].substring(1)),
+    divisionNumber: parseInt(parts[2].substring(1)),
+    roundNumber: parseInt(parts[3].substring(1)),
+    fightNumber: parseInt(parts[4].substring(1)),
+  };
+}
+
+/**
+ * Calculate head-to-head points for tied fighters
+ */
+function calculateHeadToHeadPoints(tiedFighters, allFights) {
+  const h2hPoints = new Map();
+  
+  tiedFighters.forEach(fighterId => {
+    h2hPoints.set(fighterId, 0);
+  });
+
+  allFights.forEach(fight => {
+    if (!fight.winner || fight.fightStatus !== 'completed') return;
+
+    const fighter1 = fight.fighter1;
+    const fighter2 = fight.fighter2;
+    const winner = fight.winner;
+
+    // Only consider fights between tied fighters
+    if (tiedFighters.includes(fighter1) && tiedFighters.includes(fighter2)) {
+      if (winner === fighter1) {
+        h2hPoints.set(fighter1, h2hPoints.get(fighter1) + POINTS_PER_WIN);
+      } else if (winner === fighter2) {
+        h2hPoints.set(fighter2, h2hPoints.get(fighter2) + POINTS_PER_WIN);
+      }
+    }
+  });
+
+  return h2hPoints;
+}
+
+/**
+ * Create fighter name mapping for alphabetical sorting
+ */
+function createFighterNameMapping() {
+  return {
+    '676d6f89eb38b2b97c6da949': 'Aashna',
+    '676d6fa0eb38b2b97c6da94b': 'Aishwarya',
+    '676d6fc5eb38b2b97c6da94d': 'Amruta',
+    '676d70fbeb38b2b97c6da951': 'Anika',
+    '676d7136eb38b2b97c6da953': 'Anmol',
+    '676d7172eb38b2b97c6da957': 'Ashwini',
+    '676d71b4eb38b2b97c6da95b': 'Darshita',
+    '676d71ceeb38b2b97c6da95d': 'Diana',
+    '676d7201eb38b2b97c6da95f': 'Drishti',
+    '676d721aeb38b2b97c6da961': 'Hetal',
+    '676d7241eb38b2b97c6da963': 'Hinal',
+    '676d7250eb38b2b97c6da965': 'Isha',
+    '676d72dceb38b2b97c6da96b': 'Jacqueline',
+    '676d7304eb38b2b97c6da96d': 'Jinali',
+    '676d736eeb38b2b97c6da975': 'Kinjal',
+    '676d7399eb38b2b97c6da977': 'Komal',
+    '676d73ddeb38b2b97c6da979': 'Kripa',
+    '676d740ceb38b2b97c6da97b': 'Krishi',
+    '676d742deb38b2b97c6da97d': 'Kriti',
+    '676d7452eb38b2b97c6da981': 'Mahima',
+    '676d745feb38b2b97c6da983': 'Mhafrin',
+    '676d7475eb38b2b97c6da985': 'Mridula',
+    '676d748eeb38b2b97c6da987': 'Natasha',
+    '676d749feb38b2b97c6da989': 'Neha',
+    '676d74bceb38b2b97c6da98d': 'Priyanka',
+    '676d74efeb38b2b97c6da991': 'Rashna',
+    '676d751aeb38b2b97c6da995': 'Roopanshi',
+    '676d753ceb38b2b97c6da997': 'Rushika',
+    '676d7554eb38b2b97c6da999': 'Sachi',
+    '676d6ecceb38b2b97c6da945': 'Sayali',
+    '676d757aeb38b2b97c6da99d': 'Shraddha',
+    '676d75dfeb38b2b97c6da9a5': 'Tanvi',
+    '676d75faeb38b2b97c6da9a7': 'Trishala',
+    '676d7613eb38b2b97c6da9a9': 'Unnati',
+    '676d7631eb38b2b97c6da9ab': 'Venessa',
+    '676d764eeb38b2b97c6da9ad': 'Vidhi',
+    '676d7663eb38b2b97c6da9af': 'Vinaya',
+    '676d767ceb38b2b97c6da9b1': 'Yashada',
+    '676d7568eb38b2b97c6da99b': 'Shalini',
+    '676d759ceb38b2b97c6da9a1': 'Sofiya',
+    '676d75c8eb38b2b97c6da9a3': 'Supriya',
+    '676d72c5eb38b2b97c6da969': 'Ishita',
+    '676d743eeb38b2b97c6da97f': 'Kruppa',
+    '676d7505eb38b2b97c6da993': 'Ritu',
+    '676d7190eb38b2b97c6da959': 'Bandgee',
+    '676d7279eb38b2b97c6da967': 'Isha',
+    '676d70e7eb38b2b97c6da94f': 'Ananya',
+    '676d735aeb38b2b97c6da973': 'Kanchan'
+  };
+}
+
+/**
+ * Calculate standings for a specific division
+ */
+function calculateDivisionStandings(divisionData, seasonMeta, allFights) {
+  const standings = [];
+  const fighterNameMapping = createFighterNameMapping();
+  
+  // Get fighters for this division from seasonMeta
+  const divisionMeta = seasonMeta.leagueDivisions.find(d => d.divisionNumber === divisionData.divisionNumber);
+  if (!divisionMeta) {
+    throw new Error(`Division ${divisionData.divisionNumber} not found in season meta`);
+  }
+  
+  const fighters = divisionMeta.fighters;
+  
+  // Initialize standings for all fighters
+  fighters.forEach(fighterId => {
+    standings.push({
+      fighterId: fighterId,
+      fighterName: fighterNameMapping[fighterId] || fighterId, // Fallback to ID if name not found
+      fightsCount: 0,
+      wins: 0,
+      points: 0,
+      rank: 1,
+      totalFightersCount: fighters.length
+    });
+  });
+
+  // Process each fight in chronological order
+  allFights.forEach(fight => {
+    if (!fight.winner || fight.fightStatus !== 'completed') return;
+
+    const fighter1 = fight.fighter1;
+    const fighter2 = fight.fighter2;
+    const winner = fight.winner;
+
+    // Update fighter stats
+    const fighter1Stats = standings.find(s => s.fighterId === fighter1);
+    const fighter2Stats = standings.find(s => s.fighterId === fighter2);
+
+    if (fighter1Stats) {
+      fighter1Stats.fightsCount++;
+      if (winner === fighter1) {
+        fighter1Stats.wins++;
+        fighter1Stats.points += POINTS_PER_WIN;
+      }
+    }
+
+    if (fighter2Stats) {
+      fighter2Stats.fightsCount++;
+      if (winner === fighter2) {
+        fighter2Stats.wins++;
+        fighter2Stats.points += POINTS_PER_WIN;
+      }
+    }
+
+    // Sort standings by points (descending), then by wins (descending), then by head-to-head, then alphabetically
+    standings.sort((a, b) => {
+      if (a.points !== b.points) {
+        return b.points - a.points;
+      }
+      if (a.wins !== b.wins) {
+        return b.wins - a.wins;
+      }
+      
+      // Head-to-head tiebreaker
+      const tiedFighters = standings.filter(s => s.points === a.points && s.wins === a.wins);
+      if (tiedFighters.length > 1) {
+        const h2hPoints = calculateHeadToHeadPoints(
+          tiedFighters.map(s => s.fighterId), 
+          allFights.slice(0, allFights.indexOf(fight) + 1)
+        );
+        
+        // Check if head-to-head points are different
+        const aH2H = h2hPoints.get(a.fighterId) || 0;
+        const bH2H = h2hPoints.get(b.fighterId) || 0;
+        
+        if (aH2H !== bH2H) {
+          return bH2H - aH2H;
+        }
+      }
+      
+      // Fallback to alphabetical sorting by fighter name
+      return a.fighterName.localeCompare(b.fighterName);
+    });
+
+    // Update ranks
+    standings.forEach((standing, index) => {
+      standing.rank = index + 1;
+    });
+  });
+
+  return standings;
+}
+
+/**
+ * Load Season 4 migrated data
+ */
+function loadSeason4Data() {
+  const dataPath = path.join(__dirname, '../../old-data/ifc-season4-migrated.json');
+  
+  console.log(`\n📂 Loading Season 4 data from: ${dataPath}`);
+  
+  if (!fs.existsSync(dataPath)) {
+    throw new Error(`Season 4 data file not found: ${dataPath}`);
+  }
+  
+  const rawData = fs.readFileSync(dataPath, 'utf8');
+  const seasonData = JSON.parse(rawData);
+  
+  console.log(`✅ Loaded Season 4 data with ${seasonData.leagueData.divisions.length} divisions`);
+  
+  return seasonData;
+}
+
+/**
+ * Calculate standings for all divisions
+ */
+function calculateAllStandings(seasonData) {
+  const allStandings = [];
+  
+  seasonData.leagueData.divisions.forEach(division => {
+    console.log(`\n📊 Calculating standings for Division ${division.divisionNumber}...`);
+    
+    // Collect all fights for this division
+    const allFights = [];
+    division.rounds.forEach(round => {
+      round.fights.forEach(fight => {
+        allFights.push(fight);
+      });
+    });
+    
+    console.log(`   Total fights: ${allFights.length}`);
+    
+    // Calculate standings after each fight
+    for (let i = 0; i < allFights.length; i++) {
+      const fightsUpToNow = allFights.slice(0, i + 1);
+      const standings = calculateDivisionStandings(division, seasonData.seasonMeta, fightsUpToNow);
+      
+      const fight = allFights[i];
+      const fightId = parseFightIdentifier(fight.fightIdentifier);
+      
+      allStandings.push({
+        competitionId: COMPETITION_ID,
+        seasonNumber: SEASON_NUMBER,
+        divisionNumber: division.divisionNumber,
+        roundNumber: fightId.roundNumber,
+        fightId: fight.fightIdentifier,
+        fightIdentifier: fight.fightIdentifier,
+        standings: standings,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      });
+    }
+    
+    console.log(`   Generated ${allFights.length} standing snapshots`);
+  });
+  
+  return allStandings;
+}
+
+/**
+ * Save standings to file
+ */
+function saveStandings(standings) {
+  const outputPath = path.join(__dirname, '../../old-data/migrated-standings/season4-all-rounds-standings.json');
+  
+  // Ensure directory exists
+  const outputDir = path.dirname(outputPath);
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+  
+  console.log(`\n💾 Saving standings to: ${outputPath}`);
+  
+  fs.writeFileSync(outputPath, JSON.stringify(standings, null, 2));
+  
+  console.log('✅ Standings calculation completed successfully!');
+  console.log(`📁 Output file: ${outputPath}`);
+  
+  // Print summary
+  console.log('\n📋 Standings Summary:');
+  console.log(`   Total snapshots: ${standings.length}`);
+  
+  const divisionStats = {};
+  standings.forEach(standing => {
+    const div = standing.divisionNumber;
+    if (!divisionStats[div]) {
+      divisionStats[div] = 0;
+    }
+    divisionStats[div]++;
+  });
+  
+  Object.keys(divisionStats).forEach(division => {
+    console.log(`   Division ${division}: ${divisionStats[division]} snapshots`);
+  });
+}
+
+/**
+ * Main calculation function
+ */
+function main() {
+  try {
+    console.log('🚀 Season 4 Standings Calculation Tool');
+    console.log('======================================');
+    
+    const seasonData = loadSeason4Data();
+    const standings = calculateAllStandings(seasonData);
+    saveStandings(standings);
+    
+    console.log('\n🎉 Standings calculation completed successfully!');
+    console.log('Next steps:');
+    console.log('1. Review the standings data');
+    console.log('2. Import standings to MongoDB');
+    
+  } catch (error) {
+    console.error('\n❌ Standings calculation failed:', error.message);
+    console.error(error.stack);
+    process.exit(1);
+  }
+}
+
+// Run the calculation
+main();
