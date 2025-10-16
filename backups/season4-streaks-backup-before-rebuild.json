@@ -1,0 +1,4622 @@
+{
+  "timestamp": "2025-10-16T12:54:05.524Z",
+  "description": "Backup of Season 4 streak data before rebuild",
+  "fighters": [
+    {
+      "_id": "676d6ecceb38b2b97c6da945",
+      "firstName": "Sayali",
+      "lastName": "Raut",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 3,
+            "_id": "68f092fda28715390c3b828e"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 5,
+            "_id": "68f092fda28715390c3b82b9"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d7136eb38b2b97c6da953",
+            "676d721aeb38b2b97c6da961"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a56"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 5,
+            "_id": "68f092fda28715390c3b82bb"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 6,
+            "_id": "68f092fda28715390c3b82cb"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7613eb38b2b97c6da9a9"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a59"
+        }
+      ]
+    },
+    {
+      "_id": "676d6f89eb38b2b97c6da949",
+      "firstName": "Aashna",
+      "lastName": "Jogani",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83b3"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83d7"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d71ceeb38b2b97c6da95d"
+          ],
+          "_id": "68f0e8137b9b39856ffe485d"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83d9"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83e9"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d71b4eb38b2b97c6da95b"
+          ],
+          "_id": "68f0e8137b9b39856ffe4860"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83eb"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8401"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d72dceb38b2b97c6da96b"
+          ],
+          "_id": "68f0e8137b9b39856ffe4863"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8403"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b841c"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7172eb38b2b97c6da957"
+          ],
+          "_id": "68f0e8137b9b39856ffe4866"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b841e"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8458"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d7250eb38b2b97c6da965",
+            "676d7663eb38b2b97c6da9af",
+            "676d757aeb38b2b97c6da99d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4869"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b845a"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8488"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d7475eb38b2b97c6da985",
+            "676d7241eb38b2b97c6da963"
+          ],
+          "_id": "68f0e8137b9b39856ffe486c"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 10,
+            "_id": "68f092fda28715390c3b848a"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84b2"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d742deb38b2b97c6da97d",
+            "676d6fc5eb38b2b97c6da94d"
+          ],
+          "_id": "68f0e8137b9b39856ffe486f"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84b4"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 14,
+            "_id": "68f092fda28715390c3b84eb"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d764eeb38b2b97c6da9ad",
+            "676d767ceb38b2b97c6da9b1"
+          ],
+          "_id": "68f0e8137b9b39856ffe4872"
+        }
+      ]
+    },
+    {
+      "_id": "676d6fa0eb38b2b97c6da94b",
+      "firstName": "Aishwarya",
+      "lastName": "Sharma",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 1,
+            "_id": "68f092fda28715390c3b827f"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 2,
+            "_id": "68f092fda28715390c3b8283"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7613eb38b2b97c6da9a9"
+          ],
+          "_id": "68f0e8137b9b39856ffe476b"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 2,
+            "_id": "68f092fda28715390c3b8285"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 3,
+            "_id": "68f092fda28715390c3b82a1"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7399eb38b2b97c6da977"
+          ],
+          "_id": "68f0e8137b9b39856ffe476e"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 3,
+            "_id": "68f092fda28715390c3b82a3"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 4,
+            "_id": "68f092fda28715390c3b82a4"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7631eb38b2b97c6da9ab"
+          ],
+          "_id": "68f0e8137b9b39856ffe4771"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 4,
+            "_id": "68f092fda28715390c3b82a6"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 7,
+            "_id": "68f092fda28715390c3b82d4"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d7136eb38b2b97c6da953",
+            "676d753ceb38b2b97c6da997",
+            "676d736eeb38b2b97c6da975"
+          ],
+          "_id": "68f0e8137b9b39856ffe4774"
+        }
+      ]
+    },
+    {
+      "_id": "676d6fc5eb38b2b97c6da94d",
+      "firstName": "Amruta",
+      "lastName": "Date",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83b7"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b844f"
+          },
+          "count": 6,
+          "active": false,
+          "opponents": [
+            "676d71b4eb38b2b97c6da95b",
+            "676d72dceb38b2b97c6da96b",
+            "676d7172eb38b2b97c6da957",
+            "676d7250eb38b2b97c6da965",
+            "676d7663eb38b2b97c6da9af",
+            "676d757aeb38b2b97c6da99d"
+          ],
+          "_id": "68f0e8137b9b39856ffe48de"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8451"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8485"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d7475eb38b2b97c6da985",
+            "676d7241eb38b2b97c6da963"
+          ],
+          "_id": "68f0e8137b9b39856ffe48e1"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8487"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 11,
+            "_id": "68f092fda28715390c3b84af"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d742deb38b2b97c6da97d",
+            "676d764eeb38b2b97c6da9ad"
+          ],
+          "_id": "68f0e8137b9b39856ffe48e4"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 11,
+            "_id": "68f092fda28715390c3b84b1"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 14,
+            "_id": "68f092fda28715390c3b84ee"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d6f89eb38b2b97c6da949",
+            "676d767ceb38b2b97c6da9b1",
+            "676d75dfeb38b2b97c6da9a5"
+          ],
+          "_id": "68f0e8137b9b39856ffe48e7"
+        }
+      ]
+    },
+    {
+      "_id": "676d70fbeb38b2b97c6da951",
+      "firstName": "Anika",
+      "lastName": "Beri",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 3,
+            "_id": "68f092fda28715390c3b8309"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8319"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d75faeb38b2b97c6da9a7"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b46"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 4,
+            "_id": "68f092fda28715390c3b831b"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8337"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d748eeb38b2b97c6da987"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b49"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8339"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 8,
+            "_id": "68f092fda28715390c3b835b"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d751aeb38b2b97c6da995",
+            "676d74efeb38b2b97c6da991",
+            "676d7554eb38b2b97c6da999"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b4c"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 8,
+            "_id": "68f092fda28715390c3b835d"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 9,
+            "_id": "68f092fda28715390c3b837f"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7304eb38b2b97c6da96d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b4f"
+        }
+      ]
+    },
+    {
+      "_id": "676d7136eb38b2b97c6da953",
+      "firstName": "Anmol",
+      "lastName": "Pandya",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 2,
+            "_id": "68f092fda28715390c3b8282"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 3,
+            "_id": "68f092fda28715390c3b828f"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7631eb38b2b97c6da9ab"
+          ],
+          "_id": "68f0e8137b9b39856ffe4806"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 3,
+            "_id": "68f092fda28715390c3b8291"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 5,
+            "_id": "68f092fda28715390c3b82b6"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d6ecceb38b2b97c6da945",
+            "676d6fa0eb38b2b97c6da94b"
+          ],
+          "_id": "68f0e8137b9b39856ffe4809"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 5,
+            "_id": "68f092fda28715390c3b82b8"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 7,
+            "_id": "68f092fda28715390c3b82ce"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d721aeb38b2b97c6da961",
+            "676d753ceb38b2b97c6da997"
+          ],
+          "_id": "68f0e8137b9b39856ffe480c"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 7,
+            "_id": "68f092fda28715390c3b82d0"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 8,
+            "_id": "68f092fda28715390c3b82da"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7613eb38b2b97c6da9a9"
+          ],
+          "_id": "68f0e8137b9b39856ffe480f"
+        }
+      ]
+    },
+    {
+      "_id": "676d7172eb38b2b97c6da957",
+      "firstName": "Ashwini",
+      "lastName": "Date",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83bf"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83ec"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d7241eb38b2b97c6da963",
+            "676d742deb38b2b97c6da97d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a69"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83ee"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8404"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d6fc5eb38b2b97c6da94d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a6c"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8406"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8446"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d6f89eb38b2b97c6da949",
+            "676d767ceb38b2b97c6da9b1",
+            "676d75dfeb38b2b97c6da9a5"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a6f"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8448"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8464"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d74bceb38b2b97c6da98d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a72"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8466"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b846d"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d71ceeb38b2b97c6da95d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a75"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b846f"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8497"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d71b4eb38b2b97c6da95b"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a78"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8499"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 15,
+            "_id": "68f092fda28715390c3b8506"
+          },
+          "count": 5,
+          "active": false,
+          "opponents": [
+            "676d72dceb38b2b97c6da96b",
+            "676d764eeb38b2b97c6da9ad",
+            "676d7250eb38b2b97c6da965",
+            "676d7663eb38b2b97c6da9af",
+            "676d757aeb38b2b97c6da99d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a7b"
+        }
+      ]
+    },
+    {
+      "_id": "676d71b4eb38b2b97c6da95b",
+      "firstName": "Darshita",
+      "lastName": "Bhatt",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83b5"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83da"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d6fc5eb38b2b97c6da94d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b65"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83dc"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b843a"
+          },
+          "count": 5,
+          "active": false,
+          "opponents": [
+            "676d6f89eb38b2b97c6da949",
+            "676d767ceb38b2b97c6da9b1",
+            "676d75dfeb38b2b97c6da9a5",
+            "676d74bceb38b2b97c6da98d",
+            "676d71ceeb38b2b97c6da95d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b68"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b843c"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8467"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d764eeb38b2b97c6da9ad"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b6b"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8469"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 10,
+            "_id": "68f092fda28715390c3b848e"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d72dceb38b2b97c6da96b",
+            "676d7172eb38b2b97c6da957"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b6e"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8490"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 11,
+            "_id": "68f092fda28715390c3b849a"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7250eb38b2b97c6da965"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b71"
+        }
+      ]
+    },
+    {
+      "_id": "676d71ceeb38b2b97c6da95d",
+      "firstName": "Diana",
+      "lastName": "Chan",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83b1"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83dd"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d6f89eb38b2b97c6da949"
+          ],
+          "_id": "68f0e8147b9b39856ffe4b8a"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83df"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83e3"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d767ceb38b2b97c6da9b1"
+          ],
+          "_id": "68f0e8147b9b39856ffe4b8d"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83e5"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8443"
+          },
+          "count": 4,
+          "active": false,
+          "opponents": [
+            "676d75dfeb38b2b97c6da9a5",
+            "676d74bceb38b2b97c6da98d",
+            "676d764eeb38b2b97c6da9ad",
+            "676d71b4eb38b2b97c6da95b"
+          ],
+          "_id": "68f0e8147b9b39856ffe4b90"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8445"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8461"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d72dceb38b2b97c6da96b"
+          ],
+          "_id": "68f0e8147b9b39856ffe4b93"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8463"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8473"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7172eb38b2b97c6da957"
+          ],
+          "_id": "68f0e8147b9b39856ffe4b96"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8475"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 11,
+            "_id": "68f092fda28715390c3b849d"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d7250eb38b2b97c6da965",
+            "676d7663eb38b2b97c6da9af"
+          ],
+          "_id": "68f0e8147b9b39856ffe4b99"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 11,
+            "_id": "68f092fda28715390c3b849f"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84dc"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d757aeb38b2b97c6da99d",
+            "676d7475eb38b2b97c6da985"
+          ],
+          "_id": "68f0e8147b9b39856ffe4b9c"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84de"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 14,
+            "_id": "68f092fda28715390c3b84f1"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7241eb38b2b97c6da963"
+          ],
+          "_id": "68f0e8147b9b39856ffe4b9f"
+        }
+      ]
+    },
+    {
+      "_id": "676d7201eb38b2b97c6da95f",
+      "firstName": "Drishti",
+      "lastName": "Valecha",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 4,
+            "_id": "68f092fda28715390c3b831e"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8352"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d75faeb38b2b97c6da9a7",
+            "676d748eeb38b2b97c6da987",
+            "676d751aeb38b2b97c6da995"
+          ],
+          "_id": "68f0e8137b9b39856ffe478b"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8354"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8382"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d74efeb38b2b97c6da991",
+            "676d7554eb38b2b97c6da999",
+            "676d70fbeb38b2b97c6da951"
+          ],
+          "_id": "68f0e8137b9b39856ffe478e"
+        }
+      ]
+    },
+    {
+      "_id": "676d721aeb38b2b97c6da961",
+      "firstName": "Hetal",
+      "lastName": "Boricha",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 3,
+            "_id": "68f092fda28715390c3b8294"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 4,
+            "_id": "68f092fda28715390c3b82b3"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7452eb38b2b97c6da981"
+          ],
+          "_id": "68f0e8147b9b39856ffe4bc1"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 4,
+            "_id": "68f092fda28715390c3b82b5"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 7,
+            "_id": "68f092fda28715390c3b82d1"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d6ecceb38b2b97c6da945",
+            "676d7136eb38b2b97c6da953",
+            "676d7613eb38b2b97c6da9a9"
+          ],
+          "_id": "68f0e8147b9b39856ffe4bc4"
+        }
+      ]
+    },
+    {
+      "_id": "676d7241eb38b2b97c6da963",
+      "firstName": "Hinal",
+      "lastName": "Parekh",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83bd"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83d1"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7172eb38b2b97c6da957"
+          ],
+          "_id": "68f0e8137b9b39856ffe4894"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83d3"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 11,
+            "_id": "68f092fda28715390c3b84a6"
+          },
+          "count": 9,
+          "active": false,
+          "opponents": [
+            "676d7250eb38b2b97c6da965",
+            "676d7663eb38b2b97c6da9af",
+            "676d757aeb38b2b97c6da99d",
+            "676d7475eb38b2b97c6da985",
+            "676d764eeb38b2b97c6da9ad",
+            "676d742deb38b2b97c6da97d",
+            "676d6fc5eb38b2b97c6da94d",
+            "676d6f89eb38b2b97c6da949",
+            "676d767ceb38b2b97c6da9b1"
+          ],
+          "_id": "68f0e8137b9b39856ffe4897"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 11,
+            "_id": "68f092fda28715390c3b84a8"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84be"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d75dfeb38b2b97c6da9a5"
+          ],
+          "_id": "68f0e8137b9b39856ffe489a"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84c0"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84d9"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d74bceb38b2b97c6da98d"
+          ],
+          "_id": "68f0e8137b9b39856ffe489d"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84db"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 15,
+            "_id": "68f092fda28715390c3b850f"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d71ceeb38b2b97c6da95d",
+            "676d71b4eb38b2b97c6da95b"
+          ],
+          "_id": "68f0e8137b9b39856ffe48a0"
+        }
+      ]
+    },
+    {
+      "_id": "676d7250eb38b2b97c6da965",
+      "firstName": "Isha",
+      "lastName": "Haria",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83c1"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 6,
+            "_id": "68f092fda28715390c3b8431"
+          },
+          "count": 5,
+          "active": false,
+          "opponents": [
+            "676d7475eb38b2b97c6da985",
+            "676d7241eb38b2b97c6da963",
+            "676d742deb38b2b97c6da97d",
+            "676d6fc5eb38b2b97c6da94d",
+            "676d6f89eb38b2b97c6da949"
+          ],
+          "_id": "68f0e8137b9b39856ffe479e"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 6,
+            "_id": "68f092fda28715390c3b8433"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8470"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d767ceb38b2b97c6da9b1",
+            "676d75dfeb38b2b97c6da9a5",
+            "676d74bceb38b2b97c6da98d"
+          ],
+          "_id": "68f0e8137b9b39856ffe47a1"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8472"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8491"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d71ceeb38b2b97c6da95d"
+          ],
+          "_id": "68f0e8137b9b39856ffe47a4"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8493"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84c7"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d71b4eb38b2b97c6da95b",
+            "676d72dceb38b2b97c6da96b"
+          ],
+          "_id": "68f0e8137b9b39856ffe47a7"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84c9"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84cd"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7172eb38b2b97c6da957"
+          ],
+          "_id": "68f0e8137b9b39856ffe47aa"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84cf"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 14,
+            "_id": "68f092fda28715390c3b84fa"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d764eeb38b2b97c6da9ad"
+          ],
+          "_id": "68f0e8137b9b39856ffe47ad"
+        }
+      ]
+    },
+    {
+      "_id": "676d72dceb38b2b97c6da96b",
+      "firstName": "Jacqueline",
+      "lastName": "Furtado",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83bb"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83d4"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d742deb38b2b97c6da97d"
+          ],
+          "_id": "68f0e8137b9b39856ffe47c9"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83d6"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 6,
+            "_id": "68f092fda28715390c3b8437"
+          },
+          "count": 4,
+          "active": false,
+          "opponents": [
+            "676d6fc5eb38b2b97c6da94d",
+            "676d6f89eb38b2b97c6da949",
+            "676d767ceb38b2b97c6da9b1",
+            "676d75dfeb38b2b97c6da9a5"
+          ],
+          "_id": "68f0e8137b9b39856ffe47cc"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 6,
+            "_id": "68f092fda28715390c3b8439"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8440"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d74bceb38b2b97c6da98d"
+          ],
+          "_id": "68f0e8137b9b39856ffe47cf"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8442"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b846a"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d71ceeb38b2b97c6da95d",
+            "676d71b4eb38b2b97c6da95b"
+          ],
+          "_id": "68f0e8137b9b39856ffe47d2"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b846c"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8494"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d764eeb38b2b97c6da9ad"
+          ],
+          "_id": "68f0e8137b9b39856ffe47d5"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8496"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84c4"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d7172eb38b2b97c6da957",
+            "676d7250eb38b2b97c6da965"
+          ],
+          "_id": "68f0e8137b9b39856ffe47d8"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84c6"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84d0"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7663eb38b2b97c6da9af"
+          ],
+          "_id": "68f0e8137b9b39856ffe47db"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84d2"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 14,
+            "_id": "68f092fda28715390c3b84f4"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d757aeb38b2b97c6da99d"
+          ],
+          "_id": "68f0e8137b9b39856ffe47de"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 14,
+            "_id": "68f092fda28715390c3b84f6"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 15,
+            "_id": "68f092fda28715390c3b850c"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7475eb38b2b97c6da985"
+          ],
+          "_id": "68f0e8137b9b39856ffe47e1"
+        }
+      ]
+    },
+    {
+      "_id": "676d7304eb38b2b97c6da96d",
+      "firstName": "Jinali",
+      "lastName": "Shah",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 2,
+            "_id": "68f092fda28715390c3b82fa"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 3,
+            "_id": "68f092fda28715390c3b8304"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d751aeb38b2b97c6da995"
+          ],
+          "_id": "68f0e8137b9b39856ffe4825"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 3,
+            "_id": "68f092fda28715390c3b8306"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8310"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d73ddeb38b2b97c6da979"
+          ],
+          "_id": "68f0e8137b9b39856ffe4828"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8312"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8328"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d74efeb38b2b97c6da991"
+          ],
+          "_id": "68f0e8137b9b39856ffe482b"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 5,
+            "_id": "68f092fda28715390c3b832a"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8358"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d745feb38b2b97c6da983",
+            "676d7554eb38b2b97c6da999",
+            "676d749feb38b2b97c6da989"
+          ],
+          "_id": "68f0e8137b9b39856ffe482e"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 8,
+            "_id": "68f092fda28715390c3b835a"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 9,
+            "_id": "68f092fda28715390c3b836d"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d70fbeb38b2b97c6da951"
+          ],
+          "_id": "68f0e8137b9b39856ffe4831"
+        }
+      ]
+    },
+    {
+      "_id": "676d736eeb38b2b97c6da975",
+      "firstName": "Kinjal",
+      "lastName": "Solanki",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 1,
+            "_id": "68f092fda28715390c3b8279"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 3,
+            "_id": "68f092fda28715390c3b8298"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d6ecceb38b2b97c6da945",
+            "676d721aeb38b2b97c6da961"
+          ],
+          "_id": "68f0e8137b9b39856ffe46c4"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 3,
+            "_id": "68f092fda28715390c3b829a"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 4,
+            "_id": "68f092fda28715390c3b82ad"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7613eb38b2b97c6da9a9"
+          ],
+          "_id": "68f0e8137b9b39856ffe46c7"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 4,
+            "_id": "68f092fda28715390c3b82af"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 5,
+            "_id": "68f092fda28715390c3b82c2"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7399eb38b2b97c6da977"
+          ],
+          "_id": "68f0e8137b9b39856ffe46ca"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 5,
+            "_id": "68f092fda28715390c3b82c4"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 9,
+            "_id": "68f092fda28715390c3b82e6"
+          },
+          "count": 4,
+          "active": false,
+          "opponents": [
+            "676d7631eb38b2b97c6da9ab",
+            "676d6fa0eb38b2b97c6da94b",
+            "676d753ceb38b2b97c6da997",
+            "676d7136eb38b2b97c6da953"
+          ],
+          "_id": "68f0e8137b9b39856ffe46cd"
+        }
+      ]
+    },
+    {
+      "_id": "676d7399eb38b2b97c6da977",
+      "firstName": "Komal",
+      "lastName": "Madamwar",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 2,
+            "_id": "68f092fda28715390c3b8288"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 3,
+            "_id": "68f092fda28715390c3b829b"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d6fa0eb38b2b97c6da94b"
+          ],
+          "_id": "68f0e8137b9b39856ffe484a"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 3,
+            "_id": "68f092fda28715390c3b829d"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 4,
+            "_id": "68f092fda28715390c3b82b0"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d753ceb38b2b97c6da997"
+          ],
+          "_id": "68f0e8137b9b39856ffe484d"
+        }
+      ]
+    },
+    {
+      "_id": "676d73ddeb38b2b97c6da979",
+      "firstName": "Kripa",
+      "lastName": "Jalan",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8327"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 5,
+            "_id": "68f092fda28715390c3b832b"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d745feb38b2b97c6da983"
+          ],
+          "_id": "68f0e8137b9b39856ffe48fd"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 5,
+            "_id": "68f092fda28715390c3b832d"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 7,
+            "_id": "68f092fda28715390c3b834c"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d749feb38b2b97c6da989",
+            "676d75faeb38b2b97c6da9a7"
+          ],
+          "_id": "68f0e8137b9b39856ffe4900"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 7,
+            "_id": "68f092fda28715390c3b834e"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8364"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d748eeb38b2b97c6da987"
+          ],
+          "_id": "68f0e8137b9b39856ffe4903"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8366"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 10,
+            "_id": "68f092fda28715390c3b838b"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d751aeb38b2b97c6da995",
+            "676d74efeb38b2b97c6da991"
+          ],
+          "_id": "68f0e8137b9b39856ffe4906"
+        }
+      ]
+    },
+    {
+      "_id": "676d740ceb38b2b97c6da97b",
+      "firstName": "Krishi",
+      "lastName": "Punamiya",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 1,
+            "_id": "68f092fda28715390c3b82ee"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 2,
+            "_id": "68f092fda28715390c3b8301"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7304eb38b2b97c6da96d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a9a"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 2,
+            "_id": "68f092fda28715390c3b8303"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 4,
+            "_id": "68f092fda28715390c3b831f"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d73ddeb38b2b97c6da979",
+            "676d745feb38b2b97c6da983"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a9d"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8321"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8331"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d749feb38b2b97c6da989"
+          ],
+          "_id": "68f0e8137b9b39856ffe4aa0"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8333"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 6,
+            "_id": "68f092fda28715390c3b833a"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d75faeb38b2b97c6da9a7"
+          ],
+          "_id": "68f0e8137b9b39856ffe4aa3"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 6,
+            "_id": "68f092fda28715390c3b833c"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8361"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d748eeb38b2b97c6da987",
+            "676d751aeb38b2b97c6da995"
+          ],
+          "_id": "68f0e8137b9b39856ffe4aa6"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8363"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8379"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d74efeb38b2b97c6da991"
+          ],
+          "_id": "68f0e8137b9b39856ffe4aa9"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 9,
+            "_id": "68f092fda28715390c3b837b"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8385"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7554eb38b2b97c6da999"
+          ],
+          "_id": "68f0e8137b9b39856ffe4aac"
+        }
+      ]
+    },
+    {
+      "_id": "676d742deb38b2b97c6da97d",
+      "firstName": "Kriti",
+      "lastName": "Kapoor",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83b9"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83ef"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d72dceb38b2b97c6da96b",
+            "676d7172eb38b2b97c6da957"
+          ],
+          "_id": "68f0e8137b9b39856ffe4985"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83f1"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b83fb"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7250eb38b2b97c6da965"
+          ],
+          "_id": "68f0e8137b9b39856ffe4988"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b83fd"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8422"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7663eb38b2b97c6da9af"
+          ],
+          "_id": "68f0e8137b9b39856ffe498b"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8424"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 6,
+            "_id": "68f092fda28715390c3b842b"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d757aeb38b2b97c6da99d"
+          ],
+          "_id": "68f0e8137b9b39856ffe498e"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 6,
+            "_id": "68f092fda28715390c3b842d"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8455"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d7475eb38b2b97c6da985",
+            "676d7241eb38b2b97c6da963"
+          ],
+          "_id": "68f0e8137b9b39856ffe4991"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8457"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8482"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d764eeb38b2b97c6da9ad"
+          ],
+          "_id": "68f0e8137b9b39856ffe4994"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8484"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 11,
+            "_id": "68f092fda28715390c3b84ac"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d6fc5eb38b2b97c6da94d",
+            "676d6f89eb38b2b97c6da949"
+          ],
+          "_id": "68f0e8137b9b39856ffe4997"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 11,
+            "_id": "68f092fda28715390c3b84ae"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84bb"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d767ceb38b2b97c6da9b1"
+          ],
+          "_id": "68f0e8137b9b39856ffe499a"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84bd"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84df"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d75dfeb38b2b97c6da9a5"
+          ],
+          "_id": "68f0e8137b9b39856ffe499d"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84e1"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 15,
+            "_id": "68f092fda28715390c3b8512"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d74bceb38b2b97c6da98d",
+            "676d71ceeb38b2b97c6da95d"
+          ],
+          "_id": "68f0e8137b9b39856ffe49a0"
+        }
+      ]
+    },
+    {
+      "_id": "676d7452eb38b2b97c6da981",
+      "firstName": "Mahima",
+      "lastName": "Thakur",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 3,
+            "_id": "68f092fda28715390c3b8297"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 5,
+            "_id": "68f092fda28715390c3b82bc"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d721aeb38b2b97c6da961",
+            "676d7613eb38b2b97c6da9a9"
+          ],
+          "_id": "68f0e8137b9b39856ffe4acb"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 5,
+            "_id": "68f092fda28715390c3b82be"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 9,
+            "_id": "68f092fda28715390c3b82e9"
+          },
+          "count": 4,
+          "active": false,
+          "opponents": [
+            "676d7399eb38b2b97c6da977",
+            "676d7631eb38b2b97c6da9ab",
+            "676d6fa0eb38b2b97c6da94b",
+            "676d753ceb38b2b97c6da997"
+          ],
+          "_id": "68f0e8137b9b39856ffe4ace"
+        }
+      ]
+    },
+    {
+      "_id": "676d745feb38b2b97c6da983",
+      "firstName": "Mhafrin",
+      "lastName": "Basta",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 1,
+            "_id": "68f092fda28715390c3b82f1"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 6,
+            "_id": "68f092fda28715390c3b8343"
+          },
+          "count": 5,
+          "active": false,
+          "opponents": [
+            "676d70fbeb38b2b97c6da951",
+            "676d7201eb38b2b97c6da95f",
+            "676d740ceb38b2b97c6da97b",
+            "676d73ddeb38b2b97c6da979",
+            "676d7304eb38b2b97c6da96d"
+          ],
+          "_id": "68f0e8137b9b39856ffe49c8"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 6,
+            "_id": "68f092fda28715390c3b8345"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8346"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d749feb38b2b97c6da989"
+          ],
+          "_id": "68f0e8137b9b39856ffe49cb"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8348"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8391"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d75faeb38b2b97c6da9a7",
+            "676d748eeb38b2b97c6da987",
+            "676d751aeb38b2b97c6da995"
+          ],
+          "_id": "68f0e8137b9b39856ffe49ce"
+        }
+      ]
+    },
+    {
+      "_id": "676d7475eb38b2b97c6da985",
+      "firstName": "Mridula",
+      "lastName": "Jadhav",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83c3"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83cb"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7250eb38b2b97c6da965"
+          ],
+          "_id": "68f0e8137b9b39856ffe4ade"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83cd"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83f5"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7663eb38b2b97c6da9af"
+          ],
+          "_id": "68f0e8137b9b39856ffe4ae1"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83f7"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8425"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d757aeb38b2b97c6da99d",
+            "676d764eeb38b2b97c6da9ad"
+          ],
+          "_id": "68f0e8137b9b39856ffe4ae4"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8427"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 6,
+            "_id": "68f092fda28715390c3b842e"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7241eb38b2b97c6da963"
+          ],
+          "_id": "68f0e8137b9b39856ffe4ae7"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 6,
+            "_id": "68f092fda28715390c3b8430"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84d6"
+          },
+          "count": 7,
+          "active": false,
+          "opponents": [
+            "676d742deb38b2b97c6da97d",
+            "676d6fc5eb38b2b97c6da94d",
+            "676d6f89eb38b2b97c6da949",
+            "676d767ceb38b2b97c6da9b1",
+            "676d75dfeb38b2b97c6da9a5",
+            "676d74bceb38b2b97c6da98d",
+            "676d71ceeb38b2b97c6da95d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4aea"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84d8"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 15,
+            "_id": "68f092fda28715390c3b8509"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d71b4eb38b2b97c6da95b",
+            "676d72dceb38b2b97c6da96b"
+          ],
+          "_id": "68f0e8137b9b39856ffe4aed"
+        }
+      ]
+    },
+    {
+      "_id": "676d748eeb38b2b97c6da987",
+      "firstName": "Natasha",
+      "lastName": "Arez",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8336"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8349"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d7201eb38b2b97c6da95f",
+            "676d740ceb38b2b97c6da97b"
+          ],
+          "_id": "68f0e8137b9b39856ffe49e1"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 7,
+            "_id": "68f092fda28715390c3b834b"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8367"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d73ddeb38b2b97c6da979"
+          ],
+          "_id": "68f0e8137b9b39856ffe49e4"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8369"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8370"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d745feb38b2b97c6da983"
+          ],
+          "_id": "68f0e8137b9b39856ffe49e7"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8372"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8397"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d749feb38b2b97c6da989"
+          ],
+          "_id": "68f0e8137b9b39856ffe49ea"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8399"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 11,
+            "_id": "68f092fda28715390c3b839a"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d75faeb38b2b97c6da9a7"
+          ],
+          "_id": "68f0e8137b9b39856ffe49ed"
+        }
+      ]
+    },
+    {
+      "_id": "676d749feb38b2b97c6da989",
+      "firstName": "Neha",
+      "lastName": "Gupta",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 1,
+            "_id": "68f092fda28715390c3b82f4"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 2,
+            "_id": "68f092fda28715390c3b82fe"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7554eb38b2b97c6da999"
+          ],
+          "_id": "68f0e8137b9b39856ffe491c"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 2,
+            "_id": "68f092fda28715390c3b8300"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8322"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d70fbeb38b2b97c6da951",
+            "676d7201eb38b2b97c6da95f"
+          ],
+          "_id": "68f0e8137b9b39856ffe491f"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8324"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 6,
+            "_id": "68f092fda28715390c3b8340"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d740ceb38b2b97c6da97b",
+            "676d73ddeb38b2b97c6da979"
+          ],
+          "_id": "68f0e8137b9b39856ffe4922"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 6,
+            "_id": "68f092fda28715390c3b8342"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8373"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d745feb38b2b97c6da983",
+            "676d7304eb38b2b97c6da96d",
+            "676d75faeb38b2b97c6da9a7"
+          ],
+          "_id": "68f0e8137b9b39856ffe4925"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8375"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8394"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d748eeb38b2b97c6da987"
+          ],
+          "_id": "68f0e8137b9b39856ffe4928"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8396"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 11,
+            "_id": "68f092fda28715390c3b83a3"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d751aeb38b2b97c6da995"
+          ],
+          "_id": "68f0e8137b9b39856ffe492b"
+        }
+      ]
+    },
+    {
+      "_id": "676d74bceb38b2b97c6da98d",
+      "firstName": "Priyanka",
+      "lastName": "Gandhi",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83af"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83e0"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d767ceb38b2b97c6da9b1",
+            "676d75dfeb38b2b97c6da9a5"
+          ],
+          "_id": "68f0e8137b9b39856ffe46e4"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83e2"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b840d"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d764eeb38b2b97c6da9ad"
+          ],
+          "_id": "68f0e8137b9b39856ffe46e7"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b840f"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8413"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d71ceeb38b2b97c6da95d"
+          ],
+          "_id": "68f0e8137b9b39856ffe46ea"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8415"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8449"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d71b4eb38b2b97c6da95b",
+            "676d72dceb38b2b97c6da96b"
+          ],
+          "_id": "68f0e8137b9b39856ffe46ed"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b844b"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b845e"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7172eb38b2b97c6da957"
+          ],
+          "_id": "68f0e8137b9b39856ffe46f0"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8460"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8476"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7250eb38b2b97c6da965"
+          ],
+          "_id": "68f0e8137b9b39856ffe46f3"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8478"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 11,
+            "_id": "68f092fda28715390c3b84a3"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d7663eb38b2b97c6da9af",
+            "676d757aeb38b2b97c6da99d"
+          ],
+          "_id": "68f0e8137b9b39856ffe46f6"
+        }
+      ]
+    },
+    {
+      "_id": "676d74efeb38b2b97c6da991",
+      "firstName": "Rashna",
+      "lastName": "Irani",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 3,
+            "_id": "68f092fda28715390c3b830f"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8313"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d751aeb38b2b97c6da995"
+          ],
+          "_id": "68f0e8147b9b39856ffe4bd4"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8315"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 7,
+            "_id": "68f092fda28715390c3b834f"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d7304eb38b2b97c6da96d",
+            "676d7554eb38b2b97c6da999",
+            "676d70fbeb38b2b97c6da951"
+          ],
+          "_id": "68f0e8147b9b39856ffe4bd7"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8351"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8376"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d7201eb38b2b97c6da95f",
+            "676d740ceb38b2b97c6da97b"
+          ],
+          "_id": "68f0e8147b9b39856ffe4bda"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8378"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 10,
+            "_id": "68f092fda28715390c3b838e"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d73ddeb38b2b97c6da979"
+          ],
+          "_id": "68f0e8147b9b39856ffe4bdd"
+        }
+      ]
+    },
+    {
+      "_id": "676d751aeb38b2b97c6da995",
+      "firstName": "Roopanshi",
+      "lastName": "Bhatt",
+      "streaks": []
+    },
+    {
+      "_id": "676d753ceb38b2b97c6da997",
+      "firstName": "Rushika",
+      "lastName": "Mangrola",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 1,
+            "_id": "68f092fda28715390c3b827c"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 2,
+            "_id": "68f092fda28715390c3b8289"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d721aeb38b2b97c6da961"
+          ],
+          "_id": "68f0e8147b9b39856ffe4bf3"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 2,
+            "_id": "68f092fda28715390c3b828b"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 4,
+            "_id": "68f092fda28715390c3b82a7"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d7613eb38b2b97c6da9a9",
+            "676d7399eb38b2b97c6da977"
+          ],
+          "_id": "68f0e8147b9b39856ffe4bf6"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 4,
+            "_id": "68f092fda28715390c3b82a9"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 5,
+            "_id": "68f092fda28715390c3b82c5"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7631eb38b2b97c6da9ab"
+          ],
+          "_id": "68f0e8147b9b39856ffe4bf9"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 5,
+            "_id": "68f092fda28715390c3b82c7"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 7,
+            "_id": "68f092fda28715390c3b82d7"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d6fa0eb38b2b97c6da94b",
+            "676d7136eb38b2b97c6da953"
+          ],
+          "_id": "68f0e8147b9b39856ffe4bfc"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 7,
+            "_id": "68f092fda28715390c3b82d9"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 8,
+            "_id": "68f092fda28715390c3b82dd"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d736eeb38b2b97c6da975"
+          ],
+          "_id": "68f0e8147b9b39856ffe4bff"
+        }
+      ]
+    },
+    {
+      "_id": "676d7554eb38b2b97c6da999",
+      "firstName": "Sachi",
+      "lastName": "Maker-Biyani",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 3,
+            "_id": "68f092fda28715390c3b830c"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8316"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d748eeb38b2b97c6da987"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a06"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8318"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8355"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d751aeb38b2b97c6da995",
+            "676d74efeb38b2b97c6da991",
+            "676d7304eb38b2b97c6da96d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a09"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 7,
+            "_id": "68f092fda28715390c3b8357"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 8,
+            "_id": "68f092fda28715390c3b835e"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d70fbeb38b2b97c6da951"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a0c"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8360"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 9,
+            "_id": "68f092fda28715390c3b837c"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7201eb38b2b97c6da95f"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a0f"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 9,
+            "_id": "68f092fda28715390c3b837e"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 10,
+            "_id": "68f092fda28715390c3b8388"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d740ceb38b2b97c6da97b"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a12"
+        }
+      ]
+    },
+    {
+      "_id": "676d757aeb38b2b97c6da99d",
+      "firstName": "Shraddha",
+      "lastName": "Bhansali",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83c7"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83c8"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7663eb38b2b97c6da9af"
+          ],
+          "_id": "68f0e8137b9b39856ffe494e"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83ca"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b847c"
+          },
+          "count": 7,
+          "active": false,
+          "opponents": [
+            "676d764eeb38b2b97c6da9ad",
+            "676d7475eb38b2b97c6da985",
+            "676d7241eb38b2b97c6da963",
+            "676d742deb38b2b97c6da97d",
+            "676d6fc5eb38b2b97c6da94d",
+            "676d6f89eb38b2b97c6da949",
+            "676d767ceb38b2b97c6da9b1"
+          ],
+          "_id": "68f0e8137b9b39856ffe4951"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b847e"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 10,
+            "_id": "68f092fda28715390c3b848b"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d75dfeb38b2b97c6da9a5"
+          ],
+          "_id": "68f0e8137b9b39856ffe4954"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 10,
+            "_id": "68f092fda28715390c3b848d"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 11,
+            "_id": "68f092fda28715390c3b84a0"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d74bceb38b2b97c6da98d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4957"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 11,
+            "_id": "68f092fda28715390c3b84a2"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84c1"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d71ceeb38b2b97c6da95d"
+          ],
+          "_id": "68f0e8137b9b39856ffe495a"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84c3"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84d3"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d71b4eb38b2b97c6da95b"
+          ],
+          "_id": "68f0e8137b9b39856ffe495d"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84d5"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 14,
+            "_id": "68f092fda28715390c3b84f7"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d72dceb38b2b97c6da96b"
+          ],
+          "_id": "68f0e8137b9b39856ffe4960"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 14,
+            "_id": "68f092fda28715390c3b84f9"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 15,
+            "_id": "68f092fda28715390c3b8503"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7172eb38b2b97c6da957"
+          ],
+          "_id": "68f0e8137b9b39856ffe4963"
+        }
+      ]
+    },
+    {
+      "_id": "676d75dfeb38b2b97c6da9a5",
+      "firstName": "Tanvi",
+      "lastName": "Shah",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83a8"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83e6"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d764eeb38b2b97c6da9ad",
+            "676d74bceb38b2b97c6da98d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b09"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83e8"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b840a"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d71ceeb38b2b97c6da95d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b0c"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b840c"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8416"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d71b4eb38b2b97c6da95b"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b0f"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8418"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 6,
+            "_id": "68f092fda28715390c3b8434"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d72dceb38b2b97c6da96b"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b12"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 6,
+            "_id": "68f092fda28715390c3b8436"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b845b"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d7172eb38b2b97c6da957",
+            "676d7250eb38b2b97c6da965"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b15"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b845d"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8479"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7663eb38b2b97c6da9af"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b18"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b847b"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 11,
+            "_id": "68f092fda28715390c3b84a9"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d757aeb38b2b97c6da99d",
+            "676d7475eb38b2b97c6da985"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b1b"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 11,
+            "_id": "68f092fda28715390c3b84ab"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 14,
+            "_id": "68f092fda28715390c3b84e8"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d7241eb38b2b97c6da963",
+            "676d742deb38b2b97c6da97d",
+            "676d6fc5eb38b2b97c6da94d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b1e"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 14,
+            "_id": "68f092fda28715390c3b84ea"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 15,
+            "_id": "68f092fda28715390c3b8515"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d6f89eb38b2b97c6da949"
+          ],
+          "_id": "68f0e8137b9b39856ffe4b21"
+        }
+      ]
+    },
+    {
+      "_id": "676d75faeb38b2b97c6da9a7",
+      "firstName": "Trishala",
+      "lastName": "Sharma",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 1,
+            "_id": "68f092fda28715390c3b82f7"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 2,
+            "_id": "68f092fda28715390c3b82fb"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d74efeb38b2b97c6da991"
+          ],
+          "_id": "68f0e8137b9b39856ffe48b9"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 2,
+            "_id": "68f092fda28715390c3b82fd"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 5,
+            "_id": "68f092fda28715390c3b832e"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d7554eb38b2b97c6da999",
+            "676d70fbeb38b2b97c6da951",
+            "676d7201eb38b2b97c6da95f"
+          ],
+          "_id": "68f0e8137b9b39856ffe48bc"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8330"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 6,
+            "_id": "68f092fda28715390c3b833d"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d740ceb38b2b97c6da97b"
+          ],
+          "_id": "68f0e8137b9b39856ffe48bf"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 6,
+            "_id": "68f092fda28715390c3b833f"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 9,
+            "_id": "68f092fda28715390c3b836a"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d73ddeb38b2b97c6da979",
+            "676d745feb38b2b97c6da983",
+            "676d749feb38b2b97c6da989"
+          ],
+          "_id": "68f0e8137b9b39856ffe48c2"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 2,
+            "round": 9,
+            "_id": "68f092fda28715390c3b836c"
+          },
+          "end": {
+            "season": 4,
+            "division": 2,
+            "round": 11,
+            "_id": "68f092fda28715390c3b83a0"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d7304eb38b2b97c6da96d",
+            "676d748eeb38b2b97c6da987"
+          ],
+          "_id": "68f0e8137b9b39856ffe48c5"
+        }
+      ]
+    },
+    {
+      "_id": "676d7613eb38b2b97c6da9a9",
+      "firstName": "Unnati",
+      "lastName": "Vora",
+      "streaks": []
+    },
+    {
+      "_id": "676d7631eb38b2b97c6da9ab",
+      "firstName": "Venessa",
+      "lastName": "Arez",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 3,
+            "_id": "68f092fda28715390c3b82a0"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 4,
+            "_id": "68f092fda28715390c3b82aa"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d6fa0eb38b2b97c6da94b"
+          ],
+          "_id": "68f0e8137b9b39856ffe4715"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 4,
+            "_id": "68f092fda28715390c3b82ac"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 5,
+            "_id": "68f092fda28715390c3b82bf"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d753ceb38b2b97c6da997"
+          ],
+          "_id": "68f0e8137b9b39856ffe4718"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 5,
+            "_id": "68f092fda28715390c3b82c1"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 6,
+            "_id": "68f092fda28715390c3b82c8"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d736eeb38b2b97c6da975"
+          ],
+          "_id": "68f0e8137b9b39856ffe471b"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 1,
+            "round": 6,
+            "_id": "68f092fda28715390c3b82ca"
+          },
+          "end": {
+            "season": 4,
+            "division": 1,
+            "round": 9,
+            "_id": "68f092fda28715390c3b82e0"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d7452eb38b2b97c6da981",
+            "676d6ecceb38b2b97c6da945",
+            "676d721aeb38b2b97c6da961"
+          ],
+          "_id": "68f0e8137b9b39856ffe471e"
+        }
+      ]
+    },
+    {
+      "_id": "676d764eeb38b2b97c6da9ad",
+      "firstName": "Vidhi",
+      "lastName": "Parmar",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83aa"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b83f8"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d75dfeb38b2b97c6da9a5",
+            "676d757aeb38b2b97c6da99d",
+            "676d74bceb38b2b97c6da98d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4734"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b83fa"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8410"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7475eb38b2b97c6da985"
+          ],
+          "_id": "68f0e8137b9b39856ffe4737"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8412"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 6,
+            "_id": "68f092fda28715390c3b8428"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d71ceeb38b2b97c6da95d"
+          ],
+          "_id": "68f0e8137b9b39856ffe473a"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 6,
+            "_id": "68f092fda28715390c3b842a"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b843d"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7241eb38b2b97c6da963"
+          ],
+          "_id": "68f0e8137b9b39856ffe473d"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b843f"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8452"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d71b4eb38b2b97c6da95b"
+          ],
+          "_id": "68f0e8137b9b39856ffe4740"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 8,
+            "_id": "68f092fda28715390c3b8454"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84b5"
+          },
+          "count": 4,
+          "active": false,
+          "opponents": [
+            "676d742deb38b2b97c6da97d",
+            "676d72dceb38b2b97c6da96b",
+            "676d6fc5eb38b2b97c6da94d",
+            "676d7172eb38b2b97c6da957"
+          ],
+          "_id": "68f0e8137b9b39856ffe4743"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84b7"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84ca"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d6f89eb38b2b97c6da949"
+          ],
+          "_id": "68f0e8137b9b39856ffe4746"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 13,
+            "_id": "68f092fda28715390c3b84cc"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 14,
+            "_id": "68f092fda28715390c3b84e5"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7250eb38b2b97c6da965"
+          ],
+          "_id": "68f0e8137b9b39856ffe4749"
+        }
+      ]
+    },
+    {
+      "_id": "676d7663eb38b2b97c6da9af",
+      "firstName": "Vinaya",
+      "lastName": "Rao",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83c5"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83ce"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d757aeb38b2b97c6da99d"
+          ],
+          "_id": "68f0e8147b9b39856ffe4c1f"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 2,
+            "_id": "68f092fda28715390c3b83d0"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83f2"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7475eb38b2b97c6da985"
+          ],
+          "_id": "68f0e8147b9b39856ffe4c22"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 3,
+            "_id": "68f092fda28715390c3b83f4"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b83fe"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7241eb38b2b97c6da963"
+          ],
+          "_id": "68f0e8147b9b39856ffe4c25"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8400"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b841f"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d742deb38b2b97c6da97d"
+          ],
+          "_id": "68f0e8147b9b39856ffe4c28"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8421"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 14,
+            "_id": "68f092fda28715390c3b84fd"
+          },
+          "count": 9,
+          "active": false,
+          "opponents": [
+            "676d6fc5eb38b2b97c6da94d",
+            "676d6f89eb38b2b97c6da949",
+            "676d767ceb38b2b97c6da9b1",
+            "676d75dfeb38b2b97c6da9a5",
+            "676d74bceb38b2b97c6da98d",
+            "676d71ceeb38b2b97c6da95d",
+            "676d71b4eb38b2b97c6da95b",
+            "676d72dceb38b2b97c6da96b",
+            "676d7172eb38b2b97c6da957"
+          ],
+          "_id": "68f0e8147b9b39856ffe4c2b"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 14,
+            "_id": "68f092fda28715390c3b84ff"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 15,
+            "_id": "68f092fda28715390c3b8500"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d7250eb38b2b97c6da965"
+          ],
+          "_id": "68f0e8147b9b39856ffe4c2e"
+        }
+      ]
+    },
+    {
+      "_id": "676d767ceb38b2b97c6da9b1",
+      "firstName": "Yashada",
+      "lastName": "Jogelekar-Bapat",
+      "streaks": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 1,
+            "_id": "68f092fda28715390c3b83ac"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8407"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d74bceb38b2b97c6da98d",
+            "676d71ceeb38b2b97c6da95d",
+            "676d71b4eb38b2b97c6da95b"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a2b"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 4,
+            "_id": "68f092fda28715390c3b8409"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b8419"
+          },
+          "count": 1,
+          "active": false,
+          "opponents": [
+            "676d72dceb38b2b97c6da96b"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a2e"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 5,
+            "_id": "68f092fda28715390c3b841b"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b844c"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d7172eb38b2b97c6da957",
+            "676d7250eb38b2b97c6da965"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a31"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 7,
+            "_id": "68f092fda28715390c3b844e"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b847f"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d7663eb38b2b97c6da9af",
+            "676d757aeb38b2b97c6da99d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a34"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "win",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 9,
+            "_id": "68f092fda28715390c3b8481"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84b8"
+          },
+          "count": 3,
+          "active": false,
+          "opponents": [
+            "676d7475eb38b2b97c6da985",
+            "676d7241eb38b2b97c6da963",
+            "676d742deb38b2b97c6da97d"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a37"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "type": "lose",
+          "start": {
+            "season": 4,
+            "division": 3,
+            "round": 12,
+            "_id": "68f092fda28715390c3b84ba"
+          },
+          "end": {
+            "season": 4,
+            "division": 3,
+            "round": 14,
+            "_id": "68f092fda28715390c3b84e2"
+          },
+          "count": 2,
+          "active": false,
+          "opponents": [
+            "676d6fc5eb38b2b97c6da94d",
+            "676d6f89eb38b2b97c6da949"
+          ],
+          "_id": "68f0e8137b9b39856ffe4a3a"
+        }
+      ]
+    }
+  ]
+}
