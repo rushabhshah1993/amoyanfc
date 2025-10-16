@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -40,6 +40,15 @@ const FighterPage: React.FC = () => {
 
     // Fetch all fighters for the opponents grid
     const { loading: loadingAllFighters, data: allFightersData } = useQuery(GET_ALL_FIGHTERS);
+    
+    // Scroll to top when component loads
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }, [id]);
 
     const calculateAge = (dateOfBirth: string): number => {
         if (!dateOfBirth) return 0;

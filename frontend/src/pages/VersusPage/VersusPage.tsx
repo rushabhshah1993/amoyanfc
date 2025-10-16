@@ -52,6 +52,16 @@ interface CompetitionHeadToHead {
 const VersusPage: React.FC = () => {
     const { fighter1Id, fighter2Id } = useParams<{ fighter1Id: string; fighter2Id: string }>();
     const navigate = useNavigate();
+    
+    // Scroll to top when component loads
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }, [fighter1Id, fighter2Id]);
+    
     const [competitionNames, setCompetitionNames] = useState<Record<string, string>>({});
 
     // Fetch both fighters
@@ -214,8 +224,8 @@ const VersusPage: React.FC = () => {
                             src={fighter1.profileImage}
                             alt={`${fighter1.firstName} ${fighter1.lastName}`}
                             className="versus-fighter-image"
-                            width={300}
-                            height={400}
+                            width={350}
+                            height={450}
                             lazy={false}
                             fallback={
                                 <div className="versus-image-placeholder">
@@ -239,8 +249,8 @@ const VersusPage: React.FC = () => {
                             src={fighter2.profileImage}
                             alt={`${fighter2.firstName} ${fighter2.lastName}`}
                             className="versus-fighter-image"
-                            width={300}
-                            height={400}
+                            width={350}
+                            height={450}
                             lazy={false}
                             fallback={
                                 <div className="versus-image-placeholder">
