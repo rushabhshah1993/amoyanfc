@@ -40,8 +40,14 @@ const OpponentsGrid: React.FC<OpponentsGridProps> = ({
         (opponentsHistory || []).map(oh => oh.opponentId)
     );
 
-    // Filter out current fighter from all fighters
-    const otherFighters = allFighters.filter(f => f.id !== currentFighterId);
+    // Filter out current fighter from all fighters and sort alphabetically
+    const otherFighters = allFighters
+        .filter(f => f.id !== currentFighterId)
+        .sort((a, b) => {
+            const nameA = `${a.firstName} ${a.lastName}`.toLowerCase();
+            const nameB = `${b.firstName} ${b.lastName}`.toLowerCase();
+            return nameA.localeCompare(nameB);
+        });
 
     // Helper function to check if opponent was faced
     const hasFoughtOpponent = (opponentId: string): boolean => {
