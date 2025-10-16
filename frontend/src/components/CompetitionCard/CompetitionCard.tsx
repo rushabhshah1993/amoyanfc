@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy, faCalendarAlt, faUsers, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import RobustGoogleDriveImage from '../RobustGoogleDriveImage/RobustGoogleDriveImage';
+import RobustGoogleDriveImage from '../S3Image/S3Image';
 import './CompetitionCard.css';
 
 interface Competition {
@@ -59,6 +59,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({ competition }) => {
                 <RobustGoogleDriveImage
                     src={competition.logo}
                     alt={`${competition.competitionName} logo`}
+                    className="competition-logo-image"
                 />
             </div>
             <div className="competition-info">

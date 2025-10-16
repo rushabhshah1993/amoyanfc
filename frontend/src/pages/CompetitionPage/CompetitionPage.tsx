@@ -9,7 +9,7 @@ import {
     faArrowRight
 } from '@fortawesome/free-solid-svg-icons';
 import { GET_COMPETITION_META, GET_ALL_SEASONS_BY_COMPETITION } from '../../services/queries';
-import RobustGoogleDriveImage from '../../components/RobustGoogleDriveImage/RobustGoogleDriveImage';
+import RobustGoogleDriveImage from '../../components/S3Image/S3Image';
 import './CompetitionPage.css';
 
 interface CompetitionMeta {
@@ -148,6 +148,7 @@ const CompetitionPage: React.FC = () => {
                         <RobustGoogleDriveImage
                             src={competition.logo}
                             alt={`${competition.competitionName} logo`}
+                            className="competition-logo-image"
                         />
                     </div>
                     <div className="competition-banner-info">
