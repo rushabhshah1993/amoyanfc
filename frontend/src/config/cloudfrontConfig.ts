@@ -22,7 +22,6 @@ export const isCloudFrontConfigured = (): boolean => {
 // Get the appropriate base URL
 export const getImageBaseUrl = (): string => {
   if (isCloudFrontConfigured()) {
-    console.log('Using CloudFront:', CLOUDFRONT_BASE_URL);
     return CLOUDFRONT_BASE_URL;
   } else {
     console.warn('CloudFront not configured, using S3 directly');

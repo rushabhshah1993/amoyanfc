@@ -50,7 +50,6 @@ const RobustGoogleDriveImage: React.FC<RobustGoogleDriveImageProps> = ({
     }
 
     const directUrl = convertToDirectUrl(src);
-    console.log('Direct URL:', directUrl);
     setImageUrl(directUrl);
     setIsLoading(true);
     setError(null);

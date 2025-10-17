@@ -13,8 +13,6 @@ interface ProtectedRouteProps {
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     const dispatch = useAppDispatch();
     const { isAuthenticated, isLoading, user } = useAppSelector((state) => state.auth);
-    
-    console.log('ProtectedRoute render - isAuthenticated:', isAuthenticated, 'isLoading:', isLoading, 'user:', user);
 
     useEffect(() => {
         const initializeAuth = async () => {
@@ -24,8 +22,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
             
             if (loginSuccess === 'success') {
                 // Clear the URL parameter
-                window.history.replaceState({}, document.title, window.location.pathname);
-                console.log('OAuth callback detected, checking authentication...');
+                window.history.replaceState({}, document.title, window.location.pathname);                
             }
             
             const isAuth = await dispatch(checkAuthentication()).unwrap();

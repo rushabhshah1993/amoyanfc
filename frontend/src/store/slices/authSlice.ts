@@ -43,8 +43,6 @@ export const checkAuthentication = createAsyncThunk<boolean>(
     'auth/checkAuthentication',
     async () => {
         try {
-            console.log('Checking authentication...');
-            
             // Try Apollo Client first
             try {
                 const { data, error } = await client.query({
@@ -58,7 +56,6 @@ export const checkAuthentication = createAsyncThunk<boolean>(
                     throw new Error('GraphQL error');
                 }
                 
-                console.log('Authentication check result:', data.isAuthenticated);
                 return data.isAuthenticated;
             } catch (apolloError) {
                 console.warn('Apollo Client failed, trying direct fetch:', apolloError);
@@ -76,7 +73,6 @@ export const checkAuthentication = createAsyncThunk<boolean>(
                 });
                 
                 const result = await response.json();
-                console.log('Direct fetch result:', result);
                 
                 if (result.errors) {
                     console.error('GraphQL errors:', result.errors);
@@ -96,7 +92,6 @@ export const fetchUserData = createAsyncThunk<User | null>(
     'auth/fetchUserData',
     async () => {
         try {
-            console.log('Fetching user data...');
             
             // Try direct fetch first to avoid Apollo Client issues
             const response = await fetch('http://localhost:4000/graphql', {
@@ -111,14 +106,12 @@ export const fetchUserData = createAsyncThunk<User | null>(
             });
             
             const result = await response.json();
-            console.log('Direct fetch user data result:', result);
             
             if (result.errors) {
                 console.error('GraphQL errors in user data fetch:', result.errors);
                 return null; // Return null instead of throwing
             }
             
-            console.log('User data fetched successfully:', result.data.me);
             return result.data.me;
         } catch (error) {
             console.error('Failed to fetch user data:', error);
@@ -167,10 +160,9 @@ const authSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(checkAuthentication.fulfilled, (state, action) => {
-                console.log('Redux: checkAuthentication.fulfilled with payload:', action.payload);
+
                 state.isAuthenticated = action.payload;
                 state.isLoading = false;
-                console.log('Redux: Updated state - isAuthenticated:', state.isAuthenticated, 'isLoading:', state.isLoading);
             })
             .addCase(checkAuthentication.rejected, (state, action) => {
                 state.isAuthenticated = false;
@@ -179,26 +171,21 @@ const authSlice = createSlice({
             })
             // Fetch User Data
             .addCase(fetchUserData.pending, (state) => {
-                console.log('Redux: fetchUserData.pending');
                 state.isLoading = true;
             })
             .addCase(fetchUserData.fulfilled, (state, action) => {
-                console.log('Redux: fetchUserData.fulfilled with payload:', action.payload);
                 if (action.payload) {
                     state.user = action.payload;
                 }
                 // Don't change authentication state based on user data fetch
                 state.isLoading = false;
-                console.log('Redux: Updated state after fetchUserData - isAuthenticated:', state.isAuthenticated, 'user:', state.user);
             })
             .addCase(fetchUserData.rejected, (state, action) => {
-                console.log('Redux: fetchUserData.rejected with error:', action.error.message);
                 // Don't reset authentication state if user data fetch fails
                 // state.user = null;
                 // state.isAuthenticated = false;
                 state.isLoading = false;
                 state.error = action.error.message || 'Failed to fetch user data';
-                console.log('Redux: fetchUserData failed but keeping authentication state');
             })
             // Logout
             .addCase(logoutUser.pending, (state) => {
