@@ -19,7 +19,9 @@
     "restore:fighters": "node scripts/restore-fighters-data.js restore",
     "list:backups": "node scripts/restore-fighters-data.js list",
     "validate:backup": "node scripts/restore-fighters-data.js validate",
-    "protect:season1": "node scripts/protect-season1-standings.js"
+    "protect:season1": "node scripts/protect-season1-standings.js",
+    "import:season6": "node scripts/import-season6-to-db.js",
+    "import:season6:standings": "node scripts/import-season6-standings-to-db.js"
   },
   "type": "module",
   "author": "Rushabh Mulraj Shah",

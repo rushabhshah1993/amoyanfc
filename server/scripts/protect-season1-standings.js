@@ -42,7 +42,7 @@ async function connectDB() {
  * Load Season 1 standings data from JSON file
  */
 function loadSeason1Standings() {
-  const dataPath = path.join(__dirname, '../../old-data/migrated-standings/all-rounds-standings.json');
+  const dataPath = path.join(__dirname, '../../old-data/migrated-standings/season1-all-rounds-standings.json');
   
   if (!fs.existsSync(dataPath)) {
     throw new Error(`Season 1 standings file not found: ${dataPath}`);

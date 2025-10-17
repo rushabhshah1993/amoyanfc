@@ -80,11 +80,44 @@
     gap: 1.5rem;
 }
 
+/* Header Row with Expand Button */
+.headerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .competitionName {
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--text-primary);
     margin: 0;
+}
+
+.expandButton {
+    background: transparent;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.expandButton:hover {
+    border-color: #4285f4;
+    color: #4285f4;
+    background-color: rgba(66, 133, 244, 0.1);
+}
+
+.expandButton:focus {
+    outline: 2px solid #4285f4;
+    outline-offset: 2px;
 }
 
 /* Titles Row */
@@ -136,6 +169,100 @@
     color: var(--text-primary);
 }
 
+/* Season Details Section */
+.seasonDetailsSection {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+}
+
+.seasonDetailsTitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1.5rem 0;
+}
+
+/* Season Card */
+.seasonCard {
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.seasonCard:last-child {
+    margin-bottom: 0;
+}
+
+/* Season Header */
+.seasonHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.seasonNumber {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.divisionBadge {
+    background-color: #4285f4;
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Season Table */
+.seasonTable {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.tableHeader {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background-color: var(--bg-secondary);
+    border-radius: 6px 6px 0 0;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+}
+
+.tableRow {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0 0 6px 6px;
+}
+
+.tableCell {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.tableHeader .tableCell {
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tableRow .tableCell {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .competitionCard {
@@ -149,6 +276,26 @@
 
     .statsGrid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tableHeader,
+    .tableRow {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+
+    .tableCell {
+        font-size: 0.9rem;
+    }
+
+    .tableHeader .tableCell {
+        font-size: 0.75rem;
+    }
+
+    .seasonHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
     }
 }
 
@@ -166,6 +313,22 @@
         width: 140px;
         height: 140px;
         font-size: 3rem;
+    }
+
+    .tableHeader,
+    .tableRow {
+        grid-template-columns: repeat(2, 1fr);
+        font-size: 0.85rem;
+    }
+
+    .tableCell {
+        padding: 0.5rem 0.25rem;
+    }
+
+    .expandButton {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
     }
 }
 

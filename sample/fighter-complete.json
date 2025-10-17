@@ -1,0 +1,1408 @@
+{
+  "_id": "676d6ecceb38b2b97c6da945",
+  "firstName": "Sayali",
+  "lastName": "Raut",
+  "skillset": [
+    "MMA",
+    "Muay Thai"
+  ],
+  "streaks": [
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "lose",
+      "start": {
+        "season": 1,
+        "division": 1,
+        "round": 1,
+        "_id": "68f11e348ce450293c5457e5"
+      },
+      "end": {
+        "season": 1,
+        "division": 1,
+        "round": 2,
+        "_id": "68f11e348ce450293c5457e6"
+      },
+      "count": 1,
+      "active": false,
+      "opponents": [
+        "676d7631eb38b2b97c6da9ab"
+      ],
+      "_id": "68f11e348ce450293c5457e4"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "win",
+      "start": {
+        "season": 1,
+        "division": 1,
+        "round": 2,
+        "_id": "68f11e348ce450293c5457e8"
+      },
+      "end": {
+        "season": 1,
+        "division": 1,
+        "round": 3,
+        "_id": "68f11e348ce450293c5457e9"
+      },
+      "count": 1,
+      "active": false,
+      "opponents": [
+        "676d721aeb38b2b97c6da961"
+      ],
+      "_id": "68f11e348ce450293c5457e7"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "lose",
+      "start": {
+        "season": 1,
+        "division": 1,
+        "round": 3,
+        "_id": "68f11e348ce450293c5457eb"
+      },
+      "end": {
+        "season": 1,
+        "division": 1,
+        "round": 4,
+        "_id": "68f11e348ce450293c5457ec"
+      },
+      "count": 1,
+      "active": false,
+      "opponents": [
+        "676d7452eb38b2b97c6da981"
+      ],
+      "_id": "68f11e348ce450293c5457ea"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "win",
+      "start": {
+        "season": 1,
+        "division": 1,
+        "round": 4,
+        "_id": "68f11e348ce450293c5457ee"
+      },
+      "end": {
+        "season": 1,
+        "division": 1,
+        "round": 8,
+        "_id": "68f11e348ce450293c5457ef"
+      },
+      "count": 4,
+      "active": false,
+      "opponents": [
+        "676d7136eb38b2b97c6da953",
+        "676d749feb38b2b97c6da989",
+        "676d6fa0eb38b2b97c6da94b",
+        "676d70fbeb38b2b97c6da951"
+      ],
+      "_id": "68f11e348ce450293c5457ed"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "lose",
+      "start": {
+        "season": 1,
+        "division": 1,
+        "round": 8,
+        "_id": "68f11e348ce450293c5457f1"
+      },
+      "end": {
+        "season": 1,
+        "division": 1,
+        "round": 9,
+        "_id": "68f11e348ce450293c5457f2"
+      },
+      "count": 1,
+      "active": false,
+      "opponents": [
+        "676d740ceb38b2b97c6da97b"
+      ],
+      "_id": "68f11e348ce450293c5457f0"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "win",
+      "start": {
+        "season": 1,
+        "division": 1,
+        "round": 9,
+        "_id": "68f11e348ce450293c5457f4"
+      },
+      "end": {
+        "season": 2,
+        "division": 1,
+        "round": 2,
+        "_id": "68f11e348ce450293c5457f5"
+      },
+      "count": 2,
+      "active": false,
+      "opponents": [
+        "676d751aeb38b2b97c6da995",
+        "676d753ceb38b2b97c6da997"
+      ],
+      "_id": "68f11e348ce450293c5457f3"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "lose",
+      "start": {
+        "season": 2,
+        "division": 1,
+        "round": 2,
+        "_id": "68f11e348ce450293c5457f7"
+      },
+      "end": {
+        "season": 2,
+        "division": 1,
+        "round": 3,
+        "_id": "68f11e348ce450293c5457f8"
+      },
+      "count": 1,
+      "active": false,
+      "opponents": [
+        "676d7452eb38b2b97c6da981"
+      ],
+      "_id": "68f11e348ce450293c5457f6"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "win",
+      "start": {
+        "season": 2,
+        "division": 1,
+        "round": 3,
+        "_id": "68f11e348ce450293c5457fa"
+      },
+      "end": {
+        "season": 2,
+        "division": 1,
+        "round": 4,
+        "_id": "68f11e348ce450293c5457fb"
+      },
+      "count": 1,
+      "active": false,
+      "opponents": [
+        "676d7613eb38b2b97c6da9a9"
+      ],
+      "_id": "68f11e348ce450293c5457f9"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "lose",
+      "start": {
+        "season": 2,
+        "division": 1,
+        "round": 4,
+        "_id": "68f11e348ce450293c5457fd"
+      },
+      "end": {
+        "season": 2,
+        "division": 1,
+        "round": 5,
+        "_id": "68f11e348ce450293c5457fe"
+      },
+      "count": 1,
+      "active": false,
+      "opponents": [
+        "676d721aeb38b2b97c6da961"
+      ],
+      "_id": "68f11e348ce450293c5457fc"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "win",
+      "start": {
+        "season": 2,
+        "division": 1,
+        "round": 5,
+        "_id": "68f11e348ce450293c545800"
+      },
+      "end": {
+        "season": 3,
+        "division": 1,
+        "round": 3,
+        "_id": "68f11e348ce450293c545801"
+      },
+      "count": 7,
+      "active": false,
+      "opponents": [
+        "676d74efeb38b2b97c6da991",
+        "676d7201eb38b2b97c6da95f",
+        "676d73ddeb38b2b97c6da979",
+        "676d75dfeb38b2b97c6da9a5",
+        "676d75faeb38b2b97c6da9a7",
+        "676d7554eb38b2b97c6da999",
+        "676d736eeb38b2b97c6da975"
+      ],
+      "_id": "68f11e348ce450293c5457ff"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "lose",
+      "start": {
+        "season": 3,
+        "division": 1,
+        "round": 3,
+        "_id": "68f11e348ce450293c545803"
+      },
+      "end": {
+        "season": 3,
+        "division": 1,
+        "round": 4,
+        "_id": "68f11e348ce450293c545804"
+      },
+      "count": 1,
+      "active": false,
+      "opponents": [
+        "676d7613eb38b2b97c6da9a9"
+      ],
+      "_id": "68f11e348ce450293c545802"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "win",
+      "start": {
+        "season": 3,
+        "division": 1,
+        "round": 4,
+        "_id": "68f11e348ce450293c545806"
+      },
+      "end": {
+        "season": 3,
+        "division": 1,
+        "round": 8,
+        "_id": "68f11e348ce450293c545807"
+      },
+      "count": 4,
+      "active": false,
+      "opponents": [
+        "676d721aeb38b2b97c6da961",
+        "676d74bceb38b2b97c6da98d",
+        "676d7304eb38b2b97c6da96d",
+        "676d745feb38b2b97c6da983"
+      ],
+      "_id": "68f11e348ce450293c545805"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "lose",
+      "start": {
+        "season": 3,
+        "division": 1,
+        "round": 8,
+        "_id": "68f11e348ce450293c545809"
+      },
+      "end": {
+        "season": 4,
+        "division": 1,
+        "round": 3,
+        "_id": "68f11e348ce450293c54580a"
+      },
+      "count": 4,
+      "active": false,
+      "opponents": [
+        "676d7399eb38b2b97c6da977",
+        "676d748eeb38b2b97c6da987",
+        "676d736eeb38b2b97c6da975",
+        "676d7452eb38b2b97c6da981"
+      ],
+      "_id": "68f11e348ce450293c545808"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "win",
+      "start": {
+        "season": 4,
+        "division": 1,
+        "round": 3,
+        "_id": "68f11e348ce450293c54580c"
+      },
+      "end": {
+        "season": 4,
+        "division": 1,
+        "round": 5,
+        "_id": "68f11e348ce450293c54580d"
+      },
+      "count": 2,
+      "active": false,
+      "opponents": [
+        "676d7136eb38b2b97c6da953",
+        "676d721aeb38b2b97c6da961"
+      ],
+      "_id": "68f11e348ce450293c54580b"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "lose",
+      "start": {
+        "season": 4,
+        "division": 1,
+        "round": 5,
+        "_id": "68f11e348ce450293c54580f"
+      },
+      "end": {
+        "season": 4,
+        "division": 1,
+        "round": 6,
+        "_id": "68f11e348ce450293c545810"
+      },
+      "count": 1,
+      "active": false,
+      "opponents": [
+        "676d7613eb38b2b97c6da9a9"
+      ],
+      "_id": "68f11e348ce450293c54580e"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "win",
+      "start": {
+        "season": 4,
+        "division": 1,
+        "round": 6,
+        "_id": "68f11e348ce450293c545812"
+      },
+      "end": {
+        "season": 5,
+        "division": 1,
+        "round": 2,
+        "_id": "68f11e348ce450293c545813"
+      },
+      "count": 5,
+      "active": false,
+      "opponents": [
+        "676d7399eb38b2b97c6da977",
+        "676d7631eb38b2b97c6da9ab",
+        "676d6fa0eb38b2b97c6da94b",
+        "676d753ceb38b2b97c6da997",
+        "676d6fa0eb38b2b97c6da94b"
+      ],
+      "_id": "68f11e348ce450293c545811"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "lose",
+      "start": {
+        "season": 5,
+        "division": 1,
+        "round": 2,
+        "_id": "68f11e348ce450293c545815"
+      },
+      "end": {
+        "season": 5,
+        "division": 1,
+        "round": 3,
+        "_id": "68f11e348ce450293c545816"
+      },
+      "count": 1,
+      "active": false,
+      "opponents": [
+        "676d7613eb38b2b97c6da9a9"
+      ],
+      "_id": "68f11e348ce450293c545814"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "win",
+      "start": {
+        "season": 5,
+        "division": 1,
+        "round": 3,
+        "_id": "68f11e348ce450293c545818"
+      },
+      "end": {
+        "season": 5,
+        "division": 1,
+        "round": 6,
+        "_id": "68f11e348ce450293c545819"
+      },
+      "count": 3,
+      "active": false,
+      "opponents": [
+        "676d7554eb38b2b97c6da999",
+        "676d748eeb38b2b97c6da987",
+        "676d745feb38b2b97c6da983"
+      ],
+      "_id": "68f11e348ce450293c545817"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "lose",
+      "start": {
+        "season": 5,
+        "division": 1,
+        "round": 6,
+        "_id": "68f11e348ce450293c54581b"
+      },
+      "end": {
+        "season": 5,
+        "division": 1,
+        "round": 7,
+        "_id": "68f11e348ce450293c54581c"
+      },
+      "count": 1,
+      "active": false,
+      "opponents": [
+        "676d7452eb38b2b97c6da981"
+      ],
+      "_id": "68f11e348ce450293c54581a"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "win",
+      "start": {
+        "season": 5,
+        "division": 1,
+        "round": 7,
+        "_id": "68f11e348ce450293c54581e"
+      },
+      "end": {
+        "season": 5,
+        "division": 1,
+        "round": 8,
+        "_id": "68f11e348ce450293c54581f"
+      },
+      "count": 1,
+      "active": false,
+      "opponents": [
+        "676d736eeb38b2b97c6da975"
+      ],
+      "_id": "68f11e348ce450293c54581d"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "lose",
+      "start": {
+        "season": 5,
+        "division": 1,
+        "round": 8,
+        "_id": "68f11e348ce450293c545821"
+      },
+      "end": {
+        "season": 5,
+        "division": 1,
+        "round": 9,
+        "_id": "68f11e348ce450293c545822"
+      },
+      "count": 1,
+      "active": false,
+      "opponents": [
+        "676d721aeb38b2b97c6da961"
+      ],
+      "_id": "68f11e348ce450293c545820"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "win",
+      "start": {
+        "season": 5,
+        "division": 1,
+        "round": 9,
+        "_id": "68f11e348ce450293c545824"
+      },
+      "end": {
+        "season": 6,
+        "division": 1,
+        "round": 3,
+        "_id": "68f2266160a2f90de02ae76f"
+      },
+      "count": 3,
+      "active": false,
+      "opponents": [
+        "676d7136eb38b2b97c6da953",
+        "676d721aeb38b2b97c6da961",
+        "676d7136eb38b2b97c6da953"
+      ],
+      "_id": "68f11e348ce450293c545823"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "lose",
+      "start": {
+        "season": 6,
+        "division": 1,
+        "round": 3,
+        "_id": "68f2266160a2f90de02ae771"
+      },
+      "end": {
+        "season": 6,
+        "division": 1,
+        "round": 5,
+        "_id": "68f2266160a2f90de02ae772"
+      },
+      "count": 2,
+      "active": false,
+      "opponents": [
+        "676d7613eb38b2b97c6da9a9",
+        "676d7452eb38b2b97c6da981"
+      ],
+      "_id": "68f2266160a2f90de02ae770"
+    },
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "type": "win",
+      "start": {
+        "season": 6,
+        "division": 1,
+        "round": 5,
+        "_id": "68f2266160a2f90de02ae774"
+      },
+      "end": null,
+      "count": 5,
+      "active": true,
+      "opponents": [
+        "676d7201eb38b2b97c6da95f",
+        "676d749feb38b2b97c6da989",
+        "676d736eeb38b2b97c6da975",
+        "676d7663eb38b2b97c6da9af",
+        "676d6fa0eb38b2b97c6da94b"
+      ],
+      "_id": "68f2266160a2f90de02ae773"
+    }
+  ],
+  "opponentsHistory": [
+    {
+      "opponentId": "676d7631eb38b2b97c6da9ab",
+      "totalFights": 2,
+      "totalWins": 1,
+      "totalLosses": 1,
+      "winPercentage": 50,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 1,
+          "divisionId": 1,
+          "roundId": 1,
+          "fightId": "68ed3fc2afd892411fef9eb4",
+          "isWinner": false,
+          "_id": "68f0e4f1733829aa788445d9"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 4,
+          "divisionId": 1,
+          "roundId": 7,
+          "fightId": "68f0d0a5684adcb1c6facf64",
+          "isWinner": true,
+          "_id": "68f0e59148b0101d5dbc6a07"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445d8"
+    },
+    {
+      "opponentId": "676d721aeb38b2b97c6da961",
+      "totalFights": 6,
+      "totalWins": 4,
+      "totalLosses": 2,
+      "winPercentage": 66.66666666666666,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 1,
+          "divisionId": 1,
+          "roundId": 2,
+          "fightId": "68ed3fc2afd892411fef9ebe",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445db"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 2,
+          "divisionId": 1,
+          "roundId": 4,
+          "fightId": "68f0065f8cf32f1236924aeb",
+          "isWinner": false,
+          "_id": "68f0e4f1733829aa788445dc"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 3,
+          "divisionId": 1,
+          "roundId": 4,
+          "fightId": "68f00bb31ea51b0c70a51352",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445dd"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 4,
+          "divisionId": 1,
+          "roundId": 4,
+          "fightId": "68f0d0a5684adcb1c6facf54",
+          "isWinner": true,
+          "_id": "68f0e59148b0101d5dbc69cc"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 5,
+          "divisionId": 1,
+          "roundId": 8,
+          "fightId": "68f11b2028edce0ddf49227d",
+          "isWinner": false,
+          "_id": "68f11b2028edce0ddf492602"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 6,
+          "divisionId": 1,
+          "roundId": 1,
+          "fightId": "68f214ab84078794703c6514",
+          "isWinner": true,
+          "_id": "68f222a2c06f2b699dc259d4"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445da"
+    },
+    {
+      "opponentId": "676d7452eb38b2b97c6da981",
+      "totalFights": 5,
+      "totalWins": 0,
+      "totalLosses": 5,
+      "winPercentage": 0,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 1,
+          "divisionId": 1,
+          "roundId": 3,
+          "fightId": "68ed3fc2afd892411fef9ec1",
+          "isWinner": false,
+          "_id": "68f0e4f1733829aa788445df"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 2,
+          "divisionId": 1,
+          "roundId": 2,
+          "fightId": "68f0065f8cf32f1236924adf",
+          "isWinner": false,
+          "_id": "68f0e4f1733829aa788445e0"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 4,
+          "divisionId": 1,
+          "roundId": 2,
+          "fightId": "68f0d0a5684adcb1c6facf48",
+          "isWinner": false,
+          "_id": "68f0e59148b0101d5dbc6992"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 5,
+          "divisionId": 1,
+          "roundId": 6,
+          "fightId": "68f11b2028edce0ddf492272",
+          "isWinner": false,
+          "_id": "68f11b2028edce0ddf4925e8"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 6,
+          "divisionId": 1,
+          "roundId": 4,
+          "fightId": "68f214ab84078794703c6524",
+          "isWinner": false,
+          "_id": "68f222a2c06f2b699dc259da"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445de"
+    },
+    {
+      "opponentId": "676d7136eb38b2b97c6da953",
+      "totalFights": 4,
+      "totalWins": 4,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 1,
+          "divisionId": 1,
+          "roundId": 4,
+          "fightId": "68ed3fc2afd892411fef9ec9",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445e2"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 4,
+          "divisionId": 1,
+          "roundId": 3,
+          "fightId": "68f0d0a5684adcb1c6facf4a",
+          "isWinner": true,
+          "_id": "68f0e59148b0101d5dbc6996"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 5,
+          "divisionId": 1,
+          "roundId": 9,
+          "fightId": "68f11b2028edce0ddf492280",
+          "isWinner": true,
+          "_id": "68f11b2028edce0ddf492607"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 6,
+          "divisionId": 1,
+          "roundId": 2,
+          "fightId": "68f214ab84078794703c651a",
+          "isWinner": true,
+          "_id": "68f222a2c06f2b699dc259df"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445e1"
+    },
+    {
+      "opponentId": "676d749feb38b2b97c6da989",
+      "totalFights": 2,
+      "totalWins": 2,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 1,
+          "divisionId": 1,
+          "roundId": 5,
+          "fightId": "68ed3fc2afd892411fef9ece",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445e4"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 6,
+          "divisionId": 1,
+          "roundId": 6,
+          "fightId": "68f214ab84078794703c6531",
+          "isWinner": true,
+          "_id": "68f222a2c06f2b699dc259e2"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445e3"
+    },
+    {
+      "opponentId": "676d6fa0eb38b2b97c6da94b",
+      "totalFights": 4,
+      "totalWins": 4,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 1,
+          "divisionId": 1,
+          "roundId": 6,
+          "fightId": "68ed3fc2afd892411fef9ed4",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445e6"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 4,
+          "divisionId": 1,
+          "roundId": 8,
+          "fightId": "68f0d0a5684adcb1c6facf6a",
+          "isWinner": true,
+          "_id": "68f0e59148b0101d5dbc6a1d"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 5,
+          "divisionId": 1,
+          "roundId": 1,
+          "fightId": "68f11b2028edce0ddf49225b",
+          "isWinner": true,
+          "_id": "68f11b2028edce0ddf4925af"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 6,
+          "divisionId": 1,
+          "roundId": 9,
+          "fightId": "68f214ab84078794703c6541",
+          "isWinner": true,
+          "_id": "68f222a2c06f2b699dc259e7"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445e5"
+    },
+    {
+      "opponentId": "676d70fbeb38b2b97c6da951",
+      "totalFights": 1,
+      "totalWins": 1,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 1,
+          "divisionId": 1,
+          "roundId": 7,
+          "fightId": "68ed3fc2afd892411fef9edb",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445e8"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445e7"
+    },
+    {
+      "opponentId": "676d740ceb38b2b97c6da97b",
+      "totalFights": 1,
+      "totalWins": 0,
+      "totalLosses": 1,
+      "winPercentage": 0,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 1,
+          "divisionId": 1,
+          "roundId": 8,
+          "fightId": "68ed3fc2afd892411fef9edf",
+          "isWinner": false,
+          "_id": "68f0e4f1733829aa788445ea"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445e9"
+    },
+    {
+      "opponentId": "676d751aeb38b2b97c6da995",
+      "totalFights": 1,
+      "totalWins": 1,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 1,
+          "divisionId": 1,
+          "roundId": 9,
+          "fightId": "68ed3fc2afd892411fef9ee8",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445ec"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445eb"
+    },
+    {
+      "opponentId": "676d753ceb38b2b97c6da997",
+      "totalFights": 2,
+      "totalWins": 2,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 2,
+          "divisionId": 1,
+          "roundId": 1,
+          "fightId": "68f0065f8cf32f1236924ad6",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445ee"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 4,
+          "divisionId": 1,
+          "roundId": 9,
+          "fightId": "68f0d0a5684adcb1c6facf71",
+          "isWinner": true,
+          "_id": "68f0e59148b0101d5dbc6a2f"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445ed"
+    },
+    {
+      "opponentId": "676d7613eb38b2b97c6da9a9",
+      "totalFights": 5,
+      "totalWins": 1,
+      "totalLosses": 4,
+      "winPercentage": 20,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 2,
+          "divisionId": 1,
+          "roundId": 3,
+          "fightId": "68f0065f8cf32f1236924ae1",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445f0"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 3,
+          "divisionId": 1,
+          "roundId": 3,
+          "fightId": "68f00bb31ea51b0c70a51349",
+          "isWinner": false,
+          "_id": "68f0e4f1733829aa788445f1"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 4,
+          "divisionId": 1,
+          "roundId": 5,
+          "fightId": "68f0d0a5684adcb1c6facf57",
+          "isWinner": false,
+          "_id": "68f0e59148b0101d5dbc69da"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 5,
+          "divisionId": 1,
+          "roundId": 2,
+          "fightId": "68f11b2028edce0ddf49225c",
+          "isWinner": false,
+          "_id": "68f11b2028edce0ddf4925b2"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 6,
+          "divisionId": 1,
+          "roundId": 3,
+          "fightId": "68f214ab84078794703c651e",
+          "isWinner": false,
+          "_id": "68f222a2c06f2b699dc259f6"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445ef"
+    },
+    {
+      "opponentId": "676d74efeb38b2b97c6da991",
+      "totalFights": 1,
+      "totalWins": 1,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 2,
+          "divisionId": 1,
+          "roundId": 5,
+          "fightId": "68f0065f8cf32f1236924aee",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445f3"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445f2"
+    },
+    {
+      "opponentId": "676d7201eb38b2b97c6da95f",
+      "totalFights": 2,
+      "totalWins": 2,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 2,
+          "divisionId": 1,
+          "roundId": 6,
+          "fightId": "68f0065f8cf32f1236924af6",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445f5"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 6,
+          "divisionId": 1,
+          "roundId": 5,
+          "fightId": "68f214ab84078794703c652a",
+          "isWinner": true,
+          "_id": "68f222a2c06f2b699dc259fb"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445f4"
+    },
+    {
+      "opponentId": "676d73ddeb38b2b97c6da979",
+      "totalFights": 1,
+      "totalWins": 1,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 2,
+          "divisionId": 1,
+          "roundId": 7,
+          "fightId": "68f0065f8cf32f1236924afb",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445f7"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445f6"
+    },
+    {
+      "opponentId": "676d75dfeb38b2b97c6da9a5",
+      "totalFights": 1,
+      "totalWins": 1,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 2,
+          "divisionId": 1,
+          "roundId": 8,
+          "fightId": "68f006608cf32f1236924b01",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445f9"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445f8"
+    },
+    {
+      "opponentId": "676d75faeb38b2b97c6da9a7",
+      "totalFights": 1,
+      "totalWins": 1,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 2,
+          "divisionId": 1,
+          "roundId": 9,
+          "fightId": "68f006608cf32f1236924b08",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445fb"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445fa"
+    },
+    {
+      "opponentId": "676d7554eb38b2b97c6da999",
+      "totalFights": 2,
+      "totalWins": 2,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 3,
+          "divisionId": 1,
+          "roundId": 1,
+          "fightId": "68f00bb31ea51b0c70a5133e",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445fd"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 5,
+          "divisionId": 1,
+          "roundId": 3,
+          "fightId": "68f11b2028edce0ddf492265",
+          "isWinner": true,
+          "_id": "68f11b2028edce0ddf4925cb"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445fc"
+    },
+    {
+      "opponentId": "676d736eeb38b2b97c6da975",
+      "totalFights": 4,
+      "totalWins": 3,
+      "totalLosses": 1,
+      "winPercentage": 75,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 3,
+          "divisionId": 1,
+          "roundId": 2,
+          "fightId": "68f00bb31ea51b0c70a51345",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa788445ff"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 4,
+          "divisionId": 1,
+          "roundId": 1,
+          "fightId": "68f0d0a5684adcb1c6facf3f",
+          "isWinner": false,
+          "_id": "68f0e59148b0101d5dbc696a"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 5,
+          "divisionId": 1,
+          "roundId": 7,
+          "fightId": "68f11b2028edce0ddf492277",
+          "isWinner": true,
+          "_id": "68f11b2028edce0ddf4925f1"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 6,
+          "divisionId": 1,
+          "roundId": 7,
+          "fightId": "68f214ab84078794703c6536",
+          "isWinner": true,
+          "_id": "68f222a2c06f2b699dc25a09"
+        }
+      ],
+      "_id": "68f0e4f1733829aa788445fe"
+    },
+    {
+      "opponentId": "676d74bceb38b2b97c6da98d",
+      "totalFights": 1,
+      "totalWins": 1,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 3,
+          "divisionId": 1,
+          "roundId": 5,
+          "fightId": "68f00bb31ea51b0c70a51354",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa78844601"
+        }
+      ],
+      "_id": "68f0e4f1733829aa78844600"
+    },
+    {
+      "opponentId": "676d7304eb38b2b97c6da96d",
+      "totalFights": 1,
+      "totalWins": 1,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 3,
+          "divisionId": 1,
+          "roundId": 6,
+          "fightId": "68f00bb31ea51b0c70a5135e",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa78844603"
+        }
+      ],
+      "_id": "68f0e4f1733829aa78844602"
+    },
+    {
+      "opponentId": "676d745feb38b2b97c6da983",
+      "totalFights": 2,
+      "totalWins": 2,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 3,
+          "divisionId": 1,
+          "roundId": 7,
+          "fightId": "68f00bb31ea51b0c70a51361",
+          "isWinner": true,
+          "_id": "68f0e4f1733829aa78844605"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 5,
+          "divisionId": 1,
+          "roundId": 5,
+          "fightId": "68f11b2028edce0ddf49226e",
+          "isWinner": true,
+          "_id": "68f11b2028edce0ddf4925df"
+        }
+      ],
+      "_id": "68f0e4f1733829aa78844604"
+    },
+    {
+      "opponentId": "676d7399eb38b2b97c6da977",
+      "totalFights": 2,
+      "totalWins": 1,
+      "totalLosses": 1,
+      "winPercentage": 50,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 3,
+          "divisionId": 1,
+          "roundId": 8,
+          "fightId": "68f00bb31ea51b0c70a51369",
+          "isWinner": false,
+          "_id": "68f0e4f1733829aa78844607"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 4,
+          "divisionId": 1,
+          "roundId": 6,
+          "fightId": "68f0d0a5684adcb1c6facf5f",
+          "isWinner": true,
+          "_id": "68f0e59148b0101d5dbc69f9"
+        }
+      ],
+      "_id": "68f0e4f1733829aa78844606"
+    },
+    {
+      "opponentId": "676d748eeb38b2b97c6da987",
+      "totalFights": 2,
+      "totalWins": 1,
+      "totalLosses": 1,
+      "winPercentage": 50,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 3,
+          "divisionId": 1,
+          "roundId": 9,
+          "fightId": "68f00bb31ea51b0c70a5136e",
+          "isWinner": false,
+          "_id": "68f0e4f1733829aa78844609"
+        },
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 5,
+          "divisionId": 1,
+          "roundId": 4,
+          "fightId": "68f11b2028edce0ddf492267",
+          "isWinner": true,
+          "_id": "68f11b2028edce0ddf4925cf"
+        }
+      ],
+      "_id": "68f0e4f1733829aa78844608"
+    },
+    {
+      "opponentId": "676d7663eb38b2b97c6da9af",
+      "totalFights": 1,
+      "totalWins": 1,
+      "totalLosses": 0,
+      "winPercentage": 100,
+      "details": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "season": 6,
+          "divisionId": 1,
+          "roundId": 8,
+          "fightId": "68f214ab84078794703c653d",
+          "isWinner": true,
+          "_id": "68f222a2c06f2b699dc25a18"
+        }
+      ],
+      "_id": "68f222a2c06f2b699dc25a17"
+    }
+  ],
+  "competitionHistory": [
+    {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "numberOfSeasonAppearances": 6,
+      "totalFights": 54,
+      "totalWins": 38,
+      "totalLosses": 16,
+      "winPercentage": 70.37037037037037,
+      "titles": {
+        "totalTitles": 1,
+        "details": [
+          {
+            "competitionSeasonId": "68f0065f8cf32f1236924acf",
+            "seasonNumber": 2,
+            "divisionNumber": 1,
+            "_id": "68f02444b9c8224ea6b843cb"
+          }
+        ],
+        "_id": "68f02444b9c8224ea6b843ca"
+      },
+      "_id": "68f0e59ebfc24546687473ac",
+      "seasonDetails": [
+        {
+          "seasonNumber": 1,
+          "divisionNumber": 1,
+          "fights": 9,
+          "wins": 6,
+          "losses": 3,
+          "points": 18,
+          "winPercentage": 66.66666666666666,
+          "finalPosition": null,
+          "_id": "68f22a0fefc4a8aa6bb8702e"
+        },
+        {
+          "seasonNumber": 2,
+          "divisionNumber": 1,
+          "fights": 9,
+          "wins": 7,
+          "losses": 2,
+          "points": 21,
+          "winPercentage": 77.77777777777779,
+          "finalPosition": 2,
+          "_id": "68f22a0fefc4a8aa6bb8702f"
+        },
+        {
+          "seasonNumber": 3,
+          "divisionNumber": 1,
+          "fights": 9,
+          "wins": 6,
+          "losses": 3,
+          "points": 18,
+          "winPercentage": 66.66666666666666,
+          "finalPosition": 2,
+          "_id": "68f22a0fefc4a8aa6bb87030"
+        },
+        {
+          "seasonNumber": 4,
+          "divisionNumber": 1,
+          "fights": 9,
+          "wins": 6,
+          "losses": 3,
+          "points": 18,
+          "winPercentage": 66.66666666666666,
+          "finalPosition": 3,
+          "_id": "68f22a0fefc4a8aa6bb87031"
+        },
+        {
+          "seasonNumber": 5,
+          "divisionNumber": 1,
+          "fights": 9,
+          "wins": 6,
+          "losses": 3,
+          "points": 18,
+          "winPercentage": 66.66666666666666,
+          "finalPosition": 4,
+          "_id": "68f22a0fefc4a8aa6bb87032"
+        },
+        {
+          "seasonNumber": 6,
+          "divisionNumber": 1,
+          "fights": 9,
+          "wins": 7,
+          "losses": 2,
+          "points": 21,
+          "winPercentage": 77.77777777777779,
+          "finalPosition": 2,
+          "_id": "68f22a0fefc4a8aa6bb87033"
+        }
+      ]
+    }
+  ],
+  "__v": 24,
+  "images": [
+    "https://drive.google.com/file/d/1Y8FV9FSRDtceXaMD4a_oZFlNBS7e3wjO"
+  ],
+  "location": {
+    "city": "Mumbai",
+    "country": "India",
+    "_id": "68e103cdd73f8f0df8d71dd1"
+  },
+  "profileImage": "https://amoyanfc-assets.s3.us-east-1.amazonaws.com/fighters/676d6ecceb38b2b97c6da945-sayali-raut/ai-fight-pose.png",
+  "dateOfBirth": "1993-09-02T00:00:00.000Z",
+  "physicalAttributes": {
+    "heightCm": 155,
+    "heightFeet": "5'1",
+    "weightKg": 51,
+    "armReach": 157,
+    "legReach": 73,
+    "bodyType": "Balanced and conditioned, suited for endurance and striking exchanges.",
+    "koPower": 7.5,
+    "durability": 8,
+    "strength": 7,
+    "endurance": 8.5,
+    "agility": 7.5,
+    "_id": "68ed2d5b343ac8329b2b8024"
+  }
+}

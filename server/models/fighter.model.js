@@ -217,6 +217,29 @@ const titlesSchema = new Schema({
 })
 
 /**
+ * Schema definition for season-by-season details
+ * @typedef {Object} seasonDetailSchema
+ * @property {Number} seasonNumber - The season number
+ * @property {Number} divisionNumber - The division number
+ * @property {Number} fights - Number of fights in this season
+ * @property {Number} wins - Number of wins in this season
+ * @property {Number} losses - Number of losses in this season
+ * @property {Number} points - Points earned in this season
+ * @property {Number} winPercentage - Win percentage for this season
+ * @property {Number} finalPosition - Final position in the division
+ */
+const seasonDetailSchema = new Schema({
+    seasonNumber: { type: Number },
+    divisionNumber: { type: Number },
+    fights: { type: Number, default: 0 },
+    wins: { type: Number, default: 0 },
+    losses: { type: Number, default: 0 },
+    points: { type: Number, default: 0 },
+    winPercentage: { type: Number, default: 0 },
+    finalPosition: { type: Number }
+});
+
+/**
  * Schema definition for a competition record
  * @typedef {Object} competitionRecordSchema
  * @property {ObjectId} competitionId - Refers to the ID of a competition
@@ -224,6 +247,7 @@ const titlesSchema = new Schema({
  * @property {Number} totalWins - Refers to the total number of fights won in a competition
  * @property {Number} totalLosses - Refers to the total number of fights lost in a competition
  * @property {Number} winPercentage - Refers to the win percentage of the competition
+ * @property {Array.<Object>} seasonDetails - Season-by-season breakdown of performance
  */
 const competitionRecordSchema = new Schema({
     competitionId: { type: Schema.Types.ObjectId, ref: 'CompetitionMeta' },
@@ -232,7 +256,8 @@ const competitionRecordSchema = new Schema({
     totalWins: { type: Number, default: 0 },
     totalLosses: { type: Number, default: 0 },
     winPercentage: { type: Number, default: 0 },
-    titles: titlesSchema
+    titles: titlesSchema,
+    seasonDetails: [seasonDetailSchema]
 });
 
 /**

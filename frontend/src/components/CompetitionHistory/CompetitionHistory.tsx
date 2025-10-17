@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { faTrophy, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import S3Image from '../S3Image/S3Image';
 import styles from './CompetitionHistory.module.css';
 
@@ -8,6 +8,17 @@ interface TitleDetail {
     competitionSeasonId: string;
     seasonNumber: number;
     divisionNumber: number;
+}
+
+interface SeasonDetail {
+    seasonNumber: number;
+    divisionNumber: number;
+    fights: number;
+    wins: number;
+    losses: number;
+    points: number;
+    winPercentage: number;
+    finalPosition: number | null;
 }
 
 interface CompetitionHistoryItem {
@@ -26,6 +37,7 @@ interface CompetitionHistoryItem {
         totalTitles: number;
         details: TitleDetail[];
     };
+    seasonDetails?: SeasonDetail[];
 }
 
 interface CompetitionHistoryProps {
@@ -33,6 +45,15 @@ interface CompetitionHistoryProps {
 }
 
 const CompetitionHistory: React.FC<CompetitionHistoryProps> = ({ competitionHistory }) => {
+    const [expandedCards, setExpandedCards] = useState<Record<number, boolean>>({});
+
+    const toggleCard = (index: number) => {
+        setExpandedCards(prev => ({
+            ...prev,
+            [index]: !prev[index]
+        }));
+    };
+
     const formatTitles = (titles: { totalTitles: number; details: TitleDetail[] }): string => {
         if (!titles || titles.totalTitles === 0) return '';
 
@@ -73,6 +94,8 @@ const CompetitionHistory: React.FC<CompetitionHistoryProps> = ({ competitionHist
                     if (!meta) return null;
 
                     const titlesText = formatTitles(history.titles);
+                    const isExpanded = expandedCards[index];
+                    const hasSeasonDetails = history.seasonDetails && history.seasonDetails.length > 0;
 
                     return (
                         <div key={index} className={styles.competitionCard}>
@@ -94,7 +117,20 @@ const CompetitionHistory: React.FC<CompetitionHistoryProps> = ({ competitionHist
 
                             {/* Right: Stats */}
                             <div className={styles.statsSection}>
-                                <h3 className={styles.competitionName}>{meta.competitionName}</h3>
+                                <div className={styles.headerRow}>
+                                    <h3 className={styles.competitionName}>{meta.competitionName}</h3>
+                                    {hasSeasonDetails && (
+                                        <button 
+                                            className={styles.expandButton}
+                                            onClick={() => toggleCard(index)}
+                                            aria-label={isExpanded ? "Collapse" : "Expand"}
+                                        >
+                                            <FontAwesomeIcon 
+                                                icon={isExpanded ? faChevronUp : faChevronDown} 
+                                            />
+                                        </button>
+                                    )}
+                                </div>
                                 
                                 {titlesText && (
                                     <div className={styles.titlesRow}>
@@ -125,6 +161,44 @@ const CompetitionHistory: React.FC<CompetitionHistoryProps> = ({ competitionHist
                                         <span className={styles.statValue}>{history.winPercentage.toFixed(1)}%</span>
                                     </div>
                                 </div>
+
+                                {/* Season-by-Season Details */}
+                                {isExpanded && hasSeasonDetails && (
+                                    <div className={styles.seasonDetailsSection}>
+                                        <h4 className={styles.seasonDetailsTitle}>Season-by-Season Breakdown</h4>
+                                        {history.seasonDetails!.map((season) => (
+                                            <div key={`${season.seasonNumber}-${season.divisionNumber}`} className={styles.seasonCard}>
+                                                {/* Season Header */}
+                                                <div className={styles.seasonHeader}>
+                                                    <span className={styles.seasonNumber}>Season {season.seasonNumber}</span>
+                                                    <span className={styles.divisionBadge}>Division {season.divisionNumber}</span>
+                                                </div>
+
+                                                {/* Season Stats Table */}
+                                                <div className={styles.seasonTable}>
+                                                    <div className={styles.tableHeader}>
+                                                        <div className={styles.tableCell}>Position</div>
+                                                        <div className={styles.tableCell}>Fights</div>
+                                                        <div className={styles.tableCell}>Wins</div>
+                                                        <div className={styles.tableCell}>Defeats</div>
+                                                        <div className={styles.tableCell}>Points</div>
+                                                        <div className={styles.tableCell}>Win %</div>
+                                                    </div>
+                                                    <div className={styles.tableRow}>
+                                                        <div className={styles.tableCell}>
+                                                            {season.finalPosition !== null ? `#${season.finalPosition}` : 'N/A'}
+                                                        </div>
+                                                        <div className={styles.tableCell}>{season.fights}</div>
+                                                        <div className={styles.tableCell}>{season.wins}</div>
+                                                        <div className={styles.tableCell}>{season.losses}</div>
+                                                        <div className={styles.tableCell}>{season.points}</div>
+                                                        <div className={styles.tableCell}>{season.winPercentage.toFixed(1)}%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
                         </div>
                     );

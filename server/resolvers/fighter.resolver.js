@@ -189,6 +189,24 @@ const fighterResolver = {
                     
                     console.log('Titles data for competition', item.record.competitionId, ':', titlesData);
                     
+                    // Handle seasonDetails - convert to plain object if needed
+                    let seasonDetailsData = [];
+                    if (item.record.seasonDetails && item.record.seasonDetails.length > 0) {
+                        seasonDetailsData = item.record.seasonDetails.map(sd => {
+                            const plainSd = sd.toObject?.() || sd;
+                            return {
+                                seasonNumber: plainSd.seasonNumber,
+                                divisionNumber: plainSd.divisionNumber,
+                                fights: plainSd.fights || 0,
+                                wins: plainSd.wins || 0,
+                                losses: plainSd.losses || 0,
+                                points: plainSd.points || 0,
+                                winPercentage: plainSd.winPercentage || 0,
+                                finalPosition: plainSd.finalPosition
+                            };
+                        });
+                    }
+                    
                     return {
                         competitionId: item.record.competitionId,
                         numberOfSeasonAppearances: item.record.numberOfSeasonAppearances || 0,
@@ -197,7 +215,8 @@ const fighterResolver = {
                         totalLosses: item.record.totalLosses || 0,
                         winPercentage: item.record.winPercentage || 0,
                         competitionMeta: metaWithId,
-                        titles: titlesData
+                        titles: titlesData,
+                        seasonDetails: seasonDetailsData
                     };
                 });
 

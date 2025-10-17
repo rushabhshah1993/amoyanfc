@@ -102,6 +102,16 @@ export const GET_FIGHTER_INFORMATION = gql`
                         divisionNumber
                     }
                 }
+                seasonDetails {
+                    seasonNumber
+                    divisionNumber
+                    fights
+                    wins
+                    losses
+                    points
+                    winPercentage
+                    finalPosition
+                }
             }
             streaks {
                 competitionId

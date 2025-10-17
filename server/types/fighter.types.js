@@ -44,6 +44,7 @@ const fighterTypes = `#graphql
         totalLosses: Int
         winPercentage: Float
         titles: TitlesData
+        seasonDetails: [SeasonDetailsData]
         competitionMeta: CompetitionMeta!
     }
 
@@ -57,6 +58,17 @@ const fighterTypes = `#graphql
         seasonNumber: Int
         divisionNumber: Int
         competition: Competition
+    }
+
+    type SeasonDetailsData {
+        seasonNumber: Int
+        divisionNumber: Int
+        fights: Int
+        wins: Int
+        losses: Int
+        points: Int
+        winPercentage: Float
+        finalPosition: Int
     }
 
     type LocationData {
