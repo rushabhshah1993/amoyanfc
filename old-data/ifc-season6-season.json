@@ -1,0 +1,411 @@
+{
+  "complete": true,
+  "current": false,
+  "divisionMeta": [
+    {
+      "divisionId": 1,
+      "fights": 9,
+      "label": {
+        "id": "division1",
+        "text": "Division 1"
+      },
+      "promoted": false,
+      "promotion": false,
+      "promotionCount": 0,
+      "relegated": [
+        "F009",
+        "F020",
+        "F024"
+      ],
+      "relegation": true,
+      "relegationCount": 3
+    },
+    {
+      "divisionId": 2,
+      "fights": 11,
+      "label": {
+        "id": "division2",
+        "text": "Division 2"
+      },
+      "promoted": [
+        "F004",
+        "F017",
+        "F016"
+      ],
+      "promotion": true,
+      "promotionCount": 3,
+      "relegated": [
+        "F031",
+        "F029",
+        "F040"
+      ],
+      "relegation": true,
+      "relegationCount": 3
+    },
+    {
+      "divisionId": 3,
+      "fights": 15,
+      "label": {
+        "id": "division3",
+        "text": "Division 3"
+      },
+      "promoted": [
+        "F014",
+        "F041",
+        "F032"
+      ],
+      "promotion": true,
+      "promotionCount": 3,
+      "relegated": [
+        "F007",
+        "F026",
+        "F013"
+      ],
+      "relegation": true,
+      "relegationCount": 3
+    }
+  ],
+  "divisions": true,
+  "finalPositions": [
+    {
+      "division": 1,
+      "positions": [
+        {
+          "fighterId": "F034",
+          "fights": 9,
+          "lost": 2,
+          "points": 21,
+          "rank": 1,
+          "wins": 7
+        },
+        {
+          "fighterId": "F030",
+          "fights": 9,
+          "lost": 2,
+          "points": 21,
+          "rank": 2,
+          "wins": 7
+        },
+        {
+          "fighterId": "F010",
+          "fights": 9,
+          "lost": 3,
+          "points": 18,
+          "rank": 3,
+          "wins": 6
+        },
+        {
+          "fighterId": "F002",
+          "fights": 9,
+          "lost": 5,
+          "points": 12,
+          "rank": 4,
+          "wins": 4
+        },
+        {
+          "fighterId": "F005",
+          "fights": 9,
+          "lost": 5,
+          "points": 12,
+          "rank": 5,
+          "wins": 4
+        },
+        {
+          "fighterId": "F015",
+          "fights": 9,
+          "lost": 5,
+          "points": 12,
+          "rank": 6,
+          "wins": 4
+        },
+        {
+          "fighterId": "F037",
+          "fights": 9,
+          "lost": 5,
+          "points": 12,
+          "rank": 7,
+          "wins": 4
+        },
+        {
+          "fighterId": "F009",
+          "fights": 9,
+          "lost": 5,
+          "points": 12,
+          "rank": 8,
+          "wins": 4
+        },
+        {
+          "fighterId": "F020",
+          "fights": 9,
+          "lost": 6,
+          "points": 9,
+          "rank": 9,
+          "wins": 3
+        },
+        {
+          "fighterId": "F024",
+          "fights": 9,
+          "lost": 6,
+          "points": 9,
+          "rank": 10,
+          "wins": 3
+        }
+      ]
+    },
+    {
+      "division": 2,
+      "positions": [
+        {
+          "fighterId": "F004",
+          "fights": 11,
+          "lost": 1,
+          "points": 30,
+          "rank": 1,
+          "wins": 10
+        },
+        {
+          "fighterId": "F017",
+          "fights": 11,
+          "lost": 3,
+          "points": 24,
+          "rank": 2,
+          "wins": 8
+        },
+        {
+          "fighterId": "F016",
+          "fights": 11,
+          "lost": 4,
+          "points": 21,
+          "rank": 3,
+          "wins": 7
+        },
+        {
+          "fighterId": "F028",
+          "fights": 11,
+          "lost": 4,
+          "points": 21,
+          "rank": 4,
+          "wins": 7
+        },
+        {
+          "fighterId": "F035",
+          "fights": 11,
+          "lost": 4,
+          "points": 21,
+          "rank": 5,
+          "wins": 7
+        },
+        {
+          "fighterId": "F018",
+          "fights": 11,
+          "lost": 5,
+          "points": 18,
+          "rank": 6,
+          "wins": 6
+        },
+        {
+          "fighterId": "F021",
+          "fights": 11,
+          "lost": 6,
+          "points": 15,
+          "rank": 7,
+          "wins": 5
+        },
+        {
+          "fighterId": "F023",
+          "fights": 11,
+          "lost": 7,
+          "points": 12,
+          "rank": 8,
+          "wins": 4
+        },
+        {
+          "fighterId": "F025",
+          "fights": 11,
+          "lost": 8,
+          "points": 9,
+          "rank": 9,
+          "wins": 3
+        },
+        {
+          "fighterId": "F031",
+          "fights": 11,
+          "lost": 8,
+          "points": 9,
+          "rank": 10,
+          "wins": 3
+        },
+        {
+          "fighterId": "F029",
+          "fights": 11,
+          "lost": 8,
+          "points": 9,
+          "rank": 11,
+          "wins": 3
+        },
+        {
+          "fighterId": "F040",
+          "fights": 11,
+          "lost": 8,
+          "points": 9,
+          "rank": 12,
+          "wins": 3
+        }
+      ]
+    },
+    {
+      "division": 3,
+      "positions": [
+        {
+          "fighterId": "F014",
+          "fights": 15,
+          "lost": 3,
+          "points": 36,
+          "rank": 1,
+          "wins": 12
+        },
+        {
+          "fighterId": "F041",
+          "fights": 15,
+          "lost": 3,
+          "points": 36,
+          "rank": 2,
+          "wins": 12
+        },
+        {
+          "fighterId": "F032",
+          "fights": 15,
+          "lost": 4,
+          "points": 33,
+          "rank": 3,
+          "wins": 11
+        },
+        {
+          "fighterId": "F042",
+          "fights": 15,
+          "lost": 4,
+          "points": 33,
+          "rank": 4,
+          "wins": 11
+        },
+        {
+          "fighterId": "F019",
+          "fights": 15,
+          "lost": 6,
+          "points": 27,
+          "rank": 5,
+          "wins": 9
+        },
+        {
+          "fighterId": "F003",
+          "fights": 15,
+          "lost": 6,
+          "points": 27,
+          "rank": 6,
+          "wins": 9
+        },
+        {
+          "fighterId": "F022",
+          "fights": 15,
+          "lost": 6,
+          "points": 27,
+          "rank": 7,
+          "wins": 9
+        },
+        {
+          "fighterId": "F012",
+          "fights": 15,
+          "lost": 7,
+          "points": 24,
+          "rank": 8,
+          "wins": 8
+        },
+        {
+          "fighterId": "F038",
+          "fights": 15,
+          "lost": 8,
+          "points": 21,
+          "rank": 9,
+          "wins": 7
+        },
+        {
+          "fighterId": "F006",
+          "fights": 15,
+          "lost": 9,
+          "points": 18,
+          "rank": 10,
+          "wins": 6
+        },
+        {
+          "fighterId": "F001",
+          "fights": 15,
+          "lost": 9,
+          "points": 18,
+          "rank": 11,
+          "wins": 6
+        },
+        {
+          "fighterId": "F008",
+          "fights": 15,
+          "lost": 10,
+          "points": 15,
+          "rank": 12,
+          "wins": 5
+        },
+        {
+          "fighterId": "F027",
+          "fights": 15,
+          "lost": 10,
+          "points": 15,
+          "rank": 13,
+          "wins": 5
+        },
+        {
+          "fighterId": "F007",
+          "fights": 15,
+          "lost": 10,
+          "points": 15,
+          "rank": 14,
+          "wins": 5
+        },
+        {
+          "fighterId": "F026",
+          "fights": 15,
+          "lost": 12,
+          "points": 9,
+          "rank": 15,
+          "wins": 3
+        },
+        {
+          "fighterId": "F013",
+          "fights": 15,
+          "lost": 13,
+          "points": 6,
+          "rank": 16,
+          "wins": 2
+        }
+      ]
+    }
+  ],
+  "id": "S0006",
+  "label": "Season 6",
+  "seasonId": "S0006",
+  "timeline": {
+    "end": "2021-11-30T16:32:50.395Z",
+    "start": "2021-09-21T09:51:31.580Z"
+  },
+  "winners": [
+    {
+      "division": 1,
+      "winner": "F034"
+    },
+    {
+      "division": 2,
+      "winner": "F004"
+    },
+    {
+      "division": 3,
+      "winner": "F014"
+    }
+  ]
+}

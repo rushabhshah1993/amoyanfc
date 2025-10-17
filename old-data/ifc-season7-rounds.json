@@ -1,0 +1,1800 @@
+{
+  "division1": {
+    "round1": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2021-12-12T05:53:51.754Z",
+          "id": "S7-D1-R1-F1",
+          "player1": "F002",
+          "player2": "F034",
+          "winner": "F034"
+        },
+        {
+          "date": "2021-12-15T11:03:36.592Z",
+          "id": "S7-D1-R1-F2",
+          "player1": "F016",
+          "player2": "F030",
+          "winner": "F016"
+        },
+        {
+          "date": "2021-12-16T05:05:48.823Z",
+          "id": "S7-D1-R1-F3",
+          "player1": "F004",
+          "player2": "F017",
+          "winner": "F004"
+        },
+        {
+          "date": "2021-12-16T05:06:04.624Z",
+          "id": "S7-D1-R1-F4",
+          "player1": "F015",
+          "player2": "F037",
+          "winner": "F037"
+        },
+        {
+          "date": "2021-12-16T09:01:46.508Z",
+          "id": "S7-D1-R1-F5",
+          "player1": "F010",
+          "player2": "F005",
+          "winner": "F005"
+        }
+      ]
+    },
+    "round2": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2021-12-20T12:53:17.290Z",
+          "id": "S7-D1-R2-F1",
+          "player1": "F034",
+          "player2": "F016",
+          "winner": "F034"
+        },
+        {
+          "date": "2021-12-21T09:28:28.246Z",
+          "id": "S7-D1-R2-F2",
+          "player1": "F030",
+          "player2": "F004",
+          "winner": "F030"
+        },
+        {
+          "date": "2021-12-21T09:28:37.390Z",
+          "id": "S7-D1-R2-F3",
+          "player1": "F037",
+          "player2": "F017",
+          "winner": "F037"
+        },
+        {
+          "date": "2021-12-21T09:28:55.057Z",
+          "id": "S7-D1-R2-F4",
+          "player1": "F015",
+          "player2": "F010",
+          "winner": "F010"
+        },
+        {
+          "date": "2021-12-21T10:20:11.087Z",
+          "id": "S7-D1-R2-F5",
+          "player1": "F002",
+          "player2": "F005",
+          "winner": "F002"
+        }
+      ]
+    },
+    "round3": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2021-12-29T09:26:55.069Z",
+          "id": "S7-D1-R3-F1",
+          "player1": "F034",
+          "player2": "F004",
+          "winner": "F004"
+        },
+        {
+          "date": "2021-12-30T06:11:41.527Z",
+          "id": "S7-D1-R3-F2",
+          "player1": "F037",
+          "player2": "F030",
+          "winner": "F037"
+        },
+        {
+          "date": "2021-12-30T08:45:55.556Z",
+          "id": "S7-D1-R3-F3",
+          "player1": "F010",
+          "player2": "F017",
+          "winner": "F017"
+        },
+        {
+          "date": "2021-12-30T08:52:50.348Z",
+          "id": "S7-D1-R3-F4",
+          "player1": "F015",
+          "player2": "F005",
+          "winner": "F015"
+        },
+        {
+          "date": "2021-12-30T11:52:53.288Z",
+          "id": "S7-D1-R3-F5",
+          "player1": "F002",
+          "player2": "F016",
+          "winner": "F002"
+        }
+      ]
+    },
+    "round4": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-01-06T02:42:04.372Z",
+          "id": "S7-D1-R4-F1",
+          "player1": "F037",
+          "player2": "F034",
+          "winner": "F034"
+        },
+        {
+          "date": "2022-01-06T10:02:25.324Z",
+          "id": "S7-D1-R4-F2",
+          "player1": "F010",
+          "player2": "F030",
+          "winner": "F030"
+        },
+        {
+          "date": "2022-01-06T10:02:55.128Z",
+          "id": "S7-D1-R4-F3",
+          "player1": "F017",
+          "player2": "F005",
+          "winner": "F005"
+        },
+        {
+          "date": "2022-01-06T10:03:21.047Z",
+          "id": "S7-D1-R4-F4",
+          "player1": "F015",
+          "player2": "F002",
+          "winner": "F002"
+        },
+        {
+          "date": "2022-01-06T10:03:53.382Z",
+          "id": "S7-D1-R4-F5",
+          "player1": "F004",
+          "player2": "F016",
+          "winner": "F016"
+        }
+      ]
+    },
+    "round5": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-01-15T06:32:33.533Z",
+          "id": "S7-D1-R5-F1",
+          "player1": "F010",
+          "player2": "F034",
+          "winner": "F034"
+        },
+        {
+          "date": "2022-01-16T04:06:07.057Z",
+          "id": "S7-D1-R5-F2",
+          "player1": "F005",
+          "player2": "F030",
+          "winner": "F030"
+        },
+        {
+          "date": "2022-01-16T04:09:25.454Z",
+          "id": "S7-D1-R5-F3",
+          "player1": "F017",
+          "player2": "F015",
+          "winner": "F015"
+        },
+        {
+          "date": "2022-01-16T04:06:34.703Z",
+          "id": "S7-D1-R5-F4",
+          "player1": "F004",
+          "player2": "F002",
+          "winner": "F004"
+        },
+        {
+          "date": "2022-01-16T04:09:35.077Z",
+          "id": "S7-D1-R5-F5",
+          "player1": "F037",
+          "player2": "F016",
+          "winner": "F016"
+        }
+      ]
+    },
+    "round6": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-02-01T13:39:39.763Z",
+          "id": "S7-D1-R6-F1",
+          "player1": "F005",
+          "player2": "F034",
+          "winner": "F034"
+        },
+        {
+          "date": "2022-02-01T13:39:50.868Z",
+          "id": "S7-D1-R6-F2",
+          "player1": "F015",
+          "player2": "F030",
+          "winner": "F030"
+        },
+        {
+          "date": "2022-02-02T03:31:28.498Z",
+          "id": "S7-D1-R6-F3",
+          "player1": "F002",
+          "player2": "F017",
+          "winner": "F017"
+        },
+        {
+          "date": "2022-02-02T08:47:13.508Z",
+          "id": "S7-D1-R6-F4",
+          "player1": "F010",
+          "player2": "F016",
+          "winner": "F010"
+        },
+        {
+          "date": "2022-02-02T13:31:04.886Z",
+          "id": "S7-D1-R6-F5",
+          "player1": "F037",
+          "player2": "F004",
+          "winner": "F037"
+        }
+      ]
+    },
+    "round7": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-02-09T04:13:29.817Z",
+          "id": "S7-D1-R7-F1",
+          "player1": "F015",
+          "player2": "F034",
+          "winner": "F015"
+        },
+        {
+          "date": "2022-02-09T04:13:42.181Z",
+          "id": "S7-D1-R7-F2",
+          "player1": "F017",
+          "player2": "F030",
+          "winner": "F030"
+        },
+        {
+          "date": "2022-02-09T09:06:56.552Z",
+          "id": "S7-D1-R7-F3",
+          "player1": "F005",
+          "player2": "F016",
+          "winner": "F005"
+        },
+        {
+          "date": "2022-02-09T09:07:37.002Z",
+          "id": "S7-D1-R7-F4",
+          "player1": "F037",
+          "player2": "F002",
+          "winner": "F002"
+        },
+        {
+          "date": "2022-02-09T10:49:12.210Z",
+          "id": "S7-D1-R7-F5",
+          "player1": "F004",
+          "player2": "F010",
+          "winner": "F010"
+        }
+      ]
+    },
+    "round8": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-02-16T04:23:41.737Z",
+          "id": "S7-D1-R8-F1",
+          "player1": "F034",
+          "player2": "F017",
+          "winner": "F034"
+        },
+        {
+          "date": "2022-02-16T05:11:24.854Z",
+          "id": "S7-D1-R8-F2",
+          "player1": "F030",
+          "player2": "F002",
+          "winner": "F030"
+        },
+        {
+          "date": "2022-02-16T05:11:40.261Z",
+          "id": "S7-D1-R8-F3",
+          "player1": "F016",
+          "player2": "F015",
+          "winner": "F016"
+        },
+        {
+          "date": "2022-02-16T05:11:59.660Z",
+          "id": "S7-D1-R8-F4",
+          "player1": "F005",
+          "player2": "F004",
+          "winner": "F005"
+        },
+        {
+          "date": "2022-02-16T06:16:06.644Z",
+          "id": "S7-D1-R8-F5",
+          "player1": "F010",
+          "player2": "F037",
+          "winner": "F010"
+        }
+      ]
+    },
+    "round9": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-02-21T03:48:10.140Z",
+          "id": "S7-D1-R9-F1",
+          "player1": "F030",
+          "player2": "F034",
+          "winner": "F030"
+        },
+        {
+          "date": "2022-02-21T03:48:21.559Z",
+          "id": "S7-D1-R9-F2",
+          "player1": "F017",
+          "player2": "F016",
+          "winner": "F016"
+        },
+        {
+          "date": "2022-02-21T10:21:37.738Z",
+          "id": "S7-D1-R9-F3",
+          "player1": "F004",
+          "player2": "F015",
+          "winner": "F015"
+        },
+        {
+          "date": "2022-02-21T10:21:57.880Z",
+          "id": "S7-D1-R9-F4",
+          "player1": "F005",
+          "player2": "F037",
+          "winner": "F005"
+        },
+        {
+          "date": "2022-02-21T14:59:39.029Z",
+          "id": "S7-D1-R9-F5",
+          "player1": "F010",
+          "player2": "F002",
+          "winner": "F010"
+        }
+      ]
+    }
+  },
+  "division2": {
+    "round1": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2021-12-11T17:54:53.033Z",
+          "id": "S7-D2-R1-F1",
+          "player1": "F014",
+          "player2": "F018",
+          "winner": "F018"
+        },
+        {
+          "date": "2021-12-14T11:53:36.542Z",
+          "id": "S7-D2-R1-F2",
+          "player1": "F021",
+          "player2": "F035",
+          "winner": "F021"
+        },
+        {
+          "date": "2021-12-14T11:55:48.753Z",
+          "id": "S7-D2-R1-F3",
+          "player1": "F041",
+          "player2": "F009",
+          "winner": "F009"
+        },
+        {
+          "date": "2021-12-15T05:10:12.328Z",
+          "id": "S7-D2-R1-F4",
+          "player1": "F028",
+          "player2": "F023",
+          "winner": "F023"
+        },
+        {
+          "date": "2021-12-15T10:56:59.516Z",
+          "id": "S7-D2-R1-F5",
+          "player1": "F025",
+          "player2": "F024",
+          "winner": "F025"
+        },
+        {
+          "date": "2021-12-15T10:59:02.601Z",
+          "id": "S7-D2-R1-F6",
+          "player1": "F020",
+          "player2": "F032",
+          "winner": "F020"
+        }
+      ]
+    },
+    "round10": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-02-15T03:29:53.560Z",
+          "id": "S7-D2-R10-F1",
+          "player1": "F041",
+          "player2": "F018",
+          "winner": "F041"
+        },
+        {
+          "date": "2022-02-15T03:30:00.521Z",
+          "id": "S7-D2-R10-F2",
+          "player1": "F014",
+          "player2": "F021",
+          "winner": "F021"
+        },
+        {
+          "date": "2022-02-15T03:30:23.742Z",
+          "id": "S7-D2-R10-F3",
+          "player1": "F035",
+          "player2": "F023",
+          "winner": "F035"
+        },
+        {
+          "date": "2022-02-16T04:09:24.737Z",
+          "id": "S7-D2-R10-F4",
+          "player1": "F024",
+          "player2": "F009",
+          "winner": "F024"
+        },
+        {
+          "date": "2022-02-15T03:31:00.397Z",
+          "id": "S7-D2-R10-F5",
+          "player1": "F028",
+          "player2": "F020",
+          "winner": "F028"
+        },
+        {
+          "date": "2022-02-16T04:09:51.476Z",
+          "id": "S7-D2-R10-F6",
+          "player1": "F025",
+          "player2": "F032",
+          "winner": "F032"
+        }
+      ]
+    },
+    "round11": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-02-19T04:40:11.881Z",
+          "id": "S7-D2-R11-F1",
+          "player1": "F018",
+          "player2": "F021",
+          "winner": "F021"
+        },
+        {
+          "date": "2022-02-19T11:21:09.489Z",
+          "id": "S7-D2-R11-F2",
+          "player1": "F041",
+          "player2": "F035",
+          "winner": "F035"
+        },
+        {
+          "date": "2022-02-20T05:03:33.603Z",
+          "id": "S7-D2-R11-F3",
+          "player1": "F009",
+          "player2": "F023",
+          "winner": "F009"
+        },
+        {
+          "date": "2022-02-20T07:13:01.181Z",
+          "id": "S7-D2-R11-F4",
+          "player1": "F024",
+          "player2": "F028",
+          "winner": "F024"
+        },
+        {
+          "date": "2022-02-20T11:11:54.453Z",
+          "id": "S7-D2-R11-F5",
+          "player1": "F020",
+          "player2": "F025",
+          "winner": "F020"
+        },
+        {
+          "date": "2022-02-20T11:12:14.276Z",
+          "id": "S7-D2-R11-F6",
+          "player1": "F032",
+          "player2": "F014",
+          "winner": "F014"
+        }
+      ]
+    },
+    "round2": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2021-12-20T03:55:31.863Z",
+          "id": "S7-D2-R2-F1",
+          "player1": "F035",
+          "player2": "F018",
+          "winner": "F035"
+        },
+        {
+          "date": "2021-12-20T06:43:48.449Z",
+          "id": "S7-D2-R2-F2",
+          "player1": "F021",
+          "player2": "F009",
+          "winner": "F021"
+        },
+        {
+          "date": "2021-12-20T06:47:36.658Z",
+          "id": "S7-D2-R2-F3",
+          "player1": "F028",
+          "player2": "F041",
+          "winner": "F028"
+        },
+        {
+          "date": "2021-12-20T06:51:11.067Z",
+          "id": "S7-D2-R2-F4",
+          "player1": "F023",
+          "player2": "F025",
+          "winner": "F023"
+        },
+        {
+          "date": "2021-12-20T11:16:20.344Z",
+          "id": "S7-D2-R2-F5",
+          "player1": "F032",
+          "player2": "F024",
+          "winner": "F032"
+        },
+        {
+          "date": "2021-12-20T11:21:35.560Z",
+          "id": "S7-D2-R2-F6",
+          "player1": "F014",
+          "player2": "F020",
+          "winner": "F020"
+        }
+      ]
+    },
+    "round3": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2021-12-27T08:58:13.969Z",
+          "id": "S7-D2-R3-F1",
+          "player1": "F009",
+          "player2": "F018",
+          "winner": "F009"
+        },
+        {
+          "date": "2021-12-27T10:51:28.725Z",
+          "id": "S7-D2-R3-F2",
+          "player1": "F028",
+          "player2": "F021",
+          "winner": "F028"
+        },
+        {
+          "date": "2021-12-28T05:44:41.558Z",
+          "id": "S7-D2-R3-F3",
+          "player1": "F041",
+          "player2": "F025",
+          "winner": "F025"
+        },
+        {
+          "date": "2021-12-28T07:06:47.192Z",
+          "id": "S7-D2-R3-F4",
+          "player1": "F023",
+          "player2": "F032",
+          "winner": "F032"
+        },
+        {
+          "date": "2021-12-28T07:09:06.395Z",
+          "id": "S7-D2-R3-F5",
+          "player1": "F024",
+          "player2": "F020",
+          "winner": "F020"
+        },
+        {
+          "date": "2021-12-28T07:11:53.173Z",
+          "id": "S7-D2-R3-F6",
+          "player1": "F035",
+          "player2": "F014",
+          "winner": "F035"
+        }
+      ]
+    },
+    "round4": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2021-12-29T06:04:13.173Z",
+          "id": "S7-D2-R4-F1",
+          "player1": "F018",
+          "player2": "F028",
+          "winner": "F028"
+        },
+        {
+          "date": "2021-12-29T04:57:30.813Z",
+          "id": "S7-D2-R4-F2",
+          "player1": "F021",
+          "player2": "F025",
+          "winner": "F021"
+        },
+        {
+          "date": "2021-12-29T07:13:44.756Z",
+          "id": "S7-D2-R4-F3",
+          "player1": "F032",
+          "player2": "F041",
+          "winner": "F032"
+        },
+        {
+          "date": "2021-12-29T07:16:21.374Z",
+          "id": "S7-D2-R4-F4",
+          "player1": "F020",
+          "player2": "F023",
+          "winner": "F020"
+        },
+        {
+          "date": "2021-12-29T09:15:52.107Z",
+          "id": "S7-D2-R4-F5",
+          "player1": "F014",
+          "player2": "F024",
+          "winner": "F014"
+        },
+        {
+          "date": "2021-12-29T09:16:18.879Z",
+          "id": "S7-D2-R4-F6",
+          "player1": "F035",
+          "player2": "F009",
+          "winner": "F035"
+        }
+      ]
+    },
+    "round5": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-01-05T08:31:06.646Z",
+          "id": "S7-D2-R5-F1",
+          "player1": "F025",
+          "player2": "F018",
+          "winner": "F018"
+        },
+        {
+          "date": "2022-01-05T08:35:24.441Z",
+          "id": "S7-D2-R5-F2",
+          "player1": "F021",
+          "player2": "F032",
+          "winner": "F021"
+        },
+        {
+          "date": "2022-01-05T08:41:31.221Z",
+          "id": "S7-D2-R5-F3",
+          "player1": "F041",
+          "player2": "F020",
+          "winner": "F041"
+        },
+        {
+          "date": "2022-01-05T09:12:25.478Z",
+          "id": "S7-D2-R5-F4",
+          "player1": "F024",
+          "player2": "F023",
+          "winner": "F024"
+        },
+        {
+          "date": "2022-01-05T16:38:59.342Z",
+          "id": "S7-D2-R5-F5",
+          "player1": "F014",
+          "player2": "F009",
+          "winner": "F014"
+        },
+        {
+          "date": "2022-01-06T02:18:30.700Z",
+          "id": "S7-D2-R5-F6",
+          "player1": "F028",
+          "player2": "F035",
+          "winner": "F035"
+        }
+      ]
+    },
+    "round6": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-01-12T10:42:32.468Z",
+          "id": "S7-D2-R6-F1",
+          "player1": "F018",
+          "player2": "F032",
+          "winner": "F018"
+        },
+        {
+          "date": "2022-01-13T06:19:34.050Z",
+          "id": "S7-D2-R6-F2",
+          "player1": "F020",
+          "player2": "F021",
+          "winner": "F021"
+        },
+        {
+          "date": "2022-01-14T05:17:29.920Z",
+          "id": "S7-D2-R6-F3",
+          "player1": "F041",
+          "player2": "F024",
+          "winner": "F024"
+        },
+        {
+          "date": "2022-01-14T09:53:00.771Z",
+          "id": "S7-D2-R6-F4",
+          "player1": "F023",
+          "player2": "F014",
+          "winner": "F023"
+        },
+        {
+          "date": "2022-01-14T09:53:19.723Z",
+          "id": "S7-D2-R6-F5",
+          "player1": "F025",
+          "player2": "F035",
+          "winner": "F025"
+        },
+        {
+          "date": "2022-01-14T10:13:39.598Z",
+          "id": "S7-D2-R6-F6",
+          "player1": "F028",
+          "player2": "F009",
+          "winner": "F009"
+        }
+      ]
+    },
+    "round7": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-01-21T08:16:41.960Z",
+          "id": "S7-D2-R7-F1",
+          "player1": "F020",
+          "player2": "F018",
+          "winner": "F020"
+        },
+        {
+          "date": "2022-01-21T08:22:34.859Z",
+          "id": "S7-D2-R7-F2",
+          "player1": "F021",
+          "player2": "F024",
+          "winner": "F021"
+        },
+        {
+          "date": "2022-01-21T12:24:18.409Z",
+          "id": "S7-D2-R7-F3",
+          "player1": "F023",
+          "player2": "F041",
+          "winner": "F023"
+        },
+        {
+          "date": "2022-01-22T09:59:45.807Z",
+          "id": "S7-D2-R7-F4",
+          "player1": "F014",
+          "player2": "F028",
+          "winner": "F028"
+        },
+        {
+          "date": "2022-01-22T10:10:16.009Z",
+          "id": "S7-D2-R7-F5",
+          "player1": "F032",
+          "player2": "F035",
+          "winner": "F032"
+        },
+        {
+          "date": "2022-01-22T17:58:26.986Z",
+          "id": "S7-D2-R7-F6",
+          "player1": "F025",
+          "player2": "F009",
+          "winner": "F025"
+        }
+      ]
+    },
+    "round8": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-01-31T07:49:20.829Z",
+          "id": "S7-D2-R8-F1",
+          "player1": "F024",
+          "player2": "F018",
+          "winner": "F024"
+        },
+        {
+          "date": "2022-01-31T14:20:33.365Z",
+          "id": "S7-D2-R8-F2",
+          "player1": "F021",
+          "player2": "F023",
+          "winner": "F023"
+        },
+        {
+          "date": "2022-01-31T14:23:57.513Z",
+          "id": "S7-D2-R8-F3",
+          "player1": "F014",
+          "player2": "F041",
+          "winner": "F041"
+        },
+        {
+          "date": "2022-02-01T02:13:09.338Z",
+          "id": "S7-D2-R8-F4",
+          "player1": "F035",
+          "player2": "F020",
+          "winner": "F020"
+        },
+        {
+          "date": "2022-02-01T04:15:26.123Z",
+          "id": "S7-D2-R8-F5",
+          "player1": "F032",
+          "player2": "F009",
+          "winner": "F032"
+        },
+        {
+          "date": "2022-02-01T04:16:02.129Z",
+          "id": "S7-D2-R8-F6",
+          "player1": "F028",
+          "player2": "F025",
+          "winner": "F028"
+        }
+      ]
+    },
+    "round9": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-02-06T12:17:21.817Z",
+          "id": "S7-D2-R9-F1",
+          "player1": "F018",
+          "player2": "F023",
+          "winner": "F023"
+        },
+        {
+          "date": "2022-02-07T02:46:09.869Z",
+          "id": "S7-D2-R9-F2",
+          "player1": "F041",
+          "player2": "F021",
+          "winner": "F041"
+        },
+        {
+          "date": "2022-02-08T11:09:35.596Z",
+          "id": "S7-D2-R9-F3",
+          "player1": "F035",
+          "player2": "F024",
+          "winner": "F035"
+        },
+        {
+          "date": "2022-02-08T11:09:50.676Z",
+          "id": "S7-D2-R9-F4",
+          "player1": "F020",
+          "player2": "F009",
+          "winner": "F020"
+        },
+        {
+          "date": "2022-02-08T11:09:55.716Z",
+          "id": "S7-D2-R9-F5",
+          "player1": "F025",
+          "player2": "F014",
+          "winner": "F014"
+        },
+        {
+          "date": "2022-02-08T11:10:27.083Z",
+          "id": "S7-D2-R9-F6",
+          "player1": "F028",
+          "player2": "F032",
+          "winner": "F032"
+        }
+      ]
+    }
+  },
+  "division3": {
+    "round1": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2021-12-11T10:53:29.136Z",
+          "id": "S7-D3-R1-F1",
+          "player1": "F006",
+          "player2": "F043",
+          "winner": "F006"
+        },
+        {
+          "date": "2021-12-12T06:01:47.730Z",
+          "id": "S7-D3-R1-F2",
+          "player1": "F001",
+          "player2": "F039",
+          "winner": "F039"
+        },
+        {
+          "date": "2021-12-12T08:39:14.412Z",
+          "id": "S7-D3-R1-F3",
+          "player1": "F003",
+          "player2": "F031",
+          "winner": "F003"
+        },
+        {
+          "date": "2021-12-13T11:54:58.245Z",
+          "id": "S7-D3-R1-F4",
+          "player1": "F040",
+          "player2": "F019",
+          "winner": "F019"
+        },
+        {
+          "date": "2021-12-13T11:58:03.626Z",
+          "id": "S7-D3-R1-F5",
+          "player1": "F012",
+          "player2": "F044",
+          "winner": "F012"
+        },
+        {
+          "date": "2021-12-14T07:26:11.148Z",
+          "id": "S7-D3-R1-F6",
+          "player1": "F022",
+          "player2": "F042",
+          "winner": "F022"
+        },
+        {
+          "date": "2021-12-14T10:15:28.697Z",
+          "id": "S7-D3-R1-F7",
+          "player1": "F029",
+          "player2": "F008",
+          "winner": "F029"
+        },
+        {
+          "date": "2021-12-14T10:20:55.534Z",
+          "id": "S7-D3-R1-F8",
+          "player1": "F027",
+          "player2": "F038",
+          "winner": "F038"
+        }
+      ]
+    },
+    "round10": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-01-17T06:53:24.775Z",
+          "id": "S7-D3-R10-F1",
+          "player1": "F006",
+          "player2": "F029",
+          "winner": "F029"
+        },
+        {
+          "date": "2022-01-18T08:44:38.831Z",
+          "id": "S7-D3-R10-F2",
+          "player1": "F001",
+          "player2": "F042",
+          "winner": "F042"
+        },
+        {
+          "date": "2022-01-18T08:51:06.051Z",
+          "id": "S7-D3-R10-F3",
+          "player1": "F003",
+          "player2": "F044",
+          "winner": "F044"
+        },
+        {
+          "date": "2022-01-18T13:09:52.422Z",
+          "id": "S7-D3-R10-F4",
+          "player1": "F040",
+          "player2": "F043",
+          "winner": "F043"
+        },
+        {
+          "date": "2022-01-19T12:47:41.411Z",
+          "id": "S7-D3-R10-F5",
+          "player1": "F039",
+          "player2": "F038",
+          "winner": "F038"
+        },
+        {
+          "date": "2022-01-19T12:53:10.095Z",
+          "id": "S7-D3-R10-F6",
+          "player1": "F031",
+          "player2": "F027",
+          "winner": "F027"
+        },
+        {
+          "date": "2022-01-20T15:30:18.660Z",
+          "id": "S7-D3-R10-F7",
+          "player1": "F008",
+          "player2": "F019",
+          "winner": "F008"
+        },
+        {
+          "date": "2022-01-20T15:30:37.114Z",
+          "id": "S7-D3-R10-F8",
+          "player1": "F012",
+          "player2": "F022",
+          "winner": "F022"
+        }
+      ]
+    },
+    "round11": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-01-24T04:26:23.823Z",
+          "id": "S7-D3-R11-F1",
+          "player1": "F042",
+          "player2": "F006",
+          "winner": "F042"
+        },
+        {
+          "date": "2022-01-25T03:13:01.492Z",
+          "id": "S7-D3-R11-F2",
+          "player1": "F001",
+          "player2": "F044",
+          "winner": "F001"
+        },
+        {
+          "date": "2022-01-26T08:41:13.683Z",
+          "id": "S7-D3-R11-F3",
+          "player1": "F003",
+          "player2": "F040",
+          "winner": "F040"
+        },
+        {
+          "date": "2022-01-26T08:42:02.352Z",
+          "id": "S7-D3-R11-F4",
+          "player1": "F029",
+          "player2": "F039",
+          "winner": "F029"
+        },
+        {
+          "date": "2022-01-26T08:56:31.476Z",
+          "id": "S7-D3-R11-F5",
+          "player1": "F031",
+          "player2": "F038",
+          "winner": "F038"
+        },
+        {
+          "date": "2022-01-27T02:47:05.888Z",
+          "id": "S7-D3-R11-F6",
+          "player1": "F022",
+          "player2": "F043",
+          "winner": "F022"
+        },
+        {
+          "date": "2022-01-27T04:02:30.551Z",
+          "id": "S7-D3-R11-F7",
+          "player1": "F019",
+          "player2": "F027",
+          "winner": "F019"
+        },
+        {
+          "date": "2022-01-27T04:02:59.948Z",
+          "id": "S7-D3-R11-F8",
+          "player1": "F008",
+          "player2": "F012",
+          "winner": "F012"
+        }
+      ]
+    },
+    "round12": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-01-28T09:08:56.053Z",
+          "id": "S7-D3-R12-F1",
+          "player1": "F006",
+          "player2": "F044",
+          "winner": "F006"
+        },
+        {
+          "date": "2022-01-28T09:10:04.285Z",
+          "id": "S7-D3-R12-F2",
+          "player1": "F001",
+          "player2": "F040",
+          "winner": "F001"
+        },
+        {
+          "date": "2022-01-29T06:22:10.012Z",
+          "id": "S7-D3-R12-F3",
+          "player1": "F043",
+          "player2": "F003",
+          "winner": "F003"
+        },
+        {
+          "date": "2022-01-29T06:22:32.600Z",
+          "id": "S7-D3-R12-F4",
+          "player1": "F042",
+          "player2": "F039",
+          "winner": "F042"
+        },
+        {
+          "date": "2022-01-29T06:23:00.186Z",
+          "id": "S7-D3-R12-F5",
+          "player1": "F029",
+          "player2": "F031",
+          "winner": "F029"
+        },
+        {
+          "date": "2022-01-30T03:01:25.616Z",
+          "id": "S7-D3-R12-F6",
+          "player1": "F038",
+          "player2": "F019",
+          "winner": "F019"
+        },
+        {
+          "date": "2022-01-30T03:08:13.972Z",
+          "id": "S7-D3-R12-F7",
+          "player1": "F027",
+          "player2": "F012",
+          "winner": "F012"
+        },
+        {
+          "date": "2022-01-31T02:55:02.673Z",
+          "id": "S7-D3-R12-F8",
+          "player1": "F022",
+          "player2": "F008",
+          "winner": "F022"
+        }
+      ]
+    },
+    "round13": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-02-03T11:12:32.892Z",
+          "id": "S7-D3-R13-F1",
+          "player1": "F006",
+          "player2": "F040",
+          "winner": "F040"
+        },
+        {
+          "date": "2022-02-03T11:12:38.969Z",
+          "id": "S7-D3-R13-F2",
+          "player1": "F003",
+          "player2": "F001",
+          "winner": "F001"
+        },
+        {
+          "date": "2022-02-03T11:13:12.774Z",
+          "id": "S7-D3-R13-F3",
+          "player1": "F039",
+          "player2": "F044",
+          "winner": "F039"
+        },
+        {
+          "date": "2022-02-03T12:03:35.819Z",
+          "id": "S7-D3-R13-F4",
+          "player1": "F031",
+          "player2": "F042",
+          "winner": "F042"
+        },
+        {
+          "date": "2022-02-04T10:41:02.319Z",
+          "id": "S7-D3-R13-F5",
+          "player1": "F019",
+          "player2": "F029",
+          "winner": "F019"
+        },
+        {
+          "date": "2022-02-04T10:41:29.904Z",
+          "id": "S7-D3-R13-F6",
+          "player1": "F012",
+          "player2": "F038",
+          "winner": "F038"
+        },
+        {
+          "date": "2022-02-05T12:42:12.077Z",
+          "id": "S7-D3-R13-F7",
+          "player1": "F043",
+          "player2": "F008",
+          "winner": "F008"
+        },
+        {
+          "date": "2022-02-05T12:42:55.298Z",
+          "id": "S7-D3-R13-F8",
+          "player1": "F027",
+          "player2": "F022",
+          "winner": "F022"
+        }
+      ]
+    },
+    "round14": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-02-10T06:11:10.955Z",
+          "id": "S7-D3-R14-F1",
+          "player1": "F003",
+          "player2": "F006",
+          "winner": "F003"
+        },
+        {
+          "date": "2022-02-11T05:35:13.298Z",
+          "id": "S7-D3-R14-F2",
+          "player1": "F043",
+          "player2": "F001",
+          "winner": "F043"
+        },
+        {
+          "date": "2022-02-11T05:52:05.843Z",
+          "id": "S7-D3-R14-F3",
+          "player1": "F040",
+          "player2": "F039",
+          "winner": "F040"
+        },
+        {
+          "date": "2022-02-11T05:58:19.358Z",
+          "id": "S7-D3-R14-F4",
+          "player1": "F031",
+          "player2": "F044",
+          "winner": "F031"
+        },
+        {
+          "date": "2022-02-12T02:55:43.794Z",
+          "id": "S7-D3-R14-F5",
+          "player1": "F042",
+          "player2": "F019",
+          "winner": "F042"
+        },
+        {
+          "date": "2022-02-12T02:56:29.573Z",
+          "id": "S7-D3-R14-F6",
+          "player1": "F029",
+          "player2": "F012",
+          "winner": "F012"
+        },
+        {
+          "date": "2022-02-14T03:26:12.905Z",
+          "id": "S7-D3-R14-F7",
+          "player1": "F038",
+          "player2": "F022",
+          "winner": "F022"
+        },
+        {
+          "date": "2022-02-14T03:26:22.911Z",
+          "id": "S7-D3-R14-F8",
+          "player1": "F027",
+          "player2": "F008",
+          "winner": "F008"
+        }
+      ]
+    },
+    "round15": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-02-17T05:07:55.254Z",
+          "id": "S7-D3-R15-F1",
+          "player1": "F001",
+          "player2": "F006",
+          "winner": "F001"
+        },
+        {
+          "date": "2022-02-17T06:23:25.457Z",
+          "id": "S7-D3-R15-F2",
+          "player1": "F039",
+          "player2": "F003",
+          "winner": "F039"
+        },
+        {
+          "date": "2022-02-17T06:34:35.909Z",
+          "id": "S7-D3-R15-F3",
+          "player1": "F031",
+          "player2": "F040",
+          "winner": "F040"
+        },
+        {
+          "date": "2022-02-18T06:57:35.636Z",
+          "id": "S7-D3-R15-F4",
+          "player1": "F019",
+          "player2": "F044",
+          "winner": "F019"
+        },
+        {
+          "date": "2022-02-18T07:01:14.984Z",
+          "id": "S7-D3-R15-F5",
+          "player1": "F042",
+          "player2": "F012",
+          "winner": "F042"
+        },
+        {
+          "date": "2022-02-18T10:55:30.701Z",
+          "id": "S7-D3-R15-F6",
+          "player1": "F022",
+          "player2": "F029",
+          "winner": "F029"
+        },
+        {
+          "date": "2022-02-18T13:22:24.181Z",
+          "id": "S7-D3-R15-F7",
+          "player1": "F038",
+          "player2": "F008",
+          "winner": "F008"
+        },
+        {
+          "date": "2022-02-18T13:25:27.453Z",
+          "id": "S7-D3-R15-F8",
+          "player1": "F043",
+          "player2": "F027",
+          "winner": "F043"
+        }
+      ]
+    },
+    "round2": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2021-12-16T10:06:56.227Z",
+          "id": "S7-D3-R2-F1",
+          "player1": "F039",
+          "player2": "F006",
+          "winner": "F006"
+        },
+        {
+          "date": "2021-12-16T10:50:51.321Z",
+          "id": "S7-D3-R2-F2",
+          "player1": "F001",
+          "player2": "F031",
+          "winner": "F031"
+        },
+        {
+          "date": "2021-12-17T07:07:54.922Z",
+          "id": "S7-D3-R2-F3",
+          "player1": "F003",
+          "player2": "F019",
+          "winner": "F003"
+        },
+        {
+          "date": "2021-12-17T07:15:42.341Z",
+          "id": "S7-D3-R2-F4",
+          "player1": "F040",
+          "player2": "F012",
+          "winner": "F040"
+        },
+        {
+          "date": "2021-12-17T10:22:17.357Z",
+          "id": "S7-D3-R2-F5",
+          "player1": "F044",
+          "player2": "F022",
+          "winner": "F022"
+        },
+        {
+          "date": "2021-12-17T10:25:24.384Z",
+          "id": "S7-D3-R2-F6",
+          "player1": "F042",
+          "player2": "F008",
+          "winner": "F042"
+        },
+        {
+          "date": "2021-12-17T12:36:13.883Z",
+          "id": "S7-D3-R2-F7",
+          "player1": "F027",
+          "player2": "F029",
+          "winner": "F029"
+        },
+        {
+          "date": "2021-12-17T12:38:23.567Z",
+          "id": "S7-D3-R2-F8",
+          "player1": "F043",
+          "player2": "F038",
+          "winner": "F038"
+        }
+      ]
+    },
+    "round3": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2021-12-18T13:08:29.445Z",
+          "id": "S7-D3-R3-F1",
+          "player1": "F006",
+          "player2": "F031",
+          "winner": "F006"
+        },
+        {
+          "date": "2021-12-18T13:11:43.456Z",
+          "id": "S7-D3-R3-F2",
+          "player1": "F019",
+          "player2": "F001",
+          "winner": "F001"
+        },
+        {
+          "date": "2021-12-19T09:12:59.393Z",
+          "id": "S7-D3-R3-F3",
+          "player1": "F003",
+          "player2": "F012",
+          "winner": "F012"
+        },
+        {
+          "date": "2021-12-19T09:15:43.369Z",
+          "id": "S7-D3-R3-F4",
+          "player1": "F022",
+          "player2": "F040",
+          "winner": "F022"
+        },
+        {
+          "date": "2021-12-19T09:24:12.181Z",
+          "id": "S7-D3-R3-F5",
+          "player1": "F008",
+          "player2": "F044",
+          "winner": "F044"
+        },
+        {
+          "date": "2021-12-19T09:27:16.351Z",
+          "id": "S7-D3-R3-F6",
+          "player1": "F027",
+          "player2": "F042",
+          "winner": "F042"
+        },
+        {
+          "date": "2021-12-19T09:32:52.295Z",
+          "id": "S7-D3-R3-F7",
+          "player1": "F038",
+          "player2": "F029",
+          "winner": "F029"
+        },
+        {
+          "date": "2021-12-19T09:37:18.508Z",
+          "id": "S7-D3-R3-F8",
+          "player1": "F043",
+          "player2": "F039",
+          "winner": "F043"
+        }
+      ]
+    },
+    "round4": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2021-12-22T06:35:08.355Z",
+          "id": "S7-D3-R4-F1",
+          "player1": "F019",
+          "player2": "F006",
+          "winner": "F019"
+        },
+        {
+          "date": "2021-12-22T06:39:21.422Z",
+          "id": "S7-D3-R4-F2",
+          "player1": "F012",
+          "player2": "F001",
+          "winner": "F001"
+        },
+        {
+          "date": "2021-12-22T09:56:33.307Z",
+          "id": "S7-D3-R4-F3",
+          "player1": "F022",
+          "player2": "F003",
+          "winner": "F022"
+        },
+        {
+          "date": "2021-12-22T10:01:16.843Z",
+          "id": "S7-D3-R4-F4",
+          "player1": "F040",
+          "player2": "F008",
+          "winner": "F008"
+        },
+        {
+          "date": "2021-12-23T05:28:29.056Z",
+          "id": "S7-D3-R4-F5",
+          "player1": "F027",
+          "player2": "F044",
+          "winner": "F027"
+        },
+        {
+          "date": "2021-12-23T05:37:04.049Z",
+          "id": "S7-D3-R4-F6",
+          "player1": "F038",
+          "player2": "F042",
+          "winner": "F038"
+        },
+        {
+          "date": "2021-12-23T06:11:00.237Z",
+          "id": "S7-D3-R4-F7",
+          "player1": "F043",
+          "player2": "F029",
+          "winner": "F029"
+        },
+        {
+          "date": "2021-12-23T06:11:16.078Z",
+          "id": "S7-D3-R4-F8",
+          "player1": "F031",
+          "player2": "F039",
+          "winner": "F031"
+        }
+      ]
+    },
+    "round5": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2021-12-23T10:20:50.848Z",
+          "id": "S7-D3-R5-F1",
+          "player1": "F006",
+          "player2": "F012",
+          "winner": "F006"
+        },
+        {
+          "date": "2021-12-24T04:19:58.914Z",
+          "id": "S7-D3-R5-F2",
+          "player1": "F022",
+          "player2": "F001",
+          "winner": "F001"
+        },
+        {
+          "date": "2021-12-24T10:37:12.926Z",
+          "id": "S7-D3-R5-F3",
+          "player1": "F008",
+          "player2": "F003",
+          "winner": "F008"
+        },
+        {
+          "date": "2021-12-25T03:07:06.859Z",
+          "id": "S7-D3-R5-F4",
+          "player1": "F040",
+          "player2": "F027",
+          "winner": "F040"
+        },
+        {
+          "date": "2021-12-25T03:13:29.955Z",
+          "id": "S7-D3-R5-F5",
+          "player1": "F038",
+          "player2": "F044",
+          "winner": "F044"
+        },
+        {
+          "date": "2021-12-27T03:46:03.925Z",
+          "id": "S7-D3-R5-F6",
+          "player1": "F029",
+          "player2": "F042",
+          "winner": "F029"
+        },
+        {
+          "date": "2021-12-27T08:51:17.263Z",
+          "id": "S7-D3-R5-F7",
+          "player1": "F031",
+          "player2": "F043",
+          "winner": "F031"
+        },
+        {
+          "date": "2021-12-27T08:53:28.932Z",
+          "id": "S7-D3-R5-F8",
+          "player1": "F019",
+          "player2": "F039",
+          "winner": "F019"
+        }
+      ]
+    },
+    "round6": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-01-01T10:33:06.201Z",
+          "id": "S7-D3-R6-F1",
+          "player1": "F006",
+          "player2": "F022",
+          "winner": "F022"
+        },
+        {
+          "date": "2022-01-01T10:36:58.662Z",
+          "id": "S7-D3-R6-F2",
+          "player1": "F001",
+          "player2": "F008",
+          "winner": "F008"
+        },
+        {
+          "date": "2022-01-01T10:40:14.245Z",
+          "id": "S7-D3-R6-F3",
+          "player1": "F027",
+          "player2": "F003",
+          "winner": "F003"
+        },
+        {
+          "date": "2022-01-01T13:38:20.369Z",
+          "id": "S7-D3-R6-F4",
+          "player1": "F040",
+          "player2": "F038",
+          "winner": "F038"
+        },
+        {
+          "date": "2022-01-02T06:44:53.817Z",
+          "id": "S7-D3-R6-F5",
+          "player1": "F044",
+          "player2": "F029",
+          "winner": "F029"
+        },
+        {
+          "date": "2022-01-02T06:52:18.163Z",
+          "id": "S7-D3-R6-F6",
+          "player1": "F042",
+          "player2": "F043",
+          "winner": "F042"
+        },
+        {
+          "date": "2022-01-02T06:52:53.664Z",
+          "id": "S7-D3-R6-F7",
+          "player1": "F039",
+          "player2": "F012",
+          "winner": "F039"
+        },
+        {
+          "date": "2022-01-02T11:20:26.004Z",
+          "id": "S7-D3-R6-F8",
+          "player1": "F031",
+          "player2": "F019",
+          "winner": "F019"
+        }
+      ]
+    },
+    "round7": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-01-03T06:41:00.674Z",
+          "id": "S7-D3-R7-F1",
+          "player1": "F008",
+          "player2": "F006",
+          "winner": "F008"
+        },
+        {
+          "date": "2022-01-03T06:44:06.001Z",
+          "id": "S7-D3-R7-F2",
+          "player1": "F027",
+          "player2": "F001",
+          "winner": "F027"
+        },
+        {
+          "date": "2022-01-03T10:43:35.339Z",
+          "id": "S7-D3-R7-F3",
+          "player1": "F038",
+          "player2": "F003",
+          "winner": "F038"
+        },
+        {
+          "date": "2022-01-03T11:00:21.426Z",
+          "id": "S7-D3-R7-F4",
+          "player1": "F040",
+          "player2": "F029",
+          "winner": "F029"
+        },
+        {
+          "date": "2022-01-04T04:42:07.565Z",
+          "id": "S7-D3-R7-F5",
+          "player1": "F044",
+          "player2": "F042",
+          "winner": "F042"
+        },
+        {
+          "date": "2022-01-04T09:04:05.434Z",
+          "id": "S7-D3-R7-F6",
+          "player1": "F019",
+          "player2": "F043",
+          "winner": "F043"
+        },
+        {
+          "date": "2022-01-04T09:10:07.757Z",
+          "id": "S7-D3-R7-F7",
+          "player1": "F022",
+          "player2": "F039",
+          "winner": "F022"
+        },
+        {
+          "date": "2022-01-04T11:52:58.704Z",
+          "id": "S7-D3-R7-F8",
+          "player1": "F031",
+          "player2": "F012",
+          "winner": "F012"
+        }
+      ]
+    },
+    "round8": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-01-06T12:24:04.779Z",
+          "id": "S7-D3-R8-F1",
+          "player1": "F006",
+          "player2": "F027",
+          "winner": "F006"
+        },
+        {
+          "date": "2022-01-06T12:26:54.425Z",
+          "id": "S7-D3-R8-F2",
+          "player1": "F001",
+          "player2": "F038",
+          "winner": "F001"
+        },
+        {
+          "date": "2022-01-06T12:29:14.136Z",
+          "id": "S7-D3-R8-F3",
+          "player1": "F003",
+          "player2": "F029",
+          "winner": "F029"
+        },
+        {
+          "date": "2022-01-07T10:24:01.227Z",
+          "id": "S7-D3-R8-F4",
+          "player1": "F040",
+          "player2": "F042",
+          "winner": "F042"
+        },
+        {
+          "date": "2022-01-10T02:59:02.068Z",
+          "id": "S7-D3-R8-F5",
+          "player1": "F043",
+          "player2": "F044",
+          "winner": "F043"
+        },
+        {
+          "date": "2022-01-10T02:59:28.348Z",
+          "id": "S7-D3-R8-F6",
+          "player1": "F039",
+          "player2": "F008",
+          "winner": "F008"
+        },
+        {
+          "date": "2022-01-10T03:07:24.708Z",
+          "id": "S7-D3-R8-F7",
+          "player1": "F022",
+          "player2": "F031",
+          "winner": "F022"
+        },
+        {
+          "date": "2022-01-10T03:07:44.732Z",
+          "id": "S7-D3-R8-F8",
+          "player1": "F012",
+          "player2": "F019",
+          "winner": "F012"
+        }
+      ]
+    },
+    "round9": {
+      "current": false,
+      "fights": [
+        {
+          "date": "2022-01-10T05:30:07.594Z",
+          "id": "S7-D3-R9-F1",
+          "player1": "F006",
+          "player2": "F038",
+          "winner": "F038"
+        },
+        {
+          "date": "2022-01-10T14:36:37.827Z",
+          "id": "S7-D3-R9-F2",
+          "player1": "F029",
+          "player2": "F001",
+          "winner": "F029"
+        },
+        {
+          "date": "2022-01-10T18:52:56.636Z",
+          "id": "S7-D3-R9-F3",
+          "player1": "F042",
+          "player2": "F003",
+          "winner": "F042"
+        },
+        {
+          "date": "2022-01-12T03:31:37.340Z",
+          "id": "S7-D3-R9-F4",
+          "player1": "F040",
+          "player2": "F044",
+          "winner": "F040"
+        },
+        {
+          "date": "2022-01-12T06:00:53.601Z",
+          "id": "S7-D3-R9-F5",
+          "player1": "F043",
+          "player2": "F012",
+          "winner": "F012"
+        },
+        {
+          "date": "2022-01-12T06:04:01.470Z",
+          "id": "S7-D3-R9-F6",
+          "player1": "F027",
+          "player2": "F039",
+          "winner": "F027"
+        },
+        {
+          "date": "2022-01-12T08:56:26.260Z",
+          "id": "S7-D3-R9-F7",
+          "player1": "F031",
+          "player2": "F008",
+          "winner": "F031"
+        },
+        {
+          "date": "2022-01-12T08:56:47.355Z",
+          "id": "S7-D3-R9-F8",
+          "player1": "F019",
+          "player2": "F022",
+          "winner": "F019"
+        }
+      ]
+    }
+  }
+}
