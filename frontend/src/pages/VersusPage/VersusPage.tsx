@@ -6,6 +6,7 @@ import { faSpinner, faArrowLeft, faUser } from '@fortawesome/free-solid-svg-icon
 import { GET_FIGHTER_INFORMATION, GET_COMPETITION_META } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
 import HeadToHead from '../../components/HeadToHead/HeadToHead';
+import StatsComparison from '../../components/StatsComparison/StatsComparison';
 import './VersusPage.css';
 
 interface Fighter {
@@ -270,6 +271,12 @@ const VersusPage: React.FC = () => {
                 fighter1={fighter1}
                 fighter2={fighter2}
                 headToHeadData={headToHeadData}
+            />
+
+            {/* Stats Comparison Section */}
+            <StatsComparison 
+                fighter1={fighter1}
+                fighter2={fighter2}
             />
         </div>
     );
