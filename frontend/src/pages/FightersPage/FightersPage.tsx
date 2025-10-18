@@ -94,7 +94,10 @@ const FightersPage: React.FC = () => {
                     <h2 className={styles.sectionTitle}>Fighters</h2>
                 </div>
                 <div className={styles.controlsRow}>
-                    <button className={styles.compareButton}>
+                    <button 
+                        className={styles.compareButton}
+                        onClick={() => navigate('/versus?compare=true')}
+                    >
                         Compare Fighters
                     </button>
                     <div className={styles.rightControls}>

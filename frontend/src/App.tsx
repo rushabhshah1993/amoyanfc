@@ -57,6 +57,8 @@ const AppContent: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/fighters" element={<FightersPage />} />
         <Route path="/fighter/:id" element={<FighterPage />} />
+        <Route path="/versus" element={<VersusPage />} />
+        <Route path="/versus/:fighter1Id" element={<VersusPage />} />
         <Route path="/versus/:fighter1Id/:fighter2Id" element={<VersusPage />} />
         <Route path="/competition/:id" element={<CompetitionPage />} />
         <Route path="/competition/:competitionId/season/:seasonId" element={<LeagueSeasonPage />} />

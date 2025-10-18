@@ -446,3 +446,193 @@
     }
 }
 
+/* Compare Selection Styles */
+.compareSelectionContainer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 4rem 2rem 4rem;
+}
+
+.compareTitle {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+}
+
+.fighterSelectorsRow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.fighterSelector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.selectorLabel {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.dropdownContainer {
+    position: relative;
+    width: 100%;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: border-color 0.3s ease;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #4285f4;
+}
+
+.searchInput::placeholder {
+    color: var(--text-secondary);
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 8px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-secondary) transparent;
+}
+
+.dropdown::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dropdown::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+    background-color: var(--text-secondary);
+    border-radius: 4px;
+}
+
+.dropdown::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text-primary);
+}
+
+.dropdownItem {
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dropdownItem:hover {
+    background-color: var(--bg-primary);
+}
+
+.dropdownFighterInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dropdownFighterImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+.dropdownImagePlaceholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.dropdownFighterName {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.vsDividerCompare {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+/* Responsive Compare Selection */
+@media (min-width: 1200px) {
+    .compareSelectionContainer {
+        padding: 1.5rem 6rem 2rem 6rem;
+    }
+}
+
+@media (max-width: 968px) {
+    .fighterSelectorsRow {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        align-items: stretch;
+    }
+
+    .vsDividerCompare {
+        transform: rotate(0deg);
+    }
+    
+    .compareSelectionContainer {
+        padding: 1.5rem 3rem 1.5rem 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .compareTitle {
+        font-size: 2rem;
+    }
+
+    .compareSelectionContainer {
+        padding: 1rem 2rem 1.5rem 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .compareTitle {
+        font-size: 1.5rem;
+    }
+
+    .compareSelectionContainer {
+        padding: 0.75rem 1.5rem 1rem 1.5rem;
+    }
+
+    .selectorLabel {
+        font-size: 1rem;
+    }
+}
+
