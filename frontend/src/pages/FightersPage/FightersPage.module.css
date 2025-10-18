@@ -1,21 +1,21 @@
-.fighters-page {
+.fightersPage {
     min-height: 100vh;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.fighters-section {
+.fightersSection {
     width: 100%;
     padding: 20px;
 }
 
-.section-header {
+.sectionHeader {
     text-align: center;
     margin-bottom: 40px;
 }
 
-.section-title {
+.sectionTitle {
     font-size: 32px;
     font-weight: 700;
     margin: 0 0 10px 0;
@@ -23,14 +23,14 @@
     transition: color 0.3s ease;
 }
 
-.section-subtitle {
+.sectionSubtitle {
     font-size: 16px;
     color: var(--text-secondary);
     margin: 0;
     transition: color 0.3s ease;
 }
 
-.fighters-grid {
+.fightersGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
@@ -39,7 +39,7 @@
     padding: 0 20px;
 }
 
-.fighter-card {
+.fighterCard {
     background: transparent;
     border-radius: 0;
     padding: 0;
@@ -50,7 +50,7 @@
     cursor: pointer;
 }
 
-.fighter-image-container {
+.fighterImageContainer {
     position: relative;
     margin-bottom: 24px;
     display: flex;
@@ -58,7 +58,7 @@
     align-items: center;
 }
 
-.fighter-image {
+.fighterImage {
     width: 280px;
     height: 280px;
     object-fit: contain;
@@ -67,7 +67,7 @@
     transition: transform 0.3s ease;
 }
 
-.fighter-placeholder {
+.fighterPlaceholder {
     width: 280px;
     height: 280px;
     border-radius: 0;
@@ -81,7 +81,7 @@
     transition: transform 0.3s ease;
 }
 
-.fighter-loading {
+.fighterLoading {
     width: 280px;
     height: 280px;
     border-radius: 0;
@@ -95,26 +95,26 @@
     transition: transform 0.3s ease;
 }
 
-.fighter-info {
+.fighterInfo {
     text-align: center;
 }
 
-.fighter-name {
-    margin: 0 0 8px 0;
+.fighterName {
+    margin: 0 0 16px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.fighter-first-name {
-    font-size: 22px;
+.fighterFirstName {
+    font-size: 40px;
     font-weight: 700;
     color: var(--text-primary);
     transition: color 0.3s ease;
     line-height: 1.2;
 }
 
-.fighter-last-name {
+.fighterLastName {
     font-size: 18px;
     font-weight: 500;
     color: var(--text-secondary);
@@ -122,7 +122,7 @@
     line-height: 1.2;
 }
 
-.fighter-location {
+.fighterLocation {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,18 +130,18 @@
     margin-bottom: 12px;
 }
 
-.country-flag {
+.countryFlag {
     font-size: 16px;
     line-height: 1;
 }
 
-.location-text {
+.locationText {
     font-size: 14px;
     color: var(--text-secondary);
     transition: color 0.3s ease;
 }
 
-.fighter-stats {
+.fighterStats {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -163,7 +163,7 @@
     transition: color 0.3s ease;
 }
 
-.loading-spinner {
+.loadingSpinner {
     margin-right: 10px;
     color: #4285f4;
 }
@@ -177,7 +177,7 @@
     font-size: 16px;
 }
 
-.no-fighters {
+.noFighters {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -188,7 +188,7 @@
     transition: color 0.3s ease;
 }
 
-.no-fighters-icon {
+.noFightersIcon {
     font-size: 48px;
     margin-bottom: 16px;
     color: var(--text-secondary);
@@ -197,115 +197,116 @@
 }
 
 @media (max-width: 768px) {
-    .fighters-section {
+    .fightersSection {
         padding: 16px;
     }
     
-    .fighters-grid {
+    .fightersGrid {
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
         padding: 0 16px;
     }
     
-    .section-title {
+    .sectionTitle {
         font-size: 28px;
     }
     
-    .fighter-image,
-    .fighter-placeholder,
-    .fighter-loading {
+    .fighterImage,
+    .fighterPlaceholder,
+    .fighterLoading {
         width: 200px;
         height: 200px;
         border-radius: 0;
     }
     
-    .fighter-placeholder {
+    .fighterPlaceholder {
         font-size: 64px;
     }
     
-    .fighter-loading {
+    .fighterLoading {
         font-size: 32px;
     }
     
-    .fighter-first-name {
+    .fighterFirstName {
+        font-size: 40px;
+    }
+    
+    .fighterLastName {
         font-size: 18px;
     }
     
-    .fighter-last-name {
-        font-size: 16px;
-    }
-    
-    .location-text {
+    .locationText {
         font-size: 12px;
     }
     
-    .country-flag {
+    .countryFlag {
         font-size: 14px;
     }
 }
 
 @media (max-width: 480px) {
-    .fighters-grid {
+    .fightersGrid {
         grid-template-columns: 1fr;
         gap: 32px;
     }
     
-    .fighter-image,
-    .fighter-placeholder,
-    .fighter-loading {
+    .fighterImage,
+    .fighterPlaceholder,
+    .fighterLoading {
         width: 240px;
         height: 240px;
         border-radius: 0;
     }
     
-    .fighter-placeholder {
+    .fighterPlaceholder {
         font-size: 72px;
     }
     
-    .fighter-loading {
+    .fighterLoading {
         font-size: 36px;
     }
 }
 
 @media (min-width: 1200px) {
-    .fighters-section {
+    .fightersSection {
         padding: 32px 40px;
     }
     
-    .fighters-grid {
+    .fightersGrid {
         gap: 60px;
         padding: 0 40px;
     }
     
-    .fighter-image,
-    .fighter-placeholder,
-    .fighter-loading {
+    .fighterImage,
+    .fighterPlaceholder,
+    .fighterLoading {
         width: 320px;
         height: 320px;
         border-radius: 0;
     }
     
-    .fighter-placeholder {
+    .fighterPlaceholder {
         font-size: 96px;
     }
     
-    .fighter-loading {
+    .fighterLoading {
         font-size: 48px;
     }
     
-    .fighter-first-name {
-        font-size: 24px;
+    .fighterFirstName {
+        font-size: 40px;
     }
     
-    .fighter-last-name {
+    .fighterLastName {
         font-size: 20px;
     }
     
-    .location-text {
+    .locationText {
         font-size: 16px;
     }
     
-    .country-flag {
+    .countryFlag {
         font-size: 18px;
     }
 }
+

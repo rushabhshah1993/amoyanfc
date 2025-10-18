@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/client';
 import { GET_ALL_FIGHTERS } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
 import { getCountryFlag } from '../../utils/countryFlags';
-import './FightersPage.css';
+import styles from './FightersPage.module.css';
 
 interface PhysicalAttributes {
     heightCm?: number;
@@ -46,13 +46,13 @@ const FightersPage: React.FC = () => {
     }, []);
 
     if (loading) return (
-        <div className="loading">
-            <FontAwesomeIcon icon={faSpinner} spin className="loading-spinner" />
+        <div className={styles.loading}>
+            <FontAwesomeIcon icon={faSpinner} spin className={styles.loadingSpinner} />
             Loading fighters...
         </div>
     );
     
-    if (error) return <div className="error">Error: {error.message}</div>;
+    if (error) return <div className={styles.error}>Error: {error.message}</div>;
 
     const fighters: Fighter[] = data?.getAllFighters || [];
 
@@ -62,60 +62,60 @@ const FightersPage: React.FC = () => {
     );
 
     return (
-        <div className="fighters-page">
-            <div className="fighters-section">
-                <div className="section-header">
-                    <h2 className="section-title">Fighters</h2>
+        <div className={styles.fightersPage}>
+            <div className={styles.fightersSection}>
+                <div className={styles.sectionHeader}>
+                    <h2 className={styles.sectionTitle}>Fighters</h2>
                 </div>
                 
                 {sortedFighters.length === 0 ? (
-                    <div className="no-fighters">
-                        <FontAwesomeIcon icon={faUser} className="no-fighters-icon" />
+                    <div className={styles.noFighters}>
+                        <FontAwesomeIcon icon={faUser} className={styles.noFightersIcon} />
                         No fighters found.
                     </div>
                 ) : (
-                    <div className="fighters-grid">
+                    <div className={styles.fightersGrid}>
                         {sortedFighters.map((fighter) => (
                             <div 
                                 key={fighter.id} 
-                                className="fighter-card"
+                                className={styles.fighterCard}
                                 onClick={() => navigate(`/fighter/${fighter.id}`)}
                             >
-                                <div className="fighter-image-container">
+                                <div className={styles.fighterImageContainer}>
                                     <S3Image
                                         src={fighter.profileImage}
                                         alt={`${fighter.firstName} ${fighter.lastName}`}
-                                        className="fighter-image"
+                                        className={styles.fighterImage}
                                         width={280}
                                         height={280}
                                         lazy={true}
                                         retryCount={3}
                                         retryDelay={1000}
                                         fallback={
-                                            <div className="fighter-placeholder">
+                                            <div className={styles.fighterPlaceholder}>
                                                 <FontAwesomeIcon icon={faUser} />
                                             </div>
                                         }
                                         loading={
-                                            <div className="fighter-loading">
+                                            <div className={styles.fighterLoading}>
                                                 <FontAwesomeIcon icon={faSpinner} spin />
                                             </div>
                                         }
                                     />
                                 </div>
-                                <div className="fighter-info">
-                                    <div className="fighter-name">
-                                        <span className="fighter-first-name">{fighter.firstName}</span>
-                                        <span className="fighter-last-name">{fighter.lastName}</span>
+                                <div className={styles.fighterInfo}>
+                                    <div className={styles.fighterName}>
+                                        <span className={styles.fighterFirstName}>{fighter.firstName}</span>
+                                        <span className={styles.fighterLastName}>{fighter.lastName}</span>
                                     </div>
                                     {fighter.location && (fighter.location.city || fighter.location.country) && (
-                                        <div className="fighter-location">
+                                        <div className={styles.fighterLocation}>
                                             {fighter.location.country && (
-                                                <span className="country-flag">
+                                                <span className={styles.countryFlag}>
                                                     {getCountryFlag(fighter.location.country)}
                                                 </span>
                                             )}
-                                            <span className="location-text">
+                                            <span className={styles.locationText}>
                                                 {fighter.location.city && fighter.location.country 
                                                     ? `${fighter.location.city}, ${fighter.location.country}`
                                                     : fighter.location.city || fighter.location.country
