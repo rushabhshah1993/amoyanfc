@@ -3,11 +3,53 @@
     background-color: var(--bg-primary);
     color: var(--text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
-    padding: 20px;
+    padding: 20px 0;
+    position: relative;
+}
+
+.backButton {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    flex-shrink: 0;
+    aspect-ratio: 1 / 1;
+}
+
+.backButton:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.backButton:active {
+    transform: translateX(-1px);
 }
 
 .contentSection {
-    max-width: 1000px;
+    width: 100%;
+    padding: 0 20px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -33,95 +75,9 @@
     padding: 0 4px;
 }
 
-.dropdownContainer {
+.metricDropdown {
     flex: 1;
     max-width: 350px;
-    position: relative;
-}
-
-.searchInput {
-    width: 100%;
-    padding: 10px 14px;
-    font-size: 15px;
-    background-color: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--text-secondary);
-    border-radius: 4px;
-    cursor: pointer;
-    outline: none;
-    transition: border-color 0.3s ease;
-}
-
-.searchInput:hover {
-    border-color: var(--text-primary);
-}
-
-.searchInput:focus {
-    border-color: var(--text-primary);
-    cursor: text;
-}
-
-.searchInput::placeholder {
-    color: var(--text-primary);
-    opacity: 1;
-}
-
-.dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    margin-top: 8px;
-    background-color: var(--bg-primary);
-    border: 1px solid var(--text-secondary);
-    border-radius: 4px;
-    max-height: 300px;
-    overflow-y: auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 100;
-    scrollbar-width: thin;
-    scrollbar-color: var(--text-secondary) transparent;
-}
-
-.dropdown::-webkit-scrollbar {
-    width: 8px;
-}
-
-.dropdown::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.dropdown::-webkit-scrollbar-thumb {
-    background-color: var(--text-secondary);
-    border-radius: 4px;
-}
-
-.dropdown::-webkit-scrollbar-thumb:hover {
-    background-color: var(--text-primary);
-}
-
-.dropdownItem {
-    padding: 10px 14px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    font-size: 15px;
-    color: var(--text-primary);
-}
-
-.dropdownItem:hover {
-    background-color: var(--bg-secondary, rgba(128, 128, 128, 0.1));
-}
-
-.dropdownItem.selected {
-    background-color: var(--bg-secondary, rgba(128, 128, 128, 0.15));
-    font-weight: 500;
-}
-
-.dropdownEmpty {
-    padding: 10px 14px;
-    font-size: 15px;
-    color: var(--text-secondary);
-    text-align: center;
 }
 
 .sortButtons {
@@ -131,7 +87,7 @@
 
 .sortButton {
     background: transparent;
-    border: 1px solid var(--text-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 3px;
     color: var(--text-secondary);
     font-size: 14px;
@@ -146,14 +102,15 @@
 }
 
 .sortButton:hover {
-    background-color: var(--bg-secondary, rgba(128, 128, 128, 0.1));
-    border-color: var(--text-primary);
+    background-color: var(--bg-secondary);
+    border-color: var(--text-secondary);
+    color: var(--text-primary);
 }
 
 .sortButton.active {
     color: var(--text-primary);
-    border-color: var(--text-primary);
-    background-color: var(--bg-secondary, rgba(128, 128, 128, 0.15));
+    border-color: var(--text-secondary);
+    background-color: var(--bg-secondary);
 }
 
 .fightersList {
@@ -170,10 +127,15 @@
     gap: 16px;
     padding: 12px 16px;
     background-color: transparent;
-    border: 1px solid var(--text-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.fighterRow:hover {
+    background-color: var(--bg-secondary);
+    border-color: var(--text-secondary);
 }
 
 .rank {
@@ -288,7 +250,23 @@
 
 @media (max-width: 768px) {
     .sortingPage {
-        padding: 16px;
+        padding: 16px 0;
+    }
+
+    .backButton {
+        top: 1rem;
+        left: 1rem;
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
+        max-width: 36px;
+        max-height: 36px;
+        font-size: 0.9rem;
+    }
+
+    .contentSection {
+        padding: 0 16px;
     }
 
     .title {
@@ -302,7 +280,7 @@
         padding: 0;
     }
 
-    .dropdownContainer {
+    .metricDropdown {
         max-width: 100%;
     }
 
@@ -356,7 +334,23 @@
 
 @media (max-width: 480px) {
     .sortingPage {
-        padding: 12px;
+        padding: 12px 0;
+    }
+
+    .backButton {
+        top: 0.75rem;
+        left: 0.75rem;
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        min-height: 32px;
+        max-width: 32px;
+        max-height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .contentSection {
+        padding: 0 12px;
     }
 
     .title {
@@ -415,7 +409,11 @@
 
 @media (min-width: 1200px) {
     .sortingPage {
-        padding: 24px;
+        padding: 24px 0;
+    }
+
+    .contentSection {
+        padding: 0 24px;
     }
 
     .controls {

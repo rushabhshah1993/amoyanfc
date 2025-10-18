@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner, faUser, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner, faUser, faSortUp, faSortDown, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_FIGHTERS_WITH_STATS } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
+import Dropdown, { DropdownOption } from '../../components/Dropdown/Dropdown';
 import styles from './FightersSortingPage.module.css';
 
 interface PhysicalAttributes {
@@ -73,21 +74,21 @@ const metricLabels: Record<SortMetric, string> = {
     weight: 'Weight',
     armReach: 'Arm Reach',
     legReach: 'Leg Reach',
-    fightsOverall: 'Number of Fights Overall',
-    winsOverall: 'Number of Wins Overall',
-    defeatsOverall: 'Number of Defeats Overall',
-    winPercentageOverall: 'Win % Overall',
-    seasonsInIFC: 'Number of Seasons in IFC',
-    winPercentageIFC: 'Win % in IFC',
-    opponentsFaced: 'Opponents Faced',
+    fightsOverall: 'Number of Fights (Overall)',
+    winsOverall: 'Number of Wins (Overall)',
+    defeatsOverall: 'Number of Defeats (Overall)',
+    winPercentageOverall: 'Win % (Overall)',
+    seasonsInIFC: 'Number of Seasons (IFC)',
+    winPercentageIFC: 'Win % (IFC)',
+    opponentsFaced: 'Number of Opponents Faced',
     titles: 'Number of Titles',
-    highestWinStreak: 'Highest Win Streak',
-    highestLoseStreak: 'Highest Lose Streak',
-    koPower: 'KO Power',
-    durability: 'Durability',
-    strength: 'Strength',
-    endurance: 'Endurance',
-    agility: 'Agility'
+    highestWinStreak: 'Highest Win Streak (IFC)',
+    highestLoseStreak: 'Highest Lose Streak (IFC)',
+    koPower: 'KO Power (1-10)',
+    durability: 'Durability (1-10)',
+    strength: 'Strength (1-10)',
+    endurance: 'Endurance (1-10)',
+    agility: 'Agility (1-10)'
 };
 
 const getMetricValue = (fighter: Fighter, metric: SortMetric): number => {
@@ -197,23 +198,9 @@ const FightersSortingPage: React.FC = () => {
     const { loading, error, data } = useQuery(GET_ALL_FIGHTERS_WITH_STATS);
     const [selectedMetric, setSelectedMetric] = useState<SortMetric>('fightsOverall');
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
-    const [searchQuery, setSearchQuery] = useState('');
-    const [showDropdown, setShowDropdown] = useState(false);
 
     useEffect(() => {
         document.title = 'Amoyan FC | Sort Fighters';
-    }, []);
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            const target = event.target as HTMLElement;
-            if (!target.closest(`.${styles.dropdownContainer}`)) {
-                setShowDropdown(false);
-            }
-        };
-
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
     if (loading) return (
@@ -227,10 +214,11 @@ const FightersSortingPage: React.FC = () => {
 
     const fighters: Fighter[] = data?.getAllFightersWithBasicStats || [];
 
-    // Filter metrics based on search query
-    const filteredMetrics = (Object.keys(metricLabels) as SortMetric[]).filter(metric =>
-        metricLabels[metric].toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    // Create dropdown options
+    const metricOptions: DropdownOption[] = (Object.keys(metricLabels) as SortMetric[]).map(metric => ({
+        value: metric,
+        label: metricLabels[metric]
+    }));
 
     // Sort fighters based on selected metric and order
     const sortedFighters = [...fighters]
@@ -241,50 +229,31 @@ const FightersSortingPage: React.FC = () => {
             return sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
         });
 
-    const handleMetricSelect = (metric: SortMetric) => {
-        setSelectedMetric(metric);
-        setSearchQuery('');
-        setShowDropdown(false);
-    };
-
     return (
         <div className={styles.sortingPage}>
+            <button 
+                className={styles.backButton}
+                onClick={() => navigate(-1)}
+                aria-label="Go back"
+            >
+                <FontAwesomeIcon icon={faArrowLeft} />
+            </button>
+
             <div className={styles.contentSection}>
                 <div className={styles.header}>
                     <h2 className={styles.title}>Sort Fighters</h2>
                 </div>
 
                 <div className={styles.controls}>
-                    <div className={styles.dropdownContainer}>
-                        <input
-                            type="text"
-                            placeholder={metricLabels[selectedMetric]}
-                            value={searchQuery}
-                            onChange={(e) => {
-                                setSearchQuery(e.target.value);
-                                setShowDropdown(true);
-                            }}
-                            onFocus={() => setShowDropdown(true)}
-                            className={styles.searchInput}
-                        />
-                        {showDropdown && (
-                            <div className={styles.dropdown}>
-                                {filteredMetrics.length > 0 ? (
-                                    filteredMetrics.map((metric) => (
-                                        <div
-                                            key={metric}
-                                            className={`${styles.dropdownItem} ${selectedMetric === metric ? styles.selected : ''}`}
-                                            onClick={() => handleMetricSelect(metric)}
-                                        >
-                                            {metricLabels[metric]}
-                                        </div>
-                                    ))
-                                ) : (
-                                    <div className={styles.dropdownEmpty}>No metrics found</div>
-                                )}
-                            </div>
-                        )}
-                    </div>
+                    <Dropdown
+                        options={metricOptions}
+                        value={selectedMetric}
+                        onChange={(value) => setSelectedMetric(value as SortMetric)}
+                        placeholder="Select a metric..."
+                        className={styles.metricDropdown}
+                        maxHeight={300}
+                        align="left"
+                    />
 
                     <div className={styles.sortButtons}>
                         <button
