@@ -45,7 +45,12 @@ const roundStandingsSchema = new Schema({
 roundStandingsSchema.index({ competitionId: 1, seasonNumber: 1, roundNumber: 1 });
 roundStandingsSchema.index({ fightIdentifier: 1 }, { unique: true });
 roundStandingsSchema.index({ "standings.fighterId": 1 });
-// TTL index commented out for now - can be enabled later for real-time/cache scenarios
-// roundStandingsSchema.index({ updatedAt: 1 }, { expireAfterSeconds: 3600 * 24 * 2 }); // 2 days
+
+// ⚠️ CRITICAL WARNING: DO NOT CREATE TTL INDEX!
+// IFC is complete and all standings are historical data that must persist permanently.
+// A TTL index was previously created manually in the database and caused automatic deletion
+// of Seasons 1-5 standings. The index has been removed (Oct 18, 2025).
+// NEVER recreate this index or any TTL index on this collection!
+// roundStandingsSchema.index({ updatedAt: 1 }, { expireAfterSeconds: 3600 * 24 * 2 }); // ❌ DANGEROUS
 
 export const RoundStandings = mongoose.model('RoundStandings', roundStandingsSchema);

@@ -1,0 +1,18 @@
+IFC STANDINGS BACKUP SUMMARY
+======================================================================
+
+Backup Date: 2025-10-18T20:12:54.910Z
+Total Standings: 1155
+File Size: 3271.37 KB
+
+Breakdown by Season:
+──────────────────────────────────────────────────────────────────────
+Season  6: 231 standings
+Season  7: 231 standings
+Season  8: 231 standings
+Season  9: 231 standings
+Season 10: 231 standings
+
+Backup Files:
+  - standings-backup-2025-10-18T20-12-54.json
+  - standings-backup-2025-10-18T20-12-54-summary.txt
