@@ -5,7 +5,6 @@
     --text-secondary: #666666;
     --border-color: #e0e0e0;
     --shadow-color: rgba(0, 0, 0, 0.1);
-    --header-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --nav-active-color: #4285f4;
 }
 
@@ -16,16 +15,15 @@
     --text-secondary: #cccccc;
     --border-color: #404040;
     --shadow-color: rgba(0, 0, 0, 0.3);
-    --header-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     --nav-active-color: #64b5f6;
 }
 
 .header {
-    background: var(--header-gradient);
-    color: white;
-    padding: 20px 0;
-    box-shadow: 0 2px 10px var(--shadow-color);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+    background: transparent;
+    color: var(--text-primary);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
 }
 
 .header-content {
@@ -37,25 +35,42 @@
     gap: 20px;
 }
 
+.header-logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+}
+
+.header-logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+.header-title-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
 .page-title {
     margin: 0;
     font-size: 24px;
-    font-weight: 800;
-    flex: 1;
+    font-weight: 300;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(45deg, #ffffff, #f0f0f0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
     transition: all 0.3s ease;
-    position: relative;
+    line-height: 1.2;
 }
 
-.page-title:hover {
-    transform: scale(1.05);
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+.page-subtitle {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    line-height: 1.2;
 }
 
 .navigation {
@@ -66,9 +81,9 @@
 
 .nav-button {
     padding: 8px 16px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
@@ -78,8 +93,8 @@
 }
 
 .nav-button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
+    background-color: var(--bg-primary);
+    border-color: var(--nav-active-color);
     transform: translateY(-1px);
 }
 
@@ -104,19 +119,48 @@
 .user-info {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .user-avatar {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.3);
+    border: 2px solid var(--border-color);
+    object-fit: cover;
+}
+
+.user-avatar-initials {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--nav-active-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid var(--border-color);
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .user-name {
     font-size: 14px;
     font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.user-email {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.2;
 }
 
 .logout-button {
@@ -124,9 +168,9 @@
     align-items: center;
     gap: 8px;
     padding: 8px 16px;
-    background-color: rgba(255,255,255,0.2);
-    color: white;
-    border: 1px solid rgba(255,255,255,0.3);
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
@@ -134,16 +178,25 @@
 }
 
 .logout-button:hover {
-    background-color: rgba(255,255,255,0.3);
-    border-color: rgba(255,255,255,0.5);
+    background-color: var(--bg-primary);
+    border-color: var(--nav-active-color);
 }
 
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
         text-align: center;
         padding: 0 16px;
+    }
+    
+    .header-logo-section {
+        order: 1;
+        justify-content: center;
+    }
+    
+    .header-logo {
+        height: 40px;
     }
     
     .navigation {
@@ -152,9 +205,12 @@
     }
     
     .page-title {
-        order: 1;
-        font-size: 20px;
-        letter-spacing: 1.5px;
+        font-size: 18px;
+        letter-spacing: 0.5px;
+    }
+    
+    .page-subtitle {
+        font-size: 12px;
     }
     
     .header-controls {
@@ -166,6 +222,15 @@
     .user-section {
         flex-direction: column;
         gap: 10px;
+    }
+    
+    .user-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .user-details {
+        align-items: center;
     }
 }
 

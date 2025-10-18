@@ -4,19 +4,14 @@
     justify-content: center;
     width: 40px;
     height: 40px;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: transparent;
     border-radius: 50%;
     cursor: pointer;
     font-size: 16px;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
 }
 
 .theme-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.5);
     transform: scale(1.05);
 }
 
@@ -25,21 +20,23 @@
 }
 
 .theme-toggle.dark {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: transparent;
     color: #ffd700;
+    border: 1px solid transparent;
 }
 
 .theme-toggle.dark:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .theme-toggle.light {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: transparent;
     color: #333;
+    border: 1px solid #ccc;
 }
 
 .theme-toggle.light:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-    color: #000;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: #999;
 }
