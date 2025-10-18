@@ -78,6 +78,13 @@ const CompetitionPage: React.FC = () => {
         skip: !id || !data?.getCompetitionMeta || data?.getCompetitionMeta?.type !== 'league'
     });
 
+    // Update page title when competition data is loaded
+    React.useEffect(() => {
+        if (data?.getCompetitionMeta) {
+            document.title = `Amoyan FC | ${data.getCompetitionMeta.competitionName}`;
+        }
+    }, [data]);
+
     // Helper function to get all winners for a season
     const getSeasonWinners = (season: Season): Fighter[] => {
         const winners: Fighter[] = [];

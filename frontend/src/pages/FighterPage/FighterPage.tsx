@@ -88,6 +88,14 @@ const FighterPage: React.FC = () => {
         });
     }, [id]);
 
+    // Update page title when fighter data is loaded
+    useEffect(() => {
+        if (data?.getFighterInformation) {
+            const fighter = data.getFighterInformation;
+            document.title = `Amoyan FC | ${fighter.firstName}`;
+        }
+    }, [data]);
+
     const calculateAge = (dateOfBirth: string): number => {
         if (!dateOfBirth) return 0;
         

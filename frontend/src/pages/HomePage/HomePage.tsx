@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { useQuery } from '@apollo/client';
@@ -17,6 +17,10 @@ interface Competition {
 
 const HomePage: React.FC = () => {
     const { loading, error, data } = useQuery(GET_COMPETITIONS);
+
+    useEffect(() => {
+        document.title = 'Amoyan FC | Home';
+    }, []);
 
     if (loading) return (
         <div className="loading">

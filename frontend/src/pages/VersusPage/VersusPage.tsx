@@ -80,6 +80,13 @@ const VersusPage: React.FC = () => {
     const fighter1: Fighter | null = data1?.getFighterInformation || null;
     const fighter2: Fighter | null = data2?.getFighterInformation || null;
 
+    // Update page title when fighter data is loaded
+    useEffect(() => {
+        if (fighter1 && fighter2) {
+            document.title = `Amoyan FC | ${fighter1.firstName} vs ${fighter2.firstName}`;
+        }
+    }, [fighter1, fighter2]);
+
     // Get head-to-head data from fighter1's opponentsHistory
     const opponentRecord = fighter1?.opponentsHistory?.find(
         oh => oh.opponentId === fighter2Id

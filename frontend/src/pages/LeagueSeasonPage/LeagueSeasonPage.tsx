@@ -58,6 +58,14 @@ const LeagueSeasonPage: React.FC = () => {
         skip: !seasonId
     });
 
+    // Update page title when season data is loaded
+    React.useEffect(() => {
+        if (data?.getCompetitionSeason) {
+            const season = data.getCompetitionSeason;
+            document.title = `Amoyan FC | Season ${season.seasonMeta.seasonNumber}`;
+        }
+    }, [data]);
+
     if (loading) {
         return (
             <div className="league-season-page">

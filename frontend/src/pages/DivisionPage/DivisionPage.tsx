@@ -89,6 +89,9 @@ const DivisionPage: React.FC = () => {
           setDivisionData(division);
           // Set selected round to current round by default
           setSelectedRound(division.currentRound || division.totalRounds);
+          
+          // Update page title
+          document.title = `Amoyan FC | ${division.divisionName || `Division ${divisionNumber}`} - Season ${season.seasonMeta.seasonNumber}`;
         }
       }
     }
