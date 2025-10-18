@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner, faUser, faSearch, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner, faUser, faSearch, faMapMarkerAlt, faSort } from '@fortawesome/free-solid-svg-icons';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_FIGHTERS } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
@@ -111,6 +111,13 @@ const FightersPage: React.FC = () => {
                             />
                             <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
                         </div>
+                        <button 
+                            className={styles.locationButton}
+                            onClick={() => navigate('/fighters/sort')}
+                            title="Sort fighters"
+                        >
+                            <FontAwesomeIcon icon={faSort} />
+                        </button>
                         <button 
                             className={`${styles.locationButton} ${groupByLocation ? styles.active : ''}`}
                             onClick={() => setGroupByLocation(!groupByLocation)}

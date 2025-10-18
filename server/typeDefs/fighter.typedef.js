@@ -99,6 +99,28 @@ const fighterTypeDef = `#graphql
     }
 
     """
+    Simplified fighter data for listing and sorting (no enriched nested data)
+    """
+    type FighterBasicStats {
+        id: ID!
+        firstName: String!
+        lastName: String!
+        dateOfBirth: Date
+        profileImage: String
+        location: LocationData
+        physicalAttributes: PhysicalAttributesData
+        totalFights: Int
+        totalWins: Int
+        totalLosses: Int
+        winPercentage: Float
+        totalSeasons: Int
+        totalOpponents: Int
+        totalTitles: Int
+        highestWinStreak: Int
+        highestLoseStreak: Int
+    }
+
+    """
     Root query for all the fighters
     """
     type Query {
@@ -121,6 +143,11 @@ const fighterTypeDef = `#graphql
         Fetch a filtered list of fighters based on the arguments provided
         """
         filterFighters(filter: FighterFilterInput!): [Fighter]
+
+        """
+        Fetch all fighters with basic computed stats (optimized for listing/sorting)
+        """
+        getAllFightersWithBasicStats: [FighterBasicStats!]
     }
 
 

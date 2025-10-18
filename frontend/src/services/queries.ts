@@ -41,6 +41,44 @@ export const GET_ALL_FIGHTERS = gql`
     }
 `;
 
+export const GET_ALL_FIGHTERS_WITH_STATS = gql`
+    query GetAllFightersWithStats {
+        getAllFightersWithBasicStats {
+            id
+            firstName
+            lastName
+            dateOfBirth
+            profileImage
+            location {
+                city
+                country
+            }
+            physicalAttributes {
+                heightCm
+                heightFeet
+                weightKg
+                armReach
+                legReach
+                bodyType
+                koPower
+                durability
+                strength
+                endurance
+                agility
+            }
+            totalFights
+            totalWins
+            totalLosses
+            winPercentage
+            totalSeasons
+            totalOpponents
+            totalTitles
+            highestWinStreak
+            highestLoseStreak
+        }
+    }
+`;
+
 export const GET_FIGHTER_INFORMATION = gql`
     query GetFighterInformation($id: ID!) {
         getFighterInformation(id: $id) {

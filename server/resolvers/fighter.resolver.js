@@ -60,6 +60,62 @@ const fighterResolver = {
             const filteredFighters = await Fighter.find(args);
             if(!filteredFighters.length) throw new NotFoundError("Fighters not found");
             return filteredFighters;
+        }),
+
+        /**
+         * Fetches all fighters with computed basic stats (optimized for sorting/listing)
+         * Returns pre-computed aggregated stats without expensive enrichment
+         * @returns {Promise<Array.<Object>>} - Array of fighters with basic stats
+         */
+        getAllFightersWithBasicStats: catchAsyncErrors(async() => {
+            const allFighters = await Fighter.find({}).lean();
+            if(!allFighters) throw new NotFoundError("Fighters not available");
+            
+            // Compute stats for each fighter from raw data
+            return allFighters.map(fighter => {
+                // Calculate total fights, wins, losses across all competitions
+                const totalFights = fighter.competitionHistory?.reduce((sum, comp) => sum + (comp.totalFights || 0), 0) || 0;
+                const totalWins = fighter.competitionHistory?.reduce((sum, comp) => sum + (comp.totalWins || 0), 0) || 0;
+                const totalLosses = fighter.competitionHistory?.reduce((sum, comp) => sum + (comp.totalLosses || 0), 0) || 0;
+                const winPercentage = totalFights > 0 ? (totalWins / totalFights) * 100 : 0;
+                
+                // Calculate total seasons across all competitions
+                const totalSeasons = fighter.competitionHistory?.reduce((sum, comp) => sum + (comp.numberOfSeasonAppearances || 0), 0) || 0;
+                
+                // Count total unique opponents
+                const totalOpponents = fighter.opponentsHistory?.length || 0;
+                
+                // Calculate total titles
+                const totalTitles = fighter.competitionHistory?.reduce((sum, comp) => 
+                    sum + (comp.titles?.totalTitles || 0), 0) || 0;
+                
+                // Find highest win streak
+                const winStreaks = fighter.streaks?.filter(s => s.type === 'win') || [];
+                const highestWinStreak = winStreaks.length > 0 ? Math.max(...winStreaks.map(s => s.count || 0)) : 0;
+                
+                // Find highest lose streak
+                const loseStreaks = fighter.streaks?.filter(s => s.type === 'lose') || [];
+                const highestLoseStreak = loseStreaks.length > 0 ? Math.max(...loseStreaks.map(s => s.count || 0)) : 0;
+                
+                return {
+                    id: fighter._id.toString(),
+                    firstName: fighter.firstName,
+                    lastName: fighter.lastName,
+                    dateOfBirth: fighter.dateOfBirth,
+                    profileImage: fighter.profileImage,
+                    location: fighter.location,
+                    physicalAttributes: fighter.physicalAttributes,
+                    totalFights,
+                    totalWins,
+                    totalLosses,
+                    winPercentage,
+                    totalSeasons,
+                    totalOpponents,
+                    totalTitles,
+                    highestWinStreak,
+                    highestLoseStreak
+                };
+            });
         })
     },
     Mutation: {

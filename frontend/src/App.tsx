@@ -10,6 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
 import FightersPage from './pages/FightersPage/FightersPage';
+import FightersSortingPage from './pages/FightersSortingPage/FightersSortingPage';
 import FighterPage from './pages/FighterPage/FighterPage';
 import VersusPage from './pages/VersusPage/VersusPage';
 import CompetitionPage from './pages/CompetitionPage/CompetitionPage';
@@ -56,6 +57,7 @@ const AppContent: React.FC = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/fighters" element={<FightersPage />} />
+        <Route path="/fighters/sort" element={<FightersSortingPage />} />
         <Route path="/fighter/:id" element={<FighterPage />} />
         <Route path="/versus" element={<VersusPage />} />
         <Route path="/versus/:fighter1Id" element={<VersusPage />} />
