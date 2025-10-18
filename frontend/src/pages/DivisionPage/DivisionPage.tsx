@@ -189,6 +189,9 @@ const DivisionPage: React.FC = () => {
                 <div className={styles.fightersContainer}>
                   {/* Fighter 1 */}
                   <div className={`${styles.fighterSide} ${fight.winner === fight.fighter1 ? styles.winner : ''}`}>
+                    {fight.winner === fight.fighter1 && (
+                      <div className={styles.winnerTag}>WINNER</div>
+                    )}
                     {fighter1?.profileImage && (
                       <img
                         src={fighter1.profileImage}
@@ -206,6 +209,9 @@ const DivisionPage: React.FC = () => {
 
                   {/* Fighter 2 */}
                   <div className={`${styles.fighterSide} ${fight.winner === fight.fighter2 ? styles.winner : ''}`}>
+                    {fight.winner === fight.fighter2 && (
+                      <div className={styles.winnerTag}>WINNER</div>
+                    )}
                     {fighter2?.profileImage && (
                       <img
                         src={fighter2.profileImage}

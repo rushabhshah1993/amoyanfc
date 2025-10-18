@@ -250,8 +250,9 @@
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  padding: 0;
+  padding: 12px;
   transition: all 0.3s ease;
+  border-radius: 8px;
 }
 
 .fighterSide.winner {
@@ -259,21 +260,20 @@
 }
 
 .fighterImage {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   border-radius: 0;
   object-fit: contain;
   object-position: center;
   border: none;
   transition: all 0.3s ease;
   background: transparent;
-  opacity: 0.4;
 }
 
 .fighterSide.winner .fighterImage {
-  box-shadow: 0 0 20px rgba(76, 175, 80, 0.6), 0 0 40px rgba(76, 175, 80, 0.3);
-  filter: drop-shadow(0 0 8px rgba(76, 175, 80, 0.5));
-  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(76, 175, 80, 0.8)) 
+          drop-shadow(0 0 16px rgba(76, 175, 80, 0.5))
+          drop-shadow(0 0 24px rgba(76, 175, 80, 0.3));
 }
 
 .fighterNameSmall {
@@ -281,13 +281,22 @@
   color: var(--text-primary);
   text-align: center;
   font-size: 14px;
-  transition: color 0.3s ease;
-  opacity: 0.4;
+  transition: all 0.3s ease;
 }
 
 .fighterSide.winner .fighterNameSmall {
   font-weight: 600;
-  opacity: 1;
+}
+
+.winnerTag {
+  padding: 4px 8px;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-align: center;
 }
 
 .vsIndicator {
@@ -377,12 +386,17 @@
   }
 
   .fighterSide {
-    padding: 0;
+    padding: 8px;
   }
 
   .fighterImage {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .winnerTag {
+    font-size: 9px;
+    padding: 3px 6px;
   }
 
   .standingsTable {
@@ -440,9 +454,18 @@
     font-size: 16px;
   }
 
+  .fighterSide {
+    padding: 6px;
+  }
+
   .fighterImage {
-    width: 50px;
-    height: 50px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .winnerTag {
+    font-size: 8px;
+    padding: 2px 5px;
   }
 
   .standingsTable th,
