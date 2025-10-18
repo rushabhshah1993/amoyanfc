@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner, faArrowLeft, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner, faArrowLeft, faUser, faCircleLeft, faCircleDown } from '@fortawesome/free-solid-svg-icons';
 import { GET_FIGHTER_INFORMATION, GET_ALL_FIGHTERS } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
 import PhysicalAttributes from '../../components/PhysicalAttributes/PhysicalAttributes';
@@ -88,6 +88,28 @@ const FighterPage: React.FC = () => {
         });
     }, [id]);
 
+    // Dynamically calculate and set the fighter content height based on header
+    useEffect(() => {
+        const updateContentHeight = () => {
+            const header = document.querySelector('.header') as HTMLElement;
+            if (header) {
+                const headerHeight = header.offsetHeight;
+                document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+            }
+        };
+
+        // Initial calculation
+        updateContentHeight();
+
+        // Recalculate on window resize
+        window.addEventListener('resize', updateContentHeight);
+
+        // Cleanup
+        return () => {
+            window.removeEventListener('resize', updateContentHeight);
+        };
+    }, []);
+
     // Update page title when fighter data is loaded
     useEffect(() => {
         if (data?.getFighterInformation) {
@@ -166,18 +188,15 @@ const FighterPage: React.FC = () => {
     const fighter: Fighter = data.getFighterInformation;
     const allFighters: Fighter[] = allFightersData?.getAllFighters || [];
 
+    const scrollToPhysicalAttributes = () => {
+        const element = document.querySelector('.physical-attributes-section');
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
     return (
         <div className="fighter-page">
-            <div className="fighter-header">
-                <button 
-                    className="back-button"
-                    onClick={() => navigate('/fighters')}
-                >
-                    <FontAwesomeIcon icon={faArrowLeft} />
-                    Back to Fighters
-                </button>
-            </div>
-
             <div className="fighter-content">
                 <div className="fighter-image-section">
                     <S3Image
@@ -244,6 +263,23 @@ const FighterPage: React.FC = () => {
                             </div>
                         )}
 
+                    </div>
+
+                    <div className="fighter-actions">
+                        <button 
+                            className="action-button action-button-primary"
+                            onClick={() => navigate('/fighters')}
+                        >
+                            <FontAwesomeIcon icon={faCircleLeft} />
+                            All Fighters
+                        </button>
+                        <button 
+                            className="action-button action-button-secondary"
+                            onClick={scrollToPhysicalAttributes}
+                        >
+                            <FontAwesomeIcon icon={faCircleDown} />
+                            More Statistics
+                        </button>
                     </div>
                 </div>
             </div>

@@ -8,45 +8,11 @@
     flex-direction: column;
 }
 
-.fighter-header {
-    padding: 1rem 2rem;
-    background-color: var(--bg-primary);
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-.back-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #4285f4;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.back-button:hover {
-    background-color: #3367d6;
-    transform: translateY(-1px);
-}
-
-.back-button:active {
-    transform: translateY(0);
-}
-
 .fighter-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    flex: 1;
-    height: calc(100vh - 80px); /* Full height minus header */
+    height: calc(100vh - var(--header-height, 81px)); /* Dynamically calculated header height with fallback */
 }
 
 .fighter-image-section {
@@ -145,6 +111,55 @@
     transition: color 0.3s ease;
 }
 
+.fighter-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+    margin-top: 3rem;
+}
+
+.action-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+    background: transparent;
+    color: var(--text-primary);
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-button:hover {
+    transform: translateX(-5px);
+}
+
+.action-button:active {
+    transform: translateX(-3px);
+}
+
+.action-button svg {
+    font-size: 1.3rem;
+}
+
+.action-button-primary {
+    color: #4285f4;
+}
+
+.action-button-secondary {
+    color: var(--text-secondary);
+}
+
+.action-button-primary:hover {
+    color: #3367d6;
+}
+
+.action-button-secondary:hover {
+    color: var(--text-primary);
+}
+
 .loading {
     display: flex;
     flex-direction: column;
@@ -184,14 +199,10 @@
         padding: 0;
     }
     
-    .fighter-header {
-        padding: 1rem;
-    }
-    
     .fighter-content {
         grid-template-columns: 1fr;
         height: auto;
-        min-height: calc(100vh - 80px);
+        min-height: 100vh;
     }
     
     .fighter-image-section {
@@ -224,13 +235,21 @@
     .detail-value {
         font-size: 1.1rem;
     }
+
+    .fighter-actions {
+        align-items: center;
+    }
+
+    .action-button:hover {
+        transform: translateY(-2px);
+    }
+
+    .action-button:active {
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 480px) {
-    .fighter-header {
-        padding: 0.5rem;
-    }
-    
     .fighter-info-section {
         padding: 1.5rem 0.5rem;
     }
@@ -245,5 +264,13 @@
     
     .detail-value {
         font-size: 1rem;
+    }
+
+    .action-button {
+        font-size: 1rem;
+    }
+
+    .action-button svg {
+        font-size: 1.1rem;
     }
 }
