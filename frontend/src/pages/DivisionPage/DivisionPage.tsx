@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { 
   GET_ROUND_STANDINGS_BY_ROUND, 
   GET_SEASON_DETAILS,
   GET_ALL_FIGHTERS 
 } from '../../services/queries';
-import './DivisionPage.css';
+import styles from './DivisionPage.module.css';
 
 interface FighterStanding {
   fighterId: string;
@@ -47,6 +49,7 @@ const DivisionPage: React.FC = () => {
     seasonId: string;
     divisionNumber: string;
   }>();
+  const navigate = useNavigate();
 
   const [selectedRound, setSelectedRound] = useState<number>(1);
   const [divisionData, setDivisionData] = useState<Division | null>(null);
@@ -106,19 +109,19 @@ const DivisionPage: React.FC = () => {
 
   const renderStandingsTable = () => {
     if (standingsLoading) {
-      return <div className="loading">Loading standings...</div>;
+      return <div className={styles.loading}>Loading standings...</div>;
     }
 
     if (!standingsData?.getRoundStandingsByRound?.standings) {
-      return <div className="no-data">No standings available</div>;
+      return <div className={styles.noData}>No standings available</div>;
     }
 
     const standings = standingsData.getRoundStandingsByRound.standings;
 
     return (
-      <div className="standings-table-container">
+      <div className={styles.standingsTableContainer}>
         <h2>Standings after Round {selectedRound}</h2>
-        <table className="standings-table">
+        <table className={styles.standingsTable}>
           <thead>
             <tr>
               <th>Rank</th>
@@ -132,25 +135,25 @@ const DivisionPage: React.FC = () => {
             {standings.map((standing: FighterStanding) => {
               const fighter = getFighterById(standing.fighterId);
               return (
-                <tr key={standing.fighterId} className={standing.rank === 1 ? 'champion' : ''}>
-                  <td className="rank">{standing.rank}</td>
-                  <td className="fighter-cell">
-                    <div className="fighter-info">
+                <tr key={standing.fighterId} className={standing.rank === 1 ? styles.champion : ''}>
+                  <td className={styles.rank}>{standing.rank}</td>
+                  <td className={styles.fighterCell}>
+                    <div className={styles.fighterInfo}>
                       {fighter?.profileImage && (
                         <img
                           src={fighter.profileImage}
                           alt={`${fighter.firstName} ${fighter.lastName}`}
-                          className="fighter-avatar"
+                          className={styles.fighterAvatar}
                         />
                       )}
-                      <span className="fighter-name">
+                      <span className={styles.fighterName}>
                         {fighter ? `${fighter.firstName} ${fighter.lastName}` : 'Unknown Fighter'}
                       </span>
                     </div>
                   </td>
                   <td>{standing.fightsCount}</td>
                   <td>{standing.wins}</td>
-                  <td className="points">{standing.points}</td>
+                  <td className={styles.points}>{standing.points}</td>
                 </tr>
               );
             })}
@@ -162,55 +165,55 @@ const DivisionPage: React.FC = () => {
 
   const renderFightsList = () => {
     if (!divisionData) {
-      return <div className="loading">Loading fights...</div>;
+      return <div className={styles.loading}>Loading fights...</div>;
     }
 
     const currentRound = divisionData.rounds?.find(r => r.roundNumber === selectedRound);
     
     if (!currentRound || !currentRound.fights) {
-      return <div className="no-data">No fights available for this round</div>;
+      return <div className={styles.noData}>No fights available for this round</div>;
     }
 
     return (
-      <div className="fights-list-container">
+      <div className={styles.fightsListContainer}>
         <h2>Round {selectedRound} Fights</h2>
-        <div className="fights-list">
+        <div className={styles.fightsList}>
           {currentRound.fights.map((fight: Fight, index: number) => {
             const fighter1 = getFighterById(fight.fighter1);
             const fighter2 = getFighterById(fight.fighter2);
 
             return (
-              <div key={fight.fightIdentifier || index} className="fight-card">
-                <div className="fight-number">Fight {index + 1}</div>
+              <div key={fight.fightIdentifier || index} className={styles.fightCard}>
+                <div className={styles.fightNumber}>Fight {index + 1}</div>
                 
-                <div className="fighters-container">
+                <div className={styles.fightersContainer}>
                   {/* Fighter 1 */}
-                  <div className={`fighter-side ${fight.winner === fight.fighter1 ? 'winner' : ''}`}>
+                  <div className={`${styles.fighterSide} ${fight.winner === fight.fighter1 ? styles.winner : ''}`}>
                     {fighter1?.profileImage && (
                       <img
                         src={fighter1.profileImage}
                         alt={`${fighter1.firstName} ${fighter1.lastName}`}
-                        className="fighter-image"
+                        className={styles.fighterImage}
                       />
                     )}
-                    <div className="fighter-name-small">
+                    <div className={styles.fighterNameSmall}>
                       {fighter1 ? `${fighter1.firstName} ${fighter1.lastName}` : 'TBD'}
                     </div>
                   </div>
 
                   {/* VS */}
-                  <div className="vs-indicator">VS</div>
+                  <div className={styles.vsIndicator}>VS</div>
 
                   {/* Fighter 2 */}
-                  <div className={`fighter-side ${fight.winner === fight.fighter2 ? 'winner' : ''}`}>
+                  <div className={`${styles.fighterSide} ${fight.winner === fight.fighter2 ? styles.winner : ''}`}>
                     {fighter2?.profileImage && (
                       <img
                         src={fighter2.profileImage}
                         alt={`${fighter2.firstName} ${fighter2.lastName}`}
-                        className="fighter-image"
+                        className={styles.fighterImage}
                       />
                     )}
-                    <div className="fighter-name-small">
+                    <div className={styles.fighterNameSmall}>
                       {fighter2 ? `${fighter2.firstName} ${fighter2.lastName}` : 'TBD'}
                     </div>
                   </div>
@@ -229,13 +232,13 @@ const DivisionPage: React.FC = () => {
     const rounds = Array.from({ length: divisionData.totalRounds }, (_, i) => i + 1);
 
     return (
-      <div className="round-selector">
+      <div className={styles.roundSelector}>
         <label htmlFor="round-select">Select Round:</label>
         <select
           id="round-select"
           value={selectedRound}
           onChange={(e) => setSelectedRound(parseInt(e.target.value))}
-          className="round-dropdown"
+          className={styles.roundDropdown}
         >
           {rounds.map(round => (
             <option key={round} value={round}>
@@ -248,26 +251,34 @@ const DivisionPage: React.FC = () => {
   };
 
   if (seasonLoading) {
-    return <div className="division-page loading-page">Loading...</div>;
+    return <div className={styles.loadingPage}>Loading...</div>;
   }
 
   return (
-    <div className="division-page">
-      <div className="division-header">
-        <h1>{divisionData?.divisionName || `Division ${divisionNumber}`}</h1>
-        <p className="season-info">Season {seasonNumber}</p>
-      </div>
-
-      <div className="division-content">
-        {/* Left Side - Standings Table */}
-        <div className="left-panel">
-          {renderStandingsTable()}
+    <div className={styles.divisionPage}>
+      <div className={styles.divisionContent}>
+        <div className={styles.divisionHeader}>
+          <button 
+            className={styles.backButton}
+            onClick={() => navigate(-1)}
+            aria-label="Go back"
+          >
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </button>
+          <h1>SEASON {seasonNumber} - {divisionData?.divisionName || `DIVISION ${divisionNumber}`}</h1>
         </div>
 
-        {/* Right Side - Round Selector and Fights */}
-        <div className="right-panel">
-          {renderRoundSelector()}
-          {renderFightsList()}
+        <div className={styles.contentGrid}>
+          {/* Left Side - Standings Table */}
+          <div className={styles.leftPanel}>
+            {renderStandingsTable()}
+          </div>
+
+          {/* Right Side - Round Selector and Fights */}
+          <div className={styles.rightPanel}>
+            {renderRoundSelector()}
+            {renderFightsList()}
+          </div>
         </div>
       </div>
     </div>
