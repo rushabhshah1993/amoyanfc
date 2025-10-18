@@ -86,11 +86,12 @@ const FightersPage: React.FC = () => {
                                         src={fighter.profileImage}
                                         alt={`${fighter.firstName} ${fighter.lastName}`}
                                         className={styles.fighterImage}
-                                        width={280}
-                                        height={280}
+                                        width={375}
+                                        height={400}
                                         lazy={true}
                                         retryCount={3}
                                         retryDelay={1000}
+                                        disableHoverScale={true}
                                         fallback={
                                             <div className={styles.fighterPlaceholder}>
                                                 <FontAwesomeIcon icon={faUser} />
@@ -102,27 +103,27 @@ const FightersPage: React.FC = () => {
                                             </div>
                                         }
                                     />
-                                </div>
-                                <div className={styles.fighterInfo}>
-                                    <div className={styles.fighterName}>
-                                        <span className={styles.fighterFirstName}>{fighter.firstName}</span>
-                                        <span className={styles.fighterLastName}>{fighter.lastName}</span>
-                                    </div>
-                                    {fighter.location && (fighter.location.city || fighter.location.country) && (
-                                        <div className={styles.fighterLocation}>
-                                            {fighter.location.country && (
-                                                <span className={styles.countryFlag}>
-                                                    {getCountryFlag(fighter.location.country)}
-                                                </span>
-                                            )}
-                                            <span className={styles.locationText}>
-                                                {fighter.location.city && fighter.location.country 
-                                                    ? `${fighter.location.city}, ${fighter.location.country}`
-                                                    : fighter.location.city || fighter.location.country
-                                                }
-                                            </span>
+                                    <div className={styles.fighterInfo}>
+                                        <div className={styles.fighterName}>
+                                            <span className={styles.fighterFirstName}>{fighter.firstName}</span>
+                                            <span className={styles.fighterLastName}>{fighter.lastName}</span>
                                         </div>
-                                    )}
+                                        {fighter.location && (fighter.location.city || fighter.location.country) && (
+                                            <div className={styles.fighterLocation}>
+                                                {fighter.location.country && (
+                                                    <span className={styles.countryFlag}>
+                                                        {getCountryFlag(fighter.location.country)}
+                                                    </span>
+                                                )}
+                                                <span className={styles.locationText}>
+                                                    {fighter.location.city && fighter.location.country 
+                                                        ? `${fighter.location.city}, ${fighter.location.country}`
+                                                        : fighter.location.city || fighter.location.country
+                                                    }
+                                                </span>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         ))}
