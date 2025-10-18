@@ -54,6 +54,12 @@
     opacity: 0.7;
 }
 
+.rightControls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
 .searchContainer {
     display: flex;
     align-items: center;
@@ -62,6 +68,32 @@
     padding: 12px 5px 5px 0px;
     border-bottom: 1px solid var(--text-secondary);
     min-width: 250px;
+}
+
+.locationButton {
+    background: transparent;
+    border: 1px solid var(--text-secondary);
+    border-radius: 50%;
+    color: var(--text-secondary);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.locationButton:hover {
+    background-color: rgba(66, 133, 244, 0.1);
+}
+
+.locationButton.active {
+    color: #4285f4;
+    border-color: #4285f4;
+    background-color: rgba(66, 133, 244, 0.1);
 }
 
 .searchIcon {
@@ -85,6 +117,31 @@
 .searchInput::placeholder {
     color: var(--text-secondary);
     opacity: 0.7;
+}
+
+.groupedFighters {
+    width: 100%;
+}
+
+.countryGroup {
+    margin-bottom: 60px;
+}
+
+.countryHeader {
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0 20px 30px 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: color 0.3s ease;
+}
+
+.countryHeader .countryFlag {
+    font-size: 28px;
 }
 
 .fightersGrid {
@@ -285,9 +342,26 @@
         text-align: left;
     }
     
+    .rightControls {
+        width: 100%;
+    }
+    
     .searchContainer {
         padding: 10px 16px;
-        width: 100%;
+        flex: 1;
+    }
+    
+    .countryHeader {
+        font-size: 24px;
+        margin: 0 16px 24px 16px;
+    }
+    
+    .countryHeader .countryFlag {
+        font-size: 24px;
+    }
+    
+    .countryGroup {
+        margin-bottom: 48px;
     }
     
     .fightersGrid {
@@ -347,6 +421,19 @@
         padding: 10px 12px;
     }
     
+    .countryHeader {
+        font-size: 20px;
+        margin: 0 0 20px 0;
+    }
+    
+    .countryHeader .countryFlag {
+        font-size: 20px;
+    }
+    
+    .countryGroup {
+        margin-bottom: 40px;
+    }
+    
     .fightersGrid {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -393,6 +480,19 @@
     
     .controlsRow {
         margin: 0 40px 50px 40px;
+    }
+    
+    .countryHeader {
+        font-size: 32px;
+        margin: 0 40px 40px 40px;
+    }
+    
+    .countryHeader .countryFlag {
+        font-size: 32px;
+    }
+    
+    .countryGroup {
+        margin-bottom: 80px;
     }
     
     .fightersGrid {
