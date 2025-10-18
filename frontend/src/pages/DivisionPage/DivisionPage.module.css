@@ -154,6 +154,33 @@
   font-weight: 600;
 }
 
+.standingsTable tbody tr.promoted {
+  background: rgba(76, 175, 80, 0.1);
+  border-left: 3px solid rgba(76, 175, 80, 0.6);
+}
+
+.standingsTable tbody tr.relegated {
+  background: rgba(244, 67, 54, 0.1);
+  border-left: 3px solid rgba(244, 67, 54, 0.6);
+}
+
+.trophyIcon {
+  margin-left: 8px;
+  color: #FFD700;
+  font-size: 14px;
+}
+
+/* Light mode overrides for promotion/relegation */
+[data-theme="light"] .standingsTable tbody tr.promoted {
+  background: rgba(76, 175, 80, 0.15);
+  border-left: 3px solid rgba(76, 175, 80, 0.7);
+}
+
+[data-theme="light"] .standingsTable tbody tr.relegated {
+  background: rgba(244, 67, 54, 0.15);
+  border-left: 3px solid rgba(244, 67, 54, 0.7);
+}
+
 .standingsTable td {
   padding: 12px 8px;
   color: var(--text-primary);
@@ -466,6 +493,11 @@
 
   .fighterName {
     font-size: 12px;
+  }
+
+  .trophyIcon {
+    font-size: 12px;
+    margin-left: 6px;
   }
 
   .roundSelector {

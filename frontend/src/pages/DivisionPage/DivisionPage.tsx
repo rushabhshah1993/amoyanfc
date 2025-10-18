@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { 
   GET_ROUND_STANDINGS_BY_ROUND, 
   GET_SEASON_DETAILS,
@@ -118,6 +118,38 @@ const DivisionPage: React.FC = () => {
     }
 
     const standings = standingsData.getRoundStandingsByRound.standings;
+    
+    // Check if it's the final round
+    const isFinalRound = divisionData && selectedRound === divisionData.totalRounds;
+    
+    // Check division number
+    const divNum = parseInt(divisionNumber || '1');
+    
+    // Helper function to get row class based on rank in final round
+    const getRowClass = (rank: number) => {
+      if (!isFinalRound) {
+        return rank === 1 ? styles.champion : '';
+      }
+      
+      // Final round logic based on division
+      if (divNum === 1) {
+        // Division 1: Only relegation (bottom 3), no promotion
+        if (rank >= standings.length - 2) {
+          return styles.relegated; // Bottom 3 relegated
+        }
+        return rank === 1 ? styles.champion : '';
+      } else if (divNum === 2 || divNum === 3) {
+        // Division 2 or 3: Both promotion (top 3) and relegation (bottom 3)
+        if (rank <= 3) {
+          return styles.promoted; // Top 3 promoted
+        } else if (rank >= standings.length - 2) {
+          return styles.relegated; // Bottom 3 relegated
+        }
+        return rank === 1 ? styles.champion : '';
+      }
+      
+      return rank === 1 ? styles.champion : '';
+    };
 
     return (
       <div className={styles.standingsTableContainer}>
@@ -136,7 +168,7 @@ const DivisionPage: React.FC = () => {
             {standings.map((standing: FighterStanding) => {
               const fighter = getFighterById(standing.fighterId);
               return (
-                <tr key={standing.fighterId} className={standing.rank === 1 ? styles.champion : ''}>
+                <tr key={standing.fighterId} className={getRowClass(standing.rank)}>
                   <td className={styles.rank}>{standing.rank}</td>
                   <td className={styles.fighterCell}>
                     <div className={styles.fighterInfo}>
@@ -149,6 +181,9 @@ const DivisionPage: React.FC = () => {
                       )}
                       <span className={styles.fighterName}>
                         {fighter ? `${fighter.firstName} ${fighter.lastName}` : 'Unknown Fighter'}
+                        {isFinalRound && standing.rank === 1 && (
+                          <FontAwesomeIcon icon={faTrophy} className={styles.trophyIcon} />
+                        )}
                       </span>
                     </div>
                   </td>
