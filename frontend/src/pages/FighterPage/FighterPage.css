@@ -127,7 +127,7 @@
     background: transparent;
     color: var(--text-primary);
     border: none;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -267,7 +267,7 @@
     }
 
     .action-button {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .action-button svg {
