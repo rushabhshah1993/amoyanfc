@@ -28,84 +28,94 @@ const PhysicalAttributes: React.FC<PhysicalAttributesProps> = ({ attributes }) =
         <div className="physical-attributes-section">
             <div className="physical-attributes-content">
                 <h2 className="physical-attributes-title">Physical Attributes</h2>
+                
+                {/* First 5 attributes in custom layout */}
+                <div className="physical-info-container">
+                    <div className="physical-info-left">
+                        {attributes.heightFeet && (
+                            <div className="physical-info-item">
+                                <span className="physical-info-label">Height</span>
+                                <span className="physical-info-value">
+                                    {attributes.heightFeet} ({attributes.heightCm} cm)
+                                </span>
+                            </div>
+                        )}
+                        {attributes.weightKg && (
+                            <div className="physical-info-item">
+                                <span className="physical-info-label">Weight</span>
+                                <span className="physical-info-value">
+                                    {attributes.weightKg} kg
+                                </span>
+                            </div>
+                        )}
+                        {attributes.bodyType && (
+                            <div className="physical-info-item physical-info-item-last">
+                                <span className="physical-info-label">Body Type</span>
+                                <span className="physical-info-value">
+                                    {attributes.bodyType}
+                                </span>
+                            </div>
+                        )}
+                    </div>
+                    <div className="physical-info-right">
+                        {attributes.armReach && (
+                            <div className="physical-reach-item">
+                                <span className="physical-info-label">Arm Reach</span>
+                                <span className="physical-info-value">
+                                    {attributes.armReach} cm
+                                </span>
+                            </div>
+                        )}
+                        {attributes.legReach && (
+                            <div className="physical-reach-item">
+                                <span className="physical-info-label">Leg Reach</span>
+                                <span className="physical-info-value">
+                                    {attributes.legReach} cm
+                                </span>
+                            </div>
+                        )}
+                    </div>
+                </div>
+
+                {/* Last 5 attributes in grid boxes */}
                 <div className="physical-attributes-grid">
-                    {attributes.heightFeet && (
-                        <div className="physical-attribute-item">
-                            <span className="physical-attribute-label">Height</span>
-                            <span className="physical-attribute-value">
-                                {attributes.heightFeet}
-                            </span>
-                        </div>
-                    )}
-                    {attributes.weightKg && (
-                        <div className="physical-attribute-item">
-                            <span className="physical-attribute-label">Weight</span>
-                            <span className="physical-attribute-value">
-                                {attributes.weightKg} kg
-                            </span>
-                        </div>
-                    )}
-                    {attributes.bodyType && (
-                        <div className="physical-attribute-item">
-                            <span className="physical-attribute-label">Body Type</span>
-                            <span className="physical-attribute-value">
-                                {attributes.bodyType}
-                            </span>
-                        </div>
-                    )}
-                    {attributes.armReach && (
-                        <div className="physical-attribute-item">
-                            <span className="physical-attribute-label">Arm Reach</span>
-                            <span className="physical-attribute-value">
-                                {attributes.armReach} cm
-                            </span>
-                        </div>
-                    )}
-                    {attributes.legReach && (
-                        <div className="physical-attribute-item">
-                            <span className="physical-attribute-label">Leg Reach</span>
-                            <span className="physical-attribute-value">
-                                {attributes.legReach} cm
-                            </span>
-                        </div>
-                    )}
                     {attributes.koPower && (
                         <div className="physical-attribute-item">
-                            <span className="physical-attribute-label">KO Power</span>
-                            <span className="physical-attribute-value">
-                                {attributes.koPower}/10
+                            <span className="physical-attribute-power-label">KO Power (X/10)</span>
+                            <span className="physical-attribute-power-value">
+                                {attributes.koPower}
                             </span>
                         </div>
                     )}
                     {attributes.durability && (
                         <div className="physical-attribute-item">
-                            <span className="physical-attribute-label">Durability</span>
-                            <span className="physical-attribute-value">
-                                {attributes.durability}/10
+                            <span className="physical-attribute-power-label">Durability (X/10)</span>
+                            <span className="physical-attribute-power-value">
+                                {attributes.durability}
                             </span>
                         </div>
                     )}
                     {attributes.strength && (
                         <div className="physical-attribute-item">
-                            <span className="physical-attribute-label">Strength</span>
-                            <span className="physical-attribute-value">
-                                {attributes.strength}/10
+                            <span className="physical-attribute-power-label">Strength (X/10)</span>
+                            <span className="physical-attribute-power-value">
+                                {attributes.strength}
                             </span>
                         </div>
                     )}
                     {attributes.endurance && (
                         <div className="physical-attribute-item">
-                            <span className="physical-attribute-label">Endurance</span>
-                            <span className="physical-attribute-value">
-                                {attributes.endurance}/10
+                            <span className="physical-attribute-power-label">Endurance (X/10)</span>
+                            <span className="physical-attribute-power-value">
+                                {attributes.endurance}
                             </span>
                         </div>
                     )}
                     {attributes.agility && (
                         <div className="physical-attribute-item">
-                            <span className="physical-attribute-label">Agility</span>
-                            <span className="physical-attribute-value">
-                                {attributes.agility}/10
+                            <span className="physical-attribute-power-label">Agility (X/10)</span>
+                            <span className="physical-attribute-power-value">
+                                {attributes.agility}
                             </span>
                         </div>
                     )}

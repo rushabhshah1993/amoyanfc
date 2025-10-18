@@ -1,55 +1,153 @@
 /* Physical Attributes Section */
 .physical-attributes-section {
     background-color: var(--bg-secondary);
-    padding: 3rem 4rem;
+    padding: 2rem 2rem;
     border-top: 1px solid var(--border-color);
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .physical-attributes-content {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .physical-attributes-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     text-align: center;
     transition: color 0.3s ease;
 }
 
+/* First 5 attributes - Custom Layout */
+.physical-info-container {
+    display: flex;
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.physical-info-left {
+    flex: 1;
+    border-right: 1px solid var(--border-color);
+}
+
+.physical-info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
+}
+
+.physical-info-item:hover {
+    background-color: var(--bg-secondary);
+}
+
+.physical-info-item-last {
+    border-bottom: none;
+}
+
+.physical-info-right {
+    flex: 1;
+    display: flex;
+}
+
+.physical-reach-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    border-right: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
+}
+
+.physical-reach-item:last-child {
+    border-right: none;
+}
+
+.physical-reach-item:hover {
+    background-color: var(--bg-secondary);
+}
+
+.physical-info-label {
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.7;
+}
+
+.physical-info-value {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    transition: color 0.3s ease;
+    text-align: right;
+}
+
+/* Last 5 attributes - Grid boxes */
 .physical-attributes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
 }
 
 .physical-attribute-item {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.4rem;
     align-items: center;
     text-align: center;
-    padding: 1.5rem 1rem;
+    padding: 1rem 0.75rem;
     background-color: var(--bg-primary);
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid var(--border-color);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition: all 0.2s ease;
+}
+
+.physical-attribute-item:hover {
+    cursor: default;
 }
 
 .physical-attribute-label {
-    font-weight: 400;
+    font-weight: 500;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.7;
+    letter-spacing: 0.5px;
+    opacity: 0.75;
 }
 
 .physical-attribute-value {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+/* Combat attributes - Extra emphasis */
+.physical-attribute-power-label {
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.7;
+    text-align: left;
+}
+
+.physical-attribute-power-value {
+    font-size: 2rem;
     color: var(--text-primary);
     font-weight: 500;
     transition: color 0.3s ease;
@@ -58,47 +156,115 @@
 /* Responsive design */
 @media (max-width: 768px) {
     .physical-attributes-section {
-        padding: 2rem 1rem;
+        padding: 1.5rem 1rem;
     }
     
     .physical-attributes-title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .physical-info-container {
+        flex-direction: column;
+        margin-bottom: 1.25rem;
+    }
+    
+    .physical-info-left {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .physical-info-item {
+        padding: 0.875rem 1.25rem;
+    }
+    
+    .physical-reach-item {
+        padding: 0.875rem;
+    }
+    
+    .physical-info-label {
+        font-size: 0.6rem;
+    }
+    
+    .physical-info-value {
+        font-size: 1.3rem;
     }
     
     .physical-attributes-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 0.75rem;
     }
     
     .physical-attribute-item {
-        padding: 1rem 0.5rem;
+        padding: 0.875rem 0.625rem;
+    }
+    
+    .physical-attribute-label {
+        font-size: 0.7rem;
     }
     
     .physical-attribute-value {
-        font-size: 1.1rem;
+        font-size: 1rem;
+    }
+    
+    .physical-attribute-power-label {
+        font-size: 0.5rem;
+    }
+    
+    .physical-attribute-power-value {
+        font-size: 1.6rem;
     }
 }
 
 @media (max-width: 480px) {
     .physical-attributes-section {
-        padding: 1.5rem 0.5rem;
+        padding: 1.25rem 0.75rem;
     }
     
     .physical-attributes-title {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .physical-info-item {
+        padding: 0.75rem 1rem;
+    }
+    
+    .physical-reach-item {
+        padding: 0.75rem;
+    }
+    
+    .physical-info-label {
+        font-size: 0.6rem;
+    }
+    
+    .physical-info-value {
+        font-size: 1.15rem;
     }
     
     .physical-attributes-grid {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.625rem;
     }
     
     .physical-attribute-item {
         padding: 0.75rem 0.5rem;
     }
     
+    .physical-attribute-label {
+        font-size: 0.65rem;
+    }
+    
     .physical-attribute-value {
-        font-size: 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .physical-attribute-power-label {
+        font-size: 0.5rem;
+    }
+    
+    .physical-attribute-power-value {
+        font-size: 1.4rem;
     }
 }
 
