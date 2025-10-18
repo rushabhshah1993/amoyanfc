@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { ApolloProvider } from '@apollo/client';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import client from './services/apolloClient';
 import { store } from './store';
 import { useAppSelector } from './store/hooks';
@@ -18,7 +18,8 @@ import DivisionPage from './pages/DivisionPage/DivisionPage';
 
 const AppContent: React.FC = () => {
   const { isDarkMode } = useAppSelector((state: RootState) => state.theme);
-  const [currentPage, setCurrentPage] = useState('home');
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const root = document.documentElement;
@@ -29,38 +30,39 @@ const AppContent: React.FC = () => {
     }
   }, [isDarkMode]);
 
+  // Determine current page based on the URL path
+  const getCurrentPage = () => {
+    if (location.pathname === '/') return 'home';
+    if (location.pathname.startsWith('/fighters') || location.pathname.startsWith('/fighter')) return 'fighters';
+    return 'home';
+  };
+
   const handleNavigate = (page: string) => {
-    setCurrentPage(page);
-    // Navigation will be handled by React Router
     if (page === 'home') {
-      window.location.href = '/';
+      navigate('/');
     } else if (page === 'fighters') {
-      window.location.href = '/fighters';
+      navigate('/fighters');
     }
   };
 
   return (
     <div className="App">
-      <ProtectedRoute>
-        <Router>
-          <Header 
-            title="Amoyan Fighting Championship"
-            showNavigation={true}
-            currentPage={currentPage}
-            onNavigate={handleNavigate}
-          />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/fighters" element={<FightersPage />} />
-            <Route path="/fighter/:id" element={<FighterPage />} />
-            <Route path="/versus/:fighter1Id/:fighter2Id" element={<VersusPage />} />
-            <Route path="/competition/:id" element={<CompetitionPage />} />
-            <Route path="/competition/:competitionId/season/:seasonId" element={<LeagueSeasonPage />} />
-            <Route path="/competition/:competitionId/season/:seasonId/division/:divisionNumber" element={<DivisionPage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </Router>
-      </ProtectedRoute>
+      <Header 
+        title="Amoyan Fighting Championship"
+        showNavigation={true}
+        currentPage={getCurrentPage()}
+        onNavigate={handleNavigate}
+      />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/fighters" element={<FightersPage />} />
+        <Route path="/fighter/:id" element={<FighterPage />} />
+        <Route path="/versus/:fighter1Id/:fighter2Id" element={<VersusPage />} />
+        <Route path="/competition/:id" element={<CompetitionPage />} />
+        <Route path="/competition/:competitionId/season/:seasonId" element={<LeagueSeasonPage />} />
+        <Route path="/competition/:competitionId/season/:seasonId/division/:divisionNumber" element={<DivisionPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </div>
   );
 };
@@ -69,7 +71,11 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <ApolloProvider client={client}>
-        <AppContent />
+        <ProtectedRoute>
+          <Router>
+            <AppContent />
+          </Router>
+        </ProtectedRoute>
       </ApolloProvider>
     </Provider>
   );
