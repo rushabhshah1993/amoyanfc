@@ -53,6 +53,7 @@ interface CompetitionHeadToHead {
 const VersusPage: React.FC = () => {
     const { fighter1Id, fighter2Id } = useParams<{ fighter1Id: string; fighter2Id: string }>();
     const navigate = useNavigate();
+    const [showStickyHeader, setShowStickyHeader] = useState(false);
     
     // Scroll to top when component loads
     useEffect(() => {
@@ -82,6 +83,28 @@ const VersusPage: React.FC = () => {
         // Cleanup
         return () => {
             window.removeEventListener('resize', updateContentHeight);
+        };
+    }, []);
+
+    // Handle sticky header visibility on scroll
+    useEffect(() => {
+        const handleScroll = () => {
+            const fightersComparisonSection = document.querySelector(`.${styles.fightersComparison}`) as HTMLElement;
+            if (fightersComparisonSection) {
+                const rect = fightersComparisonSection.getBoundingClientRect();
+                const header = document.querySelector('.header') as HTMLElement;
+                const headerHeight = header ? header.offsetHeight : 81;
+                
+                // Show sticky header when the main section is scrolled past the header
+                setShowStickyHeader(rect.bottom <= headerHeight);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Check initial state
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
         };
     }, []);
     
@@ -243,6 +266,67 @@ const VersusPage: React.FC = () => {
             >
                 <FontAwesomeIcon icon={faArrowLeft} />
             </button>
+
+            {/* Sticky Header */}
+            <div className={`${styles.stickyHeader} ${showStickyHeader ? styles.visible : ''}`}>
+                <button 
+                    className={styles.stickyBackButton}
+                    onClick={() => navigate(-1)}
+                    aria-label="Go back"
+                >
+                    <FontAwesomeIcon icon={faArrowLeft} />
+                </button>
+
+                <div className={styles.stickyContent}>
+                    <div className={styles.stickyFighterInfo}>
+                        <div className={styles.stickyFighterThumbnail}>
+                            <S3Image
+                                src={fighter1?.profileImage}
+                                alt={`${fighter1?.firstName} ${fighter1?.lastName}`}
+                                className={styles.stickyFighterImage}
+                                width={50}
+                                height={50}
+                                lazy={false}
+                                disableHoverScale={true}
+                                fallback={
+                                    <div className={styles.stickyImagePlaceholder}>
+                                        <FontAwesomeIcon icon={faUser} />
+                                    </div>
+                                }
+                            />
+                        </div>
+                        <span className={styles.stickyFighterName}>
+                            {fighter1?.firstName} {fighter1?.lastName}
+                        </span>
+                    </div>
+
+                    <div className={styles.stickyVsDivider}>
+                        <span className={styles.stickyVsText}>VS</span>
+                    </div>
+
+                    <div className={styles.stickyFighterInfo}>
+                        <div className={styles.stickyFighterThumbnail}>
+                            <S3Image
+                                src={fighter2?.profileImage}
+                                alt={`${fighter2?.firstName} ${fighter2?.lastName}`}
+                                className={styles.stickyFighterImage}
+                                width={50}
+                                height={50}
+                                lazy={false}
+                                disableHoverScale={true}
+                                fallback={
+                                    <div className={styles.stickyImagePlaceholder}>
+                                        <FontAwesomeIcon icon={faUser} />
+                                    </div>
+                                }
+                            />
+                        </div>
+                        <span className={styles.stickyFighterName}>
+                            {fighter2?.firstName} {fighter2?.lastName}
+                        </span>
+                    </div>
+                </div>
+            </div>
 
             {/* Fighter Comparison Section */}
             <div className={styles.fightersComparison}>
