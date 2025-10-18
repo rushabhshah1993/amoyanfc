@@ -86,8 +86,8 @@ const FightersPage: React.FC = () => {
                                         src={fighter.profileImage}
                                         alt={`${fighter.firstName} ${fighter.lastName}`}
                                         className={styles.fighterImage}
-                                        width={375}
-                                        height={400}
+                                        width={280}
+                                        height={310}
                                         lazy={true}
                                         retryCount={3}
                                         retryDelay={1000}

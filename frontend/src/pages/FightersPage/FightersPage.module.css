@@ -53,16 +53,16 @@
 
 .fighterImageContainer {
     position: relative;
-    width: 350px;
-    height: 350px;
+    width: 280px;
+    height: 280px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .fighterImage {
-    width: 350px;
-    height: 350px;
+    width: 280px;
+    height: 280px;
     object-fit: contain;
     border-radius: 0;
     border: none;
@@ -70,29 +70,29 @@
 }
 
 .fighterPlaceholder {
-    width: 350px;
-    height: 350px;
+    width: 280px;
+    height: 280px;
     border-radius: 0;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 80px;
+    font-size: 64px;
     border: none;
     transition: transform 0.3s ease;
 }
 
 .fighterLoading {
-    width: 350px;
-    height: 350px;
+    width: 280px;
+    height: 280px;
     border-radius: 0;
     background: var(--bg-primary);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--text-secondary);
-    font-size: 40px;
+    font-size: 32px;
     border: none;
     transition: transform 0.3s ease;
 }
@@ -224,24 +224,24 @@
     }
     
     .fighterImageContainer {
-        width: 250px;
-        height: 250px;
+        width: 200px;
+        height: 200px;
     }
     
     .fighterImage,
     .fighterPlaceholder,
     .fighterLoading {
-        width: 250px;
-        height: 250px;
+        width: 200px;
+        height: 200px;
         border-radius: 0;
     }
     
     .fighterPlaceholder {
-        font-size: 64px;
+        font-size: 48px;
     }
     
     .fighterLoading {
-        font-size: 32px;
+        font-size: 24px;
     }
     
     .fighterInfo {
@@ -272,24 +272,24 @@
     }
     
     .fighterImageContainer {
-        width: 280px;
-        height: 280px;
+        width: 240px;
+        height: 240px;
     }
     
     .fighterImage,
     .fighterPlaceholder,
     .fighterLoading {
-        width: 280px;
-        height: 280px;
+        width: 240px;
+        height: 240px;
         border-radius: 0;
     }
     
     .fighterPlaceholder {
-        font-size: 72px;
+        font-size: 56px;
     }
     
     .fighterLoading {
-        font-size: 36px;
+        font-size: 28px;
     }
     
     .fighterInfo {
@@ -316,24 +316,24 @@
     }
     
     .fighterImageContainer {
-        width: 400px;
-        height: 400px;
+        width: 320px;
+        height: 320px;
     }
     
     .fighterImage,
     .fighterPlaceholder,
     .fighterLoading {
-        width: 400px;
-        height: 400px;
+        width: 320px;
+        height: 320px;
         border-radius: 0;
     }
     
     .fighterPlaceholder {
-        font-size: 96px;
+        font-size: 72px;
     }
     
     .fighterLoading {
-        font-size: 48px;
+        font-size: 36px;
     }
     
     .fighterInfo {
