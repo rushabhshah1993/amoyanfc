@@ -1,4 +1,4 @@
-.competition-page {
+.competitionPage {
     min-height: 100vh;
     padding: 0;
     background-color: var(--bg-primary);
@@ -6,7 +6,7 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.competition-header {
+.competitionHeader {
     padding: 1rem 2rem;
     background-color: var(--bg-primary);
     border-bottom: 1px solid var(--border-color);
@@ -15,7 +15,7 @@
     z-index: 10;
 }
 
-.back-button {
+.backButton {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -30,61 +30,61 @@
     transition: all 0.2s ease;
 }
 
-.back-button:hover {
+.backButton:hover {
     background-color: #3367d6;
     transform: translateY(-1px);
 }
 
-.back-button:active {
+.backButton:active {
     transform: translateY(0);
 }
 
-.competition-content {
+.competitionContent {
     max-width: 1400px;
     margin: 0 auto;
     padding: 2rem;
 }
 
-.competition-banner {
+.competitionBanner {
     display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 3rem;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
     align-items: center;
-    padding: 3rem;
+    padding: 2rem;
     background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-    border-radius: 16px;
+    border-radius: 12px;
     margin-bottom: 2rem;
     border: 1px solid var(--border-color);
     transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-.competition-logo-section {
+.competitionLogoSection {
     width: 100%;
-    height: 300px;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--bg-primary);
-    border-radius: 12px;
-    padding: 2rem;
+    border-radius: 8px;
+    padding: 1.5rem;
     border: 1px solid var(--border-color);
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.competition-logo-section img {
+.competitionLogoSection img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
 }
 
-.competition-banner-info {
+.competitionBannerInfo {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.75rem;
 }
 
-.competition-title {
-    font-size: 3rem;
+.competitionTitle {
+    font-size: 2rem;
     font-weight: 700;
     color: var(--text-primary);
     margin: 0;
@@ -92,29 +92,29 @@
     transition: color 0.3s ease;
 }
 
-.competition-subtitle {
-    font-size: 1.5rem;
+.competitionSubtitle {
+    font-size: 1.1rem;
     font-weight: 500;
     color: var(--text-secondary);
     margin: 0;
     transition: color 0.3s ease;
 }
 
-.competition-type-badge {
+.competitionTypeBadge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
+    gap: 0.4rem;
+    padding: 0.4rem 0.85rem;
     background-color: #4285f4;
     color: white;
-    border-radius: 20px;
-    font-size: 0.9rem;
+    border-radius: 16px;
+    font-size: 0.75rem;
     font-weight: 600;
     width: fit-content;
 }
 
-.competition-description-section {
-    padding: 2rem 3rem;
+.competitionDescriptionSection {
+    padding: 1.5rem 2rem;
     background-color: var(--bg-secondary);
     border-radius: 12px;
     margin-bottom: 2rem;
@@ -122,8 +122,8 @@
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.competition-description {
-    font-size: 1.1rem;
+.competitionDescription {
+    font-size: 1rem;
     line-height: 1.6;
     color: var(--text-primary);
     margin: 0;
@@ -131,7 +131,7 @@
 }
 
 /* Seasons Section */
-.seasons-section {
+.seasonsSection {
     background-color: var(--bg-secondary);
     border-radius: 16px;
     padding: 2rem;
@@ -140,21 +140,22 @@
     transition: all 0.3s ease;
 }
 
-.seasons-title {
-    font-size: 2rem;
-    font-weight: 700;
+.seasonsTitle {
+    font-size: 1.5rem;
+    font-weight: 400;
     color: var(--text-primary);
     margin: 0 0 1.5rem 0;
     transition: color 0.3s ease;
+    text-transform: uppercase;
 }
 
-.seasons-grid {
+.seasonsGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
 }
 
-.season-box {
+.seasonBox {
     position: relative;
     height: 250px;
     border-radius: 16px;
@@ -164,17 +165,17 @@
     border: 2px solid var(--border-color);
 }
 
-.season-box:hover {
+.seasonBox:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     border-color: #4285f4;
 }
 
-[data-theme="dark"] .season-box:hover {
+[data-theme="dark"] .seasonBox:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-.season-box-background {
+.seasonBoxBackground {
     position: absolute;
     top: 0;
     left: 0;
@@ -184,7 +185,7 @@
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 
-.season-box-image {
+.seasonBoxImage {
     width: 100%;
     height: 100%;
     background-size: contain;
@@ -194,7 +195,7 @@
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-.season-box-placeholder {
+.seasonBoxPlaceholder {
     width: 100%;
     height: 100%;
     display: flex;
@@ -205,7 +206,7 @@
     color: white;
 }
 
-.season-box-empty {
+.seasonBoxEmpty {
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
@@ -217,7 +218,7 @@
     opacity: 0.3;
 }
 
-.season-box-overlay {
+.seasonBoxOverlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -237,7 +238,7 @@
     transition: background 0.3s ease;
 }
 
-.season-box:hover .season-box-overlay {
+.seasonBox:hover .seasonBoxOverlay {
     background: linear-gradient(
         to bottom,
         rgba(66, 133, 244, 0.8) 0%,
@@ -246,7 +247,7 @@
     );
 }
 
-.season-box-title {
+.seasonBoxTitle {
     font-size: 2rem;
     font-weight: 700;
     color: white;
@@ -256,7 +257,7 @@
     z-index: 1;
 }
 
-.season-box-badge {
+.seasonBoxBadge {
     margin-top: 0.75rem;
     padding: 0.4rem 1rem;
     background-color: #34a853;
@@ -269,11 +270,11 @@
     z-index: 1;
 }
 
-.season-content {
+.seasonContent {
     margin-top: 2rem;
 }
 
-.season-info-card {
+.seasonInfoCard {
     background-color: var(--bg-primary);
     border-radius: 12px;
     padding: 2rem;
@@ -281,7 +282,7 @@
     transition: all 0.3s ease;
 }
 
-.season-info-card h3 {
+.seasonInfoCard h3 {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-primary);
@@ -290,7 +291,7 @@
 }
 
 /* Divisions Grid */
-.divisions-grid {
+.divisionsGrid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
@@ -298,12 +299,12 @@
 }
 
 @media (min-width: 1024px) {
-    .divisions-grid {
+    .divisionsGrid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-.division-card {
+.divisionCard {
     background-color: var(--bg-primary);
     border-radius: 12px;
     padding: 1.5rem;
@@ -315,22 +316,22 @@
     gap: 1rem;
 }
 
-.division-card:hover {
+.divisionCard:hover {
     transform: translateY(-4px);
     border-color: #4285f4;
     box-shadow: 0 8px 24px rgba(66, 133, 244, 0.15);
 }
 
-[data-theme="dark"] .division-card:hover {
+[data-theme="dark"] .divisionCard:hover {
     box-shadow: 0 8px 24px rgba(66, 133, 244, 0.25);
 }
 
-.division-header {
+.divisionHeader {
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.75rem;
 }
 
-.division-title {
+.divisionTitle {
     font-size: 1.3rem;
     font-weight: 700;
     color: var(--text-primary);
@@ -338,21 +339,21 @@
     transition: color 0.3s ease;
 }
 
-.division-name {
+.divisionName {
     font-size: 0.9rem;
     color: var(--text-secondary);
     margin: 0.25rem 0 0 0;
     transition: color 0.3s ease;
 }
 
-.division-winner {
+.divisionWinner {
     display: flex;
     align-items: center;
     gap: 1rem;
     padding: 1rem 0;
 }
 
-.fighter-avatar {
+.fighterAvatar {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -362,13 +363,13 @@
     transition: border-color 0.3s ease;
 }
 
-.fighter-avatar img {
+.fighterAvatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.fighter-avatar-placeholder {
+.fighterAvatarPlaceholder {
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
@@ -380,12 +381,12 @@
     color: white;
 }
 
-.fighter-info {
+.fighterInfo {
     flex: 1;
     min-width: 0;
 }
 
-.fighter-label {
+.fighterLabel {
     font-size: 0.75rem;
     text-transform: uppercase;
     font-weight: 600;
@@ -395,7 +396,7 @@
     transition: color 0.3s ease;
 }
 
-.fighter-name {
+.fighterName {
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-primary);
@@ -406,11 +407,11 @@
     transition: color 0.3s ease;
 }
 
-.division-progress {
+.divisionProgress {
     padding: 0.75rem 0;
 }
 
-.current-round {
+.currentRound {
     font-size: 0.9rem;
     color: var(--text-secondary);
     margin: 0;
@@ -418,7 +419,7 @@
     transition: color 0.3s ease;
 }
 
-.division-footer {
+.divisionFooter {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -426,25 +427,25 @@
     border-top: 1px solid var(--border-color);
 }
 
-.fighters-count {
+.fightersCount {
     font-size: 0.85rem;
     color: var(--text-secondary);
     margin: 0;
     transition: color 0.3s ease;
 }
 
-.view-details {
+.viewDetails {
     font-size: 0.85rem;
     color: #4285f4;
     font-weight: 600;
     transition: all 0.3s ease;
 }
 
-.division-card:hover .view-details {
+.divisionCard:hover .viewDetails {
     transform: translateX(4px);
 }
 
-.seasons-loading {
+.seasonsLoading {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -455,19 +456,19 @@
     transition: color 0.3s ease;
 }
 
-.seasons-loading svg {
+.seasonsLoading svg {
     font-size: 1.5rem;
     color: #4285f4;
 }
 
-.coming-soon-section {
+.comingSoonSection {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 3rem 0;
 }
 
-.coming-soon-card {
+.comingSoonCard {
     background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     border-radius: 16px;
     padding: 4rem 3rem;
@@ -477,23 +478,23 @@
     transition: all 0.3s ease;
 }
 
-.coming-soon-card:hover {
+.comingSoonCard:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-[data-theme="dark"] .coming-soon-card:hover {
+[data-theme="dark"] .comingSoonCard:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-.coming-soon-icon {
+.comingSoonIcon {
     font-size: 4rem;
     color: #4285f4;
     margin-bottom: 1.5rem;
     opacity: 0.7;
 }
 
-.coming-soon-title {
+.comingSoonTitle {
     font-size: 2rem;
     font-weight: 700;
     color: var(--text-primary);
@@ -501,7 +502,7 @@
     transition: color 0.3s ease;
 }
 
-.coming-soon-text {
+.comingSoonText {
     font-size: 1.1rem;
     color: var(--text-secondary);
     line-height: 1.6;
@@ -520,7 +521,7 @@
     transition: color 0.3s ease;
 }
 
-.loading-spinner {
+.loadingSpinner {
     font-size: 2rem;
     color: #4285f4;
 }
@@ -537,201 +538,207 @@
 
 /* Responsive design */
 @media (max-width: 1024px) {
-    .competition-banner {
+    .competitionBanner {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
-    .competition-logo-section {
-        height: 250px;
+    .competitionLogoSection {
+        height: 180px;
     }
 
-    .competition-title {
-        font-size: 2.5rem;
+    .competitionTitle {
+        font-size: 1.8rem;
     }
 }
 
 @media (max-width: 768px) {
-    .competition-content {
+    .competitionContent {
         padding: 1rem;
     }
 
-    .competition-banner {
-        padding: 2rem;
-        gap: 1.5rem;
-    }
-
-    .competition-logo-section {
-        height: 200px;
-        padding: 1rem;
-    }
-
-    .competition-title {
-        font-size: 2rem;
-    }
-
-    .competition-subtitle {
-        font-size: 1.2rem;
-    }
-
-    .seasons-section {
+    .competitionBanner {
         padding: 1.5rem;
+        gap: 1.25rem;
     }
 
-    .seasons-title {
+    .competitionLogoSection {
+        height: 150px;
+        padding: 1rem;
+    }
+
+    .competitionTitle {
         font-size: 1.5rem;
     }
 
-    .seasons-grid {
+    .competitionSubtitle {
+        font-size: 1rem;
+    }
+
+    .seasonsSection {
+        padding: 1.5rem;
+    }
+
+    .seasonsTitle {
+        font-size: 1.5rem;
+    }
+
+    .seasonsGrid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
 
-    .season-box {
+    .seasonBox {
         height: 200px;
     }
 
-    .season-box-title {
+    .seasonBoxTitle {
         font-size: 1.5rem;
     }
 
-    .season-info-card {
+    .seasonInfoCard {
         padding: 1.5rem;
     }
 
-    .season-info-card h3 {
+    .seasonInfoCard h3 {
         font-size: 1.3rem;
     }
 
-    .divisions-grid {
+    .divisionsGrid {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 1rem;
     }
 
-    .division-card {
+    .divisionCard {
         padding: 1.25rem;
     }
 
-    .division-title {
+    .divisionTitle {
         font-size: 1.2rem;
     }
 
-    .fighter-avatar {
+    .fighterAvatar {
         width: 50px;
         height: 50px;
     }
 
-    .fighter-name {
+    .fighterName {
         font-size: 1rem;
     }
 
-    .coming-soon-card {
+    .comingSoonCard {
         padding: 3rem 2rem;
     }
 
-    .coming-soon-icon {
+    .comingSoonIcon {
         font-size: 3rem;
     }
 
-    .coming-soon-title {
+    .comingSoonTitle {
         font-size: 1.5rem;
     }
 
-    .coming-soon-text {
+    .comingSoonText {
         font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    .competition-header {
+    .competitionHeader {
         padding: 0.5rem 1rem;
     }
 
-    .competition-banner {
+    .competitionBanner {
         padding: 1rem;
     }
 
-    .competition-title {
-        font-size: 1.5rem;
+    .competitionLogoSection {
+        height: 120px;
+        padding: 0.75rem;
     }
 
-    .competition-subtitle {
-        font-size: 1rem;
-    }
-
-    .seasons-section {
-        padding: 1rem;
-    }
-
-    .seasons-title {
+    .competitionTitle {
         font-size: 1.3rem;
     }
 
-    .seasons-grid {
+    .competitionSubtitle {
+        font-size: 0.9rem;
+    }
+
+    .seasonsSection {
+        padding: 1rem;
+    }
+
+    .seasonsTitle {
+        font-size: 1.3rem;
+    }
+
+    .seasonsGrid {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
 
-    .season-box {
+    .seasonBox {
         height: 180px;
     }
 
-    .season-box-title {
+    .seasonBoxTitle {
         font-size: 1.3rem;
     }
 
-    .season-box-badge {
+    .seasonBoxBadge {
         font-size: 0.65rem;
         padding: 0.3rem 0.75rem;
     }
 
-    .season-box-placeholder {
+    .seasonBoxPlaceholder {
         font-size: 2rem;
     }
 
-    .season-info-card {
+    .seasonInfoCard {
         padding: 1rem;
     }
 
-    .season-info-card h3 {
+    .seasonInfoCard h3 {
         font-size: 1.2rem;
     }
 
-    .divisions-grid {
+    .divisionsGrid {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
 
-    .division-card {
+    .divisionCard {
         padding: 1rem;
     }
 
-    .division-title {
+    .divisionTitle {
         font-size: 1.1rem;
     }
 
-    .fighter-avatar {
+    .fighterAvatar {
         width: 45px;
         height: 45px;
     }
 
-    .fighter-avatar-placeholder {
+    .fighterAvatarPlaceholder {
         font-size: 1rem;
     }
 
-    .fighter-name {
+    .fighterName {
         font-size: 0.95rem;
     }
 
-    .coming-soon-card {
+    .comingSoonCard {
         padding: 2rem 1.5rem;
     }
 
-    .coming-soon-icon {
+    .comingSoonIcon {
         font-size: 2.5rem;
     }
 
-    .coming-soon-title {
+    .comingSoonTitle {
         font-size: 1.3rem;
     }
 }
+

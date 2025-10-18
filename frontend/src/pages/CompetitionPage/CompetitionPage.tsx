@@ -10,7 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { GET_COMPETITION_META, GET_ALL_SEASONS_BY_COMPETITION } from '../../services/queries';
 import RobustGoogleDriveImage from '../../components/S3Image/S3Image';
-import './CompetitionPage.css';
+import styles from './CompetitionPage.module.css';
 
 interface CompetitionMeta {
     id: string;
@@ -106,9 +106,9 @@ const CompetitionPage: React.FC = () => {
 
     if (loading) {
         return (
-            <div className="competition-page">
-                <div className="loading">
-                    <FontAwesomeIcon icon={faSpinner} spin className="loading-spinner" />
+            <div className={styles.competitionPage}>
+                <div className={styles.loading}>
+                    <FontAwesomeIcon icon={faSpinner} spin className={styles.loadingSpinner} />
                     Loading competition information...
                 </div>
             </div>
@@ -117,8 +117,8 @@ const CompetitionPage: React.FC = () => {
 
     if (error) {
         return (
-            <div className="competition-page">
-                <div className="error">
+            <div className={styles.competitionPage}>
+                <div className={styles.error}>
                     Error: {error.message}
                 </div>
             </div>
@@ -127,8 +127,8 @@ const CompetitionPage: React.FC = () => {
 
     if (!data?.getCompetitionMeta) {
         return (
-            <div className="competition-page">
-                <div className="error">
+            <div className={styles.competitionPage}>
+                <div className={styles.error}>
                     Competition not found
                 </div>
             </div>
@@ -138,10 +138,10 @@ const CompetitionPage: React.FC = () => {
     const competition: CompetitionMeta = data.getCompetitionMeta;
 
     return (
-        <div className="competition-page">
-            <div className="competition-header">
+        <div className={styles.competitionPage}>
+            <div className={styles.competitionHeader}>
                 <button 
-                    className="back-button"
+                    className={styles.backButton}
                     onClick={() => navigate('/')}
                 >
                     <FontAwesomeIcon icon={faArrowLeft} />
@@ -149,31 +149,30 @@ const CompetitionPage: React.FC = () => {
                 </button>
             </div>
 
-            <div className="competition-content">
-                <div className="competition-banner">
-                    <div className="competition-logo-section">
+            <div className={styles.competitionContent}>
+                <div className={styles.competitionBanner}>
+                    <div className={styles.competitionLogoSection}>
                         <RobustGoogleDriveImage
                             src={competition.logo}
                             alt={`${competition.competitionName} logo`}
-                            className="competition-logo-image"
                         />
                     </div>
-                    <div className="competition-banner-info">
-                        <h1 className="competition-title">
+                    <div className={styles.competitionBannerInfo}>
+                        <h1 className={styles.competitionTitle}>
                             {competition.competitionName}
                         </h1>
                         {competition.shortName && (
-                            <h2 className="competition-subtitle">
+                            <h2 className={styles.competitionSubtitle}>
                                 {competition.shortName}
                             </h2>
                         )}
-                        <div className="competition-type-badge">
+                        <div className={styles.competitionTypeBadge}>
                             <FontAwesomeIcon icon={faTrophy} />
                             {competition.type.toUpperCase()}
                         </div>
                         {competition.description && (
-                            <div className="competition-description-section">
-                                <p className="competition-description">
+                            <div className={styles.competitionDescriptionSection}>
+                                <p className={styles.competitionDescription}>
                                     {competition.description}
                                 </p>
                             </div>
@@ -187,25 +186,25 @@ const CompetitionPage: React.FC = () => {
                 {competition.type === 'league' && (
                     <>
                         {seasonsLoading ? (
-                            <div className="seasons-loading">
+                            <div className={styles.seasonsLoading}>
                                 <FontAwesomeIcon icon={faSpinner} spin />
                                 <span>Loading seasons...</span>
                             </div>
                         ) : seasonsError || !seasonsData?.getAllSeasonsByCompetitionCategory?.length ? (
-                            <div className="coming-soon-section">
-                                <div className="coming-soon-card">
-                                    <FontAwesomeIcon icon={faTrophy} className="coming-soon-icon" />
-                                    <h2 className="coming-soon-title">Season Information Coming Soon</h2>
-                                    <p className="coming-soon-text">
+                            <div className={styles.comingSoonSection}>
+                                <div className={styles.comingSoonCard}>
+                                    <FontAwesomeIcon icon={faTrophy} className={styles.comingSoonIcon} />
+                                    <h2 className={styles.comingSoonTitle}>Season Information Coming Soon</h2>
+                                    <p className={styles.comingSoonText}>
                                         Detailed season information, fight schedules, standings, and more will be available here soon.
                                     </p>
                                 </div>
                             </div>
                         ) : (
-                            <div className="seasons-section">
-                                <h2 className="seasons-title">Seasons</h2>
+                            <div className={styles.seasonsSection}>
+                                <h2 className={styles.seasonsTitle}>Seasons</h2>
                                 
-                                <div className="seasons-grid">
+                                <div className={styles.seasonsGrid}>
                                     {seasonsData.getAllSeasonsByCompetitionCategory
                                         .slice()
                                         .sort((a: Season, b: Season) => 
@@ -217,16 +216,16 @@ const CompetitionPage: React.FC = () => {
                                             return (
                                                 <div 
                                                     key={season.id} 
-                                                    className="season-box"
+                                                    className={styles.seasonBox}
                                                     onClick={() => navigate(`/competition/${id}/season/${season.id}`)}
                                                 >
                                                     {/* Background Images */}
-                                                    <div className="season-box-background">
+                                                    <div className={styles.seasonBoxBackground}>
                                                         {winners.length > 0 ? (
                                                             winners.map((winner) => (
                                                                 <div 
                                                                     key={winner.id} 
-                                                                    className="season-box-image"
+                                                                    className={styles.seasonBoxImage}
                                                                     style={{
                                                                         backgroundImage: winner.profileImage 
                                                                             ? `url(${winner.profileImage})`
@@ -234,26 +233,26 @@ const CompetitionPage: React.FC = () => {
                                                                     }}
                                                                 >
                                                                     {!winner.profileImage && (
-                                                                        <div className="season-box-placeholder">
+                                                                        <div className={styles.seasonBoxPlaceholder}>
                                                                             {winner.firstName.charAt(0)}{winner.lastName.charAt(0)}
                                                                         </div>
                                                                     )}
                                                                 </div>
                                                             ))
                                                         ) : (
-                                                            <div className="season-box-empty">
+                                                            <div className={styles.seasonBoxEmpty}>
                                                                 <FontAwesomeIcon icon={faTrophy} />
                                                             </div>
                                                         )}
                                                     </div>
 
                                                     {/* Overlay */}
-                                                    <div className="season-box-overlay">
-                                                        <h3 className="season-box-title">
+                                                    <div className={styles.seasonBoxOverlay}>
+                                                        <h3 className={styles.seasonBoxTitle}>
                                                             Season {season.seasonMeta.seasonNumber}
                                                         </h3>
                                                         {season.isActive && (
-                                                            <span className="season-box-badge">Active</span>
+                                                            <span className={styles.seasonBoxBadge}>Active</span>
                                                         )}
                                                     </div>
                                                 </div>
@@ -268,11 +267,11 @@ const CompetitionPage: React.FC = () => {
 
                 {/* Cup Competitions Coming Soon */}
                 {competition.type === 'cup' && (
-                    <div className="coming-soon-section">
-                        <div className="coming-soon-card">
-                            <FontAwesomeIcon icon={faTrophy} className="coming-soon-icon" />
-                            <h2 className="coming-soon-title">Season Information Coming Soon</h2>
-                            <p className="coming-soon-text">
+                    <div className={styles.comingSoonSection}>
+                        <div className={styles.comingSoonCard}>
+                            <FontAwesomeIcon icon={faTrophy} className={styles.comingSoonIcon} />
+                            <h2 className={styles.comingSoonTitle}>Season Information Coming Soon</h2>
+                            <p className={styles.comingSoonText}>
                                 Detailed season information, fight schedules, standings, and more will be available here soon.
                             </p>
                         </div>
