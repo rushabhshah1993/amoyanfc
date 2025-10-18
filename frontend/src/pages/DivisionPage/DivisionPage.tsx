@@ -177,7 +177,6 @@ const DivisionPage: React.FC = () => {
 
     return (
       <div className={styles.fightsListContainer}>
-        <h2>Round {selectedRound} Fights</h2>
         <div className={styles.fightsList}>
           {currentRound.fights.map((fight: Fight, index: number) => {
             const fighter1 = getFighterById(fight.fighter1);
