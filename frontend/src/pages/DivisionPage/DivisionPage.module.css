@@ -187,47 +187,11 @@
 /* Round Selector */
 .roundSelector {
   background: transparent;
-  padding: 0;
+  padding: 0 0 16px 0;
   border-radius: 0;
   box-shadow: none;
   display: flex;
-  align-items: center;
-  gap: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--text-secondary);
-}
-
-.roundSelector label {
-  font-weight: 400;
-  font-size: 14px;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: color 0.3s ease;
-}
-
-.roundDropdown {
-  padding: 8px 16px;
-  border-radius: 0;
-  border: none;
-  border-bottom: 1px solid var(--text-secondary);
-  background: transparent;
-  color: var(--text-primary);
-  font-size: 14px;
-  font-weight: 400;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  min-width: 120px;
-  outline: none;
-}
-
-.roundDropdown:hover {
-  border-bottom-color: var(--text-primary);
-}
-
-.roundDropdown:focus {
-  outline: none;
-  border-bottom-color: var(--text-primary);
+  justify-content: flex-end;
 }
 
 /* Fights List */
@@ -456,13 +420,7 @@
   }
 
   .roundSelector {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .roundDropdown {
-    width: 100%;
+    justify-content: flex-start;
   }
 
   .fightCard:hover {

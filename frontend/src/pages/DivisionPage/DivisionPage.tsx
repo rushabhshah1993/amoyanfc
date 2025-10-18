@@ -8,6 +8,7 @@ import {
   GET_SEASON_DETAILS,
   GET_ALL_FIGHTERS 
 } from '../../services/queries';
+import Dropdown, { DropdownOption } from '../../components/Dropdown';
 import styles from './DivisionPage.module.css';
 
 interface FighterStanding {
@@ -230,22 +231,21 @@ const DivisionPage: React.FC = () => {
     if (!divisionData) return null;
 
     const rounds = Array.from({ length: divisionData.totalRounds }, (_, i) => i + 1);
+    
+    const roundOptions: DropdownOption[] = rounds.map(round => ({
+      value: round,
+      label: `Round ${round}`
+    }));
 
     return (
       <div className={styles.roundSelector}>
-        <label htmlFor="round-select">Select Round:</label>
-        <select
-          id="round-select"
+        <Dropdown
+          options={roundOptions}
           value={selectedRound}
-          onChange={(e) => setSelectedRound(parseInt(e.target.value))}
-          className={styles.roundDropdown}
-        >
-          {rounds.map(round => (
-            <option key={round} value={round}>
-              Round {round}
-            </option>
-          ))}
-        </select>
+          onChange={(value) => setSelectedRound(value as number)}
+          align="right"
+          maxHeight={240}
+        />
       </div>
     );
   };
