@@ -7,7 +7,7 @@ import { GET_FIGHTER_INFORMATION, GET_COMPETITION_META } from '../../services/qu
 import S3Image from '../../components/S3Image/S3Image';
 import HeadToHead from '../../components/HeadToHead/HeadToHead';
 import StatsComparison from '../../components/StatsComparison/StatsComparison';
-import './VersusPage.css';
+import styles from './VersusPage.module.css';
 
 interface Fighter {
     id: string;
@@ -62,6 +62,28 @@ const VersusPage: React.FC = () => {
             behavior: 'smooth'
         });
     }, [fighter1Id, fighter2Id]);
+
+    // Dynamically calculate and set the fighters comparison height based on header
+    useEffect(() => {
+        const updateContentHeight = () => {
+            const header = document.querySelector('.header') as HTMLElement;
+            if (header) {
+                const headerHeight = header.offsetHeight;
+                document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+            }
+        };
+
+        // Initial calculation
+        updateContentHeight();
+
+        // Recalculate on window resize
+        window.addEventListener('resize', updateContentHeight);
+
+        // Cleanup
+        return () => {
+            window.removeEventListener('resize', updateContentHeight);
+        };
+    }, []);
     
     const [competitionNames, setCompetitionNames] = useState<Record<string, string>>({});
 
@@ -137,9 +159,9 @@ const VersusPage: React.FC = () => {
 
     if (loading1 || loading2) {
         return (
-            <div className="versus-page">
-                <div className="loading">
-                    <FontAwesomeIcon icon={faSpinner} spin className="loading-spinner" />
+            <div className={styles.versusPage}>
+                <div className={styles.loading}>
+                    <FontAwesomeIcon icon={faSpinner} spin className={styles.loadingSpinner} />
                     Loading fighters...
                 </div>
             </div>
@@ -148,8 +170,8 @@ const VersusPage: React.FC = () => {
 
     if (error1 || error2) {
         return (
-            <div className="versus-page">
-                <div className="error">
+            <div className={styles.versusPage}>
+                <div className={styles.error}>
                     Error: {error1?.message || error2?.message}
                 </div>
             </div>
@@ -158,8 +180,8 @@ const VersusPage: React.FC = () => {
 
     if (!fighter1 || !fighter2) {
         return (
-            <div className="versus-page">
-                <div className="error">
+            <div className={styles.versusPage}>
+                <div className={styles.error}>
                     Fighters not found
                 </div>
             </div>
@@ -213,61 +235,61 @@ const VersusPage: React.FC = () => {
     const hasNoFights = headToHeadData.length === 0;
 
     return (
-        <div className="versus-page">
-            <div className="versus-header">
-                <button 
-                    className="back-button"
-                    onClick={() => navigate(-1)}
-                >
-                    <FontAwesomeIcon icon={faArrowLeft} />
-                    Back
-                </button>
-            </div>
+        <div className={styles.versusPage}>
+            <button 
+                className={styles.backButton}
+                onClick={() => navigate(-1)}
+                aria-label="Go back"
+            >
+                <FontAwesomeIcon icon={faArrowLeft} />
+            </button>
 
             {/* Fighter Comparison Section */}
-            <div className="fighters-comparison">
-                <div className="fighter-section">
-                    <div className="fighter-image-container">
+            <div className={styles.fightersComparison}>
+                <div className={styles.fighterSection}>
+                    <div className={styles.fighterImageContainer}>
                         <S3Image
                             src={fighter1.profileImage}
                             alt={`${fighter1.firstName} ${fighter1.lastName}`}
-                            className="versus-fighter-image"
-                            width={350}
-                            height={450}
+                            className={styles.versusFighterImage}
+                            width={357}
+                            height={459}
                             lazy={false}
+                            disableHoverScale={true}
                             fallback={
-                                <div className="versus-image-placeholder">
+                                <div className={styles.versusImagePlaceholder}>
                                     <FontAwesomeIcon icon={faUser} />
                                 </div>
                             }
                         />
                     </div>
-                    <h2 className="fighter-name">
+                    <h2 className={styles.fighterName}>
                         {fighter1.firstName} {fighter1.lastName}
                     </h2>
                 </div>
 
-                <div className="versus-divider">
-                    <span className="versus-text">VS</span>
+                <div className={styles.versusDivider}>
+                    <span className={styles.versusText}>VS</span>
                 </div>
 
-                <div className="fighter-section">
-                    <div className="fighter-image-container">
+                <div className={styles.fighterSection}>
+                    <div className={styles.fighterImageContainer}>
                         <S3Image
                             src={fighter2.profileImage}
                             alt={`${fighter2.firstName} ${fighter2.lastName}`}
-                            className="versus-fighter-image"
-                            width={350}
-                            height={450}
+                            className={styles.versusFighterImage}
+                            width={357}
+                            height={459}
                             lazy={false}
+                            disableHoverScale={true}
                             fallback={
-                                <div className="versus-image-placeholder">
+                                <div className={styles.versusImagePlaceholder}>
                                     <FontAwesomeIcon icon={faUser} />
                                 </div>
                             }
                         />
                     </div>
-                    <h2 className="fighter-name">
+                    <h2 className={styles.fighterName}>
                         {fighter2.firstName} {fighter2.lastName}
                     </h2>
                 </div>

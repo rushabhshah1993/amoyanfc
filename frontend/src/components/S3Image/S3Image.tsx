@@ -18,6 +18,7 @@ interface S3ImageProps {
   lazy?: boolean;
   retryCount?: number;
   retryDelay?: number;
+  disableHoverScale?: boolean;
 }
 
 /**
@@ -37,6 +38,7 @@ const S3Image: React.FC<S3ImageProps> = ({
   lazy = true,
   retryCount = 2,
   retryDelay = 1000,
+  disableHoverScale = false,
   ...props
 }) => {
   const [imageUrl, setImageUrl] = useState<string>('');
@@ -148,7 +150,7 @@ const S3Image: React.FC<S3ImageProps> = ({
     <img
       src={imageUrl}
       alt={alt}
-      className={`s3-image ${className} ${imageLoaded ? 'loaded' : ''}`}
+      className={`s3-image ${className} ${imageLoaded ? 'loaded' : ''} ${disableHoverScale ? 'no-hover-scale' : ''}`}
       style={{
         ...style,
         width: width ? `${width}px` : style.width,

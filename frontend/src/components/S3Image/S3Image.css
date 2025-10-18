@@ -97,6 +97,11 @@
     /* box-shadow: 0 4px 12px var(--shadow-color); */
 }
 
+/* Disable hover scale when specified */
+.s3-image.no-hover-scale:hover {
+    transform: none;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .s3-image-loading,
