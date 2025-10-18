@@ -88,6 +88,19 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
         };
     };
 
+    const getOpponentTooltip = (opponent: Opponent, streak: Streak, oppIndex: number) => {
+        const opponentName = `${opponent.firstName} ${opponent.lastName}`;
+        const result = streak.type === 'win' ? 'Defeated' : 'Lost to';
+        
+        // Calculate the specific round for this opponent
+        // Assuming opponents are in chronological order within the streak
+        const season = streak.start.season;
+        const division = streak.start.division;
+        const round = streak.start.round + oppIndex;
+        
+        return `${result} ${opponentName} in S${season}D${division}R${round}`;
+    };
+
     if (streaks.length === 0) {
         return (
             <div className={styles.streaksSection}>
@@ -209,11 +222,15 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                                                                         ` S${streak.end?.season} D${streak.end?.division} R${streak.end?.round}`
                                                                     )}
                                                                 </span>
-                                                                <span className={styles.streakCount}>({streak.count})</span>
+                                                                <span className={styles.streakCount}>{streak.count}</span>
                                                             </div>
                                                             <div className={styles.opponentsGrid}>
                                                                 {streak.opponents.map((opponent, oppIndex) => (
-                                                                    <div key={oppIndex} className={styles.opponentThumbnail}>
+                                                                    <div 
+                                                                        key={oppIndex} 
+                                                                        className={styles.opponentThumbnail}
+                                                                        title={getOpponentTooltip(opponent, streak, oppIndex)}
+                                                                    >
                                                                         <S3Image
                                                                             src={opponent.profileImage}
                                                                             alt={`${opponent.firstName} ${opponent.lastName}`}
@@ -258,7 +275,11 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                                                             </div>
                                                             <div className={styles.opponentsGrid}>
                                                                 {streak.opponents.map((opponent, oppIndex) => (
-                                                                    <div key={oppIndex} className={styles.opponentThumbnail}>
+                                                                    <div 
+                                                                        key={oppIndex} 
+                                                                        className={styles.opponentThumbnail}
+                                                                        title={getOpponentTooltip(opponent, streak, oppIndex)}
+                                                                    >
                                                                         <S3Image
                                                                             src={opponent.profileImage}
                                                                             alt={`${opponent.firstName} ${opponent.lastName}`}
