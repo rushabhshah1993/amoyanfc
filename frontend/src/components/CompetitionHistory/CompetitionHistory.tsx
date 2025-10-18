@@ -105,8 +105,8 @@ const CompetitionHistory: React.FC<CompetitionHistoryProps> = ({ competitionHist
                                     src={meta.logo}
                                     alt={meta.competitionName}
                                     className={styles.competitionLogo}
-                                    width={180}
-                                    height={180}
+                                    width={120}
+                                    height={120}
                                     fallback={
                                         <div className={styles.logoPlaceholder}>
                                             {meta.competitionName.charAt(0)}
