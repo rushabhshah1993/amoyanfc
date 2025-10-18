@@ -14,6 +14,7 @@ interface Fighter {
 interface CompetitionHeadToHead {
     competitionId: string;
     competitionName: string;
+    competitionLogo?: string;
     totalFights: number;
     fighter1Wins: number;
     fighter2Wins: number;
@@ -54,7 +55,19 @@ const HeadToHead: React.FC<HeadToHeadProps> = ({ fighter1, fighter2, headToHeadD
             <div className={styles.competitionsList}>
                 {headToHeadData.map(competition => (
                     <div key={competition.competitionId} className={styles.competitionWrapper}>
-                        <h3 className={styles.competitionName}>{competition.competitionName}</h3>
+                        <div className={styles.competitionTitleRow}>
+                            {competition.competitionLogo && (
+                                <S3Image
+                                    src={competition.competitionLogo}
+                                    alt={competition.competitionName}
+                                    className={styles.competitionLogo}
+                                    width={40}
+                                    height={40}
+                                    lazy={true}
+                                />
+                            )}
+                            <h3 className={styles.competitionName}>{competition.competitionName}</h3>
+                        </div>
                         <div className={styles.competitionCard}>
                             {/* Fighter Records and Scrollable Fight Cards */}
                             <div className={styles.fighterRecordsSection}>

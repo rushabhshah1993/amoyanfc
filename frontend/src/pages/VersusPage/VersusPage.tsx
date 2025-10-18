@@ -38,6 +38,7 @@ interface FightDetail {
 interface CompetitionHeadToHead {
     competitionId: string;
     competitionName: string;
+    competitionLogo?: string;
     totalFights: number;
     fighter1Wins: number;
     fighter2Wins: number;
@@ -109,6 +110,7 @@ const VersusPage: React.FC = () => {
     }, []);
     
     const [competitionNames, setCompetitionNames] = useState<Record<string, string>>({});
+    const [competitionLogos, setCompetitionLogos] = useState<Record<string, string>>({});
 
     // Fetch both fighters
     const { loading: loading1, error: error1, data: data1 } = useQuery(GET_FIGHTER_INFORMATION, {
@@ -137,13 +139,14 @@ const VersusPage: React.FC = () => {
         oh => oh.opponentId === fighter2Id
     );
 
-    // Fetch competition names for all unique competition IDs
+    // Fetch competition names and logos for all unique competition IDs
     useEffect(() => {
-        const fetchCompetitionNames = async () => {
+        const fetchCompetitionData = async () => {
             if (!opponentRecord || !opponentRecord.details) return;
 
             const uniqueCompIds = Array.from(new Set(opponentRecord.details.map(d => d.competitionId)));
             const names: Record<string, string> = {};
+            const logos: Record<string, string> = {};
 
             for (const compId of uniqueCompIds) {
                 try {
@@ -156,6 +159,7 @@ const VersusPage: React.FC = () => {
                                     getCompetitionMeta(id: $id) {
                                         id
                                         competitionName
+                                        logo
                                     }
                                 }
                             `,
@@ -167,17 +171,19 @@ const VersusPage: React.FC = () => {
                     const result = await response.json();
                     if (result.data?.getCompetitionMeta) {
                         names[compId] = result.data.getCompetitionMeta.competitionName;
+                        logos[compId] = result.data.getCompetitionMeta.logo;
                     }
                 } catch (error) {
-                    console.error('Error fetching competition name:', error);
+                    console.error('Error fetching competition data:', error);
                     names[compId] = 'Unknown Competition';
                 }
             }
 
             setCompetitionNames(names);
+            setCompetitionLogos(logos);
         };
 
-        fetchCompetitionNames();
+        fetchCompetitionData();
     }, [opponentRecord]);
 
     if (loading1 || loading2) {
@@ -226,6 +232,7 @@ const VersusPage: React.FC = () => {
                 competitionMap.set(compId, {
                     competitionId: compId,
                     competitionName: competitionNames[compId] || 'Loading...',
+                    competitionLogo: competitionLogos[compId],
                     totalFights: 0,
                     fighter1Wins: 0,
                     fighter2Wins: 0,
