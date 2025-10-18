@@ -1,0 +1,530 @@
+[
+  {
+    "fighterId": "676d736eeb38b2b97c6da975",
+    "fighterName": "Kinjal Solanki",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 1,
+      "round": 9,
+      "_id": "68f38270761a2d83b46c041b"
+    }
+  },
+  {
+    "fighterId": "676d74bceb38b2b97c6da98d",
+    "fighterName": "Priyanka Gandhi",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 9,
+      "division": 3,
+      "round": 15,
+      "_id": "68f34bba9e1df8e0f8137c0a"
+    }
+  },
+  {
+    "fighterId": "676d7631eb38b2b97c6da9ab",
+    "fighterName": "Venessa Arez",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 1,
+      "round": 9,
+      "_id": "68f38270761a2d83b46c041d"
+    }
+  },
+  {
+    "fighterId": "676d764eeb38b2b97c6da9ad",
+    "fighterName": "Vidhi Parmar",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04ee"
+    }
+  },
+  {
+    "fighterId": "676d6fa0eb38b2b97c6da94b",
+    "fighterName": "Aishwarya Sharma",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 1,
+      "round": 9,
+      "_id": "68f38270761a2d83b46c041d"
+    }
+  },
+  {
+    "fighterId": "676d70e7eb38b2b97c6da94f",
+    "fighterName": "Ananya Suvarna",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04f1"
+    }
+  },
+  {
+    "fighterId": "676d7201eb38b2b97c6da95f",
+    "fighterName": "Drishti Valecha",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04ec"
+    }
+  },
+  {
+    "fighterId": "676d7250eb38b2b97c6da965",
+    "fighterName": "Isha Haria",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04f0"
+    }
+  },
+  {
+    "fighterId": "676d72dceb38b2b97c6da96b",
+    "fighterName": "Jacqueline Furtado",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 6,
+      "division": 3,
+      "round": 15,
+      "_id": "68f214ab84078794703c6617"
+    }
+  },
+  {
+    "fighterId": "676d7136eb38b2b97c6da953",
+    "fighterName": "Anmol Pandya",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 2,
+      "round": 11,
+      "_id": "68f38270761a2d83b46c046a"
+    }
+  },
+  {
+    "fighterId": "676d72c5eb38b2b97c6da969",
+    "fighterName": "Ishita Shah",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 2,
+      "round": 11,
+      "_id": "68f38270761a2d83b46c046b"
+    }
+  },
+  {
+    "fighterId": "676d7304eb38b2b97c6da96d",
+    "fighterName": "Jinali Shah",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04ed"
+    }
+  },
+  {
+    "fighterId": "676d7399eb38b2b97c6da977",
+    "fighterName": "Komal Madamwar",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 1,
+      "round": 9,
+      "_id": "68f38270761a2d83b46c0419"
+    }
+  },
+  {
+    "fighterId": "676d743eeb38b2b97c6da97f",
+    "fighterName": "Kruppa Savla",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 8,
+      "division": 3,
+      "round": 15,
+      "_id": "68f32fafbd3c514277e378f9"
+    }
+  },
+  {
+    "fighterId": "676d759ceb38b2b97c6da9a1",
+    "fighterName": "Sofiya Khan",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04f1"
+    }
+  },
+  {
+    "fighterId": "676d6f89eb38b2b97c6da949",
+    "fighterName": "Aashna Jogani",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04f2"
+    }
+  },
+  {
+    "fighterId": "676d7241eb38b2b97c6da963",
+    "fighterName": "Hinal Parekh",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 2,
+      "round": 11,
+      "_id": "68f38270761a2d83b46c0467"
+    }
+  },
+  {
+    "fighterId": "676d75faeb38b2b97c6da9a7",
+    "fighterName": "Trishala Sharma",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 5,
+      "division": 3,
+      "round": 15,
+      "_id": "68f10e8dad6a7047e83bae57"
+    }
+  },
+  {
+    "fighterId": "676d6fc5eb38b2b97c6da94d",
+    "fighterName": "Amruta Date",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 2,
+      "round": 11,
+      "_id": "68f38270761a2d83b46c0467"
+    }
+  },
+  {
+    "fighterId": "676d7279eb38b2b97c6da967",
+    "fighterName": "Isha Nagar",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 2,
+      "round": 11,
+      "_id": "68f38270761a2d83b46c0469"
+    }
+  },
+  {
+    "fighterId": "676d735aeb38b2b97c6da973",
+    "fighterName": "Kanchan Choudhary",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04ef"
+    }
+  },
+  {
+    "fighterId": "676d73ddeb38b2b97c6da979",
+    "fighterName": "Kripa Jalan",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 1,
+      "round": 9,
+      "_id": "68f38270761a2d83b46c041a"
+    }
+  },
+  {
+    "fighterId": "676d749feb38b2b97c6da989",
+    "fighterName": "Neha Gupta",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 2,
+      "round": 11,
+      "_id": "68f38270761a2d83b46c046a"
+    }
+  },
+  {
+    "fighterId": "676d751aeb38b2b97c6da995",
+    "fighterName": "Roopanshi Bhatt",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 7,
+      "division": 3,
+      "round": 15,
+      "_id": "68f2a2e3e25ec66dfba26d43"
+    }
+  },
+  {
+    "fighterId": "676d757aeb38b2b97c6da99d",
+    "fighterName": "Shraddha Bhansali",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04ef"
+    }
+  },
+  {
+    "fighterId": "676d742deb38b2b97c6da97d",
+    "fighterName": "Kriti Kapoor",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04f2"
+    }
+  },
+  {
+    "fighterId": "676d745feb38b2b97c6da983",
+    "fighterName": "Mhafrin Basta",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 2,
+      "round": 11,
+      "_id": "68f38270761a2d83b46c046b"
+    }
+  },
+  {
+    "fighterId": "676d748eeb38b2b97c6da987",
+    "fighterName": "Natasha Arez",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04ed"
+    }
+  },
+  {
+    "fighterId": "676d7505eb38b2b97c6da993",
+    "fighterName": "Ritu Chanchlani",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 9,
+      "division": 3,
+      "round": 15,
+      "_id": "68f34bba9e1df8e0f8137c09"
+    }
+  },
+  {
+    "fighterId": "676d7554eb38b2b97c6da999",
+    "fighterName": "Sachi Maker-Biyani",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04ee"
+    }
+  },
+  {
+    "fighterId": "676d7568eb38b2b97c6da99b",
+    "fighterName": "Shalini Chaturvedi",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 7,
+      "division": 3,
+      "round": 15,
+      "_id": "68f2a2e3e25ec66dfba26d3d"
+    }
+  },
+  {
+    "fighterId": "676d75c8eb38b2b97c6da9a3",
+    "fighterName": "Supriya Adep",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 2,
+      "round": 11,
+      "_id": "68f38270761a2d83b46c0469"
+    }
+  },
+  {
+    "fighterId": "676d767ceb38b2b97c6da9b1",
+    "fighterName": "Yashada Jogelekar-Bapat",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 9,
+      "division": 3,
+      "round": 15,
+      "_id": "68f34bba9e1df8e0f8137c10"
+    }
+  },
+  {
+    "fighterId": "676d6ecceb38b2b97c6da945",
+    "fighterName": "Sayali Raut",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 1,
+      "round": 9,
+      "_id": "68f38270761a2d83b46c041c"
+    }
+  },
+  {
+    "fighterId": "676d7172eb38b2b97c6da957",
+    "fighterName": "Ashwini Date",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 2,
+      "round": 11,
+      "_id": "68f38270761a2d83b46c0466"
+    }
+  },
+  {
+    "fighterId": "676d7190eb38b2b97c6da959",
+    "fighterName": "Bandgee Kallra",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04f0"
+    }
+  },
+  {
+    "fighterId": "676d740ceb38b2b97c6da97b",
+    "fighterName": "Krishi Punamiya",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 2,
+      "round": 11,
+      "_id": "68f38270761a2d83b46c0468"
+    }
+  },
+  {
+    "fighterId": "676d7452eb38b2b97c6da981",
+    "fighterName": "Mahima Thakur",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 1,
+      "round": 9,
+      "_id": "68f38270761a2d83b46c041b"
+    }
+  },
+  {
+    "fighterId": "676d7475eb38b2b97c6da985",
+    "fighterName": "Mridula Jadhav",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04f3"
+    }
+  },
+  {
+    "fighterId": "676d75dfeb38b2b97c6da9a5",
+    "fighterName": "Tanvi Shah",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04ec"
+    }
+  },
+  {
+    "fighterId": "676d70fbeb38b2b97c6da951",
+    "fighterName": "Anika Beri",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 2,
+      "round": 11,
+      "_id": "68f38270761a2d83b46c0468"
+    }
+  },
+  {
+    "fighterId": "676d71b4eb38b2b97c6da95b",
+    "fighterName": "Darshita Bhatt",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 6,
+      "division": 3,
+      "round": 15,
+      "_id": "68f214ab84078794703c6614"
+    }
+  },
+  {
+    "fighterId": "676d71ceeb38b2b97c6da95d",
+    "fighterName": "Diana Chan",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 3,
+      "round": 15,
+      "_id": "68f38270761a2d83b46c04f3"
+    }
+  },
+  {
+    "fighterId": "676d721aeb38b2b97c6da961",
+    "fighterName": "Hetal Boricha",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 1,
+      "round": 9,
+      "_id": "68f38270761a2d83b46c041c"
+    }
+  },
+  {
+    "fighterId": "676d74efeb38b2b97c6da991",
+    "fighterName": "Rashna Irani",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 6,
+      "division": 3,
+      "round": 15,
+      "_id": "68f214ab84078794703c6615"
+    }
+  },
+  {
+    "fighterId": "676d753ceb38b2b97c6da997",
+    "fighterName": "Rushika Mangrola",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 1,
+      "round": 9,
+      "_id": "68f38270761a2d83b46c041a"
+    }
+  },
+  {
+    "fighterId": "676d7613eb38b2b97c6da9a9",
+    "fighterName": "Unnati Vora",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 1,
+      "round": 9,
+      "_id": "68f38270761a2d83b46c0419"
+    }
+  },
+  {
+    "fighterId": "676d7663eb38b2b97c6da9af",
+    "fighterName": "Vinaya Rao",
+    "closedStreaks": 1,
+    "lastFight": {
+      "season": 10,
+      "division": 2,
+      "round": 11,
+      "_id": "68f38270761a2d83b46c0466"
+    }
+  }
+]

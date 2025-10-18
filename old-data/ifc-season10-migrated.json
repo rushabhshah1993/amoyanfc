@@ -1,0 +1,3052 @@
+{
+  "competitionMetaId": "67780dcc09a4c4b25127f8f6",
+  "isActive": false,
+  "seasonMeta": {
+    "seasonNumber": 10,
+    "startDate": "2023-02-22T03:39:40.711Z",
+    "endDate": "2023-05-20T09:43:20.845Z",
+    "winners": [],
+    "leagueDivisions": [
+      {
+        "divisionNumber": 1,
+        "fighters": [
+          "676d7613eb38b2b97c6da9a9",
+          "676d721aeb38b2b97c6da961",
+          "676d753ceb38b2b97c6da997",
+          "676d7631eb38b2b97c6da9ab",
+          "676d7452eb38b2b97c6da981",
+          "676d6ecceb38b2b97c6da945",
+          "676d7399eb38b2b97c6da977",
+          "676d736eeb38b2b97c6da975",
+          "676d73ddeb38b2b97c6da979",
+          "676d6fa0eb38b2b97c6da94b"
+        ],
+        "winners": [
+          "676d7613eb38b2b97c6da9a9"
+        ]
+      },
+      {
+        "divisionNumber": 2,
+        "fighters": [
+          "676d740ceb38b2b97c6da97b",
+          "676d6fc5eb38b2b97c6da94d",
+          "676d7136eb38b2b97c6da953",
+          "676d749feb38b2b97c6da989",
+          "676d72c5eb38b2b97c6da969",
+          "676d7663eb38b2b97c6da9af",
+          "676d70fbeb38b2b97c6da951",
+          "676d7279eb38b2b97c6da967",
+          "676d7241eb38b2b97c6da963",
+          "676d745feb38b2b97c6da983",
+          "676d7172eb38b2b97c6da957",
+          "676d75c8eb38b2b97c6da9a3"
+        ],
+        "winners": [
+          "676d740ceb38b2b97c6da97b"
+        ]
+      },
+      {
+        "divisionNumber": 3,
+        "fighters": [
+          "676d7201eb38b2b97c6da95f",
+          "676d735aeb38b2b97c6da973",
+          "676d7475eb38b2b97c6da985",
+          "676d70e7eb38b2b97c6da94f",
+          "676d764eeb38b2b97c6da9ad",
+          "676d7190eb38b2b97c6da959",
+          "676d7304eb38b2b97c6da96d",
+          "676d7250eb38b2b97c6da965",
+          "676d6f89eb38b2b97c6da949",
+          "676d7554eb38b2b97c6da999",
+          "676d71ceeb38b2b97c6da95d",
+          "676d757aeb38b2b97c6da99d",
+          "676d759ceb38b2b97c6da9a1",
+          "676d748eeb38b2b97c6da987",
+          "676d742deb38b2b97c6da97d",
+          "676d75dfeb38b2b97c6da9a5"
+        ],
+        "winners": [
+          "676d7201eb38b2b97c6da95f"
+        ]
+      }
+    ],
+    "cupParticipants": {
+      "fighters": []
+    }
+  },
+  "leagueData": {
+    "divisions": [
+      {
+        "divisionNumber": 1,
+        "divisionName": "Division 1",
+        "totalRounds": 9,
+        "currentRound": 9,
+        "rounds": [
+          {
+            "roundNumber": 1,
+            "fights": [
+              {
+                "fighter1": "676d7631eb38b2b97c6da9ab",
+                "fighter2": "676d7613eb38b2b97c6da9a9",
+                "winner": "676d7613eb38b2b97c6da9a9",
+                "fightIdentifier": "IFC-S10-D1-R1-F1",
+                "date": "2023-02-22T03:39:40.711Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7399eb38b2b97c6da977",
+                "fighter2": "676d73ddeb38b2b97c6da979",
+                "winner": "676d7399eb38b2b97c6da977",
+                "fightIdentifier": "IFC-S10-D1-R1-F2",
+                "date": "2023-02-27T03:39:17.591Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d736eeb38b2b97c6da975",
+                "fighter2": "676d753ceb38b2b97c6da997",
+                "winner": "676d736eeb38b2b97c6da975",
+                "fightIdentifier": "IFC-S10-D1-R1-F3",
+                "date": "2023-02-27T03:39:34.073Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d721aeb38b2b97c6da961",
+                "fighter2": "676d7452eb38b2b97c6da981",
+                "winner": "676d721aeb38b2b97c6da961",
+                "fightIdentifier": "IFC-S10-D1-R1-F4",
+                "date": "2023-02-27T03:39:45.858Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6fa0eb38b2b97c6da94b",
+                "fighter2": "676d6ecceb38b2b97c6da945",
+                "winner": "676d6ecceb38b2b97c6da945",
+                "fightIdentifier": "IFC-S10-D1-R1-F5",
+                "date": "2023-02-27T03:39:58.144Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 2,
+            "fights": [
+              {
+                "fighter1": "676d7613eb38b2b97c6da9a9",
+                "fighter2": "676d73ddeb38b2b97c6da979",
+                "winner": "676d7613eb38b2b97c6da9a9",
+                "fightIdentifier": "IFC-S10-D1-R2-F1",
+                "date": "2023-03-10T12:45:15.232Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d736eeb38b2b97c6da975",
+                "fighter2": "676d7399eb38b2b97c6da977",
+                "winner": "676d7399eb38b2b97c6da977",
+                "fightIdentifier": "IFC-S10-D1-R2-F2",
+                "date": "2023-03-11T05:23:45.569Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d753ceb38b2b97c6da997",
+                "fighter2": "676d721aeb38b2b97c6da961",
+                "winner": "676d721aeb38b2b97c6da961",
+                "fightIdentifier": "IFC-S10-D1-R2-F3",
+                "date": "2023-03-11T05:26:25.931Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7452eb38b2b97c6da981",
+                "fighter2": "676d6fa0eb38b2b97c6da94b",
+                "winner": "676d7452eb38b2b97c6da981",
+                "fightIdentifier": "IFC-S10-D1-R2-F4",
+                "date": "2023-03-12T04:15:41.458Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6ecceb38b2b97c6da945",
+                "fighter2": "676d7631eb38b2b97c6da9ab",
+                "winner": "676d7631eb38b2b97c6da9ab",
+                "fightIdentifier": "IFC-S10-D1-R2-F5",
+                "date": "2023-03-12T05:28:02.426Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 3,
+            "fights": [
+              {
+                "fighter1": "676d736eeb38b2b97c6da975",
+                "fighter2": "676d7613eb38b2b97c6da9a9",
+                "winner": "676d7613eb38b2b97c6da9a9",
+                "fightIdentifier": "IFC-S10-D1-R3-F1",
+                "date": "2023-03-22T13:16:46.909Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7399eb38b2b97c6da977",
+                "fighter2": "676d721aeb38b2b97c6da961",
+                "winner": "676d721aeb38b2b97c6da961",
+                "fightIdentifier": "IFC-S10-D1-R3-F2",
+                "date": "2023-03-22T13:16:39.929Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d753ceb38b2b97c6da997",
+                "fighter2": "676d6fa0eb38b2b97c6da94b",
+                "winner": "676d753ceb38b2b97c6da997",
+                "fightIdentifier": "IFC-S10-D1-R3-F3",
+                "date": "2023-03-23T02:48:51.628Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6ecceb38b2b97c6da945",
+                "fighter2": "676d7452eb38b2b97c6da981",
+                "winner": "676d7452eb38b2b97c6da981",
+                "fightIdentifier": "IFC-S10-D1-R3-F4",
+                "date": "2023-03-23T02:49:16.609Z",
+                "userDescription": "Sayali could barely touch Mahima as the latter surged with confidence. Sayali's frustration at not beating Mahima in IFC was visible as she tried her best in vain. Eventually, Mahima finished her with a cool nasty kick to the face that knocked her out.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d73ddeb38b2b97c6da979",
+                "fighter2": "676d7631eb38b2b97c6da9ab",
+                "winner": "676d7631eb38b2b97c6da9ab",
+                "fightIdentifier": "IFC-S10-D1-R3-F5",
+                "date": "2023-03-24T03:41:34.520Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 4,
+            "fights": [
+              {
+                "fighter1": "676d7613eb38b2b97c6da9a9",
+                "fighter2": "676d721aeb38b2b97c6da961",
+                "winner": "676d7613eb38b2b97c6da9a9",
+                "fightIdentifier": "IFC-S10-D1-R4-F1",
+                "date": "2023-03-31T12:12:51.139Z",
+                "userDescription": "Brutal bloody fight. Hetal started dominantly as she ripped apart Unnati's défenses and broke her side rib. Unnati managed to brave through that injury and mount a stunning comeback. It wasn't easy as both fighters showed their ruthlessness and why they are called champions. Ultimately, Unnati let out a blitzkrieg and ripped apart Hetal to win.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7399eb38b2b97c6da977",
+                "fighter2": "676d6fa0eb38b2b97c6da94b",
+                "winner": "676d7399eb38b2b97c6da977",
+                "fightIdentifier": "IFC-S10-D1-R4-F2",
+                "date": "2023-03-31T12:55:28.150Z",
+                "userDescription": "Komal is fighting like a champion as she defeated Aishwarya perfectly. She's slowly got the tactical mind of being in a title hunt.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6ecceb38b2b97c6da945",
+                "fighter2": "676d753ceb38b2b97c6da997",
+                "winner": "676d753ceb38b2b97c6da997",
+                "fightIdentifier": "IFC-S10-D1-R4-F3",
+                "date": "2023-03-31T12:58:41.024Z",
+                "userDescription": "Sayali was in perfect zen mode as she navigated the dangerous kicks and strikes from Rushika. It was a replica of the peace and calmness that had helped her land the Season 7 title. However, one powerful stray kick from Rushika betrayed Sayali. The power behind that kick was enough to confuse a poor Sayali who was then beaten to crap by a rampant Rushika. Rushika saved the best for last as she withdrew just before Sayali would be knocked out only to place a steely kick that knocked out the former champion to the relegation zone.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7452eb38b2b97c6da981",
+                "fighter2": "676d7631eb38b2b97c6da9ab",
+                "winner": "676d7452eb38b2b97c6da981",
+                "fightIdentifier": "IFC-S10-D1-R4-F4",
+                "date": "2023-04-03T03:36:46.289Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d736eeb38b2b97c6da975",
+                "fighter2": "676d73ddeb38b2b97c6da979",
+                "winner": "676d736eeb38b2b97c6da975",
+                "fightIdentifier": "IFC-S10-D1-R4-F5",
+                "date": "2023-04-03T03:37:03.675Z",
+                "userDescription": "Kinjal showed all the finer nuances of a professionally trained MMA fighter competing at the highest level as she dispatched off Kripa Jalan with barely any impactful strikes hitting herself. Kinjal was exceptional as she struck with inch-perfect accuracy before taking Kripa down with a perfect triangle choke and blasting away her face with incredibly strong punches. A majestic win!",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 5,
+            "fights": [
+              {
+                "fighter1": "676d7613eb38b2b97c6da9a9",
+                "fighter2": "676d6fa0eb38b2b97c6da94b",
+                "winner": "676d7613eb38b2b97c6da9a9",
+                "fightIdentifier": "IFC-S10-D1-R5-F1",
+                "date": "2023-04-04T04:35:31.214Z",
+                "userDescription": "A quick in and out affair as Unnati barely gave Aishwarya chance to strike and wrapped her in a cold rear naked choke hold to finish the fight. Confidence.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6ecceb38b2b97c6da945",
+                "fighter2": "676d7399eb38b2b97c6da977",
+                "winner": "676d6ecceb38b2b97c6da945",
+                "fightIdentifier": "IFC-S10-D1-R5-F2",
+                "date": "2023-04-04T04:37:18.133Z",
+                "userDescription": "10 seconds knockout. Sayali took 10 seconds to weight her opponent before feigning a thunderous tornado trick kick to shock Komal. Komal never got a chance to use her skills or strike as she was cleanly knocked out by the power of that kick. Sayali followed it up with brutal punches to all but wrap up the win.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7452eb38b2b97c6da981",
+                "fighter2": "676d753ceb38b2b97c6da997",
+                "winner": "676d753ceb38b2b97c6da997",
+                "fightIdentifier": "IFC-S10-D1-R5-F3",
+                "date": "2023-04-04T04:39:49.316Z",
+                "userDescription": "Mahima was left speechless as Rushika finished her with lethal Taekwondo kicks. Rushika was excellent at finding gaps and applying just the right pressure to derail Mahima. The impact of the kicks was so strong that Mahima was already dizzying by the second kick. The rest were just additions to knock Mahima out. A kicky stunning affair with a toned body for Rushika.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d736eeb38b2b97c6da975",
+                "fighter2": "676d7631eb38b2b97c6da9ab",
+                "winner": "676d7631eb38b2b97c6da9ab",
+                "fightIdentifier": "IFC-S10-D1-R5-F4",
+                "date": "2023-04-04T12:46:34.325Z",
+                "userDescription": "Kinjal was doing just great as she inflicted some serious strikes on Venessa without a reply. That was until Venessa attempted her first few strikes and a nasty hook to the side completely derailed Kinjal. Kinjal was unable to get past the pain and Venessa used her distraction to full use as she brought her down and pounded her to a win.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d721aeb38b2b97c6da961",
+                "fighter2": "676d73ddeb38b2b97c6da979",
+                "winner": "676d721aeb38b2b97c6da961",
+                "fightIdentifier": "IFC-S10-D1-R5-F5",
+                "date": "2023-04-04T12:50:48.595Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 6,
+            "fights": [
+              {
+                "fighter1": "676d6ecceb38b2b97c6da945",
+                "fighter2": "676d7613eb38b2b97c6da9a9",
+                "winner": "676d7613eb38b2b97c6da9a9",
+                "fightIdentifier": "IFC-S10-D1-R6-F1",
+                "date": "2023-04-30T17:40:16.864Z",
+                "userDescription": "Sayali had no chance as Unnati wrecked havoc with Hetal present in the stands.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7399eb38b2b97c6da977",
+                "fighter2": "676d7452eb38b2b97c6da981",
+                "winner": "676d7452eb38b2b97c6da981",
+                "fightIdentifier": "IFC-S10-D1-R6-F2",
+                "date": "2023-04-30T14:18:55.490Z",
+                "userDescription": "Komal was clearly the better fighter and outclassing Mahima until the final third of the fight. Mahima was left annoyed and frustrated by how Komal was able to fight better than her. So, Mahima opted for a random vicious street-style brawling that surprised both the referee and Komal. Komal still managed to have the upper hand until the last five minutes where Mahima called back her supreme skillsets to place Komal in a rear-naked choke to end the fight.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d753ceb38b2b97c6da997",
+                "fighter2": "676d7631eb38b2b97c6da9ab",
+                "winner": "676d753ceb38b2b97c6da997",
+                "fightIdentifier": "IFC-S10-D1-R6-F3",
+                "date": "2023-04-30T17:38:35.620Z",
+                "userDescription": "Venessa was dominant in the first half where she nearly decimated Rushika without giving her a space to breathe. When Rushika finally composed herself, she took little time to take back the dominance and then using her strong kicks, destroyed Venessa. Both used their respective skills to the fullest.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d73ddeb38b2b97c6da979",
+                "fighter2": "676d6fa0eb38b2b97c6da94b",
+                "winner": "676d73ddeb38b2b97c6da979",
+                "fightIdentifier": "IFC-S10-D1-R6-F4",
+                "date": "2023-04-30T17:41:49.421Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d721aeb38b2b97c6da961",
+                "fighter2": "676d736eeb38b2b97c6da975",
+                "winner": "676d721aeb38b2b97c6da961",
+                "fightIdentifier": "IFC-S10-D1-R6-F5",
+                "date": "2023-04-30T17:42:34.927Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 7,
+            "fights": [
+              {
+                "fighter1": "676d7613eb38b2b97c6da9a9",
+                "fighter2": "676d7452eb38b2b97c6da981",
+                "winner": "676d7613eb38b2b97c6da9a9",
+                "fightIdentifier": "IFC-S10-D1-R7-F1",
+                "date": "2023-05-08T13:23:34.699Z",
+                "userDescription": "Unnati ripped apart Mahima ferociously. Mahima's leg was the first to be shattered before the former unleashed hell.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d753ceb38b2b97c6da997",
+                "fighter2": "676d7399eb38b2b97c6da977",
+                "winner": "676d753ceb38b2b97c6da997",
+                "fightIdentifier": "IFC-S10-D1-R7-F2",
+                "date": "2023-05-08T13:05:39.534Z",
+                "userDescription": "Surreal power in the kick as Rushika blanks out Komal with a powerful kick to the face after Komal manages to trap her kick. Rushika was constantly peppering Komal with nasty powerful kicks before that thunderbolt. She finished off the fight with some good old punches to the face.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6ecceb38b2b97c6da945",
+                "fighter2": "676d73ddeb38b2b97c6da979",
+                "winner": "676d6ecceb38b2b97c6da945",
+                "fightIdentifier": "IFC-S10-D1-R7-F3",
+                "date": "2023-05-08T13:21:14.515Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7631eb38b2b97c6da9ab",
+                "fighter2": "676d721aeb38b2b97c6da961",
+                "winner": "676d7631eb38b2b97c6da9ab",
+                "fightIdentifier": "IFC-S10-D1-R7-F4",
+                "date": "2023-05-08T13:28:03.077Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6fa0eb38b2b97c6da94b",
+                "fighter2": "676d736eeb38b2b97c6da975",
+                "winner": "676d6fa0eb38b2b97c6da94b",
+                "fightIdentifier": "IFC-S10-D1-R7-F5",
+                "date": "2023-05-09T03:21:47.461Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 8,
+            "fights": [
+              {
+                "fighter1": "676d753ceb38b2b97c6da997",
+                "fighter2": "676d7613eb38b2b97c6da9a9",
+                "winner": "676d7613eb38b2b97c6da9a9",
+                "fightIdentifier": "IFC-S10-D1-R8-F1",
+                "date": "2023-05-13T10:21:13.813Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7631eb38b2b97c6da9ab",
+                "fighter2": "676d7399eb38b2b97c6da977",
+                "winner": "676d7399eb38b2b97c6da977",
+                "fightIdentifier": "IFC-S10-D1-R8-F2",
+                "date": "2023-05-13T09:09:04.031Z",
+                "userDescription": "Three powerful kicks were the highlight of the fight that completely derailed Venessa.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7452eb38b2b97c6da981",
+                "fighter2": "676d73ddeb38b2b97c6da979",
+                "winner": "676d73ddeb38b2b97c6da979",
+                "fightIdentifier": "IFC-S10-D1-R8-F3",
+                "date": "2023-05-13T09:14:31.659Z",
+                "userDescription": "Brutal but perfect kicks by Kripa.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6ecceb38b2b97c6da945",
+                "fighter2": "676d736eeb38b2b97c6da975",
+                "winner": "676d6ecceb38b2b97c6da945",
+                "fightIdentifier": "IFC-S10-D1-R8-F4",
+                "date": "2023-05-13T09:14:54.232Z",
+                "userDescription": "Vicious by Sayali, back in form.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d721aeb38b2b97c6da961",
+                "fighter2": "676d6fa0eb38b2b97c6da94b",
+                "winner": "676d721aeb38b2b97c6da961",
+                "fightIdentifier": "IFC-S10-D1-R8-F5",
+                "date": "2023-05-14T12:07:04.446Z",
+                "userDescription": "Furious win. Hetal doesn't wait for a post-fight conference as she storms out of the arena and sits in her car after losing the top spot and Invicta Cup in Australia.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 9,
+            "fights": [
+              {
+                "fighter1": "676d7399eb38b2b97c6da977",
+                "fighter2": "676d7613eb38b2b97c6da9a9",
+                "winner": "676d7613eb38b2b97c6da9a9",
+                "fightIdentifier": "IFC-S10-D1-R9-F1",
+                "date": "2023-05-19T11:08:56.705Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d73ddeb38b2b97c6da979",
+                "fighter2": "676d753ceb38b2b97c6da997",
+                "winner": "676d753ceb38b2b97c6da997",
+                "fightIdentifier": "IFC-S10-D1-R9-F2",
+                "date": "2023-05-19T06:25:52.123Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d736eeb38b2b97c6da975",
+                "fighter2": "676d7452eb38b2b97c6da981",
+                "winner": "676d736eeb38b2b97c6da975",
+                "fightIdentifier": "IFC-S10-D1-R9-F3",
+                "date": "2023-05-19T11:08:41.530Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d721aeb38b2b97c6da961",
+                "fighter2": "676d6ecceb38b2b97c6da945",
+                "winner": "676d721aeb38b2b97c6da961",
+                "fightIdentifier": "IFC-S10-D1-R9-F4",
+                "date": "2023-05-20T09:43:03.170Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7631eb38b2b97c6da9ab",
+                "fighter2": "676d6fa0eb38b2b97c6da94b",
+                "winner": "676d7631eb38b2b97c6da9ab",
+                "fightIdentifier": "IFC-S10-D1-R9-F5",
+                "date": "2023-05-20T09:43:20.860Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "divisionNumber": 2,
+        "divisionName": "Division 2",
+        "totalRounds": 11,
+        "currentRound": 11,
+        "rounds": [
+          {
+            "roundNumber": 1,
+            "fights": [
+              {
+                "fighter1": "676d72c5eb38b2b97c6da969",
+                "fighter2": "676d7663eb38b2b97c6da9af",
+                "winner": "676d7663eb38b2b97c6da9af",
+                "fightIdentifier": "IFC-S10-D2-R1-F1",
+                "date": "2023-02-22T03:39:44.711Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7172eb38b2b97c6da957",
+                "fighter2": "676d7241eb38b2b97c6da963",
+                "winner": "676d7241eb38b2b97c6da963",
+                "fightIdentifier": "IFC-S10-D2-R1-F2",
+                "date": "2023-02-24T06:51:22.178Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6fc5eb38b2b97c6da94d",
+                "fighter2": "676d740ceb38b2b97c6da97b",
+                "winner": "676d740ceb38b2b97c6da97b",
+                "fightIdentifier": "IFC-S10-D2-R1-F3",
+                "date": "2023-02-25T13:09:33.187Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d70fbeb38b2b97c6da951",
+                "fighter2": "676d75c8eb38b2b97c6da9a3",
+                "winner": "676d70fbeb38b2b97c6da951",
+                "fightIdentifier": "IFC-S10-D2-R1-F4",
+                "date": "2023-02-25T13:09:41.501Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d749feb38b2b97c6da989",
+                "fighter2": "676d7279eb38b2b97c6da967",
+                "winner": "676d7279eb38b2b97c6da967",
+                "fightIdentifier": "IFC-S10-D2-R1-F5",
+                "date": "2023-02-26T08:27:30.936Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7136eb38b2b97c6da953",
+                "fighter2": "676d745feb38b2b97c6da983",
+                "winner": "676d745feb38b2b97c6da983",
+                "fightIdentifier": "IFC-S10-D2-R1-F6",
+                "date": "2023-02-26T08:27:38.552Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 2,
+            "fights": [
+              {
+                "fighter1": "676d7241eb38b2b97c6da963",
+                "fighter2": "676d7663eb38b2b97c6da9af",
+                "winner": "676d7663eb38b2b97c6da9af",
+                "fightIdentifier": "IFC-S10-D2-R2-F1",
+                "date": "2023-03-03T03:10:35.235Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d740ceb38b2b97c6da97b",
+                "fighter2": "676d7172eb38b2b97c6da957",
+                "winner": "676d740ceb38b2b97c6da97b",
+                "fightIdentifier": "IFC-S10-D2-R2-F2",
+                "date": "2023-03-03T03:13:28.269Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75c8eb38b2b97c6da9a3",
+                "fighter2": "676d6fc5eb38b2b97c6da94d",
+                "winner": "676d6fc5eb38b2b97c6da94d",
+                "fightIdentifier": "IFC-S10-D2-R2-F3",
+                "date": "2023-03-03T03:15:33.688Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d749feb38b2b97c6da989",
+                "fighter2": "676d70fbeb38b2b97c6da951",
+                "winner": "676d70fbeb38b2b97c6da951",
+                "fightIdentifier": "IFC-S10-D2-R2-F4",
+                "date": "2023-03-04T03:02:24.393Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7279eb38b2b97c6da967",
+                "fighter2": "676d745feb38b2b97c6da983",
+                "winner": "676d745feb38b2b97c6da983",
+                "fightIdentifier": "IFC-S10-D2-R2-F5",
+                "date": "2023-03-04T03:09:16.937Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7136eb38b2b97c6da953",
+                "fighter2": "676d72c5eb38b2b97c6da969",
+                "winner": "676d72c5eb38b2b97c6da969",
+                "fightIdentifier": "IFC-S10-D2-R2-F6",
+                "date": "2023-03-04T09:21:59.961Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 3,
+            "fights": [
+              {
+                "fighter1": "676d740ceb38b2b97c6da97b",
+                "fighter2": "676d7663eb38b2b97c6da9af",
+                "winner": "676d740ceb38b2b97c6da97b",
+                "fightIdentifier": "IFC-S10-D2-R3-F1",
+                "date": "2023-03-10T05:33:24.107Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7172eb38b2b97c6da957",
+                "fighter2": "676d75c8eb38b2b97c6da9a3",
+                "winner": "676d7172eb38b2b97c6da957",
+                "fightIdentifier": "IFC-S10-D2-R3-F2",
+                "date": "2023-03-10T05:34:47.116Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6fc5eb38b2b97c6da94d",
+                "fighter2": "676d749feb38b2b97c6da989",
+                "winner": "676d6fc5eb38b2b97c6da94d",
+                "fightIdentifier": "IFC-S10-D2-R3-F3",
+                "date": "2023-03-10T05:38:14.011Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d70fbeb38b2b97c6da951",
+                "fighter2": "676d745feb38b2b97c6da983",
+                "winner": "676d70fbeb38b2b97c6da951",
+                "fightIdentifier": "IFC-S10-D2-R3-F4",
+                "date": "2023-03-10T10:29:34.496Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7279eb38b2b97c6da967",
+                "fighter2": "676d7136eb38b2b97c6da953",
+                "winner": "676d7279eb38b2b97c6da967",
+                "fightIdentifier": "IFC-S10-D2-R3-F5",
+                "date": "2023-03-10T10:29:41.951Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7241eb38b2b97c6da963",
+                "fighter2": "676d72c5eb38b2b97c6da969",
+                "winner": "676d72c5eb38b2b97c6da969",
+                "fightIdentifier": "IFC-S10-D2-R3-F6",
+                "date": "2023-03-10T10:29:47.723Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 4,
+            "fights": [
+              {
+                "fighter1": "676d7663eb38b2b97c6da9af",
+                "fighter2": "676d75c8eb38b2b97c6da9a3",
+                "winner": "676d7663eb38b2b97c6da9af",
+                "fightIdentifier": "IFC-S10-D2-R4-F1",
+                "date": "2023-03-12T05:31:00.045Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7172eb38b2b97c6da957",
+                "fighter2": "676d749feb38b2b97c6da989",
+                "winner": "676d749feb38b2b97c6da989",
+                "fightIdentifier": "IFC-S10-D2-R4-F2",
+                "date": "2023-03-12T05:36:42.879Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d745feb38b2b97c6da983",
+                "fighter2": "676d6fc5eb38b2b97c6da94d",
+                "winner": "676d6fc5eb38b2b97c6da94d",
+                "fightIdentifier": "IFC-S10-D2-R4-F3",
+                "date": "2023-03-12T05:51:53.418Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d70fbeb38b2b97c6da951",
+                "fighter2": "676d7136eb38b2b97c6da953",
+                "winner": "676d7136eb38b2b97c6da953",
+                "fightIdentifier": "IFC-S10-D2-R4-F4",
+                "date": "2023-03-12T12:01:37.236Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d72c5eb38b2b97c6da969",
+                "fighter2": "676d7279eb38b2b97c6da967",
+                "winner": "676d72c5eb38b2b97c6da969",
+                "fightIdentifier": "IFC-S10-D2-R4-F5",
+                "date": "2023-03-13T04:43:41.161Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7241eb38b2b97c6da963",
+                "fighter2": "676d740ceb38b2b97c6da97b",
+                "winner": "676d740ceb38b2b97c6da97b",
+                "fightIdentifier": "IFC-S10-D2-R4-F6",
+                "date": "2023-03-13T04:44:06.992Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 5,
+            "fights": [
+              {
+                "fighter1": "676d7663eb38b2b97c6da9af",
+                "fighter2": "676d749feb38b2b97c6da989",
+                "winner": "676d749feb38b2b97c6da989",
+                "fightIdentifier": "IFC-S10-D2-R5-F1",
+                "date": "2023-03-21T05:05:34.942Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7172eb38b2b97c6da957",
+                "fighter2": "676d745feb38b2b97c6da983",
+                "winner": "676d745feb38b2b97c6da983",
+                "fightIdentifier": "IFC-S10-D2-R5-F2",
+                "date": "2023-03-21T05:12:17.903Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6fc5eb38b2b97c6da94d",
+                "fighter2": "676d7136eb38b2b97c6da953",
+                "winner": "676d7136eb38b2b97c6da953",
+                "fightIdentifier": "IFC-S10-D2-R5-F3",
+                "date": "2023-03-22T02:31:24.069Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7279eb38b2b97c6da967",
+                "fighter2": "676d70fbeb38b2b97c6da951",
+                "winner": "676d7279eb38b2b97c6da967",
+                "fightIdentifier": "IFC-S10-D2-R5-F4",
+                "date": "2023-03-22T02:31:41.703Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d740ceb38b2b97c6da97b",
+                "fighter2": "676d72c5eb38b2b97c6da969",
+                "winner": "676d740ceb38b2b97c6da97b",
+                "fightIdentifier": "IFC-S10-D2-R5-F5",
+                "date": "2023-03-22T02:32:31.984Z",
+                "userDescription": "Ishita was dominant at the start, but Krishi remained resilient. Eventually, Krishi managed to overpower Ishita. She finally trapped her against the cage and choked her. When Ishita was fairly subdued, Krishi took her to the ground and gave Ishita a good old ground and pound to win.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75c8eb38b2b97c6da9a3",
+                "fighter2": "676d7241eb38b2b97c6da963",
+                "winner": "676d7241eb38b2b97c6da963",
+                "fightIdentifier": "IFC-S10-D2-R5-F6",
+                "date": "2023-03-22T03:29:30.657Z",
+                "userDescription": "Supriya was listless as Hinal ran circles around her and finally deservingly won the fight.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 6,
+            "fights": [
+              {
+                "fighter1": "676d7663eb38b2b97c6da9af",
+                "fighter2": "676d745feb38b2b97c6da983",
+                "winner": "676d7663eb38b2b97c6da9af",
+                "fightIdentifier": "IFC-S10-D2-R6-F1",
+                "date": "2023-03-29T03:08:01.529Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7136eb38b2b97c6da953",
+                "fighter2": "676d7172eb38b2b97c6da957",
+                "winner": "676d7136eb38b2b97c6da953",
+                "fightIdentifier": "IFC-S10-D2-R6-F2",
+                "date": "2023-03-29T03:08:25.369Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7279eb38b2b97c6da967",
+                "fighter2": "676d6fc5eb38b2b97c6da94d",
+                "winner": "676d6fc5eb38b2b97c6da94d",
+                "fightIdentifier": "IFC-S10-D2-R6-F3",
+                "date": "2023-03-29T14:16:18.954Z",
+                "userDescription": "Amruta was phenomenal as she matched Isha's energy and wrapped up the fight with a majestic triangle choke while resisting Isha's move to lift her up while in triangle choke. Ferocious!",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d70fbeb38b2b97c6da951",
+                "fighter2": "676d72c5eb38b2b97c6da969",
+                "winner": "676d70fbeb38b2b97c6da951",
+                "fightIdentifier": "IFC-S10-D2-R6-F4",
+                "date": "2023-03-29T14:26:21.855Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7241eb38b2b97c6da963",
+                "fighter2": "676d749feb38b2b97c6da989",
+                "winner": "676d749feb38b2b97c6da989",
+                "fightIdentifier": "IFC-S10-D2-R6-F5",
+                "date": "2023-03-30T04:32:00.554Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75c8eb38b2b97c6da9a3",
+                "fighter2": "676d740ceb38b2b97c6da97b",
+                "winner": "676d740ceb38b2b97c6da97b",
+                "fightIdentifier": "IFC-S10-D2-R6-F6",
+                "date": "2023-03-31T05:01:05.578Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 7,
+            "fights": [
+              {
+                "fighter1": "676d7136eb38b2b97c6da953",
+                "fighter2": "676d7663eb38b2b97c6da9af",
+                "winner": "676d7136eb38b2b97c6da953",
+                "fightIdentifier": "IFC-S10-D2-R7-F1",
+                "date": "2023-04-25T15:34:01.954Z",
+                "userDescription": "Bullish win for Anmol Pandya who gave no chance and no space to Vinaya for any strike. Anmol used her heavy body to her full advantage as she kept taking down Vinaya before raining blows on her. Every kick and punch was devastating as she bullied Vinaya to win this fight. Championesque win for Anmol!",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7172eb38b2b97c6da957",
+                "fighter2": "676d7279eb38b2b97c6da967",
+                "winner": "676d7172eb38b2b97c6da957",
+                "fightIdentifier": "IFC-S10-D2-R7-F2",
+                "date": "2023-04-26T06:19:35.771Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6fc5eb38b2b97c6da94d",
+                "fighter2": "676d70fbeb38b2b97c6da951",
+                "winner": "676d6fc5eb38b2b97c6da94d",
+                "fightIdentifier": "IFC-S10-D2-R7-F3",
+                "date": "2023-04-26T06:20:08.873Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d72c5eb38b2b97c6da969",
+                "fighter2": "676d75c8eb38b2b97c6da9a3",
+                "winner": "676d72c5eb38b2b97c6da969",
+                "fightIdentifier": "IFC-S10-D2-R7-F4",
+                "date": "2023-04-26T09:26:39.517Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7241eb38b2b97c6da963",
+                "fighter2": "676d745feb38b2b97c6da983",
+                "winner": "676d7241eb38b2b97c6da963",
+                "fightIdentifier": "IFC-S10-D2-R7-F5",
+                "date": "2023-04-26T09:30:00.818Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d749feb38b2b97c6da989",
+                "fighter2": "676d740ceb38b2b97c6da97b",
+                "winner": "676d749feb38b2b97c6da989",
+                "fightIdentifier": "IFC-S10-D2-R7-F6",
+                "date": "2023-04-26T09:39:25.649Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 8,
+            "fights": [
+              {
+                "fighter1": "676d7663eb38b2b97c6da9af",
+                "fighter2": "676d7279eb38b2b97c6da967",
+                "winner": "676d7663eb38b2b97c6da9af",
+                "fightIdentifier": "IFC-S10-D2-R8-F1",
+                "date": "2023-04-26T17:36:29.719Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7172eb38b2b97c6da957",
+                "fighter2": "676d70fbeb38b2b97c6da951",
+                "winner": "676d7172eb38b2b97c6da957",
+                "fightIdentifier": "IFC-S10-D2-R8-F2",
+                "date": "2023-04-26T17:37:15.060Z",
+                "userDescription": "Bullish win. Zero strikes by Anika.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d72c5eb38b2b97c6da969",
+                "fighter2": "676d6fc5eb38b2b97c6da94d",
+                "winner": "676d6fc5eb38b2b97c6da94d",
+                "fightIdentifier": "IFC-S10-D2-R8-F3",
+                "date": "2023-04-28T06:03:49.345Z",
+                "userDescription": "It started with Ishita dominating the fight. Amruta slowly and steadily grew into the fight before taking control over the fight and eventually taking dominance over the IFC #3. By the end of the fight, Ishita was hapless as a brilliant Amruta Date recorded one of the biggest win in her MMA career.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7241eb38b2b97c6da963",
+                "fighter2": "676d7136eb38b2b97c6da953",
+                "winner": "676d7136eb38b2b97c6da953",
+                "fightIdentifier": "IFC-S10-D2-R8-F4",
+                "date": "2023-04-28T10:53:20.586Z",
+                "userDescription": "Commendable fighting spirit by Hinal, but Anmol was simply too good for her.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d740ceb38b2b97c6da97b",
+                "fighter2": "676d745feb38b2b97c6da983",
+                "winner": "676d740ceb38b2b97c6da97b",
+                "fightIdentifier": "IFC-S10-D2-R8-F5",
+                "date": "2023-04-28T10:58:28.733Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75c8eb38b2b97c6da9a3",
+                "fighter2": "676d749feb38b2b97c6da989",
+                "winner": "676d749feb38b2b97c6da989",
+                "fightIdentifier": "IFC-S10-D2-R8-F6",
+                "date": "2023-04-29T06:08:42.830Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 9,
+            "fights": [
+              {
+                "fighter1": "676d70fbeb38b2b97c6da951",
+                "fighter2": "676d7663eb38b2b97c6da9af",
+                "winner": "676d70fbeb38b2b97c6da951",
+                "fightIdentifier": "IFC-S10-D2-R9-F1",
+                "date": "2023-05-04T13:03:23.762Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6fc5eb38b2b97c6da94d",
+                "fighter2": "676d7172eb38b2b97c6da957",
+                "winner": "676d6fc5eb38b2b97c6da94d",
+                "fightIdentifier": "IFC-S10-D2-R9-F2",
+                "date": "2023-05-05T05:45:40.617Z",
+                "userDescription": "Amruta was supremely dominant and wasted no time in this 1.5 mins fight. She parried a teep kick from her elder sister and retorted back with a powerful right hook to the jaw. It was followed by a knee kick to the solar plexus before taking Ashwini down and locking her in a superb guillotine choke that the latter couldn't escape out of. A difference of miles between the two sisters as Amruta looks all set to rub shoulders with the elite.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7279eb38b2b97c6da967",
+                "fighter2": "676d7241eb38b2b97c6da963",
+                "winner": "676d7279eb38b2b97c6da967",
+                "fightIdentifier": "IFC-S10-D2-R9-F3",
+                "date": "2023-05-05T10:35:09.023Z",
+                "userDescription": "Dominant champions like performance from Isha Nagar who gave no chance to Hinal for striking back ",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d740ceb38b2b97c6da97b",
+                "fighter2": "676d7136eb38b2b97c6da953",
+                "winner": "676d7136eb38b2b97c6da953",
+                "fightIdentifier": "IFC-S10-D2-R9-F4",
+                "date": "2023-05-05T13:15:27.626Z",
+                "userDescription": "Anmol is unstoppable. She was perfect and destructive as she took apart Krishi after some initial difficulty. Krishi, on her part, looked the champion as she matched Anmol's physicality, presence, and strength. However, eventually, she steadily lost control of the fight , Anmol showed her efficiency and dominance as she tore apart Krishi with ease and broke her arm before finishing off the challenge with a perfect powerful kick to the face.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d72c5eb38b2b97c6da969",
+                "fighter2": "676d749feb38b2b97c6da989",
+                "winner": "676d749feb38b2b97c6da989",
+                "fightIdentifier": "IFC-S10-D2-R9-F5",
+                "date": "2023-05-06T06:39:44.237Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d745feb38b2b97c6da983",
+                "fighter2": "676d75c8eb38b2b97c6da9a3",
+                "winner": "676d75c8eb38b2b97c6da9a3",
+                "fightIdentifier": "IFC-S10-D2-R9-F6",
+                "date": "2023-05-07T05:18:42.982Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 10,
+            "fights": [
+              {
+                "fighter1": "676d6fc5eb38b2b97c6da94d",
+                "fighter2": "676d7663eb38b2b97c6da9af",
+                "winner": "676d6fc5eb38b2b97c6da94d",
+                "fightIdentifier": "IFC-S10-D2-R10-F1",
+                "date": "2023-05-12T02:36:00.485Z",
+                "userDescription": "Clear difference in the hunger to win as a rampant Amruta ripped apart Vinaya to go three points clear at the top. Amruta was far too skilled as Vinaya could barely contain Amruta. The former ended the fight avec un acrobatic finish.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7172eb38b2b97c6da957",
+                "fighter2": "676d72c5eb38b2b97c6da969",
+                "winner": "676d72c5eb38b2b97c6da969",
+                "fightIdentifier": "IFC-S10-D2-R10-F2",
+                "date": "2023-05-12T05:48:19.084Z",
+                "userDescription": "Ishita vent out all her fury on Ashwini.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7241eb38b2b97c6da963",
+                "fighter2": "676d70fbeb38b2b97c6da951",
+                "winner": "676d7241eb38b2b97c6da963",
+                "fightIdentifier": "IFC-S10-D2-R10-F3",
+                "date": "2023-05-12T05:55:26.228Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7279eb38b2b97c6da967",
+                "fighter2": "676d740ceb38b2b97c6da97b",
+                "winner": "676d740ceb38b2b97c6da97b",
+                "fightIdentifier": "IFC-S10-D2-R10-F4",
+                "date": "2023-05-12T11:52:50.512Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75c8eb38b2b97c6da9a3",
+                "fighter2": "676d7136eb38b2b97c6da953",
+                "winner": "676d7136eb38b2b97c6da953",
+                "fightIdentifier": "IFC-S10-D2-R10-F5",
+                "date": "2023-05-12T11:55:15.017Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d749feb38b2b97c6da989",
+                "fighter2": "676d745feb38b2b97c6da983",
+                "winner": "676d749feb38b2b97c6da989",
+                "fightIdentifier": "IFC-S10-D2-R10-F6",
+                "date": "2023-05-13T07:10:24.340Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 11,
+            "fights": [
+              {
+                "fighter1": "676d7663eb38b2b97c6da9af",
+                "fighter2": "676d7172eb38b2b97c6da957",
+                "winner": "676d7663eb38b2b97c6da9af",
+                "fightIdentifier": "IFC-S10-D2-R11-F1",
+                "date": "2023-05-17T12:07:46.344Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6fc5eb38b2b97c6da94d",
+                "fighter2": "676d7241eb38b2b97c6da963",
+                "winner": "676d6fc5eb38b2b97c6da94d",
+                "fightIdentifier": "IFC-S10-D2-R11-F2",
+                "date": "2023-05-17T13:20:24.202Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d70fbeb38b2b97c6da951",
+                "fighter2": "676d740ceb38b2b97c6da97b",
+                "winner": "676d740ceb38b2b97c6da97b",
+                "fightIdentifier": "IFC-S10-D2-R11-F3",
+                "date": "2023-05-17T13:26:55.566Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7279eb38b2b97c6da967",
+                "fighter2": "676d75c8eb38b2b97c6da9a3",
+                "winner": "676d75c8eb38b2b97c6da9a3",
+                "fightIdentifier": "IFC-S10-D2-R11-F4",
+                "date": "2023-05-18T05:08:13.069Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d749feb38b2b97c6da989",
+                "fighter2": "676d7136eb38b2b97c6da953",
+                "winner": "676d7136eb38b2b97c6da953",
+                "fightIdentifier": "IFC-S10-D2-R11-F5",
+                "date": "2023-05-18T12:51:52.865Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d745feb38b2b97c6da983",
+                "fighter2": "676d72c5eb38b2b97c6da969",
+                "winner": "676d72c5eb38b2b97c6da969",
+                "fightIdentifier": "IFC-S10-D2-R11-F6",
+                "date": "2023-05-19T04:22:02.347Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "divisionNumber": 3,
+        "divisionName": "Division 3",
+        "totalRounds": 15,
+        "currentRound": 15,
+        "rounds": [
+          {
+            "roundNumber": 1,
+            "fights": [
+              {
+                "fighter1": "676d7201eb38b2b97c6da95f",
+                "fighter2": "676d7475eb38b2b97c6da985",
+                "winner": "676d7201eb38b2b97c6da95f",
+                "fightIdentifier": "IFC-S10-D3-R1-F1",
+                "date": "2023-02-22T03:39:40.711Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75dfeb38b2b97c6da9a5",
+                "fighter2": "676d748eeb38b2b97c6da987",
+                "winner": "676d75dfeb38b2b97c6da9a5",
+                "fightIdentifier": "IFC-S10-D3-R1-F2",
+                "date": "2023-02-23T02:46:43.603Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7554eb38b2b97c6da999",
+                "fighter2": "676d7304eb38b2b97c6da96d",
+                "winner": "676d7304eb38b2b97c6da96d",
+                "fightIdentifier": "IFC-S10-D3-R1-F3",
+                "date": "2023-02-23T02:46:57.571Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d735aeb38b2b97c6da973",
+                "fighter2": "676d764eeb38b2b97c6da9ad",
+                "winner": "676d735aeb38b2b97c6da973",
+                "fightIdentifier": "IFC-S10-D3-R1-F4",
+                "date": "2023-02-23T04:26:58.669Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7190eb38b2b97c6da959",
+                "fighter2": "676d757aeb38b2b97c6da99d",
+                "winner": "676d7190eb38b2b97c6da959",
+                "fightIdentifier": "IFC-S10-D3-R1-F5",
+                "date": "2023-02-23T18:14:10.038Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d759ceb38b2b97c6da9a1",
+                "fighter2": "676d7250eb38b2b97c6da965",
+                "winner": "676d759ceb38b2b97c6da9a1",
+                "fightIdentifier": "IFC-S10-D3-R1-F6",
+                "date": "2023-02-23T18:14:30.888Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d742deb38b2b97c6da97d",
+                "fighter2": "676d70e7eb38b2b97c6da94f",
+                "winner": "676d70e7eb38b2b97c6da94f",
+                "fightIdentifier": "IFC-S10-D3-R1-F7",
+                "date": "2023-02-23T18:14:51.571Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d71ceeb38b2b97c6da95d",
+                "fighter2": "676d6f89eb38b2b97c6da949",
+                "winner": "676d71ceeb38b2b97c6da95d",
+                "fightIdentifier": "IFC-S10-D3-R1-F8",
+                "date": "2023-02-23T18:24:33.475Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 2,
+            "fights": [
+              {
+                "fighter1": "676d7201eb38b2b97c6da95f",
+                "fighter2": "676d748eeb38b2b97c6da987",
+                "winner": "676d7201eb38b2b97c6da95f",
+                "fightIdentifier": "IFC-S10-D3-R2-F1",
+                "date": "2023-02-28T09:12:25.629Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75dfeb38b2b97c6da9a5",
+                "fighter2": "676d7554eb38b2b97c6da999",
+                "winner": "676d7554eb38b2b97c6da999",
+                "fightIdentifier": "IFC-S10-D3-R2-F2",
+                "date": "2023-02-28T09:12:42.835Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d735aeb38b2b97c6da973",
+                "fighter2": "676d7304eb38b2b97c6da96d",
+                "winner": "676d7304eb38b2b97c6da96d",
+                "fightIdentifier": "IFC-S10-D3-R2-F3",
+                "date": "2023-02-28T09:43:19.373Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7190eb38b2b97c6da959",
+                "fighter2": "676d764eeb38b2b97c6da9ad",
+                "winner": "676d764eeb38b2b97c6da9ad",
+                "fightIdentifier": "IFC-S10-D3-R2-F4",
+                "date": "2023-02-28T09:47:05.670Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d757aeb38b2b97c6da99d",
+                "fighter2": "676d759ceb38b2b97c6da9a1",
+                "winner": "676d759ceb38b2b97c6da9a1",
+                "fightIdentifier": "IFC-S10-D3-R2-F5",
+                "date": "2023-03-01T03:45:06.253Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7250eb38b2b97c6da965",
+                "fighter2": "676d742deb38b2b97c6da97d",
+                "winner": "676d742deb38b2b97c6da97d",
+                "fightIdentifier": "IFC-S10-D3-R2-F6",
+                "date": "2023-03-01T03:52:28.409Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d70e7eb38b2b97c6da94f",
+                "fighter2": "676d71ceeb38b2b97c6da95d",
+                "winner": "676d70e7eb38b2b97c6da94f",
+                "fightIdentifier": "IFC-S10-D3-R2-F7",
+                "date": "2023-03-01T04:31:06.454Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6f89eb38b2b97c6da949",
+                "fighter2": "676d7475eb38b2b97c6da985",
+                "winner": "676d6f89eb38b2b97c6da949",
+                "fightIdentifier": "IFC-S10-D3-R2-F8",
+                "date": "2023-03-01T04:36:27.560Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 3,
+            "fights": [
+              {
+                "fighter1": "676d7201eb38b2b97c6da95f",
+                "fighter2": "676d7554eb38b2b97c6da999",
+                "winner": "676d7201eb38b2b97c6da95f",
+                "fightIdentifier": "IFC-S10-D3-R3-F1",
+                "date": "2023-03-01T05:12:29.484Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75dfeb38b2b97c6da9a5",
+                "fighter2": "676d735aeb38b2b97c6da973",
+                "winner": "676d735aeb38b2b97c6da973",
+                "fightIdentifier": "IFC-S10-D3-R3-F2",
+                "date": "2023-03-01T05:25:23.909Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7190eb38b2b97c6da959",
+                "fighter2": "676d7304eb38b2b97c6da96d",
+                "winner": "676d7190eb38b2b97c6da959",
+                "fightIdentifier": "IFC-S10-D3-R3-F3",
+                "date": "2023-03-02T02:16:57.400Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d764eeb38b2b97c6da9ad",
+                "fighter2": "676d759ceb38b2b97c6da9a1",
+                "winner": "676d764eeb38b2b97c6da9ad",
+                "fightIdentifier": "IFC-S10-D3-R3-F4",
+                "date": "2023-03-02T02:33:19.304Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d742deb38b2b97c6da97d",
+                "fighter2": "676d757aeb38b2b97c6da99d",
+                "winner": "676d757aeb38b2b97c6da99d",
+                "fightIdentifier": "IFC-S10-D3-R3-F5",
+                "date": "2023-03-02T02:55:57.824Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7250eb38b2b97c6da965",
+                "fighter2": "676d71ceeb38b2b97c6da95d",
+                "winner": "676d7250eb38b2b97c6da965",
+                "fightIdentifier": "IFC-S10-D3-R3-F6",
+                "date": "2023-03-02T02:56:05.985Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d70e7eb38b2b97c6da94f",
+                "fighter2": "676d6f89eb38b2b97c6da949",
+                "winner": "676d6f89eb38b2b97c6da949",
+                "fightIdentifier": "IFC-S10-D3-R3-F7",
+                "date": "2023-03-02T04:07:38.821Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d748eeb38b2b97c6da987",
+                "fighter2": "676d7475eb38b2b97c6da985",
+                "winner": "676d7475eb38b2b97c6da985",
+                "fightIdentifier": "IFC-S10-D3-R3-F8",
+                "date": "2023-03-02T08:35:22.505Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 4,
+            "fights": [
+              {
+                "fighter1": "676d7201eb38b2b97c6da95f",
+                "fighter2": "676d735aeb38b2b97c6da973",
+                "winner": "676d7201eb38b2b97c6da95f",
+                "fightIdentifier": "IFC-S10-D3-R4-F1",
+                "date": "2023-03-04T09:46:32.219Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75dfeb38b2b97c6da9a5",
+                "fighter2": "676d7190eb38b2b97c6da959",
+                "winner": "676d7190eb38b2b97c6da959",
+                "fightIdentifier": "IFC-S10-D3-R4-F2",
+                "date": "2023-03-05T12:16:32.990Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7304eb38b2b97c6da96d",
+                "fighter2": "676d759ceb38b2b97c6da9a1",
+                "winner": "676d759ceb38b2b97c6da9a1",
+                "fightIdentifier": "IFC-S10-D3-R4-F3",
+                "date": "2023-03-05T12:16:58.941Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d742deb38b2b97c6da97d",
+                "fighter2": "676d764eeb38b2b97c6da9ad",
+                "winner": "676d764eeb38b2b97c6da9ad",
+                "fightIdentifier": "IFC-S10-D3-R4-F4",
+                "date": "2023-03-05T12:23:32.970Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d757aeb38b2b97c6da99d",
+                "fighter2": "676d71ceeb38b2b97c6da95d",
+                "winner": "676d757aeb38b2b97c6da99d",
+                "fightIdentifier": "IFC-S10-D3-R4-F5",
+                "date": "2023-03-05T14:32:13.793Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7250eb38b2b97c6da965",
+                "fighter2": "676d6f89eb38b2b97c6da949",
+                "winner": "676d7250eb38b2b97c6da965",
+                "fightIdentifier": "IFC-S10-D3-R4-F6",
+                "date": "2023-03-06T05:50:50.242Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d70e7eb38b2b97c6da94f",
+                "fighter2": "676d7475eb38b2b97c6da985",
+                "winner": "676d7475eb38b2b97c6da985",
+                "fightIdentifier": "IFC-S10-D3-R4-F7",
+                "date": "2023-03-06T06:42:40.630Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7554eb38b2b97c6da999",
+                "fighter2": "676d748eeb38b2b97c6da987",
+                "winner": "676d748eeb38b2b97c6da987",
+                "fightIdentifier": "IFC-S10-D3-R4-F8",
+                "date": "2023-03-06T07:07:03.926Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 5,
+            "fights": [
+              {
+                "fighter1": "676d7201eb38b2b97c6da95f",
+                "fighter2": "676d7190eb38b2b97c6da959",
+                "winner": "676d7190eb38b2b97c6da959",
+                "fightIdentifier": "IFC-S10-D3-R5-F1",
+                "date": "2023-03-06T09:56:20.473Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75dfeb38b2b97c6da9a5",
+                "fighter2": "676d759ceb38b2b97c6da9a1",
+                "winner": "676d759ceb38b2b97c6da9a1",
+                "fightIdentifier": "IFC-S10-D3-R5-F2",
+                "date": "2023-03-07T06:54:55.769Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d742deb38b2b97c6da97d",
+                "fighter2": "676d7304eb38b2b97c6da96d",
+                "winner": "676d7304eb38b2b97c6da96d",
+                "fightIdentifier": "IFC-S10-D3-R5-F3",
+                "date": "2023-03-07T07:03:20.268Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d71ceeb38b2b97c6da95d",
+                "fighter2": "676d764eeb38b2b97c6da9ad",
+                "winner": "676d764eeb38b2b97c6da9ad",
+                "fightIdentifier": "IFC-S10-D3-R5-F4",
+                "date": "2023-03-07T09:51:52.985Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d757aeb38b2b97c6da99d",
+                "fighter2": "676d6f89eb38b2b97c6da949",
+                "winner": "676d757aeb38b2b97c6da99d",
+                "fightIdentifier": "IFC-S10-D3-R5-F5",
+                "date": "2023-03-07T11:43:34.117Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d70e7eb38b2b97c6da94f",
+                "fighter2": "676d7250eb38b2b97c6da965",
+                "winner": "676d7250eb38b2b97c6da965",
+                "fightIdentifier": "IFC-S10-D3-R5-F6",
+                "date": "2023-03-08T03:51:25.846Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7475eb38b2b97c6da985",
+                "fighter2": "676d7554eb38b2b97c6da999",
+                "winner": "676d7475eb38b2b97c6da985",
+                "fightIdentifier": "IFC-S10-D3-R5-F7",
+                "date": "2023-03-08T03:54:02.228Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d748eeb38b2b97c6da987",
+                "fighter2": "676d735aeb38b2b97c6da973",
+                "winner": "676d735aeb38b2b97c6da973",
+                "fightIdentifier": "IFC-S10-D3-R5-F8",
+                "date": "2023-03-09T02:43:30.533Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 6,
+            "fights": [
+              {
+                "fighter1": "676d759ceb38b2b97c6da9a1",
+                "fighter2": "676d7201eb38b2b97c6da95f",
+                "winner": "676d7201eb38b2b97c6da95f",
+                "fightIdentifier": "IFC-S10-D3-R6-F1",
+                "date": "2023-03-14T03:02:26.772Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75dfeb38b2b97c6da9a5",
+                "fighter2": "676d742deb38b2b97c6da97d",
+                "winner": "676d75dfeb38b2b97c6da9a5",
+                "fightIdentifier": "IFC-S10-D3-R6-F2",
+                "date": "2023-03-14T03:05:39.385Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7304eb38b2b97c6da96d",
+                "fighter2": "676d71ceeb38b2b97c6da95d",
+                "winner": "676d7304eb38b2b97c6da96d",
+                "fightIdentifier": "IFC-S10-D3-R6-F3",
+                "date": "2023-03-15T03:38:20.735Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d764eeb38b2b97c6da9ad",
+                "fighter2": "676d6f89eb38b2b97c6da949",
+                "winner": "676d764eeb38b2b97c6da9ad",
+                "fightIdentifier": "IFC-S10-D3-R6-F4",
+                "date": "2023-03-15T13:20:45.668Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d70e7eb38b2b97c6da94f",
+                "fighter2": "676d757aeb38b2b97c6da99d",
+                "winner": "676d70e7eb38b2b97c6da94f",
+                "fightIdentifier": "IFC-S10-D3-R6-F5",
+                "date": "2023-03-15T13:24:06.162Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7475eb38b2b97c6da985",
+                "fighter2": "676d7250eb38b2b97c6da965",
+                "winner": "676d7475eb38b2b97c6da985",
+                "fightIdentifier": "IFC-S10-D3-R6-F6",
+                "date": "2023-03-15T13:26:53.566Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7190eb38b2b97c6da959",
+                "fighter2": "676d748eeb38b2b97c6da987",
+                "winner": "676d7190eb38b2b97c6da959",
+                "fightIdentifier": "IFC-S10-D3-R6-F7",
+                "date": "2023-03-15T13:57:48.487Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d735aeb38b2b97c6da973",
+                "fighter2": "676d7554eb38b2b97c6da999",
+                "winner": "676d735aeb38b2b97c6da973",
+                "fightIdentifier": "IFC-S10-D3-R6-F8",
+                "date": "2023-03-15T14:15:44.275Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 7,
+            "fights": [
+              {
+                "fighter1": "676d7201eb38b2b97c6da95f",
+                "fighter2": "676d742deb38b2b97c6da97d",
+                "winner": "676d7201eb38b2b97c6da95f",
+                "fightIdentifier": "IFC-S10-D3-R7-F1",
+                "date": "2023-03-16T05:46:11.739Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75dfeb38b2b97c6da9a5",
+                "fighter2": "676d71ceeb38b2b97c6da95d",
+                "winner": "676d71ceeb38b2b97c6da95d",
+                "fightIdentifier": "IFC-S10-D3-R7-F2",
+                "date": "2023-03-17T06:31:01.640Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7304eb38b2b97c6da96d",
+                "fighter2": "676d6f89eb38b2b97c6da949",
+                "winner": "676d7304eb38b2b97c6da96d",
+                "fightIdentifier": "IFC-S10-D3-R7-F3",
+                "date": "2023-03-17T06:33:27.107Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d764eeb38b2b97c6da9ad",
+                "fighter2": "676d70e7eb38b2b97c6da94f",
+                "winner": "676d70e7eb38b2b97c6da94f",
+                "fightIdentifier": "IFC-S10-D3-R7-F4",
+                "date": "2023-03-17T06:51:13.297Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7250eb38b2b97c6da965",
+                "fighter2": "676d757aeb38b2b97c6da99d",
+                "winner": "676d7250eb38b2b97c6da965",
+                "fightIdentifier": "IFC-S10-D3-R7-F5",
+                "date": "2023-03-17T06:55:23.185Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d735aeb38b2b97c6da973",
+                "fighter2": "676d7475eb38b2b97c6da985",
+                "winner": "676d735aeb38b2b97c6da973",
+                "fightIdentifier": "IFC-S10-D3-R7-F6",
+                "date": "2023-03-17T11:38:27.333Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d748eeb38b2b97c6da987",
+                "fighter2": "676d759ceb38b2b97c6da9a1",
+                "winner": "676d748eeb38b2b97c6da987",
+                "fightIdentifier": "IFC-S10-D3-R7-F7",
+                "date": "2023-03-17T12:05:25.936Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7190eb38b2b97c6da959",
+                "fighter2": "676d7554eb38b2b97c6da999",
+                "winner": "676d7190eb38b2b97c6da959",
+                "fightIdentifier": "IFC-S10-D3-R7-F8",
+                "date": "2023-03-18T04:24:54.859Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 8,
+            "fights": [
+              {
+                "fighter1": "676d7201eb38b2b97c6da95f",
+                "fighter2": "676d71ceeb38b2b97c6da95d",
+                "winner": "676d7201eb38b2b97c6da95f",
+                "fightIdentifier": "IFC-S10-D3-R8-F1",
+                "date": "2023-03-24T06:20:13.146Z",
+                "userDescription": "Drishti has been working extremely hard on her legs as her insanely muscular legs were responsible for the victory. She followed it up with some brutal elbow strikes that all but sealed the win.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75dfeb38b2b97c6da9a5",
+                "fighter2": "676d6f89eb38b2b97c6da949",
+                "winner": "676d6f89eb38b2b97c6da949",
+                "fightIdentifier": "IFC-S10-D3-R8-F2",
+                "date": "2023-03-24T06:27:22.359Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7304eb38b2b97c6da96d",
+                "fighter2": "676d70e7eb38b2b97c6da94f",
+                "winner": "676d70e7eb38b2b97c6da94f",
+                "fightIdentifier": "IFC-S10-D3-R8-F3",
+                "date": "2023-03-24T10:19:47.147Z",
+                "userDescription": "Ananya was brutal as she dispatched off Jinali. The fighters started equal with equal strikes and blows. However, somewhere in the middle, Ananya took control and then, it was one-side traffic. Displaying her smart intelligence, Ananya showed her research as she picked up on all the weak spots of Jinali leaving aside the latter's strength. ",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7250eb38b2b97c6da965",
+                "fighter2": "676d764eeb38b2b97c6da9ad",
+                "winner": "676d764eeb38b2b97c6da9ad",
+                "fightIdentifier": "IFC-S10-D3-R8-F4",
+                "date": "2023-03-24T10:26:23.856Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d757aeb38b2b97c6da99d",
+                "fighter2": "676d7475eb38b2b97c6da985",
+                "winner": "676d7475eb38b2b97c6da985",
+                "fightIdentifier": "IFC-S10-D3-R8-F5",
+                "date": "2023-03-25T06:28:00.508Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d748eeb38b2b97c6da987",
+                "fighter2": "676d742deb38b2b97c6da97d",
+                "winner": "676d742deb38b2b97c6da97d",
+                "fightIdentifier": "IFC-S10-D3-R8-F6",
+                "date": "2023-03-25T11:06:33.482Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7554eb38b2b97c6da999",
+                "fighter2": "676d759ceb38b2b97c6da9a1",
+                "winner": "676d7554eb38b2b97c6da999",
+                "fightIdentifier": "IFC-S10-D3-R8-F7",
+                "date": "2023-03-26T03:48:38.038Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d735aeb38b2b97c6da973",
+                "fighter2": "676d7190eb38b2b97c6da959",
+                "winner": "676d735aeb38b2b97c6da973",
+                "fightIdentifier": "IFC-S10-D3-R8-F8",
+                "date": "2023-03-26T03:49:32.320Z",
+                "userDescription": "Bandgee was dominant 95% of the fight with Kanchan barely managing to scrap some significant strikes. She had to execute her chokehold three times before she managed to get it right and take out Bandgee. Bandgee has truly reached the potential of a Division 1 or Division 2 fighter.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 9,
+            "fights": [
+              {
+                "fighter1": "676d7201eb38b2b97c6da95f",
+                "fighter2": "676d6f89eb38b2b97c6da949",
+                "winner": "676d6f89eb38b2b97c6da949",
+                "fightIdentifier": "IFC-S10-D3-R9-F1",
+                "date": "2023-03-26T09:12:01.214Z",
+                "userDescription": "Aashna convincingly trapped Drishti in a leg lock and an arm bar to break her arm and nose. Finished it with a spectacular kick to the face.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d70e7eb38b2b97c6da94f",
+                "fighter2": "676d75dfeb38b2b97c6da9a5",
+                "winner": "676d70e7eb38b2b97c6da94f",
+                "fightIdentifier": "IFC-S10-D3-R9-F2",
+                "date": "2023-03-26T09:22:32.578Z",
+                "userDescription": "Sayali who is set to fight Ananya in Invicta Cup could only watch in awe as the 19-year old dispatched off Tanvi brutally.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7304eb38b2b97c6da96d",
+                "fighter2": "676d7250eb38b2b97c6da965",
+                "winner": "676d7304eb38b2b97c6da96d",
+                "fightIdentifier": "IFC-S10-D3-R9-F3",
+                "date": "2023-03-26T09:37:28.805Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d757aeb38b2b97c6da99d",
+                "fighter2": "676d764eeb38b2b97c6da9ad",
+                "winner": "676d757aeb38b2b97c6da99d",
+                "fightIdentifier": "IFC-S10-D3-R9-F4",
+                "date": "2023-03-27T03:51:27.718Z",
+                "userDescription": "Vidhi was brilliant and destructive. She could have brutally damaged Shraddha. However, Shraddha chose the right time to drop in a rear naked choke and that ended all the challenge. Vidhi still struggled to get free but Shraddha managed it well.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7475eb38b2b97c6da985",
+                "fighter2": "676d7190eb38b2b97c6da959",
+                "winner": "676d7475eb38b2b97c6da985",
+                "fightIdentifier": "IFC-S10-D3-R9-F5",
+                "date": "2023-03-28T01:58:01.842Z",
+                "userDescription": "Mridula totally nullifies Bandgee. Bandgee was barely there in the fight as Mridula dominated for at least 98% of the fight. Bandgee took Mridula's 12 strikes to hit her first. In totality, Bandgee had only 6-7 significant strikes while Mridula crossed 50. Mridula also broke Bandgee's right leg and brutalised her way to a massive confident victory.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d71ceeb38b2b97c6da95d",
+                "fighter2": "676d748eeb38b2b97c6da987",
+                "winner": "676d71ceeb38b2b97c6da95d",
+                "fightIdentifier": "IFC-S10-D3-R9-F6",
+                "date": "2023-03-28T10:48:03.762Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d742deb38b2b97c6da97d",
+                "fighter2": "676d7554eb38b2b97c6da999",
+                "winner": "676d7554eb38b2b97c6da999",
+                "fightIdentifier": "IFC-S10-D3-R9-F7",
+                "date": "2023-03-28T10:48:27.125Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d759ceb38b2b97c6da9a1",
+                "fighter2": "676d735aeb38b2b97c6da973",
+                "winner": "676d735aeb38b2b97c6da973",
+                "fightIdentifier": "IFC-S10-D3-R9-F8",
+                "date": "2023-03-28T10:49:38.780Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 10,
+            "fights": [
+              {
+                "fighter1": "676d7201eb38b2b97c6da95f",
+                "fighter2": "676d70e7eb38b2b97c6da94f",
+                "winner": "676d7201eb38b2b97c6da95f",
+                "fightIdentifier": "IFC-S10-D3-R10-F1",
+                "date": "2023-04-06T09:05:07.688Z",
+                "userDescription": "Dominant and bullish win for Drishti. Ananya was sorely missing as her first strike which was the first strike in the fight had no impact on Drishti. After that, it was majorly Drishti and her legs who bullied Ananya and eventually won via ground and pound.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75dfeb38b2b97c6da9a5",
+                "fighter2": "676d7250eb38b2b97c6da965",
+                "winner": "676d7250eb38b2b97c6da965",
+                "fightIdentifier": "IFC-S10-D3-R10-F2",
+                "date": "2023-04-06T09:17:27.063Z",
+                "userDescription": "Tanvi was brutal and confident from the start. Isha could barely reply to Tanvi's agility and kicks. However, one spectacular block to a roundhouse kick and Isha slowly started gaining momentum. Eventually, Isha combined a leg lock to a rear naked choke and that was more than Tanvi could handle. ",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7304eb38b2b97c6da96d",
+                "fighter2": "676d757aeb38b2b97c6da99d",
+                "winner": "676d7304eb38b2b97c6da96d",
+                "fightIdentifier": "IFC-S10-D3-R10-F3",
+                "date": "2023-04-07T06:16:15.496Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d764eeb38b2b97c6da9ad",
+                "fighter2": "676d7475eb38b2b97c6da985",
+                "winner": "676d7475eb38b2b97c6da985",
+                "fightIdentifier": "IFC-S10-D3-R10-F4",
+                "date": "2023-04-07T06:18:25.571Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d748eeb38b2b97c6da987",
+                "fighter2": "676d6f89eb38b2b97c6da949",
+                "winner": "676d748eeb38b2b97c6da987",
+                "fightIdentifier": "IFC-S10-D3-R10-F5",
+                "date": "2023-04-07T06:21:36.329Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d71ceeb38b2b97c6da95d",
+                "fighter2": "676d7554eb38b2b97c6da999",
+                "winner": "676d7554eb38b2b97c6da999",
+                "fightIdentifier": "IFC-S10-D3-R10-F6",
+                "date": "2023-04-07T10:49:36.227Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d742deb38b2b97c6da97d",
+                "fighter2": "676d735aeb38b2b97c6da973",
+                "winner": "676d735aeb38b2b97c6da973",
+                "fightIdentifier": "IFC-S10-D3-R10-F7",
+                "date": "2023-04-07T10:53:52.061Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7190eb38b2b97c6da959",
+                "fighter2": "676d759ceb38b2b97c6da9a1",
+                "winner": "676d7190eb38b2b97c6da959",
+                "fightIdentifier": "IFC-S10-D3-R10-F8",
+                "date": "2023-04-08T03:50:23.294Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 11,
+            "fights": [
+              {
+                "fighter1": "676d7201eb38b2b97c6da95f",
+                "fighter2": "676d7250eb38b2b97c6da965",
+                "winner": "676d7201eb38b2b97c6da95f",
+                "fightIdentifier": "IFC-S10-D3-R11-F1",
+                "date": "2023-04-20T19:26:05.611Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75dfeb38b2b97c6da9a5",
+                "fighter2": "676d757aeb38b2b97c6da99d",
+                "winner": "676d757aeb38b2b97c6da99d",
+                "fightIdentifier": "IFC-S10-D3-R11-F2",
+                "date": "2023-04-21T14:30:23.617Z",
+                "userDescription": "Tanvi was far too dominant against Shraddha and should have won the fight. Shraddha was lucky she persisted till the end and managed to wrap Tanvi in a good rear naked choke to win.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7304eb38b2b97c6da96d",
+                "fighter2": "676d764eeb38b2b97c6da9ad",
+                "winner": "676d764eeb38b2b97c6da9ad",
+                "fightIdentifier": "IFC-S10-D3-R11-F3",
+                "date": "2023-04-21T14:33:15.215Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d70e7eb38b2b97c6da94f",
+                "fighter2": "676d748eeb38b2b97c6da987",
+                "winner": "676d70e7eb38b2b97c6da94f",
+                "fightIdentifier": "IFC-S10-D3-R11-F4",
+                "date": "2023-04-21T14:35:54.332Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6f89eb38b2b97c6da949",
+                "fighter2": "676d7554eb38b2b97c6da999",
+                "winner": "676d7554eb38b2b97c6da999",
+                "fightIdentifier": "IFC-S10-D3-R11-F5",
+                "date": "2023-04-22T04:45:42.820Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d759ceb38b2b97c6da9a1",
+                "fighter2": "676d7475eb38b2b97c6da985",
+                "winner": "676d7475eb38b2b97c6da985",
+                "fightIdentifier": "IFC-S10-D3-R11-F6",
+                "date": "2023-04-22T04:49:32.330Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d735aeb38b2b97c6da973",
+                "fighter2": "676d71ceeb38b2b97c6da95d",
+                "winner": "676d735aeb38b2b97c6da973",
+                "fightIdentifier": "IFC-S10-D3-R11-F7",
+                "date": "2023-04-22T11:07:14.225Z",
+                "userDescription": "Diana was excellent and should have been the winner. It was an agonisingly long fight as equals. Both fighters were persistent although it looked like Diana needed this more than Kanchan. Eventually, Kanchan managed to trap Diana in a rear naked chokehold.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d742deb38b2b97c6da97d",
+                "fighter2": "676d7190eb38b2b97c6da959",
+                "winner": "676d7190eb38b2b97c6da959",
+                "fightIdentifier": "IFC-S10-D3-R11-F8",
+                "date": "2023-04-22T11:15:12.496Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 12,
+            "fights": [
+              {
+                "fighter1": "676d757aeb38b2b97c6da99d",
+                "fighter2": "676d7201eb38b2b97c6da95f",
+                "winner": "676d7201eb38b2b97c6da95f",
+                "fightIdentifier": "IFC-S10-D3-R12-F1",
+                "date": "2023-04-22T11:18:01.248Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75dfeb38b2b97c6da9a5",
+                "fighter2": "676d764eeb38b2b97c6da9ad",
+                "winner": "676d764eeb38b2b97c6da9ad",
+                "fightIdentifier": "IFC-S10-D3-R12-F2",
+                "date": "2023-04-23T10:08:33.044Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7475eb38b2b97c6da985",
+                "fighter2": "676d7304eb38b2b97c6da96d",
+                "winner": "676d7475eb38b2b97c6da985",
+                "fightIdentifier": "IFC-S10-D3-R12-F3",
+                "date": "2023-04-23T10:12:51.736Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d748eeb38b2b97c6da987",
+                "fighter2": "676d7250eb38b2b97c6da965",
+                "winner": "676d7250eb38b2b97c6da965",
+                "fightIdentifier": "IFC-S10-D3-R12-F4",
+                "date": "2023-04-23T10:19:28.184Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d70e7eb38b2b97c6da94f",
+                "fighter2": "676d7554eb38b2b97c6da999",
+                "winner": "676d70e7eb38b2b97c6da94f",
+                "fightIdentifier": "IFC-S10-D3-R12-F5",
+                "date": "2023-04-23T16:47:27.497Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d6f89eb38b2b97c6da949",
+                "fighter2": "676d735aeb38b2b97c6da973",
+                "winner": "676d6f89eb38b2b97c6da949",
+                "fightIdentifier": "IFC-S10-D3-R12-F6",
+                "date": "2023-04-23T16:48:13.771Z",
+                "userDescription": "Aashna was majestic. Kanchan never bad a chance to strike Aashna. Aashna was supremely professional and insanely calm as she thwarted every Kanchan strike and struck back stronger. Eventually that perfect chokehold was enough to bring a historic win. A win that reminds of her glory days when she chased the title.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d71ceeb38b2b97c6da95d",
+                "fighter2": "676d7190eb38b2b97c6da959",
+                "winner": "676d71ceeb38b2b97c6da95d",
+                "fightIdentifier": "IFC-S10-D3-R12-F7",
+                "date": "2023-04-23T16:53:33.800Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d759ceb38b2b97c6da9a1",
+                "fighter2": "676d742deb38b2b97c6da97d",
+                "winner": "676d759ceb38b2b97c6da9a1",
+                "fightIdentifier": "IFC-S10-D3-R12-F8",
+                "date": "2023-04-25T04:47:38.138Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 13,
+            "fights": [
+              {
+                "fighter1": "676d764eeb38b2b97c6da9ad",
+                "fighter2": "676d7201eb38b2b97c6da95f",
+                "winner": "676d7201eb38b2b97c6da95f",
+                "fightIdentifier": "IFC-S10-D3-R13-F1",
+                "date": "2023-05-01T04:47:26.336Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75dfeb38b2b97c6da9a5",
+                "fighter2": "676d7304eb38b2b97c6da96d",
+                "winner": "676d7304eb38b2b97c6da96d",
+                "fightIdentifier": "IFC-S10-D3-R13-F2",
+                "date": "2023-05-02T04:12:16.665Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d757aeb38b2b97c6da99d",
+                "fighter2": "676d748eeb38b2b97c6da987",
+                "winner": "676d757aeb38b2b97c6da99d",
+                "fightIdentifier": "IFC-S10-D3-R13-F3",
+                "date": "2023-05-02T14:10:24.835Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7250eb38b2b97c6da965",
+                "fighter2": "676d7554eb38b2b97c6da999",
+                "winner": "676d7250eb38b2b97c6da965",
+                "fightIdentifier": "IFC-S10-D3-R13-F4",
+                "date": "2023-05-02T14:17:05.639Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d735aeb38b2b97c6da973",
+                "fighter2": "676d70e7eb38b2b97c6da94f",
+                "winner": "676d735aeb38b2b97c6da973",
+                "fightIdentifier": "IFC-S10-D3-R13-F5",
+                "date": "2023-05-02T14:20:24.506Z",
+                "userDescription": "Kanchan rips apart Ananya's face in a vicious war that saw them engage in an intense street style battle for win.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7190eb38b2b97c6da959",
+                "fighter2": "676d6f89eb38b2b97c6da949",
+                "winner": "676d6f89eb38b2b97c6da949",
+                "fightIdentifier": "IFC-S10-D3-R13-F6",
+                "date": "2023-05-03T21:06:43.789Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7475eb38b2b97c6da985",
+                "fighter2": "676d742deb38b2b97c6da97d",
+                "winner": "676d7475eb38b2b97c6da985",
+                "fightIdentifier": "IFC-S10-D3-R13-F7",
+                "date": "2023-05-03T21:08:21.084Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d759ceb38b2b97c6da9a1",
+                "fighter2": "676d71ceeb38b2b97c6da95d",
+                "winner": "676d71ceeb38b2b97c6da95d",
+                "fightIdentifier": "IFC-S10-D3-R13-F8",
+                "date": "2023-05-04T09:01:13.325Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 14,
+            "fights": [
+              {
+                "fighter1": "676d7201eb38b2b97c6da95f",
+                "fighter2": "676d7304eb38b2b97c6da96d",
+                "winner": "676d7201eb38b2b97c6da95f",
+                "fightIdentifier": "IFC-S10-D3-R14-F1",
+                "date": "2023-05-09T13:30:46.976Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d75dfeb38b2b97c6da9a5",
+                "fighter2": "676d7475eb38b2b97c6da985",
+                "winner": "676d7475eb38b2b97c6da985",
+                "fightIdentifier": "IFC-S10-D3-R14-F2",
+                "date": "2023-05-09T13:30:53.001Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d748eeb38b2b97c6da987",
+                "fighter2": "676d764eeb38b2b97c6da9ad",
+                "winner": "676d748eeb38b2b97c6da987",
+                "fightIdentifier": "IFC-S10-D3-R14-F3",
+                "date": "2023-05-10T05:15:51.390Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d757aeb38b2b97c6da99d",
+                "fighter2": "676d7554eb38b2b97c6da999",
+                "winner": "676d7554eb38b2b97c6da999",
+                "fightIdentifier": "IFC-S10-D3-R14-F4",
+                "date": "2023-05-10T05:16:21.509Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d735aeb38b2b97c6da973",
+                "fighter2": "676d7250eb38b2b97c6da965",
+                "winner": "676d735aeb38b2b97c6da973",
+                "fightIdentifier": "IFC-S10-D3-R14-F5",
+                "date": "2023-05-11T13:43:23.482Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7190eb38b2b97c6da959",
+                "fighter2": "676d70e7eb38b2b97c6da94f",
+                "winner": "676d70e7eb38b2b97c6da94f",
+                "fightIdentifier": "IFC-S10-D3-R14-F6",
+                "date": "2023-05-11T13:49:50.025Z",
+                "userDescription": "Vicious battle as the two fighters looked to be on a personal agenda to finish each other off. Fight moved from a professional environment to a poor impression of a street brawl. There was viciousness in every strike but poorly executed at times. All in all, pure entertainment as both were equal until the end when Ananya's kick surprised Bandgee. Ananya finished it off with a flurry of punches.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d759ceb38b2b97c6da9a1",
+                "fighter2": "676d6f89eb38b2b97c6da949",
+                "winner": "676d6f89eb38b2b97c6da949",
+                "fightIdentifier": "IFC-S10-D3-R14-F7",
+                "date": "2023-05-11T13:55:13.383Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d71ceeb38b2b97c6da95d",
+                "fighter2": "676d742deb38b2b97c6da97d",
+                "winner": "676d71ceeb38b2b97c6da95d",
+                "fightIdentifier": "IFC-S10-D3-R14-F8",
+                "date": "2023-05-11T14:21:12.894Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          },
+          {
+            "roundNumber": 15,
+            "fights": [
+              {
+                "fighter1": "676d7201eb38b2b97c6da95f",
+                "fighter2": "676d75dfeb38b2b97c6da9a5",
+                "winner": "676d7201eb38b2b97c6da95f",
+                "fightIdentifier": "IFC-S10-D3-R15-F1",
+                "date": "2023-05-15T03:49:11.983Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7304eb38b2b97c6da96d",
+                "fighter2": "676d748eeb38b2b97c6da987",
+                "winner": "676d748eeb38b2b97c6da987",
+                "fightIdentifier": "IFC-S10-D3-R15-F2",
+                "date": "2023-05-15T13:46:13.214Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d764eeb38b2b97c6da9ad",
+                "fighter2": "676d7554eb38b2b97c6da999",
+                "winner": "676d764eeb38b2b97c6da9ad",
+                "fightIdentifier": "IFC-S10-D3-R15-F3",
+                "date": "2023-05-15T13:47:41.485Z",
+                "userDescription": "Supreme skills by Vidhi to dodge Sachi's incoming strike, move behind her, shove her to the right distance before unleashing a lethal kick to the jaw that knocked Sachi out. To ensure the win, Vidhi dropped nasty punches and elbows and even a rear naked chokre but by then, the victory was already done and acquired.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d735aeb38b2b97c6da973",
+                "fighter2": "676d757aeb38b2b97c6da99d",
+                "winner": "676d735aeb38b2b97c6da973",
+                "fightIdentifier": "IFC-S10-D3-R15-F4",
+                "date": "2023-05-15T13:55:16.878Z",
+                "userDescription": "Shraddha started strong and it gave a lot of hope to Mridula sitting in the stands to finish second. Shraddha's strikes were strong and they were finding gaps accurately. However, Kanchan flipped the tables suddenly and put on such a dominating force that Shraddha couldn't handle. Eventually, Kanchan let out her anger and brutally disfigured Shraddha to confirm her second place finish this season while breaking her arm.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7250eb38b2b97c6da965",
+                "fighter2": "676d7190eb38b2b97c6da959",
+                "winner": "676d7190eb38b2b97c6da959",
+                "fightIdentifier": "IFC-S10-D3-R15-F5",
+                "date": "2023-05-16T03:31:57.806Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d759ceb38b2b97c6da9a1",
+                "fighter2": "676d70e7eb38b2b97c6da94f",
+                "winner": "676d759ceb38b2b97c6da9a1",
+                "fightIdentifier": "IFC-S10-D3-R15-F6",
+                "date": "2023-05-16T03:32:12.600Z",
+                "userDescription": null,
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d742deb38b2b97c6da97d",
+                "fighter2": "676d6f89eb38b2b97c6da949",
+                "winner": "676d742deb38b2b97c6da97d",
+                "fightIdentifier": "IFC-S10-D3-R15-F7",
+                "date": "2023-05-16T13:27:31.386Z",
+                "userDescription": "Kriti reserved one of her best performances for the last as she dominated and beat Aashna down to mincemeat. This was a flawless top-notch performance of highest professional standards that got Krishi to the top ten in IFC rankings earlier in the season. They was just about perfect power behind each strike, perfect accuracy, and lethal skills at display with merciless brutality as she won against an in-form Aashna Jogani.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              },
+              {
+                "fighter1": "676d7475eb38b2b97c6da985",
+                "fighter2": "676d71ceeb38b2b97c6da95d",
+                "winner": "676d7475eb38b2b97c6da985",
+                "fightIdentifier": "IFC-S10-D3-R15-F8",
+                "date": "2023-05-16T14:28:05.841Z",
+                "userDescription": "The most brutal fight was reserved for the last fight of Division 3. Diana absolutely battered the shit out of Mridula in the first half. Mridula had no answer whatsoever as she Diana rained punches, kicks and holds. However, Diana was this close to finishing off the fight when Mridula made an epic comeback. Having stronger legs than her Australian counterpart and more agility, Mridula ripped apart the challenge to pieces and brutally destroyed Diana by breaking her arm and her face to win the fight.",
+                "genAIDescription": null,
+                "isSimulated": false,
+                "fighterStats": [],
+                "fightStatus": "completed"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
