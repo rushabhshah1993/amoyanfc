@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner, faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_FIGHTERS } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
@@ -40,6 +40,7 @@ interface Fighter {
 const FightersPage: React.FC = () => {
     const navigate = useNavigate();
     const { loading, error, data } = useQuery(GET_ALL_FIGHTERS);
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         document.title = 'Amoyan FC | Fighters';
@@ -56,8 +57,17 @@ const FightersPage: React.FC = () => {
 
     const fighters: Fighter[] = data?.getAllFighters || [];
 
+    // Filter fighters based on search query
+    const filteredFighters = fighters.filter((fighter) => {
+        if (!searchQuery.trim()) return true;
+        const query = searchQuery.toLowerCase();
+        const firstName = fighter.firstName.toLowerCase();
+        const lastName = fighter.lastName.toLowerCase();
+        return firstName.includes(query) || lastName.includes(query);
+    });
+
     // Sort fighters alphabetically by first name (create new array to avoid mutating read-only array)
-    const sortedFighters = [...fighters].sort((a, b) => 
+    const sortedFighters = [...filteredFighters].sort((a, b) => 
         a.firstName.toLowerCase().localeCompare(b.firstName.toLowerCase())
     );
 
@@ -66,6 +76,21 @@ const FightersPage: React.FC = () => {
             <div className={styles.fightersSection}>
                 <div className={styles.sectionHeader}>
                     <h2 className={styles.sectionTitle}>Fighters</h2>
+                </div>
+                <div className={styles.controlsRow}>
+                    <button className={styles.compareButton}>
+                        Compare Fighters
+                    </button>
+                    <div className={styles.searchContainer}>
+                        <input
+                            type="text"
+                            placeholder="Search fighters..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className={styles.searchInput}
+                        />
+                        <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
+                    </div>
                 </div>
                 
                 {sortedFighters.length === 0 ? (
