@@ -1,0 +1,65 @@
+INVICTA CUP SEASON 7 DATA SUMMARY
+======================================================================
+
+Generated: 2025-10-19T15:45:24.732Z
+
+COMPETITION META:
+  - Competition Meta ID: 6778103309a4c4b25127f8fc
+  - Competition Name: Invicta Cup
+  - Season Number: 1 (corresponds to IFC S7)
+  - Tournament ID: W0001
+
+LINKED LEAGUE:
+  - League: IFC (Invictus Fighting Championship)
+  - League Competition ID: 67780dcc09a4c4b25127f8f6
+  - League Season ID: 68f2a2e3e25ec66dfba26c31
+  - League Season Number: 7
+
+TIMELINE:
+  - Start: 2022-01-24T09:30:47.763Z
+  - End: 2022-02-17T04:54:19.733Z
+
+PARTICIPANTS:
+  - Total Fighters: 8
+  - Fighter IDs: F019, F005, F027, F018, F035, F015, F039, F032
+  - Winner: F032
+
+FIGHTS:
+  - Round 1: 4 fights
+  - Semifinals: 2 fights
+  - Finals: 1 fight
+  - Total Fights: 7
+
+DIVISIONS REPRESENTED:
+  - F019: Division 3
+  - F005: Division 1
+  - F027: Division 3
+  - F018: Division 2
+  - F035: Division 2
+  - F015: Division 1
+  - F039: Division 3
+  - F032: Division 2
+
+FIGHT DETAILS:
+──────────────────────────────────────────────────────────────────────
+
+ROUND 1:
+  1. W0001-R1-F1: F018 vs F015 → Winner: F015
+  2. W0001-R1-F2: F035 vs F027 → Winner: F035
+  3. W0001-R1-F3: F005 vs F019 → Winner: F005
+  4. W0001-R1-F4: F039 vs F032 → Winner: F032
+
+SEMIFINALS:
+  1. W0001-SF-F1: F015 vs F035 → Winner: F035
+  2. W0001-SF-F2: F005 vs F032 → Winner: F032
+
+FINALS:
+  1. W0001-FN: F035 vs F032 → Winner: F032
+
+======================================================================
+
+⚠️  IMPORTANT NOTES:
+  - Fighter IDs are currently F-codes (F001, F005, etc.)
+  - These need to be mapped to actual MongoDB ObjectIds
+  - Fight dates are currently null and may need to be set
+  - Prize money values are null and can be set if available

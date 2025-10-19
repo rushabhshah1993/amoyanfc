@@ -1,0 +1,135 @@
+{
+  "competitionMetaId": "6778103309a4c4b25127f8fc",
+  "isActive": false,
+  "seasonMeta": {
+    "seasonNumber": 1,
+    "startDate": "2022-01-24T09:30:47.763Z",
+    "endDate": "2022-02-17T04:54:19.733Z",
+    "winners": [
+      "676d75dfeb38b2b97c6da9a5"
+    ],
+    "leagueDivisions": null,
+    "cupParticipants": {
+      "fighters": [
+        "676d742deb38b2b97c6da97d",
+        "676d7136eb38b2b97c6da953",
+        "676d751aeb38b2b97c6da995",
+        "676d740ceb38b2b97c6da97b",
+        "676d7631eb38b2b97c6da9ab",
+        "676d736eeb38b2b97c6da975",
+        "676d7568eb38b2b97c6da99b",
+        "676d75dfeb38b2b97c6da9a5"
+      ]
+    }
+  },
+  "leagueData": null,
+  "cupData": {
+    "fights": [
+      {
+        "fighter1": "676d740ceb38b2b97c6da97b",
+        "fighter2": "676d736eeb38b2b97c6da975",
+        "winner": "676d736eeb38b2b97c6da975",
+        "fightIdentifier": "IC-S1-R1-F1",
+        "date": null,
+        "userDescription": null,
+        "genAIDescription": null,
+        "isSimulated": false,
+        "fighterStats": [],
+        "fightStatus": "completed"
+      },
+      {
+        "fighter1": "676d7631eb38b2b97c6da9ab",
+        "fighter2": "676d751aeb38b2b97c6da995",
+        "winner": "676d7631eb38b2b97c6da9ab",
+        "fightIdentifier": "IC-S1-R1-F2",
+        "date": null,
+        "userDescription": null,
+        "genAIDescription": null,
+        "isSimulated": false,
+        "fighterStats": [],
+        "fightStatus": "completed"
+      },
+      {
+        "fighter1": "676d7136eb38b2b97c6da953",
+        "fighter2": "676d742deb38b2b97c6da97d",
+        "winner": "676d7136eb38b2b97c6da953",
+        "fightIdentifier": "IC-S1-R1-F3",
+        "date": null,
+        "userDescription": null,
+        "genAIDescription": null,
+        "isSimulated": false,
+        "fighterStats": [],
+        "fightStatus": "completed"
+      },
+      {
+        "fighter1": "676d7568eb38b2b97c6da99b",
+        "fighter2": "676d75dfeb38b2b97c6da9a5",
+        "winner": "676d75dfeb38b2b97c6da9a5",
+        "fightIdentifier": "IC-S1-R1-F4",
+        "date": null,
+        "userDescription": null,
+        "genAIDescription": null,
+        "isSimulated": false,
+        "fighterStats": [],
+        "fightStatus": "completed"
+      },
+      {
+        "fighter1": "676d736eeb38b2b97c6da975",
+        "fighter2": "676d7631eb38b2b97c6da9ab",
+        "winner": "676d7631eb38b2b97c6da9ab",
+        "fightIdentifier": "IC-S1-SF-F1",
+        "date": null,
+        "userDescription": null,
+        "genAIDescription": null,
+        "isSimulated": false,
+        "fighterStats": [],
+        "fightStatus": "completed"
+      },
+      {
+        "fighter1": "676d7136eb38b2b97c6da953",
+        "fighter2": "676d75dfeb38b2b97c6da9a5",
+        "winner": "676d75dfeb38b2b97c6da9a5",
+        "fightIdentifier": "IC-S1-SF-F2",
+        "date": null,
+        "userDescription": null,
+        "genAIDescription": null,
+        "isSimulated": false,
+        "fighterStats": [],
+        "fightStatus": "completed"
+      },
+      {
+        "fighter1": "676d7631eb38b2b97c6da9ab",
+        "fighter2": "676d75dfeb38b2b97c6da9a5",
+        "winner": "676d75dfeb38b2b97c6da9a5",
+        "fightIdentifier": "IC-S1-FN",
+        "date": null,
+        "userDescription": null,
+        "genAIDescription": null,
+        "isSimulated": false,
+        "fighterStats": [],
+        "fightStatus": "completed"
+      }
+    ],
+    "currentStage": "Finals"
+  },
+  "config": {
+    "leagueConfiguration": null,
+    "cupConfiguration": {
+      "knockoutRounds": 3,
+      "numberOfFighters": 8,
+      "perFightFeeInEur": null,
+      "winningFeeInEur": null,
+      "stages": [
+        "Preliminary",
+        "Semi-finals",
+        "Finals"
+      ]
+    }
+  },
+  "linkedLeagueSeason": {
+    "competitionId": "67780dcc09a4c4b25127f8f6",
+    "seasonId": "68f2a2e3e25ec66dfba26c31"
+  },
+  "createdAt": "2022-01-24T09:30:47.763Z",
+  "updatedAt": "2025-10-19T15:45:24.731Z"
+}
