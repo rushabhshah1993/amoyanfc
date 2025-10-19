@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faTrophy } from '@fortawesome/free-solid-svg-icons';
@@ -53,6 +53,7 @@ const DivisionPage: React.FC = () => {
     divisionNumber: string;
   }>();
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [selectedRound, setSelectedRound] = useState<number>(1);
   const [divisionData, setDivisionData] = useState<Division | null>(null);
@@ -102,14 +103,31 @@ const DivisionPage: React.FC = () => {
         
         if (division) {
           setDivisionData(division);
-          // Set selected round to current round by default
-          setSelectedRound(division.currentRound || division.totalRounds);
+          
+          // Check if there's a round in URL params, otherwise default to current round
+          const roundParam = searchParams.get('round');
+          if (roundParam) {
+            const roundNumber = parseInt(roundParam);
+            if (roundNumber >= 1 && roundNumber <= division.totalRounds) {
+              setSelectedRound(roundNumber);
+            } else {
+              // Invalid round number, default to current round
+              setSelectedRound(division.currentRound || division.totalRounds);
+              setSearchParams({ round: String(division.currentRound || division.totalRounds) });
+            }
+          } else {
+            // No round param, set to current round and update URL
+            const defaultRound = division.currentRound || division.totalRounds;
+            setSelectedRound(defaultRound);
+            setSearchParams({ round: String(defaultRound) });
+          }
           
           // Update page title
           document.title = `Amoyan FC | ${division.divisionName || `Division ${divisionNumber}`} - Season ${season.seasonMeta.seasonNumber}`;
         }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seasonData, divisionNumber]);
 
   // Get fighters data for displaying names and images
@@ -307,12 +325,18 @@ const DivisionPage: React.FC = () => {
       label: `Round ${round}`
     }));
 
+    const handleRoundChange = (value: number | string) => {
+      const roundNumber = value as number;
+      setSelectedRound(roundNumber);
+      setSearchParams({ round: String(roundNumber) });
+    };
+
     return (
       <div className={styles.roundSelector}>
         <Dropdown
           options={roundOptions}
           value={selectedRound}
-          onChange={(value) => setSelectedRound(value as number)}
+          onChange={handleRoundChange}
           align="right"
           maxHeight={240}
         />
