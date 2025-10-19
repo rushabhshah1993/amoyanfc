@@ -296,6 +296,14 @@ export const GET_SEASON_DETAILS = gql`
                         profileImage
                     }
                 }
+                cupParticipants {
+                    fighters {
+                        id
+                        firstName
+                        lastName
+                        profileImage
+                    }
+                }
             }
             leagueData {
                 divisions {
@@ -316,6 +324,31 @@ export const GET_SEASON_DETAILS = gql`
                         }
                     }
                 }
+            }
+            cupData {
+                fights {
+                    fighter1
+                    fighter2
+                    winner
+                    fightIdentifier
+                    date
+                }
+                currentStage
+            }
+            linkedLeagueSeason {
+                competition {
+                    id
+                    competitionName
+                    shortName
+                }
+                season {
+                    seasonNumber
+                }
+            }
+            competitionMeta {
+                id
+                competitionName
+                shortName
             }
         }
     }

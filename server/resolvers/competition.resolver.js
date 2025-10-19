@@ -214,6 +214,20 @@ const competitionResolver = {
             const fighters = await Fighter.find({ _id: { $in: parent.fighters } });
             return fighters;
         })
+    },
+    CompetitionLinkedLeagueSeason: {
+        competition: catchAsyncErrors(async(parent) => {
+            if (!parent.competition) return null;
+            const competitionMeta = await CompetitionMeta.findById(parent.competition);
+            if (!competitionMeta) throw new NotFoundError('Linked competition not found');
+            return competitionMeta;
+        }),
+        season: catchAsyncErrors(async(parent) => {
+            if (!parent.season) return null;
+            const season = await Competition.findById(parent.season);
+            if (!season) throw new NotFoundError('Linked season not found');
+            return season.seasonMeta;
+        })
     }
 };
 

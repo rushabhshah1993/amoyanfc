@@ -127,8 +127,8 @@
     }
   },
   "linkedLeagueSeason": {
-    "competitionId": "67780dcc09a4c4b25127f8f6",
-    "seasonId": "68f2a2e3e25ec66dfba26c31"
+    "competition": "67780dcc09a4c4b25127f8f6",
+    "season": "68f2a2e3e25ec66dfba26c31"
   },
   "createdAt": "2022-01-24T09:30:47.763Z",
   "updatedAt": "2025-10-19T15:45:24.731Z"

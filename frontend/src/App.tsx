@@ -14,7 +14,7 @@ import FightersSortingPage from './pages/FightersSortingPage/FightersSortingPage
 import FighterPage from './pages/FighterPage/FighterPage';
 import VersusPage from './pages/VersusPage/VersusPage';
 import CompetitionPage from './pages/CompetitionPage/CompetitionPage';
-import LeagueSeasonPage from './pages/LeagueSeasonPage/LeagueSeasonPage';
+import SeasonPageWrapper from './pages/SeasonPageWrapper';
 import DetailedTimelinePage from './pages/DetailedTimelinePage/DetailedTimelinePage';
 import DivisionPage from './pages/DivisionPage/DivisionPage';
 import RoundsPage from './pages/RoundsPage/RoundsPage';
@@ -66,7 +66,7 @@ const AppContent: React.FC = () => {
         <Route path="/versus/:fighter1Id" element={<VersusPage />} />
         <Route path="/versus/:fighter1Id/:fighter2Id" element={<VersusPage />} />
         <Route path="/competition/:id" element={<CompetitionPage />} />
-        <Route path="/competition/:competitionId/season/:seasonId" element={<LeagueSeasonPage />} />
+        <Route path="/competition/:competitionId/season/:seasonId" element={<SeasonPageWrapper />} />
         <Route path="/competition/:competitionId/season/:seasonId/timeline" element={<DetailedTimelinePage />} />
         <Route path="/competition/:competitionId/season/:seasonId/division/:divisionNumber" element={<DivisionPage />} />
         <Route path="/competition/:competitionId/season/:seasonId/division/:divisionNumber/rounds" element={<RoundsPage />} />

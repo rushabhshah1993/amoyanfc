@@ -100,8 +100,8 @@ const competitionTypes = `#graphql
     }
 
     type CompetitionLinkedLeagueSeason {
-        competitionId: ID!
-        seasonId: ID!
+        competition: CompetitionMeta
+        season: CompetitionSeasonMeta
     }
 `;
 
