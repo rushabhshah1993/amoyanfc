@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
     faSpinner, 
-    faArrowLeft, 
+    faChevronLeft, 
     faTrophy,
     faArrowRight
 } from '@fortawesome/free-solid-svg-icons';
@@ -139,25 +139,17 @@ const CompetitionPage: React.FC = () => {
 
     return (
         <div className={styles.competitionPage}>
-            <div className={styles.competitionHeader}>
-                <button 
-                    className={styles.backButton}
-                    onClick={() => navigate('/')}
-                >
-                    <FontAwesomeIcon icon={faArrowLeft} />
-                    Back to Competitions
-                </button>
-            </div>
-
             <div className={styles.competitionContent}>
-                <div className={styles.competitionBanner}>
+                {/* Hero Section */}
+                <div className={styles.competitionHero}>
                     <div className={styles.competitionLogoSection}>
                         <RobustGoogleDriveImage
                             src={competition.logo}
                             alt={`${competition.competitionName} logo`}
                         />
                     </div>
-                    <div className={styles.competitionBannerInfo}>
+                    
+                    <div className={styles.competitionInfo}>
                         <h1 className={styles.competitionTitle}>
                             {competition.competitionName}
                         </h1>
@@ -166,21 +158,21 @@ const CompetitionPage: React.FC = () => {
                                 {competition.shortName}
                             </h2>
                         )}
-                        <div className={styles.competitionTypeBadge}>
-                            <FontAwesomeIcon icon={faTrophy} />
-                            {competition.type.toUpperCase()}
-                        </div>
                         {competition.description && (
-                            <div className={styles.competitionDescriptionSection}>
-                                <p className={styles.competitionDescription}>
-                                    {competition.description}
-                                </p>
-                            </div>
+                            <p className={styles.competitionDescription}>
+                                {competition.description}
+                            </p>
                         )}
+                        
+                        <button 
+                            className={styles.backButton}
+                            onClick={() => navigate('/')}
+                        >
+                            <FontAwesomeIcon icon={faChevronLeft} />
+                            All Competitions
+                        </button>
                     </div>
                 </div>
-
-                
 
                 {/* League Seasons Section */}
                 {competition.type === 'league' && (
@@ -192,13 +184,11 @@ const CompetitionPage: React.FC = () => {
                             </div>
                         ) : seasonsError || !seasonsData?.getAllSeasonsByCompetitionCategory?.length ? (
                             <div className={styles.comingSoonSection}>
-                                <div className={styles.comingSoonCard}>
-                                    <FontAwesomeIcon icon={faTrophy} className={styles.comingSoonIcon} />
-                                    <h2 className={styles.comingSoonTitle}>Season Information Coming Soon</h2>
-                                    <p className={styles.comingSoonText}>
-                                        Detailed season information, fight schedules, standings, and more will be available here soon.
-                                    </p>
-                                </div>
+                                <FontAwesomeIcon icon={faTrophy} className={styles.comingSoonIcon} />
+                                <h2 className={styles.comingSoonTitle}>Season Information Coming Soon</h2>
+                                <p className={styles.comingSoonText}>
+                                    Detailed season information will be available here soon.
+                                </p>
                             </div>
                         ) : (
                             <div className={styles.seasonsSection}>
@@ -220,7 +210,7 @@ const CompetitionPage: React.FC = () => {
                                                     onClick={() => navigate(`/competition/${id}/season/${season.id}`)}
                                                 >
                                                     {/* Background Images */}
-                                                    <div className={styles.seasonBoxBackground}>
+                                                    <div className={`${styles.seasonBoxBackground} ${winners.length === 1 ? styles.singleWinner : ''}`}>
                                                         {winners.length > 0 ? (
                                                             winners.map((winner) => (
                                                                 <div 
@@ -268,13 +258,11 @@ const CompetitionPage: React.FC = () => {
                 {/* Cup Competitions Coming Soon */}
                 {competition.type === 'cup' && (
                     <div className={styles.comingSoonSection}>
-                        <div className={styles.comingSoonCard}>
-                            <FontAwesomeIcon icon={faTrophy} className={styles.comingSoonIcon} />
-                            <h2 className={styles.comingSoonTitle}>Season Information Coming Soon</h2>
-                            <p className={styles.comingSoonText}>
-                                Detailed season information, fight schedules, standings, and more will be available here soon.
-                            </p>
-                        </div>
+                        <FontAwesomeIcon icon={faTrophy} className={styles.comingSoonIcon} />
+                        <h2 className={styles.comingSoonTitle}>Season Information Coming Soon</h2>
+                        <p className={styles.comingSoonText}>
+                            Detailed season information will be available here soon.
+                        </p>
                     </div>
                 )}
             </div>

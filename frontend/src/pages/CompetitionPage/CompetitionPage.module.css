@@ -6,69 +6,27 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.competitionHeader {
-    padding: 1rem 2rem;
-    background-color: var(--bg-primary);
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-.backButton {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #4285f4;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.backButton:hover {
-    background-color: #3367d6;
-    transform: translateY(-1px);
-}
-
-.backButton:active {
-    transform: translateY(0);
-}
-
 .competitionContent {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 4rem 2rem;
 }
 
-.competitionBanner {
+/* Hero Section */
+.competitionHero {
     display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 2rem;
+    grid-template-columns: 300px 1fr;
+    gap: 4rem;
     align-items: center;
-    padding: 2rem;
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-    border-radius: 12px;
-    margin-bottom: 2rem;
-    border: 1px solid var(--border-color);
-    transition: background 0.3s ease, border-color 0.3s ease;
+    margin-bottom: 4rem;
 }
 
 .competitionLogoSection {
     width: 100%;
-    height: 200px;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--bg-primary);
-    border-radius: 8px;
-    padding: 1.5rem;
-    border: 1px solid var(--border-color);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .competitionLogoSection img {
@@ -77,98 +35,98 @@
     object-fit: contain;
 }
 
-.competitionBannerInfo {
+.competitionInfo {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
+    text-align: right;
 }
 
 .competitionTitle {
-    font-size: 2rem;
+    font-size: 3.5rem;
     font-weight: 700;
     color: var(--text-primary);
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.1;
     transition: color 0.3s ease;
 }
 
 .competitionSubtitle {
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 1.3rem;
+    font-weight: 400;
     color: var(--text-secondary);
     margin: 0;
     transition: color 0.3s ease;
 }
 
-.competitionTypeBadge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.4rem 0.85rem;
-    background-color: #4285f4;
-    color: white;
-    border-radius: 16px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    width: fit-content;
-}
-
-.competitionDescriptionSection {
-    padding: 1.5rem 2rem;
-    background-color: var(--bg-secondary);
-    border-radius: 12px;
-    margin-bottom: 2rem;
-    border: 1px solid var(--border-color);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
 .competitionDescription {
     font-size: 1rem;
     line-height: 1.6;
-    color: var(--text-primary);
-    margin: 0;
+    color: var(--text-secondary);
+    margin: 1rem 0 2rem 0;
     transition: color 0.3s ease;
+}
+
+.backButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+    background: transparent;
+    color: #4285f4;
+    border: none;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    align-self: flex-end;
+}
+
+.backButton:hover {
+    transform: translateX(5px);
+    color: #3367d6;
+}
+
+.backButton:active {
+    transform: translateX(3px);
+}
+
+.backButton svg {
+    font-size: 1rem;
 }
 
 /* Seasons Section */
 .seasonsSection {
-    background-color: var(--bg-secondary);
-    border-radius: 16px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
+    margin-bottom: 4rem;
 }
 
 .seasonsTitle {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 400;
-    color: var(--text-primary);
-    margin: 0 0 1.5rem 0;
+    color: var(--text-secondary);
+    margin: 0 0 2rem 0;
     transition: color 0.3s ease;
     text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .seasonsGrid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
 }
 
 .seasonBox {
     position: relative;
-    height: 250px;
-    border-radius: 16px;
+    height: 200px;
+    border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid var(--border-color);
 }
 
 .seasonBox:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    border-color: #4285f4;
 }
 
 [data-theme="dark"] .seasonBox:hover {
@@ -181,18 +139,68 @@
     left: 0;
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0 1rem 0 1rem;
+}
+
+.seasonBoxBackground.singleWinner {
+    padding: 0;
+    align-items: center;
 }
 
 .seasonBoxImage {
-    width: 100%;
-    height: 100%;
-    background-size: contain;
+    width: 130px;
+    height: 180px;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
     background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.seasonBoxImage:not(:first-child) {
+    margin-left: -40px;
+}
+
+.seasonBoxBackground:hover .seasonBoxImage:nth-child(1) {
+    transform: translateX(-10px);
+    z-index: 3;
+}
+
+.seasonBoxBackground:hover .seasonBoxImage:nth-child(2) {
+    transform: translateY(-5px);
+    z-index: 2;
+}
+
+.seasonBoxBackground:hover .seasonBoxImage:nth-child(3) {
+    transform: translateX(10px);
+    z-index: 1;
+}
+
+.seasonBoxImage:nth-child(1) {
+    z-index: 3;
+}
+
+.seasonBoxImage:nth-child(2) {
+    z-index: 2;
+}
+
+.seasonBoxImage:nth-child(3) {
+    z-index: 1;
+}
+
+.singleWinner .seasonBoxImage {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    border-radius: 0;
+    box-shadow: none;
+    margin-left: 0;
 }
 
 .seasonBoxPlaceholder {
@@ -226,9 +234,9 @@
     height: 100%;
     background: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0.7) 0%,
-        rgba(0, 0, 0, 0.3) 50%,
-        rgba(0, 0, 0, 0.7) 100%
+        rgba(0, 0, 0, 0.65) 0%,
+        rgba(0, 0, 0, 0.35) 50%,
+        rgba(0, 0, 0, 0.65) 100%
     );
     display: flex;
     flex-direction: column;
@@ -236,20 +244,21 @@
     align-items: center;
     padding: 1.5rem;
     transition: background 0.3s ease;
+    z-index: 10;
 }
 
 .seasonBox:hover .seasonBoxOverlay {
     background: linear-gradient(
         to bottom,
-        rgba(66, 133, 244, 0.8) 0%,
+        rgba(66, 133, 244, 0.75) 0%,
         rgba(66, 133, 244, 0.5) 50%,
-        rgba(66, 133, 244, 0.8) 100%
+        rgba(66, 133, 244, 0.75) 100%
     );
 }
 
 .seasonBoxTitle {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 1.8rem;
+    font-weight: 400;
     color: white;
     margin: 0;
     text-align: center;
@@ -258,191 +267,16 @@
 }
 
 .seasonBoxBadge {
-    margin-top: 0.75rem;
-    padding: 0.4rem 1rem;
+    margin-top: 0.5rem;
+    padding: 0.3rem 0.8rem;
     background-color: #34a853;
     color: white;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    border-radius: 20px;
+    border-radius: 12px;
     text-transform: uppercase;
     text-shadow: none;
     z-index: 1;
-}
-
-.seasonContent {
-    margin-top: 2rem;
-}
-
-.seasonInfoCard {
-    background-color: var(--bg-primary);
-    border-radius: 12px;
-    padding: 2rem;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-}
-
-.seasonInfoCard h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 0 0 1rem 0;
-    transition: color 0.3s ease;
-}
-
-/* Divisions Grid */
-.divisionsGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-    max-width: 100%;
-}
-
-@media (min-width: 1024px) {
-    .divisionsGrid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-.divisionCard {
-    background-color: var(--bg-primary);
-    border-radius: 12px;
-    padding: 1.5rem;
-    border: 2px solid var(--border-color);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.divisionCard:hover {
-    transform: translateY(-4px);
-    border-color: #4285f4;
-    box-shadow: 0 8px 24px rgba(66, 133, 244, 0.15);
-}
-
-[data-theme="dark"] .divisionCard:hover {
-    box-shadow: 0 8px 24px rgba(66, 133, 244, 0.25);
-}
-
-.divisionHeader {
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.75rem;
-}
-
-.divisionTitle {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0;
-    transition: color 0.3s ease;
-}
-
-.divisionName {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin: 0.25rem 0 0 0;
-    transition: color 0.3s ease;
-}
-
-.divisionWinner {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 0;
-}
-
-.fighterAvatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-    flex-shrink: 0;
-    border: 2px solid var(--border-color);
-    transition: border-color 0.3s ease;
-}
-
-.fighterAvatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.fighterAvatarPlaceholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: white;
-}
-
-.fighterInfo {
-    flex: 1;
-    min-width: 0;
-}
-
-.fighterLabel {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--text-secondary);
-    margin: 0 0 0.25rem 0;
-    letter-spacing: 0.5px;
-    transition: color 0.3s ease;
-}
-
-.fighterName {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: color 0.3s ease;
-}
-
-.divisionProgress {
-    padding: 0.75rem 0;
-}
-
-.currentRound {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin: 0;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.divisionFooter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 0.75rem;
-    border-top: 1px solid var(--border-color);
-}
-
-.fightersCount {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin: 0;
-    transition: color 0.3s ease;
-}
-
-.viewDetails {
-    font-size: 0.85rem;
-    color: #4285f4;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.divisionCard:hover .viewDetails {
-    transform: translateX(4px);
 }
 
 .seasonsLoading {
@@ -450,9 +284,9 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    padding: 3rem 0;
+    padding: 4rem 0;
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: color 0.3s ease;
 }
 
@@ -461,52 +295,37 @@
     color: #4285f4;
 }
 
+/* Coming Soon Section */
 .comingSoonSection {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 3rem 0;
-}
-
-.comingSoonCard {
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-    border-radius: 16px;
-    padding: 4rem 3rem;
+    padding: 4rem 0;
     text-align: center;
-    max-width: 600px;
-    border: 2px dashed var(--border-color);
-    transition: all 0.3s ease;
-}
-
-.comingSoonCard:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="dark"] .comingSoonCard:hover {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .comingSoonIcon {
-    font-size: 4rem;
-    color: #4285f4;
-    margin-bottom: 1.5rem;
-    opacity: 0.7;
+    font-size: 3rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    opacity: 0.3;
 }
 
 .comingSoonTitle {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
     transition: color 0.3s ease;
 }
 
 .comingSoonText {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
     line-height: 1.6;
     margin: 0;
+    opacity: 0.7;
     transition: color 0.3s ease;
 }
 
@@ -538,143 +357,75 @@
 
 /* Responsive design */
 @media (max-width: 1024px) {
-    .competitionBanner {
+    .competitionHero {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 2rem;
+        text-align: center;
     }
 
     .competitionLogoSection {
-        height: 180px;
+        height: 250px;
+        margin: 0 auto;
+    }
+
+    .competitionInfo {
+        text-align: center;
+        align-items: center;
     }
 
     .competitionTitle {
-        font-size: 1.8rem;
+        font-size: 2.5rem;
+    }
+
+    .backButton {
+        align-self: center;
+    }
+
+    .backButton:hover {
+        transform: translateY(-2px);
+    }
+
+    .backButton:active {
+        transform: translateY(0);
     }
 }
 
 @media (max-width: 768px) {
     .competitionContent {
-        padding: 1rem;
+        padding: 2rem 1.5rem;
     }
 
-    .competitionBanner {
-        padding: 1.5rem;
-        gap: 1.25rem;
+    .competitionHero {
+        gap: 2rem;
+        margin-bottom: 3rem;
     }
 
     .competitionLogoSection {
-        height: 150px;
-        padding: 1rem;
-    }
-
-    .competitionTitle {
-        font-size: 1.5rem;
-    }
-
-    .competitionSubtitle {
-        font-size: 1rem;
-    }
-
-    .seasonsSection {
-        padding: 1.5rem;
-    }
-
-    .seasonsTitle {
-        font-size: 1.5rem;
-    }
-
-    .seasonsGrid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-
-    .seasonBox {
         height: 200px;
     }
 
-    .seasonBoxTitle {
-        font-size: 1.5rem;
-    }
-
-    .seasonInfoCard {
-        padding: 1.5rem;
-    }
-
-    .seasonInfoCard h3 {
-        font-size: 1.3rem;
-    }
-
-    .divisionsGrid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1rem;
-    }
-
-    .divisionCard {
-        padding: 1.25rem;
-    }
-
-    .divisionTitle {
-        font-size: 1.2rem;
-    }
-
-    .fighterAvatar {
-        width: 50px;
-        height: 50px;
-    }
-
-    .fighterName {
-        font-size: 1rem;
-    }
-
-    .comingSoonCard {
-        padding: 3rem 2rem;
-    }
-
-    .comingSoonIcon {
-        font-size: 3rem;
-    }
-
-    .comingSoonTitle {
-        font-size: 1.5rem;
-    }
-
-    .comingSoonText {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .competitionHeader {
-        padding: 0.5rem 1rem;
-    }
-
-    .competitionBanner {
-        padding: 1rem;
-    }
-
-    .competitionLogoSection {
-        height: 120px;
-        padding: 0.75rem;
-    }
-
     .competitionTitle {
-        font-size: 1.3rem;
+        font-size: 2rem;
     }
 
     .competitionSubtitle {
-        font-size: 0.9rem;
+        font-size: 1.1rem;
+    }
+
+    .competitionDescription {
+        font-size: 0.95rem;
     }
 
     .seasonsSection {
-        padding: 1rem;
+        margin-bottom: 3rem;
     }
 
     .seasonsTitle {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     .seasonsGrid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
         gap: 1rem;
     }
 
@@ -682,55 +433,23 @@
         height: 180px;
     }
 
+    .seasonBoxImage {
+        width: 100px;
+        height: 140px;
+    }
+
+    .seasonBoxImage:not(:first-child) {
+        margin-left: -30px;
+    }
+
+    .singleWinner .seasonBoxImage {
+        width: 100%;
+        height: 100%;
+        margin-left: 0;
+    }
+
     .seasonBoxTitle {
-        font-size: 1.3rem;
-    }
-
-    .seasonBoxBadge {
-        font-size: 0.65rem;
-        padding: 0.3rem 0.75rem;
-    }
-
-    .seasonBoxPlaceholder {
-        font-size: 2rem;
-    }
-
-    .seasonInfoCard {
-        padding: 1rem;
-    }
-
-    .seasonInfoCard h3 {
-        font-size: 1.2rem;
-    }
-
-    .divisionsGrid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .divisionCard {
-        padding: 1rem;
-    }
-
-    .divisionTitle {
-        font-size: 1.1rem;
-    }
-
-    .fighterAvatar {
-        width: 45px;
-        height: 45px;
-    }
-
-    .fighterAvatarPlaceholder {
-        font-size: 1rem;
-    }
-
-    .fighterName {
-        font-size: 0.95rem;
-    }
-
-    .comingSoonCard {
-        padding: 2rem 1.5rem;
+        font-size: 1.5rem;
     }
 
     .comingSoonIcon {
@@ -740,5 +459,96 @@
     .comingSoonTitle {
         font-size: 1.3rem;
     }
+
+    .comingSoonText {
+        font-size: 0.9rem;
+    }
 }
 
+@media (max-width: 480px) {
+    .competitionContent {
+        padding: 1.5rem 1rem;
+    }
+
+    .competitionHero {
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .competitionLogoSection {
+        height: 150px;
+    }
+
+    .competitionTitle {
+        font-size: 1.8rem;
+    }
+
+    .competitionSubtitle {
+        font-size: 1rem;
+    }
+
+    .competitionDescription {
+        font-size: 0.9rem;
+    }
+
+    .backButton {
+        font-size: 0.9rem;
+    }
+
+    .backButton svg {
+        font-size: 0.9rem;
+    }
+
+    .seasonsTitle {
+        font-size: 1rem;
+    }
+
+    .seasonsGrid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .seasonBox {
+        height: 160px;
+    }
+
+    .seasonBoxImage {
+        width: 80px;
+        height: 120px;
+    }
+
+    .seasonBoxImage:not(:first-child) {
+        margin-left: -25px;
+    }
+
+    .singleWinner .seasonBoxImage {
+        width: 100%;
+        height: 100%;
+        margin-left: 0;
+    }
+
+    .seasonBoxTitle {
+        font-size: 1.3rem;
+    }
+
+    .seasonBoxBadge {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.6rem;
+    }
+
+    .seasonBoxPlaceholder {
+        font-size: 2rem;
+    }
+
+    .comingSoonIcon {
+        font-size: 2rem;
+    }
+
+    .comingSoonTitle {
+        font-size: 1.2rem;
+    }
+
+    .comingSoonText {
+        font-size: 0.85rem;
+    }
+}
