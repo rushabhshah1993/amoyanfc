@@ -1,0 +1,396 @@
+.roundsPage {
+  height: calc(100vh - 84px);
+  max-height: calc(100vh - 84px);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.pageContent {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.pageHeader {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.backButton:hover {
+  color: var(--text-primary);
+  transform: translateX(3px);
+}
+
+.backButton:active {
+  transform: translateX(1px);
+}
+
+.backButton svg {
+  font-size: 0.75rem;
+}
+
+.pageHeader h1 {
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.loadingPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+.noData {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+/* Grid Styles */
+.gridContainer {
+  background: transparent;
+  border-radius: 0;
+  overflow: hidden;
+  border: none;
+  flex: 1;
+  min-height: 0;
+}
+
+.gridWrapper {
+  overflow: auto;
+  height: 100%;
+}
+
+/* Header Row */
+.gridHeader {
+  display: flex;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--text-secondary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.headerFighter {
+  min-width: 200px;
+  width: 200px;
+  padding: 12px 8px;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  border-right: none;
+  background: var(--bg-primary);
+  position: sticky;
+  left: 0;
+  z-index: 11;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.headerRound {
+  padding: 12px 8px;
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: none;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+/* Rounds Grid Container */
+.roundsGrid {
+  display: grid;
+  flex: 1;
+}
+
+/* Conditional grid columns based on division */
+.rounds9 {
+  grid-template-columns: repeat(9, 1fr);
+}
+
+.rounds11 {
+  grid-template-columns: repeat(11, 1fr);
+}
+
+.rounds15 {
+  grid-template-columns: repeat(15, 1fr);
+}
+
+/* Body Rows */
+.gridBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.gridRow {
+  display: flex;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.gridRow:hover {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+.gridRow:last-child {
+  border-bottom: none;
+}
+
+/* Fighter Cell */
+.fighterCell {
+  min-width: 200px;
+  width: 200px;
+  padding: 12px 8px;
+  border-right: none;
+  background: var(--bg-primary);
+  position: sticky;
+  left: 0;
+  z-index: 5;
+}
+
+.fighterInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fighterAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 0;
+  object-fit: contain;
+  object-position: center;
+  border: none;
+  background: transparent;
+}
+
+.fighterName {
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+/* Result Cells */
+.resultCell {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: none;
+}
+
+.emptyCell {
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border-radius: 0;
+  border: 1px dashed rgba(128, 128, 128, 0.2);
+}
+
+.opponentCell {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+
+.opponentCell.win {
+  background-color: rgba(76, 175, 80, 0.6);
+}
+
+.opponentCell.loss {
+  background-color: rgba(244, 67, 54, 0.6);
+}
+
+.opponentCell:hover {
+  transform: scale(1.05);
+}
+
+.opponentCell.win:hover {
+  background-color: rgba(76, 175, 80, 0.8);
+}
+
+.opponentCell.loss:hover {
+  background-color: rgba(244, 67, 54, 0.8);
+}
+
+.opponentImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 50%;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .roundsPage {
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .pageContent {
+    overflow: visible;
+  }
+
+  .gridContainer {
+    overflow: visible;
+  }
+
+  .gridWrapper {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageContent {
+    padding: 16px;
+  }
+
+  .pageHeader {
+    margin-bottom: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .pageHeader h1 {
+    font-size: 18px;
+  }
+
+  .backButton {
+    font-size: 0.8rem;
+  }
+
+  .backButton svg {
+    font-size: 0.7rem;
+  }
+
+  .headerFighter,
+  .fighterCell {
+    min-width: 160px;
+    width: 160px;
+    padding: 10px 6px;
+  }
+
+  .fighterAvatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .fighterName {
+    font-size: 12px;
+  }
+
+  .headerRound,
+  .resultCell {
+    min-width: 60px;
+    width: 60px;
+  }
+
+  .opponentCell,
+  .emptyCell {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageContent {
+    padding: 12px;
+  }
+
+  .pageHeader {
+    gap: 0.75rem;
+  }
+
+  .pageHeader h1 {
+    font-size: 16px;
+  }
+
+  .backButton {
+    font-size: 0.75rem;
+  }
+
+  .backButton svg {
+    font-size: 0.65rem;
+  }
+
+  .headerFighter,
+  .fighterCell {
+    min-width: 140px;
+    width: 140px;
+    padding: 8px 4px;
+  }
+
+  .fighterAvatar {
+    width: 35px;
+    height: 35px;
+  }
+
+  .fighterName {
+    font-size: 11px;
+  }
+
+  .headerRound,
+  .resultCell {
+    min-width: 55px;
+    width: 55px;
+  }
+
+  .opponentCell,
+  .emptyCell {
+    width: 40px;
+    height: 40px;
+  }
+}

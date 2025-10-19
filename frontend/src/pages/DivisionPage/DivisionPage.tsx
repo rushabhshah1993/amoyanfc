@@ -340,6 +340,12 @@ const DivisionPage: React.FC = () => {
           align="right"
           maxHeight={240}
         />
+        <button 
+          className={styles.viewAllRoundsButton}
+          onClick={() => navigate(`/competition/${competitionId}/season/${seasonId}/division/${divisionNumber}/rounds`)}
+        >
+          View All Rounds
+        </button>
       </div>
     );
   };

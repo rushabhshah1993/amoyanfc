@@ -16,6 +16,7 @@ import VersusPage from './pages/VersusPage/VersusPage';
 import CompetitionPage from './pages/CompetitionPage/CompetitionPage';
 import LeagueSeasonPage from './pages/LeagueSeasonPage/LeagueSeasonPage';
 import DivisionPage from './pages/DivisionPage/DivisionPage';
+import RoundsPage from './pages/RoundsPage/RoundsPage';
 import FightPage from './pages/FightPage/FightPage';
 
 const AppContent: React.FC = () => {
@@ -66,6 +67,7 @@ const AppContent: React.FC = () => {
         <Route path="/competition/:id" element={<CompetitionPage />} />
         <Route path="/competition/:competitionId/season/:seasonId" element={<LeagueSeasonPage />} />
         <Route path="/competition/:competitionId/season/:seasonId/division/:divisionNumber" element={<DivisionPage />} />
+        <Route path="/competition/:competitionId/season/:seasonId/division/:divisionNumber/rounds" element={<RoundsPage />} />
         <Route path="/fight/:fightId" element={<FightPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
