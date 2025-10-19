@@ -31,6 +31,7 @@ interface Fight {
   fighter2: string;
   winner?: string;
   fightIdentifier: string;
+  date?: string;
 }
 
 interface Division {
@@ -228,7 +229,21 @@ const DivisionPage: React.FC = () => {
 
             return (
               <div key={fight.fightIdentifier || index} className={styles.fightCard}>
-                <div className={styles.fightNumber}>Fight {index + 1}</div>
+                <div className={styles.fightHeader}>
+                  <div className={styles.fightNumber}>Fight {index + 1}</div>
+                  {fight.date && (
+                    <div className={styles.fightDate}>
+                      {new Date(fight.date).toLocaleString('en-US', { 
+                        month: 'short', 
+                        day: 'numeric', 
+                        year: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                        hour12: true
+                      })}
+                    </div>
+                  )}
+                </div>
                 
                 <div className={styles.fightersContainer}>
                   {/* Fighter 1 */}

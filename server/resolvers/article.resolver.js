@@ -1,5 +1,5 @@
 /* Package imports */
-import { GraphQLDate, GraphQLPositiveInt } from 'graphql-scalars';
+import { GraphQLDateTime, GraphQLPositiveInt } from 'graphql-scalars';
 
 /* Model imports */
 import { Articles } from './../models/articles.model.js';
@@ -11,7 +11,7 @@ import { NotFoundError } from './../error.js';
 import { catchAsyncErrors, createQueryObj } from '../utils.js';
 
 const articleResolver = {
-    Date: GraphQLDate,
+    Date: GraphQLDateTime,
     Number: GraphQLPositiveInt,
 
     Query: {

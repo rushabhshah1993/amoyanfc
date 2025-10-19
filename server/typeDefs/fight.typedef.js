@@ -1,4 +1,6 @@
 const fightTypeDef = `#graphql
+    scalar Date
+
     """
     Represents an individual fight, irrespective of the
     type of competition. This data object contains
@@ -37,7 +39,7 @@ const fightTypeDef = `#graphql
         A date string representing the date on which the fight
         was fought
         """
-        date: String
+        date: Date
 
         """
         An optional parameter that will provide user-provided 

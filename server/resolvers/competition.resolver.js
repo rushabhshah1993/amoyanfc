@@ -1,3 +1,6 @@
+/* Package imports */
+import { GraphQLDateTime } from 'graphql-scalars';
+
 /* Model imports */
 import { Competition } from './../models/competition.model.js';
 import { CompetitionMeta } from '../models/competition-meta.model.js';
@@ -10,6 +13,8 @@ import { NotFoundError } from '../error.js';
 import { catchAsyncErrors } from '../utils.js';
 
 const competitionResolver = {
+    Date: GraphQLDateTime,
+    
     Query: {
         /**
          * Fetches a list of all the competitions.

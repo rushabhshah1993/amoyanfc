@@ -1,5 +1,5 @@
 /* Package imports */
-import { GraphQLDate } from 'graphql-scalars';
+import { GraphQLDateTime } from 'graphql-scalars';
 
 /* Error imports */
 import { NotFoundError } from "../error.js";
@@ -14,7 +14,7 @@ import { GlobalRank } from "../models/global-rank.model.js";
 import { catchAsyncErrors } from "../utils.js";
 
 const fighterResolver = {
-    Date: GraphQLDate,
+    Date: GraphQLDateTime,
     
     Query: {
         /**

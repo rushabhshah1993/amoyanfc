@@ -1,8 +1,10 @@
 const competitionTypes = `#graphql
+    scalar Date
+
     type CompetitionSeasonMeta {
         seasonNumber: Int!
-        startDate: String
-        endDate: String
+        startDate: Date
+        endDate: Date
         winners: [Fighter]
         leagueDivisions: [SeasonMetaLeagueDivision]
         cupParticipants: SeasonMetaCupParticipants
@@ -46,7 +48,7 @@ const competitionTypes = `#graphql
         fighter2: ID
         winner: ID
         fightIdentifier: String
-        date: String
+        date: Date
         userDescription: String
         genAIDescription: String
         isSimulated: Boolean

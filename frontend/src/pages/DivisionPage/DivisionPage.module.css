@@ -261,10 +261,11 @@
 .fightCard {
   background: transparent;
   border-radius: 0;
-  padding: 20px 0;
+  padding: 20px 16px;
   border: none;
   border-bottom: 1px solid rgba(128, 128, 128, 0.2);
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .fightCard:last-child {
@@ -273,17 +274,28 @@
 
 .fightCard:hover {
   background-color: rgba(128, 128, 128, 0.05);
-  padding: 20px;
-  margin: 0 -20px;
+}
+
+.fightHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 .fightNumber {
   font-size: 12px;
   font-weight: 500;
   color: var(--text-secondary);
-  margin-bottom: 16px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.fightDate {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-secondary);
   transition: color 0.3s ease;
 }
 
@@ -498,8 +510,7 @@
   }
 
   .fightCard:hover {
-    margin: 0;
-    padding: 20px 0;
+    background-color: rgba(128, 128, 128, 0.05);
   }
 }
 
