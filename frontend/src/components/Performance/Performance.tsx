@@ -61,6 +61,7 @@ interface PerformanceProps {
     currentSeason?: number;
     currentDivision?: number;
     currentRound?: number;
+    size?: 'default' | 'lg';
 }
 
 const Performance: React.FC<PerformanceProps> = ({
@@ -73,7 +74,8 @@ const Performance: React.FC<PerformanceProps> = ({
     title = 'Recent Performance',
     currentSeason,
     currentDivision,
-    currentRound
+    currentRound,
+    size = 'default'
 }) => {
     const navigate = useNavigate();
 
@@ -151,9 +153,21 @@ const Performance: React.FC<PerformanceProps> = ({
         return null; // Don't show component if no fights available
     }
 
+    const sizeClasses = {
+        container: size === 'lg' ? styles.performanceContainerLg : styles.performanceContainer,
+        title: size === 'lg' ? styles.performanceTitleLg : styles.performanceTitle,
+        timeline: size === 'lg' ? styles.fightsTimelineLg : styles.fightsTimeline,
+        item: size === 'lg' ? styles.fightItemLg : styles.fightItem,
+        thumbnail: size === 'lg' ? styles.opponentThumbnailLg : styles.opponentThumbnail,
+        name: size === 'lg' ? styles.opponentNameLg : styles.opponentName,
+        placeholder: size === 'lg' ? styles.thumbnailPlaceholderLg : styles.thumbnailPlaceholder
+    };
+
+    const thumbnailSize = size === 'lg' ? 140 : 45;
+
     return (
-        <div className={styles.performanceContainer}>
-            <h2 className={styles.performanceTitle}>
+        <div className={sizeClasses.container}>
+            <h2 className={sizeClasses.title}>
                 {title}
                 {competitionId && (
                     <span className={styles.subtitle}>
@@ -161,31 +175,31 @@ const Performance: React.FC<PerformanceProps> = ({
                     </span>
                 )}
             </h2>
-            <div className={styles.fightsTimeline}>
+            <div className={sizeClasses.timeline}>
                 {fightHistory.map((fight, index) => (
                     <div
                         key={`${fight.fightId}-${index}`}
-                        className={`${styles.fightItem} ${fight.isWinner ? styles.win : styles.loss}`}
+                        className={`${sizeClasses.item} ${fight.isWinner ? styles.win : styles.loss}`}
                         onClick={() => handleFightClick(fight.fightId)}
                         title={`${fight.competitionName}\nSeason ${fight.season}${fight.division != null ? `, Division ${fight.division}` : ''}${fight.round != null ? `, Round ${fight.round}` : ''}\nvs ${fight.opponentName}\n${fight.isWinner ? 'WON' : 'LOST'}`}
                     >
-                        <div className={styles.opponentThumbnail}>
+                        <div className={sizeClasses.thumbnail}>
                             <S3Image
                                 src={fight.opponentImage}
                                 alt={fight.opponentName || 'Opponent'}
                                 className={styles.thumbnailImage}
-                                width={45}
-                                height={45}
+                                width={thumbnailSize}
+                                height={thumbnailSize}
                                 lazy={true}
                                 fallback={
-                                    <div className={styles.thumbnailPlaceholder}>
+                                    <div className={sizeClasses.placeholder}>
                                         <FontAwesomeIcon icon={faUser} />
                                     </div>
                                 }
                             />
                         </div>
                         {showOpponentName && (
-                            <div className={styles.opponentName}>
+                            <div className={sizeClasses.name}>
                                 {fight.opponentName}
                             </div>
                         )}

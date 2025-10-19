@@ -189,6 +189,113 @@
     font-style: italic;
 }
 
+/* Large Size Variants */
+.performanceContainerLg {
+    width: 100%;
+    padding: 0.75rem 0;
+    background: transparent;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+.performanceTitleLg {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: left;
+    justify-content: flex-start;
+}
+
+.fightsTimelineLg {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    overflow-x: visible;
+    padding: 2rem 0;
+    scrollbar-width: none;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.fightItemLg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 0;
+    border-radius: 0;
+    min-width: auto;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+}
+
+.fightItemLg:hover {
+    transform: scale(1.05);
+    box-shadow: none;
+}
+
+.opponentThumbnailLg {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.win .opponentThumbnailLg {
+    border-color: rgba(34, 197, 94, 0.6);
+}
+
+.loss .opponentThumbnailLg {
+    border-color: rgba(239, 68, 68, 0.6);
+}
+
+.fightItemLg:hover .opponentThumbnailLg {
+    transform: scale(1.05);
+}
+
+.win:hover .opponentThumbnailLg {
+    border-color: rgba(34, 197, 94, 1);
+}
+
+.loss:hover .opponentThumbnailLg {
+    border-color: rgba(239, 68, 68, 1);
+}
+
+.thumbnailPlaceholderLg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #333 0%, #444 100%);
+    color: #666;
+    font-size: 3.5rem;
+}
+
+.opponentNameLg {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-align: center;
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .performanceContainer {
@@ -226,6 +333,33 @@
         font-size: 0.7rem;
         max-width: 60px;
     }
+
+    /* Large size responsive */
+    .performanceTitleLg {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .fightsTimelineLg {
+        gap: 2rem;
+        justify-content: center;
+    }
+
+    .opponentThumbnailLg {
+        width: 110px;
+        height: 110px;
+    }
+
+    .opponentNameLg {
+        font-size: 0.95rem;
+        max-width: 130px;
+    }
+
+    .thumbnailPlaceholderLg {
+        font-size: 2.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -250,6 +384,31 @@
 
     .thumbnailPlaceholder {
         font-size: 1rem;
+    }
+
+    /* Large size responsive */
+    .performanceTitleLg {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .fightsTimelineLg {
+        gap: 1.5rem;
+    }
+
+    .opponentThumbnailLg {
+        width: 85px;
+        height: 85px;
+        border-width: 2px;
+    }
+
+    .opponentNameLg {
+        font-size: 0.85rem;
+        max-width: 100px;
+    }
+
+    .thumbnailPlaceholderLg {
+        font-size: 2rem;
     }
 }
 

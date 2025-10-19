@@ -193,6 +193,18 @@
     font-weight: 500;
 }
 
+/* Performance Section Enhancement - Minimal & Elegant */
+.fighter-performance-section {
+    padding: 2rem 3rem;
+    background-color: transparent;
+    margin: 0;
+}
+
+.fighter-performance-section > div {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 /* Dark theme adjustments */
 [data-theme="dark"] .fighter-image-placeholder,
 [data-theme="dark"] .fighter-image-loading {
@@ -254,6 +266,12 @@
     .action-button:active {
         transform: translateY(0);
     }
+
+    /* Performance section responsive */
+    .fighter-performance-section {
+        padding: 2rem 1.5rem;
+        margin: 0;
+    }
 }
 
 @media (max-width: 480px) {
@@ -279,5 +297,11 @@
 
     .action-button svg {
         font-size: 1.1rem;
+    }
+
+    /* Performance section very small screens */
+    .fighter-performance-section {
+        padding: 1.5rem 1rem;
+        margin: 0;
     }
 }

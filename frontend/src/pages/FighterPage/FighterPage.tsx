@@ -312,13 +312,16 @@ const FighterPage: React.FC = () => {
 
             <PhysicalAttributes attributes={fighter.physicalAttributes} />
 
-            <Performance 
-                fighter={fighter}
-                allFighters={allFighters}
-                count={5}
-                showOpponentName={true}
-                sortOrder="desc"
-            />
+            <div className="fighter-performance-section">
+                <Performance 
+                    fighter={fighter}
+                    allFighters={allFighters}
+                    count={6}
+                    showOpponentName={true}
+                    sortOrder="asc"
+                    size="lg"
+                />
+            </div>
 
             <CompetitionHistory competitionHistory={fighter.competitionHistory || []} />
 
