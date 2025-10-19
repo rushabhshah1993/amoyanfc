@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faArrowLeft, faUser, faBalanceScale } from '@fortawesome/free-solid-svg-icons';
-import { GET_FIGHT_BY_ID, GET_FIGHTER_INFORMATION, GET_ALL_FIGHTERS } from '../../services/queries';
+import { GET_FIGHT_BY_ID, GET_CUP_FIGHT_BY_ID, GET_FIGHTER_INFORMATION, GET_ALL_FIGHTERS } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
 import Performance from '../../components/Performance/Performance';
 import styles from './FightPage.module.css';
@@ -86,16 +86,20 @@ interface Fight {
 const FightPage: React.FC = () => {
     const { fightId } = useParams<{ fightId: string }>();
     const navigate = useNavigate();
+    const location = useLocation();
     const [showStickyHeader, setShowStickyHeader] = useState(false);
     const [activeTab, setActiveTab] = useState<string>('overview');
 
-    // Fetch fight data
-    const { loading, error, data } = useQuery(GET_FIGHT_BY_ID, {
+    // Check if this is a cup fight from navigation state
+    const isCupFight = location.state?.isCupFight || false;
+
+    // Fetch fight data using appropriate query
+    const { loading, error, data } = useQuery(isCupFight ? GET_CUP_FIGHT_BY_ID : GET_FIGHT_BY_ID, {
         variables: { id: fightId },
         skip: !fightId
     });
 
-    const fight: Fight | null = data?.getFightById || null;
+    const fight: Fight | null = data?.getCupFightById || data?.getFightById || null;
     const fighter1 = fight?.fighter1 || null;
     const fighter2 = fight?.fighter2 || null;
 
@@ -529,8 +533,8 @@ const FightPage: React.FC = () => {
                                     fighter={fighter1Full}
                                     allFighters={allFighters}
                                     currentSeason={fight.competitionContext.seasonNumber}
-                                    currentDivision={fight.competitionContext.divisionNumber}
-                                    currentRound={fight.competitionContext.roundNumber}
+                                    currentDivision={isCupFight ? undefined : fight.competitionContext.divisionNumber}
+                                    currentRound={isCupFight ? undefined : fight.competitionContext.roundNumber}
                                     count={5}
                                     showOpponentName={false}
                                     sortOrder="asc"
@@ -576,13 +580,28 @@ const FightPage: React.FC = () => {
                         {/* Season/Division/Round Info */}
                         <div className={styles.fightLocation}>
                             Season {fight.competitionContext.seasonNumber}
-                            {fight.competitionContext.divisionNumber && (
-                                <> • Division {fight.competitionContext.divisionNumber}</>
+                            {isCupFight ? (
+                                // Cup fight: Show stage name
+                                fight.competitionContext.divisionName && (
+                                    <> • {fight.competitionContext.divisionName === 'R1' ? 'Round 1' : 
+                                          fight.competitionContext.divisionName === 'SF' ? 'Semifinal' :
+                                          fight.competitionContext.divisionName === 'FN' ? 'Final' : 
+                                          fight.competitionContext.divisionName}</>
+                                )
+                            ) : (
+                                // League fight: Show division and round
+                                <>
+                                    {fight.competitionContext.divisionNumber && (
+                                        <> • Division {fight.competitionContext.divisionNumber}</>
+                                    )}
+                                    {fight.competitionContext.divisionName && (
+                                        <> ({fight.competitionContext.divisionName})</>
+                                    )}
+                                    {fight.competitionContext.roundNumber && (
+                                        <> • Round {fight.competitionContext.roundNumber}</>
+                                    )}
+                                </>
                             )}
-                            {fight.competitionContext.divisionName && (
-                                <> ({fight.competitionContext.divisionName})</>
-                            )}
-                            <> • Round {fight.competitionContext.roundNumber}</>
                         </div>
 
                         {/* Compare Fighters Button */}
@@ -892,8 +911,8 @@ const FightPage: React.FC = () => {
                                     fighter={fighter2Full}
                                     allFighters={allFighters}
                                     currentSeason={fight.competitionContext.seasonNumber}
-                                    currentDivision={fight.competitionContext.divisionNumber}
-                                    currentRound={fight.competitionContext.roundNumber}
+                                    currentDivision={isCupFight ? undefined : fight.competitionContext.divisionNumber}
+                                    currentRound={isCupFight ? undefined : fight.competitionContext.roundNumber}
                                     count={5}
                                     showOpponentName={false}
                                     sortOrder="asc"

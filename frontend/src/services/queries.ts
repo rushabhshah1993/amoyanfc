@@ -254,6 +254,7 @@ export const GET_ALL_SEASONS_BY_COMPETITION = gql`
             }
             cupData {
                 fights {
+                    _id
                     fighter1
                     fighter2
                     winner
@@ -327,6 +328,7 @@ export const GET_SEASON_DETAILS = gql`
             }
             cupData {
                 fights {
+                    _id
                     fighter1
                     fighter2
                     winner
@@ -416,6 +418,94 @@ export const GET_FINAL_SEASON_STANDINGS = gql`
                 points
                 rank
                 totalFightersCount
+            }
+        }
+    }
+`;
+
+export const GET_CUP_FIGHT_BY_ID = gql`
+    query GetCupFightById($id: ID!) {
+        getCupFightById(id: $id) {
+            id
+            fighter1 {
+                id
+                firstName
+                lastName
+                profileImage
+            }
+            fighter2 {
+                id
+                firstName
+                lastName
+                profileImage
+            }
+            winner {
+                id
+                firstName
+                lastName
+            }
+            fightIdentifier
+            date
+            userDescription
+            genAIDescription
+            isSimulated
+            fighterStats {
+                fighterId
+                stats {
+                    fightTime
+                    finishingMove
+                    grappling {
+                        accuracy
+                        defence
+                    }
+                    significantStrikes {
+                        accuracy
+                        attempted
+                        defence
+                        landed
+                        landedPerMinute
+                        positions {
+                            clinching
+                            ground
+                            standing
+                        }
+                    }
+                    strikeMap {
+                        head {
+                            absorb
+                            strike
+                        }
+                        torso {
+                            absorb
+                            strike
+                        }
+                        leg {
+                            absorb
+                            strike
+                        }
+                    }
+                    submissions {
+                        attemptsPer15Mins
+                        average
+                    }
+                    takedowns {
+                        accuracy
+                        attempted
+                        avgTakedownsLandedPerMin
+                        defence
+                        landed
+                    }
+                }
+            }
+            fightStatus
+            competitionContext {
+                competitionId
+                competitionName
+                competitionLogo
+                seasonNumber
+                divisionNumber
+                divisionName
+                roundNumber
             }
         }
     }

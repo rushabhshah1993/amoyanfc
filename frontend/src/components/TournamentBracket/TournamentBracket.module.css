@@ -80,6 +80,8 @@
 .match:hover {
     border-color: var(--text-primary);
     background-color: rgba(128, 128, 128, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Fighters Container */
@@ -98,17 +100,12 @@
     padding: 0.5rem;
     transition: all 0.3s ease;
     border-radius: 8px;
-    cursor: pointer;
     min-width: 0;
 }
 
-.fighterSide:hover {
-    background-color: rgba(128, 128, 128, 0.05);
-}
-
 .fighterImage {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
     border-radius: 0;
     object-fit: contain;
     object-position: center;
@@ -119,14 +116,14 @@
 }
 
 .fighterImagePlaceholder {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     color: var(--text-secondary);
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 600;
     text-transform: uppercase;
     border-radius: 0;
@@ -142,7 +139,7 @@
     font-weight: 400;
     color: var(--text-primary);
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     transition: all 0.3s ease;
     line-height: 1.3;
     word-wrap: break-word;
@@ -166,10 +163,10 @@
 }
 
 .vsIndicator {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 400;
     color: var(--text-secondary);
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem 0.75rem;
     background: transparent;
     border-radius: 0;
     border: none;
@@ -194,12 +191,12 @@
 
     .fighterImage,
     .fighterImagePlaceholder {
-        width: 60px;
-        height: 60px;
+        width: 80px;
+        height: 80px;
     }
 
     .fighterName {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -227,16 +224,16 @@
 
     .fighterImage,
     .fighterImagePlaceholder {
-        width: 55px;
-        height: 55px;
+        width: 70px;
+        height: 70px;
     }
 
     .fighterName {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
 
     .vsIndicator {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
 
     .roundMatches {
@@ -272,15 +269,15 @@
 
     .fighterImage,
     .fighterImagePlaceholder {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
     }
 
     .fighterName {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
     }
 
     .vsIndicator {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
     }
 }

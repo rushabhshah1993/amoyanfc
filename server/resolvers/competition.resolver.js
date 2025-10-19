@@ -131,6 +131,57 @@ const competitionResolver = {
                     roundNumber: fightData.roundNumber
                 }
             };
+        }),
+        getCupFightById: catchAsyncErrors(async(_, { id }) => {
+            const result = await Competition.aggregate([
+                { $unwind: '$cupData.fights' },
+                { $match: { 'cupData.fights._id': new mongoose.Types.ObjectId(id) } },
+                {
+                    $project: {
+                        fight: '$cupData.fights',
+                        competitionId: '$_id',
+                        competitionMetaId: '$competitionMetaId',
+                        seasonNumber: '$seasonMeta.seasonNumber',
+                        currentStage: '$cupData.currentStage'
+                    }
+                }
+            ]);
+
+            if (!result || result.length === 0) {
+                throw new NotFoundError(`Cup fight with ID ${id} not found`);
+            }
+
+            const fightData = result[0];
+            
+            // Fetch fighter details
+            const [fighter1, fighter2, winner, competitionMeta] = await Promise.all([
+                Fighter.findById(fightData.fight.fighter1),
+                Fighter.findById(fightData.fight.fighter2),
+                fightData.fight.winner ? Fighter.findById(fightData.fight.winner) : null,
+                CompetitionMeta.findById(fightData.competitionMetaId)
+            ]);
+
+            // Extract stage info from fightIdentifier (e.g., "IC-S1-SF-F1" -> "SF")
+            const fightIdentifier = fightData.fight.fightIdentifier || '';
+            const stageMatch = fightIdentifier.match(/-(R\d+|QF|SF|FN)/);
+            const stage = stageMatch ? stageMatch[1] : fightData.currentStage;
+
+            return {
+                id: fightData.fight._id,
+                ...fightData.fight,
+                fighter1,
+                fighter2,
+                winner,
+                competitionContext: {
+                    competitionId: fightData.competitionId,
+                    competitionName: competitionMeta?.competitionName,
+                    competitionLogo: competitionMeta?.logo,
+                    seasonNumber: fightData.seasonNumber,
+                    divisionNumber: null, // Cup fights don't have divisions
+                    divisionName: stage, // Use stage as divisionName for display
+                    roundNumber: null
+                }
+            };
         })
     },
     Mutation: {

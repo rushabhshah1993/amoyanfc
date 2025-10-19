@@ -110,6 +110,11 @@ const competitionTypeDef = `#graphql
         Fetch a specific fight by its MongoDB ID
         """
         getFightById(id: ID!): FightWithContext
+
+        """
+        Fetch a specific cup fight by its MongoDB ID
+        """
+        getCupFightById(id: ID!): FightWithContext
     }   
 
     """

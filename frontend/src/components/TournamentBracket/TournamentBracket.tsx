@@ -10,6 +10,7 @@ interface Fighter {
 }
 
 interface Fight {
+    _id?: string;
     fighter1: string;
     fighter2: string;
     winner: string;
@@ -24,6 +25,7 @@ interface TournamentBracketProps {
 }
 
 interface BracketFight {
+    _id?: string;
     fighter1?: Fighter;
     fighter2?: Fighter;
     winner?: string;
@@ -91,6 +93,7 @@ const TournamentBracket: React.FC<TournamentBracketProps> = ({ fights, participa
             orderedRounds.push({
                 name: roundName,
                 fights: r1Fights.map(f => ({
+                    _id: f._id,
                     fighter1: fighterMap.get(f.fighter1),
                     fighter2: fighterMap.get(f.fighter2),
                     winner: f.winner,
@@ -103,6 +106,7 @@ const TournamentBracket: React.FC<TournamentBracketProps> = ({ fights, participa
             orderedRounds.push({
                 name: 'Quarter-finals',
                 fights: roundsMap.get('QF')!.map(f => ({
+                    _id: f._id,
                     fighter1: fighterMap.get(f.fighter1),
                     fighter2: fighterMap.get(f.fighter2),
                     winner: f.winner,
@@ -115,6 +119,7 @@ const TournamentBracket: React.FC<TournamentBracketProps> = ({ fights, participa
             orderedRounds.push({
                 name: 'Semi-finals',
                 fights: roundsMap.get('SF')!.map(f => ({
+                    _id: f._id,
                     fighter1: fighterMap.get(f.fighter1),
                     fighter2: fighterMap.get(f.fighter2),
                     winner: f.winner,
@@ -127,6 +132,7 @@ const TournamentBracket: React.FC<TournamentBracketProps> = ({ fights, participa
             orderedRounds.push({
                 name: 'Final',
                 fights: roundsMap.get('FN')!.map(f => ({
+                    _id: f._id,
                     fighter1: fighterMap.get(f.fighter1),
                     fighter2: fighterMap.get(f.fighter2),
                     winner: f.winner,
@@ -138,8 +144,10 @@ const TournamentBracket: React.FC<TournamentBracketProps> = ({ fights, participa
         return orderedRounds;
     }, [fights, participants, fighterMap]);
 
-    const handleFighterClick = (fighterId: string) => {
-        navigate(`/fighter/${fighterId}`);
+    const handleFightClick = (fightId?: string) => {
+        if (fightId) {
+            navigate(`/fight/${fightId}`, { state: { isCupFight: true } });
+        }
     };
 
     return (
@@ -160,13 +168,16 @@ const TournamentBracket: React.FC<TournamentBracketProps> = ({ fights, participa
                         <div className={styles.roundMatches}>
                             {round.fights.map((fight, fightIndex) => (
                                 <div key={fightIndex} className={styles.matchWrapper}>
-                                    <div className={styles.match}>
+                                    <div 
+                                        className={styles.match}
+                                        onClick={() => handleFightClick(fight._id)}
+                                        style={{ cursor: fight._id ? 'pointer' : 'default' }}
+                                    >
                                         <div className={styles.fightersContainer}>
                                             {/* Fighter 1 */}
                                             {fight.fighter1 && (
                                                 <div 
                                                     className={`${styles.fighterSide} ${fight.winner === fight.fighter1.id ? styles.winner : ''}`}
-                                                    onClick={() => handleFighterClick(fight.fighter1!.id)}
                                                 >
                                                     {fight.winner === fight.fighter1.id && (
                                                         <div className={styles.winnerTag}>WINNER</div>
@@ -195,7 +206,6 @@ const TournamentBracket: React.FC<TournamentBracketProps> = ({ fights, participa
                                             {fight.fighter2 && (
                                                 <div 
                                                     className={`${styles.fighterSide} ${fight.winner === fight.fighter2.id ? styles.winner : ''}`}
-                                                    onClick={() => handleFighterClick(fight.fighter2!.id)}
                                                 >
                                                     {fight.winner === fight.fighter2.id && (
                                                         <div className={styles.winnerTag}>WINNER</div>
