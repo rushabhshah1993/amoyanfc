@@ -1,0 +1,24 @@
+IFC COMPETITIONS BACKUP SUMMARY
+======================================================================
+
+Backup Date: 2025-10-19T10:02:53.826Z
+Total Competitions: 10
+Total Fights: 1752
+File Size: 1.05 MB
+
+Breakdown by Season:
+──────────────────────────────────────────────────────────────────────
+Season  1: 1 competition(s)
+Season  2: 1 competition(s)
+Season  3: 1 competition(s)
+Season  4: 1 competition(s)
+Season  5: 1 competition(s)
+Season  6: 1 competition(s)
+Season  7: 1 competition(s)
+Season  8: 1 competition(s)
+Season  9: 1 competition(s)
+Season 10: 1 competition(s)
+
+Backup Files:
+  - competitions-backup-2025-10-19T10-02-53.json
+  - competitions-backup-2025-10-19T10-02-53-summary.txt
