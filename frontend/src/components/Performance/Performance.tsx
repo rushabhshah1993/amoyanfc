@@ -163,7 +163,7 @@ const Performance: React.FC<PerformanceProps> = ({
         placeholder: size === 'lg' ? styles.thumbnailPlaceholderLg : styles.thumbnailPlaceholder
     };
 
-    const thumbnailSize = size === 'lg' ? 140 : 45;
+    const thumbnailSize = size === 'lg' ? 110 : 45;
 
     return (
         <div className={sizeClasses.container}>

@@ -13,11 +13,12 @@
 
 .physical-attributes-title {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--text-primary);
     margin-bottom: 1.5rem;
     text-align: center;
     transition: color 0.3s ease;
+    text-transform: uppercase;
 }
 
 /* First 5 attributes - Custom Layout */

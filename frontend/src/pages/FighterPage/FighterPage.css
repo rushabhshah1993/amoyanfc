@@ -198,6 +198,7 @@
     padding: 2rem 3rem;
     background-color: transparent;
     margin: 0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .fighter-performance-section > div {
