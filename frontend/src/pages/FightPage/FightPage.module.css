@@ -251,6 +251,13 @@
     border-radius: 4px;
 }
 
+/* Fighter Performance Section */
+.fighterPerformance {
+    width: 100%;
+    max-width: 320px;
+    margin-top: 1rem;
+}
+
 /* Center Column - Info & Stats */
 .centerColumn {
     display: flex;

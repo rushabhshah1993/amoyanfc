@@ -3,8 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faArrowLeft, faUser, faBalanceScale } from '@fortawesome/free-solid-svg-icons';
-import { GET_FIGHT_BY_ID } from '../../services/queries';
+import { GET_FIGHT_BY_ID, GET_FIGHTER_INFORMATION, GET_ALL_FIGHTERS } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
+import Performance from '../../components/Performance/Performance';
 import styles from './FightPage.module.css';
 import BodySilhouette from './BodySilhouette';
 
@@ -97,6 +98,24 @@ const FightPage: React.FC = () => {
     const fight: Fight | null = data?.getFightById || null;
     const fighter1 = fight?.fighter1 || null;
     const fighter2 = fight?.fighter2 || null;
+
+    // Fetch full fighter data for both fighters (for Performance component)
+    const { data: fighter1Data } = useQuery(GET_FIGHTER_INFORMATION, {
+        variables: { id: fighter1?.id },
+        skip: !fighter1?.id
+    });
+
+    const { data: fighter2Data } = useQuery(GET_FIGHTER_INFORMATION, {
+        variables: { id: fighter2?.id },
+        skip: !fighter2?.id
+    });
+
+    // Fetch all fighters for opponent lookups
+    const { data: allFightersData } = useQuery(GET_ALL_FIGHTERS);
+
+    const fighter1Full = fighter1Data?.getFighterInformation;
+    const fighter2Full = fighter2Data?.getFighterInformation;
+    const allFighters = allFightersData?.getAllFighters || [];
 
     // Scroll to top when component loads
     useEffect(() => {
@@ -500,6 +519,23 @@ const FightPage: React.FC = () => {
                         {fight.winner?.id === fighter1.id && fight.fightStatus === 'completed' && (
                             <div className={styles.winnerTag}>WINNER</div>
                         )}
+                        
+                        {/* Performance Component for Fighter 1 */}
+                        {fighter1Full && (
+                            <div className={styles.fighterPerformance}>
+                                <Performance 
+                                    fighter={fighter1Full}
+                                    allFighters={allFighters}
+                                    currentSeason={fight.competitionContext.seasonNumber}
+                                    currentDivision={fight.competitionContext.divisionNumber}
+                                    currentRound={fight.competitionContext.roundNumber}
+                                    count={5}
+                                    showOpponentName={false}
+                                    sortOrder="asc"
+                                    title="Last 5 Fights"
+                                />
+                            </div>
+                        )}
                     </div>
 
                     {/* Center Content - Info & Stats */}
@@ -843,6 +879,23 @@ const FightPage: React.FC = () => {
                         </h2>
                         {fight.winner?.id === fighter2.id && fight.fightStatus === 'completed' && (
                             <div className={styles.winnerTag}>WINNER</div>
+                        )}
+                        
+                        {/* Performance Component for Fighter 2 */}
+                        {fighter2Full && (
+                            <div className={styles.fighterPerformance}>
+                                <Performance 
+                                    fighter={fighter2Full}
+                                    allFighters={allFighters}
+                                    currentSeason={fight.competitionContext.seasonNumber}
+                                    currentDivision={fight.competitionContext.divisionNumber}
+                                    currentRound={fight.competitionContext.roundNumber}
+                                    count={5}
+                                    showOpponentName={false}
+                                    sortOrder="asc"
+                                    title="Last 5 Fights"
+                                />
+                            </div>
                         )}
                     </div>
                 </div>

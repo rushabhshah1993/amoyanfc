@@ -9,6 +9,7 @@ import PhysicalAttributes from '../../components/PhysicalAttributes/PhysicalAttr
 import OpponentsGrid from '../../components/OpponentsGrid/OpponentsGrid';
 import CompetitionHistory from '../../components/CompetitionHistory/CompetitionHistory';
 import Streaks from '../../components/Streaks/Streaks';
+import Performance from '../../components/Performance/Performance';
 import { getCountryFlag } from '../../utils/countryFlags';
 import './FighterPage.css';
 
@@ -285,6 +286,14 @@ const FighterPage: React.FC = () => {
             </div>
 
             <PhysicalAttributes attributes={fighter.physicalAttributes} />
+
+            <Performance 
+                fighter={fighter}
+                allFighters={allFighters}
+                count={5}
+                showOpponentName={true}
+                sortOrder="desc"
+            />
 
             <CompetitionHistory competitionHistory={fighter.competitionHistory || []} />
 
