@@ -105,6 +105,11 @@ const competitionTypeDef = `#graphql
         Fetch a list of competitions based on the filters provided by the user
         """
         filterCompetitions(filter: CompetitionFilterInput!): [Competition!]
+
+        """
+        Fetch a specific fight by its MongoDB ID
+        """
+        getFightById(id: ID!): FightWithContext
     }   
 
     """

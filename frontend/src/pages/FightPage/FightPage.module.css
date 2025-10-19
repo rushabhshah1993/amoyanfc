@@ -1,0 +1,719 @@
+.fightPage {
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+.backButton {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    flex-shrink: 0;
+    aspect-ratio: 1 / 1;
+}
+
+.backButton:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.backButton:active {
+    transform: translateX(-1px);
+}
+
+/* Sticky Header */
+.stickyHeader {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 6rem 1rem 5.5rem;
+    z-index: 90;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stickyHeader.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.stickyBackButton {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    max-width: 36px;
+    max-height: 36px;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    aspect-ratio: 1 / 1;
+}
+
+.stickyBackButton:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) translateX(-2px);
+}
+
+.stickyContent {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.stickyFighterInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.stickyFighterInfo:first-child {
+    padding-left: 1rem;
+}
+
+.stickyFighterInfo:last-child {
+    justify-content: flex-end;
+    padding-right: 1rem;
+}
+
+.stickyFighterThumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--border-color);
+}
+
+.stickyFighterImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.stickyImagePlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+}
+
+.stickyFighterName {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+.stickyVsDivider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stickyVsText {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+}
+
+/* Fighters Comparison Section */
+.fightersComparison {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding: 3rem 4rem;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    height: calc(100vh - var(--header-height, 81px));
+}
+
+.fighterSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.fighterImageContainer {
+    width: 408px;
+    max-height: 561px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.fightFighterImage {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: top center;
+}
+
+.fightImagePlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    font-size: 4rem;
+}
+
+.fighterName {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: center;
+    margin: 0;
+}
+
+.versusDivider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.versusText {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Fight Information Section */
+.fightInfoSection {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.fightContext {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.competitionLogo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.contextDetails {
+    flex: 1;
+}
+
+.competitionName {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+}
+
+.fightLocation {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.fightDate {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    padding: 1rem 2rem;
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.winnerBanner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(66, 133, 244, 0.1) 0%, rgba(66, 133, 244, 0.05) 100%);
+    border-radius: 12px;
+    border: 2px solid #4285f4;
+}
+
+.winnerLabel {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #4285f4;
+    text-transform: uppercase;
+}
+
+.winnerInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.winnerImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: contain;
+    border: 3px solid #4285f4;
+}
+
+.winnerImagePlaceholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 2rem;
+    border: 3px solid #4285f4;
+}
+
+.winnerName {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.fightDescription {
+    padding: 2rem;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.descriptionTitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1rem 0;
+}
+
+.descriptionText {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+.simulatedBadge {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border: 1px solid #ffc107;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Fight Stats Section */
+.fightStatsSection {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 4rem;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 2rem 0;
+    text-align: center;
+}
+
+.statsPlaceholder {
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+/* Loading and Error States */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    gap: 1rem;
+    color: var(--text-secondary);
+}
+
+.loadingSpinner {
+    font-size: 2rem;
+    color: #4285f4;
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    color: #dc3545;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .stickyHeader {
+        padding: 0.75rem 3rem 0.75rem 4rem;
+    }
+
+    .stickyContent {
+        gap: 1.5rem;
+    }
+
+    .stickyFighterInfo:first-child {
+        padding-left: 0.5rem;
+    }
+
+    .stickyFighterInfo:last-child {
+        padding-right: 0.5rem;
+    }
+
+    .stickyFighterName {
+        font-size: 0.95rem;
+    }
+
+    .stickyFighterThumbnail {
+        width: 40px;
+        height: 40px;
+    }
+
+    .fightersComparison {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .versusDivider {
+        transform: rotate(90deg);
+    }
+
+    .fighterImageContainer {
+        width: 255px;
+        max-height: 357px;
+    }
+
+    .fightStatsSection {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .stickyHeader {
+        padding: 0.5rem 1.5rem 0.5rem 3.5rem;
+    }
+
+    .stickyContent {
+        gap: 1rem;
+    }
+
+    .stickyFighterInfo:first-child {
+        padding-left: 0.25rem;
+    }
+
+    .stickyFighterInfo:last-child {
+        padding-right: 0.25rem;
+    }
+
+    .stickyBackButton {
+        left: 0.75rem;
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        min-height: 32px;
+        max-width: 32px;
+        max-height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .stickyFighterName {
+        font-size: 0.85rem;
+    }
+
+    .stickyFighterThumbnail {
+        width: 36px;
+        height: 36px;
+    }
+
+    .stickyVsText {
+        font-size: 0.85rem;
+    }
+
+    .backButton {
+        top: 1rem;
+        left: 1rem;
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
+        max-width: 36px;
+        max-height: 36px;
+        font-size: 0.9rem;
+    }
+
+    .fighterImageContainer {
+        width: 204px;
+        max-height: 306px;
+    }
+
+    .fighterName {
+        font-size: 1.5rem;
+    }
+
+    .versusText {
+        font-size: 2rem;
+    }
+
+    .fightStatsSection {
+        padding: 1.5rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.5rem;
+    }
+
+    .fightInfoSection {
+        padding: 2rem;
+    }
+
+    .fightContext {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .competitionName {
+        font-size: 1.3rem;
+    }
+
+    .fightLocation {
+        font-size: 0.9rem;
+    }
+
+    .winnerBanner {
+        padding: 1.5rem;
+    }
+
+    .winnerName {
+        font-size: 1.3rem;
+    }
+
+    .fightDescription {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stickyHeader {
+        padding: 0.5rem 1rem 0.5rem 3rem;
+    }
+
+    .stickyContent {
+        gap: 0.75rem;
+    }
+
+    .stickyFighterInfo:first-child {
+        padding-left: 0;
+    }
+
+    .stickyFighterInfo:last-child {
+        padding-right: 0;
+    }
+
+    .stickyBackButton {
+        left: 0.5rem;
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        min-height: 28px;
+        max-width: 28px;
+        max-height: 28px;
+        font-size: 0.75rem;
+    }
+
+    .stickyFighterName {
+        font-size: 0.75rem;
+    }
+
+    .stickyFighterThumbnail {
+        width: 32px;
+        height: 32px;
+    }
+
+    .stickyVsText {
+        font-size: 0.75rem;
+    }
+
+    .backButton {
+        top: 0.75rem;
+        left: 0.75rem;
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        min-height: 32px;
+        max-width: 32px;
+        max-height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .fightersComparison {
+        padding: 1.5rem 1rem;
+    }
+
+    .fighterImageContainer {
+        width: 153px;
+        max-height: 230px;
+    }
+
+    .fighterName {
+        font-size: 1.2rem;
+    }
+
+    .versusText {
+        font-size: 1.5rem;
+    }
+
+    .fightStatsSection {
+        padding: 1rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.25rem;
+    }
+
+    .fightInfoSection {
+        padding: 1rem;
+    }
+
+    .fightContext {
+        padding: 1rem;
+    }
+
+    .competitionLogo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .competitionName {
+        font-size: 1.1rem;
+    }
+
+    .fightLocation {
+        font-size: 0.85rem;
+    }
+
+    .fightDate {
+        font-size: 0.95rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .winnerBanner {
+        padding: 1rem;
+    }
+
+    .winnerImage,
+    .winnerImagePlaceholder {
+        width: 60px;
+        height: 60px;
+    }
+
+    .winnerName {
+        font-size: 1.1rem;
+    }
+
+    .fightDescription {
+        padding: 1rem;
+    }
+
+    .descriptionTitle {
+        font-size: 1.1rem;
+    }
+
+    .descriptionText {
+        font-size: 0.9rem;
+    }
+}
+

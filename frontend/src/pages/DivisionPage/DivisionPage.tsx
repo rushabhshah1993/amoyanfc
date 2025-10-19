@@ -27,6 +27,7 @@ interface RoundStandings {
 }
 
 interface Fight {
+  _id: string;
   fighter1: string;
   fighter2: string;
   winner?: string;
@@ -228,7 +229,12 @@ const DivisionPage: React.FC = () => {
             const fighter2 = getFighterById(fight.fighter2);
 
             return (
-              <div key={fight.fightIdentifier || index} className={styles.fightCard}>
+              <div 
+                key={fight._id || fight.fightIdentifier || index} 
+                className={styles.fightCard}
+                onClick={() => fight._id && navigate(`/fight/${fight._id}`)}
+                style={{ cursor: fight._id ? 'pointer' : 'default' }}
+              >
                 <div className={styles.fightHeader}>
                   <div className={styles.fightNumber}>Fight {index + 1}</div>
                   {fight.date && (

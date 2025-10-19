@@ -1,5 +1,6 @@
 /* Package imports */
 import { GraphQLDateTime } from 'graphql-scalars';
+import mongoose from 'mongoose';
 
 /* Model imports */
 import { Competition } from './../models/competition.model.js';
@@ -72,6 +73,64 @@ const competitionResolver = {
                 throw new NotFoundError(`Competition(s) not found`);
             }
             return competitions;
+        }),
+        /**
+         * Fetches a specific fight by its MongoDB ID
+         * 
+         * @param {Object} _ - Unused parent resolver
+         * @param {Object} args - Arguments provided to this query
+         * @param {String} args.id - The MongoDB ObjectId of the fight
+         * @returns {Promise<Object>} - A fight object with complete details
+         */
+        getFightById: catchAsyncErrors(async(_, { id }) => {
+            const result = await Competition.aggregate([
+                { $unwind: '$leagueData.divisions' },
+                { $unwind: '$leagueData.divisions.rounds' },
+                { $unwind: '$leagueData.divisions.rounds.fights' },
+                { $match: { 'leagueData.divisions.rounds.fights._id': new mongoose.Types.ObjectId(id) } },
+                {
+                    $project: {
+                        fight: '$leagueData.divisions.rounds.fights',
+                        competitionId: '$_id',
+                        competitionMetaId: '$competitionMetaId',
+                        seasonNumber: '$seasonMeta.seasonNumber',
+                        divisionNumber: '$leagueData.divisions.divisionNumber',
+                        divisionName: '$leagueData.divisions.divisionName',
+                        roundNumber: '$leagueData.divisions.rounds.roundNumber'
+                    }
+                }
+            ]);
+
+            if (!result || result.length === 0) {
+                throw new NotFoundError(`Fight with ID ${id} not found`);
+            }
+
+            const fightData = result[0];
+            
+            // Fetch fighter details
+            const [fighter1, fighter2, winner, competitionMeta] = await Promise.all([
+                Fighter.findById(fightData.fight.fighter1),
+                Fighter.findById(fightData.fight.fighter2),
+                fightData.fight.winner ? Fighter.findById(fightData.fight.winner) : null,
+                CompetitionMeta.findById(fightData.competitionMetaId)
+            ]);
+
+            return {
+                id: fightData.fight._id,
+                ...fightData.fight,
+                fighter1,
+                fighter2,
+                winner,
+                competitionContext: {
+                    competitionId: fightData.competitionId,
+                    competitionName: competitionMeta?.competitionName,
+                    competitionLogo: competitionMeta?.logo,
+                    seasonNumber: fightData.seasonNumber,
+                    divisionNumber: fightData.divisionNumber,
+                    divisionName: fightData.divisionName,
+                    roundNumber: fightData.roundNumber
+                }
+            };
         })
     },
     Mutation: {

@@ -1,3 +1,5 @@
+import fightStatsTypes from "../types/fight-stats.types.js";
+
 const fightTypeDef = `#graphql
     scalar Date
 
@@ -9,6 +11,11 @@ const fightTypeDef = `#graphql
     between the two.
     """
     type Fight {
+        """
+        MongoDB generated unique ID representing an individual fight
+        """
+        _id: ID
+
         """
         A unique ID representing an individual fight
         """
@@ -73,6 +80,168 @@ const fightTypeDef = `#graphql
         """
         fightStatus: String
     }
+
+    """
+    Represents the statistics for a single fighter in a specific fight
+    """
+    type IndividualFighterStats {
+        """
+        The ID of the fighter
+        """
+        fighterId: ID
+
+        """
+        The statistics for this fighter in this fight
+        """
+        stats: FightStatistics
+    }
+
+    """
+    Represents the actual statistics from a fight
+    """
+    type FightStatistics {
+        """
+        The time taken for the fight to complete
+        """
+        fightTime: Float
+
+        """
+        The finishing move used by the winner
+        """
+        finishingMove: String
+
+        """
+        Grappling statistics
+        """
+        grappling: GrapplingData
+
+        """
+        Significant strikes statistics
+        """
+        significantStrikes: SignificantStrikesData
+
+        """
+        Strike map showing strikes by body part
+        """
+        strikeMap: StrikeMapData
+
+        """
+        Submission statistics
+        """
+        submissions: SubmissionData
+
+        """
+        Takedown statistics
+        """
+        takedowns: TakedownData
+    }
+
+    """
+    Represents contextual information about where a fight took place
+    """
+    type FightCompetitionContext {
+        """
+        The ID of the competition season
+        """
+        competitionId: ID
+
+        """
+        The name of the competition
+        """
+        competitionName: String
+
+        """
+        The logo of the competition
+        """
+        competitionLogo: String
+
+        """
+        The season number
+        """
+        seasonNumber: Int
+
+        """
+        The division number
+        """
+        divisionNumber: Int
+
+        """
+        The division name
+        """
+        divisionName: String
+
+        """
+        The round number
+        """
+        roundNumber: Int
+    }
+
+    """
+    Represents a fight with additional competition context
+    """
+    type FightWithContext {
+        """
+        A unique ID representing an individual fight
+        """
+        id: ID
+
+        """
+        The first fighter
+        """
+        fighter1: Fighter
+
+        """
+        The second fighter
+        """
+        fighter2: Fighter
+
+        """
+        The winner of the fight
+        """
+        winner: Fighter
+
+        """
+        A unique identifier for the fight
+        """
+        fightIdentifier: String
+
+        """
+        The date of the fight
+        """
+        date: Date
+
+        """
+        User-provided description of the fight
+        """
+        userDescription: String
+
+        """
+        AI-generated description of the fight
+        """
+        genAIDescription: String
+
+        """
+        Whether the fight was simulated
+        """
+        isSimulated: Boolean
+
+        """
+        Fight statistics for both fighters
+        """
+        fighterStats: [IndividualFighterStats]
+
+        """
+        The status of the fight
+        """
+        fightStatus: String
+
+        """
+        Competition context information
+        """
+        competitionContext: FightCompetitionContext
+    }
+
+    ${fightStatsTypes}
 `;
 
 export default fightTypeDef;

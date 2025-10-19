@@ -44,6 +44,7 @@ const competitionTypes = `#graphql
     }
 
     type CompetitionFight {
+        _id: ID
         fighter1: ID
         fighter2: ID
         winner: ID

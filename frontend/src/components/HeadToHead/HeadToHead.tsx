@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import S3Image from '../S3Image/S3Image';
@@ -34,6 +35,7 @@ interface HeadToHeadProps {
 }
 
 const HeadToHead: React.FC<HeadToHeadProps> = ({ fighter1, fighter2, headToHeadData }) => {
+    const navigate = useNavigate();
     const hasNoFights = headToHeadData.length === 0;
 
     if (hasNoFights) {
@@ -126,7 +128,12 @@ const HeadToHead: React.FC<HeadToHeadProps> = ({ fighter1, fighter2, headToHeadD
                                         {competition.fights.map((fight, idx) => {
                                             const winner = fight.winner === fighter1.id ? fighter1 : fighter2;
                                             return (
-                                                <div key={`${fight.fightId}-${idx}`} className={styles.fightCard}>
+                                                <div 
+                                                    key={`${fight.fightId}-${idx}`} 
+                                                    className={styles.fightCard}
+                                                    onClick={() => fight.fightId && navigate(`/fight/${fight.fightId}`)}
+                                                    style={{ cursor: fight.fightId ? 'pointer' : 'default' }}
+                                                >
                                                     <div className={styles.fightWinnerThumbnail}>
                                                     <S3Image
                                                         src={winner.profileImage}
