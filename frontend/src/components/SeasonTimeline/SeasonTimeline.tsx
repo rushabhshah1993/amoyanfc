@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import styles from './SeasonTimeline.module.css';
@@ -56,6 +57,7 @@ interface Season {
 
 interface SeasonTimelineProps {
     season: Season;
+    competitionId: string;
 }
 
 interface FightMarker {
@@ -77,7 +79,8 @@ interface DurationBreakdown {
     totalDays: number;
 }
 
-const SeasonTimeline: React.FC<SeasonTimelineProps> = ({ season }) => {
+const SeasonTimeline: React.FC<SeasonTimelineProps> = ({ season, competitionId }) => {
+    const navigate = useNavigate();
     const [hoveredFight, setHoveredFight] = useState<FightMarker | null>(null);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -288,7 +291,15 @@ const SeasonTimeline: React.FC<SeasonTimelineProps> = ({ season }) => {
 
     return (
         <div className={styles.seasonTimeline}>
-            <h2 className={styles.sectionTitle}>Season Timeline</h2>
+            <div className={styles.timelineHeader}>
+                <h2 className={styles.sectionTitle}>Season Timeline</h2>
+                <button
+                    className={styles.detailedButton}
+                    onClick={() => navigate(`/competition/${competitionId}/season/${season.id}/timeline`)}
+                >
+                    View detailed timeline
+                </button>
+            </div>
             
             <div className={styles.timelineRow}>
                 {/* Left Side - Duration Info */}

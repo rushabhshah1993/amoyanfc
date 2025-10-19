@@ -248,7 +248,7 @@ const LeagueSeasonPage: React.FC = () => {
                 {/* Season Rankings */}
                 <div className={styles.timelineSection}>
                     <SeasonRanking season={season} competitionId={competitionId!} />
-                    <SeasonTimeline season={season} />
+                    <SeasonTimeline season={season} competitionId={competitionId!} />
                 </div>
             </div>
         </div>
