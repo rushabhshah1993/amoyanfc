@@ -1,0 +1,92 @@
+INVICTA CUP SEASON 4 - FIGHTER MAPPING
+=======================================
+
+F-Code → MongoDB ObjectId Mapping
+----------------------------------
+
+Participants (8 fighters):
+--------------------------
+F030 → 676d6ecceb38b2b97c6da945 (WINNER - 2nd Championship!) 🏆🏆
+F020 → 676d7452eb38b2b97c6da981 (FINALIST)
+F021 → 676d745feb38b2b97c6da983 (SEMIFINALIST)
+F010 → 676d721aeb38b2b97c6da961 (SEMIFINALIST)
+F047 → 676d70e7eb38b2b97c6da94f
+F001 → 676d6f89eb38b2b97c6da949
+F036 → 676d764eeb38b2b97c6da9ad
+F014 → 676d7304eb38b2b97c6da96d
+
+Fight Results:
+--------------
+
+Round 1:
+--------
+Fight 1 (IC-S4-R1-F1):
+  F014 (676d7304eb38b2b97c6da96d) vs F021 (676d745feb38b2b97c6da983)
+  Winner: F021 ✓
+
+Fight 2 (IC-S4-R1-F2):
+  F036 (676d764eeb38b2b97c6da9ad) vs F020 (676d7452eb38b2b97c6da981)
+  Winner: F020 ✓
+
+Fight 3 (IC-S4-R1-F3):
+  F010 (676d721aeb38b2b97c6da961) vs F001 (676d6f89eb38b2b97c6da949)
+  Winner: F010 ✓
+
+Fight 4 (IC-S4-R1-F4):
+  F047 (676d70e7eb38b2b97c6da94f) vs F030 (676d6ecceb38b2b97c6da945)
+  Winner: F030 ✓
+
+Semi-finals:
+-----------
+Fight 1 (IC-S4-SF-F1):
+  F021 (676d745feb38b2b97c6da983) vs F020 (676d7452eb38b2b97c6da981)
+  Winner: F020 ✓
+
+Fight 2 (IC-S4-SF-F2):
+  F010 (676d721aeb38b2b97c6da961) vs F030 (676d6ecceb38b2b97c6da945)
+  Winner: F030 ✓
+
+Finals:
+-------
+Fight (IC-S4-FN):
+  F020 (676d7452eb38b2b97c6da981) vs F030 (676d6ecceb38b2b97c6da945)
+  Winner: F030 ✓ 🏆
+
+Tournament Bracket:
+-------------------
+                    ROUND 1              SEMI-FINALS         FINALS
+                    
+                    F014 ─┐
+                          ├─ F021 ─┐
+                    F021 ─┘         │
+                                    ├─ F020 ─┐
+                    F036 ─┐         │        │
+                          ├─ F020 ─┘        │
+                    F020 ─┘                  │
+                                             ├─ F030 🏆
+                    F010 ─┐                  │
+                          ├─ F010 ─┐        │
+                    F001 ─┘         │        │
+                                    ├─ F030 ─┘
+                    F047 ─┐         │
+                          ├─ F030 ─┘
+                    F030 ─┘
+
+Division Distribution:
+----------------------
+- Division 1: F030, F020, F010
+- Division 2: F021
+- Division 3: F047, F001, F036, F014
+
+Notable:
+--------
+- F030 won all three fights to claim his SECOND consecutive championship
+- F030 is now the most successful Invicta Cup fighter with 2 titles
+- F020 made it to the finals but couldn't overcome the champion
+- This was the final season of Invicta Cup
+
+Linked to IFC Season 10 (S0010): 68f38270761a2d83b46c03e1
+Timeline: 2023-04-14 → 2023-05-19
+
+🎉 MIGRATION COMPLETE - ALL 4 INVICTA CUP SEASONS NOW IN MONGODB!
+
