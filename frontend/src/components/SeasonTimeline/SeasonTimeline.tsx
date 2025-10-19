@@ -526,11 +526,6 @@ const SeasonTimeline: React.FC<SeasonTimelineProps> = ({ season, competitionId }
                     </div>
                 </div>
             )}
-
-            {/* Second Row - WIP */}
-            <div className={styles.wipSection}>
-                <p className={styles.wipText}>Additional timeline features coming soon...</p>
-            </div>
         </div>
     );
 };

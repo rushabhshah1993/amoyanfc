@@ -316,7 +316,7 @@ const FighterPage: React.FC = () => {
                 <Performance 
                     fighter={fighter}
                     allFighters={allFighters}
-                    count={6}
+                    count={8}
                     showOpponentName={true}
                     sortOrder="asc"
                     size="lg"

@@ -96,7 +96,7 @@ This ensures visually distinct colors regardless of division count.
 ## Layout Structure
 
 ```
-┌─────────────────────────────────────────────────────┐
+┌─────────────────────────────────────────────────────────┐
 │ Season Timeline                                     │
 ├─────────────────────┬───────────────────────────────┤
 │ Duration Info       │   Activity Graph              │
@@ -106,9 +106,7 @@ This ensures visually distinct colors regardless of division count.
 │ └─────────────────┘ │   │ D3 │█││█│███││          │ │
 │ Start: [DateTime]   │   └─────────────────────────┘ │
 │ End:   [DateTime]   │   Mar  Apr  May  Jun  Jul    │
-└─────────────────────┴───────────────────────────────┘
-│ Additional timeline features coming soon...         │
-└─────────────────────────────────────────────────────┘
+└─────────────────────┴───────────────────────────────────┘
 ```
 
 ## Usage
