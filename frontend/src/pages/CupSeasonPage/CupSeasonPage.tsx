@@ -35,8 +35,14 @@ interface LinkedCompetitionMeta {
     shortName?: string;
 }
 
+interface LeagueDivision {
+    divisionNumber: number;
+    fighters: Fighter[];
+}
+
 interface LinkedSeasonMeta {
     seasonNumber: number;
+    leagueDivisions?: LeagueDivision[];
 }
 
 interface LinkedLeagueSeason {
@@ -81,6 +87,19 @@ const CupSeasonPage: React.FC = () => {
         skip: !seasonId
     });
 
+    // Create a map of fighter ID to division number
+    const fighterDivisionMap = React.useMemo(() => {
+        const map = new Map<string, number>();
+        const divisions = data?.getCompetitionSeason?.linkedLeagueSeason?.season?.leagueDivisions;
+        if (divisions) {
+            divisions.forEach((division: LeagueDivision) => {
+                division.fighters.forEach((fighter: Fighter) => {
+                    map.set(fighter.id, division.divisionNumber);
+                });
+            });
+        }
+        return map;
+    }, [data]);
 
     // Scroll to top when component loads
     React.useEffect(() => {
@@ -169,7 +188,6 @@ const CupSeasonPage: React.FC = () => {
                 {/* Participants Section */}
                 <div className={styles.participantsSection}>
                     <h2 className={styles.sectionTitle}>
-                        <FontAwesomeIcon icon={faTrophy} className={styles.sectionIcon} />
                         Participants ({participants.length})
                     </h2>
                     
@@ -199,9 +217,17 @@ const CupSeasonPage: React.FC = () => {
                                         )}
                                     </div>
                                     <div className={styles.participantInfo}>
-                                        <h3 className={styles.participantName}>
-                                            {fighter.firstName} {fighter.lastName}
-                                        </h3>
+                                        <div className={styles.participantFirstName}>
+                                            {fighter.firstName}
+                                        </div>
+                                        <div className={styles.participantLastName}>
+                                            {fighter.lastName}
+                                        </div>
+                                        {fighterDivisionMap.has(fighter.id) && (
+                                            <div className={styles.participantDivision}>
+                                                Division {fighterDivisionMap.get(fighter.id)}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             ))}

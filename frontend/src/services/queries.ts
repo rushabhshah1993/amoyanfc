@@ -343,6 +343,14 @@ export const GET_SEASON_DETAILS = gql`
                 }
                 season {
                     seasonNumber
+                    leagueDivisions {
+                        divisionNumber
+                        fighters {
+                            id
+                            firstName
+                            lastName
+                        }
+                    }
                 }
             }
             competitionMeta {

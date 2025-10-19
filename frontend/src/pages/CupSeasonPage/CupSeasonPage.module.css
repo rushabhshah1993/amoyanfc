@@ -17,7 +17,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 /* Back Button */
@@ -82,9 +82,10 @@
     align-items: center;
     gap: 0.75rem;
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--text-primary);
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
 }
 
 .sectionIcon {
@@ -95,7 +96,7 @@
 /* Participants Grid */
 .participantsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(8, 1fr);
     gap: 2rem;
 }
 
@@ -132,7 +133,7 @@
 .participantImage {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.3s ease;
 }
 
@@ -151,18 +152,38 @@
 
 .participantInfo {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
-.participantName {
-    font-size: 0.95rem;
-    font-weight: 500;
+.participantFirstName {
+    font-size: 1.25rem;
+    font-weight: 400;
     color: var(--text-primary);
-    margin: 0;
-    transition: color 0.2s ease;
+    line-height: 1.2;
+    transition: opacity 0.2s ease;
 }
 
-.participantCard:hover .participantName {
+.participantLastName {
+    font-size: 0.85rem;
+    font-weight: 400;
     color: var(--text-primary);
+    line-height: 1.2;
+    transition: opacity 0.2s ease;
+    padding-bottom: 0.5rem;
+    border-bottom: 1.5px solid var(--border-color);
+}
+
+.participantDivision {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-top: 0.15rem;
+}
+
+.participantCard:hover .participantFirstName,
+.participantCard:hover .participantLastName {
     opacity: 0.8;
 }
 
@@ -205,7 +226,7 @@
     }
 
     .participantsGrid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-template-columns: repeat(4, 1fr);
         gap: 1.75rem;
     }
 }
@@ -218,7 +239,7 @@
     .seasonHeader {
         flex-direction: column;
         gap: 2rem;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
     }
 
     .seasonTitleSection {
@@ -239,7 +260,7 @@
     }
 
     .participantsGrid {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        grid-template-columns: repeat(4, 1fr);
         gap: 1.5rem;
     }
 
