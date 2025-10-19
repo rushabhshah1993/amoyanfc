@@ -9,6 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { GET_SEASON_DETAILS } from '../../services/queries';
 import SeasonRanking from '../../components/SeasonRanking';
+import SeasonTimeline from '../../components/SeasonTimeline';
 import styles from './LeagueSeasonPage.module.css';
 
 interface Fighter {
@@ -247,6 +248,7 @@ const LeagueSeasonPage: React.FC = () => {
                 {/* Season Rankings */}
                 <div className={styles.timelineSection}>
                     <SeasonRanking season={season} competitionId={competitionId!} />
+                    <SeasonTimeline season={season} />
                 </div>
             </div>
         </div>

@@ -33,11 +33,21 @@ The component:
 ## Display Format
 
 Each row shows:
-- **Rank**: Position number or icon for top 3
-- **Fighter**: Profile image and full name (clickable)
-- **Division**: Division number badge
+- **Rank**: Position number or icon for top 3 (trophy, silver medal, bronze medal)
+- **Fighter**: Profile image (55x55px, no border radius) and full name (clickable)
+- **Division**: Full division name (e.g., "Division 1", "Division 2")
 - **Record**: Wins-Losses (colored green/red)
-- **Win %**: Visual progress bar + percentage value
+- **Win %**: Minimal progress bar + percentage value
+
+## Design Philosophy
+
+The component follows a minimal and elegant design approach:
+- **Transparent backgrounds** with subtle hover effects (rgba overlay)
+- **Simple border-bottom dividers** instead of heavy cards
+- **No rounded corners** on images or progress bars
+- **Clean typography** with uppercase headers and letter-spacing
+- **Subtle color palette** using CSS variables for theme support
+- Matches the aesthetic of DivisionPage and FighterPage
 
 ## Usage
 
