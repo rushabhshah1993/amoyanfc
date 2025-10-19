@@ -92,9 +92,10 @@
 
 .competitionName {
     font-size: 1.35rem;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--text-primary);
     margin: 0;
+    text-transform: uppercase;
 }
 
 .expandButton {
@@ -181,9 +182,10 @@
 
 .seasonDetailsTitle {
     font-size: 1.05rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--text-primary);
     margin: 0 0 1rem 0;
+    text-transform: uppercase;
 }
 
 /* Season Card */
@@ -209,7 +211,8 @@
 
 .seasonNumber {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 400;
+    text-transform: uppercase;
     color: var(--text-primary);
 }
 
