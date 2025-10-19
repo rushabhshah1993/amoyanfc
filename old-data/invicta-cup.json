@@ -1,0 +1,1208 @@
+{
+  "fighters": [
+    {
+      "fights": {
+        "lost": 2,
+        "total": 3,
+        "wins": 1
+      },
+      "id": "F019",
+      "tournaments": [
+        {
+          "division": "3",
+          "finish": "round1",
+          "id": "W0001",
+          "opponents": [
+            {
+              "opponent": "F005",
+              "round": "round1",
+              "win": false
+            }
+          ],
+          "season": "S0007"
+        },
+        {
+          "division": "3",
+          "finish": "semifinals",
+          "id": "W0002",
+          "opponents": [
+            {
+              "opponent": "F040",
+              "round": "round1",
+              "win": true
+            },
+            {
+              "opponent": "F021",
+              "round": "semifinals",
+              "win": false
+            }
+          ],
+          "season": "S0008"
+        },
+        {
+          "division": "3",
+          "finish": false,
+          "id": "W0003",
+          "opponents": false,
+          "season": "S0009"
+        }
+      ],
+      "winPercent": 33.33333333333333
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 2,
+        "wins": 1
+      },
+      "id": "F005",
+      "tournaments": [
+        {
+          "division": "1",
+          "finish": "semifinals",
+          "id": "W0001",
+          "opponents": [
+            {
+              "opponent": "F019",
+              "round": "round1",
+              "win": true
+            },
+            {
+              "opponent": "F032",
+              "round": "semifinals",
+              "win": false
+            }
+          ],
+          "season": "S0007"
+        }
+      ],
+      "winPercent": 50
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 1,
+        "wins": 0
+      },
+      "id": "F027",
+      "tournaments": [
+        {
+          "division": "3",
+          "finish": "round1",
+          "id": "W0001",
+          "opponents": [
+            {
+              "opponent": "F035",
+              "round": "round1",
+              "win": false
+            }
+          ],
+          "season": "S0007"
+        }
+      ],
+      "winPercent": 0
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 1,
+        "wins": 0
+      },
+      "id": "F018",
+      "tournaments": [
+        {
+          "division": "2",
+          "finish": "round1",
+          "id": "W0001",
+          "opponents": [
+            {
+              "opponent": "F015",
+              "round": "round1",
+              "win": false
+            }
+          ],
+          "season": "S0007"
+        }
+      ],
+      "winPercent": 0
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 3,
+        "wins": 2
+      },
+      "id": "F035",
+      "tournaments": [
+        {
+          "division": "2",
+          "finish": "finals",
+          "id": "W0001",
+          "opponents": [
+            {
+              "opponent": "F027",
+              "round": "round1",
+              "win": true
+            },
+            {
+              "opponent": "F015",
+              "round": "semifinals",
+              "win": true
+            },
+            {
+              "opponent": "F032",
+              "round": "finals",
+              "win": false
+            }
+          ],
+          "season": "S0007"
+        }
+      ],
+      "winPercent": 66.66666666666666
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 2,
+        "wins": 1
+      },
+      "id": "F015",
+      "tournaments": [
+        {
+          "division": "1",
+          "finish": "semifinals",
+          "id": "W0001",
+          "opponents": [
+            {
+              "opponent": "F018",
+              "round": "round1",
+              "win": true
+            },
+            {
+              "opponent": "F035",
+              "round": "semifinals",
+              "win": false
+            }
+          ],
+          "season": "S0007"
+        }
+      ],
+      "winPercent": 50
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 1,
+        "wins": 0
+      },
+      "id": "F039",
+      "tournaments": [
+        {
+          "division": "3",
+          "finish": "round1",
+          "id": "W0001",
+          "opponents": [
+            {
+              "opponent": "F032",
+              "round": "round1",
+              "win": false
+            }
+          ],
+          "season": "S0007"
+        }
+      ],
+      "winPercent": 0
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 4,
+        "wins": 3
+      },
+      "id": "F032",
+      "tournaments": [
+        {
+          "division": "2",
+          "finish": "champion",
+          "id": "W0001",
+          "opponents": [
+            {
+              "opponent": "F039",
+              "round": "round1",
+              "win": true
+            },
+            {
+              "opponent": "F005",
+              "round": "semifinals",
+              "win": true
+            },
+            {
+              "opponent": "F035",
+              "round": "finals",
+              "win": true
+            }
+          ],
+          "season": "S0007"
+        },
+        {
+          "division": "1",
+          "finish": "round1",
+          "id": "W0002",
+          "opponents": [
+            {
+              "opponent": "F042",
+              "round": "round1",
+              "win": false
+            }
+          ],
+          "season": "S0008"
+        }
+      ],
+      "winPercent": 75
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 6,
+        "wins": 5
+      },
+      "id": "F042",
+      "tournaments": [
+        {
+          "finish": "champion",
+          "id": "W0002",
+          "opponents": [
+            {
+              "opponent": "F032",
+              "round": "round1",
+              "win": true
+            },
+            {
+              "opponent": "F017",
+              "round": "semifinals",
+              "win": true
+            },
+            {
+              "opponent": "F021",
+              "round": "finals",
+              "win": true
+            }
+          ]
+        },
+        {
+          "division": "1",
+          "finish": "finals",
+          "id": "W0003",
+          "opponents": [
+            {
+              "opponent": "F019",
+              "round": "round1",
+              "win": true
+            },
+            {
+              "opponent": "F025",
+              "round": "semifinals",
+              "win": true
+            },
+            {
+              "opponent": "F030",
+              "round": "finals",
+              "win": false
+            }
+          ],
+          "season": "S0009"
+        }
+      ],
+      "winPercent": 83.33333333333334
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 1,
+        "wins": 0
+      },
+      "id": "F008",
+      "tournaments": [
+        {
+          "division": "3",
+          "finish": "round1",
+          "id": "W0002",
+          "opponents": [
+            {
+              "opponent": "F017",
+              "round": "round1",
+              "win": false
+            }
+          ],
+          "season": "S0008"
+        }
+      ],
+      "winPercent": 0
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 1,
+        "wins": 0
+      },
+      "id": "F045",
+      "tournaments": [
+        {
+          "division": "3",
+          "finish": "round1",
+          "id": "W0002",
+          "opponents": [
+            {
+              "opponent": "F021",
+              "round": "round1",
+              "win": false
+            }
+          ],
+          "season": "S0008"
+        }
+      ],
+      "winPercent": 0
+    },
+    {
+      "fights": {
+        "lost": 3,
+        "total": 6,
+        "wins": 3
+      },
+      "id": "F021",
+      "tournaments": [
+        {
+          "division": "1",
+          "finish": "finals",
+          "id": "W0002",
+          "opponents": [
+            {
+              "opponent": "F045",
+              "round": "round1",
+              "win": true
+            },
+            {
+              "opponent": "F019",
+              "round": "semifinals",
+              "win": true
+            },
+            {
+              "opponent": "F042",
+              "round": "finals",
+              "win": false
+            }
+          ],
+          "season": "S0008"
+        },
+        {
+          "division": "1",
+          "finish": "round1",
+          "id": "W0003",
+          "opponents": [
+            {
+              "opponent": "F017",
+              "round": "round1",
+              "win": false
+            }
+          ],
+          "season": "S0009"
+        },
+        {
+          "division": "2",
+          "finish": "semifinals",
+          "id": "W0004",
+          "opponents": [
+            {
+              "opponent": "F014",
+              "round": "round1",
+              "win": true
+            },
+            {
+              "opponent": "F020",
+              "round": "semifinals",
+              "win": false
+            }
+          ],
+          "season": "S0010"
+        }
+      ],
+      "winPercent": 50
+    },
+    {
+      "fights": {
+        "lost": 2,
+        "total": 4,
+        "wins": 2
+      },
+      "id": "F017",
+      "tournaments": [
+        {
+          "division": "2",
+          "finish": "semifinals",
+          "id": "W0002",
+          "opponents": [
+            {
+              "opponent": "F008",
+              "round": "round1",
+              "win": true
+            },
+            {
+              "opponent": "F042",
+              "round": "semifinals",
+              "win": false
+            }
+          ],
+          "season": "S0008"
+        },
+        {
+          "division": "2",
+          "finish": "semifinals",
+          "id": "W0003",
+          "opponents": [
+            {
+              "opponent": "F021",
+              "round": "round1",
+              "win": true
+            },
+            {
+              "opponent": "F030",
+              "round": "semifinals",
+              "win": false
+            }
+          ],
+          "season": "S0009"
+        }
+      ],
+      "winPercent": 50
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 1,
+        "wins": 0
+      },
+      "id": "F040",
+      "tournaments": [
+        {
+          "division": "3",
+          "finish": "round1",
+          "id": "W0002",
+          "opponents": [
+            {
+              "opponent": "F019",
+              "round": "round1",
+              "win": false
+            }
+          ],
+          "season": "S0008"
+        }
+      ],
+      "winPercent": 0
+    },
+    {
+      "fights": false,
+      "tournaments": [
+        false,
+        {
+          "finish": false,
+          "id": "W0004",
+          "opponents": false
+        }
+      ],
+      "winPercent": 0
+    },
+    {
+      "fights": {
+        "lost": 0,
+        "total": 6,
+        "wins": 6
+      },
+      "id": "F030",
+      "tournaments": [
+        {
+          "division": "1",
+          "finish": "champion",
+          "id": "W0003",
+          "opponents": [
+            {
+              "opponent": "F036",
+              "round": "round1",
+              "win": true
+            },
+            {
+              "opponent": "F017",
+              "round": "semifinals",
+              "win": true
+            },
+            {
+              "opponent": "F042",
+              "round": "finals",
+              "win": true
+            }
+          ],
+          "season": "S0009"
+        },
+        {
+          "division": 1,
+          "finish": "champion",
+          "id": "W0004",
+          "opponents": [
+            {
+              "opponent": "F047",
+              "round": "round1",
+              "win": true
+            },
+            {
+              "opponent": "F010",
+              "round": "semifinals",
+              "win": true
+            },
+            {
+              "opponent": "F020",
+              "round": "finals",
+              "win": true
+            }
+          ],
+          "season": "S0010"
+        }
+      ],
+      "winPercent": 100
+    },
+    {
+      "fights": {
+        "lost": 0,
+        "total": 1,
+        "wins": 1
+      },
+      "id": "F025",
+      "tournaments": [
+        {
+          "division": "3",
+          "finish": false,
+          "id": "W0003",
+          "opponents": [
+            {
+              "opponent": "F011",
+              "round": "round1",
+              "win": true
+            }
+          ],
+          "season": "S0009"
+        }
+      ],
+      "winPercent": 100
+    },
+    {
+      "fights": {
+        "lost": 2,
+        "total": 2,
+        "wins": 0
+      },
+      "id": "F036",
+      "tournaments": [
+        {
+          "division": "3",
+          "finish": "round1",
+          "id": "W0003",
+          "opponents": [
+            {
+              "opponent": "F030",
+              "round": "round1",
+              "win": false
+            }
+          ],
+          "season": "S0009"
+        },
+        {
+          "division": "3",
+          "finish": "round1",
+          "id": "W0004",
+          "opponents": [
+            {
+              "opponent": "F020",
+              "round": "round1",
+              "win": false
+            }
+          ],
+          "season": "S0010"
+        }
+      ],
+      "winPercent": 0
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 1,
+        "wins": 0
+      },
+      "id": "F011",
+      "tournaments": [
+        {
+          "division": "3",
+          "finish": "round1",
+          "id": "W0003",
+          "opponents": [
+            {
+              "opponent": "F025",
+              "round": "round1",
+              "win": false
+            }
+          ],
+          "season": "S0009"
+        }
+      ],
+      "winPercent": 0
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 3,
+        "wins": 2
+      },
+      "id": "F020",
+      "tournaments": [
+        {
+          "division": "1",
+          "finish": "finals",
+          "id": "W0004",
+          "opponents": [
+            {
+              "opponent": "F036",
+              "round": "round1",
+              "win": true
+            },
+            {
+              "opponent": "F021",
+              "round": "semifinals",
+              "win": true
+            },
+            {
+              "opponent": "F030",
+              "round": "finals",
+              "win": false
+            }
+          ],
+          "season": "S0010"
+        }
+      ],
+      "winPercent": 66.66667
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 1,
+        "wins": 0
+      },
+      "id": "F047",
+      "tournaments": [
+        {
+          "division": "3",
+          "finish": "round1",
+          "id": "W0004",
+          "opponents": [
+            {
+              "opponent": "F030",
+              "round": "round1",
+              "win": false
+            }
+          ],
+          "season": "S0010"
+        }
+      ],
+      "winPercent": 0
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 1,
+        "wins": 0
+      },
+      "id": "F001",
+      "tournaments": [
+        {
+          "division": "3",
+          "finish": "round1",
+          "id": "W0004",
+          "opponents": [
+            {
+              "opponent": "F010",
+              "round": "round1",
+              "win": false
+            }
+          ],
+          "season": "S0010"
+        }
+      ],
+      "winPercent": 0
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 1,
+        "wins": 0
+      },
+      "id": "F014",
+      "tournaments": [
+        {
+          "division": "3",
+          "finish": "round1",
+          "id": "W0004",
+          "opponents": [
+            {
+              "opponent": "F021",
+              "round": "round1",
+              "win": false
+            }
+          ],
+          "season": "S0010"
+        }
+      ],
+      "winPercent": 0
+    },
+    {
+      "fights": {
+        "lost": 1,
+        "total": 2,
+        "wins": 1
+      },
+      "id": "F010",
+      "tournaments": [
+        {
+          "division": "1",
+          "finish": "semifinals",
+          "id": "W0004",
+          "opponents": [
+            {
+              "opponent": "F001",
+              "round": "round1",
+              "win": true
+            },
+            {
+              "opponent": "F030",
+              "round": "semifinals",
+              "win": false
+            }
+          ],
+          "season": "S0010"
+        }
+      ],
+      "winPercent": 50
+    }
+  ],
+  "fights": [
+    {
+      "finals": {
+        "fighter1": "F035",
+        "fighter2": "F032",
+        "id": "W0001-FN",
+        "winner": "F032"
+      },
+      "id": "W0001",
+      "round1": [
+        {
+          "fighter1": "F018",
+          "fighter2": "F015",
+          "id": "W0001-R1-F1",
+          "winner": "F015"
+        },
+        {
+          "fighter1": "F035",
+          "fighter2": "F027",
+          "id": "W0001-R1-F2",
+          "winner": "F035"
+        },
+        {
+          "fighter1": "F005",
+          "fighter2": "F019",
+          "id": "W0001-R1-F3",
+          "winner": "F005"
+        },
+        {
+          "fighter1": "F039",
+          "fighter2": "F032",
+          "id": "W0001-R1-F4",
+          "winner": "F032"
+        }
+      ],
+      "semifinals": [
+        {
+          "fighter1": "F015",
+          "fighter2": "F035",
+          "id": "W0001-SF-F1",
+          "winner": "F035"
+        },
+        {
+          "fighter1": "F005",
+          "fighter2": "F032",
+          "id": "W0001-SF-F2",
+          "winner": "F032"
+        }
+      ]
+    },
+    {
+      "finals": {
+        "fighter1": "F042",
+        "fighter2": "F021",
+        "id": "W0002-FN",
+        "winner": "F042"
+      },
+      "id": "W0002",
+      "round1": [
+        {
+          "fighter1": "F017",
+          "fighter2": "F008",
+          "id": "W0002-R1-F1",
+          "winner": "F017"
+        },
+        {
+          "fighter1": "F032",
+          "fighter2": "F042",
+          "id": "W0002-R1-F2",
+          "winner": "F042"
+        },
+        {
+          "fighter1": "F021",
+          "fighter2": "F045",
+          "id": "W0002-R1-F3",
+          "winner": "F021"
+        },
+        {
+          "fighter1": "F019",
+          "fighter2": "F040",
+          "id": "W0002-R1-F4",
+          "winner": "F019"
+        }
+      ],
+      "semifinals": [
+        {
+          "fighter1": "F017",
+          "fighter2": "F042",
+          "id": "W0002-SF-F1",
+          "winner": "F042"
+        },
+        {
+          "fighter1": "F021",
+          "fighter2": "F019",
+          "id": "W0002-SF-F2",
+          "winner": "F021"
+        }
+      ]
+    },
+    {
+      "finals": {
+        "fighter1": "F042",
+        "fighter2": "F030",
+        "id": "W0003-FN",
+        "winner": "F030"
+      },
+      "id": "W0003",
+      "round1": [
+        {
+          "fighter1": "F011",
+          "fighter2": "F025",
+          "id": "W0003-R1-F1",
+          "winner": "F025"
+        },
+        {
+          "fighter1": "F019",
+          "fighter2": "F042",
+          "id": "W0003-R1-F2",
+          "winner": "F042"
+        },
+        {
+          "fighter1": "F017",
+          "fighter2": "F021",
+          "id": "W0003-R1-F3",
+          "winner": "F017"
+        },
+        {
+          "fighter1": "F030",
+          "fighter2": "F036",
+          "id": "W0003-R1-F4",
+          "winner": "F030"
+        }
+      ],
+      "semifinals": [
+        {
+          "fighter1": "F025",
+          "fighter2": "F042",
+          "id": "W0003-SF-F1",
+          "winner": "F042"
+        },
+        {
+          "fighter1": "F017",
+          "fighter2": "F030",
+          "id": "W0003-SF-F2",
+          "winner": "F030"
+        }
+      ]
+    },
+    {
+      "finals": {
+        "fighter1": "F020",
+        "fighter2": "F030",
+        "id": "W0004-FN",
+        "winner": "F030"
+      },
+      "id": "W0004",
+      "round1": [
+        {
+          "fighter1": "F014",
+          "fighter2": "F021",
+          "id": "W0004-R1-F1",
+          "winner": "F021"
+        },
+        {
+          "fighter1": "F036",
+          "fighter2": "F020",
+          "id": "W0004-R1-F2",
+          "winner": "F020"
+        },
+        {
+          "fighter1": "F010",
+          "fighter2": "F001",
+          "id": "W0004-R1-F3",
+          "winner": "F010"
+        },
+        {
+          "fighter1": "F047",
+          "fighter2": "F030",
+          "id": "W0004-R1-F4",
+          "winner": "F030"
+        }
+      ],
+      "semifinals": [
+        {
+          "fighter1": "F021",
+          "fighter2": "F020",
+          "id": "W0004-SF-F1",
+          "winner": "F020"
+        },
+        {
+          "fighter1": "F010",
+          "fighter2": "F030",
+          "id": "W0004-SF-F2",
+          "winner": "F030"
+        }
+      ]
+    }
+  ],
+  "tournaments": [
+    {
+      "active": false,
+      "complete": true,
+      "currentFight": false,
+      "fighters": [
+        {
+          "division": "3",
+          "id": "F019",
+          "season": "S0007"
+        },
+        {
+          "division": "1",
+          "id": "F005",
+          "season": "S0007"
+        },
+        {
+          "division": "3",
+          "id": "F027",
+          "season": "S0007"
+        },
+        {
+          "division": "2",
+          "id": "F018",
+          "season": "S0007"
+        },
+        {
+          "division": "2",
+          "id": "F035",
+          "season": "S0007"
+        },
+        {
+          "division": "1",
+          "id": "F015",
+          "season": "S0007"
+        },
+        {
+          "division": "3",
+          "id": "F039",
+          "season": "S0007"
+        },
+        {
+          "division": "2",
+          "id": "F032",
+          "season": "S0007"
+        }
+      ],
+      "id": "W0001",
+      "season": "S0007",
+      "timeline": {
+        "end": "2022-02-17T04:54:19.733Z",
+        "start": "2022-01-24T09:30:47.763Z"
+      },
+      "winner": "F032"
+    },
+    {
+      "active": false,
+      "complete": true,
+      "currentFight": false,
+      "fighters": [
+        {
+          "division": 2,
+          "id": "F042",
+          "season": "S0008"
+        },
+        {
+          "division": "3",
+          "id": "F008",
+          "season": "S0008"
+        },
+        {
+          "division": "3",
+          "id": "F019",
+          "season": "S0008"
+        },
+        {
+          "division": "3",
+          "id": "F045",
+          "season": "S0008"
+        },
+        {
+          "division": "1",
+          "id": "F021",
+          "season": "S0008"
+        },
+        {
+          "division": "1",
+          "id": "F032",
+          "season": "S0008"
+        },
+        {
+          "division": "2",
+          "id": "F017",
+          "season": "S0008"
+        },
+        {
+          "division": "3",
+          "id": "F040",
+          "season": "S0008"
+        }
+      ],
+      "id": "W0002",
+      "season": "S0008",
+      "timeline": {
+        "end": "2022-06-05T13:02:26.052Z",
+        "start": "2022-05-20T14:21:17.923Z"
+      },
+      "winner": "F042"
+    },
+    {
+      "active": false,
+      "complete": true,
+      "currentFight": false,
+      "fighters": [
+        {
+          "division": "1",
+          "id": "F042",
+          "season": "S0009"
+        },
+        {
+          "division": "1",
+          "id": "F030",
+          "season": "S0009"
+        },
+        {
+          "division": "3",
+          "id": "F025",
+          "season": "S0009"
+        },
+        {
+          "division": "2",
+          "id": "F017",
+          "season": "S0009"
+        },
+        {
+          "division": "3",
+          "id": "F036",
+          "season": "S0009"
+        },
+        {
+          "division": "3",
+          "id": "F019",
+          "season": "S0009"
+        },
+        {
+          "division": "3",
+          "id": "F011",
+          "season": "S0009"
+        },
+        {
+          "division": "1",
+          "id": "F021",
+          "season": "S0009"
+        }
+      ],
+      "id": "W0003",
+      "season": "S0009",
+      "timeline": {
+        "end": "2022-11-03T10:17:20.119Z",
+        "start": "2022-10-21T11:32:18.772Z"
+      },
+      "winner": "F030"
+    },
+    {
+      "active": false,
+      "complete": true,
+      "currentFight": false,
+      "fighters": [
+        {
+          "division": 1,
+          "id": "F030",
+          "season": "S0010"
+        },
+        {
+          "division": "2",
+          "id": "F021",
+          "season": "S0010"
+        },
+        {
+          "division": "1",
+          "id": "F020",
+          "season": "S0010"
+        },
+        {
+          "division": "3",
+          "id": "F047",
+          "season": "S0010"
+        },
+        {
+          "division": "3",
+          "id": "F001",
+          "season": "S0010"
+        },
+        {
+          "division": "3",
+          "id": "F036",
+          "season": "S0010"
+        },
+        {
+          "division": "3",
+          "id": "F014",
+          "season": "S0010"
+        },
+        {
+          "division": "1",
+          "id": "F010",
+          "season": "S0010"
+        }
+      ],
+      "id": "W0004",
+      "season": "S0010",
+      "timeline": {
+        "end": "2023-05-19T04:48:27.070Z",
+        "start": "2023-04-14T18:30:00.000Z"
+      },
+      "winner": "F030"
+    }
+  ]
+}
