@@ -233,6 +233,73 @@ const FightPage: React.FC = () => {
         return stats?.submissions?.average || 0;
     };
 
+    // Significant Strikes helper functions
+    const getStrikesAccuracy = (fighterStats: IndividualFighterStats[] | undefined, fighterId: string): number => {
+        const stats = getFighterStats(fighterStats, fighterId);
+        return stats?.significantStrikes?.accuracy || 0;
+    };
+
+    const getStrikesAttempted = (fighterStats: IndividualFighterStats[] | undefined, fighterId: string): number => {
+        const stats = getFighterStats(fighterStats, fighterId);
+        return stats?.significantStrikes?.attempted || 0;
+    };
+
+    const getStrikesLanded = (fighterStats: IndividualFighterStats[] | undefined, fighterId: string): number => {
+        const stats = getFighterStats(fighterStats, fighterId);
+        return stats?.significantStrikes?.landed || 0;
+    };
+
+    const getStrikesDefence = (fighterStats: IndividualFighterStats[] | undefined, fighterId: string): number => {
+        const stats = getFighterStats(fighterStats, fighterId);
+        return stats?.significantStrikes?.defence || 0;
+    };
+
+    const getStrikesLandedPerMinute = (fighterStats: IndividualFighterStats[] | undefined, fighterId: string): number => {
+        const stats = getFighterStats(fighterStats, fighterId);
+        return stats?.significantStrikes?.landedPerMinute || 0;
+    };
+
+    const getStrikesStanding = (fighterStats: IndividualFighterStats[] | undefined, fighterId: string): number => {
+        const stats = getFighterStats(fighterStats, fighterId);
+        return stats?.significantStrikes?.positions?.standing || 0;
+    };
+
+    const getStrikesGround = (fighterStats: IndividualFighterStats[] | undefined, fighterId: string): number => {
+        const stats = getFighterStats(fighterStats, fighterId);
+        return stats?.significantStrikes?.positions?.ground || 0;
+    };
+
+    const getStrikesClinching = (fighterStats: IndividualFighterStats[] | undefined, fighterId: string): number => {
+        const stats = getFighterStats(fighterStats, fighterId);
+        return stats?.significantStrikes?.positions?.clinching || 0;
+    };
+
+    // Takedowns helper functions
+    const getTakedownsAccuracy = (fighterStats: IndividualFighterStats[] | undefined, fighterId: string): number => {
+        const stats = getFighterStats(fighterStats, fighterId);
+        return stats?.takedowns?.accuracy || 0;
+    };
+
+    const getTakedownsAttempted = (fighterStats: IndividualFighterStats[] | undefined, fighterId: string): number => {
+        const stats = getFighterStats(fighterStats, fighterId);
+        return stats?.takedowns?.attempted || 0;
+    };
+
+    const getTakedownsAvgPerMin = (fighterStats: IndividualFighterStats[] | undefined, fighterId: string): number => {
+        const stats = getFighterStats(fighterStats, fighterId);
+        return stats?.takedowns?.avgTakedownsLandedPerMin || 0;
+    };
+
+    const getTakedownsLanded = (fighterStats: IndividualFighterStats[] | undefined, fighterId: string): number => {
+        const stats = getFighterStats(fighterStats, fighterId);
+        return stats?.takedowns?.landed || 0;
+    };
+
+    const getTakedownsDefence = (fighterStats: IndividualFighterStats[] | undefined, fighterId: string): number => {
+        const stats = getFighterStats(fighterStats, fighterId);
+        return stats?.takedowns?.defence || 0;
+    };
+
     // Render stat comparison bar
     const renderStatComparison = (label: string, fighter1Value: number, fighter2Value: number, unit: string = '') => {
         const total = fighter1Value + fighter2Value;
@@ -434,20 +501,6 @@ const FightPage: React.FC = () => {
                         {/* Conditional: Stats or Coming Soon */}
                         {fight.fightStatus === 'completed' ? (
                             <div className={styles.statsContainer}>
-                                {/* Description if available */}
-                                {(fight.userDescription || fight.genAIDescription) && (
-                                    <div className={styles.fightDescription}>
-                                        <p className={styles.descriptionText}>
-                                            {fight.userDescription || fight.genAIDescription}
-                                        </p>
-                                        {fight.isSimulated && (
-                                            <div className={styles.simulatedBadge}>
-                                                AI Simulated
-                                            </div>
-                                        )}
-                                    </div>
-                                )}
-
                                 {/* Tabs Navigation */}
                                 <div className={styles.tabsContainer}>
                                     <div className={styles.tabsNav}>
@@ -470,10 +523,10 @@ const FightPage: React.FC = () => {
                                             Grappling
                                         </button>
                                         <button
-                                            className={`${styles.tabButton} ${activeTab === 'detailed' ? styles.activeTab : ''}`}
-                                            onClick={() => setActiveTab('detailed')}
+                                            className={`${styles.tabButton} ${activeTab === 'description' ? styles.activeTab : ''}`}
+                                            onClick={() => setActiveTab('description')}
                                         >
-                                            Detailed Stats
+                                            Description
                                         </button>
                                     </div>
 
@@ -516,8 +569,79 @@ const FightPage: React.FC = () => {
                                             </div>
                                         )}
                                         {activeTab === 'strikes' && (
-                                            <div className={styles.tabPlaceholder}>
-                                                Strikes statistics coming soon
+                                            <div className={styles.overviewTab}>
+                                                {/* Significant Strikes */}
+                                                {renderStatComparison(
+                                                    'Significant Strikes Accuracy',
+                                                    getStrikesAccuracy(fight.fighterStats, fighter1.id),
+                                                    getStrikesAccuracy(fight.fighterStats, fighter2.id),
+                                                    '%'
+                                                )}
+                                                {renderStatComparison(
+                                                    'Significant Strikes Attempted',
+                                                    getStrikesAttempted(fight.fighterStats, fighter1.id),
+                                                    getStrikesAttempted(fight.fighterStats, fighter2.id)
+                                                )}
+                                                {renderStatComparison(
+                                                    'Significant Strikes Landed',
+                                                    getStrikesLanded(fight.fighterStats, fighter1.id),
+                                                    getStrikesLanded(fight.fighterStats, fighter2.id)
+                                                )}
+                                                {renderStatComparison(
+                                                    'Significant Strikes Defence',
+                                                    getStrikesDefence(fight.fighterStats, fighter1.id),
+                                                    getStrikesDefence(fight.fighterStats, fighter2.id),
+                                                    '%'
+                                                )}
+                                                {renderStatComparison(
+                                                    'Strikes Landed Per Minute',
+                                                    getStrikesLandedPerMinute(fight.fighterStats, fighter1.id),
+                                                    getStrikesLandedPerMinute(fight.fighterStats, fighter2.id)
+                                                )}
+                                                {renderStatComparison(
+                                                    'Strikes (Standing)',
+                                                    getStrikesStanding(fight.fighterStats, fighter1.id),
+                                                    getStrikesStanding(fight.fighterStats, fighter2.id)
+                                                )}
+                                                {renderStatComparison(
+                                                    'Strikes (Ground)',
+                                                    getStrikesGround(fight.fighterStats, fighter1.id),
+                                                    getStrikesGround(fight.fighterStats, fighter2.id)
+                                                )}
+                                                {renderStatComparison(
+                                                    'Strikes (Clinching)',
+                                                    getStrikesClinching(fight.fighterStats, fighter1.id),
+                                                    getStrikesClinching(fight.fighterStats, fighter2.id)
+                                                )}
+                                                
+                                                {/* Takedowns */}
+                                                {renderStatComparison(
+                                                    'Takedown Accuracy',
+                                                    getTakedownsAccuracy(fight.fighterStats, fighter1.id),
+                                                    getTakedownsAccuracy(fight.fighterStats, fighter2.id),
+                                                    '%'
+                                                )}
+                                                {renderStatComparison(
+                                                    'Takedowns Attempted',
+                                                    getTakedownsAttempted(fight.fighterStats, fighter1.id),
+                                                    getTakedownsAttempted(fight.fighterStats, fighter2.id)
+                                                )}
+                                                {renderStatComparison(
+                                                    'Avg Takedowns Per Minute',
+                                                    getTakedownsAvgPerMin(fight.fighterStats, fighter1.id),
+                                                    getTakedownsAvgPerMin(fight.fighterStats, fighter2.id)
+                                                )}
+                                                {renderStatComparison(
+                                                    'Takedowns Landed',
+                                                    getTakedownsLanded(fight.fighterStats, fighter1.id),
+                                                    getTakedownsLanded(fight.fighterStats, fighter2.id)
+                                                )}
+                                                {renderStatComparison(
+                                                    'Takedown Defence',
+                                                    getTakedownsDefence(fight.fighterStats, fighter1.id),
+                                                    getTakedownsDefence(fight.fighterStats, fighter2.id),
+                                                    '%'
+                                                )}
                                             </div>
                                         )}
                                         {activeTab === 'grappling' && (
@@ -525,9 +649,40 @@ const FightPage: React.FC = () => {
                                                 Grappling statistics coming soon
                                             </div>
                                         )}
-                                        {activeTab === 'detailed' && (
-                                            <div className={styles.tabPlaceholder}>
-                                                Detailed statistics coming soon
+                                        {activeTab === 'description' && (
+                                            <div className={styles.descriptionTab}>
+                                                {fight.userDescription && (
+                                                    <div className={styles.descriptionSection}>
+                                                        <h4 className={styles.descriptionSectionTitle}>
+                                                            Fight Description
+                                                        </h4>
+                                                        <p className={styles.descriptionSectionText}>
+                                                            {fight.userDescription}
+                                                        </p>
+                                                    </div>
+                                                )}
+                                                {fight.genAIDescription && (
+                                                    <div className={styles.descriptionSection}>
+                                                        <div className={styles.aiDescriptionHeader}>
+                                                            <h4 className={styles.descriptionSectionTitle}>
+                                                                AI-Generated Description
+                                                            </h4>
+                                                            {fight.isSimulated && (
+                                                                <span className={styles.simulatedBadgeSmall}>
+                                                                    Simulated
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                        <p className={styles.descriptionSectionText}>
+                                                            {fight.genAIDescription}
+                                                        </p>
+                                                    </div>
+                                                )}
+                                                {!fight.userDescription && !fight.genAIDescription && (
+                                                    <div className={styles.tabPlaceholder}>
+                                                        No description available for this fight
+                                                    </div>
+                                                )}
                                             </div>
                                         )}
                                     </div>

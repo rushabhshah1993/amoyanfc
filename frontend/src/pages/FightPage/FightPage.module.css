@@ -395,6 +395,9 @@
     padding: 1.5rem 0.5rem;
     background-color: var(--bg-primary);
     border-radius: 0 0 8px 8px;
+    max-height: 350px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .tabPlaceholder {
@@ -409,6 +412,58 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+}
+
+/* Description Tab */
+.descriptionTab {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.descriptionSection {
+    background-color: var(--bg-secondary);
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.aiDescriptionHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.descriptionSectionTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.75rem 0;
+}
+
+.aiDescriptionHeader .descriptionSectionTitle {
+    margin: 0;
+}
+
+.descriptionSectionText {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+.simulatedBadgeSmall {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .statComparison {
@@ -721,6 +776,7 @@
 
     .tabContent {
         padding: 1.25rem 0.5rem;
+        max-height: 300px;
     }
 
     .overviewTab {
@@ -901,6 +957,7 @@
 
     .tabContent {
         padding: 1rem 0.35rem;
+        max-height: 250px;
     }
 
     .overviewTab {
@@ -922,6 +979,24 @@
 
     .statBar {
         height: 18px;
+    }
+
+    .descriptionSection {
+        padding: 1rem;
+    }
+
+    .descriptionSectionTitle {
+        font-size: 0.9rem;
+    }
+
+    .descriptionSectionText {
+        font-size: 0.8rem;
+        line-height: 1.6;
+    }
+
+    .simulatedBadgeSmall {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.5rem;
     }
 }
 
