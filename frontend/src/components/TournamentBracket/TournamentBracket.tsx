@@ -30,6 +30,7 @@ interface BracketFight {
     fighter2?: Fighter;
     winner?: string;
     fightIdentifier: string;
+    date?: string;
 }
 
 interface Round {
@@ -97,7 +98,8 @@ const TournamentBracket: React.FC<TournamentBracketProps> = ({ fights, participa
                     fighter1: fighterMap.get(f.fighter1),
                     fighter2: fighterMap.get(f.fighter2),
                     winner: f.winner,
-                    fightIdentifier: f.fightIdentifier
+                    fightIdentifier: f.fightIdentifier,
+                    date: f.date
                 }))
             });
         }
@@ -110,7 +112,8 @@ const TournamentBracket: React.FC<TournamentBracketProps> = ({ fights, participa
                     fighter1: fighterMap.get(f.fighter1),
                     fighter2: fighterMap.get(f.fighter2),
                     winner: f.winner,
-                    fightIdentifier: f.fightIdentifier
+                    fightIdentifier: f.fightIdentifier,
+                    date: f.date
                 }))
             });
         }
@@ -123,7 +126,8 @@ const TournamentBracket: React.FC<TournamentBracketProps> = ({ fights, participa
                     fighter1: fighterMap.get(f.fighter1),
                     fighter2: fighterMap.get(f.fighter2),
                     winner: f.winner,
-                    fightIdentifier: f.fightIdentifier
+                    fightIdentifier: f.fightIdentifier,
+                    date: f.date
                 }))
             });
         }
@@ -136,7 +140,8 @@ const TournamentBracket: React.FC<TournamentBracketProps> = ({ fights, participa
                     fighter1: fighterMap.get(f.fighter1),
                     fighter2: fighterMap.get(f.fighter2),
                     winner: f.winner,
-                    fightIdentifier: f.fightIdentifier
+                    fightIdentifier: f.fightIdentifier,
+                    date: f.date
                 }))
             });
         }
@@ -173,6 +178,15 @@ const TournamentBracket: React.FC<TournamentBracketProps> = ({ fights, participa
                                         onClick={() => handleFightClick(fight._id)}
                                         style={{ cursor: fight._id ? 'pointer' : 'default' }}
                                     >
+                                        {fight.date && (
+                                            <div className={styles.fightDate}>
+                                                {new Date(fight.date).toLocaleDateString('en-US', {
+                                                    month: 'short',
+                                                    day: 'numeric',
+                                                    year: 'numeric'
+                                                })}
+                                            </div>
+                                        )}
                                         <div className={styles.fightersContainer}>
                                             {/* Fighter 1 */}
                                             {fight.fighter1 && (
