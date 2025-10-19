@@ -6,6 +6,7 @@ import { faSpinner, faArrowLeft, faUser } from '@fortawesome/free-solid-svg-icon
 import { GET_FIGHT_BY_ID } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
 import styles from './FightPage.module.css';
+import BodySilhouette from './BodySilhouette';
 
 interface Fighter {
     id: string;
@@ -298,6 +299,78 @@ const FightPage: React.FC = () => {
     const getTakedownsDefence = (fighterStats: IndividualFighterStats[] | undefined, fighterId: string): number => {
         const stats = getFighterStats(fighterStats, fighterId);
         return stats?.takedowns?.defence || 0;
+    };
+
+    // Strike Map helper functions
+    const getStrikeMap = (fighterStats: IndividualFighterStats[] | undefined, fighterId: string) => {
+        const stats = getFighterStats(fighterStats, fighterId);
+        return stats?.strikeMap || { head: { absorb: 0, strike: 0 }, torso: { absorb: 0, strike: 0 }, leg: { absorb: 0, strike: 0 } };
+    };
+
+    // Calculate color intensity based on value ranking (highest = red, middle = yellow, lowest = green)
+    const getBodyPartColor = (value: number, values: number[]): string => {
+        const sorted = [...values].sort((a, b) => b - a); // Sort descending
+        const rank = sorted.indexOf(value);
+        
+        if (rank === 0) return '#ef4444'; // Red - highest
+        if (rank === 1) return '#f59e0b'; // Orange/Yellow - middle
+        return '#22c55e'; // Green - lowest
+    };
+
+    const getBodyPartOpacity = (value: number, values: number[]): number => {
+        const max = Math.max(...values);
+        if (max === 0) return 0.3;
+        const opacity = 0.3 + (value / max) * 0.7; // Range from 0.3 to 1.0
+        return opacity;
+    };
+
+    // Render body silhouette with strike map
+    const renderBodySilhouette = (strikeMap: any, type: 'strike' | 'absorb', fighterName: string) => {
+        const headValue = strikeMap.head[type];
+        const torsoValue = strikeMap.torso[type];
+        const legValue = strikeMap.leg[type];
+        const values = [headValue, torsoValue, legValue];
+
+        const headColor = getBodyPartColor(headValue, values);
+        const torsoColor = getBodyPartColor(torsoValue, values);
+        const legColor = getBodyPartColor(legValue, values);
+
+        const headOpacity = getBodyPartOpacity(headValue, values);
+        const torsoOpacity = getBodyPartOpacity(torsoValue, values);
+        const legOpacity = getBodyPartOpacity(legValue, values);
+
+        return (
+            <div className={styles.strikeMapContainer} key={`${fighterName}-${type}`}>
+                <h5 className={styles.strikeMapTitle}>
+                    {type === 'strike' ? 'Strikes Landed' : 'Strikes Absorbed'}
+                </h5>
+                <div className={styles.silhouetteWrapper}>
+                    <BodySilhouette
+                        headColor={headColor}
+                        torsoColor={torsoColor}
+                        legColor={legColor}
+                        headOpacity={headOpacity}
+                        torsoOpacity={torsoOpacity}
+                        legOpacity={legOpacity}
+                        id={`${fighterName}-${type}`}
+                    />
+                </div>
+                <div className={styles.strikeMapLegend}>
+                    <div className={styles.legendItem}>
+                        <div className={styles.legendColor} style={{ backgroundColor: headColor, opacity: headOpacity }}></div>
+                        <span>Head: {headValue}</span>
+                    </div>
+                    <div className={styles.legendItem}>
+                        <div className={styles.legendColor} style={{ backgroundColor: torsoColor, opacity: torsoOpacity }}></div>
+                        <span>Torso: {torsoValue}</span>
+                    </div>
+                    <div className={styles.legendItem}>
+                        <div className={styles.legendColor} style={{ backgroundColor: legColor, opacity: legOpacity }}></div>
+                        <span>Leg: {legValue}</span>
+                    </div>
+                </div>
+            </div>
+        );
     };
 
     // Render stat comparison bar
@@ -645,8 +718,46 @@ const FightPage: React.FC = () => {
                                             </div>
                                         )}
                                         {activeTab === 'grappling' && (
-                                            <div className={styles.tabPlaceholder}>
-                                                Grappling statistics coming soon
+                                            <div className={styles.grapplingTab}>
+                                                <div className={styles.strikeMapGrid}>
+                                                    {/* Fighter 1 Strike Maps */}
+                                                    <div className={styles.fighterStrikeMapSection}>
+                                                        <h4 className={styles.fighterStrikeMapName}>
+                                                            {fighter1.firstName} {fighter1.lastName}
+                                                        </h4>
+                                                        <div className={styles.strikeMapRow}>
+                                                            {renderBodySilhouette(
+                                                                getStrikeMap(fight.fighterStats, fighter1.id),
+                                                                'strike',
+                                                                fighter1.firstName
+                                                            )}
+                                                            {renderBodySilhouette(
+                                                                getStrikeMap(fight.fighterStats, fighter1.id),
+                                                                'absorb',
+                                                                fighter1.firstName
+                                                            )}
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Fighter 2 Strike Maps */}
+                                                    <div className={styles.fighterStrikeMapSection}>
+                                                        <h4 className={styles.fighterStrikeMapName}>
+                                                            {fighter2.firstName} {fighter2.lastName}
+                                                        </h4>
+                                                        <div className={styles.strikeMapRow}>
+                                                            {renderBodySilhouette(
+                                                                getStrikeMap(fight.fighterStats, fighter2.id),
+                                                                'strike',
+                                                                fighter2.firstName
+                                                            )}
+                                                            {renderBodySilhouette(
+                                                                getStrikeMap(fight.fighterStats, fighter2.id),
+                                                                'absorb',
+                                                                fighter2.firstName
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         )}
                                         {activeTab === 'description' && (
