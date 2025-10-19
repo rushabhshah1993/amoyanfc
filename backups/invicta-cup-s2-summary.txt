@@ -1,0 +1,76 @@
+INVICTA CUP SEASON 2 (W0002) - MIGRATION SUMMARY
+================================================
+
+✅ SUCCESSFULLY UPLOADED TO MONGODB
+===================================
+
+Competition Details:
+-------------------
+- Season Number: 2
+- Tournament ID: W0002
+- MongoDB ID: 68f51be7f39401ab6de7a23e
+- Competition Meta ID: 6778103309a4c4b25127f8fc
+- Timeline: 2022-05-20 → 2022-06-05
+- Status: Complete (isActive: false)
+
+Participants:
+-------------
+- Total Fighters: 8
+- Winner: F042 (676d72c5eb38b2b97c6da969)
+
+Tournament Structure:
+--------------------
+- Round 1: 4 fights
+- Semi-finals: 2 fights
+- Finals: 1 fight
+- Total Fights: 7
+
+Linked IFC Season:
+-----------------
+- IFC Competition Meta ID: 67780dcc09a4c4b25127f8f6
+- IFC Season ID: 68f32fafbd3c514277e377ee (Season 8)
+
+Fight Identifiers:
+-----------------
+Round 1:
+- IC-S2-R1-F1: F017 vs F008 → F017 wins
+- IC-S2-R1-F2: F032 vs F042 → F042 wins
+- IC-S2-R1-F3: F021 vs F045 → F021 wins
+- IC-S2-R1-F4: F019 vs F040 → F019 wins
+
+Semi-finals:
+- IC-S2-SF-F1: F017 vs F042 → F042 wins
+- IC-S2-SF-F2: F021 vs F019 → F021 wins
+
+Finals:
+- IC-S2-FN: F042 vs F021 → F042 wins (CHAMPION)
+
+Configuration:
+-------------
+- Knockout Rounds: 3
+- Number of Fighters: 8
+- Stages: Preliminary, Semi-finals, Finals
+
+Migration Process:
+-----------------
+1. ✅ Created data structure from old-data/invicta-cup.json
+2. ✅ Mapped F-codes to MongoDB ObjectIds using fighter-mapping.json
+3. ✅ Verified competition meta exists
+4. ✅ Checked for duplicates (none found)
+5. ✅ Successfully uploaded to MongoDB
+6. ✅ Cleaned up temporary scripts
+
+Generated Files:
+---------------
+- invicta-cup-s2-generated.json (intermediate with F-codes)
+- invicta-cup-s2-final.json (final with MongoDB IDs)
+- invicta-cup-s2-summary.txt (this file)
+
+Upload Date: 2025-10-19
+Migration Status: ✅ COMPLETE
+
+Next Steps:
+----------
+- Invicta Cup Season 3 (W0003) - linked to IFC Season 9 (S0009)
+- Invicta Cup Season 4 (W0004) - linked to IFC Season 10 (S0010)
+

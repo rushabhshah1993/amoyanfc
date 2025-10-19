@@ -14,15 +14,16 @@ This guide documents the process for migrating Invicta Cup data from `old-data/i
 - **Winner:** F032 (676d75dfeb38b2b97c6da9a5)
 - **Uploaded:** 2025-10-19
 
-## 🔄 Remaining Migrations
-
 ### Invicta Cup Season 2 (W0002)
-- **Status:** ⏳ PENDING
+- **Status:** ✅ COMPLETE
 - **Linked to:** IFC Season 8 (S0008)
-- **IFC Season ID:** `68f32fafbd3c514277e377ee`
-- **Tournament ID in source:** W0002
+- **MongoDB ID:** `68f51be7f39401ab6de7a23e`
 - **Timeline:** 2022-05-20 → 2022-06-05
-- **Winner:** F042
+- **Participants:** 8 fighters
+- **Winner:** F042 (676d72c5eb38b2b97c6da969)
+- **Uploaded:** 2025-10-19
+
+## 🔄 Remaining Migrations
 
 ### Invicta Cup Season 3 (W0003)
 - **Status:** ⏳ PENDING
@@ -345,6 +346,6 @@ uploadInvictaCup();
 ---
 
 **Last Updated:** 2025-10-19  
-**Completed Seasons:** 1 of 4  
-**Next Season:** Invicta Cup S2 (W0002)
+**Completed Seasons:** 2 of 4  
+**Next Season:** Invicta Cup S3 (W0003)
 
