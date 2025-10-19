@@ -1,0 +1,354 @@
+.seasonRanking {
+    margin-top: 3rem;
+}
+
+.sectionTitle {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin: 0 0 2rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.sectionDescription {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: -1.5rem 0 2rem 0;
+    font-weight: 300;
+    opacity: 0.7;
+    transition: color 0.3s ease;
+}
+
+.noDataMessage {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+}
+
+.noDataMessage p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin: 0;
+    font-weight: 300;
+    opacity: 0.7;
+}
+
+/* Table Structure - Minimal Design */
+.rankingTable {
+    background: transparent;
+    border-radius: 0;
+    border: none;
+    overflow: visible;
+}
+
+.tableHeader {
+    display: grid;
+    grid-template-columns: 60px 1fr 150px 120px 180px;
+    gap: 1.5rem;
+    padding: 12px 8px;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.headerRank,
+.headerFighter,
+.headerDivision,
+.headerRecord,
+.headerWinPct {
+    display: flex;
+    align-items: center;
+}
+
+.tableBody {
+    display: flex;
+    flex-direction: column;
+}
+
+.tableRow {
+    display: grid;
+    grid-template-columns: 60px 1fr 150px 120px 180px;
+    gap: 1.5rem;
+    padding: 12px 8px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background: transparent;
+}
+
+.tableRow:last-child {
+    border-bottom: none;
+}
+
+.tableRow:hover {
+    background-color: rgba(128, 128, 128, 0.05);
+}
+
+/* Cell Styles */
+.cellRank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.trophyIcon {
+    font-size: 1.2rem;
+    color: #FFD700; /* Gold */
+}
+
+.medalIconSilver {
+    font-size: 1.2rem;
+    color: #C0C0C0; /* Silver */
+}
+
+.medalIconBronze {
+    font-size: 1.2rem;
+    color: #CD7F32; /* Bronze */
+}
+
+.cellFighter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.fighterImage {
+    width: 55px;
+    height: 55px;
+    border-radius: 0;
+    overflow: hidden;
+    border: none;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.fighterImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: transparent;
+}
+
+.fighterImagePlaceholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: white;
+}
+
+.fighterName {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.cellDivision {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.cellRecord {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.4rem;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.recordWins {
+    color: #34a853; /* Green for wins */
+}
+
+.recordSeparator {
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.recordLosses {
+    color: #ea4335; /* Red for losses */
+}
+
+.cellWinPct {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.winPctBar {
+    flex: 1;
+    height: 6px;
+    background-color: rgba(128, 128, 128, 0.1);
+    border-radius: 0;
+    overflow: hidden;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.winPctBarFill {
+    height: 100%;
+    background: var(--text-primary);
+    border-radius: 0;
+    transition: width 0.3s ease;
+}
+
+.winPctText {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    min-width: 60px;
+    text-align: right;
+    transition: color 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .tableHeader,
+    .tableRow {
+        grid-template-columns: 60px 1fr 130px 110px 150px;
+        gap: 1rem;
+        padding: 12px 6px;
+    }
+
+    .sectionTitle {
+        font-size: 1rem;
+    }
+
+    .fighterImage {
+        width: 50px;
+        height: 50px;
+    }
+
+    .fighterName {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tableHeader {
+        display: none;
+    }
+
+    .tableRow {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        padding: 16px 8px;
+        position: relative;
+    }
+
+    .cellRank {
+        position: absolute;
+        top: 16px;
+        right: 8px;
+        font-size: 0.95rem;
+    }
+
+    .cellFighter {
+        padding-top: 0;
+    }
+
+    .cellDivision,
+    .cellRecord,
+    .cellWinPct {
+        justify-content: flex-start;
+    }
+
+    .cellDivision {
+        order: -1;
+        font-size: 12px;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .sectionTitle {
+        font-size: 0.95rem;
+    }
+
+    .sectionDescription {
+        font-size: 0.8rem;
+        margin: -1.25rem 0 1.5rem 0;
+    }
+
+    .fighterImage {
+        width: 50px;
+        height: 50px;
+    }
+
+    .fighterName {
+        font-size: 13px;
+    }
+
+    .cellRecord {
+        font-size: 13px;
+    }
+
+    .winPctText {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tableRow {
+        padding: 14px 6px;
+    }
+
+    .cellRank {
+        top: 14px;
+        right: 6px;
+    }
+
+    .fighterImage {
+        width: 45px;
+        height: 45px;
+    }
+
+    .fighterName {
+        font-size: 12px;
+    }
+
+    .cellRecord {
+        font-size: 12px;
+    }
+
+    .winPctText {
+        font-size: 12px;
+    }
+
+    .sectionTitle {
+        font-size: 0.9rem;
+    }
+
+    .trophyIcon,
+    .medalIconSilver,
+    .medalIconBronze {
+        font-size: 1rem;
+    }
+
+    .cellDivision {
+        font-size: 11px;
+    }
+}

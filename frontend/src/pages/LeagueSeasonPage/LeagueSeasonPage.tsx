@@ -8,6 +8,7 @@ import {
     faTrophy
 } from '@fortawesome/free-solid-svg-icons';
 import { GET_SEASON_DETAILS } from '../../services/queries';
+import SeasonRanking from '../../components/SeasonRanking';
 import styles from './LeagueSeasonPage.module.css';
 
 interface Fighter {
@@ -243,11 +244,9 @@ const LeagueSeasonPage: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Empty section for future timeline and other data */}
+                {/* Season Rankings */}
                 <div className={styles.timelineSection}>
-                    <div className={styles.comingSoonPlaceholder}>
-                        <p>Timeline and additional details coming soon...</p>
-                    </div>
+                    <SeasonRanking season={season} competitionId={competitionId!} />
                 </div>
             </div>
         </div>
