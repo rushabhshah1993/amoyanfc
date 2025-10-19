@@ -516,9 +516,11 @@ const FightPage: React.FC = () => {
                         <h2 className={styles.fighterName}>
                             {fighter1.firstName} {fighter1.lastName}
                         </h2>
-                        {fight.winner?.id === fighter1.id && fight.fightStatus === 'completed' && (
-                            <div className={styles.winnerTag}>WINNER</div>
-                        )}
+                        <div className={styles.winnerTagContainer}>
+                            {fight.winner?.id === fighter1.id && fight.fightStatus === 'completed' && (
+                                <div className={styles.winnerTag}>WINNER</div>
+                            )}
+                        </div>
                         
                         {/* Performance Component for Fighter 1 */}
                         {fighter1Full && (
@@ -877,9 +879,11 @@ const FightPage: React.FC = () => {
                         <h2 className={styles.fighterName}>
                             {fighter2.firstName} {fighter2.lastName}
                         </h2>
-                        {fight.winner?.id === fighter2.id && fight.fightStatus === 'completed' && (
-                            <div className={styles.winnerTag}>WINNER</div>
-                        )}
+                        <div className={styles.winnerTagContainer}>
+                            {fight.winner?.id === fighter2.id && fight.fightStatus === 'completed' && (
+                                <div className={styles.winnerTag}>WINNER</div>
+                            )}
+                        </div>
                         
                         {/* Performance Component for Fighter 2 */}
                         {fighter2Full && (
