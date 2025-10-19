@@ -80,7 +80,8 @@ const fighterTypes = `#graphql
         competitionId: ID
         season: Int
         fightId: ID
-        dateOfDebut: String
+        dateOfDebut: Date
+        competitionMeta: CompetitionMeta
     }
 
     type EarningData {

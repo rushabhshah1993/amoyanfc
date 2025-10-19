@@ -18,6 +18,18 @@ interface Location {
     country?: string;
 }
 
+interface DebutInformation {
+    competitionId: string;
+    season: number;
+    fightId: string;
+    dateOfDebut?: string;
+    competitionMeta?: {
+        id: string;
+        competitionName: string;
+        logo?: string;
+    };
+}
+
 interface StreakStart {
     season: number;
     division: number;
@@ -62,6 +74,7 @@ interface Fighter {
     profileImage?: string;
     skillset?: string[];
     location?: Location;
+    debutInformation?: DebutInformation;
     physicalAttributes?: any;
     opponentsHistory?: any[];
     competitionHistory?: any[];
@@ -145,7 +158,7 @@ const FighterPage: React.FC = () => {
         const date = new Date(dateString);
         if (isNaN(date.getTime())) {
             console.error('Invalid date format:', dateString);
-            return 'Invalid Date';
+            return 'N/A';
         }
         
         return date.toLocaleDateString('en-US', {
@@ -261,6 +274,18 @@ const FighterPage: React.FC = () => {
                             <div className="detail-item">
                                 <span className="detail-label">Birthday</span>
                                 <span className="detail-value">Not available</span>
+                            </div>
+                        )}
+
+                        {fighter.debutInformation && (
+                            <div className="detail-item">
+                                <span className="detail-label">Debut</span>
+                                <span className="detail-value">
+                                    {fighter.debutInformation.competitionMeta?.competitionName || 'Competition'} | Season {fighter.debutInformation.season}
+                                    {fighter.debutInformation.dateOfDebut && (
+                                        <span className="debut-date"> • {formatDate(fighter.debutInformation.dateOfDebut)}</span>
+                                    )}
+                                </span>
                             </div>
                         )}
 

@@ -383,6 +383,25 @@ const fighterResolver = {
             // Filter out streaks with null competitionMeta
             return enrichedStreaks.filter(streak => streak.competitionMeta !== null);
         },
+        debutInformation: async(parent) => {
+            if (!parent.debutInformation || !parent.debutInformation.competitionId) {
+                return null;
+            }
+
+            const competitionMeta = await CompetitionMeta.findById(parent.debutInformation.competitionId);
+            
+            return {
+                competitionId: parent.debutInformation.competitionId,
+                season: parent.debutInformation.season,
+                fightId: parent.debutInformation.fightId,
+                dateOfDebut: parent.debutInformation.dateOfDebut || null,
+                competitionMeta: competitionMeta ? {
+                    id: competitionMeta.id || competitionMeta._id?.toString(),
+                    competitionName: competitionMeta.competitionName,
+                    logo: competitionMeta.logo
+                } : null
+            };
+        },
         globalRank: async(parent) => {
             const currentGlobalRankList = await GlobalRank.find({isCurrent: true});
             const fighterRank = currentGlobalRankList?.fighters.find(fighter => fighter.fighterId !== parent.id);

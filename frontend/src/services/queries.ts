@@ -92,6 +92,17 @@ export const GET_FIGHTER_INFORMATION = gql`
                 city
                 country
             }
+            debutInformation {
+                competitionId
+                season
+                fightId
+                dateOfDebut
+                competitionMeta {
+                    id
+                    competitionName
+                    logo
+                }
+            }
             physicalAttributes {
                 heightCm
                 heightFeet
