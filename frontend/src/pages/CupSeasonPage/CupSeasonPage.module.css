@@ -195,6 +195,11 @@
     font-weight: 400;
 }
 
+/* Bracket Section */
+.bracketSection {
+    margin-top: 4rem;
+}
+
 /* Loading and Error States */
 .loading,
 .error {

@@ -8,6 +8,7 @@ import {
     faTrophy
 } from '@fortawesome/free-solid-svg-icons';
 import { GET_SEASON_DETAILS } from '../../services/queries';
+import TournamentBracket from '../../components/TournamentBracket/TournamentBracket';
 import styles from './CupSeasonPage.module.css';
 
 interface Fighter {
@@ -234,6 +235,19 @@ const CupSeasonPage: React.FC = () => {
                         </div>
                     )}
                 </div>
+
+                {/* Tournament Bracket Section */}
+                {season.cupData && season.cupData.fights && season.cupData.fights.length > 0 && (
+                    <div className={styles.bracketSection}>
+                        <h2 className={styles.sectionTitle}>
+                            Tournament Bracket
+                        </h2>
+                        <TournamentBracket 
+                            fights={season.cupData.fights}
+                            participants={participants}
+                        />
+                    </div>
+                )}
             </div>
         </div>
     );
