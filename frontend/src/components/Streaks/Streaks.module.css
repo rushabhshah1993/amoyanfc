@@ -1,14 +1,17 @@
 .streaksSection {
     margin: 2rem 0;
-    padding: 1.5rem 0;
+    padding: 1.5rem 3rem;
 }
 
 .sectionTitle {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--text-primary);
     margin-bottom: 1.5rem;
-    padding: 0 1.5rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: uppercase;
 }
 
 .emptyState {
@@ -18,7 +21,8 @@
     background: var(--background-secondary);
     border-radius: 10px;
     border: 2px dashed var(--border-color);
-    margin: 0 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .emptyState p {
@@ -30,7 +34,8 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    padding: 0 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .streakCard {
@@ -317,17 +322,15 @@
 @media (max-width: 768px) {
     .streaksSection {
         margin: 1.5rem 0;
-        padding: 1.25rem 0;
+        padding: 1.25rem 1.5rem;
     }
     
     .sectionTitle {
         font-size: 1.3rem;
         margin-bottom: 1.25rem;
-        padding: 0 1rem;
     }
     
     .streaksContainer {
-        padding: 0 1rem;
         gap: 1.25rem;
     }
     
@@ -398,16 +401,14 @@
 
 @media (max-width: 480px) {
     .streaksSection {
-        padding: 1rem 0;
+        padding: 1rem 1rem;
     }
     
     .sectionTitle {
         font-size: 1.2rem;
-        padding: 0 0.75rem;
     }
     
     .streaksContainer {
-        padding: 0 0.75rem;
         gap: 1rem;
     }
     
