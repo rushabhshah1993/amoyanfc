@@ -235,6 +235,14 @@ export const GET_ALL_SEASONS_BY_COMPETITION = gql`
                         profileImage
                     }
                 }
+                cupParticipants {
+                    fighters {
+                        id
+                        firstName
+                        lastName
+                        profileImage
+                    }
+                }
             }
             leagueData {
                 divisions {
@@ -243,6 +251,16 @@ export const GET_ALL_SEASONS_BY_COMPETITION = gql`
                     currentRound
                     totalRounds
                 }
+            }
+            cupData {
+                fights {
+                    fighter1
+                    fighter2
+                    winner
+                    fightIdentifier
+                    date
+                }
+                currentStage
             }
         }
     }

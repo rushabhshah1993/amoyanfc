@@ -41,16 +41,34 @@ interface Division {
     totalRounds?: number;
 }
 
+interface CupParticipants {
+    fighters: Fighter[];
+}
+
 interface SeasonMeta {
     seasonNumber: number;
     startDate?: string;
     endDate?: string;
     winners?: Fighter[];
     leagueDivisions?: LeagueDivisionMeta[];
+    cupParticipants?: CupParticipants;
 }
 
 interface LeagueData {
     divisions?: Division[];
+}
+
+interface CupFight {
+    fighter1: string;
+    fighter2: string;
+    winner: string;
+    fightIdentifier: string;
+    date?: string;
+}
+
+interface CupData {
+    fights: CupFight[];
+    currentStage?: string;
 }
 
 interface Season {
@@ -58,6 +76,7 @@ interface Season {
     isActive: boolean;
     seasonMeta: SeasonMeta;
     leagueData?: LeagueData;
+    cupData?: CupData;
 }
 
 const CompetitionPage: React.FC = () => {
@@ -75,7 +94,7 @@ const CompetitionPage: React.FC = () => {
         data: seasonsData 
     } = useQuery(GET_ALL_SEASONS_BY_COMPETITION, {
         variables: { competitionMetaId: id },
-        skip: !id || !data?.getCompetitionMeta || data?.getCompetitionMeta?.type !== 'league'
+        skip: !id || !data?.getCompetitionMeta
     });
 
     // Update page title when competition data is loaded
@@ -255,15 +274,85 @@ const CompetitionPage: React.FC = () => {
                     </>
                 )}
 
-                {/* Cup Competitions Coming Soon */}
+                {/* Cup Competitions */}
                 {competition.type === 'cup' && (
-                    <div className={styles.comingSoonSection}>
-                        <FontAwesomeIcon icon={faTrophy} className={styles.comingSoonIcon} />
-                        <h2 className={styles.comingSoonTitle}>Season Information Coming Soon</h2>
-                        <p className={styles.comingSoonText}>
-                            Detailed season information will be available here soon.
-                        </p>
-                    </div>
+                    <>
+                        {seasonsLoading ? (
+                            <div className={styles.seasonsLoading}>
+                                <FontAwesomeIcon icon={faSpinner} spin />
+                                <span>Loading seasons...</span>
+                            </div>
+                        ) : seasonsError || !seasonsData?.getAllSeasonsByCompetitionCategory?.length ? (
+                            <div className={styles.comingSoonSection}>
+                                <FontAwesomeIcon icon={faTrophy} className={styles.comingSoonIcon} />
+                                <h2 className={styles.comingSoonTitle}>Season Information Coming Soon</h2>
+                                <p className={styles.comingSoonText}>
+                                    Detailed season information will be available here soon.
+                                </p>
+                            </div>
+                        ) : (
+                            <div className={styles.seasonsSection}>
+                                <h2 className={styles.seasonsTitle}>Seasons</h2>
+                                
+                                <div className={styles.seasonsGrid}>
+                                    {seasonsData.getAllSeasonsByCompetitionCategory
+                                        .slice()
+                                        .sort((a: Season, b: Season) => 
+                                            b.seasonMeta.seasonNumber - a.seasonMeta.seasonNumber
+                                        )
+                                        .map((season: Season) => {
+                                            const winners = getSeasonWinners(season);
+
+                                            return (
+                                                <div 
+                                                    key={season.id} 
+                                                    className={styles.seasonBox}
+                                                    onClick={() => navigate(`/competition/${id}/season/${season.id}`)}
+                                                >
+                                                    {/* Background Images */}
+                                                    <div className={`${styles.seasonBoxBackground} ${winners.length === 1 ? styles.singleWinner : ''}`}>
+                                                        {winners.length > 0 ? (
+                                                            winners.map((winner) => (
+                                                                <div 
+                                                                    key={winner.id} 
+                                                                    className={styles.seasonBoxImage}
+                                                                    style={{
+                                                                        backgroundImage: winner.profileImage 
+                                                                            ? `url(${winner.profileImage})`
+                                                                            : 'linear-gradient(135deg, #4285f4 0%, #34a853 100%)'
+                                                                    }}
+                                                                >
+                                                                    {!winner.profileImage && (
+                                                                        <div className={styles.seasonBoxPlaceholder}>
+                                                                            {winner.firstName.charAt(0)}{winner.lastName.charAt(0)}
+                                                                        </div>
+                                                                    )}
+                                                                </div>
+                                                            ))
+                                                        ) : (
+                                                            <div className={styles.seasonBoxEmpty}>
+                                                                <FontAwesomeIcon icon={faTrophy} />
+                                                            </div>
+                                                        )}
+                                                    </div>
+
+                                                    {/* Overlay */}
+                                                    <div className={styles.seasonBoxOverlay}>
+                                                        <h3 className={styles.seasonBoxTitle}>
+                                                            Season {season.seasonMeta.seasonNumber}
+                                                        </h3>
+                                                        {season.isActive && (
+                                                            <span className={styles.seasonBoxBadge}>Active</span>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            );
+                                        })
+                                    }
+                                </div>
+                            </div>
+                        )}
+                    </>
                 )}
             </div>
         </div>
