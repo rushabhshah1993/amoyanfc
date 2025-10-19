@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner, faArrowLeft, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner, faArrowLeft, faUser, faBalanceScale } from '@fortawesome/free-solid-svg-icons';
 import { GET_FIGHT_BY_ID } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
 import styles from './FightPage.module.css';
@@ -546,6 +546,16 @@ const FightPage: React.FC = () => {
                             )}
                             <> • Round {fight.competitionContext.roundNumber}</>
                         </div>
+
+                        {/* Compare Fighters Button */}
+                        <button 
+                            className={styles.compareButton}
+                            onClick={() => navigate(`/versus/${fighter1.id}/${fighter2.id}`)}
+                            aria-label="Compare fighters"
+                        >
+                            <FontAwesomeIcon icon={faBalanceScale} />
+                            <span>Compare Fighters</span>
+                        </button>
 
                         {/* Fight Time and Finishing Move */}
                         {fight.fightStatus === 'completed' && (
