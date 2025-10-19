@@ -73,6 +73,15 @@ const DivisionPage: React.FC = () => {
     skip: !competitionId || !selectedRound || !seasonNumber,
   });
 
+  // Scroll to top when component loads
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, [divisionNumber]);
+
   // Set initial division data and default to latest round
   useEffect(() => {
     if (seasonData?.getCompetitionSeason) {
@@ -298,14 +307,14 @@ const DivisionPage: React.FC = () => {
     <div className={styles.divisionPage}>
       <div className={styles.divisionContent}>
         <div className={styles.divisionHeader}>
+          <h1>SEASON {seasonNumber} - {divisionData?.divisionName || `DIVISION ${divisionNumber}`}</h1>
           <button 
             className={styles.backButton}
-            onClick={() => navigate(-1)}
-            aria-label="Go back"
+            onClick={() => navigate(`/competition/${competitionId}/season/${seasonId}`)}
           >
             <FontAwesomeIcon icon={faChevronLeft} />
+            Back to Season
           </button>
-          <h1>SEASON {seasonNumber} - {divisionData?.divisionName || `DIVISION ${divisionNumber}`}</h1>
         </div>
 
         <div className={styles.contentGrid}>

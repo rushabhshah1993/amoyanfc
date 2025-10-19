@@ -1,0 +1,448 @@
+.leagueSeasonPage {
+    min-height: 100vh;
+    padding: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.leagueSeasonContent {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 3rem 3rem 3rem;
+}
+
+.seasonHeaderInfo {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.backButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0;
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.backButton:hover {
+    color: var(--text-primary);
+    transform: translateX(3px);
+}
+
+.backButton:active {
+    transform: translateX(1px);
+}
+
+.backButton svg {
+    font-size: 0.75rem;
+}
+
+.seasonTitle {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: color 0.3s ease;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.activeIndicator {
+    padding: 0.3rem 0.8rem;
+    background-color: transparent;
+    color: #34a853;
+    font-size: 0.85rem;
+    font-weight: 400;
+    border: 1px solid #34a853;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Divisions Section */
+.divisionsSection {
+    margin-bottom: 4rem;
+}
+
+.divisionCardsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.divisionDetailCard {
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    min-height: 400px;
+}
+
+.divisionDetailCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: var(--text-primary);
+}
+
+[data-theme="dark"] .divisionDetailCard:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Left Side - Winner Image */
+.divisionDetailLeft {
+    width: 100%;
+    height: 280px;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg-primary);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.winnerLargeImage {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.winnerLargeImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .winnerLargeImage img {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.winnerLargePlaceholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.winnerOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    color: white;
+}
+
+.winnerLabel {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin: 0 0 0.5rem 0;
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
+
+.winnerName {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.noWinnerPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    color: var(--text-secondary);
+    gap: 1rem;
+}
+
+.noWinnerPlaceholder svg {
+    font-size: 3.5rem;
+    opacity: 0.3;
+}
+
+.noWinnerPlaceholder p {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Right Side - Division Info */
+.divisionDetailRight {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex: 1;
+}
+
+.divisionDetailHeader {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.divisionDetailTitle {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+    transition: color 0.3s ease;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.divisionRoundInfo {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+    transition: color 0.3s ease;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* Participants Section */
+.participantsSection {
+    flex: 1;
+}
+
+.participantsTitle {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin: 0 0 1.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    opacity: 0.7;
+}
+
+.participantsThumbnails {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 0.5rem;
+}
+
+.participantThumbnail {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.participantThumbnail:hover {
+    transform: scale(1.1);
+    border-color: var(--text-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .participantThumbnail:hover {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.participantThumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .participantThumbnail img {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.participantThumbnailPlaceholder {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+/* Timeline Section */
+.timelineSection {
+    margin-top: 5rem;
+    padding: 4rem 0;
+    background-color: transparent;
+    border: none;
+    border-top: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.comingSoonPlaceholder {
+    text-align: center;
+    padding: 2rem;
+}
+
+.comingSoonPlaceholder p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+    transition: color 0.3s ease;
+    font-weight: 300;
+    opacity: 0.5;
+}
+
+/* Loading & Error States */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    gap: 1rem;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.loadingSpinner {
+    font-size: 2rem;
+    color: #4285f4;
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    color: #dc3545;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .divisionCardsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .seasonTitle {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .leagueSeasonContent {
+        padding: 2rem 2rem 2rem 2rem;
+    }
+
+    .seasonHeaderInfo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .divisionCardsGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .seasonTitle {
+        font-size: 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .divisionDetailTitle {
+        font-size: 1.2rem;
+    }
+
+    .divisionDetailLeft {
+        height: 250px;
+    }
+
+    .winnerName {
+        font-size: 1.25rem;
+    }
+
+    .participantsThumbnails {
+        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .participantThumbnail {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .leagueSeasonContent {
+        padding: 1.5rem 1rem 1rem 1rem;
+    }
+
+    .seasonTitle {
+        font-size: 1.3rem;
+    }
+
+    .activeIndicator {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.6rem;
+    }
+
+    .backButton {
+        font-size: 0.75rem;
+    }
+
+    .backButton svg {
+        font-size: 0.65rem;
+    }
+
+    .divisionDetailLeft {
+        height: 200px;
+    }
+
+    .divisionDetailRight {
+        padding: 1rem;
+    }
+
+    .divisionDetailTitle {
+        font-size: 1.1rem;
+    }
+
+    .participantsThumbnails {
+        grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+    }
+
+    .participantThumbnail {
+        width: 45px;
+        height: 45px;
+    }
+
+    .timelineSection {
+        padding: 2rem 0;
+    }
+}
+

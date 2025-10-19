@@ -4,11 +4,11 @@ import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
     faSpinner, 
-    faArrowLeft,
+    faChevronLeft,
     faTrophy
 } from '@fortawesome/free-solid-svg-icons';
 import { GET_SEASON_DETAILS } from '../../services/queries';
-import './LeagueSeasonPage.css';
+import styles from './LeagueSeasonPage.module.css';
 
 interface Fighter {
     id: string;
@@ -58,6 +58,15 @@ const LeagueSeasonPage: React.FC = () => {
         skip: !seasonId
     });
 
+    // Scroll to top when component loads
+    React.useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }, [seasonId]);
+
     // Update page title when season data is loaded
     React.useEffect(() => {
         if (data?.getCompetitionSeason) {
@@ -68,9 +77,9 @@ const LeagueSeasonPage: React.FC = () => {
 
     if (loading) {
         return (
-            <div className="league-season-page">
-                <div className="loading">
-                    <FontAwesomeIcon icon={faSpinner} spin className="loading-spinner" />
+            <div className={styles.leagueSeasonPage}>
+                <div className={styles.loading}>
+                    <FontAwesomeIcon icon={faSpinner} spin className={styles.loadingSpinner} />
                     Loading season details...
                 </div>
             </div>
@@ -79,8 +88,8 @@ const LeagueSeasonPage: React.FC = () => {
 
     if (error) {
         return (
-            <div className="league-season-page">
-                <div className="error">
+            <div className={styles.leagueSeasonPage}>
+                <div className={styles.error}>
                     Error: {error.message}
                 </div>
             </div>
@@ -89,8 +98,8 @@ const LeagueSeasonPage: React.FC = () => {
 
     if (!data?.getCompetitionSeason) {
         return (
-            <div className="league-season-page">
-                <div className="error">
+            <div className={styles.leagueSeasonPage}>
+                <div className={styles.error}>
                     Season not found
                 </div>
             </div>
@@ -124,27 +133,24 @@ const LeagueSeasonPage: React.FC = () => {
         }];
 
     return (
-        <div className="league-season-page">
-            <div className="league-season-header">
-                <button 
-                    className="back-button"
-                    onClick={() => navigate(`/competition/${competitionId}`)}
-                >
-                    <FontAwesomeIcon icon={faArrowLeft} />
-                    Back to Competition
-                </button>
-            </div>
-
-            <div className="league-season-content">
-                <div className="season-header-info">
-                    <h1 className="season-title">
+        <div className={styles.leagueSeasonPage}>
+            <div className={styles.leagueSeasonContent}>
+                <div className={styles.seasonHeaderInfo}>
+                    <h1 className={styles.seasonTitle}>
                         Season {season.seasonMeta.seasonNumber}
-                        {season.isActive && <span className="active-indicator">Active</span>}
+                        {season.isActive && <span className={styles.activeIndicator}>Active</span>}
                     </h1>
+                    <button 
+                        className={styles.backButton}
+                        onClick={() => navigate(`/competition/${competitionId}`)}
+                    >
+                        <FontAwesomeIcon icon={faChevronLeft} />
+                        Back to Competition
+                    </button>
                 </div>
 
-                <div className="divisions-section">
-                    <div className="division-cards-grid">
+                <div className={styles.divisionsSection}>
+                    <div className={styles.divisionCardsGrid}>
                         {divisions.map((division) => {
                             const winner = season.isActive 
                                 ? null // TODO: Calculate current leader
@@ -158,62 +164,62 @@ const LeagueSeasonPage: React.FC = () => {
                             return (
                                 <div 
                                     key={division.meta.divisionNumber}
-                                    className="division-detail-card"
+                                    className={styles.divisionDetailCard}
                                     onClick={() => navigate(`/competition/${competitionId}/season/${seasonId}/division/${division.meta.divisionNumber}`)}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    <div className="division-detail-left">
+                                    <div className={styles.divisionDetailLeft}>
                                         {winner ? (
-                                            <div className="winner-large-image">
+                                            <div className={styles.winnerLargeImage}>
                                                 {winner.profileImage ? (
                                                     <img 
                                                         src={winner.profileImage} 
                                                         alt={`${winner.firstName} ${winner.lastName}`}
                                                     />
                                                 ) : (
-                                                    <div className="winner-large-placeholder">
+                                                    <div className={styles.winnerLargePlaceholder}>
                                                         {winner.firstName.charAt(0)}{winner.lastName.charAt(0)}
                                                     </div>
                                                 )}
-                                                <div className="winner-overlay">
-                                                    <p className="winner-label">
+                                                <div className={styles.winnerOverlay}>
+                                                    <p className={styles.winnerLabel}>
                                                         {season.isActive ? 'Leader' : 'Winner'}
                                                     </p>
-                                                    <p className="winner-name">
+                                                    <p className={styles.winnerName}>
                                                         {winner.firstName} {winner.lastName}
                                                     </p>
                                                 </div>
                                             </div>
                                         ) : (
-                                            <div className="no-winner-placeholder">
+                                            <div className={styles.noWinnerPlaceholder}>
                                                 <FontAwesomeIcon icon={faTrophy} />
                                                 <p>Season in Progress</p>
                                             </div>
                                         )}
                                     </div>
 
-                                    <div className="division-detail-right">
-                                        <div className="division-detail-header">
-                                            <h2 className="division-detail-title">
+                                    <div className={styles.divisionDetailRight}>
+                                        <div className={styles.divisionDetailHeader}>
+                                            <h2 className={styles.divisionDetailTitle}>
                                                 {hasDivisions 
                                                     ? (division.data?.divisionName || `Division ${division.meta.divisionNumber}`)
                                                     : 'League Standings'
                                                 }
                                             </h2>
                                             {division.data && season.isActive && (
-                                                <p className="division-round-info">
+                                                <p className={styles.divisionRoundInfo}>
                                                     Round {division.data.currentRound} of {division.data.totalRounds}
                                                 </p>
                                             )}
                                         </div>
 
-                                        <div className="participants-section">
-                                            <h3 className="participants-title">Other Fighters</h3>
-                                            <div className="participants-thumbnails">
+                                        <div className={styles.participantsSection}>
+                                            <h3 className={styles.participantsTitle}>Other Fighters</h3>
+                                            <div className={styles.participantsThumbnails}>
                                                 {remainingFighters.map((fighter) => (
                                                     <div 
                                                         key={fighter.id}
-                                                        className="participant-thumbnail"
+                                                        className={styles.participantThumbnail}
                                                         title={`${fighter.firstName} ${fighter.lastName}`}
                                                     >
                                                         {fighter.profileImage ? (
@@ -222,7 +228,7 @@ const LeagueSeasonPage: React.FC = () => {
                                                                 alt={`${fighter.firstName} ${fighter.lastName}`}
                                                             />
                                                         ) : (
-                                                            <div className="participant-thumbnail-placeholder">
+                                                            <div className={styles.participantThumbnailPlaceholder}>
                                                                 {fighter.firstName.charAt(0)}{fighter.lastName.charAt(0)}
                                                             </div>
                                                         )}
@@ -238,8 +244,8 @@ const LeagueSeasonPage: React.FC = () => {
                 </div>
 
                 {/* Empty section for future timeline and other data */}
-                <div className="timeline-section">
-                    <div className="coming-soon-placeholder">
+                <div className={styles.timelineSection}>
+                    <div className={styles.comingSoonPlaceholder}>
                         <p>Timeline and additional details coming soon...</p>
                     </div>
                 </div>
