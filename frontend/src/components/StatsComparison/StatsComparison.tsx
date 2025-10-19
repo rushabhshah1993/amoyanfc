@@ -1,4 +1,7 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import styles from './StatsComparison.module.css';
 
 interface Location {
@@ -46,6 +49,17 @@ interface Fighter {
     physicalAttributes?: PhysicalAttributes;
     competitionHistory?: CompetitionHistory[];
     streaks?: Streak[];
+    debutInformation?: {
+        competitionId: string;
+        season: number;
+        fightId: string;
+        dateOfDebut?: string;
+        competitionMeta?: {
+            id: string;
+            competitionName: string;
+            logo?: string;
+        };
+    };
 }
 
 interface StatsComparisonProps {
@@ -54,6 +68,7 @@ interface StatsComparisonProps {
 }
 
 const StatsComparison: React.FC<StatsComparisonProps> = ({ fighter1, fighter2 }) => {
+    const navigate = useNavigate();
     // Calculate age from dateOfBirth
     const calculateAge = (dateOfBirth?: string): number | null => {
         if (!dateOfBirth) return null;
@@ -187,6 +202,48 @@ const StatsComparison: React.FC<StatsComparisonProps> = ({ fighter1, fighter2 })
             {/* Category 3: Fights */}
             <div className={styles.category}>
                 <h3 className={styles.categoryTitle}>Fights</h3>
+                
+                {/* Debut Row */}
+                <div className={styles.statRow}>
+                    <div className={styles.fighter1Value}>
+                        {fighter1.debutInformation ? (
+                            <div className={styles.debutValue}>
+                                <span>{fighter1.debutInformation.competitionMeta?.competitionName || 'Competition'} | Season {fighter1.debutInformation.season}</span>
+                                {fighter1.debutInformation.fightId && (
+                                    <button
+                                        className={styles.debutLinkInline}
+                                        onClick={() => navigate(`/fight/${fighter1.debutInformation!.fightId}`)}
+                                        title="View debut fight"
+                                    >
+                                        <FontAwesomeIcon icon={faExternalLinkAlt} />
+                                    </button>
+                                )}
+                            </div>
+                        ) : (
+                            'N/A'
+                        )}
+                    </div>
+                    <div className={styles.statLabel}>Debut</div>
+                    <div className={styles.fighter2Value}>
+                        {fighter2.debutInformation ? (
+                            <div className={styles.debutValue}>
+                                <span>{fighter2.debutInformation.competitionMeta?.competitionName || 'Competition'} | Season {fighter2.debutInformation.season}</span>
+                                {fighter2.debutInformation.fightId && (
+                                    <button
+                                        className={styles.debutLinkInline}
+                                        onClick={() => navigate(`/fight/${fighter2.debutInformation!.fightId}`)}
+                                        title="View debut fight"
+                                    >
+                                        <FontAwesomeIcon icon={faExternalLinkAlt} />
+                                    </button>
+                                )}
+                            </div>
+                        ) : (
+                            'N/A'
+                        )}
+                    </div>
+                </div>
+
                 {renderStatRow(
                     'Total Fights',
                     fighter1Stats.totalFights,

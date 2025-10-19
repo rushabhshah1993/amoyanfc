@@ -15,6 +15,17 @@ interface Fighter {
     lastName: string;
     profileImage?: string;
     opponentsHistory?: OpponentHistory[];
+    debutInformation?: {
+        competitionId: string;
+        season: number;
+        fightId: string;
+        dateOfDebut?: string;
+        competitionMeta?: {
+            id: string;
+            competitionName: string;
+            logo?: string;
+        };
+    };
 }
 
 interface OpponentHistory {

@@ -114,6 +114,35 @@
     right: 4px;
 }
 
+/* Debut Row Styles */
+.debutValue {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.debutLinkInline {
+    background: none;
+    border: none;
+    color: #4285f4;
+    cursor: pointer;
+    padding: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+}
+
+.debutLinkInline:hover {
+    color: #3367d6;
+    transform: scale(1.15);
+}
+
+.debutLinkInline:active {
+    transform: scale(0.95);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .statsComparison {
