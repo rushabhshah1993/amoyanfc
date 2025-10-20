@@ -7,7 +7,7 @@ import styles from './CompetitionHistory.module.css';
 interface TitleDetail {
     competitionSeasonId: string;
     seasonNumber: number;
-    divisionNumber: number;
+    divisionNumber: number | null;
 }
 
 interface SeasonDetail {
@@ -60,22 +60,34 @@ const CompetitionHistory: React.FC<CompetitionHistoryProps> = ({ competitionHist
 
         const titleCount = `${titles.totalTitles}x Champion`;
         
-        // Group titles by division
+        // Check if this is a cup competition (divisionNumber is null)
+        const isCupCompetition = titles.details.length > 0 && titles.details[0].divisionNumber === null;
+        
+        if (isCupCompetition) {
+            // For cup competitions, just list the seasons
+            const seasonList = titles.details
+                .map(detail => detail.seasonNumber)
+                .sort((a, b) => a - b)
+                .map(s => `S${s}`)
+                .join(', ');
+            return `${titleCount} • ${seasonList}`;
+        }
+        
+        // For league competitions, group by division
         const divisionGroups: Record<number, number[]> = {};
         titles.details.forEach(detail => {
             const divNum = detail.divisionNumber;
-            if (!divisionGroups[divNum]) {
-                divisionGroups[divNum] = [];
+            if (divNum !== null) {
+                if (!divisionGroups[divNum]) {
+                    divisionGroups[divNum] = [];
+                }
+                divisionGroups[divNum].push(detail.seasonNumber);
             }
-            divisionGroups[divNum].push(detail.seasonNumber);
         });
 
         // Format each division group
         const divisionStrings = Object.entries(divisionGroups).map(([divNum, seasons]) => {
             const seasonList = seasons.sort((a, b) => a - b).map(s => `S${s}`).join(', ');
-            
-            // Always show division number for IFC titles (since IFC always has multiple divisions)
-            // This ensures division numbers are displayed consistently
             return `${seasonList} (Division ${divNum})`;
         });
 
