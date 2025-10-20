@@ -7,8 +7,9 @@ import {
     faChevronLeft,
     faTrophy
 } from '@fortawesome/free-solid-svg-icons';
-import { GET_SEASON_DETAILS } from '../../services/queries';
+import { GET_SEASON_DETAILS, GET_FINAL_SEASON_STANDINGS } from '../../services/queries';
 import TournamentBracket from '../../components/TournamentBracket/TournamentBracket';
+import client from '../../services/apolloClient';
 import styles from './CupSeasonPage.module.css';
 
 interface Fighter {
@@ -42,6 +43,7 @@ interface LeagueDivision {
 }
 
 interface LinkedSeasonMeta {
+    id: string;
     seasonNumber: number;
     leagueDivisions?: LeagueDivision[];
 }
@@ -88,6 +90,9 @@ const CupSeasonPage: React.FC = () => {
         skip: !seasonId
     });
 
+    // State to store fighter positions
+    const [fighterPositions, setFighterPositions] = React.useState<Map<string, number>>(new Map());
+
     // Create a map of fighter ID to division number
     const fighterDivisionMap = React.useMemo(() => {
         const map = new Map<string, number>();
@@ -101,6 +106,55 @@ const CupSeasonPage: React.FC = () => {
         }
         return map;
     }, [data]);
+
+    // Check if this is a CC competition
+    const isCC = React.useMemo(() => {
+        return data?.getCompetitionSeason?.competitionMeta?.shortName === 'CC';
+    }, [data]);
+
+    // Fetch final standings for all divisions in the linked league season
+    React.useEffect(() => {
+        if (!isCC || !data?.getCompetitionSeason?.linkedLeagueSeason) return;
+
+        const linkedCompetitionId = data.getCompetitionSeason.linkedLeagueSeason.competition?.id;
+        const linkedSeasonNumber = data.getCompetitionSeason.linkedLeagueSeason.season?.seasonNumber;
+        const divisions = data.getCompetitionSeason.linkedLeagueSeason.season?.leagueDivisions;
+
+        if (!linkedCompetitionId || !linkedSeasonNumber || !divisions) return;
+
+        // Fetch standings for each division and build position map
+        const fetchAllStandings = async () => {
+            const positionMap = new Map<string, number>();
+
+            for (const division of divisions) {
+                try {
+                    const result = await client.query({
+                        query: GET_FINAL_SEASON_STANDINGS,
+                        variables: {
+                            competitionId: linkedCompetitionId,
+                            seasonNumber: linkedSeasonNumber,
+                            divisionNumber: division.divisionNumber
+                        },
+                        fetchPolicy: 'network-only'
+                    });
+
+                    const standings = result.data?.getFinalSeasonStandings?.standings;
+
+                    if (standings) {
+                        standings.forEach((standing: { fighterId: string; rank: number }) => {
+                            positionMap.set(standing.fighterId, standing.rank);
+                        });
+                    }
+                } catch (err) {
+                    console.error(`Error fetching standings for division ${division.divisionNumber}:`, err);
+                }
+            }
+
+            setFighterPositions(positionMap);
+        };
+
+        fetchAllStandings();
+    }, [data, isCC]);
 
     // Scroll to top when component loads
     React.useEffect(() => {
@@ -160,6 +214,31 @@ const CupSeasonPage: React.FC = () => {
     const linkedSeason = season.linkedLeagueSeason?.season;
     const linkedCompetitionName = linkedCompetition?.shortName || linkedCompetition?.competitionName || '';
     const linkedSeasonNumber = linkedSeason?.seasonNumber;
+    const linkedSeasonId = linkedSeason?.id;
+    const linkedCompetitionId = linkedCompetition?.id;
+
+    // Sort participants by division for CC competitions
+    const sortedParticipants = (() => {
+        if (!isCC || fighterDivisionMap.size === 0) {
+            return participants;
+        }
+
+        // Create a copy and sort by division number
+        return [...participants].sort((a, b) => {
+            const divisionA = fighterDivisionMap.get(a.id) || 999;
+            const divisionB = fighterDivisionMap.get(b.id) || 999;
+            
+            // First sort by division
+            if (divisionA !== divisionB) {
+                return divisionA - divisionB;
+            }
+            
+            // Then by position within division (if available)
+            const positionA = fighterPositions.get(a.id) || 999;
+            const positionB = fighterPositions.get(b.id) || 999;
+            return positionA - positionB;
+        });
+    })();
 
     return (
         <div className={styles.cupSeasonPage}>
@@ -170,9 +249,18 @@ const CupSeasonPage: React.FC = () => {
                         <h1 className={styles.seasonTitle}>
                             Season {season.seasonMeta.seasonNumber}
                         </h1>
-                        {linkedCompetitionName && linkedSeasonNumber && (
+                        {linkedCompetitionName && linkedSeasonNumber && linkedSeasonId && linkedCompetitionId && (
                             <p className={styles.linkedCompetition}>
-                                Linked to {linkedCompetitionName} Season {linkedSeasonNumber}
+                                Linked to{' '}
+                                <span 
+                                    className={styles.linkedCompetitionLink}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        navigate(`/competition/${linkedCompetitionId}/season/${linkedSeasonId}`);
+                                    }}
+                                >
+                                    {linkedCompetitionName} Season {linkedSeasonNumber}
+                                </span>
                             </p>
                         )}
                     </div>
@@ -198,7 +286,7 @@ const CupSeasonPage: React.FC = () => {
                         </div>
                     ) : (
                         <div className={styles.participantsGrid}>
-                            {participants.map((fighter) => (
+                            {sortedParticipants.map((fighter) => (
                                 <div 
                                     key={fighter.id}
                                     className={styles.participantCard}
@@ -227,6 +315,11 @@ const CupSeasonPage: React.FC = () => {
                                         {fighterDivisionMap.has(fighter.id) && (
                                             <div className={styles.participantDivision}>
                                                 Division {fighterDivisionMap.get(fighter.id)}
+                                                {isCC && fighterPositions.has(fighter.id) && (
+                                                    <span className={styles.participantPosition}>
+                                                        {' '}#{fighterPositions.get(fighter.id)}
+                                                    </span>
+                                                )}
                                             </div>
                                         )}
                                     </div>

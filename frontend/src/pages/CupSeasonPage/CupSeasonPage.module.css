@@ -60,6 +60,20 @@
     margin: 0;
 }
 
+.linkedCompetitionLink {
+    color: var(--primary-color);
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.linkedCompetitionLink:hover {
+    text-decoration-color: var(--primary-color);
+    opacity: 0.8;
+}
+
 .activeBadge {
     display: inline-block;
     padding: 0.4rem 0.9rem;
@@ -180,6 +194,11 @@
     color: var(--text-secondary);
     font-weight: 400;
     margin-top: 0.15rem;
+}
+
+.participantPosition {
+    color: var(--primary-color);
+    font-weight: 500;
 }
 
 .participantCard:hover .participantFirstName,

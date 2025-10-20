@@ -101,7 +101,13 @@ const competitionTypes = `#graphql
 
     type CompetitionLinkedLeagueSeason {
         competition: CompetitionMeta
-        season: CompetitionSeasonMeta
+        season: LinkedSeasonInfo
+    }
+
+    type LinkedSeasonInfo {
+        id: ID
+        seasonNumber: Int
+        leagueDivisions: [SeasonMetaLeagueDivision]
     }
 `;
 

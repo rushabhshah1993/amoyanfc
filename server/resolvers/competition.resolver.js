@@ -268,16 +268,25 @@ const competitionResolver = {
     },
     CompetitionLinkedLeagueSeason: {
         competition: catchAsyncErrors(async(parent) => {
-            if (!parent.competition) return null;
-            const competitionMeta = await CompetitionMeta.findById(parent.competition);
+            // Support both 'competition' and 'competitionId' field names for backward compatibility
+            const competitionId = parent.competition || parent.competitionId;
+            if (!competitionId) return null;
+            const competitionMeta = await CompetitionMeta.findById(competitionId);
             if (!competitionMeta) throw new NotFoundError('Linked competition not found');
             return competitionMeta;
         }),
         season: catchAsyncErrors(async(parent) => {
-            if (!parent.season) return null;
-            const season = await Competition.findById(parent.season);
+            // Support both 'season' and 'seasonId' field names for backward compatibility
+            const seasonId = parent.season || parent.seasonId;
+            if (!seasonId) return null;
+            const season = await Competition.findById(seasonId);
             if (!season) throw new NotFoundError('Linked season not found');
-            return season.seasonMeta;
+            // Return season ID along with seasonMeta data
+            return {
+                id: season._id,
+                seasonNumber: season.seasonMeta.seasonNumber,
+                leagueDivisions: season.seasonMeta.leagueDivisions
+            };
         })
     }
 };

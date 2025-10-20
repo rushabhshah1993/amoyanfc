@@ -344,6 +344,7 @@ export const GET_SEASON_DETAILS = gql`
                     shortName
                 }
                 season {
+                    id
                     seasonNumber
                     leagueDivisions {
                         divisionNumber
