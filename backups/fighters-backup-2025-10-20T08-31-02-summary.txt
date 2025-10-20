@@ -1,0 +1,10 @@
+FIGHTERS BACKUP SUMMARY
+======================================================================
+
+Backup Date: 2025-10-20T08:31:02.858Z
+Total Fighters: 53
+File Size: 2.46 MB
+
+Backup Files:
+  - fighters-backup-2025-10-20T08-31-02.json
+  - fighters-backup-2025-10-20T08-31-02-summary.txt
