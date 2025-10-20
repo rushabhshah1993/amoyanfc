@@ -1,4 +1,11 @@
 const fighterTypes = `#graphql
+    type GlobalRankData {
+        id: ID
+        rank: Int
+        score: Float
+        globalRankId: ID
+    }
+
     type StreakData {
         competitionId: ID
         type: String

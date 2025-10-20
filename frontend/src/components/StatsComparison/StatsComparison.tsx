@@ -39,6 +39,11 @@ interface Streak {
     active: boolean;
 }
 
+interface GlobalRank {
+    rank?: number;
+    score?: number;
+}
+
 interface Fighter {
     id: string;
     firstName: string;
@@ -49,6 +54,7 @@ interface Fighter {
     physicalAttributes?: PhysicalAttributes;
     competitionHistory?: CompetitionHistory[];
     streaks?: Streak[];
+    globalRank?: GlobalRank;
     debutInformation?: {
         competitionId: string;
         season: number;
@@ -244,6 +250,13 @@ const StatsComparison: React.FC<StatsComparisonProps> = ({ fighter1, fighter2 })
                     </div>
                 </div>
 
+                {renderStatRow(
+                    'Rank',
+                    fighter1.globalRank?.rank ?? null,
+                    fighter2.globalRank?.rank ?? null,
+                    getBetterClass(fighter1.globalRank?.rank ?? null, fighter2.globalRank?.rank ?? null, false),
+                    getBetterClass(fighter2.globalRank?.rank ?? null, fighter1.globalRank?.rank ?? null, false)
+                )}
                 {renderStatRow(
                     'Total Fights',
                     fighter1Stats.totalFights,

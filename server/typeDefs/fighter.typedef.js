@@ -45,7 +45,7 @@ const fighterTypeDef = `#graphql
         """
         Current global rank of the fighter
         """
-        globalRank: GlobalRank
+        globalRank: GlobalRankData
 
         """
         Depicts the various fight statistics of a fighter

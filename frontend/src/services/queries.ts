@@ -246,6 +246,10 @@ export const GET_FIGHTER_INFORMATION = gql`
                     logo
                 }
             }
+            globalRank {
+                rank
+                score
+            }
         }
     }
 `;

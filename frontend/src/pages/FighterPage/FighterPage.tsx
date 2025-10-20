@@ -66,6 +66,11 @@ interface Streak {
     competitionMeta: CompetitionMeta;
 }
 
+interface GlobalRank {
+    rank?: number;
+    score?: number;
+}
+
 interface Fighter {
     id: string;
     firstName: string;
@@ -75,6 +80,7 @@ interface Fighter {
     skillset?: string[];
     location?: Location;
     debutInformation?: DebutInformation;
+    globalRank?: GlobalRank;
     physicalAttributes?: any;
     opponentsHistory?: any[];
     competitionHistory?: any[];
@@ -309,6 +315,18 @@ const FighterPage: React.FC = () => {
                     </div>
                 </div>
             </div>
+
+            {fighter.globalRank && fighter.globalRank.rank && (
+                <div className="fighter-rank-section">
+                    <div className={`fighter-rank-badge ${fighter.globalRank.rank <= 3 ? 'rank-top-three' : ''}`}>
+                        {fighter.globalRank.rank === 1 && <span className="rank-icon">🏆</span>}
+                        {fighter.globalRank.rank === 2 && <span className="rank-icon">🥈</span>}
+                        {fighter.globalRank.rank === 3 && <span className="rank-icon">🥉</span>}
+                        <span className="rank-text">Global Rank</span>
+                        <span className="rank-number">#{fighter.globalRank.rank}</span>
+                    </div>
+                </div>
+            )}
 
             <PhysicalAttributes attributes={fighter.physicalAttributes} />
 

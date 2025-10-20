@@ -405,9 +405,8 @@ const fighterResolver = {
             };
         },
         globalRank: async(parent) => {
-            const currentGlobalRankList = await GlobalRank.find({isCurrent: true});
-            const fighterRank = currentGlobalRankList?.fighters.find(fighter => fighter.fighterId !== parent.id);
-            return fighterRank;
+            // globalRank is already stored on the fighter document
+            return parent.globalRank || null;
         }
     }
 };

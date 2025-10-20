@@ -80,6 +80,47 @@
     transition: color 0.3s ease;
 }
 
+.fighter-rank-section {
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.fighter-rank-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    padding: 1rem 2rem;
+    background-color: var(--bg-secondary);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rank-text {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.rank-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.rank-top-three .rank-number {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
 .fighter-details {
     display: flex;
     flex-direction: column;
@@ -116,6 +157,11 @@
     color: var(--text-secondary);
     font-weight: 400;
     opacity: 0.8;
+}
+
+.rank-icon {
+    font-size: 2rem;
+    line-height: 1;
 }
 
 .fighter-actions {
@@ -242,6 +288,28 @@
     .fighter-last-name {
         font-size: 1.2rem;
     }
+
+    .fighter-rank-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .fighter-rank-badge {
+        gap: 0.8rem;
+        padding: 0.8rem 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .rank-text {
+        font-size: 0.9rem;
+    }
+
+    .rank-number {
+        font-size: 1.5rem;
+    }
+
+    .rank-icon {
+        font-size: 1.6rem;
+    }
     
     .fighter-details {
         align-items: center;
@@ -286,6 +354,28 @@
     
     .fighter-last-name {
         font-size: 1rem;
+    }
+
+    .fighter-rank-section {
+        padding: 1rem 0.5rem;
+    }
+
+    .fighter-rank-badge {
+        gap: 0.6rem;
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+    }
+
+    .rank-text {
+        font-size: 0.8rem;
+    }
+
+    .rank-number {
+        font-size: 1.2rem;
+    }
+
+    .rank-icon {
+        font-size: 1.3rem;
     }
     
     .detail-value {
