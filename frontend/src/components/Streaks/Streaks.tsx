@@ -6,13 +6,13 @@ import styles from './Streaks.module.css';
 
 interface StreakStart {
     season: number;
-    division: number;
+    division: number | null;
     round: number;
 }
 
 interface StreakEnd {
     season: number;
-    division: number;
+    division: number | null;
     round: number;
 }
 
@@ -88,17 +88,33 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
         };
     };
 
+    const formatRound = (roundNumber: number, isCup: boolean): string => {
+        if (!isCup) return `R${roundNumber}`;
+        // For cup competitions: 1=R1, 2=SF, 3=FN
+        switch (roundNumber) {
+            case 1: return 'R1';
+            case 2: return 'SF';
+            case 3: return 'FN';
+            default: return `R${roundNumber}`;
+        }
+    };
+
     const getOpponentTooltip = (opponent: Opponent, streak: Streak, oppIndex: number) => {
         const opponentName = `${opponent.firstName} ${opponent.lastName}`;
         const result = streak.type === 'win' ? 'Defeated' : 'Lost to';
         
-        // Calculate the specific round for this opponent
-        // Assuming opponents are in chronological order within the streak
+        const isCupCompetition = streak.start.division === null;
         const season = streak.start.season;
-        const division = streak.start.division;
         const round = streak.start.round + oppIndex;
         
-        return `${result} ${opponentName} in S${season}D${division}R${round}`;
+        if (isCupCompetition) {
+            // Cup format: S2-R1, S3-SF, S4-FN
+            return `${result} ${opponentName} in S${season}-${formatRound(round, true)}`;
+        } else {
+            // League format: S6D1R5
+            const division = streak.start.division;
+            return `${result} ${opponentName} in S${season}D${division}R${round}`;
+        }
     };
 
     if (streaks.length === 0) {
@@ -127,7 +143,10 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                         if (a.start.season !== b.start.season) {
                             return a.start.season - b.start.season;
                         }
+                        // Handle null divisions (cup competitions)
                         if (a.start.division !== b.start.division) {
+                            if (a.start.division === null) return 1;
+                            if (b.start.division === null) return -1;
                             return a.start.division - b.start.division;
                         }
                         return a.start.round - b.start.round;
@@ -208,18 +227,36 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                                             </h4>
                                             {winStreaks.length > 0 ? (
                                                 <div className={styles.streakList}>
-                                                    {winStreaks.map((streak, index) => (
+                                                    {winStreaks.map((streak, index) => {
+                                                        const isCupCompetition = streak.start.division === null;
+                                                        return (
                                                         <div key={index} className={styles.streakItem}>
                                                             <div className={styles.streakTitle}>
                                                                 <span className={styles.streakPeriod}>
-                                                                    S{streak.start.season} D{streak.start.division} R{streak.start.round} - 
-                                                                    {streak.active ? (
-                                                                        <span className={styles.liveIndicator}>
-                                                                            <span className={styles.liveDot}></span>
-                                                                            Live
-                                                                        </span>
+                                                                    {isCupCompetition ? (
+                                                                        <>
+                                                                            S{streak.start.season} {formatRound(streak.start.round, true)} - 
+                                                                            {streak.active ? (
+                                                                                <span className={styles.liveIndicator}>
+                                                                                    <span className={styles.liveDot}></span>
+                                                                                    Live
+                                                                                </span>
+                                                                            ) : (
+                                                                                ` S${streak.end?.season} ${formatRound(streak.end?.round || 1, true)}`
+                                                                            )}
+                                                                        </>
                                                                     ) : (
-                                                                        ` S${streak.end?.season} D${streak.end?.division} R${streak.end?.round}`
+                                                                        <>
+                                                                            S{streak.start.season} D{streak.start.division} R{streak.start.round} - 
+                                                                            {streak.active ? (
+                                                                                <span className={styles.liveIndicator}>
+                                                                                    <span className={styles.liveDot}></span>
+                                                                                    Live
+                                                                                </span>
+                                                                            ) : (
+                                                                                ` S${streak.end?.season} D${streak.end?.division} R${streak.end?.round}`
+                                                                            )}
+                                                                        </>
                                                                     )}
                                                                 </span>
                                                                 <span className={styles.streakCount}>{streak.count}</span>
@@ -241,7 +278,8 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                                                                 ))}
                                                             </div>
                                                         </div>
-                                                    ))}
+                                                        );
+                                                    })}
                                                 </div>
                                             ) : (
                                                 <div className={styles.emptyStreak}>
@@ -257,18 +295,36 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                                             </h4>
                                             {loseStreaks.length > 0 ? (
                                                 <div className={styles.streakList}>
-                                                    {loseStreaks.map((streak, index) => (
+                                                    {loseStreaks.map((streak, index) => {
+                                                        const isCupCompetition = streak.start.division === null;
+                                                        return (
                                                         <div key={index} className={styles.streakItem}>
                                                             <div className={styles.streakTitle}>
                                                                 <span className={styles.streakPeriod}>
-                                                                    S{streak.start.season} D{streak.start.division} R{streak.start.round} - 
-                                                                    {streak.active ? (
-                                                                        <span className={styles.liveIndicator}>
-                                                                            <span className={styles.liveDot}></span>
-                                                                            Live
-                                                                        </span>
+                                                                    {isCupCompetition ? (
+                                                                        <>
+                                                                            S{streak.start.season} {formatRound(streak.start.round, true)} - 
+                                                                            {streak.active ? (
+                                                                                <span className={styles.liveIndicator}>
+                                                                                    <span className={styles.liveDot}></span>
+                                                                                    Live
+                                                                                </span>
+                                                                            ) : (
+                                                                                ` S${streak.end?.season} ${formatRound(streak.end?.round || 1, true)}`
+                                                                            )}
+                                                                        </>
                                                                     ) : (
-                                                                        ` S${streak.end?.season} D${streak.end?.division} R${streak.end?.round}`
+                                                                        <>
+                                                                            S{streak.start.season} D{streak.start.division} R{streak.start.round} - 
+                                                                            {streak.active ? (
+                                                                                <span className={styles.liveIndicator}>
+                                                                                    <span className={styles.liveDot}></span>
+                                                                                    Live
+                                                                                </span>
+                                                                            ) : (
+                                                                                ` S${streak.end?.season} D${streak.end?.division} R${streak.end?.round}`
+                                                                            )}
+                                                                        </>
                                                                     )}
                                                                 </span>
                                                                 <span className={styles.streakCount}>{streak.count}</span>
@@ -290,7 +346,8 @@ const Streaks: React.FC<StreaksProps> = ({ streaks }) => {
                                                                 ))}
                                                             </div>
                                                         </div>
-                                                    ))}
+                                                        );
+                                                    })}
                                                 </div>
                                             ) : (
                                                 <div className={styles.emptyStreak}>
