@@ -1,0 +1,80 @@
+CHAMPIONS CUP SEASON 5 MIGRATION SUMMARY - FINAL SEASON! 🏆
+=========================================================
+Date: October 20, 2025
+Status: ✅ SUCCESSFULLY UPLOADED
+
+📋 BASIC INFORMATION
+-------------------
+Season: Champions Cup Season 5 (FINAL)
+Tournament ID: C0005
+Source File: old-data/championsCup.json
+MongoDB ID: 68f5d7eb8fe27c79110fe42a
+
+⏰ TIMELINE
+----------
+Start: 2023-05-24T05:30:45.229Z (May 24, 2023)
+End: 2023-05-26T07:14:29.372Z (May 26, 2023)
+Duration: ~2 days
+
+👥 PARTICIPANTS (8 FIGHTERS)
+--------------------------
+All Champions Cup participants:
+- F034 → 676d7613eb38b2b97c6da9a9 (WINNER - 5th Title! 🏆)
+- F003 → 676d721aeb38b2b97c6da961
+- F028 → 676d753ceb38b2b97c6da997
+- F022 → 676d740ceb38b2b97c6da97b
+- F001 → 676d6fc5eb38b2b97c6da94d
+- F002 → 676d7136eb38b2b97c6da953
+- F006 → 676d7201eb38b2b97c6da95f
+- F018 → 676d735aeb38b2b97c6da973
+
+🏆 CHAMPION
+-----------
+Winner: F034 (676d7613eb38b2b97c6da9a9) - Unnati
+Record: PERFECT 5-0 in Champions Cup history!
+All 5 consecutive Championships (S1, S2, S3, S4, S5)
+
+⚔️ TOURNAMENT STRUCTURE
+----------------------
+Format: Single-elimination knockout
+Total Fights: 7
+- Round 1: 4 fights (8 → 4)
+- Semifinals: 2 fights (4 → 2)
+- Finals: 1 fight (2 → 1)
+
+📊 MIGRATION STATS
+-----------------
+- Data Generation: ✅ Complete
+- Fighter ID Mapping: ✅ Complete (8 fighters, 7 fights)
+- MongoDB Upload: ✅ Complete
+- Generated Files:
+  * champions-cup-s5-generated.json
+  * champions-cup-s5-final.json
+  * champions-cup-s5-summary.txt (this file)
+  * champions-cup-s5-mapping.txt
+
+🔗 LINKED SEASON
+---------------
+Linked to: IFC Season 10 (S0010)
+IFC Season ID: 68f38270761a2d83b46c03e1
+Competition Meta ID: 67780dcc09a4c4b25127f8f6
+
+📝 NOTES
+--------
+- This is the FINAL Champions Cup season in the historical data
+- F034 (Unnati) has won ALL 5 Champions Cup tournaments
+- Perfect 5-0 record: Never defeated in any Champions Cup
+- F034 beat F002 (676d7136eb38b2b97c6da953) in the finals
+- Historic achievement: First and only fighter to win all Championships
+
+🎯 FINAL STATUS
+--------------
+ALL CHAMPIONS CUP SEASONS MIGRATION COMPLETE!
+✅ Season 1 - Complete (Winner: F034)
+✅ Season 2 - Complete (Winner: F034)
+✅ Season 3 - Complete (Winner: F034)
+✅ Season 4 - Complete (Winner: F034)
+✅ Season 5 - Complete (Winner: F034)
+
+👑 LEGACY: F034 (Unnati) - The Undisputed Champions Cup Queen 🏆🏆🏆🏆🏆
+

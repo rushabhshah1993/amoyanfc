@@ -1,7 +1,9 @@
-# Invicta Cup Migration Guide
+# Cup Competitions Migration Guide
 
 ## Overview
-This guide documents the process for migrating Invicta Cup data from `old-data/invicta-cup.json` to the MongoDB Competition collection.
+This guide documents the process for migrating cup competition data to MongoDB Competition collection:
+- **Invicta Cup:** `old-data/invicta-cup.json` (4 seasons)
+- **Champions Cup:** `old-data/championsCup.json` (5 seasons)
 
 ## ✅ Completed Migrations
 
@@ -41,9 +43,60 @@ This guide documents the process for migrating Invicta Cup data from `old-data/i
 - **Winner:** F030 (676d6ecceb38b2b97c6da945)
 - **Uploaded:** 2025-10-19
 
-## 🎉 Migration Complete!
+### Champions Cup Season 1 (C0001)
+- **Status:** ✅ COMPLETE
+- **Linked to:** IFC Season 6 (S0006)
+- **MongoDB ID:** `68f51a5a97e3b2c5c03ef5f5`
+- **Timeline:** 2021-09-03 → 2021-09-05
+- **Participants:** 8 fighters
+- **Winner:** F034 (676d7613eb38b2b97c6da9a9)
+- **Uploaded:** 2025-10-20
 
-All Invicta Cup seasons have been successfully migrated to MongoDB!
+### Champions Cup Season 2 (C0002)
+- **Status:** ✅ COMPLETE
+- **Linked to:** IFC Season 7 (S0007)
+- **MongoDB ID:** `68f51b1abbe8c3ecf85e71c6`
+- **Timeline:** 2022-02-22 → 2022-02-24
+- **Participants:** 8 fighters
+- **Winner:** F034 (676d7613eb38b2b97c6da9a9)
+- **Uploaded:** 2025-10-20
+
+### Champions Cup Season 3 (C0003)
+- **Status:** ✅ COMPLETE
+- **Linked to:** IFC Season 8 (S0008)
+- **MongoDB ID:** `68f51bb0f7e1c7af63f70296`
+- **Timeline:** 2022-06-14 → 2022-06-16
+- **Participants:** 8 fighters
+- **Winner:** F034 (676d7613eb38b2b97c6da9a9)
+- **Uploaded:** 2025-10-20
+
+### Champions Cup Season 4 (C0004)
+- **Status:** ✅ COMPLETE
+- **Linked to:** IFC Season 9 (S0009)
+- **MongoDB ID:** `68f51c5d55c50e1fd85e7a53`
+- **Timeline:** 2022-11-11 → 2022-11-13
+- **Participants:** 8 fighters
+- **Winner:** F034 (676d7613eb38b2b97c6da9a9)
+- **Uploaded:** 2025-10-20
+
+### Champions Cup Season 5 (C0005) - FINAL SEASON 🏆
+- **Status:** ✅ COMPLETE
+- **Linked to:** IFC Season 10 (S0010)
+- **MongoDB ID:** `68f5d7eb8fe27c79110fe42a`
+- **Timeline:** 2023-05-24 → 2023-05-26
+- **Participants:** 8 fighters
+- **Winner:** F034 (676d7613eb38b2b97c6da9a9) - Perfect 5-0 record!
+- **Uploaded:** 2025-10-20
+
+## 🎉 ALL CUP MIGRATIONS COMPLETE!
+
+### Summary
+- **Invicta Cup:** All 4 seasons migrated ✅
+- **Champions Cup:** All 5 seasons migrated ✅
+- **Total Cup Seasons:** 9 complete tournaments
+
+### 👑 Notable Achievement
+**F034 (Unnati)** - Perfect 5-0 Champions Cup record! Won ALL Champions Cup titles (S1-S5) without a single defeat! 🏆🏆🏆🏆🏆
 
 ---
 
@@ -289,25 +342,37 @@ uploadInvictaCup();
 ### Competition IDs
 - **IFC Competition Meta ID:** `67780dcc09a4c4b25127f8f6`
 - **Invicta Cup Meta ID:** `6778103309a4c4b25127f8fc`
+- **Champions Cup Meta ID:** `6778100309a4c4b25127f8fa`
 
 ### IFC Season IDs (for linking)
-| IFC Season | Season ID | Timeline |
-|------------|-----------|----------|
-| S7 | `68f2a2e3e25ec66dfba26c31` | 2021-12-11 → 2022-02-21 |
-| S8 | `68f32fafbd3c514277e377ee` | 2022-03-08 → 2022-06-09 |
-| S9 | `68f34bba9e1df8e0f8137afe` | 2022-09-02 → 2022-11-04 |
-| S10 | `68f38270761a2d83b46c03e1` | 2023-02-22 → 2023-05-20 |
+| IFC Season | Season ID | Timeline | Linked Cups |
+|------------|-----------|----------|-------------|
+| S6 | `68f214ab84078794703c6509` | 2021-06-13 → 2021-09-06 | CC S1 |
+| S7 | `68f2a2e3e25ec66dfba26c31` | 2021-12-11 → 2022-02-21 | IC S1, CC S2 |
+| S8 | `68f32fafbd3c514277e377ee` | 2022-03-08 → 2022-06-09 | IC S2, CC S3 |
+| S9 | `68f34bba9e1df8e0f8137afe` | 2022-09-02 → 2022-11-04 | IC S3, CC S4 |
+| S10 | `68f38270761a2d83b46c03e1` | 2023-02-22 → 2023-05-20 | IC S4, CC S5 |
 
 ### Fight Identifier Format
+
+**Invicta Cup:**
 - **Pattern:** `IC-S{seasonNumber}-{round}-F{fightNumber}`
 - **Examples:**
   - Round 1: `IC-S2-R1-F1`, `IC-S2-R1-F2`, etc.
   - Semifinals: `IC-S2-SF-F1`, `IC-S2-SF-F2`
   - Finals: `IC-S2-FN`
 
+**Champions Cup:**
+- **Pattern:** `CC-S{seasonNumber}-{round}-F{fightNumber}`
+- **Examples:**
+  - Round 1: `CC-S1-R1-F1`, `CC-S1-R1-F2`, etc.
+  - Semifinals: `CC-S1-SF-F1`, `CC-S1-SF-F2`
+  - Finals: `CC-S1-FN`
+
 ### Source Data Location
 - **Fighter Mapping:** `old-data/fighter-mapping.json`
 - **Invicta Cup Data:** `old-data/invicta-cup.json`
+- **Champions Cup Data:** `old-data/championsCup.json`
 
 ---
 
@@ -349,7 +414,8 @@ uploadInvictaCup();
 
 ---
 
-**Last Updated:** 2025-10-19  
-**Completed Seasons:** 4 of 4  
-**Status:** 🎉 ALL MIGRATIONS COMPLETE!
+**Last Updated:** 2025-10-20  
+**Completed Seasons:** 9 of 9 (4 Invicta Cup + 5 Champions Cup)  
+**Status:** 🎉 ALL CUP MIGRATIONS COMPLETE!  
+**Notable:** F034 achieved perfect 5-0 Champions Cup record!
 
