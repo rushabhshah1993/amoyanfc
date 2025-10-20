@@ -1,0 +1,90 @@
+CHAMPIONS CUP SEASON 1 - FIGHTER MAPPING
+=========================================
+
+F-Code → MongoDB ObjectId Mapping
+----------------------------------
+
+Participants (8 fighters - Top from IFC Season 6):
+---------------------------------------------------
+F034 → 676d7613eb38b2b97c6da9a9 (Unnati - CHAMPION) 🏆
+F030 → 676d6ecceb38b2b97c6da945 (FINALIST)
+F041 → 676d75c8eb38b2b97c6da9a3 (SEMIFINALIST)
+F016 → 676d7399eb38b2b97c6da977 (SEMIFINALIST)
+F004 → 676d70fbeb38b2b97c6da951 (Anika - Div 2 Winner)
+F017 → 676d73ddeb38b2b97c6da979 (Div 2, Rank 2)
+F032 → 676d75dfeb38b2b97c6da9a5 (Div 3, Rank 3)
+F014 → 676d7304eb38b2b97c6da96d (Jinali - Div 3 Winner)
+
+Fight Results:
+--------------
+
+Round 1:
+--------
+Fight 1 (CC-S1-R1-F1):
+  F017 (676d73ddeb38b2b97c6da979) vs F041 (676d75c8eb38b2b97c6da9a3)
+  Winner: F041 ✓
+
+Fight 2 (CC-S1-R1-F2):
+  F004 (676d70fbeb38b2b97c6da951) vs F030 (676d6ecceb38b2b97c6da945)
+  Winner: F030 ✓
+
+Fight 3 (CC-S1-R1-F3):
+  F032 (676d75dfeb38b2b97c6da9a5) vs F016 (676d7399eb38b2b97c6da977)
+  Winner: F016 ✓
+
+Fight 4 (CC-S1-R1-F4):
+  F034 (676d7613eb38b2b97c6da9a9) vs F014 (676d7304eb38b2b97c6da96d)
+  Winner: F034 ✓
+
+Semi-finals:
+-----------
+Fight 1 (CC-S1-SF-F1):
+  F041 (676d75c8eb38b2b97c6da9a3) vs F030 (676d6ecceb38b2b97c6da945)
+  Winner: F030 ✓
+
+Fight 2 (CC-S1-SF-F2):
+  F016 (676d7399eb38b2b97c6da977) vs F034 (676d7613eb38b2b97c6da9a9)
+  Winner: F034 ✓
+
+Finals:
+-------
+Fight (CC-S1-FN):
+  F030 (676d6ecceb38b2b97c6da945) vs F034 (676d7613eb38b2b97c6da9a9)
+  Winner: F034 ✓ 🏆
+
+Tournament Bracket:
+-------------------
+                    ROUND 1              SEMI-FINALS         FINALS
+                    
+                    F017 ─┐
+                          ├─ F041 ─┐
+                    F041 ─┘         │
+                                    ├─ F030 ─┐
+                    F004 ─┐         │        │
+                          ├─ F030 ─┘        │
+                    F030 ─┘                  │
+                                             ├─ F034 🏆
+                    F032 ─┐                  │
+                          ├─ F016 ─┐        │
+                    F016 ─┘         │        │
+                                    ├─ F034 ─┘
+                    F034 ─┐         │
+                          ├─ F034 ─┘
+                    F014 ─┘
+
+Division Distribution (from IFC Season 6):
+-------------------------------------------
+- Division 1: F034 (Rank 1 - Champion), F030 (Rank 2)
+- Division 2: F004 (Rank 1 - Champion), F017 (Rank 2), F016 (Rank 3)
+- Division 3: F014 (Rank 1 - Champion), F041 (Rank 2), F032 (Rank 3)
+
+Notable:
+--------
+- F034 (Unnati) won all three fights to claim the first Champions Cup title
+- F030 made it to the finals but lost to F034
+- This was the inaugural Champions Cup tournament
+- All 8 participants were top performers from their respective divisions
+
+Linked to IFC Season 6 (S0006): 68f214ab84078794703c6509
+Timeline: 2021-12-06 → 2021-12-07 (1-day tournament!)
+

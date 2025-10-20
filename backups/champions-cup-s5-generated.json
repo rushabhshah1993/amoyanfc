@@ -1,0 +1,135 @@
+{
+  "competitionMetaId": "6778100309a4c4b25127f8fa",
+  "isActive": false,
+  "seasonMeta": {
+    "seasonNumber": 5,
+    "startDate": "2023-05-24T05:30:45.229Z",
+    "endDate": "2023-05-26T07:14:29.372Z",
+    "winners": [
+      "F034"
+    ],
+    "leagueDivisions": null,
+    "cupParticipants": {
+      "fighters": [
+        "F034",
+        "F010",
+        "F028",
+        "F018",
+        "F003",
+        "F005",
+        "F009",
+        "F048"
+      ]
+    }
+  },
+  "leagueData": null,
+  "cupData": {
+    "fights": [
+      {
+        "fighter1": "F048",
+        "fighter2": "F005",
+        "winner": "F005",
+        "fightIdentifier": "CC-S5-R1-F1",
+        "date": null,
+        "userDescription": null,
+        "genAIDescription": null,
+        "isSimulated": false,
+        "fighterStats": [],
+        "fightStatus": "completed"
+      },
+      {
+        "fighter1": "F028",
+        "fighter2": "F009",
+        "winner": "F009",
+        "fightIdentifier": "CC-S5-R1-F2",
+        "date": null,
+        "userDescription": null,
+        "genAIDescription": null,
+        "isSimulated": false,
+        "fighterStats": [],
+        "fightStatus": "completed"
+      },
+      {
+        "fighter1": "F003",
+        "fighter2": "F018",
+        "winner": "F018",
+        "fightIdentifier": "CC-S5-R1-F3",
+        "date": null,
+        "userDescription": null,
+        "genAIDescription": null,
+        "isSimulated": false,
+        "fighterStats": [],
+        "fightStatus": "completed"
+      },
+      {
+        "fighter1": "F034",
+        "fighter2": "F010",
+        "winner": "F034",
+        "fightIdentifier": "CC-S5-R1-F4",
+        "date": null,
+        "userDescription": null,
+        "genAIDescription": null,
+        "isSimulated": false,
+        "fighterStats": [],
+        "fightStatus": "completed"
+      },
+      {
+        "fighter1": "F005",
+        "fighter2": "F009",
+        "winner": "F005",
+        "fightIdentifier": "CC-S5-SF-F1",
+        "date": null,
+        "userDescription": null,
+        "genAIDescription": null,
+        "isSimulated": false,
+        "fighterStats": [],
+        "fightStatus": "completed"
+      },
+      {
+        "fighter1": "F018",
+        "fighter2": "F034",
+        "winner": "F034",
+        "fightIdentifier": "CC-S5-SF-F2",
+        "date": null,
+        "userDescription": null,
+        "genAIDescription": null,
+        "isSimulated": false,
+        "fighterStats": [],
+        "fightStatus": "completed"
+      },
+      {
+        "fighter1": "F005",
+        "fighter2": "F034",
+        "winner": "F034",
+        "fightIdentifier": "CC-S5-FN",
+        "date": null,
+        "userDescription": null,
+        "genAIDescription": null,
+        "isSimulated": false,
+        "fighterStats": [],
+        "fightStatus": "completed"
+      }
+    ],
+    "currentStage": "Finals"
+  },
+  "config": {
+    "leagueConfiguration": null,
+    "cupConfiguration": {
+      "knockoutRounds": 3,
+      "numberOfFighters": 8,
+      "perFightFeeInEur": null,
+      "winningFeeInEur": null,
+      "stages": [
+        "Preliminary",
+        "Semi-finals",
+        "Finals"
+      ]
+    }
+  },
+  "linkedLeagueSeason": {
+    "competitionId": "67780dcc09a4c4b25127f8f6",
+    "seasonId": "68f38270761a2d83b46c03e1"
+  },
+  "createdAt": "2023-05-24T05:30:45.229Z",
+  "updatedAt": "2025-10-20T06:33:10.177Z"
+}

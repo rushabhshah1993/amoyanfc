@@ -1,0 +1,97 @@
+CHAMPIONS CUP SEASON 3 - FIGHTER MAPPING
+=========================================
+
+F-Code → MongoDB ObjectId Mapping
+----------------------------------
+
+Participants (8 fighters - Top from IFC Season 8):
+---------------------------------------------------
+F034 → 676d7613eb38b2b97c6da9a9 (Unnati - CHAMPION) 🏆🏆🏆
+F010 → 676d721aeb38b2b97c6da961 (FINALIST)
+F042 → 676d72c5eb38b2b97c6da969 (SEMIFINALIST)
+F046 → 676d7279eb38b2b97c6da967 (SEMIFINALIST)
+F020 → 676d7452eb38b2b97c6da981
+F015 → 676d736eeb38b2b97c6da975
+F035 → 676d7631eb38b2b97c6da9ab
+F041 → 676d75c8eb38b2b97c6da9a3
+
+Fight Results:
+--------------
+
+Round 1:
+--------
+Fight 1 (CC-S3-R1-F1):
+  F020 (676d7452eb38b2b97c6da981) vs F034 (676d7613eb38b2b97c6da9a9)
+  Winner: F034 ✓
+
+Fight 2 (CC-S3-R1-F2):
+  F042 (676d72c5eb38b2b97c6da969) vs F035 (676d7631eb38b2b97c6da9ab)
+  Winner: F042 ✓
+
+Fight 3 (CC-S3-R1-F3):
+  F010 (676d721aeb38b2b97c6da961) vs F015 (676d736eeb38b2b97c6da975)
+  Winner: F010 ✓
+
+Fight 4 (CC-S3-R1-F4):
+  F046 (676d7279eb38b2b97c6da967) vs F041 (676d75c8eb38b2b97c6da9a3)
+  Winner: F046 ✓
+
+Semi-finals:
+-----------
+Fight 1 (CC-S3-SF-F1):
+  F034 (676d7613eb38b2b97c6da9a9) vs F042 (676d72c5eb38b2b97c6da969)
+  Winner: F034 ✓
+
+Fight 2 (CC-S3-SF-F2):
+  F010 (676d721aeb38b2b97c6da961) vs F046 (676d7279eb38b2b97c6da967)
+  Winner: F010 ✓
+
+Finals:
+-------
+Fight (CC-S3-FN):
+  F034 (676d7613eb38b2b97c6da9a9) vs F010 (676d721aeb38b2b97c6da961)
+  Winner: F034 ✓ 🏆
+
+Tournament Bracket:
+-------------------
+                    ROUND 1              SEMI-FINALS         FINALS
+                    
+                    F020 ─┐
+                          ├─ F034 ─┐
+                    F034 ─┘         │
+                                    ├─ F034 ─┐
+                    F042 ─┐         │        │
+                          ├─ F042 ─┘        │
+                    F035 ─┘                  │
+                                             ├─ F034 🏆
+                    F010 ─┐                  │
+                          ├─ F010 ─┐        │
+                    F015 ─┘         │        │
+                                    ├─ F010 ─┘
+                    F046 ─┐         │
+                          ├─ F046 ─┘
+                    F041 ─┘
+
+Division Distribution (from IFC Season 8):
+-------------------------------------------
+- Division 1: F034 (Rank 1), F010 (Rank 2), F020 (Rank 3)
+- Division 2: F042 (Rank 1), F015 (Rank 2), F035 (Rank 3)
+- Division 3: F046 (Rank 1), F041 (Rank 2)
+
+Notable:
+--------
+- F034 (Unnati) wins her THIRD consecutive Champions Cup title!
+- F034 is now 3-0 in Champions Cup finals
+- F010 reaches the finals for the first time but cannot overcome F034
+- F042 (Invicta Cup Season 2 winner) reaches the semifinals
+- F034's dominance is unprecedented - winning every Champions Cup since inception
+
+Linked to IFC Season 8 (S0008): 68f32fafbd3c514277e377ee
+Timeline: 2022-06-09 → 2022-06-10
+
+Champions Cup Standings After Season 3:
+----------------------------------------
+F034: 3 titles (S1, S2, S3) 👑👑👑
+F030: 0 titles (0-2 in finals)
+F010: 0 titles (0-1 in finals)
+
