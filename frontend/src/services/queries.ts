@@ -75,6 +75,13 @@ export const GET_ALL_FIGHTERS_WITH_STATS = gql`
             totalTitles
             highestWinStreak
             highestLoseStreak
+            competitionHistory {
+                competitionId
+                numberOfSeasonAppearances
+                totalFights
+                totalWins
+                totalLosses
+            }
         }
     }
 `;

@@ -113,7 +113,8 @@ const fighterResolver = {
                     totalOpponents,
                     totalTitles,
                     highestWinStreak,
-                    highestLoseStreak
+                    highestLoseStreak,
+                    competitionHistory: fighter.competitionHistory || []
                 };
             });
         })

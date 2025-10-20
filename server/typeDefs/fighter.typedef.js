@@ -118,6 +118,7 @@ const fighterTypeDef = `#graphql
         totalTitles: Int
         highestWinStreak: Int
         highestLoseStreak: Int
+        competitionHistory: [CompetitionHistoryData]
     }
 
     """

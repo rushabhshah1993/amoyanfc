@@ -27,6 +27,17 @@ interface Location {
     country?: string;
 }
 
+interface CompetitionHistory {
+    competitionId: string;
+    numberOfSeasonAppearances: number;
+    totalFights: number;
+    totalWins: number;
+    totalLosses: number;
+}
+
+// IFC Competition Meta ID
+const IFC_COMPETITION_META_ID = '67780dcc09a4c4b25127f8f6';
+
 interface Fighter {
     id: string;
     firstName: string;
@@ -44,6 +55,7 @@ interface Fighter {
     totalTitles: number;
     highestWinStreak: number;
     highestLoseStreak: number;
+    competitionHistory?: CompetitionHistory[];
 }
 
 type SortMetric = 
@@ -129,10 +141,19 @@ const getMetricValue = (fighter: Fighter, metric: SortMetric): number => {
             return fighter.winPercentage ?? 0;
         
         case 'seasonsInIFC':
-            return fighter.totalSeasons ?? 0;
+            // Calculate IFC seasons only
+            const ifcHistory = fighter.competitionHistory?.find(
+                ch => ch.competitionId === IFC_COMPETITION_META_ID
+            );
+            return ifcHistory?.numberOfSeasonAppearances ?? 0;
         
         case 'winPercentageIFC':
-            return fighter.winPercentage ?? 0;
+            // Calculate IFC win percentage only
+            const ifcCompHistory = fighter.competitionHistory?.find(
+                ch => ch.competitionId === IFC_COMPETITION_META_ID
+            );
+            if (!ifcCompHistory || ifcCompHistory.totalFights === 0) return 0;
+            return (ifcCompHistory.totalWins / ifcCompHistory.totalFights) * 100;
         
         case 'opponentsFaced':
             return fighter.totalOpponents ?? 0;
