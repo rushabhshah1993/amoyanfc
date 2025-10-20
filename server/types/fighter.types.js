@@ -69,6 +69,7 @@ const fighterTypes = `#graphql
         points: Int
         winPercentage: Float
         finalPosition: Int
+        finalCupPosition: String
     }
 
     type LocationData {

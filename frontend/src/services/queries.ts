@@ -160,6 +160,7 @@ export const GET_FIGHTER_INFORMATION = gql`
                     points
                     winPercentage
                     finalPosition
+                    finalCupPosition
                 }
             }
             streaks {

@@ -258,7 +258,8 @@ const fighterResolver = {
                                 losses: plainSd.losses || 0,
                                 points: plainSd.points || 0,
                                 winPercentage: plainSd.winPercentage || 0,
-                                finalPosition: plainSd.finalPosition
+                                finalPosition: plainSd.finalPosition,
+                                finalCupPosition: plainSd.finalCupPosition
                             };
                         });
                     }

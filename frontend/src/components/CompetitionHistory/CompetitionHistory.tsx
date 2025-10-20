@@ -12,13 +12,14 @@ interface TitleDetail {
 
 interface SeasonDetail {
     seasonNumber: number;
-    divisionNumber: number;
+    divisionNumber: number | null;
     fights: number;
     wins: number;
     losses: number;
-    points: number;
+    points: number | null;
     winPercentage: number;
     finalPosition: number | null;
+    finalCupPosition?: string;
 }
 
 interface CompetitionHistoryItem {
@@ -166,37 +167,50 @@ const CompetitionHistory: React.FC<CompetitionHistoryProps> = ({ competitionHist
                                 {isExpanded && hasSeasonDetails && (
                                     <div className={styles.seasonDetailsSection}>
                                         <h4 className={styles.seasonDetailsTitle}>Season-by-Season Breakdown</h4>
-                                        {history.seasonDetails!.map((season) => (
-                                            <div key={`${season.seasonNumber}-${season.divisionNumber}`} className={styles.seasonCard}>
-                                                {/* Season Header */}
-                                                <div className={styles.seasonHeader}>
-                                                    <span className={styles.seasonNumber}>Season {season.seasonNumber}</span>
-                                                    <span className={styles.divisionBadge}>Division {season.divisionNumber}</span>
-                                                </div>
+                                        {history.seasonDetails!.map((season) => {
+                                            const isCupCompetition = season.divisionNumber === null;
+                                            
+                                            return (
+                                                <div key={`${season.seasonNumber}-${season.divisionNumber}`} className={styles.seasonCard}>
+                                                    {/* Season Header */}
+                                                    <div className={styles.seasonHeader}>
+                                                        <span className={styles.seasonNumber}>Season {season.seasonNumber}</span>
+                                                        {!isCupCompetition && (
+                                                            <span className={styles.divisionBadge}>Division {season.divisionNumber}</span>
+                                                        )}
+                                                    </div>
 
-                                                {/* Season Stats Table */}
-                                                <div className={styles.seasonTable}>
-                                                    <div className={styles.tableHeader}>
-                                                        <div className={styles.tableCell}>Position</div>
-                                                        <div className={styles.tableCell}>Fights</div>
-                                                        <div className={styles.tableCell}>Wins</div>
-                                                        <div className={styles.tableCell}>Defeats</div>
-                                                        <div className={styles.tableCell}>Points</div>
-                                                        <div className={styles.tableCell}>Win %</div>
-                                                    </div>
-                                                    <div className={styles.tableRow}>
-                                                        <div className={styles.tableCell}>
-                                                            {season.finalPosition !== null ? `#${season.finalPosition}` : 'N/A'}
+                                                    {/* Season Stats Table */}
+                                                    <div className={styles.seasonTable}>
+                                                        <div className={styles.tableHeader}>
+                                                            <div className={styles.tableCell}>Position</div>
+                                                            <div className={styles.tableCell}>Fights</div>
+                                                            <div className={styles.tableCell}>Wins</div>
+                                                            <div className={styles.tableCell}>Defeats</div>
+                                                            {!isCupCompetition && (
+                                                                <div className={styles.tableCell}>Points</div>
+                                                            )}
+                                                            <div className={styles.tableCell}>Win %</div>
                                                         </div>
-                                                        <div className={styles.tableCell}>{season.fights}</div>
-                                                        <div className={styles.tableCell}>{season.wins}</div>
-                                                        <div className={styles.tableCell}>{season.losses}</div>
-                                                        <div className={styles.tableCell}>{season.points}</div>
-                                                        <div className={styles.tableCell}>{season.winPercentage.toFixed(1)}%</div>
+                                                        <div className={styles.tableRow}>
+                                                            <div className={styles.tableCell}>
+                                                                {isCupCompetition 
+                                                                    ? (season.finalCupPosition || 'N/A')
+                                                                    : (season.finalPosition !== null ? `#${season.finalPosition}` : 'N/A')
+                                                                }
+                                                            </div>
+                                                            <div className={styles.tableCell}>{season.fights}</div>
+                                                            <div className={styles.tableCell}>{season.wins}</div>
+                                                            <div className={styles.tableCell}>{season.losses}</div>
+                                                            {!isCupCompetition && (
+                                                                <div className={styles.tableCell}>{season.points}</div>
+                                                            )}
+                                                            <div className={styles.tableCell}>{season.winPercentage.toFixed(1)}%</div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        ))}
+                                            );
+                                        })}
                                     </div>
                                 )}
                             </div>
