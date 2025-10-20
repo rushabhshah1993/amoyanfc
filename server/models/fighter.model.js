@@ -220,13 +220,14 @@ const titlesSchema = new Schema({
  * Schema definition for season-by-season details
  * @typedef {Object} seasonDetailSchema
  * @property {Number} seasonNumber - The season number
- * @property {Number} divisionNumber - The division number
+ * @property {Number} divisionNumber - The division number (null for cup competitions)
  * @property {Number} fights - Number of fights in this season
  * @property {Number} wins - Number of wins in this season
  * @property {Number} losses - Number of losses in this season
- * @property {Number} points - Points earned in this season
+ * @property {Number} points - Points earned in this season (null for cup competitions)
  * @property {Number} winPercentage - Win percentage for this season
- * @property {Number} finalPosition - Final position in the division
+ * @property {Number} finalPosition - Final position in the division (for league competitions)
+ * @property {String} finalCupPosition - Final position in cup (for cup competitions: "Round 1", "Semifinals", "Finals", "Champion")
  */
 const seasonDetailSchema = new Schema({
     seasonNumber: { type: Number },
@@ -236,7 +237,8 @@ const seasonDetailSchema = new Schema({
     losses: { type: Number, default: 0 },
     points: { type: Number, default: 0 },
     winPercentage: { type: Number, default: 0 },
-    finalPosition: { type: Number }
+    finalPosition: { type: Number },
+    finalCupPosition: { type: String }
 });
 
 /**
