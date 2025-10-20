@@ -31,12 +31,15 @@ This guide provides step-by-step instructions to implement Champions Cup (CC) da
   
 - ✅ **GraphQL Layer:** Already updated
   - Type definitions include `finalCupPosition`
+  - `FighterBasicStats` includes `competitionHistory`
   - Resolvers map cup fields correctly
   
 - ✅ **Frontend:** Already updated
   - CompetitionHistory component handles cups
-  - Streaks component handles cups
+  - Streaks component handles cups (R1, SF, FN formatting)
   - Queries fetch cup-specific fields
+  - FightersSortingPage filters IFC metrics correctly
+  - Overall stats include all competitions (IFC + IC + CC)
 
 ### CC Data Requirements
 
@@ -693,7 +696,52 @@ Total CC streaks: XX
 
 ---
 
-### Step 19: Frontend Verification
+### Step 19: Verify Fighter Sorting Statistics
+
+**Time:** 2 minutes
+
+**Automatic Integration** - No code changes needed!
+
+After adding CC data, verify that fighter statistics are automatically updated:
+
+**What Happens Automatically:**
+
+1. **Overall Statistics (Include CC):**
+   - Number of Fights (Overall) ← Includes CC fights ✅
+   - Number of Wins (Overall) ← Includes CC wins ✅
+   - Number of Defeats (Overall) ← Includes CC losses ✅
+   - Win % (Overall) ← Calculated from all competitions ✅
+
+2. **IFC-Specific Statistics (Exclude CC):**
+   - Number of Seasons (IFC) ← IFC only (excludes CC) ✅
+   - Win % (IFC) ← IFC fights only (excludes CC) ✅
+
+**Example Verification:**
+
+For a fighter with:
+- IFC: 4 seasons, 36 fights, 20W-16L (55.6%)
+- IC: 2 seasons, 4 fights, 4W-0L (100%)
+- CC: 1 season, 3 fights, 2W-1L (66.7%)
+
+**Expected Results:**
+```
+Number of Seasons (IFC): 4 ✅ (IFC only)
+Win % (IFC): 55.6% ✅ (20/36)
+Number of Fights (Overall): 43 ✅ (36+4+3)
+Number of Wins (Overall): 26 ✅ (20+4+2)
+Win % (Overall): 60.5% ✅ (26/43)
+```
+
+**How It Works:**
+- Frontend filters `competitionHistory` by IFC competition ID for IFC metrics
+- Backend calculates overall stats across all competitions
+- CC data is automatically included in calculations
+
+✅ **Checkpoint:** Fighter sorting page shows correct statistics
+
+---
+
+### Step 20: Frontend Verification
 
 **Time:** 5 minutes
 
@@ -723,7 +771,7 @@ Test on a CC fighter's profile:
 
 ---
 
-### Step 20: Final Data Validation
+### Step 21: Final Data Validation
 
 **Time:** 5 minutes
 
@@ -1095,9 +1143,10 @@ const CC_SEASONS = [1, 2, 3, 4, 5]; // 5 seasons total
 | 13-14 | Verify Opponents | 4 min |
 | 15-16 | Calculate Streaks | 7 min |
 | 17-18 | Verify Streaks | 4 min |
-| 19 | Frontend Testing | 5 min |
-| 20 | Final Validation | 5 min |
-| **Total** | **Complete Implementation** | **~65 minutes** |
+| 19 | Verify Sorting Stats (Auto) | 2 min |
+| 20 | Frontend Testing | 5 min |
+| 21 | Final Validation | 5 min |
+| **Total** | **Complete Implementation** | **~67 minutes** |
 
 ---
 
@@ -1112,6 +1161,7 @@ const CC_SEASONS = [1, 2, 3, 4, 5]; // 5 seasons total
 - `IC-STREAKS-UPDATE-SUMMARY.md` - Streaks calculation
 - `FRONTEND-CUP-COMPETITION-DISPLAY-UPDATE.md` - Frontend guide
 - `STREAKS-CUP-DISPLAY-UPDATE.md` - Streaks display
+- `FIGHTER-SORTING-IFC-FILTER-UPDATE.md` - Fighter sorting statistics (IFC vs Overall)
 
 ### Key Differences: IC vs CC
 

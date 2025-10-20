@@ -1,5 +1,8 @@
 # Champions Cup (CC) - Quick Implementation Checklist
 
+**Updated:** October 20, 2025  
+**Note:** All infrastructure (schema, GraphQL, frontend) already supports cup competitions!
+
 ## Pre-Implementation
 
 ```bash
@@ -122,6 +125,14 @@ node server/scripts/verify-cc-streaks.js
 - [ ] CC streaks show "S3 R1 - S4 FN" (no division)
 - [ ] Hover shows "S3-SF" format
 
+### Fighter Sorting Stats (Automatic) ✅
+- [ ] Overall fights include CC (IFC + IC + CC)
+- [ ] Overall wins include CC
+- [ ] Overall losses include CC
+- [ ] Overall win% includes CC
+- [ ] IFC seasons exclude CC (IFC only)
+- [ ] IFC win% excludes CC (IFC only)
+
 ---
 
 ## Expected Numbers
@@ -158,7 +169,8 @@ node server/scripts/verify-cc-streaks.js
 - Execution: 15 min
 - Verification: 15 min
 - Testing: 10 min
-**Total: ~70 minutes**
+- Stats verification: 2 min
+**Total: ~72 minutes**
 
 ---
 
@@ -178,6 +190,31 @@ For each script, use find & replace:
 | `updateICTitles` | `updateCCTitles` |
 | `updateICOpponentHistory` | `updateCCOpponentHistory` |
 | `updateICStreaks` | `updateCCStreaks` |
+
+---
+
+## Important Notes
+
+### Automatic Statistics Integration
+
+Once CC data is added, fighter sorting statistics automatically update:
+
+**What Happens Automatically:**
+- ✅ Overall stats (fights, wins, losses, win%) include CC
+- ✅ IFC-specific stats (seasons, win%) exclude CC
+- ✅ Frontend filters by competition ID - no code changes needed
+
+**Example:**
+```
+Fighter with IFC (4 seasons, 36 fights, 20W-16L) + IC + CC:
+
+Number of Seasons (IFC): 4 ← IFC only
+Win % (IFC): 55.6% ← IFC only
+Number of Fights (Overall): 43 ← All competitions
+Win % (Overall): 60.5% ← All competitions
+```
+
+**How:** Frontend filters `competitionHistory` by IFC competition ID for IFC metrics. Backend aggregates across all competitions for overall metrics.
 
 ---
 
