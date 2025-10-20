@@ -1,5 +1,54 @@
 import { gql } from '@apollo/client';
 
+export const GET_CURRENT_GLOBAL_RANK = gql`
+    query GetCurrentGlobalRank {
+        getCurrentGlobalRank {
+            id
+            createdAt
+            updatedAt
+            isCurrent
+            fighters {
+                fighterId
+                score
+                rank
+                titles {
+                    competitionId
+                    numberOfTitles
+                }
+                cupAppearances {
+                    competitionId
+                    appearances
+                }
+                leagueAppearances {
+                    competitionId
+                    divisionAppearances {
+                        division
+                        appearances
+                    }
+                }
+                fighter {
+                    id
+                    firstName
+                    lastName
+                    profileImage
+                    competitionHistory {
+                        competitionId
+                        totalFights
+                        totalWins
+                        totalLosses
+                        winPercentage
+                    }
+                    streaks {
+                        competitionId
+                        type
+                        count
+                    }
+                }
+            }
+        }
+    }
+`;
+
 export const GET_COMPETITIONS = gql`
     query GetAllCompetitionsMeta {
         getAllCompetitionsMeta {

@@ -26,7 +26,7 @@ const globalRankResolver = {
          * @returns {Promise<Object>} - A list of the latest ranking of fighters
          */
         getCurrentGlobalRank: catchAsyncErrors(async() => {
-            const currentGlobalRank = await GlobalRank.find({isCurrent: true});
+            const currentGlobalRank = await GlobalRank.findOne({isCurrent: true});
             if(!currentGlobalRank) throw new NotFoundError("Not able to retrieve current global rank list");
             return currentGlobalRank;
         }),
@@ -88,32 +88,24 @@ const globalRankResolver = {
     },
     GlobalRank: {
         fighters: catchAsyncErrors(async(parent) => {
-            const enrichedFighters = parent.fighters.map(async(fighter) => {
-                const fighterDetails = await Fighter.findById(fighter.fighterId);
+            // Batch fetch all fighters in one query
+            const fighterIds = parent.fighters.map(f => f.fighterId);
+            const fighters = await Fighter.find({ _id: { $in: fighterIds } });
+            const fighterMap = new Map(fighters.map(f => [f._id.toString(), f]));
 
-                const titlesData = fighter.titles.map(async (title) => {
-                    const competitionInfo = await CompetitionMeta.findById(title.competitionId);
-                    return competitionInfo;
-                });
+            // Map fighters with their ranking data
+            const enrichedFighters = parent.fighters
+                .filter(fighter => fighterMap.has(fighter.fighterId.toString()))
+                .map(fighter => ({
+                    fighterId: fighter.fighterId,
+                    score: fighter.score,
+                    rank: fighter.rank,
+                    titles: fighter.titles,
+                    cupAppearances: fighter.cupAppearances,
+                    leagueAppearances: fighter.leagueAppearances,
+                    fighter: fighterMap.get(fighter.fighterId.toString())
+                }));
 
-                const cupAppsData = fighter.cupAppearances.map(async (cupApp) => {
-                    const competitionInfo = await CompetitionMeta.findById(cupApp.competitionId);
-                    return competitionInfo;
-                });
-
-                const leagueAppsData = fighter.leagueAppearances.map(async (leagueApp) => {
-                    const competitionInfo = await CompetitionMeta.findById(leagueApp.competitionId);
-                    return competitionInfo;
-                });
-
-                return {
-                    ...fighter,
-                    titles: titlesData,
-                    cupAppearances: cupAppsData,
-                    leagueAppearances: leagueAppsData,
-                    fighterDetails
-                }
-            });
             return enrichedFighters;
         })
     }

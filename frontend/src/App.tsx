@@ -12,6 +12,7 @@ import HomePage from './pages/HomePage/HomePage';
 import FightersPage from './pages/FightersPage/FightersPage';
 import FightersSortingPage from './pages/FightersSortingPage/FightersSortingPage';
 import FighterPage from './pages/FighterPage/FighterPage';
+import GlobalRankingsPage from './pages/GlobalRankingsPage/GlobalRankingsPage';
 import VersusPage from './pages/VersusPage/VersusPage';
 import CompetitionPage from './pages/CompetitionPage/CompetitionPage';
 import SeasonPageWrapper from './pages/SeasonPageWrapper';
@@ -62,6 +63,7 @@ const AppContent: React.FC = () => {
         <Route path="/fighters" element={<FightersPage />} />
         <Route path="/fighters/sort" element={<FightersSortingPage />} />
         <Route path="/fighter/:id" element={<FighterPage />} />
+        <Route path="/global-rankings" element={<GlobalRankingsPage />} />
         <Route path="/versus" element={<VersusPage />} />
         <Route path="/versus/:fighter1Id" element={<VersusPage />} />
         <Route path="/versus/:fighter1Id/:fighter2Id" element={<VersusPage />} />

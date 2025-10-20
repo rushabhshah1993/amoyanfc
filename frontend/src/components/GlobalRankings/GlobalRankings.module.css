@@ -1,0 +1,305 @@
+.globalRankingsContainer {
+    padding: 3rem 4rem;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: var(--bg-primary);
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.headerIcon {
+    font-size: 2.5rem;
+    color: #d4af37;
+}
+
+.header h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    margin: 0;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.tableContainer {
+    overflow-x: auto;
+    background: transparent;
+}
+
+.rankingsTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1200px;
+}
+
+.rankingsTable thead {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rankingsTable th {
+    padding: 1.25rem 1rem;
+    text-align: left;
+    font-weight: 400;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-secondary);
+}
+
+.rankColumn {
+    width: 80px;
+    text-align: center !important;
+}
+
+.fighterColumn {
+    width: 250px;
+}
+
+.scoreColumn {
+    width: 100px;
+    text-align: center !important;
+}
+
+.statColumn {
+    width: 80px;
+    text-align: center !important;
+}
+
+.rankingRow {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.rankingRow:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.rankingRow:hover .fighterName {
+    color: #d4af37;
+}
+
+.rankingRow:last-child {
+    border-bottom: none;
+}
+
+.rankCell {
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.rankContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.rankNumber {
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+}
+
+.goldMedal {
+    color: #ffd700;
+    font-size: 1.2rem;
+}
+
+.silverMedal {
+    color: #c0c0c0;
+    font-size: 1.2rem;
+}
+
+.bronzeMedal {
+    color: #cd7f32;
+    font-size: 1.2rem;
+}
+
+.fighterCell {
+    padding: 1.5rem 1rem;
+}
+
+.fighterInfo {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.fighterImage {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    transition: border-color 0.3s ease;
+}
+
+.rankingRow:hover .fighterImage {
+    border-color: #d4af37;
+}
+
+.fighterName {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.scoreCell {
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.scoreCell strong {
+    color: #d4af37;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.statCell {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 300;
+}
+
+.highlight {
+    color: #d4af37;
+    font-weight: 400;
+}
+
+.streakBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 107, 107, 0.15);
+    color: #ff6b6b;
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    min-width: 35px;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.noData {
+    text-align: center;
+    padding: 6rem 3rem;
+    color: var(--text-secondary);
+}
+
+.noData p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .globalRankingsContainer {
+        padding: 2rem 3rem;
+    }
+
+    .header h1 {
+        font-size: 2.5rem;
+    }
+
+    .rankingsTable {
+        min-width: 1000px;
+    }
+
+    .rankingsTable th,
+    .statCell {
+        padding: 1rem 0.75rem;
+        font-size: 0.7rem;
+    }
+
+    .statColumn {
+        width: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .globalRankingsContainer {
+        padding: 1.5rem 1.5rem;
+    }
+
+    .header {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+        letter-spacing: 1px;
+    }
+
+    .headerIcon {
+        font-size: 2rem;
+    }
+
+    .rankingsTable {
+        min-width: 900px;
+    }
+
+    .fighterColumn {
+        width: 200px;
+    }
+
+    .fighterImage {
+        width: 50px;
+        height: 50px;
+    }
+
+    .fighterName {
+        font-size: 1rem;
+    }
+
+    .rankCell,
+    .fighterCell,
+    .scoreCell,
+    .statCell {
+        padding: 1.25rem 0.75rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .rankingsTable thead {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .rankingRow {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .rankingRow:hover {
+        background: rgba(255, 255, 255, 0.02);
+    }
+}
+
+@media (max-width: 480px) {
+    .globalRankingsContainer {
+        padding: 1rem;
+    }
+
+    .header h1 {
+        font-size: 1.75rem;
+    }
+
+    .headerIcon {
+        font-size: 1.75rem;
+    }
+}
+

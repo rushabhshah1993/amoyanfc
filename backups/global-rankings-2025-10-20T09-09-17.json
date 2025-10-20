@@ -1,0 +1,1774 @@
+{
+  "id": "68f5fbf3685baa04a8611dd4",
+  "createdAt": "2025-10-20T09:08:03.297Z",
+  "updatedAt": "2025-10-20T09:08:03.297Z",
+  "isCurrent": true,
+  "totalFighters": 53,
+  "rankings": [
+    {
+      "rank": 1,
+      "fighter": {
+        "id": "676d7613eb38b2b97c6da9a9",
+        "name": "Unnati Vora"
+      },
+      "score": 164.5,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 6,
+          "_id": "68f5fbf3685baa04a8611dd6"
+        },
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "numberOfTitles": 5,
+          "_id": "68f5fbf3685baa04a8611dd7"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 5,
+          "_id": "68f5fbf3685baa04a8611dd8"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 9,
+              "_id": "68f5fbf3685baa04a8611dda"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611dd9"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "fighter": {
+        "id": "676d6ecceb38b2b97c6da945",
+        "name": "Sayali Raut"
+      },
+      "score": 107.65,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 2,
+          "_id": "68f5fbf3685baa04a8611ddc"
+        },
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "numberOfTitles": 2,
+          "_id": "68f5fbf3685baa04a8611ddd"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 2,
+          "_id": "68f5fbf3685baa04a8611dde"
+        },
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 2,
+          "_id": "68f5fbf3685baa04a8611ddf"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 10,
+              "_id": "68f5fbf3685baa04a8611de1"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611de0"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "fighter": {
+        "id": "676d72c5eb38b2b97c6da969",
+        "name": "Ishita Shah"
+      },
+      "score": 92.87,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 1,
+          "_id": "68f5fbf3685baa04a8611de3"
+        },
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "numberOfTitles": 1,
+          "_id": "68f5fbf3685baa04a8611de4"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611de5"
+        },
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 2,
+          "_id": "68f5fbf3685baa04a8611de6"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611de8"
+            },
+            {
+              "division": 2,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611de9"
+            },
+            {
+              "division": 3,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611dea"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611de7"
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "fighter": {
+        "id": "676d721aeb38b2b97c6da961",
+        "name": "Hetal Boricha"
+      },
+      "score": 91.49,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 1,
+          "_id": "68f5fbf3685baa04a8611dec"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 3,
+          "_id": "68f5fbf3685baa04a8611ded"
+        },
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611dee"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 10,
+              "_id": "68f5fbf3685baa04a8611df0"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611def"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "fighter": {
+        "id": "676d7452eb38b2b97c6da981",
+        "name": "Mahima Thakur"
+      },
+      "score": 87.69,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 1,
+          "_id": "68f5fbf3685baa04a8611df2"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 3,
+          "_id": "68f5fbf3685baa04a8611df3"
+        },
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611df4"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 8,
+              "_id": "68f5fbf3685baa04a8611df6"
+            },
+            {
+              "division": 2,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611df7"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611df5"
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "fighter": {
+        "id": "676d735aeb38b2b97c6da973",
+        "name": "Kanchan Choudhary"
+      },
+      "score": 79.9,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611df9"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 3,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611dfb"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611dfa"
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "fighter": {
+        "id": "676d753ceb38b2b97c6da997",
+        "name": "Rushika Mangrola"
+      },
+      "score": 78.65,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 1,
+          "_id": "68f5fbf3685baa04a8611dfd"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 2,
+          "_id": "68f5fbf3685baa04a8611dfe"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611e00"
+            },
+            {
+              "division": 2,
+              "appearances": 5,
+              "_id": "68f5fbf3685baa04a8611e01"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611dff"
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "fighter": {
+        "id": "676d740ceb38b2b97c6da97b",
+        "name": "Krishi Punamiya"
+      },
+      "score": 74.99,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 1,
+          "_id": "68f5fbf3685baa04a8611e03"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e04"
+        },
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e05"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611e07"
+            },
+            {
+              "division": 2,
+              "appearances": 6,
+              "_id": "68f5fbf3685baa04a8611e08"
+            },
+            {
+              "division": 3,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611e09"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e06"
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "fighter": {
+        "id": "676d7201eb38b2b97c6da95f",
+        "name": "Drishti Valecha"
+      },
+      "score": 72.99,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 2,
+          "_id": "68f5fbf3685baa04a8611e0b"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e0c"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611e0e"
+            },
+            {
+              "division": 2,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611e0f"
+            },
+            {
+              "division": 3,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611e10"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e0d"
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "fighter": {
+        "id": "676d7554eb38b2b97c6da999",
+        "name": "Sachi Maker-Biyani"
+      },
+      "score": 72.17,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 2,
+          "_id": "68f5fbf3685baa04a8611e12"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e13"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611e15"
+            },
+            {
+              "division": 2,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611e16"
+            },
+            {
+              "division": 3,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611e17"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e14"
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "fighter": {
+        "id": "676d7663eb38b2b97c6da9af",
+        "name": "Vinaya Rao"
+      },
+      "score": 71.22,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 1,
+          "_id": "68f5fbf3685baa04a8611e19"
+        }
+      ],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611e1b"
+            },
+            {
+              "division": 2,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611e1c"
+            },
+            {
+              "division": 3,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611e1d"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e1a"
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "fighter": {
+        "id": "676d7136eb38b2b97c6da953",
+        "name": "Anmol Pandya"
+      },
+      "score": 69.85,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 2,
+          "_id": "68f5fbf3685baa04a8611e1f"
+        },
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e20"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 7,
+              "_id": "68f5fbf3685baa04a8611e22"
+            },
+            {
+              "division": 2,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611e23"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e21"
+        }
+      ]
+    },
+    {
+      "rank": 13,
+      "fighter": {
+        "id": "676d70e7eb38b2b97c6da94f",
+        "name": "Ananya Suvarna"
+      },
+      "score": 69.12,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e25"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 3,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611e27"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e26"
+        }
+      ]
+    },
+    {
+      "rank": 14,
+      "fighter": {
+        "id": "676d7279eb38b2b97c6da967",
+        "name": "Isha Nagar"
+      },
+      "score": 67.61,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 1,
+          "_id": "68f5fbf3685baa04a8611e29"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e2a"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 2,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611e2c"
+            },
+            {
+              "division": 3,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611e2d"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e2b"
+        }
+      ]
+    },
+    {
+      "rank": 15,
+      "fighter": {
+        "id": "676d70fbeb38b2b97c6da951",
+        "name": "Anika Beri"
+      },
+      "score": 66.69,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 1,
+          "_id": "68f5fbf3685baa04a8611e2f"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e30"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611e32"
+            },
+            {
+              "division": 2,
+              "appearances": 6,
+              "_id": "68f5fbf3685baa04a8611e33"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e31"
+        }
+      ]
+    },
+    {
+      "rank": 16,
+      "fighter": {
+        "id": "676d73ddeb38b2b97c6da979",
+        "name": "Kripa Jalan"
+      },
+      "score": 66.61,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 2,
+          "_id": "68f5fbf3685baa04a8611e35"
+        },
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 2,
+          "_id": "68f5fbf3685baa04a8611e36"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611e38"
+            },
+            {
+              "division": 2,
+              "appearances": 5,
+              "_id": "68f5fbf3685baa04a8611e39"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e37"
+        }
+      ]
+    },
+    {
+      "rank": 17,
+      "fighter": {
+        "id": "676d7631eb38b2b97c6da9ab",
+        "name": "Venessa Arez"
+      },
+      "score": 66.37,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e3b"
+        },
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e3c"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 4,
+              "_id": "68f5fbf3685baa04a8611e3e"
+            },
+            {
+              "division": 2,
+              "appearances": 4,
+              "_id": "68f5fbf3685baa04a8611e3f"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e3d"
+        }
+      ]
+    },
+    {
+      "rank": 18,
+      "fighter": {
+        "id": "676d7399eb38b2b97c6da977",
+        "name": "Komal Madamwar"
+      },
+      "score": 65.87,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 2,
+          "_id": "68f5fbf3685baa04a8611e41"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 5,
+              "_id": "68f5fbf3685baa04a8611e43"
+            },
+            {
+              "division": 2,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611e44"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e42"
+        }
+      ]
+    },
+    {
+      "rank": 19,
+      "fighter": {
+        "id": "676d745feb38b2b97c6da983",
+        "name": "Mhafrin Basta"
+      },
+      "score": 65.68,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 1,
+          "_id": "68f5fbf3685baa04a8611e46"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e47"
+        },
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 3,
+          "_id": "68f5fbf3685baa04a8611e48"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 4,
+              "_id": "68f5fbf3685baa04a8611e4a"
+            },
+            {
+              "division": 2,
+              "appearances": 4,
+              "_id": "68f5fbf3685baa04a8611e4b"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e49"
+        }
+      ]
+    },
+    {
+      "rank": 20,
+      "fighter": {
+        "id": "676d736eeb38b2b97c6da975",
+        "name": "Kinjal Solanki"
+      },
+      "score": 63.5,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e4d"
+        },
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e4e"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 7,
+              "_id": "68f5fbf3685baa04a8611e50"
+            },
+            {
+              "division": 2,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611e51"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e4f"
+        }
+      ]
+    },
+    {
+      "rank": 21,
+      "fighter": {
+        "id": "676d7304eb38b2b97c6da96d",
+        "name": "Jinali Shah"
+      },
+      "score": 62.9,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 1,
+          "_id": "68f5fbf3685baa04a8611e53"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e54"
+        },
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e55"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611e57"
+            },
+            {
+              "division": 2,
+              "appearances": 4,
+              "_id": "68f5fbf3685baa04a8611e58"
+            },
+            {
+              "division": 3,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611e59"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e56"
+        }
+      ]
+    },
+    {
+      "rank": 22,
+      "fighter": {
+        "id": "676d75c8eb38b2b97c6da9a3",
+        "name": "Supriya Adep"
+      },
+      "score": 62.17,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 2,
+          "_id": "68f5fbf3685baa04a8611e5b"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 2,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611e5d"
+            },
+            {
+              "division": 3,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611e5e"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e5c"
+        }
+      ]
+    },
+    {
+      "rank": 23,
+      "fighter": {
+        "id": "676d749feb38b2b97c6da989",
+        "name": "Neha Gupta"
+      },
+      "score": 61.47,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611e61"
+            },
+            {
+              "division": 2,
+              "appearances": 6,
+              "_id": "68f5fbf3685baa04a8611e62"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e60"
+        }
+      ]
+    },
+    {
+      "rank": 24,
+      "fighter": {
+        "id": "676d7475eb38b2b97c6da985",
+        "name": "Mridula Jadhav"
+      },
+      "score": 60.72,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e64"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 2,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611e66"
+            },
+            {
+              "division": 3,
+              "appearances": 5,
+              "_id": "68f5fbf3685baa04a8611e67"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e65"
+        }
+      ]
+    },
+    {
+      "rank": 25,
+      "fighter": {
+        "id": "676d75dfeb38b2b97c6da9a5",
+        "name": "Tanvi Shah"
+      },
+      "score": 58.98,
+      "titles": [
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "numberOfTitles": 1,
+          "_id": "68f5fbf3685baa04a8611e69"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 2,
+          "_id": "68f5fbf3685baa04a8611e6a"
+        },
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 2,
+          "_id": "68f5fbf3685baa04a8611e6b"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611e6d"
+            },
+            {
+              "division": 2,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611e6e"
+            },
+            {
+              "division": 3,
+              "appearances": 4,
+              "_id": "68f5fbf3685baa04a8611e6f"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e6c"
+        }
+      ]
+    },
+    {
+      "rank": 26,
+      "fighter": {
+        "id": "676d7241eb38b2b97c6da963",
+        "name": "Hinal Parekh"
+      },
+      "score": 58.68,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 1,
+          "_id": "68f5fbf3685baa04a8611e71"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e72"
+        },
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e73"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 2,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611e75"
+            },
+            {
+              "division": 3,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611e76"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e74"
+        }
+      ]
+    },
+    {
+      "rank": 27,
+      "fighter": {
+        "id": "676d6fc5eb38b2b97c6da94d",
+        "name": "Amruta Date"
+      },
+      "score": 58.52,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778100309a4c4b25127f8fa",
+          "appearances": 2,
+          "_id": "68f5fbf3685baa04a8611e78"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 2,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611e7a"
+            },
+            {
+              "division": 3,
+              "appearances": 6,
+              "_id": "68f5fbf3685baa04a8611e7b"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e79"
+        }
+      ]
+    },
+    {
+      "rank": 28,
+      "fighter": {
+        "id": "676d742deb38b2b97c6da97d",
+        "name": "Kriti Kapoor"
+      },
+      "score": 57.29,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 3,
+          "_id": "68f5fbf3685baa04a8611e7d"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 3,
+              "appearances": 7,
+              "_id": "68f5fbf3685baa04a8611e7f"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e7e"
+        }
+      ]
+    },
+    {
+      "rank": 29,
+      "fighter": {
+        "id": "676d74bceb38b2b97c6da98d",
+        "name": "Priyanka Gandhi"
+      },
+      "score": 55.85,
+      "titles": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "numberOfTitles": 1,
+          "_id": "68f5fbf3685baa04a8611e81"
+        }
+      ],
+      "cupAppearances": [
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e82"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611e84"
+            },
+            {
+              "division": 2,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611e85"
+            },
+            {
+              "division": 3,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611e86"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e83"
+        }
+      ]
+    },
+    {
+      "rank": 30,
+      "fighter": {
+        "id": "676d71ceeb38b2b97c6da95d",
+        "name": "Diana Chan"
+      },
+      "score": 55.77,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e88"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 2,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611e8a"
+            },
+            {
+              "division": 3,
+              "appearances": 6,
+              "_id": "68f5fbf3685baa04a8611e8b"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e89"
+        }
+      ]
+    },
+    {
+      "rank": 31,
+      "fighter": {
+        "id": "676d6f89eb38b2b97c6da949",
+        "name": "Aashna Jogani"
+      },
+      "score": 54.61,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e8d"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 3,
+              "appearances": 7,
+              "_id": "68f5fbf3685baa04a8611e8f"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e8e"
+        }
+      ]
+    },
+    {
+      "rank": 32,
+      "fighter": {
+        "id": "676d759ceb38b2b97c6da9a1",
+        "name": "Sofiya Khan"
+      },
+      "score": 54.37,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611e91"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 2,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611e93"
+            },
+            {
+              "division": 3,
+              "appearances": 4,
+              "_id": "68f5fbf3685baa04a8611e94"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e92"
+        }
+      ]
+    },
+    {
+      "rank": 33,
+      "fighter": {
+        "id": "676d767ceb38b2b97c6da9b1",
+        "name": "Yashada Jogelekar-Bapat"
+      },
+      "score": 53.8,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 3,
+              "appearances": 6,
+              "_id": "68f5fbf3685baa04a8611e97"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e96"
+        }
+      ]
+    },
+    {
+      "rank": 34,
+      "fighter": {
+        "id": "676d757aeb38b2b97c6da99d",
+        "name": "Shraddha Bhansali"
+      },
+      "score": 53.66,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 2,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611e9a"
+            },
+            {
+              "division": 3,
+              "appearances": 6,
+              "_id": "68f5fbf3685baa04a8611e9b"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e99"
+        }
+      ]
+    },
+    {
+      "rank": 35,
+      "fighter": {
+        "id": "676d7250eb38b2b97c6da965",
+        "name": "Isha Haria"
+      },
+      "score": 52.12,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 3,
+              "appearances": 7,
+              "_id": "68f5fbf3685baa04a8611e9e"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611e9d"
+        }
+      ]
+    },
+    {
+      "rank": 36,
+      "fighter": {
+        "id": "676d764eeb38b2b97c6da9ad",
+        "name": "Vidhi Parmar"
+      },
+      "score": 50.55,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 2,
+          "_id": "68f5fbf3685baa04a8611ea0"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 3,
+              "appearances": 4,
+              "_id": "68f5fbf3685baa04a8611ea2"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611ea1"
+        }
+      ]
+    },
+    {
+      "rank": 37,
+      "fighter": {
+        "id": "676d7172eb38b2b97c6da957",
+        "name": "Ashwini Date"
+      },
+      "score": 49.5,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 2,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611ea5"
+            },
+            {
+              "division": 3,
+              "appearances": 6,
+              "_id": "68f5fbf3685baa04a8611ea6"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611ea4"
+        }
+      ]
+    },
+    {
+      "rank": 38,
+      "fighter": {
+        "id": "676d7190eb38b2b97c6da959",
+        "name": "Bandgee Kallra"
+      },
+      "score": 49.16,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611ea8"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 3,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611eaa"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611ea9"
+        }
+      ]
+    },
+    {
+      "rank": 39,
+      "fighter": {
+        "id": "676d6fa0eb38b2b97c6da94b",
+        "name": "Aishwarya Sharma"
+      },
+      "score": 49.08,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 8,
+              "_id": "68f5fbf3685baa04a8611ead"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611eac"
+        }
+      ]
+    },
+    {
+      "rank": 40,
+      "fighter": {
+        "id": "676d748eeb38b2b97c6da987",
+        "name": "Natasha Arez"
+      },
+      "score": 45.89,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611eb0"
+            },
+            {
+              "division": 2,
+              "appearances": 5,
+              "_id": "68f5fbf3685baa04a8611eb1"
+            },
+            {
+              "division": 3,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611eb2"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611eaf"
+        }
+      ]
+    },
+    {
+      "rank": 41,
+      "fighter": {
+        "id": "676d751aeb38b2b97c6da995",
+        "name": "Roopanshi Bhatt"
+      },
+      "score": 39.58,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611eb4"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611eb6"
+            },
+            {
+              "division": 2,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611eb7"
+            },
+            {
+              "division": 3,
+              "appearances": 3,
+              "_id": "68f5fbf3685baa04a8611eb8"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611eb5"
+        }
+      ]
+    },
+    {
+      "rank": 42,
+      "fighter": {
+        "id": "676d72dceb38b2b97c6da96b",
+        "name": "Jacqueline Furtado"
+      },
+      "score": 39.14,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 2,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611ebb"
+            },
+            {
+              "division": 3,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611ebc"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611eba"
+        }
+      ]
+    },
+    {
+      "rank": 43,
+      "fighter": {
+        "id": "676d743eeb38b2b97c6da97f",
+        "name": "Kruppa Savla"
+      },
+      "score": 34.73,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 3,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611ebf"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611ebe"
+        }
+      ]
+    },
+    {
+      "rank": 44,
+      "fighter": {
+        "id": "676d75faeb38b2b97c6da9a7",
+        "name": "Trishala Sharma"
+      },
+      "score": 34.08,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611ec2"
+            },
+            {
+              "division": 2,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611ec3"
+            },
+            {
+              "division": 3,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611ec4"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611ec1"
+        }
+      ]
+    },
+    {
+      "rank": 45,
+      "fighter": {
+        "id": "676d74efeb38b2b97c6da991",
+        "name": "Rashna Irani"
+      },
+      "score": 29.69,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 1,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611ec7"
+            },
+            {
+              "division": 2,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611ec8"
+            },
+            {
+              "division": 3,
+              "appearances": 1,
+              "_id": "68f5fbf3685baa04a8611ec9"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611ec6"
+        }
+      ]
+    },
+    {
+      "rank": 46,
+      "fighter": {
+        "id": "676d7505eb38b2b97c6da993",
+        "name": "Ritu Chanchlani"
+      },
+      "score": 28.07,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 3,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611ecc"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611ecb"
+        }
+      ]
+    },
+    {
+      "rank": 47,
+      "fighter": {
+        "id": "676d71b4eb38b2b97c6da95b",
+        "name": "Darshita Bhatt"
+      },
+      "score": 28.07,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 3,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611ecf"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611ece"
+        }
+      ]
+    },
+    {
+      "rank": 48,
+      "fighter": {
+        "id": "676d7568eb38b2b97c6da99b",
+        "name": "Shalini Chaturvedi"
+      },
+      "score": 25.78,
+      "titles": [],
+      "cupAppearances": [
+        {
+          "competitionId": "6778103309a4c4b25127f8fc",
+          "appearances": 1,
+          "_id": "68f5fbf3685baa04a8611ed1"
+        }
+      ],
+      "leagueAppearances": [
+        {
+          "competitionId": "67780dcc09a4c4b25127f8f6",
+          "divisionAppearances": [
+            {
+              "division": 3,
+              "appearances": 2,
+              "_id": "68f5fbf3685baa04a8611ed3"
+            }
+          ],
+          "_id": "68f5fbf3685baa04a8611ed2"
+        }
+      ]
+    },
+    {
+      "rank": 49,
+      "fighter": {
+        "id": "676d7151eb38b2b97c6da955",
+        "name": "Anushka Kamat"
+      },
+      "score": 0,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": []
+    },
+    {
+      "rank": 50,
+      "fighter": {
+        "id": "676d731ceb38b2b97c6da96f",
+        "name": "Jinal Virani"
+      },
+      "score": 0,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": []
+    },
+    {
+      "rank": 51,
+      "fighter": {
+        "id": "676d74caeb38b2b97c6da98f",
+        "name": "Rucha Bhide"
+      },
+      "score": 0,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": []
+    },
+    {
+      "rank": 52,
+      "fighter": {
+        "id": "676d7333eb38b2b97c6da971",
+        "name": "July Mehta"
+      },
+      "score": 0,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": []
+    },
+    {
+      "rank": 53,
+      "fighter": {
+        "id": "676d7588eb38b2b97c6da99f",
+        "name": "Sneha Sagar"
+      },
+      "score": 0,
+      "titles": [],
+      "cupAppearances": [],
+      "leagueAppearances": []
+    }
+  ]
+}
