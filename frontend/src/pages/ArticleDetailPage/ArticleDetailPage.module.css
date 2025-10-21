@@ -59,14 +59,14 @@
     display: block;
 }
 
-.thumbnail :global(.s3-image-container) {
+.thumbnail .s3-image-container {
     width: 100%;
     height: auto;
     display: block;
     position: relative !important;
 }
 
-.thumbnail :global(img) {
+.thumbnail img {
     width: 100% !important;
     height: auto !important;
     object-fit: contain !important;
