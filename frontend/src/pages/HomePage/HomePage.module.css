@@ -1,0 +1,658 @@
+.homePage {
+    min-height: 100vh;
+    padding: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.homeContent {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Row containers */
+.row1,
+.row2 {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    gap: 2rem;
+    width: 100%;
+}
+
+/* Section Cards */
+.sectionCard {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sectionCard:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .sectionCard:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 8px;
+}
+
+.sectionHeader h2 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease;
+}
+
+.sectionTitle {
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease;
+}
+
+.sectionIcon {
+    font-size: 1.1rem;
+    color: #4285f4;
+}
+
+/* Articles Marquee */
+.marqueeContainer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 1rem 0;
+}
+
+.articleCard {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.articleCard:hover {
+    transform: scale(1.02);
+}
+
+.articleThumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.articleImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.articleOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        rgba(0, 0, 0, 0.85) 100%
+    );
+    transition: background 0.3s ease;
+}
+
+.articleCard:hover .articleOverlay {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0.95) 100%
+    );
+}
+
+.articleContent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.articleTitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+    color: white;
+    line-height: 1.3;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.articleBlurb {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.articleDate {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.marqueeNav {
+    position: absolute;
+    background: rgba(66, 133, 244, 0.85);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.marqueeNav:hover {
+    background: rgba(66, 133, 244, 1);
+    transform: scale(1.1);
+}
+
+.marqueeNav.prev {
+    left: -12px;
+}
+
+.marqueeNav.next {
+    right: -12px;
+}
+
+.marqueeIndicators {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--text-secondary);
+    border: none;
+    cursor: pointer;
+    opacity: 0.3;
+    padding: 0;
+    flex-shrink: 0;
+    transition: opacity 0.3s ease, background 0.3s ease, transform 0.2s ease;
+}
+
+.indicator:hover {
+    opacity: 0.6;
+    transform: scale(1.2);
+}
+
+.indicator.active {
+    opacity: 1;
+    background: #4285f4;
+}
+
+.marqueeLoading {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+/* Top Fighters List */
+.fightersList {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.fighterItem {
+    position: relative;
+    height: 280px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fighterItem:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .fighterItem:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.fighterItem.rank1 {
+    border: 2px solid #FFD700;
+}
+
+.fighterItem.rank2 {
+    border: 2px solid #C0C0C0;
+}
+
+.fighterItem.rank3 {
+    border: 2px solid #CD7F32;
+}
+
+.fighterImageContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.fighterFullImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fighterImagePlaceholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+}
+
+.fighterOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.7) 100%
+    );
+    transition: background 0.3s ease;
+}
+
+.fighterItem:hover .fighterOverlay {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.85) 100%
+    );
+}
+
+.fighterInfo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.fighterRank {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rankNumber {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.goldMedal {
+    font-size: 1.1rem;
+    color: #FFD700;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.silverMedal {
+    font-size: 1.1rem;
+    color: #C0C0C0;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.bronzeMedal {
+    font-size: 1.1rem;
+    color: #CD7F32;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.fighterName {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.3;
+}
+
+/* Legacy classes for backwards compatibility */
+.fighterAvatar,
+.avatarImage,
+.avatarPlaceholder {
+    display: none;
+}
+
+/* No Content State */
+.noContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--text-secondary);
+    padding: 2rem;
+    transition: color 0.3s ease;
+}
+
+.noContent svg {
+    font-size: 2.5rem;
+    opacity: 0.25;
+}
+
+.noContent p {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+/* Loading and Error States */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    gap: 1rem;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.loadingSpinner {
+    font-size: 2rem;
+    color: #4285f4;
+}
+
+.loading p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    color: #dc3545;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .row1,
+    .row2 {
+        grid-template-columns: 65% 35%;
+    }
+}
+
+@media (max-width: 1400px) {
+    .fightersList {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .fightersList .fighterItem:nth-child(4),
+    .fightersList .fighterItem:nth-child(5) {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .homeContent {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .row1,
+    .row2 {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .sectionCard {
+        min-height: 300px;
+    }
+
+    .articleCard {
+        height: 300px;
+    }
+
+    .marqueeNav.prev {
+        left: 8px;
+    }
+
+    .marqueeNav.next {
+        right: 8px;
+    }
+
+    .fightersList {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.75rem;
+    }
+
+    .fighterItem {
+        height: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .homeContent {
+        padding: 2rem 1rem;
+        gap: 2rem;
+    }
+
+    .sectionCard {
+        padding: 1.5rem;
+        min-height: 250px;
+    }
+
+    .sectionHeader h2 {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+
+    .sectionIcon {
+        font-size: 1rem;
+    }
+
+    .articleCard {
+        height: 250px;
+    }
+
+    .articleContent {
+        padding: 1.5rem;
+    }
+
+    .articleTitle {
+        font-size: 1.3rem;
+    }
+
+    .articleBlurb {
+        font-size: 0.9rem;
+    }
+
+    .fightersList {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .fightersList .fighterItem:nth-child(4),
+    .fightersList .fighterItem:nth-child(5) {
+        display: none;
+    }
+
+    .fighterItem {
+        height: 200px;
+    }
+
+    .fighterName {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .homeContent {
+        padding: 1.5rem 0.75rem;
+        gap: 1.5rem;
+    }
+
+    .sectionCard {
+        padding: 1.25rem;
+        border-radius: 6px;
+    }
+
+    .sectionHeader {
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .sectionHeader h2 {
+        font-size: 1rem;
+    }
+
+    .articleCard {
+        height: 220px;
+    }
+
+    .articleContent {
+        padding: 1.25rem;
+    }
+
+    .articleTitle {
+        font-size: 1.1rem;
+    }
+
+    .articleBlurb {
+        font-size: 0.85rem;
+        -webkit-line-clamp: 2;
+    }
+
+    .articleDate {
+        font-size: 0.8rem;
+    }
+
+    .marqueeNav {
+        width: 32px;
+        height: 32px;
+    }
+
+    .fightersList {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .fightersList .fighterItem:nth-child(3),
+    .fightersList .fighterItem:nth-child(4),
+    .fightersList .fighterItem:nth-child(5) {
+        display: none;
+    }
+
+    .fighterItem {
+        height: 180px;
+    }
+
+    .fighterInfo {
+        padding: 0.75rem;
+    }
+
+    .rankNumber {
+        font-size: 0.95rem;
+    }
+
+    .goldMedal,
+    .silverMedal,
+    .bronzeMedal {
+        font-size: 0.95rem;
+    }
+
+    .fighterName {
+        font-size: 0.85rem;
+    }
+
+    .fighterImagePlaceholder {
+        font-size: 2rem;
+    }
+
+    .noContent svg {
+        font-size: 2rem;
+    }
+
+    .noContent p {
+        font-size: 0.9rem;
+    }
+}
+

@@ -65,6 +65,12 @@ const Header: React.FC<HeaderProps> = ({
                             Home
                         </button>
                         <button 
+                            className={`nav-button ${currentPage === 'competitions' ? 'active' : ''}`}
+                            onClick={() => onNavigate?.('competitions')}
+                        >
+                            Competitions
+                        </button>
+                        <button 
                             className={`nav-button ${currentPage === 'fighters' ? 'active' : ''}`}
                             onClick={() => onNavigate?.('fighters')}
                         >

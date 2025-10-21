@@ -9,6 +9,7 @@ import { RootState } from './store';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
+import CompetitionsPage from './pages/CompetitionsPage/CompetitionsPage';
 import FightersPage from './pages/FightersPage/FightersPage';
 import FightersSortingPage from './pages/FightersSortingPage/FightersSortingPage';
 import FighterPage from './pages/FighterPage/FighterPage';
@@ -41,6 +42,7 @@ const AppContent: React.FC = () => {
   // Determine current page based on the URL path
   const getCurrentPage = () => {
     if (location.pathname === '/') return 'home';
+    if (location.pathname.startsWith('/competitions') || location.pathname.startsWith('/competition')) return 'competitions';
     if (location.pathname.startsWith('/fighters') || location.pathname.startsWith('/fighter')) return 'fighters';
     if (location.pathname.startsWith('/articles') || location.pathname.startsWith('/article')) return 'articles';
     return 'home';
@@ -49,6 +51,8 @@ const AppContent: React.FC = () => {
   const handleNavigate = (page: string) => {
     if (page === 'home') {
       navigate('/');
+    } else if (page === 'competitions') {
+      navigate('/competitions');
     } else if (page === 'fighters') {
       navigate('/fighters');
     } else if (page === 'articles') {
@@ -66,6 +70,7 @@ const AppContent: React.FC = () => {
       />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/competitions" element={<CompetitionsPage />} />
         <Route path="/fighters" element={<FightersPage />} />
         <Route path="/fighters/sort" element={<FightersSortingPage />} />
         <Route path="/fighter/:id" element={<FighterPage />} />
