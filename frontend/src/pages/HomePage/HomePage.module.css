@@ -1,6 +1,6 @@
 .homePage {
     min-height: 100vh;
-    padding: 0;
+    padding: 0 2rem;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -9,17 +9,19 @@
 .homeContent {
     max-width: 1600px;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: 3rem 0;
     display: flex;
     flex-direction: column;
     gap: 3rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Row containers */
 .row1,
 .row2 {
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 7fr 3fr;
     gap: 2rem;
     width: 100%;
 }
@@ -250,6 +252,95 @@
     justify-content: center;
     color: var(--text-secondary);
     font-size: 1.2rem;
+}
+
+/* Birthday Marquee */
+.birthdayMarquee {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.birthdayCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.birthdayFighters {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.birthdayFighterItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.birthdayFighterItem:hover {
+    transform: translateY(-4px);
+}
+
+.birthdayImageContainer {
+    width: 140px;
+    height: 160px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.birthdayImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.birthdayImagePlaceholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+
+.birthdayInfo {
+    text-align: center;
+}
+
+.birthdayName {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.birthdayMessage {
+    font-size: 1rem;
+    margin: 0;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-align: center;
+    transition: color 0.3s ease;
 }
 
 /* Top Fighters List */

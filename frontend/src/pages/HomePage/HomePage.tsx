@@ -20,6 +20,7 @@ interface Fighter {
     firstName: string;
     lastName: string;
     profileImage?: string;
+    dateOfBirth?: string;
     totalFights: number;
     totalWins: number;
     totalLosses: number;
@@ -30,6 +31,15 @@ interface Fighter {
     highestWinStreak: number;
     highestLoseStreak: number;
     competitionHistory?: CompetitionHistory[];
+}
+
+interface UpcomingBirthday {
+    fighters: Fighter[];
+    daysUntil: number;
+    isToday: boolean;
+    nextBirthday: Date;
+    birthdayDate: string;
+    age: number;
 }
 
 interface Article {
@@ -59,6 +69,7 @@ interface ArticlesData {
 const HomePage: React.FC = () => {
     const navigate = useNavigate();
     const [currentArticleIndex, setCurrentArticleIndex] = useState(0);
+    const [currentBirthdayIndex, setCurrentBirthdayIndex] = useState(0);
     
     const { loading: loadingFighters, error: errorFighters, data: fightersData } = useQuery<{ getAllFightersWithBasicStats: Fighter[] }>(GET_ALL_FIGHTERS_WITH_STATS, {
         fetchPolicy: 'cache-first',
@@ -107,6 +118,74 @@ const HomePage: React.FC = () => {
 
     const topArticles = articlesData?.getAllArticles?.results || [];
 
+    // Calculate upcoming birthdays
+    const upcomingBirthdays = useMemo(() => {
+        if (!fightersData?.getAllFightersWithBasicStats) return [];
+
+        const today = new Date();
+        const currentYear = today.getFullYear();
+
+        // Group fighters by their birthday date
+        const birthdayMap = new Map<string, { fighters: Fighter[], daysUntil: number, isToday: boolean, nextBirthday: Date }>();
+
+        fightersData.getAllFightersWithBasicStats
+            .filter(fighter => fighter.dateOfBirth)
+            .forEach(fighter => {
+                const dob = new Date(fighter.dateOfBirth!);
+                const month = dob.getMonth();
+                const day = dob.getDate();
+
+                // Calculate this year's birthday
+                let nextBirthday = new Date(currentYear, month, day);
+                
+                // If birthday has passed this year, use next year
+                if (nextBirthday < today) {
+                    nextBirthday = new Date(currentYear + 1, month, day);
+                }
+
+                // Calculate days until birthday
+                const diffTime = nextBirthday.getTime() - today.getTime();
+                const daysUntil = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                const isToday = daysUntil === 0;
+
+                // Use date key to group fighters with same birthday
+                const dateKey = `${month}-${day}`;
+
+                if (!birthdayMap.has(dateKey)) {
+                    birthdayMap.set(dateKey, {
+                        fighters: [],
+                        daysUntil,
+                        isToday,
+                        nextBirthday
+                    });
+                }
+
+                birthdayMap.get(dateKey)!.fighters.push(fighter);
+            });
+
+        // Convert map to array and sort by days until birthday
+        const birthdays: UpcomingBirthday[] = Array.from(birthdayMap.values())
+            .map(group => {
+                // Calculate age using the first fighter's DOB
+                const firstFighter = group.fighters[0];
+                const dob = new Date(firstFighter.dateOfBirth!);
+                const age = group.nextBirthday.getFullYear() - dob.getFullYear();
+                
+                return {
+                    fighters: group.fighters,
+                    daysUntil: group.daysUntil,
+                    isToday: group.isToday,
+                    nextBirthday: group.nextBirthday,
+                    birthdayDate: group.nextBirthday.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }),
+                    age
+                };
+            })
+            .sort((a, b) => a.daysUntil - b.daysUntil)
+            .slice(0, 3);
+
+        return birthdays;
+    }, [fightersData]);
+
     // Auto-rotate articles every 5 seconds
     useEffect(() => {
         if (topArticles.length > 1) {
@@ -123,6 +202,27 @@ const HomePage: React.FC = () => {
 
     const handleNextArticle = () => {
         setCurrentArticleIndex((prev) => (prev + 1) % topArticles.length);
+    };
+
+    const handlePrevBirthday = () => {
+        setCurrentBirthdayIndex((prev) => (prev - 1 + upcomingBirthdays.length) % upcomingBirthdays.length);
+    };
+
+    const handleNextBirthday = () => {
+        setCurrentBirthdayIndex((prev) => (prev + 1) % upcomingBirthdays.length);
+    };
+
+    const getBirthdayMessage = (birthday: UpcomingBirthday) => {
+        const count = birthday.fighters.length;
+        const plural = count > 1 ? 'birthdays' : 'birthday';
+        
+        if (birthday.isToday) {
+            return `It's ${count > 1 ? 'their' : birthday.fighters[0].firstName.endsWith('s') ? 'their' : 'their'} ${plural} today! 🎉 Turning ${birthday.age}`;
+        } else if (birthday.daysUntil === 1) {
+            return `${birthday.birthdayDate} • Tomorrow • Turning ${birthday.age}`;
+        } else {
+            return `${birthday.birthdayDate} • ${birthday.daysUntil} days away • Turning ${birthday.age}`;
+        }
     };
 
     if (loadingFighters) return (
@@ -146,6 +246,7 @@ const HomePage: React.FC = () => {
     };
 
     const currentArticle = topArticles[currentArticleIndex];
+    const currentBirthday = upcomingBirthdays[currentBirthdayIndex];
 
     return (
         <div className={styles.homePage}>
@@ -283,10 +384,69 @@ const HomePage: React.FC = () => {
                             <FontAwesomeIcon icon={faCakeCandles} className={styles.sectionIcon} />
                             <h3 className={styles.sectionTitle}>Upcoming Birthdays</h3>
                         </div>
-                        <div className={styles.noContent}>
-                            <FontAwesomeIcon icon={faCakeCandles} />
-                            <p>No upcoming birthdays</p>
-                        </div>
+                        {upcomingBirthdays.length === 0 ? (
+                            <div className={styles.noContent}>
+                                <FontAwesomeIcon icon={faCakeCandles} />
+                                <p>No upcoming birthdays</p>
+                            </div>
+                        ) : (
+                            <div className={styles.birthdayMarquee}>
+                                {upcomingBirthdays.length > 1 && (
+                                    <>
+                                        <button className={`${styles.marqueeNav} ${styles.prev}`} onClick={handlePrevBirthday}>
+                                            <FontAwesomeIcon icon={faChevronLeft} />
+                                        </button>
+                                        <button className={`${styles.marqueeNav} ${styles.next}`} onClick={handleNextBirthday}>
+                                            <FontAwesomeIcon icon={faChevronRight} />
+                                        </button>
+                                    </>
+                                )}
+                                <div className={styles.birthdayCard}>
+                                    <div className={styles.birthdayFighters}>
+                                        {currentBirthday.fighters.map((fighter) => (
+                                            <div 
+                                                key={fighter.id}
+                                                className={styles.birthdayFighterItem}
+                                                onClick={() => navigate(`/fighter/${fighter.id}`)}
+                                            >
+                                                <div className={styles.birthdayImageContainer}>
+                                                    {fighter.profileImage ? (
+                                                        <S3Image
+                                                            src={fighter.profileImage}
+                                                            alt={`${fighter.firstName} ${fighter.lastName}`}
+                                                            className={styles.birthdayImage}
+                                                        />
+                                                    ) : (
+                                                        <div className={styles.birthdayImagePlaceholder}>
+                                                            {fighter.firstName.charAt(0)}{fighter.lastName.charAt(0)}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                <div className={styles.birthdayInfo}>
+                                                    <h4 className={styles.birthdayName}>
+                                                        {fighter.firstName} {fighter.lastName}
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <p className={styles.birthdayMessage}>
+                                        {getBirthdayMessage(currentBirthday)}
+                                    </p>
+                                </div>
+                                {upcomingBirthdays.length > 1 && (
+                                    <div className={styles.marqueeIndicators}>
+                                        {upcomingBirthdays.map((_, index) => (
+                                            <button
+                                                key={index}
+                                                className={`${styles.indicator} ${index === currentBirthdayIndex ? styles.active : ''}`}
+                                                onClick={() => setCurrentBirthdayIndex(index)}
+                            />
+                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
