@@ -4,6 +4,10 @@ import { faImage, faExclamationTriangle, faSpinner } from '@fortawesome/free-sol
 import { isValidS3Url, optimizeS3Url, checkImageExists, getImageConfig } from '../../utils/s3ImageUtils';
 import './S3Image.css';
 
+// In-memory cache for preloaded images to avoid re-fetching
+const imageCache = new Map<string, { url: string; timestamp: number }>();
+const CACHE_DURATION = 1000 * 60 * 60; // 1 hour in memory
+
 interface S3ImageProps {
   src?: string;
   alt?: string;
@@ -62,6 +66,17 @@ const S3Image: React.FC<S3ImageProps> = ({
       setImageLoaded(false);
 
       try {
+        // Check in-memory cache first
+        const cached = imageCache.get(src);
+        const now = Date.now();
+        
+        if (cached && (now - cached.timestamp) < CACHE_DURATION) {
+          // Use cached URL
+          setImageUrl(cached.url);
+          // Image may already be in browser cache, so it should load quickly
+          return;
+        }
+
         // Validate S3 URL
         if (!isValidS3Url(src)) {
           console.warn('Invalid S3 URL provided:', src);
@@ -73,10 +88,11 @@ const S3Image: React.FC<S3ImageProps> = ({
         // Use the raw URL without optimization parameters
         // CloudFront may not have Lambda@Edge configured for image optimization
         setImageUrl(src);
+        
+        // Cache the URL
+        imageCache.set(src, { url: src, timestamp: now });
 
-        // Skip existence check for CloudFront URLs - let the browser handle it
-        // CloudFront may take a few seconds to cache newly uploaded files
-        setIsLoading(false);
+        // Keep loading state true - it will be set to false when image loads via handleLoad
       } catch (err) {
         console.warn('Failed to load S3 image:', src, err);
         
@@ -112,16 +128,6 @@ const S3Image: React.FC<S3ImageProps> = ({
     }
   };
 
-  // Show loading state
-  if (isLoading && imageUrl) {
-    return loading || (
-      <div className={`s3-image-loading ${className}`} style={style}>
-        <FontAwesomeIcon icon={faSpinner} spin className="loading-icon" />
-        <span>Loading image...</span>
-      </div>
-    );
-  }
-
   // Show error state or fallback
   if (error || (!imageUrl && !isLoading)) {
     return fallback || (
@@ -132,22 +138,41 @@ const S3Image: React.FC<S3ImageProps> = ({
     );
   }
 
-  // Render the image
+  // Show loading state only if no imageUrl yet
+  if (isLoading && !imageUrl) {
+    return loading || (
+      <div className={`s3-image-loading ${className}`} style={style}>
+        <FontAwesomeIcon icon={faSpinner} spin className="loading-icon" />
+        <span>Loading image...</span>
+      </div>
+    );
+  }
+
+  // Render the image (with loading indicator if still loading)
   return (
-    <img
-      src={imageUrl}
-      alt={alt}
-      className={`s3-image ${className} ${imageLoaded ? 'loaded' : ''} ${disableHoverScale ? 'no-hover-scale' : ''}`}
-      style={{
-        ...style,
-        width: width ? `${width}px` : style.width,
-        height: height ? `${height}px` : style.height,
-      }}
-      onError={handleError}
-      onLoad={handleLoad}
-      loading={lazy ? 'lazy' : 'eager'}
-      {...props}
-    />
+    <div className="s3-image-container" style={{ position: 'relative', display: 'inline-block' }}>
+      {isLoading && !imageLoaded && (
+        <div className="s3-image-loading-overlay">
+          <FontAwesomeIcon icon={faSpinner} spin className="loading-icon" />
+        </div>
+      )}
+      <img
+        src={imageUrl}
+        alt={alt}
+        className={`s3-image ${className} ${imageLoaded ? 'loaded' : 'loading'} ${disableHoverScale ? 'no-hover-scale' : ''}`}
+        style={{
+          ...style,
+          width: width ? `${width}px` : style.width,
+          height: height ? `${height}px` : style.height,
+          opacity: imageLoaded ? 1 : 0.3,
+          transition: 'opacity 0.3s ease',
+        }}
+        onError={handleError}
+        onLoad={handleLoad}
+        loading={lazy ? 'lazy' : 'eager'}
+        {...props}
+      />
+    </div>
   );
 };
 

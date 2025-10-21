@@ -42,6 +42,12 @@
     flex: 1;
 }
 
+.header-logo-section .s3-image-container {
+    width: auto;
+    height: auto;
+    display: inline-flex;
+}
+
 .header-logo {
     height: 50px;
     width: auto;

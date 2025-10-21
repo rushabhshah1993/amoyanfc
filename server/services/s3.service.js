@@ -30,6 +30,9 @@ export const uploadToS3 = async (fileBuffer, key, contentType) => {
             Key: key,
             Body: fileBuffer,
             ContentType: contentType,
+            // Cache-Control headers for CloudFront and browser caching
+            // max-age=31536000 = 1 year, public = can be cached by CDN
+            CacheControl: 'public, max-age=31536000, immutable',
             // No ACL needed - CloudFront handles access via Origin Access Control
         });
 
