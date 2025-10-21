@@ -122,6 +122,7 @@ const ArticleDetailPage: React.FC = () => {
                             src={article.thumbnail}
                             alt={article.title}
                             className={styles.thumbnail}
+                            disableHoverScale={true}
                         />
                     </div>
                 )}
