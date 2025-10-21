@@ -20,6 +20,9 @@ import DetailedTimelinePage from './pages/DetailedTimelinePage/DetailedTimelineP
 import DivisionPage from './pages/DivisionPage/DivisionPage';
 import RoundsPage from './pages/RoundsPage/RoundsPage';
 import FightPage from './pages/FightPage/FightPage';
+import ArticlesPage from './pages/ArticlesPage/ArticlesPage';
+import ArticleDetailPage from './pages/ArticleDetailPage/ArticleDetailPage';
+import CreateArticlePage from './pages/CreateArticlePage/CreateArticlePage';
 
 const AppContent: React.FC = () => {
   const { isDarkMode } = useAppSelector((state: RootState) => state.theme);
@@ -39,6 +42,7 @@ const AppContent: React.FC = () => {
   const getCurrentPage = () => {
     if (location.pathname === '/') return 'home';
     if (location.pathname.startsWith('/fighters') || location.pathname.startsWith('/fighter')) return 'fighters';
+    if (location.pathname.startsWith('/articles') || location.pathname.startsWith('/article')) return 'articles';
     return 'home';
   };
 
@@ -47,6 +51,8 @@ const AppContent: React.FC = () => {
       navigate('/');
     } else if (page === 'fighters') {
       navigate('/fighters');
+    } else if (page === 'articles') {
+      navigate('/articles');
     }
   };
 
@@ -73,6 +79,9 @@ const AppContent: React.FC = () => {
         <Route path="/competition/:competitionId/season/:seasonId/division/:divisionNumber" element={<DivisionPage />} />
         <Route path="/competition/:competitionId/season/:seasonId/division/:divisionNumber/rounds" element={<RoundsPage />} />
         <Route path="/fight/:fightId" element={<FightPage />} />
+        <Route path="/articles" element={<ArticlesPage />} />
+        <Route path="/articles/create" element={<CreateArticlePage />} />
+        <Route path="/articles/:id" element={<ArticleDetailPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>

@@ -267,6 +267,17 @@ export const GET_COMPETITION_META = gql`
     }
 `;
 
+export const GET_ALL_COMPETITIONS_META = gql`
+    query GetAllCompetitionsMeta {
+        getAllCompetitionsMeta {
+            id
+            competitionName
+            shortName
+            type
+        }
+    }
+`;
+
 export const GET_ALL_SEASONS_BY_COMPETITION = gql`
     query GetAllSeasonsByCompetitionCategory($competitionMetaId: ID!) {
         getAllSeasonsByCompetitionCategory(competitionMetaId: $competitionMetaId) {
@@ -658,6 +669,111 @@ export const GET_FIGHT_BY_ID = gql`
                 divisionName
                 roundNumber
             }
+        }
+    }
+`;
+
+// ==================== Article Queries ====================
+
+export const GET_ALL_ARTICLES = gql`
+    query GetAllArticles($page: Int, $limit: Int) {
+        getAllArticles(page: $page, limit: $limit) {
+            results {
+                id
+                title
+                subtitle
+                blurb
+                thumbnail
+                author
+                tags
+                publishedDate
+                fightersTagged
+            }
+            pagination {
+                page
+                limit
+                total
+                count
+                has_next
+                has_previous
+            }
+        }
+    }
+`;
+
+export const GET_ARTICLE = gql`
+    query GetArticle($id: ID!) {
+        getArticle(id: $id) {
+            id
+            title
+            subtitle
+            blurb
+            content
+            thumbnail
+            author
+            tags
+            publishedDate
+            fightersTagged
+            fighters {
+                id
+                firstName
+                lastName
+                profileImage
+            }
+            competitionsTagged
+            competitions {
+                id
+                competitionMeta {
+                    id
+                    competitionName
+                    logo
+                }
+            }
+        }
+    }
+`;
+
+// ==================== Article Mutations ====================
+
+export const CREATE_ARTICLE = gql`
+    mutation CreateArticle($input: NewArticleInput!) {
+        createArticle(input: $input) {
+            id
+            title
+            subtitle
+            blurb
+            content
+            thumbnail
+            author
+            tags
+            publishedDate
+            fightersTagged
+            competitionsTagged
+        }
+    }
+`;
+
+export const EDIT_ARTICLE = gql`
+    mutation EditArticle($id: ID!, $input: ExistingArticleInput!) {
+        editArticle(id: $id, input: $input) {
+            id
+            title
+            subtitle
+            blurb
+            content
+            thumbnail
+            tags
+            publishedDate
+            fightersTagged
+        }
+    }
+`;
+
+export const DELETE_ARTICLE = gql`
+    mutation DeleteArticle($id: ID!) {
+        deleteArticle(id: $id) {
+            id
+            title
         }
     }
 `;

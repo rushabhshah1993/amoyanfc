@@ -10,6 +10,7 @@ import { Schema } from 'mongoose';
  * @property {String} blurb - Blurb of an article
  * @property {String} content - Content of an article
  * @property {String} thumbnail - URL of an article
+ * @property {String} author - Author name of an article
  * @property {Array.<String>} tags - A list of tags for an article
  * @property {Date} publishedDate - The published date of an article
  */
@@ -19,9 +20,11 @@ const articlesSchema = new Schema({
     blurb: { type: String },
     content: { type: String, required: true },
     thumbnail: { type: String },
+    author: { type: String, required: true },
     tags: { type: [String] },
     publishedDate: { type: Date, required: true, default: () => Date.now(), immutable: true },
-    fightersTagged: { type: [String] }
+    fightersTagged: { type: [String] },
+    competitionsTagged: { type: [String] }
 }, { timestamps: true });
 
 export const Articles = mongoose.model('Articles', articlesSchema);

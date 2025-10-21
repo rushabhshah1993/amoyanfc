@@ -46,6 +46,8 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/server": "^4.11.2",
+    "@aws-sdk/client-s3": "^3.913.0",
+    "@aws-sdk/s3-request-presigner": "^3.913.0",
     "@graphql-tools/merge": "^9.0.9",
     "apollo-server-errors": "^3.3.1",
     "connect-mongo": "^5.1.0",
@@ -58,6 +60,7 @@
     "graphql-scalars": "^1.23.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.8.1",
+    "multer": "^2.0.2",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.1"

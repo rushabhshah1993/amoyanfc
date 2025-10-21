@@ -27,6 +27,9 @@ import passport from './auth/passport.js';
 import authRoutes from './auth/routes.js';
 import { authContext } from './resolvers/auth.resolver.js';
 
+/* Upload routes imports */
+import uploadRoutes from './routes/upload.routes.js';
+
 /* Constants imports */
 import { PORT } from './constants.js';
 
@@ -58,8 +61,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Parse JSON bodies and cookies
-app.use(express.json());
+// Parse JSON bodies and cookies with increased size limits
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cookieParser());
 
 const httpServer = http.createServer(app);
@@ -83,9 +87,13 @@ await server.start();
 // Auth routes
 app.use('/auth', authRoutes);
 
+// Upload routes
+app.use('/api/upload', uploadRoutes);
+
 // GraphQL endpoint with authentication context
 app.use(
     '/graphql',
+    express.json({ limit: '50mb' }),
     expressMiddleware(server, {
         context: authContext
     })

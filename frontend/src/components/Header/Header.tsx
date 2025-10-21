@@ -70,6 +70,12 @@ const Header: React.FC<HeaderProps> = ({
                         >
                             Fighters
                         </button>
+                        <button 
+                            className={`nav-button ${currentPage === 'articles' ? 'active' : ''}`}
+                            onClick={() => onNavigate?.('articles')}
+                        >
+                            Articles
+                        </button>
                     </nav>
                 )}
                 

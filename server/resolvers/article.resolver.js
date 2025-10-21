@@ -1,8 +1,10 @@
 /* Package imports */
-import { GraphQLDateTime, GraphQLPositiveInt } from 'graphql-scalars';
+import { GraphQLDateTime } from 'graphql-scalars';
 
 /* Model imports */
 import { Articles } from './../models/articles.model.js';
+import { Fighter } from './../models/fighter.model.js';
+import { Competition } from './../models/competition.model.js';
 
 /* Error imports */
 import { NotFoundError } from './../error.js';
@@ -12,37 +14,54 @@ import { catchAsyncErrors, createQueryObj } from '../utils.js';
 
 const articleResolver = {
     Date: GraphQLDateTime,
-    Number: GraphQLPositiveInt,
+
+    Article: {
+        /**
+         * Field resolver to populate full fighter objects from fighter IDs
+         */
+        fighters: catchAsyncErrors(async (parent) => {
+            if (!parent.fightersTagged || parent.fightersTagged.length === 0) {
+                return [];
+            }
+            const fighters = await Fighter.find({ _id: { $in: parent.fightersTagged } });
+            return fighters;
+        }),
+        /**
+         * Field resolver to populate full competition objects from competition IDs
+         */
+        competitions: catchAsyncErrors(async (parent) => {
+            if (!parent.competitionsTagged || parent.competitionsTagged.length === 0) {
+                return [];
+            }
+            const competitions = await Competition.find({ _id: { $in: parent.competitionsTagged } });
+            return competitions;
+        })
+    },
 
     Query: {
         /**
-         * Fetches a paginated list of all the articles based on query parameters
+         * Fetches a paginated list of all the articles
          * @param {Object} _ - Unused parent resolver
          * @param {Object} args - Arguments for this query 
          * @param {Number} args.page - Denotes the current page number (Default is 1)
          * @param {Number} args.limit - Denotes the number of items per page (Default is 10)
-         * @param {Object} args.query - Denotes the optional query object to filter results
          * @returns {Promise<Object>} - Paginated articles and metadata
          * @throws {NotFoundError} - This error is thrown if no articles are found.
          * @throws {Error} - This error is thrown if general errors are thrown.
          */
-        getAllArticles: catchAsyncErrors(async(_, { page = 1, limit = 10, query = {} }) => {
-            const queryObj = query ? createQueryObj(query) : {};
+        getAllArticles: catchAsyncErrors(async(_, { page = 1, limit = 10 }) => {
             const pageNumber = parseInt(page);
             const pageLimit = parseInt(limit);
             const skipIndex = (pageNumber - 1) * pageLimit;
 
-            const relevantArticlesCount = await Articles.countDocuments(queryObj);
+            const relevantArticlesCount = await Articles.countDocuments();
 
-            const articles = await Articles.find(queryObj)
-                .sort({ created_at: -1 })
+            const articles = await Articles.find()
+                .sort({ publishedDate: -1 })
                 .limit(pageLimit)
                 .skip(skipIndex);
 
-            if (!articles.length) {
-                throw new NotFoundError("Articles not found");
-            }
-
+            // Return empty array if no articles found (don't throw error)
             const has_next = skipIndex + articles.length < relevantArticlesCount;
 
             return {

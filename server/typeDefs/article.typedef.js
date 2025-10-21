@@ -1,6 +1,25 @@
 const articleTypeDef = `#graphql
     scalar Date
-    scalar Number
+
+    """
+    Pagination metadata
+    """
+    type PaginationInfo {
+        page: Int!
+        limit: Int!
+        total: Int!
+        count: Int!
+        has_next: Boolean!
+        has_previous: Boolean!
+    }
+
+    """
+    Paginated articles response
+    """
+    type ArticlesResponse {
+        results: [Article!]!
+        pagination: PaginationInfo!
+    }
 
     """
     Represents a single article
@@ -37,6 +56,11 @@ const articleTypeDef = `#graphql
         thumbnail: String
 
         """
+        Represents the author name of the article
+        """
+        author: String!
+
+        """
         Represents the list of tags associated with an article
         """
         tags: [String]
@@ -50,6 +74,21 @@ const articleTypeDef = `#graphql
         Represents a list of fighters by their IDs, if they are tagged in the article
         """
         fightersTagged: [String]
+
+        """
+        Represents the full fighter objects for fighters tagged in the article
+        """
+        fighters: [Fighter]
+
+        """
+        Represents a list of competitions by their IDs, if they are tagged in the article
+        """
+        competitionsTagged: [String]
+
+        """
+        Represents the full competition objects for competitions tagged in the article
+        """
+        competitions: [Competition]
     }
 
     """
@@ -62,9 +101,9 @@ const articleTypeDef = `#graphql
         getArticle(id: ID!): Article
 
         """
-        Query to fetch the entire list of articles
+        Query to fetch the entire list of articles with pagination
         """
-        getAllArticles(pageParams: PageParamsInput): [Article!]
+        getAllArticles(page: Int, limit: Int): ArticlesResponse!
     }
 
     """
@@ -94,12 +133,12 @@ const articleTypeDef = `#graphql
         """
         Denotes the page number to be fetched
         """
-        page: Number
+        page: Int
 
         """
         Denotes the number of articles to be sent in response for a particular page
         """
-        limit: Number
+        limit: Int
     }
 
     """
@@ -132,6 +171,11 @@ const articleTypeDef = `#graphql
         thumbnail: String
 
         """
+        Represents the author name of the article
+        """
+        author: String!
+
+        """
         Represents the list of tags associated with an article. Optional in nature.
         """
         tags: [String]
@@ -145,6 +189,11 @@ const articleTypeDef = `#graphql
         Represents a list of fighters by their IDs, if they are tagged in the article. Optional in nature.
         """
         fightersTagged: [String]
+
+        """
+        Represents a list of competitions by their IDs, if they are tagged in the article. Optional in nature.
+        """
+        competitionsTagged: [String]
     }
 
     """
@@ -177,6 +226,11 @@ const articleTypeDef = `#graphql
         thumbnail: String
 
         """
+        Represents the author name of the article
+        """
+        author: String!
+
+        """
         Represents the list of tags associated with an article. Optional for update.
         """
         tags: [String]
@@ -185,6 +239,11 @@ const articleTypeDef = `#graphql
         Represents a list of fighters by their IDs, if they are tagged in the article. Optional for update.
         """
         fightersTagged: [String]
+
+        """
+        Represents a list of competitions by their IDs, if they are tagged in the article. Optional for update.
+        """
+        competitionsTagged: [String]
     }
 `;
 

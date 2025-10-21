@@ -70,24 +70,12 @@ const S3Image: React.FC<S3ImageProps> = ({
           return;
         }
 
-        // Optimize the URL with query parameters
-        const optimizedUrl = optimizeS3Url(src, {
-          width,
-          height,
-          quality: 85,
-          format: 'webp',
-          cache: true,
-        }, getImageConfig());
-        
-        setImageUrl(optimizedUrl);
+        // Use the raw URL without optimization parameters
+        // CloudFront may not have Lambda@Edge configured for image optimization
+        setImageUrl(src);
 
-        // Check if the image exists
-        const imageExists = await checkImageExists(optimizedUrl);
-        
-        if (!imageExists) {
-          throw new Error('Image not found or access denied - check S3 bucket permissions');
-        }
-
+        // Skip existence check for CloudFront URLs - let the browser handle it
+        // CloudFront may take a few seconds to cache newly uploaded files
         setIsLoading(false);
       } catch (err) {
         console.warn('Failed to load S3 image:', src, err);
@@ -109,8 +97,7 @@ const S3Image: React.FC<S3ImageProps> = ({
 
   const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     console.warn('S3 Image load error:', imageUrl);
-    console.warn('This might be due to S3 bucket permissions. Check bucket public access settings.');
-    setError('Image access denied - check S3 permissions');
+    setError('Failed to load image');
     setIsLoading(false);
     if (onError) {
       onError(e);

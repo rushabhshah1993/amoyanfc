@@ -1,0 +1,454 @@
+.articleDetailPage {
+    width: 100%;
+    padding: 2rem 4rem;
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s ease;
+}
+
+.backButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+    margin-bottom: 2rem;
+    background: transparent;
+    color: #4285f4;
+    border: none;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.backButton:hover {
+    transform: translateX(-5px);
+    color: #3367d6;
+}
+
+.backButton:active {
+    transform: translateX(-3px);
+}
+
+.loading,
+.error {
+    text-align: center;
+    padding: 4rem 2rem;
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+}
+
+.error {
+    color: #e53e3e;
+}
+
+.article {
+    background: transparent;
+}
+
+.thumbnailContainer {
+    width: 100%;
+    max-height: 600px;
+    overflow: hidden;
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+    border-radius: 8px;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.noThumbnail {
+    padding: 4rem;
+    font-size: 5rem;
+    color: var(--text-secondary);
+    opacity: 0.3;
+}
+
+.articleHeader {
+    padding: 0 0 2rem 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 3rem;
+}
+
+.articleTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+    transition: color 0.3s ease;
+}
+
+.articleSubtitle {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin: 0 0 1.5rem 0;
+    line-height: 1.5;
+    transition: color 0.3s ease;
+}
+
+.articleAuthor {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin: 0 0 1.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.articleMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.metaItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.metaIcon {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.articleBody {
+    padding: 0;
+    margin-bottom: 3rem;
+}
+
+.articleContent {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+/* Style the HTML content from the article */
+.articleContent :global(h1),
+.articleContent :global(h2),
+.articleContent :global(h3),
+.articleContent :global(h4),
+.articleContent :global(h5),
+.articleContent :global(h6) {
+    margin: 2rem 0 1rem 0;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.articleContent :global(h1) {
+    font-size: 2rem;
+}
+
+.articleContent :global(h2) {
+    font-size: 1.75rem;
+}
+
+.articleContent :global(h3) {
+    font-size: 1.5rem;
+}
+
+.articleContent :global(p) {
+    margin: 1rem 0;
+    line-height: 1.8;
+}
+
+.articleContent :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.articleContent :global(video) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.articleContent :global(a) {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.articleContent :global(a:hover) {
+    text-decoration: underline;
+}
+
+.articleContent :global(ul),
+.articleContent :global(ol) {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.articleContent :global(li) {
+    margin: 0.5rem 0;
+}
+
+.articleContent :global(blockquote) {
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid #667eea;
+    background: rgba(102, 126, 234, 0.05);
+    font-style: italic;
+}
+
+[data-theme='dark'] .articleContent :global(blockquote) {
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.articleContent :global(code) {
+    padding: 0.2rem 0.4rem;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+[data-theme='dark'] .articleContent :global(code) {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.articleContent :global(pre) {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+[data-theme='dark'] .articleContent :global(pre) {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.articleContent :global(pre code) {
+    padding: 0;
+    background: none;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.tag {
+    padding: 0.25rem 0.75rem;
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+[data-theme='dark'] .tag {
+    background: rgba(102, 126, 234, 0.2);
+    color: #a5b4fc;
+}
+
+.taggedFighters {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.sectionTitle {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin: 0 0 1rem 0;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.7;
+}
+
+.fightersList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.fighterChip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fighterChip:hover {
+    background: rgba(102, 126, 234, 0.2);
+}
+
+[data-theme='dark'] .fighterChip {
+    background: rgba(102, 126, 234, 0.2);
+    color: #a5b4fc;
+}
+
+[data-theme='dark'] .fighterChip:hover {
+    background: rgba(102, 126, 234, 0.3);
+}
+
+.fighterThumbnail {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fighterImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.fighterPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    opacity: 0.5;
+}
+
+.taggedCompetitions {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.competitionsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.competitionChip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.competitionChip:hover {
+    background: rgba(102, 126, 234, 0.2);
+}
+
+[data-theme='dark'] .competitionChip {
+    background: rgba(102, 126, 234, 0.2);
+    color: #a5b4fc;
+}
+
+[data-theme='dark'] .competitionChip:hover {
+    background: rgba(102, 126, 234, 0.3);
+}
+
+.competitionThumbnail {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.competitionImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.competitionPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    opacity: 0.5;
+}
+
+
+@media (max-width: 768px) {
+    .articleDetailPage {
+        padding: 2rem 1.5rem;
+    }
+
+    .articleHeader {
+        padding: 0 0 1.5rem 0;
+        margin-bottom: 2rem;
+    }
+
+    .articleBody {
+        margin-bottom: 2rem;
+    }
+
+    .tags,
+    .taggedFighters,
+    .taggedCompetitions {
+        padding: 1.5rem 0;
+    }
+
+    .articleTitle {
+        font-size: 2rem;
+    }
+
+    .articleSubtitle {
+        font-size: 1.1rem;
+    }
+
+    .articleContent {
+        font-size: 1rem;
+    }
+
+    .articleMeta {
+        gap: 1rem;
+    }
+    
+    .backButton:hover {
+        transform: translateY(-2px);
+    }
+
+    .backButton:active {
+        transform: translateY(0);
+    }
+}
+
