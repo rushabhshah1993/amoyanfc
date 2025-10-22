@@ -56,6 +56,13 @@
     justify-content: center;
 }
 
+/* Fix for s3-image-container expanding to 100% width */
+.logoSection :global(.s3-image-container) {
+    width: 120px !important;
+    height: 120px !important;
+    flex-shrink: 0;
+}
+
 .competitionLogo {
     width: 120px;
     height: 120px;

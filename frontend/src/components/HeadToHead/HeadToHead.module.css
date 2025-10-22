@@ -53,6 +53,13 @@
     border-radius: 6px;
 }
 
+/* Fix for s3-image-container expanding to 100% width */
+.competitionTitleRow :global(.s3-image-container) {
+    width: 40px !important;
+    height: 40px !important;
+    flex-shrink: 0;
+}
+
 .competitionName {
     font-size: 1.25rem;
     font-weight: 700;

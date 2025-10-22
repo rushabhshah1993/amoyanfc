@@ -122,7 +122,9 @@ const HomePage: React.FC = () => {
     const upcomingBirthdays = useMemo(() => {
         if (!fightersData?.getAllFightersWithBasicStats) return [];
 
-        const today = new Date();
+        const now = new Date();
+        // Normalize today to midnight for accurate date comparison
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
         const currentYear = today.getFullYear();
 
         // Group fighters by their birthday date

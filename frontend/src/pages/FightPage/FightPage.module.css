@@ -304,6 +304,13 @@
     flex-shrink: 0;
 }
 
+/* Fix for s3-image-container expanding to 100% width */
+.competitionNameRow :global(.s3-image-container) {
+    width: 36px !important;
+    height: 36px !important;
+    flex-shrink: 0;
+}
+
 .competitionName {
     font-size: 1.1rem;
     font-weight: 600;
