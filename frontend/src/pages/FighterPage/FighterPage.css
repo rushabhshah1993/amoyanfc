@@ -21,6 +21,11 @@
     align-items: center;
 }
 
+.fighter-content .fighter-image-section .s3-image-container {
+    display: flex !important;
+    justify-content: center;
+}
+
 .fighter-main-image {
     width: 100%;
     height: 100%;
