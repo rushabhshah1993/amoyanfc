@@ -40,8 +40,7 @@ const Header: React.FC<HeaderProps> = ({
     };
 
     const handleCreateSeason = () => {
-        // TODO: Navigate to create season page
-        console.log('Create Season clicked');
+        navigate('/competitions/create-season');
         setDropdownOpen(false);
     };
 
