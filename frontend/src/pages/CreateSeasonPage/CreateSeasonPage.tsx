@@ -101,15 +101,22 @@ const CreateSeasonPage: React.FC = () => {
         return selected;
     };
 
-    // Get available fighters for a specific division
+    // Get available fighters for a specific division (sorted alphabetically)
     const getAvailableFighters = (divisionNumber: number): Fighter[] => {
         const selectedFighters = getSelectedFighterIds();
         const currentDivision = formData.divisions.find(d => d.divisionNumber === divisionNumber);
         const currentlySelected = new Set(currentDivision?.selectedFighters || []);
 
-        return allFighters.filter(fighter => 
+        const availableFighters = allFighters.filter(fighter => 
             !selectedFighters.has(fighter.id) || currentlySelected.has(fighter.id)
         );
+
+        // Sort alphabetically by first name, then last name
+        return availableFighters.sort((a, b) => {
+            const nameA = `${a.firstName} ${a.lastName}`.toLowerCase();
+            const nameB = `${b.firstName} ${b.lastName}`.toLowerCase();
+            return nameA.localeCompare(nameB);
+        });
     };
 
     const handleBasicInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -235,21 +242,121 @@ const CreateSeasonPage: React.FC = () => {
         }
     };
 
+    // Round-robin tournament generator
+    const generateRoundRobinMatches = (fighters: string[], divisionNumber: number, competitionShortName: string, seasonNumber: number) => {
+        const n = fighters.length;
+        if (n % 2 !== 0) {
+            throw new Error(`Division ${divisionNumber} has odd number of fighters (${n}). Must be even.`);
+        }
+
+        const totalRounds = n - 1;
+        const fightsPerRound = n / 2;
+        const rounds = [];
+
+        // Create a copy of fighters array for rotation
+        const fightersCopy = [...fighters];
+
+        for (let round = 1; round <= totalRounds; round++) {
+            const fights = [];
+            
+            // Generate fights for this round
+            for (let i = 0; i < fightsPerRound; i++) {
+                const fighter1Index = i;
+                const fighter2Index = n - 1 - i;
+                
+                const fighter1 = fightersCopy[fighter1Index];
+                const fighter2 = fightersCopy[fighter2Index];
+
+                const fightIdentifier = `${competitionShortName}-S${seasonNumber}-D${divisionNumber}-R${round}-F${i + 1}`;
+
+                fights.push({
+                    fighter1,
+                    fighter2,
+                    winner: null,
+                    fightIdentifier,
+                    date: null,
+                    userDescription: null,
+                    genAIDescription: null,
+                    isSimulated: false,
+                    fighterStats: [],
+                    fightStatus: "scheduled"
+                });
+            }
+
+            rounds.push({
+                roundNumber: round,
+                fights
+            });
+
+            // Rotate fighters (keep first fighter fixed, rotate the rest)
+            // This is the standard round-robin rotation algorithm
+            const fixed = fightersCopy[0];
+            const rotated = [fixed, fightersCopy[n - 1], ...fightersCopy.slice(1, n - 1)];
+            fightersCopy.splice(0, n, ...rotated);
+        }
+
+        return rounds;
+    };
+
+    // Check for duplicate matchups
+    const checkForDuplicates = (rounds: any[], divisionNumber: number) => {
+        const matchups = new Set<string>();
+        const duplicates: string[] = [];
+
+        rounds.forEach(round => {
+            round.fights.forEach((fight: any) => {
+                // Create a normalized matchup key (always smaller ID first)
+                const key1 = `${fight.fighter1}-${fight.fighter2}`;
+                const key2 = `${fight.fighter2}-${fight.fighter1}`;
+                
+                if (matchups.has(key1) || matchups.has(key2)) {
+                    duplicates.push(`Division ${divisionNumber}: ${fight.fighter1} vs ${fight.fighter2}`);
+                }
+                
+                matchups.add(key1);
+                matchups.add(key2);
+            });
+        });
+
+        return duplicates;
+    };
+
     const generateSeasonJSON = () => {
         const selectedCompetition = competitions.find(c => c.id === formData.competitionMetaId);
         
+        if (!selectedCompetition?.shortName) {
+            throw new Error('Competition short name is required for fight identifiers');
+        }
+
         const leagueDivisions = formData.divisions.map(div => ({
             divisionNumber: div.divisionNumber,
             fighters: div.selectedFighters
         }));
 
-        const divisions = formData.divisions.map(div => ({
-            divisionNumber: div.divisionNumber,
-            divisionName: div.divisionName || `Division ${div.divisionNumber}`,
-            totalRounds: div.selectedFighters.length - 1, // Round-robin: n-1 rounds for n fighters
-            currentRound: 0,
-            rounds: []
-        }));
+        // Generate rounds with fights for each division
+        const divisions = formData.divisions.map(div => {
+            const rounds = generateRoundRobinMatches(
+                div.selectedFighters,
+                div.divisionNumber,
+                selectedCompetition.shortName,
+                formData.seasonNumber
+            );
+
+            // Check for duplicates
+            const duplicates = checkForDuplicates(rounds, div.divisionNumber);
+            if (duplicates.length > 0) {
+                console.error('DUPLICATE FIGHTS FOUND:', duplicates);
+                throw new Error(`Duplicate fights detected in Division ${div.divisionNumber}`);
+            }
+
+            return {
+                divisionNumber: div.divisionNumber,
+                divisionName: div.divisionName || `Division ${div.divisionNumber}`,
+                totalRounds: div.selectedFighters.length - 1,
+                currentRound: 0,
+                rounds
+            };
+        });
 
         const fightersPerDivision = formData.divisions.map(div => ({
             divisionNumber: div.divisionNumber,
@@ -309,7 +416,54 @@ const CreateSeasonPage: React.FC = () => {
         try {
             const seasonData = generateSeasonJSON();
             
-            console.log('Season JSON:', JSON.stringify(seasonData, null, 2));
+            console.log('='.repeat(80));
+            console.log('SEASON DATA GENERATED SUCCESSFULLY');
+            console.log('='.repeat(80));
+            
+            // Log detailed fight information with fighter names
+            seasonData.leagueData.divisions.forEach(division => {
+                console.log(`\n📊 DIVISION ${division.divisionNumber} - ${division.divisionName}`);
+                console.log(`Total Rounds: ${division.totalRounds}`);
+                console.log(`Total Fights: ${division.rounds.reduce((sum, r) => sum + r.fights.length, 0)}`);
+                console.log('-'.repeat(80));
+                
+                division.rounds.forEach(round => {
+                    console.log(`\n  🥊 ROUND ${round.roundNumber} (${round.fights.length} fights)`);
+                    
+                    round.fights.forEach((fight, idx) => {
+                        const fighter1Data = allFighters.find(f => f.id === fight.fighter1);
+                        const fighter2Data = allFighters.find(f => f.id === fight.fighter2);
+                        
+                        const fighter1Name = fighter1Data 
+                            ? `${fighter1Data.firstName} ${fighter1Data.lastName}` 
+                            : fight.fighter1;
+                        const fighter2Name = fighter2Data 
+                            ? `${fighter2Data.firstName} ${fighter2Data.lastName}` 
+                            : fight.fighter2;
+                        
+                        console.log(`    Fight ${idx + 1}: ${fighter1Name} vs ${fighter2Name} [${fight.fightIdentifier}]`);
+                    });
+                });
+                
+                console.log('\n' + '='.repeat(80));
+            });
+            
+            // Verify no duplicates across all divisions
+            console.log('\n🔍 DUPLICATE CHECK SUMMARY:');
+            let totalFights = 0;
+            seasonData.leagueData.divisions.forEach(division => {
+                const divisionFights = division.rounds.reduce((sum, r) => sum + r.fights.length, 0);
+                totalFights += divisionFights;
+                const expectedFights = (division.rounds[0].fights.length * 2 * division.totalRounds) / 2;
+                console.log(`  Division ${division.divisionNumber}: ${divisionFights} fights (Expected: ${expectedFights}) ✓`);
+            });
+            console.log(`  Total fights across all divisions: ${totalFights}`);
+            console.log('  ✅ No duplicate matchups detected!');
+            
+            console.log('\n' + '='.repeat(80));
+            console.log('FULL SEASON JSON:');
+            console.log('='.repeat(80));
+            console.log(JSON.stringify(seasonData, null, 2));
 
             // TODO: Make API call to save season to MongoDB
             // const response = await fetch('/api/seasons', {
@@ -324,10 +478,10 @@ const CreateSeasonPage: React.FC = () => {
             //     throw new Error('Failed to create season');
             // }
             
-            alert('Season data generated! Check console for JSON.');
+            alert('Season data generated successfully! Check console for detailed fight information.');
         } catch (error) {
-            console.error('Error creating season:', error);
-            alert('Error creating season. Please try again.');
+            console.error('❌ Error creating season:', error);
+            alert(`Error creating season: ${error instanceof Error ? error.message : 'Unknown error'}`);
         } finally {
             setIsSubmitting(false);
         }
