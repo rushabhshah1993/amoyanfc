@@ -1,6 +1,7 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faUserPlus, faTrophy, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { logoutUser } from '../../store/slices/authSlice';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
@@ -21,13 +22,31 @@ const Header: React.FC<HeaderProps> = ({
     onNavigate 
 }) => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const { user } = useAppSelector((state) => state.auth);
     const [imageError, setImageError] = React.useState(false);
+    const [dropdownOpen, setDropdownOpen] = React.useState(false);
+    const dropdownRef = React.useRef<HTMLDivElement>(null);
 
     const handleLogout = () => {
         dispatch(logoutUser()).then(() => {
             window.location.reload();
         });
+    };
+
+    const handleCreateFighter = () => {
+        navigate('/fighters/create');
+        setDropdownOpen(false);
+    };
+
+    const handleCreateSeason = () => {
+        // TODO: Navigate to create season page
+        console.log('Create Season clicked');
+        setDropdownOpen(false);
+    };
+
+    const toggleDropdown = () => {
+        setDropdownOpen(!dropdownOpen);
     };
 
     const getInitials = (name: string): string => {
@@ -38,6 +57,20 @@ const Header: React.FC<HeaderProps> = ({
         }
         return (names[0].charAt(0) + names[names.length - 1].charAt(0)).toUpperCase();
     };
+
+    // Close dropdown when clicking outside
+    React.useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     return (
         <div className="header">
@@ -87,38 +120,63 @@ const Header: React.FC<HeaderProps> = ({
                 
                 <div className="header-controls">
                     <ThemeToggle />
-                    <div className="user-section">
+                    <div className="user-section" ref={dropdownRef}>
                         {user && (
-                            <div className="user-info">
-                                {user.picture && !imageError ? (
-                                    <img 
-                                        src={user.picture} 
-                                        alt={user.name} 
-                                        className="user-avatar"
-                                        onError={() => setImageError(true)}
+                            <div className="user-dropdown">
+                                <div className="user-info" onClick={toggleDropdown}>
+                                    {user.picture && !imageError ? (
+                                        <img 
+                                            src={user.picture} 
+                                            alt={user.name} 
+                                            className="user-avatar"
+                                            onError={() => setImageError(true)}
+                                        />
+                                    ) : (
+                                        <div className="user-avatar-initials">
+                                            {getInitials(user.name)}
+                                        </div>
+                                    )}
+                                    <div className="user-details">
+                                        <span className="user-name">
+                                            {user.name}
+                                        </span>
+                                        <span className="user-email">
+                                            {user.email}
+                                        </span>
+                                    </div>
+                                    <FontAwesomeIcon 
+                                        icon={faChevronDown} 
+                                        className={`dropdown-icon ${dropdownOpen ? 'open' : ''}`}
                                     />
-                                ) : (
-                                    <div className="user-avatar-initials">
-                                        {getInitials(user.name)}
+                                </div>
+                                {dropdownOpen && (
+                                    <div className="dropdown-menu">
+                                        <button 
+                                            onClick={handleCreateFighter}
+                                            className="dropdown-item"
+                                        >
+                                            <FontAwesomeIcon icon={faUserPlus} />
+                                            <span>Create Fighter</span>
+                                        </button>
+                                        <button 
+                                            onClick={handleCreateSeason}
+                                            className="dropdown-item"
+                                        >
+                                            <FontAwesomeIcon icon={faTrophy} />
+                                            <span>Create Season</span>
+                                        </button>
+                                        <div className="dropdown-divider" />
+                                        <button 
+                                            onClick={handleLogout}
+                                            className="dropdown-item logout-item"
+                                        >
+                                            <FontAwesomeIcon icon={faSignOutAlt} />
+                                            <span>Logout</span>
+                                        </button>
                                     </div>
                                 )}
-                                <div className="user-details">
-                                    <span className="user-name">
-                                        {user.name}
-                                    </span>
-                                    <span className="user-email">
-                                        {user.email}
-                                    </span>
-                                </div>
                             </div>
                         )}
-                        <button 
-                            onClick={handleLogout}
-                            className="logout-button"
-                        >
-                            <FontAwesomeIcon icon={faSignOutAlt} />
-                            Logout
-                        </button>
                     </div>
                 </div>
             </div>

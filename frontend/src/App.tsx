@@ -24,6 +24,7 @@ import FightPage from './pages/FightPage/FightPage';
 import ArticlesPage from './pages/ArticlesPage/ArticlesPage';
 import ArticleDetailPage from './pages/ArticleDetailPage/ArticleDetailPage';
 import CreateArticlePage from './pages/CreateArticlePage/CreateArticlePage';
+import CreateFighterPage from './pages/CreateFighterPage/CreateFighterPage';
 
 const AppContent: React.FC = () => {
   const { isDarkMode } = useAppSelector((state: RootState) => state.theme);
@@ -72,6 +73,7 @@ const AppContent: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/competitions" element={<CompetitionsPage />} />
         <Route path="/fighters" element={<FightersPage />} />
+        <Route path="/fighters/create" element={<CreateFighterPage />} />
         <Route path="/fighters/sort" element={<FightersSortingPage />} />
         <Route path="/fighter/:id" element={<FighterPage />} />
         <Route path="/global-rankings" element={<GlobalRankingsPage />} />

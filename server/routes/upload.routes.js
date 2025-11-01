@@ -175,6 +175,44 @@ router.delete('/article-media', async (req, res) => {
     }
 });
 
+/**
+ * Upload fighter profile image
+ * POST /api/upload/fighter-profile
+ */
+router.post('/fighter-profile', upload.single('image'), async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: 'No file uploaded' });
+        }
+
+        const { fighterId, firstName, lastName } = req.body;
+        
+        if (!fighterId || !firstName || !lastName) {
+            return res.status(400).json({ error: 'Fighter ID, first name, and last name are required' });
+        }
+
+        // Create the folder name: fighterId-firstName-lastName
+        const folderName = `${fighterId}-${firstName.toLowerCase()}-${lastName.toLowerCase()}`;
+        const key = `fighters/${folderName}/ai-fight-pose.jpg`;
+
+        // Upload to S3
+        const url = await uploadToS3(req.file.buffer, key, req.file.mimetype);
+
+        res.json({
+            success: true,
+            url,
+            key,
+            message: 'Fighter profile image uploaded successfully',
+        });
+    } catch (error) {
+        console.error('Error uploading fighter profile image:', error);
+        res.status(500).json({
+            error: 'Failed to upload fighter profile image',
+            message: error.message,
+        });
+    }
+});
+
 export default router;
 
 
