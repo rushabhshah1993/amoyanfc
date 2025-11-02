@@ -50,6 +50,45 @@ interface FightResultPayload {
         seasonNumber?: number;
         competitionId?: string;
         reason?: string;
+        shouldDeactivateSeason?: boolean;
+    };
+    seasonMetaUpdate?: {
+        isActive?: boolean;
+        endDate?: string;
+        createdAt?: string;
+    };
+    cupBracketProgression?: {
+        updateType: 'final' | 'update_existing' | 'create_new';
+        seasonWinnerUpdate?: {
+            winner: string;
+        };
+        championTitleUpdate?: {
+            competitionId: string;
+            titleUpdate: {
+                totalTitles: number;
+                newTitleDetail: {
+                    competitionSeasonId: string;
+                    seasonNumber: number;
+                };
+            };
+        };
+        nextFightUpdate?: {
+            fightIdentifier: string;
+            fighter1?: string;
+            fighter2?: string;
+        };
+        newFight?: {
+            fighter1: string | null;
+            fighter2: string | null;
+            winner: null;
+            fightIdentifier: string;
+            date: null;
+            userDescription: null;
+            genAIDescription: null;
+            isSimulated: false;
+            fighterStats: [];
+            fightStatus: 'scheduled';
+        };
     };
 }
 
@@ -425,6 +464,7 @@ const prepareFightStatsUpdate = (
 
 /**
  * Main function: Prepare all fighter updates (Steps 3-7 + Debut + Streaks)
+ * @param competitionType - 'league' or 'cup' - determines if seasonDetails should be updated
  */
 const prepareFighterUpdates = (
     fighter: any,
@@ -436,12 +476,18 @@ const prepareFighterUpdates = (
     fightId: string,
     isWinner: boolean,
     chatGPTStats: any,
-    timestamp: string
+    timestamp: string,
+    competitionType: 'league' | 'cup'
 ) => {
+    // Only update seasonDetails for league competitions
+    const seasonDetailsUpdate = competitionType === 'league' 
+        ? prepareSeasonDetailsUpdate(fighter, competitionId, seasonNumber, divisionNumber, isWinner)
+        : undefined;
+
     return {
         fighterId: fighter.id,
         competitionHistoryUpdate: prepareCompetitionHistoryUpdate(fighter, competitionId, isWinner),
-        seasonDetailsUpdate: prepareSeasonDetailsUpdate(fighter, competitionId, seasonNumber, divisionNumber, isWinner),
+        seasonDetailsUpdate,
         opponentsHistoryUpdate: prepareOpponentsHistoryUpdate(
             fighter,
             opponentId,
@@ -489,6 +535,12 @@ export const prepareFightResultPayload = (
 ): FightResultPayload => {
     const timestamp = new Date().toISOString();
     
+    // Determine competition type (league or cup)
+    const competitionType: 'league' | 'cup' = 
+        competition.leagueData !== null && competition.leagueData !== undefined ? 'league' : 'cup';
+    
+    console.log(`📊 Competition Type: ${competitionType.toUpperCase()}`);
+    
     // Step 1-2: Competition and fight stats update
     const competitionUpdate = prepareCompetitionUpdate(chatGPTResponse, timestamp);
 
@@ -515,7 +567,8 @@ export const prepareFightResultPayload = (
         fightId,
         fighter1IsWinner,
         fighter1Stats,
-        timestamp
+        timestamp,
+        competitionType
     );
 
     // Steps 3-7 for Fighter 2
@@ -529,28 +582,114 @@ export const prepareFightResultPayload = (
         fightId,
         fighter2IsWinner,
         fighter2Stats,
-        timestamp
+        timestamp,
+        competitionType
     );
 
-    // Calculate round standings after this fight
-    const divisionFighters = competition.seasonMeta?.leagueDivisions?.find(
-        (div: any) => div.divisionNumber === divisionNumber
-    )?.fighters || [];
-    
-    const roundStandingsUpdate = divisionFighters.length > 0 
-        ? prepareRoundStandingsUpdate(
-            competition,
-            fightId,
-            competitionId,
-            seasonNumber,
-            divisionNumber,
-            roundNumber,
-            divisionFighters
-        )
-        : null;
+    // Calculate round standings after this fight (ONLY for league competitions)
+    let roundStandingsUpdate = null;
+    if (competitionType === 'league') {
+        const divisionFighters = competition.seasonMeta?.leagueDivisions?.find(
+            (div: any) => div.divisionNumber === divisionNumber
+        )?.fighters || [];
+        
+        if (divisionFighters.length > 0) {
+            roundStandingsUpdate = prepareRoundStandingsUpdate(
+                competition,
+                fightId,
+                competitionId,
+                seasonNumber,
+                divisionNumber,
+                roundNumber,
+                divisionFighters
+            );
+        }
+    } else {
+        console.log('⏭️  Skipping round standings calculation (cup competition)');
+    }
 
     // Check if season is completed after this fight
     const seasonCompletionStatus = checkSeasonCompletion(competition);
+
+    // Check if IC season should be created (ONLY for league competitions at 25% completion)
+    // Note: This is called asynchronously and doesn't block the main payload
+    // TODO: Uncomment when MongoDB integration is ready
+    // if (competitionType === 'league') {
+    //     checkAndCreateICSeasonIfNeeded(competition, competitionId, seasonNumber).catch(err => {
+    //         console.error('Error checking IC season creation:', err);
+    //     });
+    // }
+
+    // Check if this is the first completed fight of the season
+    const divisions = competition.leagueData?.divisions || competition.cupData?.fights || [];
+    let isFirstFight = true;
+    
+    if (competition.leagueData?.divisions) {
+        // For league competitions, check all divisions
+        for (const division of competition.leagueData.divisions) {
+            for (const round of division.rounds || []) {
+                for (const fight of round.fights || []) {
+                    // If any fight is already completed (and it's not the current fight)
+                    if (fight.fightIdentifier !== fightId && 
+                        (fight.fightStatus === 'completed' || fight.winner !== null)) {
+                        isFirstFight = false;
+                        break;
+                    }
+                }
+                if (!isFirstFight) break;
+            }
+            if (!isFirstFight) break;
+        }
+    } else if (competition.cupData?.fights) {
+        // For cup competitions, check all fights
+        for (const fight of competition.cupData.fights) {
+            if (fight.fightIdentifier !== fightId && 
+                (fight.fightStatus === 'completed' || fight.winner !== null)) {
+                isFirstFight = false;
+                break;
+            }
+        }
+    }
+
+    // Prepare season meta update
+    let seasonMetaUpdate: any = undefined;
+    
+    if (seasonCompletionStatus.isSeasonCompleted) {
+        // Season ended - mark as inactive
+        seasonMetaUpdate = {
+            isActive: false,
+            endDate: timestamp
+        };
+        
+        // TODO: When season completes, backend should:
+        // 1. Query final standings for all divisions using GET_FINAL_SEASON_STANDINGS
+        // 2. Call prepareDivisionWinnersUpdate() to determine winners
+        // 3. Call checkAndCreateCCSeasonIfNeeded() with final standings to create Champions Cup
+        console.log('🏁 Season completed! Backend should create CC season with final standings.');
+    } else if (isFirstFight) {
+        // First fight - update createdAt
+        seasonMetaUpdate = {
+            createdAt: timestamp
+        };
+    }
+
+    if (isFirstFight) {
+        console.log('🎉 First fight of the season! Updating createdAt timestamp.');
+    }
+
+    // Handle cup bracket progression (IC & CC)
+    let cupBracketProgression = null;
+    if (competitionType === 'cup') {
+        // Determine which fighter is the champion
+        const championFighter = chatGPTResponse.winner === fighter1.id ? fighter1 : fighter2;
+        
+        cupBracketProgression = prepareCupBracketProgression(
+            competition,
+            fightId,
+            chatGPTResponse.winner,
+            championFighter
+        );
+    }
 
     return {
         fightId,
@@ -565,6 +704,8 @@ export const prepareFightResultPayload = (
         fighter2Updates,
         roundStandingsUpdate,
         seasonCompletionStatus,
+        ...(seasonMetaUpdate && { seasonMetaUpdate }),
+        ...(cupBracketProgression && { cupBracketProgression }),
     };
 };
 
@@ -1035,6 +1176,924 @@ export const prepareDivisionWinnersUpdate = (
         seasonNumber: competitionData.seasonMeta?.seasonNumber,
         divisionWinners,
         updateType: 'seasonMeta.leagueDivisions[].winners'
+    };
+};
+
+/**
+ * Prepare title updates for all division winners (league only)
+ * Updates each division winner's competitionHistory.titles
+ * 
+ * @param competitionData - Full competition document
+ * @param seasonNumber - Season number
+ * @param divisionWinnersData - Output from prepareDivisionWinnersUpdate()
+ * @param winnerFightersData - Array of full fighter documents for all winners
+ * @returns Title updates for all division winners
+ */
+export const prepareDivisionWinnersTitleUpdates = (
+    competitionData: any,
+    seasonNumber: number,
+    divisionWinnersData: {
+        competitionId: string;
+        seasonNumber: number;
+        divisionWinners: Array<{
+            divisionNumber: number;
+            winners: string[];
+        }>;
+        updateType: string;
+    },
+    winnerFightersData: Array<any>
+) => {
+    console.log('\n🏆 Preparing Title Updates for Division Winners...');
+
+    if (!divisionWinnersData || !divisionWinnersData.divisionWinners) {
+        console.log('⚠️  No division winners data provided');
+        return null;
+    }
+
+    const competitionMetaId = competitionData.competitionMetaId;
+    const competitionSeasonId = competitionData.id;
+    const titleUpdates: Array<{
+        fighterId: string;
+        fighterName: string;
+        divisionNumber: number;
+        competitionId: string;
+        titleUpdate: {
+            totalTitles: number;
+            newTitleDetail: {
+                competitionSeasonId: string;
+                seasonNumber: number;
+                divisionNumber: number;
+            };
+        };
+    }> = [];
+
+    // Process each division
+    for (const division of divisionWinnersData.divisionWinners) {
+        // Process each winner in the division (typically 1, but could be multiple in case of ties)
+        for (const winnerId of division.winners) {
+            const winnerFighter = winnerFightersData.find((f: any) => f.id === winnerId || f._id === winnerId);
+
+            if (!winnerFighter) {
+                console.log(`   ⚠️  Fighter data not found for winner ${winnerId.substring(0, 8)}... - skipping title update`);
+                continue;
+            }
+
+            // Find the competitionHistory entry for this competition
+            const competitionHistory = winnerFighter.competitionHistory?.find(
+                (ch: any) => ch.competitionId === competitionMetaId
+            );
+
+            if (!competitionHistory) {
+                console.log(`   ⚠️  No competition history found for ${winnerFighter.firstName} ${winnerFighter.lastName} - skipping`);
+                continue;
+            }
+
+            const existingTitles = competitionHistory.titles;
+            const hasExistingTitles = existingTitles && existingTitles.totalTitles > 0;
+
+            let newTotalTitles: number;
+            if (hasExistingTitles) {
+                newTotalTitles = existingTitles.totalTitles + 1;
+                console.log(`   ✓ Division ${division.divisionNumber} - ${winnerFighter.firstName} ${winnerFighter.lastName}: ${existingTitles.totalTitles} → ${newTotalTitles} titles`);
+            } else {
+                newTotalTitles = 1;
+                console.log(`   ✨ Division ${division.divisionNumber} - ${winnerFighter.firstName} ${winnerFighter.lastName}: First title!`);
+            }
+
+            titleUpdates.push({
+                fighterId: winnerId,
+                fighterName: `${winnerFighter.firstName} ${winnerFighter.lastName}`,
+                divisionNumber: division.divisionNumber,
+                competitionId: competitionMetaId,
+                titleUpdate: {
+                    totalTitles: newTotalTitles,
+                    newTitleDetail: {
+                        competitionSeasonId,
+                        seasonNumber,
+                        divisionNumber: division.divisionNumber
+                    }
+                }
+            });
+        }
+    }
+
+    console.log(`✅ Prepared title updates for ${titleUpdates.length} division winner(s)`);
+
+    return {
+        titleUpdates
+    };
+};
+
+// ==========================================
+// IC SEASON CREATION (25% League Completion)
+// ==========================================
+
+/**
+ * Check if 25% of league fights are completed and create IC season if needed
+ * 
+ * @param competitionData - Full league competition document
+ * @param leagueCompetitionId - League competition ID
+ * @param leagueSeasonNumber - League season number
+ * @returns IC season creation payload or null
+ */
+export const checkAndCreateICSeasonIfNeeded = async (
+    competitionData: any,
+    leagueCompetitionId: string,
+    leagueSeasonNumber: number
+) => {
+    console.log('\n🔍 Checking if IC Season should be created...');
+
+    const isLeague = competitionData.leagueData !== null && competitionData.leagueData !== undefined;
+
+    if (!isLeague) {
+        console.log('⏭️  Skipping: Not a league competition');
+        return null;
+    }
+
+    // Calculate total fights and completed fights
+    const divisions = competitionData.leagueData.divisions || [];
+    let totalFights = 0;
+    let completedFights = 0;
+
+    divisions.forEach((division: any) => {
+        division.rounds?.forEach((round: any) => {
+            const fights = round.fights || [];
+            totalFights += fights.length;
+            completedFights += fights.filter((f: any) => 
+                f.fightStatus === 'completed' || f.winner !== null
+            ).length;
+        });
+    });
+
+    const completionPercentage = totalFights > 0 ? (completedFights / totalFights) * 100 : 0;
+
+    console.log(`   📊 Completion: ${completedFights}/${totalFights} fights (${completionPercentage.toFixed(2)}%)`);
+
+    // Check if exactly 25% (with small tolerance for floating point)
+    if (Math.abs(completionPercentage - 25) > 0.5) {
+        if (completionPercentage > 25) {
+            console.log('⏭️  Skipping: Already past 25% threshold');
+        } else {
+            console.log('⏳ Not yet at 25% threshold');
+        }
+        return null;
+    }
+
+    console.log('✅ Exactly at 25% completion! Checking if IC season should be created...');
+
+    // TODO: Query MongoDB to check if IC season already exists for this league season
+    // const existingICSeasons = await Competition.find({
+    //     'linkedLeagueSeason.competitionId': leagueCompetitionId,
+    //     'linkedLeagueSeason.seasonNumber': leagueSeasonNumber
+    // });
+    // 
+    // if (existingICSeasons.length > 0) {
+    //     console.log('⏭️  Skipping: IC season already exists for this league season');
+    //     return null;
+    // }
+
+    console.log('📝 Creating new IC season...');
+
+    // TODO: Query MongoDB for IC competition meta and previous champion
+    // const icMeta = await CompetitionMeta.findOne({
+    //     competitionName: 'Invicta Cup',
+    //     type: 'cup'
+    // });
+    // const IC_COMPETITION_META_ID = icMeta._id;
+    //
+    // const previousICSeason = await Competition.findOne({
+    //     competitionMetaId: IC_COMPETITION_META_ID
+    // }).sort({ 'seasonMeta.seasonNumber': -1 }).limit(1);
+    // 
+    // const previousChampion = previousICSeason?.seasonMeta?.winners?.[0];
+    // const newICSeasonNumber = (previousICSeason?.seasonMeta?.seasonNumber || 0) + 1;
+
+    // For now, using placeholders
+    const previousChampion = 'PREVIOUS_IC_CHAMPION_ID'; // TODO: Replace with actual query result
+    const newICSeasonNumber = 5; // TODO: Get from MongoDB
+
+    // Get all fighters from current league season (all divisions)
+    const allLeagueFighters: string[] = [];
+    const divisionFightersMap = new Map<number, string[]>();
+
+    competitionData.seasonMeta?.leagueDivisions?.forEach((division: any) => {
+        const divisionFighters = division.fighters || [];
+        divisionFightersMap.set(division.divisionNumber, divisionFighters);
+        allLeagueFighters.push(...divisionFighters);
+    });
+
+    console.log(`   👥 Total league fighters: ${allLeagueFighters.length}`);
+    console.log(`   👑 Previous IC champion: ${previousChampion.substring(0, 8)}...`);
+
+    // Remove previous champion from available pool
+    const availableFighters = allLeagueFighters.filter(id => id !== previousChampion);
+
+    if (availableFighters.length < 7) {
+        console.error('❌ Error: Not enough fighters available after excluding champion');
+        return null;
+    }
+
+    // Select 7 random fighters ensuring at least 1 from each division
+    const selectedFighters: string[] = [previousChampion];
+    const fightersToSelect = new Set<string>();
+
+    // First, ensure at least 1 fighter from each division
+    divisionFightersMap.forEach((fighters, divisionNumber) => {
+        const divisionFighters = fighters.filter(id => id !== previousChampion);
+        if (divisionFighters.length > 0) {
+            const randomIndex = Math.floor(Math.random() * divisionFighters.length);
+            const selectedFighter = divisionFighters[randomIndex];
+            fightersToSelect.add(selectedFighter);
+            console.log(`   ✓ Division ${divisionNumber}: Selected ${selectedFighter.substring(0, 8)}...`);
+        }
+    });
+
+    // If we have less than 7 fighters, select more randomly
+    const remainingFighters = availableFighters.filter(id => !fightersToSelect.has(id));
+    const needMoreFighters = 7 - fightersToSelect.size;
+
+    if (needMoreFighters > 0) {
+        const shuffled = remainingFighters.sort(() => Math.random() - 0.5);
+        for (let i = 0; i < Math.min(needMoreFighters, shuffled.length); i++) {
+            fightersToSelect.add(shuffled[i]);
+            console.log(`   ✓ Random: Selected ${shuffled[i].substring(0, 8)}...`);
+        }
+    }
+
+    selectedFighters.push(...Array.from(fightersToSelect).slice(0, 7));
+
+    if (selectedFighters.length !== 8) {
+        console.error(`❌ Error: Could not select exactly 8 fighters (got ${selectedFighters.length})`);
+        return null;
+    }
+
+    console.log(`   ✅ Selected 8 fighters for IC season`);
+
+    // Create random pairings for Round 1 (4 fights)
+    const shuffledFighters = [...selectedFighters].sort(() => Math.random() - 0.5);
+    const round1Fights = [];
+
+    for (let i = 0; i < 4; i++) {
+        const fighter1 = shuffledFighters[i * 2];
+        const fighter2 = shuffledFighters[i * 2 + 1];
+        const fightIdentifier = `IC-S${newICSeasonNumber}-R1-F${i + 1}`;
+
+        round1Fights.push({
+            fighter1,
+            fighter2,
+            winner: null,
+            fightIdentifier,
+            date: null,
+            userDescription: null,
+            genAIDescription: null,
+            isSimulated: false,
+            fighterStats: [],
+            fightStatus: 'scheduled'
+        });
+
+        console.log(`   🥊 Fight ${i + 1}: ${fighter1.substring(0, 8)}... vs ${fighter2.substring(0, 8)}...`);
+    }
+
+    // Create IC season structure
+    const icSeasonData = {
+        // TODO: Get actual IC competition meta ID from MongoDB
+        competitionMetaId: 'IC_COMPETITION_META_ID', // Placeholder
+        competitionMeta: {
+            competitionName: 'Invicta Cup',
+            type: 'cup',
+            logo: 'competitions/ic-logo.png'
+        },
+        isActive: true,
+        seasonMeta: {
+            seasonNumber: newICSeasonNumber,
+            startDate: new Date().toISOString(),
+            endDate: null,
+            winners: [], // Will be populated when season ends
+            leagueDivisions: null,
+            cupParticipants: {
+                fighters: selectedFighters
+            }
+        },
+        leagueData: null,
+        cupData: {
+            fights: round1Fights,
+            currentStage: 'Quarter-finals'
+        },
+        config: {
+            leagueConfiguration: null,
+            cupConfiguration: {
+                knockoutRounds: 3,
+                numberOfFighters: 8,
+                perFightFeeInEur: 10000,
+                winningFeeInEur: 100000,
+                stages: ['Quarter-finals', 'Semi-finals', 'Finals']
+            }
+        },
+        linkedLeagueSeason: {
+            competitionId: leagueCompetitionId,
+            seasonNumber: leagueSeasonNumber
+        }
+    };
+
+    console.log('\n✨ IC Season created successfully!');
+    console.log(`   🏆 Season: IC S${newICSeasonNumber}`);
+    console.log(`   👥 Participants: 8 fighters`);
+    console.log(`   🥊 Round 1 Fights: 4 (all scheduled)`);
+    console.log(`   🔗 Linked to: League Competition ${leagueCompetitionId} S${leagueSeasonNumber}`);
+
+    // TODO: Save to MongoDB (commented for now)
+    // try {
+    //     const newICCompetition = await Competition.create(icSeasonData);
+    //     console.log(`✅ IC Season saved to MongoDB with ID: ${newICCompetition._id}`);
+    //     return {
+    //         success: true,
+    //         icCompetitionId: newICCompetition._id,
+    //         seasonNumber: newICSeasonNumber,
+    //         participants: selectedFighters,
+    //         fights: round1Fights
+    //     };
+    // } catch (error) {
+    //     console.error('❌ Error saving IC season to MongoDB:', error);
+    //     return null;
+    // }
+
+    // For now, just return the data structure
+    console.log('\n📋 IC Season Data (not saved to DB yet):');
+    console.log(JSON.stringify(icSeasonData, null, 2));
+
+    return {
+        success: true,
+        icSeasonData,
+        seasonNumber: newICSeasonNumber,
+        participants: selectedFighters,
+        fights: round1Fights,
+        linkedLeagueSeason: {
+            competitionId: leagueCompetitionId,
+            seasonNumber: leagueSeasonNumber
+        }
+    };
+};
+
+// ==========================================
+// CUP BRACKET PROGRESSION (IC & CC)
+// ==========================================
+
+/**
+ * Prepare title update for cup champion
+ * Updates fighter's competitionHistory.titles when they win IC or CC
+ * 
+ * @param fighter - Champion fighter document
+ * @param competitionId - Competition ID (IC or CC)
+ * @param competitionSeasonId - Full competition season document ID
+ * @param seasonNumber - Season number won
+ * @returns Title update payload
+ */
+const prepareTitleUpdate = (
+    fighter: any,
+    competitionId: string,
+    competitionSeasonId: string,
+    seasonNumber: number
+) => {
+    console.log(`   🏆 Preparing title update for champion ${fighter.firstName} ${fighter.lastName}`);
+
+    // Find the competitionHistory entry for this competition
+    const competitionHistory = fighter.competitionHistory?.find(
+        (ch: any) => ch.competitionId === competitionId
+    );
+
+    if (!competitionHistory) {
+        console.log('   ⚠️  No competition history found - title update will be skipped (should not happen)');
+        return null;
+    }
+
+    const existingTitles = competitionHistory.titles;
+    const hasExistingTitles = existingTitles && existingTitles.totalTitles > 0;
+
+    if (hasExistingTitles) {
+        // Add to existing titles
+        console.log(`   ✓ Existing titles: ${existingTitles.totalTitles} → ${existingTitles.totalTitles + 1}`);
+        
+        return {
+            competitionId,
+            titleUpdate: {
+                totalTitles: existingTitles.totalTitles + 1,
+                newTitleDetail: {
+                    competitionSeasonId,
+                    seasonNumber
+                    // No divisionNumber for cup competitions
+                }
+            }
+        };
+    } else {
+        // Create new titles object
+        console.log('   ✨ Creating first title for this competition');
+        
+        return {
+            competitionId,
+            titleUpdate: {
+                totalTitles: 1,
+                newTitleDetail: {
+                    competitionSeasonId,
+                    seasonNumber
+                }
+            }
+        };
+    }
+};
+
+/**
+ * Handle cup tournament bracket progression
+ * - Updates next round fights with winners
+ * - Creates new round fights if needed
+ * - Updates season winner when final completes
+ * - Updates champion's title record
+ * 
+ * @param competition - Full competition document
+ * @param completedFightIdentifier - e.g., "IC-S5-R1-F1"
+ * @param winnerId - Winner's fighter ID
+ * @param championFighter - Full champion fighter document (for title update)
+ * @returns Update payload for cup progression
+ */
+export const prepareCupBracketProgression = (
+    competition: any,
+    completedFightIdentifier: string,
+    winnerId: string,
+    championFighter?: any
+) => {
+    console.log('\n🏆 Processing Cup Bracket Progression...');
+    console.log(`   Fight: ${completedFightIdentifier}`);
+    console.log(`   Winner: ${winnerId.substring(0, 8)}...`);
+
+    // Parse fight identifier: "IC-S5-R1-F1" or "CC-S3-R2-F2"
+    const parts = completedFightIdentifier.split('-');
+    const competitionCode = parts[0]; // IC or CC
+    const seasonNumber = parseInt(parts[1].substring(1)); // S5 → 5
+    const roundNumber = parseInt(parts[2].substring(1)); // R1 → 1
+    const fightNumber = parseInt(parts[3].substring(1)); // F1 → 1
+
+    console.log(`   📊 Round ${roundNumber}, Fight ${fightNumber}`);
+
+    const knockoutRounds = competition.config?.cupConfiguration?.knockoutRounds || 3;
+    const isFinalRound = roundNumber === knockoutRounds;
+
+    if (isFinalRound) {
+        // This is the final fight - update season winner and champion's titles
+        console.log('   🎉 FINAL FIGHT! Updating season winner and champion title...');
+        
+        // Prepare title update for the champion
+        let championTitleUpdate = null;
+        if (championFighter) {
+            championTitleUpdate = prepareTitleUpdate(
+                championFighter,
+                competition.competitionMetaId,
+                competition.id,
+                seasonNumber
+            );
+        } else {
+            console.log('   ⚠️  Champion fighter data not provided - title update will be skipped');
+        }
+        
+        return {
+            updateType: 'final' as const,
+            seasonWinnerUpdate: {
+                winner: winnerId
+            },
+            ...(championTitleUpdate && { championTitleUpdate })
+        };
+    }
+
+    // Determine next round fight
+    const nextRoundNumber = roundNumber + 1;
+    
+    // Calculate which next-round fight this winner goes to
+    // R1 F1,F2 → R2 F1 (fighter1 from F1, fighter2 from F2)
+    // R1 F3,F4 → R2 F2 (fighter1 from F3, fighter2 from F4)
+    // R2 F1,F2 → R3 F1 (fighter1 from F1, fighter2 from F2)
+    
+    const nextRoundFightNumber = Math.ceil(fightNumber / 2);
+    const isFirstFighterSlot = fightNumber % 2 === 1; // Odd fight numbers go to fighter1 slot
+    
+    const nextFightIdentifier = `${competitionCode}-S${seasonNumber}-R${nextRoundNumber}-F${nextRoundFightNumber}`;
+    
+    console.log(`   ➡️  Winner advances to: ${nextFightIdentifier} as ${isFirstFighterSlot ? 'Fighter 1' : 'Fighter 2'}`);
+
+    // Check if next round fight already exists in cupData.fights
+    const existingNextFight = competition.cupData?.fights?.find(
+        (f: any) => f.fightIdentifier === nextFightIdentifier
+    );
+
+    if (existingNextFight) {
+        // Update existing fight
+        console.log('   ✓ Next round fight exists - updating fighter slot');
+        
+        return {
+            updateType: 'update_existing' as const,
+            nextFightUpdate: {
+                fightIdentifier: nextFightIdentifier,
+                [isFirstFighterSlot ? 'fighter1' : 'fighter2']: winnerId
+            }
+        };
+    } else {
+        // Create new fight for next round
+        console.log('   ✨ Creating new fight for next round');
+        
+        const newFight = {
+            fighter1: isFirstFighterSlot ? winnerId : null,
+            fighter2: isFirstFighterSlot ? null : winnerId,
+            winner: null,
+            fightIdentifier: nextFightIdentifier,
+            date: null,
+            userDescription: null,
+            genAIDescription: null,
+            isSimulated: false,
+            fighterStats: [],
+            fightStatus: 'scheduled'
+        };
+
+        return {
+            updateType: 'create_new' as const,
+            newFight
+        };
+    }
+};
+
+// ==========================================
+// UPCOMING FIGHTS (Homepage)
+// ==========================================
+
+/**
+ * Get upcoming fights for homepage display
+ * - For leagues: Returns next scheduled fight from each division (3 fights)
+ * - For cups: Returns next scheduled fight where both fighters are determined
+ * 
+ * @param competitions - Array of active competition documents
+ * @returns Array of upcoming fights for display
+ */
+export const getUpcomingFights = (competitions: Array<any>) => {
+    console.log('\n📅 Getting Upcoming Fights...');
+
+    const upcomingFights: Array<{
+        fightId: string;
+        fightIdentifier: string;
+        competitionName: string;
+        competitionLogo?: string;
+        competitionType: 'league' | 'cup';
+        seasonNumber: number;
+        divisionNumber?: number;
+        divisionName?: string;
+        roundNumber?: number;
+        roundName?: string;
+        fighter1: {
+            id: string;
+            firstName?: string;
+            lastName?: string;
+            profileImage?: string;
+        };
+        fighter2: {
+            id: string;
+            firstName?: string;
+            lastName?: string;
+            profileImage?: string;
+        };
+        date?: string;
+    }> = [];
+
+    for (const competition of competitions) {
+        // Skip inactive competitions
+        if (!competition.isActive) {
+            continue;
+        }
+
+        const competitionName = competition.competitionMeta?.competitionName || 'Unknown Competition';
+        const competitionLogo = competition.competitionMeta?.logo;
+        const seasonNumber = competition.seasonMeta?.seasonNumber || 0;
+
+        // Check if it's a league or cup
+        const isLeague = competition.leagueData !== null && competition.leagueData !== undefined;
+
+        if (isLeague) {
+            // LEAGUE: Get next fight from each division
+            const divisions = competition.leagueData?.divisions || [];
+
+            for (const division of divisions) {
+                const divisionNumber = division.divisionNumber;
+                const divisionName = division.divisionName || `Division ${divisionNumber}`;
+
+                // Find first fight without a winner
+                let nextFight = null;
+
+                for (const round of division.rounds || []) {
+                    for (const fight of round.fights || []) {
+                        if (fight.winner === null || fight.winner === undefined) {
+                            nextFight = {
+                                ...fight,
+                                roundNumber: round.roundNumber,
+                                divisionNumber,
+                                divisionName
+                            };
+                            break;
+                        }
+                    }
+                    if (nextFight) break;
+                }
+
+                if (nextFight) {
+                    upcomingFights.push({
+                        fightId: nextFight.fightIdentifier,
+                        fightIdentifier: nextFight.fightIdentifier,
+                        competitionName,
+                        competitionLogo,
+                        competitionType: 'league',
+                        seasonNumber,
+                        divisionNumber,
+                        divisionName,
+                        roundNumber: nextFight.roundNumber,
+                        fighter1: {
+                            id: nextFight.fighter1
+                        },
+                        fighter2: {
+                            id: nextFight.fighter2
+                        },
+                        date: nextFight.date
+                    });
+
+                    console.log(`   🥊 ${competitionName} S${seasonNumber} D${divisionNumber}: ${nextFight.fightIdentifier}`);
+                }
+            }
+        } else {
+            // CUP: Get next fight where both fighters are determined
+            const fights = competition.cupData?.fights || [];
+            const currentStage = competition.cupData?.currentStage;
+
+            for (const fight of fights) {
+                // Check if fight has no winner and both fighters are set
+                const hasNoWinner = fight.winner === null || fight.winner === undefined;
+                const bothFightersSet = fight.fighter1 !== null && fight.fighter2 !== null;
+
+                if (hasNoWinner && bothFightersSet) {
+                    // Parse fight identifier to get round info
+                    const parts = fight.fightIdentifier.split('-');
+                    const roundNumber = parseInt(parts[2]?.substring(1) || '0');
+                    
+                    // Determine round name
+                    let roundName = currentStage || 'Unknown';
+                    if (fight.fightIdentifier.includes('R1')) {
+                        roundName = 'Quarter-finals';
+                    } else if (fight.fightIdentifier.includes('R2')) {
+                        roundName = 'Semi-finals';
+                    } else if (fight.fightIdentifier.includes('R3')) {
+                        roundName = 'Finals';
+                    }
+
+                    upcomingFights.push({
+                        fightId: fight.fightIdentifier,
+                        fightIdentifier: fight.fightIdentifier,
+                        competitionName,
+                        competitionLogo,
+                        competitionType: 'cup',
+                        seasonNumber,
+                        roundNumber,
+                        roundName,
+                        fighter1: {
+                            id: fight.fighter1
+                        },
+                        fighter2: {
+                            id: fight.fighter2
+                        },
+                        date: fight.date
+                    });
+
+                    console.log(`   🏆 ${competitionName} S${seasonNumber}: ${fight.fightIdentifier} (${roundName})`);
+                    
+                    // Only show one upcoming fight per cup competition
+                    break;
+                }
+            }
+        }
+    }
+
+    console.log(`✅ Found ${upcomingFights.length} upcoming fight(s)`);
+
+    return upcomingFights;
+};
+
+// ==========================================
+// CC SEASON CREATION (100% League Completion)
+// ==========================================
+
+/**
+ * Create CC (Champions Cup) season when league season is 100% complete
+ * Selects top-ranked fighters from each division:
+ * - Top 3 from Division 1
+ * - Top 3 from Division 2
+ * - Top 2 from Division 3
+ * 
+ * @param competitionData - Full league competition document
+ * @param leagueCompetitionId - League competition ID
+ * @param leagueSeasonNumber - League season number
+ * @param finalStandingsData - Final standings for all divisions
+ * @returns CC season creation payload or null
+ */
+export const checkAndCreateCCSeasonIfNeeded = async (
+    competitionData: any,
+    leagueCompetitionId: string,
+    leagueSeasonNumber: number,
+    finalStandingsData: Array<{
+        divisionNumber: number;
+        standings: Array<{
+            fighterId: string;
+            fightsCount: number;
+            wins: number;
+            points: number;
+            rank: number;
+            totalFightersCount: number;
+        }>;
+    }>
+) => {
+    console.log('\n🏆 Checking if CC Season should be created...');
+
+    const isLeague = competitionData.leagueData !== null && competitionData.leagueData !== undefined;
+
+    if (!isLeague) {
+        console.log('⏭️  Skipping: Not a league competition');
+        return null;
+    }
+
+    // TODO: Query MongoDB to check if CC season already exists for this league season
+    // const existingCCSeasons = await Competition.find({
+    //     'linkedLeagueSeason.competitionId': leagueCompetitionId,
+    //     'linkedLeagueSeason.seasonNumber': leagueSeasonNumber,
+    //     'competitionMeta.competitionName': 'Champions Cup'
+    // });
+    // 
+    // if (existingCCSeasons.length > 0) {
+    //     console.log('⏭️  Skipping: CC season already exists for this league season');
+    //     return null;
+    // }
+
+    console.log('📝 Creating new CC season from league champions...');
+
+    // TODO: Query MongoDB for CC competition meta and latest season
+    // const ccMeta = await CompetitionMeta.findOne({
+    //     competitionName: 'Champions Cup',
+    //     type: 'cup'
+    // });
+    // const CC_COMPETITION_META_ID = ccMeta._id;
+    //
+    // const latestCCSeason = await Competition.findOne({
+    //     competitionMetaId: CC_COMPETITION_META_ID
+    // }).sort({ 'seasonMeta.seasonNumber': -1 }).limit(1);
+    // 
+    // const newCCSeasonNumber = (latestCCSeason?.seasonMeta?.seasonNumber || 0) + 1;
+
+    // For now, using placeholder
+    const newCCSeasonNumber = 3; // TODO: Get from MongoDB
+
+    // Select fighters from final standings
+    const selectedFighters: string[] = [];
+
+    // Get top 3 from Division 1
+    const div1Standings = finalStandingsData.find(d => d.divisionNumber === 1);
+    if (div1Standings && div1Standings.standings.length >= 3) {
+        const top3Div1 = div1Standings.standings.slice(0, 3).map(s => s.fighterId);
+        selectedFighters.push(...top3Div1);
+        console.log(`   🥇 Division 1 - Top 3: ${top3Div1.map(id => id.substring(0, 8) + '...').join(', ')}`);
+    } else {
+        console.error('❌ Error: Division 1 does not have 3 fighters in standings');
+        return null;
+    }
+
+    // Get top 3 from Division 2
+    const div2Standings = finalStandingsData.find(d => d.divisionNumber === 2);
+    if (div2Standings && div2Standings.standings.length >= 3) {
+        const top3Div2 = div2Standings.standings.slice(0, 3).map(s => s.fighterId);
+        selectedFighters.push(...top3Div2);
+        console.log(`   🥈 Division 2 - Top 3: ${top3Div2.map(id => id.substring(0, 8) + '...').join(', ')}`);
+    } else {
+        console.error('❌ Error: Division 2 does not have 3 fighters in standings');
+        return null;
+    }
+
+    // Get top 2 from Division 3
+    const div3Standings = finalStandingsData.find(d => d.divisionNumber === 3);
+    if (div3Standings && div3Standings.standings.length >= 2) {
+        const top2Div3 = div3Standings.standings.slice(0, 2).map(s => s.fighterId);
+        selectedFighters.push(...top2Div3);
+        console.log(`   🥉 Division 3 - Top 2: ${top2Div3.map(id => id.substring(0, 8) + '...').join(', ')}`);
+    } else {
+        console.error('❌ Error: Division 3 does not have 2 fighters in standings');
+        return null;
+    }
+
+    if (selectedFighters.length !== 8) {
+        console.error(`❌ Error: Could not select exactly 8 fighters (got ${selectedFighters.length})`);
+        return null;
+    }
+
+    console.log(`   ✅ Selected 8 fighters for CC season`);
+
+    // Create random pairings for Round 1 (4 quarter-final fights)
+    const shuffledFighters = [...selectedFighters].sort(() => Math.random() - 0.5);
+    const round1Fights = [];
+
+    for (let i = 0; i < 4; i++) {
+        const fighter1 = shuffledFighters[i * 2];
+        const fighter2 = shuffledFighters[i * 2 + 1];
+        const fightIdentifier = `CC-S${newCCSeasonNumber}-R1-F${i + 1}`;
+
+        round1Fights.push({
+            fighter1,
+            fighter2,
+            winner: null,
+            fightIdentifier,
+            date: null,
+            userDescription: null,
+            genAIDescription: null,
+            isSimulated: false,
+            fighterStats: [],
+            fightStatus: 'scheduled'
+        });
+
+        console.log(`   🥊 Fight ${i + 1}: ${fighter1.substring(0, 8)}... vs ${fighter2.substring(0, 8)}...`);
+    }
+
+    // Create CC season structure
+    const ccSeasonData = {
+        // TODO: Get actual CC competition meta ID from MongoDB
+        competitionMetaId: 'CC_COMPETITION_META_ID', // Placeholder
+        competitionMeta: {
+            competitionName: 'Champions Cup',
+            type: 'cup',
+            logo: 'competitions/cc-logo.png'
+        },
+        isActive: true,
+        seasonMeta: {
+            seasonNumber: newCCSeasonNumber,
+            startDate: new Date().toISOString(),
+            endDate: null,
+            winners: [], // Will be populated when season ends
+            leagueDivisions: null,
+            cupParticipants: {
+                fighters: selectedFighters
+            }
+        },
+        leagueData: null,
+        cupData: {
+            fights: round1Fights,
+            currentStage: 'Quarter-finals'
+        },
+        config: {
+            leagueConfiguration: null,
+            cupConfiguration: {
+                knockoutRounds: 3,
+                numberOfFighters: 8,
+                perFightFeeInEur: 15000,
+                winningFeeInEur: 150000,
+                stages: ['Quarter-finals', 'Semi-finals', 'Finals']
+            }
+        },
+        linkedLeagueSeason: {
+            competitionId: leagueCompetitionId,
+            seasonNumber: leagueSeasonNumber
+        }
+    };
+
+    console.log('\n✨ CC Season created successfully!');
+    console.log(`   🏆 Season: CC S${newCCSeasonNumber}`);
+    console.log(`   👥 Participants: 8 fighters (top-ranked from league)`);
+    console.log(`   🥊 Round 1 Fights: 4 (all scheduled)`);
+    console.log(`   🔗 Linked to: League Competition ${leagueCompetitionId} S${leagueSeasonNumber}`);
+
+    // TODO: Save to MongoDB (commented for now)
+    // try {
+    //     const newCCCompetition = await Competition.create(ccSeasonData);
+    //     console.log(`✅ CC Season saved to MongoDB with ID: ${newCCCompetition._id}`);
+    //     return {
+    //         success: true,
+    //         ccCompetitionId: newCCCompetition._id,
+    //         seasonNumber: newCCSeasonNumber,
+    //         participants: selectedFighters,
+    //         fights: round1Fights
+    //     };
+    // } catch (error) {
+    //     console.error('❌ Error saving CC season to MongoDB:', error);
+    //     return null;
+    // }
+
+    // For now, just return the data structure
+    console.log('\n📋 CC Season Data (not saved to DB yet):');
+    console.log(JSON.stringify(ccSeasonData, null, 2));
+
+    return {
+        success: true,
+        ccSeasonData,
+        seasonNumber: newCCSeasonNumber,
+        participants: selectedFighters,
+        fights: round1Fights,
+        linkedLeagueSeason: {
+            competitionId: leagueCompetitionId,
+            seasonNumber: leagueSeasonNumber
+        }
     };
 };
 
