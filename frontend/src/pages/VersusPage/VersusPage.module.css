@@ -555,16 +555,32 @@
     gap: 12px;
 }
 
+.dropdownFighterInfo > :global(.s3-image-container) {
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    flex-shrink: 0;
+}
+
 .dropdownFighterImage {
     width: 40px;
     height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
     border-radius: 50%;
     object-fit: contain;
+    flex-shrink: 0;
 }
 
 .dropdownImagePlaceholder {
     width: 40px;
     height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
     border-radius: 50%;
     background-color: var(--bg-primary);
     display: flex;
@@ -572,6 +588,7 @@
     justify-content: center;
     color: var(--text-secondary);
     font-size: 1.2rem;
+    flex-shrink: 0;
 }
 
 .dropdownFighterName {
