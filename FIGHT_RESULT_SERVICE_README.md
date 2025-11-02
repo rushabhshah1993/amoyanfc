@@ -200,19 +200,36 @@ newAverage = ((currentValue × currentCount) + newValue) / (currentCount + 1)
     isSimulated: boolean,
     fighterStats: Array<...>
   },
-  fighter1Updates: {              // Steps 3-7 for Fighter 1
+  fighter1Updates: {              // Steps 3-7 + Debut + Streaks for Fighter 1
     fighterId: string,
     competitionHistoryUpdate: { ... },
     seasonDetailsUpdate: { ... },
     opponentsHistoryUpdate: { ... },
+    debutInformationUpdate: { ... } | null,
+    streaksUpdate: {
+      action: 'create' | 'continue' | 'break',
+      ...
+    },
     fightStatsUpdate: { ... }
   },
-  fighter2Updates: {              // Steps 3-7 for Fighter 2
+  fighter2Updates: {              // Steps 3-7 + Debut + Streaks for Fighter 2
     fighterId: string,
     competitionHistoryUpdate: { ... },
     seasonDetailsUpdate: { ... },
     opponentsHistoryUpdate: { ... },
+    debutInformationUpdate: { ... } | null,
+    streaksUpdate: {
+      action: 'create' | 'continue' | 'break',
+      ...
+    },
     fightStatsUpdate: { ... }
+  },
+  seasonCompletionStatus: {       // Automatic season completion check
+    isSeasonCompleted: boolean,
+    competitionType: 'league' | 'cup',
+    divisionStatuses?: Array<...>,
+    seasonNumber: number,
+    competitionId: string
   }
 }
 ```
@@ -226,10 +243,15 @@ newAverage = ((currentValue × currentCount) + newValue) / (currentCount + 1)
 2. `prepareCompetitionHistoryUpdate()` - Step 3
 3. `prepareSeasonDetailsUpdate()` - Step 4
 4. `prepareOpponentsHistoryUpdate()` - Steps 5-6
-5. `prepareFightStatsUpdate()` - Step 7
-6. `prepareFighterUpdates()` - Combines Steps 3-7 for one fighter
+5. `prepareDebutInformationUpdate()` - Step 7A
+6. `prepareStreaksUpdate()` - Step 7B
+7. `prepareFightStatsUpdate()` - Step 7C
+8. `prepareFighterUpdates()` - Combines Steps 3-7C for one fighter
+9. `checkSeasonCompletion()` - Checks if season has ended
 
-### **Main Export:**
+### **Main Exports:**
+
+#### **1. prepareFightResultPayload()**
 ```typescript
 prepareFightResultPayload(
   fightId: string,
@@ -239,9 +261,45 @@ prepareFightResultPayload(
   roundNumber: number,
   fighter1: any,
   fighter2: any,
+  competition: any,
   chatGPTResponse: ChatGPTResponse
 ): FightResultPayload
 ```
+Prepares the complete MongoDB update payload after receiving ChatGPT response. Automatically includes season completion check in the returned payload.
+
+#### **2. checkSeasonCompletion()**
+```typescript
+checkSeasonCompletion(
+  competitionData: any
+): {
+  isSeasonCompleted: boolean,
+  competitionType?: 'league' | 'cup',
+  divisionStatuses?: Array<{
+    divisionNumber: number,
+    totalRounds: number,
+    lastRound: number,
+    totalFights: number,
+    completedFights: number,
+    isCompleted: boolean
+  }>,
+  seasonNumber?: number,
+  competitionId?: string,
+  roundNumber?: number,  // For cup competitions
+  reason?: string
+}
+```
+Checks if a season has ended by verifying all fights in the last round of every division (for leagues) or final round (for cups) are completed.
+
+**League Logic:**
+- Checks EVERY division in the league
+- For each division, finds the last round (based on `totalRounds`)
+- Verifies ALL fights in that round have `fightStatus === 'completed'` or `winner !== null`
+- Season is complete only if ALL divisions are complete
+
+**Cup Logic:**
+- Checks the final round (last item in rounds array)
+- Verifies all fights in that round are completed
+- Season is complete when final round is complete
 
 ---
 
@@ -312,17 +370,107 @@ Both `Simulate Fight` and `Choose Winner` now:
 
 ---
 
+## 🏁 Season Completion Check Examples
+
+### **League Competition - Season In Progress**
+```
+Division 1: Round 12 - 5/6 fights completed ❌
+Division 2: Round 12 - 6/6 fights completed ✅
+Division 3: Round 12 - 6/6 fights completed ✅
+
+Result: isSeasonCompleted = false
+Reason: Division 1 still has 1 fight remaining
+```
+
+### **League Competition - Season Complete**
+```
+Division 1: Round 12 - 6/6 fights completed ✅
+Division 2: Round 12 - 6/6 fights completed ✅
+Division 3: Round 12 - 6/6 fights completed ✅
+
+Result: isSeasonCompleted = true
+Message: "✅ SEASON COMPLETED! All divisions have finished their final rounds."
+```
+
+### **Cup Competition - Final Complete**
+```
+Cup Final (Round 4): 1/1 fights completed ✅
+
+Result: isSeasonCompleted = true
+Message: "✅ CUP SEASON COMPLETED!"
+```
+
+### **When to Use:**
+- Call `checkSeasonCompletion()` after EVERY fight result update
+- The function is automatically called within `prepareFightResultPayload()`
+- Check `seasonCompletionStatus.isSeasonCompleted` in the returned payload
+- If `true`, you may want to:
+  - Mark the season as complete in the database
+  - Calculate final standings
+  - Determine division winners
+  - Send notifications
+  - Trigger playoff/promotion logic
+
+---
+
+## 📊 Streaks Logic Examples
+
+### **Example 1: No Active Streak**
+```
+Current State: No active streak
+Fight Result: WIN
+Action: CREATE new win streak (count: 1, active: true)
+```
+
+### **Example 2: Win Streak Continues**
+```
+Current State: Win streak (count: 3, active: true)
+Fight Result: WIN
+Action: CONTINUE - Update count to 4, add opponent, update end
+```
+
+### **Example 3: Win Streak Breaks**
+```
+Current State: Win streak (count: 3, active: true)
+Fight Result: LOSS
+Action: BREAK
+  - End win streak (set active: false)
+  - Create new loss streak (count: 1, active: true)
+```
+
+### **Example 4: Loss Streak Continues**
+```
+Current State: Loss streak (count: 2, active: true)
+Fight Result: LOSS
+Action: CONTINUE - Update count to 3, add opponent, update end
+```
+
+### **Example 5: Loss Streak Breaks**
+```
+Current State: Loss streak (count: 2, active: true)
+Fight Result: WIN
+Action: BREAK
+  - End loss streak (set active: false)
+  - Create new win streak (count: 1, active: true)
+```
+
+---
+
 ## ⚠️ Important Notes
 
 1. **fightsCount Property**: New property in `fightStats` for accurate averaging. Must be initialized to 0 for existing fighters.
 
-2. **Transaction Required**: All 8 steps must succeed or all must rollback to prevent data corruption.
+2. **debutInformation**: Only updated if empty/missing. Once set, never changes.
 
-3. **Date Handling**: Uses current timestamp when user clicks, not the scheduled fight date.
+3. **Streaks**: Only ONE active streak per fighter at any time. When a streak breaks, the old one is deactivated before creating a new one.
 
-4. **Finishing Moves**: Array of unique strings. Never add duplicates.
+4. **Transaction Required**: All steps must succeed or all must rollback to prevent data corruption.
 
-5. **New Competitions**: Service handles creating new entries for IFL S1 automatically.
+5. **Date Handling**: Uses current timestamp when user clicks, not the scheduled fight date.
+
+6. **Finishing Moves**: Array of unique strings. Never add duplicates.
+
+7. **New Competitions**: Service handles creating new entries for IFL S1 automatically.
 
 ---
 
@@ -345,15 +493,87 @@ Both `Simulate Fight` and `Choose Winner` now:
     },
     "seasonDetailsUpdate": { ... },
     "opponentsHistoryUpdate": { ... },
+    "debutInformationUpdate": null,  // Already has debut info
+    "streaksUpdate": {
+      "action": "continue",
+      "streakId": "streak_id_123",
+      "updates": {
+        "count": 4,
+        "end": { season: 10, division: 1, round: 5 },
+        "opponents": ["opponent1", "opponent2", "opponent3", "676d7631eb38b2b97c6da9ab"]
+      }
+    },
     "fightStatsUpdate": {
       "fightsCount": 11,
       "finishingMoves": ["Armbar", "Triangle Choke", ...],
-      "grappling": { accuracy: 78.5, defence: 10.2 }
+      "grappling": { "accuracy": 78.5, "defence": 10.2 }
       // ... all averaged stats
     }
   },
-  "fighter2Updates": { ... }
+  "fighter2Updates": {
+    "fighterId": "676d7631eb38b2b97c6da9ab",
+    "debutInformationUpdate": {
+      "competitionId": "67780dcc09a4c4b25127f8f6",
+      "season": 10,
+      "fightId": "scheduled-fight-mock-001",
+      "dateOfDebut": "2024-11-02T10:30:00.000Z"
+    },  // First fight ever!
+    "streaksUpdate": {
+      "action": "create",
+      "newStreak": {
+        "competitionId": "67780dcc09a4c4b25127f8f6",
+        "type": "lose",
+        "start": { season: 10, division: 1, round: 5 },
+        "end": { season: 10, division: 1, round: 5 },
+        "count": 1,
+        "active": true,
+        "opponents": ["676d6ecceb38b2b97c6da945"]
+      }
+    },
+    // ... other updates
+  },
+  "seasonCompletionStatus": {
+    "isSeasonCompleted": false,
+    "competitionType": "league",
+    "divisionStatuses": [
+      {
+        "divisionNumber": 1,
+        "totalRounds": 12,
+        "lastRound": 12,
+        "totalFights": 6,
+        "completedFights": 5,
+        "isCompleted": false
+      },
+      {
+        "divisionNumber": 2,
+        "totalRounds": 12,
+        "lastRound": 12,
+        "totalFights": 6,
+        "completedFights": 6,
+        "isCompleted": true
+      },
+      {
+        "divisionNumber": 3,
+        "totalRounds": 12,
+        "lastRound": 12,
+        "totalFights": 6,
+        "completedFights": 6,
+        "isCompleted": true
+      }
+    ],
+    "seasonNumber": 10,
+    "competitionId": "67780dcc09a4c4b25127f8f6"
+  }
 }
+```
+
+**Console Log Example:**
+```
+🔍 Checking Season Completion...
+📊 Division 1: Round 12 - 5/6 fights completed
+📊 Division 2: Round 12 - 6/6 fights completed
+📊 Division 3: Round 12 - 6/6 fights completed
+⏳ Season still in progress...
 ```
 
 ---

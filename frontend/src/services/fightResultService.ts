@@ -34,6 +34,14 @@ interface FightResultPayload {
     };
     fighter1Updates: any;
     fighter2Updates: any;
+    seasonCompletionStatus: {
+        isSeasonCompleted: boolean;
+        competitionType?: 'league' | 'cup';
+        divisionStatuses?: any[];
+        seasonNumber?: number;
+        competitionId?: string;
+        reason?: string;
+    };
 }
 
 /**
@@ -467,6 +475,7 @@ export const prepareFightResultPayload = (
     roundNumber: number,
     fighter1: any,
     fighter2: any,
+    competition: any,
     chatGPTResponse: ChatGPTResponse
 ): FightResultPayload => {
     const timestamp = new Date().toISOString();
@@ -514,6 +523,9 @@ export const prepareFightResultPayload = (
         timestamp
     );
 
+    // Check if season is completed after this fight
+    const seasonCompletionStatus = checkSeasonCompletion(competition);
+
     return {
         fightId,
         competitionId,
@@ -525,6 +537,144 @@ export const prepareFightResultPayload = (
         competitionUpdate,
         fighter1Updates,
         fighter2Updates,
+        seasonCompletionStatus,
+    };
+};
+
+// ==========================================
+// SEASON COMPLETION CHECK
+// ==========================================
+
+/**
+ * Checks if a season has ended by verifying all fights in the last round
+ * of every division are completed.
+ * 
+ * @param competitionData - Full competition document with leagueData or cupData
+ * @returns Object with completion status and details
+ */
+export const checkSeasonCompletion = (competitionData: any) => {
+    console.log('\n🔍 Checking Season Completion...');
+
+    // Determine if it's a league or cup competition
+    const isLeague = competitionData.leagueData !== null && competitionData.leagueData !== undefined;
+    const data = isLeague ? competitionData.leagueData : competitionData.cupData;
+
+    if (!data) {
+        console.warn('⚠️ No league/cup data found in competition');
+        return {
+            isSeasonCompleted: false,
+            reason: 'No competition data found'
+        };
+    }
+
+    // For league competitions
+    if (isLeague && data.divisions) {
+        const divisions = data.divisions;
+        const divisionStatuses: any[] = [];
+
+        for (const division of divisions) {
+            const { divisionNumber, totalRounds, rounds } = division;
+
+            // Find the last round
+            const lastRound = rounds?.find((r: any) => r.roundNumber === totalRounds);
+
+            if (!lastRound) {
+                console.log(`⚠️ Division ${divisionNumber}: Last round (${totalRounds}) not found`);
+                divisionStatuses.push({
+                    divisionNumber,
+                    isCompleted: false,
+                    reason: `Round ${totalRounds} not found`
+                });
+                continue;
+            }
+
+            // Check if all fights in the last round are completed
+            const fights = lastRound.fights || [];
+            const totalFights = fights.length;
+            const completedFights = fights.filter((fight: any) => 
+                fight.fightStatus === 'completed' || fight.winner !== null
+            ).length;
+
+            const isCompleted = totalFights > 0 && completedFights === totalFights;
+
+            console.log(
+                `📊 Division ${divisionNumber}: Round ${totalRounds} - ` +
+                `${completedFights}/${totalFights} fights completed`
+            );
+
+            divisionStatuses.push({
+                divisionNumber,
+                totalRounds,
+                lastRound: totalRounds,
+                totalFights,
+                completedFights,
+                isCompleted
+            });
+        }
+
+        // Season is completed only if ALL divisions are completed
+        const allDivisionsCompleted = divisionStatuses.every(d => d.isCompleted);
+
+        if (allDivisionsCompleted) {
+            console.log('✅ SEASON COMPLETED! All divisions have finished their final rounds.');
+        } else {
+            console.log('⏳ Season still in progress...');
+        }
+
+        return {
+            isSeasonCompleted: allDivisionsCompleted,
+            competitionType: 'league',
+            divisionStatuses,
+            seasonNumber: competitionData.seasonMeta?.seasonNumber,
+            competitionId: competitionData.id
+        };
+    }
+
+    // For cup competitions (if needed in the future)
+    if (!isLeague && data.rounds) {
+        // Cup completion logic: check if final round is completed
+        const rounds = data.rounds;
+        const lastRound = rounds[rounds.length - 1];
+        
+        if (!lastRound) {
+            return {
+                isSeasonCompleted: false,
+                competitionType: 'cup',
+                reason: 'No rounds found'
+            };
+        }
+
+        const fights = lastRound.fights || [];
+        const totalFights = fights.length;
+        const completedFights = fights.filter((fight: any) => 
+            fight.fightStatus === 'completed' || fight.winner !== null
+        ).length;
+
+        const isCompleted = totalFights > 0 && completedFights === totalFights;
+
+        console.log(
+            `📊 Cup Final (Round ${lastRound.roundNumber}): ` +
+            `${completedFights}/${totalFights} fights completed`
+        );
+
+        if (isCompleted) {
+            console.log('✅ CUP SEASON COMPLETED!');
+        }
+
+        return {
+            isSeasonCompleted: isCompleted,
+            competitionType: 'cup',
+            roundNumber: lastRound.roundNumber,
+            totalFights,
+            completedFights,
+            seasonNumber: competitionData.seasonMeta?.seasonNumber,
+            competitionId: competitionData.id
+        };
+    }
+
+    return {
+        isSeasonCompleted: false,
+        reason: 'Unable to determine competition structure'
     };
 };
 

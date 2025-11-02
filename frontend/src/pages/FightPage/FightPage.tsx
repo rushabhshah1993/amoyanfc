@@ -3,7 +3,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faArrowLeft, faUser, faBalanceScale } from '@fortawesome/free-solid-svg-icons';
-import { GET_FIGHT_BY_ID, GET_CUP_FIGHT_BY_ID, GET_FIGHTER_INFORMATION, GET_ALL_FIGHTERS } from '../../services/queries';
+import { GET_FIGHT_BY_ID, GET_CUP_FIGHT_BY_ID, GET_FIGHTER_INFORMATION, GET_ALL_FIGHTERS, GET_SEASON_DETAILS } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
 import Performance from '../../components/Performance/Performance';
 import CompactHeadToHead from '../../components/CompactHeadToHead/CompactHeadToHead';
@@ -130,10 +130,18 @@ const FightPage: React.FC = () => {
         variables: { id: fighter2Id },
         skip: !fighter2Id
     });
+
+    // Fetch full competition data (needed for season completion check)
+    const competitionId = rawFight?.competitionContext?.competitionId;
+    const { data: competitionData } = useQuery(GET_SEASON_DETAILS, {
+        variables: { id: competitionId },
+        skip: !competitionId || useMockData
+    });
     
     // Use real fighter data from MongoDB if available, otherwise fall back to mock/raw data
     const fighter1Full = fighter1Data?.getFighterInformation;
     const fighter2Full = fighter2Data?.getFighterInformation;
+    const competitionFull = competitionData?.getCompetitionSeason;
     
     // Construct the fight object with real fighter data merged in
     const fight: Fight | null = rawFight ? {
@@ -702,6 +710,7 @@ const FightPage: React.FC = () => {
                 fight!.competitionContext.roundNumber,
                 fighter1Full,
                 fighter2Full,
+                competitionFull,
                 mockChatGPTResponse
             );
 
@@ -817,6 +826,7 @@ const FightPage: React.FC = () => {
                 fight!.competitionContext.roundNumber,
                 fighter1Full,
                 fighter2Full,
+                competitionFull,
                 mockChatGPTResponse
             );
 
