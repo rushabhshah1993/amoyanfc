@@ -124,6 +124,10 @@ export const GET_ALL_FIGHTERS_WITH_STATS = gql`
             totalTitles
             highestWinStreak
             highestLoseStreak
+            globalRank {
+                rank
+                score
+            }
             competitionHistory {
                 competitionId
                 numberOfSeasonAppearances

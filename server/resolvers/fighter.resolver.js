@@ -114,6 +114,7 @@ const fighterResolver = {
                     totalTitles,
                     highestWinStreak,
                     highestLoseStreak,
+                    globalRank: fighter.globalRank || null,
                     competitionHistory: fighter.competitionHistory || []
                 };
             });

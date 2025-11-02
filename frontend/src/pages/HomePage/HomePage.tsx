@@ -30,6 +30,10 @@ interface Fighter {
     totalTitles: number;
     highestWinStreak: number;
     highestLoseStreak: number;
+    globalRank?: {
+        rank: number;
+        score: number;
+    };
     competitionHistory?: CompetitionHistory[];
 }
 
@@ -84,36 +88,21 @@ const HomePage: React.FC = () => {
         document.title = 'Amoyan FC | Home';
     }, []);
 
-    // Calculate a score for each fighter and sort them
+    // Get top 5 fighters based on global rank
     const topFighters = useMemo(() => {
         if (!fightersData?.getAllFightersWithBasicStats) return [];
         
         const fighters = fightersData.getAllFightersWithBasicStats;
         
-        // Calculate a ranking score based on multiple factors
-        const fightersWithScore = fighters.map(fighter => {
-            const winPercentageScore = (fighter.winPercentage || 0) * 0.4;
-            const titlesScore = (fighter.totalTitles || 0) * 10 * 0.3;
-            const winsScore = Math.min((fighter.totalWins || 0) / 2, 20) * 0.2;
-            const streakScore = Math.min((fighter.highestWinStreak || 0) * 2, 20) * 0.1;
-            
-            const score = winPercentageScore + titlesScore + winsScore + streakScore;
-            
-            return {
+        // Sort by global rank and get top 5
+        return fighters
+            .filter(f => f.globalRank && f.globalRank.rank > 0)
+            .sort((a, b) => (a.globalRank?.rank || Infinity) - (b.globalRank?.rank || Infinity))
+            .slice(0, 5)
+            .map(fighter => ({
                 ...fighter,
-                calculatedScore: score
-            };
-        });
-        
-        const sortedFighters = fightersWithScore
-            .filter(f => f.totalFights > 0)
-            .sort((a, b) => b.calculatedScore - a.calculatedScore)
-            .slice(0, 5);
-        
-        return sortedFighters.map((fighter, index) => ({
-            ...fighter,
-            rank: index + 1
-        }));
+                rank: fighter.globalRank!.rank
+            }));
     }, [fightersData]);
 
     const topArticles = articlesData?.getAllArticles?.results || [];
