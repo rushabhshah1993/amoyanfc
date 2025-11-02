@@ -6,8 +6,12 @@ import { faSpinner, faArrowLeft, faUser, faBalanceScale } from '@fortawesome/fre
 import { GET_FIGHT_BY_ID, GET_CUP_FIGHT_BY_ID, GET_FIGHTER_INFORMATION, GET_ALL_FIGHTERS } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
 import Performance from '../../components/Performance/Performance';
+import CompactHeadToHead from '../../components/CompactHeadToHead/CompactHeadToHead';
 import styles from './FightPage.module.css';
 import BodySilhouette from './BodySilhouette';
+
+// Mock data for testing scheduled fights - TO BE REMOVED LATER
+import { mockScheduledFight } from '../../mocks/fight-scheduled.mock';
 
 interface Fighter {
     id: string;
@@ -89,37 +93,132 @@ const FightPage: React.FC = () => {
     const location = useLocation();
     const [showStickyHeader, setShowStickyHeader] = useState(false);
     const [activeTab, setActiveTab] = useState<string>('overview');
+    
+    // State for scheduled fight actions
+    const [actionMode, setActionMode] = useState<'none' | 'simulate' | 'chooseWinner'>('none');
+    const [selectedWinner, setSelectedWinner] = useState<string | null>(null);
+    const [fightDescription, setFightDescription] = useState<string>('');
 
     // Check if this is a cup fight from navigation state
     const isCupFight = location.state?.isCupFight || false;
+    
+    // TEMPORARY: Check if using mock data
+    const useMockData = fightId === 'scheduled-mock';
 
-    // Fetch fight data using appropriate query
+    // Fetch fight data using appropriate query (skip if using mock data)
     const { loading, error, data } = useQuery(isCupFight ? GET_CUP_FIGHT_BY_ID : GET_FIGHT_BY_ID, {
         variables: { id: fightId },
-        skip: !fightId
+        skip: !fightId || useMockData
     });
 
-    const fight: Fight | null = data?.getCupFightById || data?.getFightById || null;
-    const fighter1 = fight?.fighter1 || null;
-    const fighter2 = fight?.fighter2 || null;
+    // TEMPORARY: Use mock data for testing scheduled fights
+    // This will be removed once backend integration is complete
+    const rawFight = useMockData ? mockScheduledFight : (data?.getCupFightById || data?.getFightById || null);
+    
+    // Extract fighter IDs for queries (works for both mock and real data)
+    const fighter1Id = rawFight?.fighter1?.id;
+    const fighter2Id = rawFight?.fighter2?.id;
 
-    // Fetch full fighter data for both fighters (for Performance component)
+    // Fetch full fighter data for both fighters (this works even with mock data)
     const { data: fighter1Data } = useQuery(GET_FIGHTER_INFORMATION, {
-        variables: { id: fighter1?.id },
-        skip: !fighter1?.id
+        variables: { id: fighter1Id },
+        skip: !fighter1Id
     });
 
     const { data: fighter2Data } = useQuery(GET_FIGHTER_INFORMATION, {
-        variables: { id: fighter2?.id },
-        skip: !fighter2?.id
+        variables: { id: fighter2Id },
+        skip: !fighter2Id
     });
+    
+    // Use real fighter data from MongoDB if available, otherwise fall back to mock/raw data
+    const fighter1Full = fighter1Data?.getFighterInformation;
+    const fighter2Full = fighter2Data?.getFighterInformation;
+    
+    // Construct the fight object with real fighter data merged in
+    const fight: Fight | null = rawFight ? {
+        ...rawFight,
+        fighter1: fighter1Full || rawFight.fighter1,
+        fighter2: fighter2Full || rawFight.fighter2
+    } : null;
+    
+    const fighter1 = fight?.fighter1 || null;
+    const fighter2 = fight?.fighter2 || null;
 
     // Fetch all fighters for opponent lookups
     const { data: allFightersData } = useQuery(GET_ALL_FIGHTERS);
-
-    const fighter1Full = fighter1Data?.getFighterInformation;
-    const fighter2Full = fighter2Data?.getFighterInformation;
     const allFighters = allFightersData?.getAllFighters || [];
+
+    // ============ TRANSFORM HEAD-TO-HEAD DATA FROM OPPONENTS HISTORY ============
+    // Extract real head-to-head data from fighter's opponentsHistory
+    const transformHeadToHeadData = () => {
+        if (!fighter1Full?.opponentsHistory || !fighter1?.id || !fighter2?.id) return [];
+
+        // Find the opponent history for fighter2 in fighter1's data
+        const opponentHistory = fighter1Full.opponentsHistory.find(
+            (oh: any) => oh.opponentId === fighter2.id
+        );
+
+        if (!opponentHistory || !opponentHistory.details || opponentHistory.details.length === 0) {
+            return [];
+        }
+
+        // Debug: Log the first detail to see the actual field names
+        console.log('Head-to-Head Debug - First fight detail:', opponentHistory.details[0]);
+
+        // Group fights by competition
+        const fightsByCompetition: { [key: string]: any } = {};
+
+        opponentHistory.details.forEach((detail: any) => {
+            const competitionId = detail.competitionId;
+            
+            if (!fightsByCompetition[competitionId]) {
+                fightsByCompetition[competitionId] = {
+                    competitionId,
+                    fights: []
+                };
+            }
+
+            const transformedFight = {
+                winner: detail.isWinner ? fighter1!.id : fighter2!.id,
+                season: detail.season,
+                // Try both field name variations (division/divisionId, round/roundId)
+                division: detail.division || detail.divisionId,
+                round: detail.round || detail.roundId,
+                fightId: detail.fightId
+            };
+            
+            fightsByCompetition[competitionId].fights.push(transformedFight);
+        });
+
+        // Transform into CompactHeadToHead format with competition metadata
+        const headToHeadData = Object.values(fightsByCompetition).map((comp: any) => {
+            // Get competition metadata from fighter's competitionHistory
+            const compMeta = fighter1Full.competitionHistory?.find(
+                (ch: any) => ch.competitionId === comp.competitionId
+            )?.competitionMeta;
+
+            const fighter1Wins = comp.fights.filter((f: any) => f.winner === fighter1!.id).length;
+            const fighter2Wins = comp.fights.filter((f: any) => f.winner === fighter2!.id).length;
+
+            return {
+                competitionId: comp.competitionId,
+                competitionName: compMeta?.competitionName || 'Unknown Competition',
+                competitionLogo: compMeta?.logo,
+                totalFights: comp.fights.length,
+                fighter1Wins,
+                fighter2Wins,
+                fights: comp.fights
+            };
+        });
+
+        // Debug: Log the transformed head-to-head data
+        console.log('Head-to-Head Debug - Transformed data:', headToHeadData);
+        
+        return headToHeadData;
+    };
+
+    // Get real head-to-head data (only if we have fighter data loaded)
+    const realHeadToHeadData = fighter1Full && fighter2Full ? transformHeadToHeadData() : [];
 
     // Scroll to top when component loads
     useEffect(() => {
@@ -177,7 +276,9 @@ const FightPage: React.FC = () => {
         }
     }, [fighter1, fighter2, fight]);
 
-    if (loading) {
+    // Show loading only if not using mock data and the main query is loading
+    // For mock data, we want to show fighter data as soon as it loads
+    if (loading && !useMockData) {
         return (
             <div className={styles.fightPage}>
                 <div className={styles.loading}>
@@ -188,7 +289,8 @@ const FightPage: React.FC = () => {
         );
     }
 
-    if (error) {
+    // Only show error if not using mock data
+    if (error && !useMockData) {
         return (
             <div className={styles.fightPage}>
                 <button 
@@ -423,6 +525,55 @@ const FightPage: React.FC = () => {
         );
     };
 
+    // ============ PLACEHOLDER API FUNCTIONS ============
+    // These will be replaced with actual API calls later
+    
+    const handleSimulateFightConfirm = async () => {
+        console.log('Simulating fight between:', fighter1?.firstName, 'and', fighter2?.firstName);
+        console.log('Fight data:', fight);
+        // TODO: Call OpenAI API to simulate fight
+        // const result = await simulateFightWithAI(fighter1, fighter2);
+        setActionMode('none');
+        alert('Fight simulation will be implemented with OpenAI integration');
+    };
+
+    const handleChooseWinnerSubmit = async () => {
+        if (!selectedWinner) {
+            alert('Please select a winner');
+            return;
+        }
+        
+        console.log('Chosen winner:', selectedWinner);
+        console.log('Fight description:', fightDescription);
+        console.log('Fight ID:', fightId);
+        
+        // TODO: Call API to save winner and description to database
+        // await saveFightResult(fightId, selectedWinner, fightDescription);
+        
+        setActionMode('none');
+        setSelectedWinner(null);
+        setFightDescription('');
+        alert('Winner selection will be saved to database (API integration pending)');
+    };
+
+    const handleSimulateFightClick = () => {
+        setActionMode('simulate');
+        setSelectedWinner(null);
+        setFightDescription('');
+    };
+
+    const handleChooseWinnerClick = () => {
+        setActionMode('chooseWinner');
+        setSelectedWinner(null);
+        setFightDescription('');
+    };
+
+    const handleCancelAction = () => {
+        setActionMode('none');
+        setSelectedWinner(null);
+        setFightDescription('');
+    };
+
     return (
         <div className={styles.fightPage}>
             <button 
@@ -613,6 +764,155 @@ const FightPage: React.FC = () => {
                             <FontAwesomeIcon icon={faBalanceScale} />
                             <span>Compare Fighters</span>
                         </button>
+
+                        {/* Scheduled Fight UI: CompactHeadToHead */}
+                        {fight.fightStatus === 'scheduled' && (
+                            <div className={styles.scheduledFightSection}>
+                                <CompactHeadToHead
+                                    fighter1={fighter1}
+                                    fighter2={fighter2}
+                                    headToHeadData={realHeadToHeadData}
+                                />
+                            </div>
+                        )}
+
+                        {/* Scheduled Fight UI: Action Buttons */}
+                        {fight.fightStatus === 'scheduled' && (
+                            <div className={styles.scheduledActionButtons}>
+                                <button 
+                                    className={styles.actionButton}
+                                    onClick={handleSimulateFightClick}
+                                    disabled={actionMode !== 'none'}
+                                >
+                                    Simulate Fight
+                                </button>
+                                <button 
+                                    className={styles.actionButton}
+                                    onClick={handleChooseWinnerClick}
+                                    disabled={actionMode !== 'none'}
+                                >
+                                    Choose Winner
+                                </button>
+                            </div>
+                        )}
+
+                        {/* Scheduled Fight UI: Action Panel */}
+                        {fight.fightStatus === 'scheduled' && actionMode !== 'none' && (
+                            <div className={styles.actionPanel}>
+                                {actionMode === 'simulate' && (
+                                    <div className={styles.simulateConfirmation}>
+                                        <h4 className={styles.actionPanelTitle}>Simulate Fight</h4>
+                                        <p className={styles.actionPanelText}>
+                                            Are you sure you want to simulate this fight? The AI will generate fight statistics 
+                                            and determine a winner based on fighter data.
+                                        </p>
+                                        <div className={styles.actionPanelButtons}>
+                                            <button 
+                                                className={styles.confirmButton}
+                                                onClick={handleSimulateFightConfirm}
+                                            >
+                                                Confirm Simulation
+                                            </button>
+                                            <button 
+                                                className={styles.cancelButton}
+                                                onClick={handleCancelAction}
+                                            >
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
+                                
+                                {actionMode === 'chooseWinner' && (
+                                    <div className={styles.chooseWinnerPanel}>
+                                        <h4 className={styles.actionPanelTitle}>Choose Winner</h4>
+                                        <p className={styles.actionPanelText}>
+                                            Select the winner of this fight and provide a description.
+                                        </p>
+                                        
+                                        <div className={styles.winnerSelection}>
+                                            <div 
+                                                className={`${styles.winnerOption} ${selectedWinner === fighter1.id ? styles.selectedWinner : ''}`}
+                                                onClick={() => setSelectedWinner(fighter1.id)}
+                                            >
+                                                <div className={styles.winnerThumbnail}>
+                                                    <S3Image
+                                                        src={fighter1.profileImage}
+                                                        alt={`${fighter1.firstName} ${fighter1.lastName}`}
+                                                        className={styles.winnerImage}
+                                                        width={120}
+                                                        height={120}
+                                                        lazy={false}
+                                                        fallback={
+                                                            <div className={styles.winnerImagePlaceholder}>
+                                                                <FontAwesomeIcon icon={faUser} />
+                                                            </div>
+                                                        }
+                                                    />
+                                                </div>
+                                                <span className={styles.winnerName}>
+                                                    {fighter1.firstName} {fighter1.lastName}
+                                                </span>
+                                            </div>
+                                            
+                                            <div 
+                                                className={`${styles.winnerOption} ${selectedWinner === fighter2.id ? styles.selectedWinner : ''}`}
+                                                onClick={() => setSelectedWinner(fighter2.id)}
+                                            >
+                                                <div className={styles.winnerThumbnail}>
+                                                    <S3Image
+                                                        src={fighter2.profileImage}
+                                                        alt={`${fighter2.firstName} ${fighter2.lastName}`}
+                                                        className={styles.winnerImage}
+                                                        width={120}
+                                                        height={120}
+                                                        lazy={false}
+                                                        fallback={
+                                                            <div className={styles.winnerImagePlaceholder}>
+                                                                <FontAwesomeIcon icon={faUser} />
+                                                            </div>
+                                                        }
+                                                    />
+                                                </div>
+                                                <span className={styles.winnerName}>
+                                                    {fighter2.firstName} {fighter2.lastName}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className={styles.descriptionInput}>
+                                            <label htmlFor="fightDescription" className={styles.descriptionLabel}>
+                                                Fight Description
+                                            </label>
+                                            <textarea
+                                                id="fightDescription"
+                                                className={styles.descriptionTextarea}
+                                                placeholder="Describe what happened during the fight..."
+                                                value={fightDescription}
+                                                onChange={(e) => setFightDescription(e.target.value)}
+                                                rows={6}
+                                            />
+                                        </div>
+                                        
+                                        <div className={styles.actionPanelButtons}>
+                                            <button 
+                                                className={styles.confirmButton}
+                                                onClick={handleChooseWinnerSubmit}
+                                                disabled={!selectedWinner}
+                                            >
+                                                Submit Result
+                                            </button>
+                                            <button 
+                                                className={styles.cancelButton}
+                                                onClick={handleCancelAction}
+                                            >
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        )}
 
                         {/* Fight Time and Finishing Move */}
                         {fight.fightStatus === 'completed' && (

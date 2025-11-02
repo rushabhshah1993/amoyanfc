@@ -1,0 +1,303 @@
+/* Compact Head to Head Section */
+.compactHeadToHead {
+    margin: 0.5rem 0;
+}
+
+.sectionTitle {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 0 1.5rem 0;
+    transition: color 0.3s ease;
+}
+
+/* Empty State */
+.emptyState {
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.emptyMessage {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Summary Stats */
+.summaryStats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 0.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.fighterStat {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.fighterStat:last-of-type {
+    flex-direction: row-reverse;
+}
+
+.fighterStat:last-of-type .fighterStatInfo {
+    text-align: right;
+}
+
+.fighterStatThumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid var(--border-color);
+}
+
+.statFighterImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.statImagePlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+}
+
+.fighterStatInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.fighterStatName {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.fighterStatWins {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+.totalFightsDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0 1.5rem;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+}
+
+.totalFightsNumber {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.totalFightsLabel {
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Horizontally Scrollable Fight Cards */
+.fightsScrollContainer {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5rem 0 0.5rem 0;
+    margin: 0 -0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+}
+
+.fightsScrollContainer::-webkit-scrollbar {
+    height: 6px;
+}
+
+.fightsScrollContainer::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.fightsScrollContainer::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.fightsScrollContainer::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+.fightCards {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.fightCard {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+    max-width: 150px;
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+.fightCard:hover {
+    border-color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+/* Card Header - Competition */
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.625rem;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+}
+
+.cardHeader :global(.s3-image-container) {
+    width: 18px !important;
+    height: 18px !important;
+    flex-shrink: 0;
+    display: flex !important;
+}
+
+.cardCompetitionLogo {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.cardCompetitionName {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Winner Thumbnail */
+.cardWinnerThumbnail {
+    width: 100%;
+    height: 110px;
+    overflow: hidden;
+    background-color: var(--bg-secondary);
+}
+
+.cardWinnerImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.cardImagePlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 2rem;
+}
+
+/* Fight Info */
+.cardFightInfo {
+    padding: 0.75rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cardLocation {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+}
+
+/* Date at Bottom */
+.cardDate {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 0.5rem 0.75rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .summaryStats {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .totalFightsDisplay {
+        order: -1;
+        padding: 0;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 1rem;
+    }
+
+    .fighterStat {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .fighterStat:last-of-type {
+        flex-direction: row-reverse;
+    }
+
+    .fighterStat:last-of-type .fighterStatInfo {
+        text-align: right;
+    }
+
+    .fightCard {
+        min-width: 130px;
+        max-width: 130px;
+    }
+
+    .cardWinnerThumbnail {
+        height: 100px;
+    }
+
+    .sectionTitle {
+        font-size: 0.9rem;
+    }
+}
