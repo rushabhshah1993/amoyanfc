@@ -7,6 +7,7 @@ import { GET_FIGHT_BY_ID, GET_CUP_FIGHT_BY_ID, GET_FIGHTER_INFORMATION, GET_ALL_
 import S3Image from '../../components/S3Image/S3Image';
 import Performance from '../../components/Performance/Performance';
 import CompactHeadToHead from '../../components/CompactHeadToHead/CompactHeadToHead';
+import { prepareFightResultPayload } from '../../services/fightResultService';
 import styles from './FightPage.module.css';
 import BodySilhouette from './BodySilhouette';
 
@@ -525,16 +526,196 @@ const FightPage: React.FC = () => {
         );
     };
 
+    // ============ HELPER FUNCTION TO PREPARE CHATGPT PAYLOAD ============
+    const prepareFightPayload = (winnerId: string | null = null, description: string | null = null) => {
+        if (!fighter1Full || !fighter2Full || !fighter1 || !fighter2) return null;
+
+        // Helper to get last 5 fights for a fighter
+        const getLastFiveFights = (fighterData: any) => {
+            if (!fighterData.opponentsHistory) return [];
+
+            // Flatten all fights from all opponents
+            const allFights: any[] = [];
+            fighterData.opponentsHistory.forEach((opponentHistory: any) => {
+                if (opponentHistory.details) {
+                    opponentHistory.details.forEach((detail: any) => {
+                        // Find competition name from competitionHistory
+                        const compMeta = fighterData.competitionHistory?.find(
+                            (ch: any) => ch.competitionId === detail.competitionId
+                        )?.competitionMeta;
+
+                        allFights.push({
+                            outcome: detail.isWinner ? 'win' : 'loss',
+                            opponentId: opponentHistory.opponentId,
+                            competitionName: compMeta?.competitionName || 'Unknown',
+                            date: detail.date || null // Will need to add date field to GraphQL query if not present
+                        });
+                    });
+                }
+            });
+
+            // Sort by date (most recent first) and take top 5
+            // Note: If date is not available, we'll need to sort by season/round
+            return allFights
+                .filter(f => f.date)
+                .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+                .slice(0, 5);
+        };
+
+        // Helper to get current active streak
+        const getCurrentStreak = (fighterData: any) => {
+            if (!fighterData.streaks) return null;
+
+            const activeStreak = fighterData.streaks.find((streak: any) => streak.active === true);
+            if (!activeStreak) return null;
+
+            return {
+                type: activeStreak.type,
+                count: activeStreak.count,
+                startDate: activeStreak.start ? 
+                    new Date(activeStreak.start.season, 0, 1).toISOString() : null, // Approximate date
+                endDate: activeStreak.end ? 
+                    new Date(activeStreak.end.season, 11, 31).toISOString() : null, // Approximate date
+                active: activeStreak.active
+            };
+        };
+
+        // Calculate head-to-head summary
+        const headToHeadSummary = realHeadToHeadData.reduce((acc, comp) => {
+            acc.totalFights += comp.totalFights;
+            acc.fighter1Wins += comp.fighter1Wins;
+            acc.fighter2Wins += comp.fighter2Wins;
+            return acc;
+        }, { totalFights: 0, fighter1Wins: 0, fighter2Wins: 0 });
+
+        const payload = {
+            fighter1Id: fighter1.id,
+            fighter2Id: fighter2.id,
+            winnerId: winnerId,
+            userDescription: description,
+            headToHead: headToHeadSummary,
+            fighter1: {
+                skillset: fighter1Full.skillset || [],
+                physicalAttributes: fighter1Full.physicalAttributes || {},
+                lastFiveFights: getLastFiveFights(fighter1Full),
+                currentStreak: getCurrentStreak(fighter1Full)
+            },
+            fighter2: {
+                skillset: fighter2Full.skillset || [],
+                physicalAttributes: fighter2Full.physicalAttributes || {},
+                lastFiveFights: getLastFiveFights(fighter2Full),
+                currentStreak: getCurrentStreak(fighter2Full)
+            }
+        };
+
+        return payload;
+    };
+
     // ============ PLACEHOLDER API FUNCTIONS ============
     // These will be replaced with actual API calls later
     
     const handleSimulateFightConfirm = async () => {
         console.log('Simulating fight between:', fighter1?.firstName, 'and', fighter2?.firstName);
-        console.log('Fight data:', fight);
+        
+        // Prepare payload for ChatGPT
+        const chatGPTPayload = prepareFightPayload(null, null); // No winner, no description for simulation
+        console.log('ChatGPT Input Payload:', JSON.stringify(chatGPTPayload, null, 2));
+        
         // TODO: Call OpenAI API to simulate fight
-        // const result = await simulateFightWithAI(fighter1, fighter2);
-        setActionMode('none');
-        alert('Fight simulation will be implemented with OpenAI integration');
+        // const chatGPTResponse = await simulateFightWithAI(chatGPTPayload);
+        
+        // MOCK: Simulate ChatGPT response for testing
+        const mockChatGPTResponse = {
+            winner: fighter1!.id, // Mock: fighter1 wins
+            date: new Date().toISOString(),
+            genAIDescription: "This is a simulated AI-generated fight description.",
+            isSimulated: true,
+            fighterStats: [
+                {
+                    fighterId: fighter1!.id,
+                    stats: {
+                        fightTime: 12.5,
+                        finishingMove: "Armbar",
+                        grappling: { accuracy: 80, defence: 10 },
+                        significantStrikes: {
+                            accuracy: 75,
+                            attempted: 40,
+                            defence: 9,
+                            landed: 30,
+                            landedPerMinute: 2.4,
+                            positions: { clinching: 5, ground: 12, standing: 13 }
+                        },
+                        strikeMap: {
+                            head: { absorb: 4, strike: 15 },
+                            torso: { absorb: 2, strike: 10 },
+                            leg: { absorb: 1, strike: 5 }
+                        },
+                        submissions: { attemptsPer15Mins: 2.5, average: 1.8 },
+                        takedowns: {
+                            accuracy: 65,
+                            attempted: 5,
+                            avgTakedownsLandedPerMin: 0.3,
+                            defence: 2,
+                            landed: 3
+                        }
+                    }
+                },
+                {
+                    fighterId: fighter2!.id,
+                    stats: {
+                        fightTime: 12.5,
+                        finishingMove: null,
+                        grappling: { accuracy: 70, defence: 8 },
+                        significantStrikes: {
+                            accuracy: 68,
+                            attempted: 35,
+                            defence: 11,
+                            landed: 24,
+                            landedPerMinute: 1.9,
+                            positions: { clinching: 4, ground: 9, standing: 11 }
+                        },
+                        strikeMap: {
+                            head: { absorb: 6, strike: 10 },
+                            torso: { absorb: 4, strike: 8 },
+                            leg: { absorb: 2, strike: 6 }
+                        },
+                        submissions: { attemptsPer15Mins: 1.5, average: 1.0 },
+                        takedowns: {
+                            accuracy: 55,
+                            attempted: 4,
+                            avgTakedownsLandedPerMin: 0.2,
+                            defence: 3,
+                            landed: 2
+                        }
+                    }
+                }
+            ]
+        };
+
+        try {
+            // Prepare MongoDB update payload
+            const mongoDBPayload = prepareFightResultPayload(
+                fightId!,
+                fight!.competitionContext.competitionId,
+                fight!.competitionContext.seasonNumber,
+                fight!.competitionContext.divisionNumber!,
+                fight!.competitionContext.roundNumber,
+                fighter1Full,
+                fighter2Full,
+                mockChatGPTResponse
+            );
+
+            console.log('MongoDB Update Payload:', JSON.stringify(mongoDBPayload, null, 2));
+
+            // TODO: Send to backend to update MongoDB
+            // await updateFightResult(mongoDBPayload);
+
+            setActionMode('none');
+            alert('Fight simulated! Check console for MongoDB payload.');
+        } catch (error) {
+            console.error('Error preparing fight result:', error);
+            alert('Error preparing fight result. Check console for details.');
+        }
     };
 
     const handleChooseWinnerSubmit = async () => {
@@ -547,13 +728,111 @@ const FightPage: React.FC = () => {
         console.log('Fight description:', fightDescription);
         console.log('Fight ID:', fightId);
         
-        // TODO: Call API to save winner and description to database
-        // await saveFightResult(fightId, selectedWinner, fightDescription);
+        // Prepare payload for ChatGPT (with winner and description)
+        const chatGPTPayload = prepareFightPayload(
+            selectedWinner, 
+            fightDescription || null
+        );
+        console.log('ChatGPT Input Payload:', JSON.stringify(chatGPTPayload, null, 2));
         
-        setActionMode('none');
-        setSelectedWinner(null);
-        setFightDescription('');
-        alert('Winner selection will be saved to database (API integration pending)');
+        // TODO: Call OpenAI API to get fight stats based on winner
+        // const chatGPTResponse = await generateFightStatsWithAI(chatGPTPayload);
+        
+        // MOCK: Simulate ChatGPT response with user-selected winner
+        const mockChatGPTResponse = {
+            winner: selectedWinner,
+            date: new Date().toISOString(),
+            userDescription: fightDescription || undefined,
+            genAIDescription: "AI-generated analysis of the fight based on the outcome.",
+            isSimulated: false, // User chose the winner
+            fighterStats: [
+                {
+                    fighterId: fighter1!.id,
+                    stats: {
+                        fightTime: 14.0,
+                        finishingMove: selectedWinner === fighter1!.id ? "Triangle Choke" : null,
+                        grappling: { accuracy: 82, defence: 11 },
+                        significantStrikes: {
+                            accuracy: 77,
+                            attempted: 42,
+                            defence: 10,
+                            landed: 32,
+                            landedPerMinute: 2.3,
+                            positions: { clinching: 6, ground: 13, standing: 13 }
+                        },
+                        strikeMap: {
+                            head: { absorb: 5, strike: 14 },
+                            torso: { absorb: 3, strike: 11 },
+                            leg: { absorb: 2, strike: 7 }
+                        },
+                        submissions: { attemptsPer15Mins: 2.2, average: 1.6 },
+                        takedowns: {
+                            accuracy: 68,
+                            attempted: 6,
+                            avgTakedownsLandedPerMin: 0.29,
+                            defence: 2,
+                            landed: 4
+                        }
+                    }
+                },
+                {
+                    fighterId: fighter2!.id,
+                    stats: {
+                        fightTime: 14.0,
+                        finishingMove: selectedWinner === fighter2!.id ? "Knockout" : null,
+                        grappling: { accuracy: 72, defence: 9 },
+                        significantStrikes: {
+                            accuracy: 70,
+                            attempted: 37,
+                            defence: 12,
+                            landed: 26,
+                            landedPerMinute: 1.9,
+                            positions: { clinching: 5, ground: 10, standing: 11 }
+                        },
+                        strikeMap: {
+                            head: { absorb: 7, strike: 11 },
+                            torso: { absorb: 5, strike: 9 },
+                            leg: { absorb: 3, strike: 6 }
+                        },
+                        submissions: { attemptsPer15Mins: 1.7, average: 1.2 },
+                        takedowns: {
+                            accuracy: 60,
+                            attempted: 5,
+                            avgTakedownsLandedPerMin: 0.21,
+                            defence: 4,
+                            landed: 3
+                        }
+                    }
+                }
+            ]
+        };
+
+        try {
+            // Prepare MongoDB update payload
+            const mongoDBPayload = prepareFightResultPayload(
+                fightId!,
+                fight!.competitionContext.competitionId,
+                fight!.competitionContext.seasonNumber,
+                fight!.competitionContext.divisionNumber!,
+                fight!.competitionContext.roundNumber,
+                fighter1Full,
+                fighter2Full,
+                mockChatGPTResponse
+            );
+
+            console.log('MongoDB Update Payload:', JSON.stringify(mongoDBPayload, null, 2));
+
+            // TODO: Send to backend to update MongoDB
+            // await updateFightResult(mongoDBPayload);
+            
+            setActionMode('none');
+            setSelectedWinner(null);
+            setFightDescription('');
+            alert('Winner recorded! Check console for MongoDB payload.');
+        } catch (error) {
+            console.error('Error preparing fight result:', error);
+            alert('Error preparing fight result. Check console for details.');
+        }
     };
 
     const handleSimulateFightClick = () => {

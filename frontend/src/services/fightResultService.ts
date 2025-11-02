@@ -1,0 +1,530 @@
+/**
+ * Fight Result Service
+ * Handles preparation of fight result data for MongoDB updates
+ * All updates are prepared in a single payload to minimize database requests
+ */
+
+interface ChatGPTResponse {
+    winner: string;
+    date: string;
+    userDescription?: string;
+    genAIDescription: string;
+    isSimulated: boolean;
+    fighterStats: Array<{
+        fighterId: string;
+        stats: any;
+    }>;
+}
+
+interface FightResultPayload {
+    fightId: string;
+    competitionId: string;
+    seasonNumber: number;
+    divisionNumber: number;
+    roundNumber: number;
+    timestamp: string;
+    chatGPTResponse: ChatGPTResponse;
+    competitionUpdate: {
+        winner: string;
+        date: string;
+        userDescription: string | null;
+        genAIDescription: string;
+        isSimulated: boolean;
+        fighterStats: any[];
+    };
+    fighter1Updates: any;
+    fighter2Updates: any;
+}
+
+/**
+ * Step 1: Prepare competition fight update
+ */
+const prepareCompetitionUpdate = (
+    chatGPTResponse: ChatGPTResponse,
+    timestamp: string
+) => {
+    return {
+        winner: chatGPTResponse.winner,
+        date: timestamp,
+        userDescription: chatGPTResponse.userDescription || null,
+        genAIDescription: chatGPTResponse.genAIDescription,
+        isSimulated: chatGPTResponse.isSimulated,
+        fighterStats: chatGPTResponse.fighterStats,
+    };
+};
+
+/**
+ * Step 3: Prepare competition history update for a fighter
+ */
+const prepareCompetitionHistoryUpdate = (
+    fighter: any,
+    competitionId: string,
+    isWinner: boolean
+) => {
+    const competitionHistory = fighter.competitionHistory || [];
+    const existingComp = competitionHistory.find(
+        (ch: any) => ch.competitionId === competitionId
+    );
+
+    if (existingComp) {
+        const newTotalFights = existingComp.totalFights + 1;
+        const newTotalWins = isWinner ? existingComp.totalWins + 1 : existingComp.totalWins;
+        const newTotalLosses = !isWinner ? existingComp.totalLosses + 1 : existingComp.totalLosses;
+        const newWinPercentage = (newTotalWins / newTotalFights) * 100;
+
+        return {
+            competitionId,
+            totalFights: newTotalFights,
+            totalWins: newTotalWins,
+            totalLosses: newTotalLosses,
+            winPercentage: newWinPercentage,
+        };
+    } else {
+        // New competition entry
+        return {
+            competitionId,
+            totalFights: 1,
+            totalWins: isWinner ? 1 : 0,
+            totalLosses: isWinner ? 0 : 1,
+            winPercentage: isWinner ? 100 : 0,
+        };
+    }
+};
+
+/**
+ * Step 4: Prepare season details update for a fighter
+ */
+const prepareSeasonDetailsUpdate = (
+    fighter: any,
+    competitionId: string,
+    seasonNumber: number,
+    divisionNumber: number,
+    isWinner: boolean
+) => {
+    const competitionHistory = fighter.competitionHistory || [];
+    const competition = competitionHistory.find((ch: any) => ch.competitionId === competitionId);
+    const seasonDetails = competition?.seasonDetails || [];
+    
+    const existingSeason = seasonDetails.find(
+        (sd: any) => sd.seasonNumber === seasonNumber && sd.divisionNumber === divisionNumber
+    );
+
+    if (existingSeason) {
+        const newFights = existingSeason.fights + 1;
+        const newWins = isWinner ? existingSeason.wins + 1 : existingSeason.wins;
+        const newLosses = !isWinner ? existingSeason.losses + 1 : existingSeason.losses;
+        const newPoints = existingSeason.points + (isWinner ? 3 : 0);
+        const newWinPercentage = (newWins / newFights) * 100;
+
+        return {
+            seasonNumber,
+            divisionNumber,
+            fights: newFights,
+            wins: newWins,
+            losses: newLosses,
+            points: newPoints,
+            winPercentage: newWinPercentage,
+        };
+    } else {
+        // New season/division entry
+        return {
+            seasonNumber,
+            divisionNumber,
+            fights: 1,
+            wins: isWinner ? 1 : 0,
+            losses: isWinner ? 0 : 1,
+            points: isWinner ? 3 : 0,
+            winPercentage: isWinner ? 100 : 0,
+        };
+    }
+};
+
+/**
+ * Step 5 & 6: Prepare opponents history update for a fighter
+ */
+const prepareOpponentsHistoryUpdate = (
+    fighter: any,
+    opponentId: string,
+    competitionId: string,
+    seasonNumber: number,
+    divisionNumber: number,
+    roundNumber: number,
+    fightId: string,
+    isWinner: boolean,
+    timestamp: string
+) => {
+    const opponentsHistory = fighter.opponentsHistory || [];
+    const existingOpponent = opponentsHistory.find((oh: any) => oh.opponentId === opponentId);
+
+    const newDetail = {
+        competitionId,
+        season: seasonNumber,
+        divisionId: divisionNumber,
+        roundId: roundNumber,
+        fightId,
+        isWinner,
+        date: timestamp,
+    };
+
+    if (existingOpponent) {
+        const newTotalFights = existingOpponent.totalFights + 1;
+        const newTotalWins = isWinner ? existingOpponent.totalWins + 1 : existingOpponent.totalWins;
+        const newTotalLosses = !isWinner ? existingOpponent.totalLosses + 1 : existingOpponent.totalLosses;
+        const newWinPercentage = (newTotalWins / newTotalFights) * 100;
+
+        return {
+            opponentId,
+            totalFights: newTotalFights,
+            totalWins: newTotalWins,
+            totalLosses: newTotalLosses,
+            winPercentage: newWinPercentage,
+            newDetail,
+        };
+    } else {
+        // New opponent entry
+        return {
+            opponentId,
+            totalFights: 1,
+            totalWins: isWinner ? 1 : 0,
+            totalLosses: isWinner ? 0 : 1,
+            winPercentage: isWinner ? 100 : 0,
+            newDetail,
+        };
+    }
+};
+
+/**
+ * Step 7A: Prepare debut information update (if needed)
+ */
+const prepareDebutInformationUpdate = (
+    fighter: any,
+    competitionId: string,
+    seasonNumber: number,
+    fightId: string,
+    timestamp: string
+) => {
+    // Check if debut information is empty or doesn't exist
+    const hasDebut = fighter.debutInformation && 
+                     fighter.debutInformation.competitionId && 
+                     fighter.debutInformation.fightId;
+
+    if (!hasDebut) {
+        return {
+            competitionId,
+            season: seasonNumber,
+            fightId,
+            dateOfDebut: timestamp
+        };
+    }
+
+    return null; // No update needed
+};
+
+/**
+ * Step 7B: Prepare streaks update for a fighter
+ */
+const prepareStreaksUpdate = (
+    fighter: any,
+    competitionId: string,
+    seasonNumber: number,
+    divisionNumber: number,
+    roundNumber: number,
+    opponentId: string,
+    isWinner: boolean
+) => {
+    const streaks = fighter.streaks || [];
+    const activeStreak = streaks.find((streak: any) => streak.active === true);
+    const resultType = isWinner ? 'win' : 'lose';
+
+    if (!activeStreak) {
+        // No active streak exists, create new one
+        return {
+            action: 'create',
+            newStreak: {
+                competitionId,
+                type: resultType,
+                start: {
+                    season: seasonNumber,
+                    division: divisionNumber,
+                    round: roundNumber
+                },
+                end: {
+                    season: seasonNumber,
+                    division: divisionNumber,
+                    round: roundNumber
+                },
+                count: 1,
+                active: true,
+                opponents: [opponentId]
+            }
+        };
+    }
+
+    // Active streak exists
+    if (activeStreak.type === resultType) {
+        // Streak continues - update count, end, and add opponent
+        return {
+            action: 'continue',
+            streakId: activeStreak._id, // Need to identify which streak to update
+            updates: {
+                count: activeStreak.count + 1,
+                end: {
+                    season: seasonNumber,
+                    division: divisionNumber,
+                    round: roundNumber
+                },
+                opponents: [...(activeStreak.opponents || []), opponentId]
+            }
+        };
+    } else {
+        // Streak breaks - end current streak and create new one
+        return {
+            action: 'break',
+            endStreak: {
+                streakId: activeStreak._id,
+                updates: {
+                    end: {
+                        season: activeStreak.end.season,
+                        division: activeStreak.end.division,
+                        round: activeStreak.end.round
+                    },
+                    active: false
+                }
+            },
+            newStreak: {
+                competitionId,
+                type: resultType,
+                start: {
+                    season: seasonNumber,
+                    division: divisionNumber,
+                    round: roundNumber
+                },
+                end: {
+                    season: seasonNumber,
+                    division: divisionNumber,
+                    round: roundNumber
+                },
+                count: 1,
+                active: true,
+                opponents: [opponentId]
+            }
+        };
+    }
+};
+
+/**
+ * Step 7C: Prepare fight stats update for a fighter
+ */
+const prepareFightStatsUpdate = (
+    fighter: any,
+    chatGPTStats: any
+) => {
+    const currentStats = fighter.fightStats || {};
+    const currentFightsCount = currentStats.fightsCount || 0;
+    const newFightsCount = currentFightsCount + 1;
+
+    // Handle finishing moves (array of strings)
+    const currentFinishingMoves = currentStats.finishingMoves || [];
+    const newFinishingMove = chatGPTStats.finishingMove;
+    const updatedFinishingMoves = newFinishingMove && !currentFinishingMoves.includes(newFinishingMove)
+        ? [...currentFinishingMoves, newFinishingMove]
+        : currentFinishingMoves;
+
+    // Average all numeric stats
+    const averageStat = (currentValue: number, newValue: number) => {
+        if (currentFightsCount === 0) return newValue;
+        return ((currentValue * currentFightsCount) + newValue) / newFightsCount;
+    };
+
+    // Prepare updated stats (averaging all metrics)
+    const updatedStats: any = {
+        fightsCount: newFightsCount,
+        finishingMoves: updatedFinishingMoves,
+    };
+
+    // Average grappling stats
+    if (chatGPTStats.grappling) {
+        updatedStats.grappling = {
+            accuracy: averageStat(currentStats.grappling?.accuracy || 0, chatGPTStats.grappling.accuracy || 0),
+            defence: averageStat(currentStats.grappling?.defence || 0, chatGPTStats.grappling.defence || 0),
+        };
+    }
+
+    // Average significant strikes stats
+    if (chatGPTStats.significantStrikes) {
+        updatedStats.significantStrikes = {
+            accuracy: averageStat(currentStats.significantStrikes?.accuracy || 0, chatGPTStats.significantStrikes.accuracy || 0),
+            attempted: averageStat(currentStats.significantStrikes?.attempted || 0, chatGPTStats.significantStrikes.attempted || 0),
+            defence: averageStat(currentStats.significantStrikes?.defence || 0, chatGPTStats.significantStrikes.defence || 0),
+            landed: averageStat(currentStats.significantStrikes?.landed || 0, chatGPTStats.significantStrikes.landed || 0),
+            landedPerMinute: averageStat(currentStats.significantStrikes?.landedPerMinute || 0, chatGPTStats.significantStrikes.landedPerMinute || 0),
+            positions: {
+                clinching: averageStat(currentStats.significantStrikes?.positions?.clinching || 0, chatGPTStats.significantStrikes.positions?.clinching || 0),
+                ground: averageStat(currentStats.significantStrikes?.positions?.ground || 0, chatGPTStats.significantStrikes.positions?.ground || 0),
+                standing: averageStat(currentStats.significantStrikes?.positions?.standing || 0, chatGPTStats.significantStrikes.positions?.standing || 0),
+            },
+        };
+    }
+
+    // Average submissions stats
+    if (chatGPTStats.submissions) {
+        updatedStats.submissions = {
+            attemptsPer15Mins: averageStat(currentStats.submissions?.attemptsPer15Mins || 0, chatGPTStats.submissions.attemptsPer15Mins || 0),
+            average: averageStat(currentStats.submissions?.average || 0, chatGPTStats.submissions.average || 0),
+        };
+    }
+
+    // Average takedowns stats
+    if (chatGPTStats.takedowns) {
+        updatedStats.takedowns = {
+            accuracy: averageStat(currentStats.takedowns?.accuracy || 0, chatGPTStats.takedowns.accuracy || 0),
+            attempted: averageStat(currentStats.takedowns?.attempted || 0, chatGPTStats.takedowns.attempted || 0),
+            avgTakedownsLandedPerMin: averageStat(currentStats.takedowns?.avgTakedownsLandedPerMin || 0, chatGPTStats.takedowns.avgTakedownsLandedPerMin || 0),
+            defence: averageStat(currentStats.takedowns?.defence || 0, chatGPTStats.takedowns.defence || 0),
+            landed: averageStat(currentStats.takedowns?.landed || 0, chatGPTStats.takedowns.landed || 0),
+        };
+    }
+
+    // Average strike map
+    if (chatGPTStats.strikeMap) {
+        updatedStats.strikeMap = {
+            head: {
+                absorb: averageStat(currentStats.strikeMap?.head?.absorb || 0, chatGPTStats.strikeMap.head?.absorb || 0),
+                strike: averageStat(currentStats.strikeMap?.head?.strike || 0, chatGPTStats.strikeMap.head?.strike || 0),
+            },
+            torso: {
+                absorb: averageStat(currentStats.strikeMap?.torso?.absorb || 0, chatGPTStats.strikeMap.torso?.absorb || 0),
+                strike: averageStat(currentStats.strikeMap?.torso?.strike || 0, chatGPTStats.strikeMap.torso?.strike || 0),
+            },
+            leg: {
+                absorb: averageStat(currentStats.strikeMap?.leg?.absorb || 0, chatGPTStats.strikeMap.leg?.absorb || 0),
+                strike: averageStat(currentStats.strikeMap?.leg?.strike || 0, chatGPTStats.strikeMap.leg?.strike || 0),
+            },
+        };
+    }
+
+    return updatedStats;
+};
+
+/**
+ * Main function: Prepare all fighter updates (Steps 3-7 + Debut + Streaks)
+ */
+const prepareFighterUpdates = (
+    fighter: any,
+    opponentId: string,
+    competitionId: string,
+    seasonNumber: number,
+    divisionNumber: number,
+    roundNumber: number,
+    fightId: string,
+    isWinner: boolean,
+    chatGPTStats: any,
+    timestamp: string
+) => {
+    return {
+        fighterId: fighter.id,
+        competitionHistoryUpdate: prepareCompetitionHistoryUpdate(fighter, competitionId, isWinner),
+        seasonDetailsUpdate: prepareSeasonDetailsUpdate(fighter, competitionId, seasonNumber, divisionNumber, isWinner),
+        opponentsHistoryUpdate: prepareOpponentsHistoryUpdate(
+            fighter,
+            opponentId,
+            competitionId,
+            seasonNumber,
+            divisionNumber,
+            roundNumber,
+            fightId,
+            isWinner,
+            timestamp
+        ),
+        debutInformationUpdate: prepareDebutInformationUpdate(
+            fighter,
+            competitionId,
+            seasonNumber,
+            fightId,
+            timestamp
+        ),
+        streaksUpdate: prepareStreaksUpdate(
+            fighter,
+            competitionId,
+            seasonNumber,
+            divisionNumber,
+            roundNumber,
+            opponentId,
+            isWinner
+        ),
+        fightStatsUpdate: prepareFightStatsUpdate(fighter, chatGPTStats),
+    };
+};
+
+/**
+ * Master function: Prepare complete fight result payload
+ */
+export const prepareFightResultPayload = (
+    fightId: string,
+    competitionId: string,
+    seasonNumber: number,
+    divisionNumber: number,
+    roundNumber: number,
+    fighter1: any,
+    fighter2: any,
+    chatGPTResponse: ChatGPTResponse
+): FightResultPayload => {
+    const timestamp = new Date().toISOString();
+    
+    // Step 1-2: Competition and fight stats update
+    const competitionUpdate = prepareCompetitionUpdate(chatGPTResponse, timestamp);
+
+    // Get fighter stats from ChatGPT response
+    const fighter1Stats = chatGPTResponse.fighterStats.find(fs => fs.fighterId === fighter1.id)?.stats;
+    const fighter2Stats = chatGPTResponse.fighterStats.find(fs => fs.fighterId === fighter2.id)?.stats;
+
+    if (!fighter1Stats || !fighter2Stats) {
+        throw new Error('Fighter stats not found in ChatGPT response');
+    }
+
+    // Determine winners
+    const fighter1IsWinner = chatGPTResponse.winner === fighter1.id;
+    const fighter2IsWinner = chatGPTResponse.winner === fighter2.id;
+
+    // Steps 3-7 for Fighter 1
+    const fighter1Updates = prepareFighterUpdates(
+        fighter1,
+        fighter2.id,
+        competitionId,
+        seasonNumber,
+        divisionNumber,
+        roundNumber,
+        fightId,
+        fighter1IsWinner,
+        fighter1Stats,
+        timestamp
+    );
+
+    // Steps 3-7 for Fighter 2
+    const fighter2Updates = prepareFighterUpdates(
+        fighter2,
+        fighter1.id,
+        competitionId,
+        seasonNumber,
+        divisionNumber,
+        roundNumber,
+        fightId,
+        fighter2IsWinner,
+        fighter2Stats,
+        timestamp
+    );
+
+    return {
+        fightId,
+        competitionId,
+        seasonNumber,
+        divisionNumber,
+        roundNumber,
+        timestamp,
+        chatGPTResponse,
+        competitionUpdate,
+        fighter1Updates,
+        fighter2Updates,
+    };
+};
+
