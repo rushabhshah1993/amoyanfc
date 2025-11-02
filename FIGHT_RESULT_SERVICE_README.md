@@ -464,13 +464,15 @@ Action: BREAK
 
 3. **Streaks**: Only ONE active streak per fighter at any time. When a streak breaks, the old one is deactivated before creating a new one.
 
-4. **Transaction Required**: All steps must succeed or all must rollback to prevent data corruption.
+4. **Season Completion**: Automatically checked after every fight result. The backend should handle season finalization (standings, winners, promotions) when `isSeasonCompleted === true`.
 
-5. **Date Handling**: Uses current timestamp when user clicks, not the scheduled fight date.
+5. **Transaction Required**: All steps must succeed or all must rollback to prevent data corruption.
 
-6. **Finishing Moves**: Array of unique strings. Never add duplicates.
+6. **Date Handling**: Uses current timestamp when user clicks, not the scheduled fight date.
 
-7. **New Competitions**: Service handles creating new entries for IFL S1 automatically.
+7. **Finishing Moves**: Array of unique strings. Never add duplicates.
+
+8. **New Competitions**: Service handles creating new entries for IFL S1 automatically.
 
 ---
 
