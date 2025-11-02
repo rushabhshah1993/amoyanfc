@@ -34,6 +34,15 @@ interface FightResultPayload {
     };
     fighter1Updates: any;
     fighter2Updates: any;
+    roundStandingsUpdate: {
+        competitionId: string;
+        seasonNumber: number;
+        divisionNumber: number;
+        roundNumber: number;
+        fightId: string;
+        fightIdentifier: string;
+        standings: any[];
+    } | null;
     seasonCompletionStatus: {
         isSeasonCompleted: boolean;
         competitionType?: 'league' | 'cup';
@@ -523,6 +532,23 @@ export const prepareFightResultPayload = (
         timestamp
     );
 
+    // Calculate round standings after this fight
+    const divisionFighters = competition.seasonMeta?.leagueDivisions?.find(
+        (div: any) => div.divisionNumber === divisionNumber
+    )?.fighters || [];
+    
+    const roundStandingsUpdate = divisionFighters.length > 0 
+        ? prepareRoundStandingsUpdate(
+            competition,
+            fightId,
+            competitionId,
+            seasonNumber,
+            divisionNumber,
+            roundNumber,
+            divisionFighters
+        )
+        : null;
+
     // Check if season is completed after this fight
     const seasonCompletionStatus = checkSeasonCompletion(competition);
 
@@ -537,6 +563,7 @@ export const prepareFightResultPayload = (
         competitionUpdate,
         fighter1Updates,
         fighter2Updates,
+        roundStandingsUpdate,
         seasonCompletionStatus,
     };
 };
@@ -623,7 +650,7 @@ export const checkSeasonCompletion = (competitionData: any) => {
 
         return {
             isSeasonCompleted: allDivisionsCompleted,
-            competitionType: 'league',
+            competitionType: 'league' as const,
             divisionStatuses,
             seasonNumber: competitionData.seasonMeta?.seasonNumber,
             competitionId: competitionData.id
@@ -639,7 +666,7 @@ export const checkSeasonCompletion = (competitionData: any) => {
         if (!lastRound) {
             return {
                 isSeasonCompleted: false,
-                competitionType: 'cup',
+                competitionType: 'cup' as const,
                 reason: 'No rounds found'
             };
         }
@@ -663,7 +690,7 @@ export const checkSeasonCompletion = (competitionData: any) => {
 
         return {
             isSeasonCompleted: isCompleted,
-            competitionType: 'cup',
+            competitionType: 'cup' as const,
             roundNumber: lastRound.roundNumber,
             totalFights,
             completedFights,
@@ -675,6 +702,339 @@ export const checkSeasonCompletion = (competitionData: any) => {
     return {
         isSeasonCompleted: false,
         reason: 'Unable to determine competition structure'
+    };
+};
+
+// ==========================================
+// ROUND STANDINGS CALCULATION
+// ==========================================
+
+const POINTS_PER_WIN = 3;
+
+/**
+ * Calculate head-to-head points for tied fighters
+ * Used as tiebreaker when multiple fighters have the same total points
+ */
+const calculateHeadToHeadPoints = (
+    tiedFighters: string[],
+    completedFights: any[]
+): Map<string, number> => {
+    const h2hPoints = new Map<string, number>();
+    
+    tiedFighters.forEach(fighterId => {
+        h2hPoints.set(fighterId, 0);
+    });
+
+    completedFights.forEach(fight => {
+        if (!fight.winner || fight.fightStatus !== 'completed') return;
+
+        const fighter1InTied = tiedFighters.includes(fight.fighter1);
+        const fighter2InTied = tiedFighters.includes(fight.fighter2);
+
+        // Only count fights between tied fighters
+        if (fighter1InTied && fighter2InTied) {
+            const currentPoints = h2hPoints.get(fight.winner) || 0;
+            h2hPoints.set(fight.winner, currentPoints + POINTS_PER_WIN);
+        }
+    });
+
+    return h2hPoints;
+};
+
+/**
+ * Sort standings with tiebreaking logic
+ * 1. Points (descending)
+ * 2. Head-to-head points among tied fighters (descending)
+ * 3. Alphabetical by fighter ID (ascending) - final tiebreaker
+ */
+const sortStandingsWithTiebreakers = (
+    standings: any[],
+    completedFights: any[]
+): any[] => {
+    // Group fighters by points
+    const pointsGroups = new Map<number, string[]>();
+    
+    standings.forEach(standing => {
+        const fighters = pointsGroups.get(standing.points) || [];
+        fighters.push(standing.fighterId);
+        pointsGroups.set(standing.points, fighters);
+    });
+
+    const fighterRankings = new Map<string, number>();
+    let currentRank = 1;
+
+    // Sort points descending
+    const sortedPoints = Array.from(pointsGroups.keys()).sort((a, b) => b - a);
+
+    sortedPoints.forEach(points => {
+        const tiedFighters = pointsGroups.get(points) || [];
+
+        if (tiedFighters.length === 1) {
+            // No tie - assign rank directly
+            fighterRankings.set(tiedFighters[0], currentRank);
+            currentRank++;
+        } else {
+            // Tie - use head-to-head tiebreaker
+            const h2hPoints = calculateHeadToHeadPoints(tiedFighters, completedFights);
+            
+            const sortedTiedFighters = [...tiedFighters].sort((a, b) => {
+                const h2hA = h2hPoints.get(a) || 0;
+                const h2hB = h2hPoints.get(b) || 0;
+
+                // First: compare head-to-head points
+                if (h2hA !== h2hB) {
+                    return h2hB - h2hA;
+                }
+
+                // Final tiebreaker: alphabetical by ID
+                return a.localeCompare(b);
+            });
+
+            // Assign ranks to tied fighters
+            sortedTiedFighters.forEach(fighterId => {
+                fighterRankings.set(fighterId, currentRank);
+                currentRank++;
+            });
+        }
+    });
+
+    // Sort all standings by rank
+    const sortedStandings = [...standings].sort((a, b) => {
+        const rankA = fighterRankings.get(a.fighterId) || 999;
+        const rankB = fighterRankings.get(b.fighterId) || 999;
+        return rankA - rankB;
+    });
+
+    // Update rank property
+    sortedStandings.forEach((standing, index) => {
+        standing.rank = index + 1;
+    });
+
+    return sortedStandings;
+};
+
+/**
+ * Get all completed fights in a division up to and including a specific fight
+ */
+const getCompletedFightsUpToPoint = (
+    allFights: any[],
+    fightIdentifier: string,
+    divisionNumber: number
+): any[] => {
+    // Parse fight identifier (e.g., "IFC-S10-D1-R5-F1")
+    const parts = fightIdentifier.split('-');
+    const targetRound = parseInt(parts[3].substring(1));
+    const targetFightNum = parseInt(parts[4].substring(1));
+
+    return allFights.filter(fight => {
+        if (fight.fightStatus !== 'completed' || !fight.winner) return false;
+
+        const fightParts = fight.fightIdentifier.split('-');
+        const fightRound = parseInt(fightParts[3].substring(1));
+        const fightNum = parseInt(fightParts[4].substring(1));
+
+        // Include if in earlier round, or same round but earlier/equal fight number
+        if (fightRound < targetRound) return true;
+        if (fightRound === targetRound && fightNum <= targetFightNum) return true;
+
+        return false;
+    });
+};
+
+/**
+ * Prepares round standings update after a fight result
+ * This calculates the standings for all fighters in the division
+ * after the current fight is completed.
+ * 
+ * @param competitionData - Full competition document
+ * @param fightId - The fight identifier (e.g., "IFC-S10-D1-R5-F1")
+ * @param divisionNumber - The division number
+ * @param roundNumber - The round number
+ * @param divisionFighters - Array of fighter IDs in the division
+ * @returns Round standings document to be saved
+ */
+export const prepareRoundStandingsUpdate = (
+    competitionData: any,
+    fightId: string,
+    competitionId: string,
+    seasonNumber: number,
+    divisionNumber: number,
+    roundNumber: number,
+    divisionFighters: string[]
+) => {
+    console.log(`\n📊 Calculating Round Standings for ${fightId}...`);
+
+    // Get all fights in this division from competition data
+    const division = competitionData.leagueData?.divisions?.find(
+        (d: any) => d.divisionNumber === divisionNumber
+    );
+
+    if (!division) {
+        console.warn(`⚠️ Division ${divisionNumber} not found in competition data`);
+        return null;
+    }
+
+    // Flatten all fights from all rounds in this division
+    const allDivisionFights: any[] = [];
+    division.rounds?.forEach((round: any) => {
+        round.fights?.forEach((fight: any) => {
+            allDivisionFights.push(fight);
+        });
+    });
+
+    // Get completed fights up to this point
+    const completedFights = getCompletedFightsUpToPoint(
+        allDivisionFights,
+        fightId,
+        divisionNumber
+    );
+
+    console.log(`   - Division fighters: ${divisionFighters.length}`);
+    console.log(`   - Completed fights: ${completedFights.length}`);
+
+    // Calculate stats for each fighter
+    const fighterStats = new Map<string, any>();
+    divisionFighters.forEach(fighterId => {
+        fighterStats.set(fighterId, {
+            fighterId,
+            fightsCount: 0,
+            wins: 0,
+            points: 0,
+            rank: 0,  // Will be calculated later
+            totalFightersCount: divisionFighters.length
+        });
+    });
+
+    // Process completed fights
+    completedFights.forEach(fight => {
+        const fighter1Stats = fighterStats.get(fight.fighter1);
+        const fighter2Stats = fighterStats.get(fight.fighter2);
+
+        if (fighter1Stats) {
+            fighter1Stats.fightsCount++;
+            if (fight.winner === fight.fighter1) {
+                fighter1Stats.wins++;
+                fighter1Stats.points += POINTS_PER_WIN;
+            }
+        }
+
+        if (fighter2Stats) {
+            fighter2Stats.fightsCount++;
+            if (fight.winner === fight.fighter2) {
+                fighter2Stats.wins++;
+                fighter2Stats.points += POINTS_PER_WIN;
+            }
+        }
+    });
+
+    // Convert to array and sort with tiebreakers
+    let standings = Array.from(fighterStats.values());
+    standings = sortStandingsWithTiebreakers(standings, completedFights);
+
+    console.log(`   ✅ Standings calculated - Top 3:`);
+    standings.slice(0, 3).forEach((s, idx) => {
+        const trophy = idx === 0 ? ' 🏆' : '';
+        console.log(`      ${s.rank}. Fighter ${s.fighterId.substring(0, 8)}... - ${s.points} pts (${s.wins}W)${trophy}`);
+    });
+
+    return {
+        competitionId,
+        seasonNumber,
+        divisionNumber,
+        roundNumber,
+        fightId,
+        fightIdentifier: fightId,
+        standings
+    };
+};
+
+// ==========================================
+// DETERMINE DIVISION WINNERS
+// ==========================================
+
+/**
+ * Prepares the structure for updating division winners in seasonMeta
+ * when a season is complete. This should be called AFTER verifying
+ * the season is complete using checkSeasonCompletion().
+ * 
+ * NOTE: This function does NOT sort standings. It assumes the standings
+ * have already been calculated and sorted by the round standings logic.
+ * It simply picks all fighters with rank 1.
+ * 
+ * @param competitionData - Full competition document with leagueData
+ * @param finalStandingsData - Array of ALREADY SORTED standings data for each division
+ * @returns Object with updates for seasonMeta.leagueDivisions[].winners
+ */
+export const prepareDivisionWinnersUpdate = (
+    competitionData: any,
+    finalStandingsData: Array<{
+        divisionNumber: number;
+        standings: Array<{
+            fighterId: string;
+            fightsCount: number;
+            wins: number;
+            points: number;
+            rank: number;
+            totalFightersCount: number;
+        }>;
+    }>
+) => {
+    console.log('\n🏆 Determining Division Winners...');
+
+    const isLeague = competitionData.leagueData !== null && competitionData.leagueData !== undefined;
+
+    if (!isLeague) {
+        console.warn('⚠️ Not a league competition. Division winners only apply to leagues.');
+        return null;
+    }
+
+    const divisionWinners: Array<{
+        divisionNumber: number;
+        winners: string[];  // Fighter IDs (array to support potential ties)
+    }> = [];
+
+    for (const divisionStandings of finalStandingsData) {
+        const { divisionNumber, standings } = divisionStandings;
+
+        if (!standings || standings.length === 0) {
+            console.warn(`⚠️ No standings found for Division ${divisionNumber}`);
+            continue;
+        }
+
+        // Simply get all fighters with rank 1 (standings are pre-sorted by round standings calculation)
+        const topRankFighters = standings.filter(s => s.rank === 1);
+
+        if (topRankFighters.length === 0) {
+            console.warn(`⚠️ No rank 1 fighter found in Division ${divisionNumber}`);
+            continue;
+        }
+
+        const winnerIds = topRankFighters.map(f => f.fighterId);
+
+        console.log(
+            `🥇 Division ${divisionNumber} Winner${winnerIds.length > 1 ? 's' : ''}: ` +
+            `${winnerIds.join(', ')}` +
+            (topRankFighters[0] ? ` (${topRankFighters[0].wins} wins, ${topRankFighters[0].points} points)` : '')
+        );
+
+        divisionWinners.push({
+            divisionNumber,
+            winners: winnerIds
+        });
+    }
+
+    if (divisionWinners.length === 0) {
+        console.warn('⚠️ No division winners could be determined');
+        return null;
+    }
+
+    console.log(`✅ Successfully determined winners for ${divisionWinners.length} division(s)`);
+
+    return {
+        competitionId: competitionData.id,
+        seasonNumber: competitionData.seasonMeta?.seasonNumber,
+        divisionWinners,
+        updateType: 'seasonMeta.leagueDivisions[].winners'
     };
 };
 

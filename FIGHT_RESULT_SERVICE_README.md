@@ -224,6 +224,22 @@ newAverage = ((currentValue × currentCount) + newValue) / (currentCount + 1)
     },
     fightStatsUpdate: { ... }
   },
+  roundStandingsUpdate: {         // Current standings after this fight
+    competitionId: string,
+    seasonNumber: number,
+    divisionNumber: number,
+    roundNumber: number,
+    fightId: string,
+    fightIdentifier: string,
+    standings: Array<{
+      fighterId: string,
+      fightsCount: number,
+      wins: number,
+      points: number,
+      rank: number,
+      totalFightersCount: number
+    }>
+  } | null,
   seasonCompletionStatus: {       // Automatic season completion check
     isSeasonCompleted: boolean,
     competitionType: 'league' | 'cup',
@@ -247,7 +263,9 @@ newAverage = ((currentValue × currentCount) + newValue) / (currentCount + 1)
 6. `prepareStreaksUpdate()` - Step 7B
 7. `prepareFightStatsUpdate()` - Step 7C
 8. `prepareFighterUpdates()` - Combines Steps 3-7C for one fighter
-9. `checkSeasonCompletion()` - Checks if season has ended
+9. `prepareRoundStandingsUpdate()` - Calculates round standings after fight
+10. `checkSeasonCompletion()` - Checks if season has ended
+11. `prepareDivisionWinnersUpdate()` - Determines division winners when season completes
 
 ### **Main Exports:**
 
@@ -300,6 +318,118 @@ Checks if a season has ended by verifying all fights in the last round of every 
 - Checks the final round (last item in rounds array)
 - Verifies all fights in that round are completed
 - Season is complete when final round is complete
+
+#### **3. prepareRoundStandingsUpdate()**
+```typescript
+prepareRoundStandingsUpdate(
+  competitionData: any,
+  fightId: string,
+  competitionId: string,
+  seasonNumber: number,
+  divisionNumber: number,
+  roundNumber: number,
+  divisionFighters: string[]
+): {
+  competitionId: string,
+  seasonNumber: number,
+  divisionNumber: number,
+  roundNumber: number,
+  fightId: string,
+  fightIdentifier: string,
+  standings: Array<{
+    fighterId: string,
+    fightsCount: number,
+    wins: number,
+    points: number,
+    rank: number,
+    totalFightersCount: number
+  }>
+} | null
+```
+
+**When to use:**
+- Called automatically within `prepareFightResultPayload()` after EVERY fight result
+- Calculates the current standings for the division after the fight completes
+
+**What it does:**
+- Finds all completed fights in the division up to this point
+- Calculates points for each fighter (3 points per win)
+- Applies sophisticated tiebreaking logic:
+  1. **Primary:** Total points (descending)
+  2. **Tiebreaker 1:** Head-to-head points among tied fighters (descending)
+  3. **Tiebreaker 2:** Alphabetical by fighter ID (ascending)
+- Assigns ranks based on sorted order
+- Returns complete standings snapshot
+
+**Head-to-Head Tiebreaker:**
+When fighters have the same points:
+1. Find all completed fights between the tied fighters
+2. Award 3 points for each head-to-head win
+3. Sort by these head-to-head points
+4. If still tied, use alphabetical order
+
+**Example:**
+```
+Fighter A: 15 points (5 wins)
+Fighter B: 15 points (5 wins)  ← Tied with A
+Fighter C: 12 points (4 wins)
+
+Head-to-head between A and B:
+- Fight 1: A beat B → A gets 3 h2h points
+- Fight 2: A beat B → A gets 3 more h2h points
+
+Final rankings:
+1. Fighter A (15 pts, 6 h2h pts) 🏆
+2. Fighter B (15 pts, 0 h2h pts)
+3. Fighter C (12 pts)
+```
+
+**Important:**
+- This is the SAME logic used in the migration scripts (`calculate-season10-standings.js`)
+- Ensures consistency with historical standings data
+- Backend should save this to the `RoundStandings` collection
+
+#### **4. prepareDivisionWinnersUpdate()**
+```typescript
+prepareDivisionWinnersUpdate(
+  competitionData: any,
+  finalStandingsData: Array<{
+    divisionNumber: number,
+    standings: Array<{
+      fighterId: string,
+      fightsCount: number,
+      wins: number,
+      points: number,
+      rank: number,
+      totalFightersCount: number
+    }>
+  }>
+): {
+  competitionId: string,
+  seasonNumber: number,
+  divisionWinners: Array<{
+    divisionNumber: number,
+    winners: string[]
+  }>,
+  updateType: string
+} | null
+```
+
+**When to use:**
+- Call this AFTER confirming `isSeasonCompleted === true`
+- Requires standings data from `GET_FINAL_SEASON_STANDINGS` GraphQL query for each division
+- Backend should query final standings for all divisions, then call this function
+
+**What it does:**
+- Takes final standings data for all divisions
+- Identifies the fighter(s) with rank 1 in each division
+- Supports ties (multiple fighters with rank 1)
+- Returns structure to update `seasonMeta.leagueDivisions[].winners` in MongoDB
+
+**Important:**
+- Only works for league competitions (not cups)
+- Returns `null` for non-league competitions
+- Handles ties gracefully by including all rank 1 fighters
 
 ---
 
@@ -404,12 +534,14 @@ Message: "✅ CUP SEASON COMPLETED!"
 - Call `checkSeasonCompletion()` after EVERY fight result update
 - The function is automatically called within `prepareFightResultPayload()`
 - Check `seasonCompletionStatus.isSeasonCompleted` in the returned payload
-- If `true`, you may want to:
-  - Mark the season as complete in the database
-  - Calculate final standings
-  - Determine division winners
-  - Send notifications
-  - Trigger playoff/promotion logic
+- If `true`, you MUST:
+  1. **Query final standings** for all divisions using `GET_FINAL_SEASON_STANDINGS`
+  2. **Call `prepareDivisionWinnersUpdate()`** with the standings data
+  3. **Update `seasonMeta.leagueDivisions[].winners`** in MongoDB with the returned fighter IDs
+  4. Mark the season as complete in the database (`isActive: false`)
+  5. Set the `endDate` in `seasonMeta`
+  6. Send notifications
+  7. Optionally trigger playoff/promotion logic
 
 ---
 
@@ -458,21 +590,27 @@ Action: BREAK
 
 ## ⚠️ Important Notes
 
-1. **fightsCount Property**: New property in `fightStats` for accurate averaging. Must be initialized to 0 for existing fighters.
+1. **Round Standings**: Automatically calculated after EVERY fight result using head-to-head tiebreaker logic. Backend MUST save to `RoundStandings` collection.
 
-2. **debutInformation**: Only updated if empty/missing. Once set, never changes.
+2. **Tiebreaker Consistency**: The standings calculation uses the SAME logic as migration scripts to ensure historical data consistency.
 
-3. **Streaks**: Only ONE active streak per fighter at any time. When a streak breaks, the old one is deactivated before creating a new one.
+3. **fightsCount Property**: New property in `fightStats` for accurate averaging. Must be initialized to 0 for existing fighters.
 
-4. **Season Completion**: Automatically checked after every fight result. The backend should handle season finalization (standings, winners, promotions) when `isSeasonCompleted === true`.
+4. **debutInformation**: Only updated if empty/missing. Once set, never changes.
 
-5. **Transaction Required**: All steps must succeed or all must rollback to prevent data corruption.
+5. **Streaks**: Only ONE active streak per fighter at any time. When a streak breaks, the old one is deactivated before creating a new one.
 
-6. **Date Handling**: Uses current timestamp when user clicks, not the scheduled fight date.
+6. **Season Completion**: Automatically checked after every fight result. The backend should handle season finalization (standings, winners, promotions) when `isSeasonCompleted === true`.
 
-7. **Finishing Moves**: Array of unique strings. Never add duplicates.
+7. **Division Winners**: Uses pre-calculated standings (no sorting). Simply picks all rank 1 fighters from final round standings.
 
-8. **New Competitions**: Service handles creating new entries for IFL S1 automatically.
+8. **Transaction Required**: All steps must succeed or all must rollback to prevent data corruption.
+
+9. **Date Handling**: Uses current timestamp when user clicks, not the scheduled fight date.
+
+10. **Finishing Moves**: Array of unique strings. Never add duplicates.
+
+11. **New Competitions**: Service handles creating new entries for IFL S1 automatically.
 
 ---
 
@@ -577,6 +715,41 @@ Action: BREAK
 📊 Division 3: Round 12 - 6/6 fights completed
 ⏳ Season still in progress...
 ```
+
+**With Round Standings:**
+```
+📊 Calculating Round Standings for IFC-S10-D1-R5-F1...
+   - Division fighters: 6
+   - Completed fights: 10
+   ✅ Standings calculated - Top 3:
+      1. Fighter 676d6ecc... - 12 pts (4W) 🏆
+      2. Fighter 676d7631... - 9 pts (3W)
+      3. Fighter 676d8542... - 6 pts (2W)
+```
+
+**When Season Completes:**
+```
+📊 Calculating Round Standings for IFC-S10-D1-R12-F6...
+   - Division fighters: 6
+   - Completed fights: 36
+   ✅ Standings calculated - Top 3:
+      1. Fighter 676d6ecc... - 30 pts (10W) 🏆
+      2. Fighter 676d7631... - 24 pts (8W)
+      3. Fighter 676d8542... - 21 pts (7W)
+
+🔍 Checking Season Completion...
+📊 Division 1: Round 12 - 6/6 fights completed
+📊 Division 2: Round 12 - 6/6 fights completed
+📊 Division 3: Round 12 - 6/6 fights completed
+✅ SEASON COMPLETED! All divisions have finished their final rounds.
+
+🏆 Determining Division Winners...
+🥇 Division 1 Winner: 676d6ecceb38b2b97c6da945 (10 wins, 30 points)
+🥇 Division 2 Winner: 676d7631eb38b2b97c6da9ab (11 wins, 33 points)
+🥇 Division 3 Winners: fighter_id_1, fighter_id_2 (9 wins, 27 points)
+✅ Successfully determined winners for 3 division(s)
+```
+**Note:** Division 3 shows a tie - both fighters have rank 1 in final standings.
 
 ---
 
