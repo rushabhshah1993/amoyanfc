@@ -8,6 +8,7 @@ import competitionTypeDef from './competition.typedef.js';
 import fightTypeDef from './fight.typedef.js';
 import fighterTypeDef from './fighter.typedef.js';
 import globalRankTypeDef from './global-rank.typeDef.js';
+import globalRankingTriggerTypeDef from './global-ranking-trigger.typedef.js';
 import roundStandingsTypeDef from './round-standings.typedef.js';
 import { authTypeDef } from './auth.typedef.js';
 
@@ -18,6 +19,7 @@ const mergedTypeDefs = mergeTypeDefs([
     fightTypeDef,
     fighterTypeDef,
     globalRankTypeDef,
+    globalRankingTriggerTypeDef,
     roundStandingsTypeDef,
     authTypeDef
 ]);

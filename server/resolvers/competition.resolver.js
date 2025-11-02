@@ -13,6 +13,9 @@ import { NotFoundError } from '../error.js';
 /* Utility imports */
 import { catchAsyncErrors } from '../utils.js';
 
+/* Service imports */
+import { autoTriggerGlobalRankingIfNeeded } from './global-ranking-trigger.resolver.js';
+
 const competitionResolver = {
     Date: GraphQLDateTime,
     
@@ -213,6 +216,13 @@ const competitionResolver = {
                 { new: true }
             );
             if(!updatedCompetitionSeason) throw new NotFoundError("Competition not found");
+            
+            // Auto-trigger global ranking calculation if all competitions for the season are complete
+            // This is non-blocking and won't affect the response
+            autoTriggerGlobalRankingIfNeeded(updatedCompetitionSeason).catch(err => {
+                console.error('Error in auto-trigger global ranking:', err);
+            });
+            
             return updatedCompetitionSeason;
         }),
 
