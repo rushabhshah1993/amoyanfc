@@ -507,6 +507,7 @@ async function calculateAndSaveRoundStandings(
     
     // Save to RoundStandings collection
     console.log('   📝 Saving standings to database...');
+    console.log('      - Competition Meta ID:', competition.competitionMetaId._id);
     console.log('      - Competition ID:', competition._id);
     console.log('      - Season Number:', competition.seasonMeta.seasonNumber);
     console.log('      - Division Number:', divisionNumber);
@@ -515,7 +516,7 @@ async function calculateAndSaveRoundStandings(
     
     const savedStandings = await RoundStandings.findOneAndUpdate(
         {
-            competitionId: competition._id,
+            competitionId: competition.competitionMetaId._id,
             seasonNumber: competition.seasonMeta.seasonNumber,
             divisionNumber,
             roundNumber,

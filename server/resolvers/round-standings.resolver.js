@@ -54,9 +54,16 @@ const roundStandingsResolvers = {
             // Import Competition model
             const { Competition } = await import('../models/competition.model.js');
             
-            const competition = await Competition.findById(competitionId);
+            // Find competition by CompetitionMeta ID and season number
+            const competition = await Competition.findOne({
+              competitionMetaId: competitionId,
+              'seasonMeta.seasonNumber': seasonNumber
+            });
+            
             if (!competition || !competition.seasonMeta?.leagueDivisions) {
               console.log('   ⚠️  Competition or league divisions not found');
+              console.log('   - Searched for competitionMetaId:', competitionId);
+              console.log('   - Searched for seasonNumber:', seasonNumber);
               return null;
             }
             
@@ -91,7 +98,9 @@ const roundStandingsResolvers = {
               roundNumber,
               fightId: 'initial',
               fightIdentifier: 'initial',
-              standings: initialStandings
+              standings: initialStandings,
+              createdAt: new Date(),
+              updatedAt: new Date()
             };
           }
           
