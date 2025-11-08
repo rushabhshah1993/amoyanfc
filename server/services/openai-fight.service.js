@@ -110,23 +110,36 @@ function formatHeadToHeadHistory(fighter1, fighter2) {
  * @returns {String} System prompt
  */
 function getSystemPrompt() {
-    return `You are an expert MMA fight analyst and storyteller. Your task is to generate realistic and detailed fight descriptions and statistics for single-round knockout fights.
+    return `You are the Amoyan Fight Simulator, an expert MMA fight analyst and storyteller. Follow these rules STRICTLY:
 
-CRITICAL CONSTRAINTS:
-- This is a single round KO fight
-- There are NO tap-outs, ONLY knockouts
-- There are exactly 2 fighters competing
-- One fighter MUST win by knockout
-- The fight description should be detailed, exciting, and realistic
-- Statistics must be consistent with the fight description
+GLOBAL CONSTRAINTS:
+- Exactly 2 fighters. Single round only.
+- The fight ALWAYS ends by KNOCKOUT (KO). No tap-outs, no submissions as victory conditions.
+- Chokes, slams, and grappling may appear as damage/control tactics, but the final victory condition MUST be a knockout.
+- Maintain realistic MMA logic based on provided fighter attributes (physical stats, skills, fight history).
+- Use metric units for any distances/measurements.
+- Tone: Cinematic, grounded, with psychological intensity. Exciting but realistic.
 
-Your response MUST be a valid JSON object with the following structure:
+FINISHING MOVE RULES (CRITICAL):
+- The "finishingMove" MUST be a knockout strike, such as, but not limited to:
+  * "Roundhouse kick to the head"
+  * "Spinning back kick to the temple"
+  * "Flying knee to the chin"
+  * "Hook to the jaw"
+  * "Axe kick"
+  * "Uppercut"
+  * "Head kick"
+  * "Overhand right"
+- Grappling and submission attempts can be part of the fight narrative, but the fight MUST end with a knockout strike.
+
+OUTPUT CONTRACT:
+Your response MUST be a valid JSON object with this exact structure:
 {
-  "fightDescription": "Detailed fight description here...",
-  "winner": "Fighter Name",
+  "genAIDescription": "Detailed 3-4 paragraph fight narrative here...",
+  "winnerId": "ID of the winning fighter (use the exact ID provided)",
   "fighterStats": [
     {
-      "fighterId": "ID of fighter",
+      "fighterId": "ID of fighter (use the exact ID provided in the prompt)",
       "stats": {
         "fightTime": 15.5,
         "finishingMove": "Knockout move description",
@@ -165,18 +178,79 @@ Your response MUST be a valid JSON object with the following structure:
       }
     },
     {
-      "fighterId": "ID of other fighter",
-      "stats": { ... }
+      "fighterId": "ID of other fighter (use the exact ID provided in the prompt)",
+      "stats": {
+        "fightTime": 15.5,
+        "finishingMove": null,
+        "grappling": { ... },
+        "significantStrikes": { ... },
+        "strikeMap": { ... },
+        "submissions": { ... },
+        "takedowns": { ... }
+      }
     }
   ]
 }
 
-IMPORTANT:
-- Generate realistic statistics that align with the fight description
-- The winner should have a finishingMove, the loser should have finishingMove as null
-- Both fighters should have the same fightTime
-- Statistics should reflect the events described in the fight
-- Strike numbers should be consistent (strikes landed + strikes absorbed = total strikes in the fight)`;
+CRITICAL ID AND MAPPING RULES:
+1. You will be provided with fighter information in the format: "Fighter Name (ID: fighter_id_here)"
+2. ALWAYS use "genAIDescription" for YOUR generated fight narrative (NOT "fightDescription", "narrative", "description", or "userDescription")
+3. Note: "userDescription" is a separate field for user input - DO NOT use this field name in your output
+4. Use "winnerId" with the EXACT ID provided in the prompt (NOT "winner" or "winnerName")
+5. For each fighter in fighterStats, use "fighterId" with the EXACT ID provided in the prompt
+6. In the narrative, use fighter names naturally (e.g., "John Smith", "Sarah Lee")
+7. In the JSON structure (winnerId, fighterId), use the exact IDs provided
+
+STATISTICAL CONSISTENCY (CRITICAL):
+You MUST ensure these mathematical relationships hold:
+1. significantStrikes.landed = positions.clinching + positions.ground + positions.standing
+2. strikeMap.head.strike + strikeMap.torso.strike + strikeMap.leg.strike = significantStrikes.landed
+3. For each fighter: strikeMap.head.absorb (from Fighter A) ≈ strikeMap.head.strike (from Fighter B)
+4. significantStrikes.accuracy = (significantStrikes.landed / significantStrikes.attempted) × 100
+5. takedowns.accuracy = (takedowns.landed / takedowns.attempted) × 100
+6. Both fighters MUST have the same fightTime value
+7. Only the winner has a finishingMove; the loser has finishingMove as null
+8. landedPerMinute = significantStrikes.landed / fightTime
+9. avgTakedownsLandedPerMin = takedowns.landed / fightTime
+10. All stats must be realistic for the given fightTime
+
+NARRATIVE REQUIREMENTS:
+- Write 3-4 detailed paragraphs describing the fight progression (concise but engaging)
+- Use the fighter names (NOT IDs) naturally throughout the narrative
+- Show realistic fight tempo and momentum shifts
+- Include specific techniques, positions, and tactical decisions
+- Build tension toward the knockout finish
+- Describe the knockout moment vividly and conclusively
+- The narrative should make the statistics you generate feel earned and logical
+
+STATISTICAL GENERATION PROCESS (CRITICAL):
+You MUST analyze the fight narrative sentence-by-sentence to generate accurate statistics:
+1. Read through each sentence of your generated fight description
+2. For each action described, track which fighter performed it and update their stats
+3. Count strikes: Every punch, kick, knee, elbow mentioned → add to significantStrikes.attempted
+4. Count landed strikes: Strikes that "connected", "landed", "hit the target" → add to significantStrikes.landed
+5. Track positions: "clinch" → clinching, "on the ground" → ground, "standing exchange" → standing
+6. Track body targets: Head strikes → strikeMap.head.strike, torso → strikeMap.torso.strike, legs → strikeMap.leg.strike
+7. Track absorbed strikes: When a fighter "absorbed", "took", "was hit by" → strikeMap.X.absorb
+8. Count takedowns: "took down", "slammed", "brought to the ground" → takedowns.attempted (and .landed if successful)
+9. Count submission attempts: "attempted arm bar", "locked in a choke" → submissions.attemptsPer15Mins
+10. Calculate derived stats: accuracy, per-minute rates, etc.
+11. Ensure symmetry: Fighter A's head strikes should approximately equal Fighter B's head absorbs
+12. Make the stats realistic for the fight time and narrative length
+
+VALIDATION & SELF-CHECK:
+Before returning your response:
+1. Verify the finishingMove is a knockout strike
+2. Re-read the narrative sentence-by-sentence and verify stats match what was described
+3. Check all mathematical relationships in the stats
+4. Ensure fightTime aligns with narrative length and intensity
+5. Confirm both fighters have identical fightTime
+6. Verify winner has finishingMove, loser has null
+7. Verify you used the correct IDs (not names) in winnerId and fighterId fields
+8. Verify you used "genAIDescription" as the field name for your narrative (NOT "userDescription", "fightDescription", "description", or "narrative")
+9. If any constraint is violated, silently fix it before responding
+
+Generate exciting, realistic, and statistically consistent fight results that honor the fighters' attributes and history.`;
 }
 
 /**
@@ -191,7 +265,7 @@ IMPORTANT:
 export async function generateSimulatedFight(fighter1Data, fighter2Data, headToHeadData, fighter1Id, fighter2Id) {
     const userPrompt = `Generate a detailed knockout fight between these two fighters:
 
-FIGHTER 1: ${fighter1Data.name}
+FIGHTER 1: ${fighter1Data.name} (ID: ${fighter1Id})
 Physical Attributes:
 ${JSON.stringify(fighter1Data.physicalAttributes, null, 2)}
 Skills: ${fighter1Data.skillset}
@@ -200,7 +274,7 @@ ${JSON.stringify(fighter1Data.fightStats, null, 2)}
 Active Streak: ${fighter1Data.activeStreak ? `${fighter1Data.activeStreak.count} ${fighter1Data.activeStreak.type}s` : 'None'}
 Recent Performance: ${JSON.stringify(fighter1Data.last5Performances, null, 2)}
 
-FIGHTER 2: ${fighter2Data.name}
+FIGHTER 2: ${fighter2Data.name} (ID: ${fighter2Id})
 Physical Attributes:
 ${JSON.stringify(fighter2Data.physicalAttributes, null, 2)}
 Skills: ${fighter2Data.skillset}
@@ -212,14 +286,19 @@ Recent Performance: ${JSON.stringify(fighter2Data.last5Performances, null, 2)}
 HEAD-TO-HEAD HISTORY:
 ${JSON.stringify(headToHeadData, null, 2)}
 
-Based on all this data:
+INSTRUCTIONS:
+Based on all this data, follow this process:
 1. Analyze both fighters' strengths and weaknesses
 2. Consider their physical attributes, skills, and recent performances
 3. Determine a realistic winner
-4. Generate a detailed, exciting fight description (4-6 paragraphs) that culminates in a knockout
-5. Generate realistic statistics for both fighters that match the fight description
+4. Generate a detailed, exciting fight description (3-4 paragraphs) that culminates in a knockout
+5. Go through your fight description sentence-by-sentence
+6. For each sentence, identify the specific actions (strikes, takedowns, positions) and which fighter performed them
+7. Generate accurate statistics for both fighters based on this sentence-by-sentence analysis
+8. Use the fighter IDs (${fighter1Id} and ${fighter2Id}) in your JSON response for "winnerId" and "fighterId" fields
+9. Use the fighter names (${fighter1Data.name} and ${fighter2Data.name}) naturally in the narrative text
 
-Remember: This MUST end in a knockout. Return the response as a valid JSON object.`;
+Remember: This MUST end in a knockout. Return the response as a valid JSON object with "genAIDescription", "winnerId", and "fighterStats".`;
 
     try {
         const completion = await openai.chat.completions.create({
@@ -230,22 +309,39 @@ Remember: This MUST end in a knockout. Return the response as a valid JSON objec
             ],
             response_format: { type: "json_object" },
             temperature: 0.8,
-            max_tokens: 3000
+            max_tokens: 2000  // Reduced from 3000 for cost efficiency
         });
 
         const result = JSON.parse(completion.choices[0].message.content);
         
-        // Map fighter names to IDs in the response
-        result.fighterStats = result.fighterStats.map((stats, index) => ({
-            ...stats,
-            fighterId: index === 0 ? fighter1Id : fighter2Id
-        }));
+        // Validate the response structure
+        if (!result.genAIDescription || !result.winnerId || !result.fighterStats) {
+            throw new Error('Invalid response structure from AI. Missing required fields.');
+        }
 
-        // Determine winner ID
-        const winnerName = result.winner.toLowerCase();
-        result.winnerId = winnerName.includes(fighter1Data.name.toLowerCase()) 
-            ? fighter1Id 
-            : fighter2Id;
+        // Validate fighter IDs are correct
+        const fighterIds = result.fighterStats.map(stats => stats.fighterId);
+        if (!fighterIds.includes(fighter1Id) || !fighterIds.includes(fighter2Id)) {
+            console.warn('AI returned incorrect fighter IDs. Fixing...');
+            // Fix the IDs if AI messed them up
+            result.fighterStats = result.fighterStats.map((stats, index) => ({
+                ...stats,
+                fighterId: index === 0 ? fighter1Id : fighter2Id
+            }));
+        }
+
+        // Validate winner ID
+        if (result.winnerId !== fighter1Id && result.winnerId !== fighter2Id) {
+            console.warn('AI returned incorrect winner ID. Attempting to fix...');
+            // Try to determine winner from the stats (who has the finishing move)
+            const winnerStats = result.fighterStats.find(s => s.stats.finishingMove);
+            if (winnerStats) {
+                result.winnerId = winnerStats.fighterId;
+            } else {
+                // Default to fighter1 if we can't determine
+                result.winnerId = fighter1Id;
+            }
+        }
 
         return result;
     } catch (error) {
@@ -298,7 +394,7 @@ Using this as a foundation, expand it into a detailed, exciting fight descriptio
 
     const userPrompt = `Generate a detailed knockout fight with a predetermined winner:
 
-FIGHTER 1: ${fighter1Data.name}
+FIGHTER 1: ${fighter1Data.name} (ID: ${fighter1Id})
 Physical Attributes:
 ${JSON.stringify(fighter1Data.physicalAttributes, null, 2)}
 Skills: ${fighter1Data.skillset}
@@ -306,7 +402,7 @@ Fight Statistics:
 ${JSON.stringify(fighter1Data.fightStats, null, 2)}
 Active Streak: ${fighter1Data.activeStreak ? `${fighter1Data.activeStreak.count} ${fighter1Data.activeStreak.type}s` : 'None'}
 
-FIGHTER 2: ${fighter2Data.name}
+FIGHTER 2: ${fighter2Data.name} (ID: ${fighter2Id})
 Physical Attributes:
 ${JSON.stringify(fighter2Data.physicalAttributes, null, 2)}
 Skills: ${fighter2Data.skillset}
@@ -317,11 +413,20 @@ Active Streak: ${fighter2Data.activeStreak ? `${fighter2Data.activeStreak.count}
 HEAD-TO-HEAD HISTORY:
 ${JSON.stringify(headToHeadData, null, 2)}
 
-WINNER: ${winnerData.name}
+PREDETERMINED WINNER: ${winnerData.name} (ID: ${winnerId})
 
 ${descriptionPrompt}
 
-Then generate realistic fight statistics for both fighters that match the description. Return the response as a valid JSON object.`;
+INSTRUCTIONS FOR STATISTICS:
+1. After generating the fight description, go through it sentence-by-sentence
+2. For each sentence, identify specific actions: strikes thrown, strikes landed, takedowns, positions, etc.
+3. Track which fighter performed each action
+4. Accumulate statistics based on what actually happened in your narrative
+5. Ensure stats are realistic and mathematically consistent
+6. Use the fighter IDs (${fighter1Id} and ${fighter2Id}) in your JSON response for "winnerId" and "fighterId" fields
+7. Use the fighter names (${fighter1Data.name} and ${fighter2Data.name}) in the narrative text
+
+Return the response as a valid JSON object with "genAIDescription", "winnerId" (must be ${winnerId}), and "fighterStats".`;
 
     try {
         const completion = await openai.chat.completions.create({
@@ -332,19 +437,39 @@ Then generate realistic fight statistics for both fighters that match the descri
             ],
             response_format: { type: "json_object" },
             temperature: 0.7,
-            max_tokens: 3000
+            max_tokens: 2000  // Reduced from 3000 for cost efficiency
         });
 
         const result = JSON.parse(completion.choices[0].message.content);
         
-        // Map fighter names to IDs in the response
-        result.fighterStats = result.fighterStats.map((stats, index) => ({
-            ...stats,
-            fighterId: index === 0 ? fighter1Id : fighter2Id
-        }));
+        // Validate the response structure
+        if (!result.genAIDescription || !result.winnerId || !result.fighterStats) {
+            throw new Error('Invalid response structure from AI. Missing required fields.');
+        }
 
-        // Set the winner ID
-        result.winnerId = winnerId;
+        // Validate fighter IDs are correct
+        const fighterIds = result.fighterStats.map(stats => stats.fighterId);
+        if (!fighterIds.includes(fighter1Id) || !fighterIds.includes(fighter2Id)) {
+            console.warn('AI returned incorrect fighter IDs. Fixing...');
+            // Fix the IDs if AI messed them up
+            result.fighterStats = result.fighterStats.map((stats, index) => ({
+                ...stats,
+                fighterId: index === 0 ? fighter1Id : fighter2Id
+            }));
+        }
+
+        // Validate winner ID matches user-selected winner
+        if (result.winnerId !== winnerId) {
+            console.warn(`AI returned incorrect winner ID. Expected ${winnerId}, got ${result.winnerId}. Fixing...`);
+            result.winnerId = winnerId;
+        }
+
+        // Ensure the winner has a finishing move
+        const winnerStatsIndex = result.fighterStats.findIndex(s => s.fighterId === winnerId);
+        if (winnerStatsIndex !== -1 && !result.fighterStats[winnerStatsIndex].stats.finishingMove) {
+            console.warn('Winner is missing finishingMove. Adding default...');
+            result.fighterStats[winnerStatsIndex].stats.finishingMove = 'Knockout strike';
+        }
 
         return result;
     } catch (error) {

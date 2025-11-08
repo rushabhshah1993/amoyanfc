@@ -56,7 +56,7 @@ function findFight(competition, divisionNumber, roundNumber, fightIndex) {
  */
 function updateFightWithResults(fight, generatedResult, isSimulated, userDescription, fightDate) {
     fight.winner = generatedResult.winnerId;
-    fight.genAIDescription = generatedResult.fightDescription;
+    fight.genAIDescription = generatedResult.userDescription;
     fight.isSimulated = isSimulated;
     fight.fighterStats = generatedResult.fighterStats;
     fight.fightStatus = 'completed';

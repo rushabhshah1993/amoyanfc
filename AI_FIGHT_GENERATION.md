@@ -35,19 +35,22 @@ The AI generates:
 1. **Fight Description**: A detailed, exciting 4-6 paragraph narrative describing the fight from start to knockout
 2. **Fight Statistics**: Realistic statistics for both fighters including:
    - Fight time
-   - Finishing move (for winner)
-   - Grappling stats (accuracy, defense)
+   - **Finishing move** (for winner) - Must be a knockout strike (e.g., "Roundhouse kick to the head", "Flying knee to the chin")
+   - Grappling stats (accuracy, defense) - Can include grappling during the fight
    - Significant strikes (accuracy, attempted, landed, defense, positions)
    - Strike map (head, torso, leg - both strikes and absorbs)
-   - Submissions (attempts, averages)
+   - Submissions (attempts, averages) - Submission attempts can occur but cannot be the finishing move
    - Takedowns (accuracy, attempts, landed, defense)
 
 ### Fight Constraints
 
 - **Single Round**: All fights are single-round encounters
-- **Knockout Only**: No tap-outs or submissions ending the fight - only knockouts
+- **Knockout Only**: The fight MUST end with a knockout strike (no tap-outs or submissions as victory conditions)
+  - Valid finishing moves: Roundhouse kick, flying knee, hook, uppercut, spinning back kick, axe kick, etc.
+  - Invalid finishing moves: Rear naked choke, arm bar, triangle choke, guillotine, etc.
+  - Note: Grappling and submission *attempts* can occur during the fight, but the final victory must be a knockout
 - **Two Fighters**: Exactly 2 fighters per fight
-- **One Winner**: One fighter must win by knockout
+- **One Winner**: One fighter must win by knockout strike
 
 ## GraphQL API
 

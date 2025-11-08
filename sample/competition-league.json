@@ -57,13 +57,13 @@
                 "fighterStats": [
                   {
                     "fighterId": "507f1f77bcf86cd799439021",
-                    "stats": {
-                      "fightTime": 15.5,
-                      "finishingMove": "Rear Naked Choke",
-                      "grappling": {
-                        "accuracy": 85.5,
-                        "defence": 12
-                      },
+                "stats": {
+                  "fightTime": 15.5,
+                  "finishingMove": "Roundhouse kick to the head",
+                  "grappling": {
+                    "accuracy": 85.5,
+                    "defence": 12
+                  },
                       "significantStrikes": {
                         "accuracy": 78.2,
                         "attempted": 45,
