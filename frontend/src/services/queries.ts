@@ -254,6 +254,51 @@ export const GET_FIGHTER_INFORMATION = gql`
                 rank
                 score
             }
+            fightStats {
+                avgFightTime
+                finishingMoves
+                grappling {
+                    accuracy
+                    defence
+                }
+                significantStrikes {
+                    accuracy
+                    attempted
+                    defence
+                    landed
+                    landedPerMinute
+                    positions {
+                        clinching
+                        ground
+                        standing
+                    }
+                }
+                strikeMap {
+                    head {
+                        absorb
+                        strike
+                    }
+                    torso {
+                        absorb
+                        strike
+                    }
+                    leg {
+                        absorb
+                        strike
+                    }
+                }
+                submissions {
+                    attemptsPer15Mins
+                    average
+                }
+                takedowns {
+                    accuracy
+                    attempted
+                    avgTakedownsLandedPerMin
+                    defence
+                    landed
+                }
+            }
         }
     }
 `;

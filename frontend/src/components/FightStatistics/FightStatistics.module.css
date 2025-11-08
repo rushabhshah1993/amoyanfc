@@ -1,0 +1,280 @@
+.fightStatisticsSection {
+    padding: 3rem 2rem;
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s ease;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.sectionHeader:hover {
+    border-bottom-color: var(--text-primary);
+}
+
+.sectionTitle {
+    font-size: 1.75rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.toggleButton {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.toggleButton:hover {
+    color: var(--text-primary);
+    transform: scale(1.1);
+}
+
+/* No Stats Message */
+.noStatsMessage {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.noStatsMessage p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.subMessage {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    opacity: 0.7;
+}
+
+/* Stats Grid */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.statsCard {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.statsCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cardTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.statRows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.statRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.statLabel {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.statValue {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Positions Subsection */
+.positionsSection {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.subsectionTitle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 0 0 0.75rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Strike Map Section */
+.strikeMapSection {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    animation: fadeIn 0.3s ease-in;
+}
+
+.strikeMapSectionTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.strikeMapGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+.strikeMapContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 320px;
+}
+
+.strikeMapTitle {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.silhouetteWrapper {
+    width: 100%;
+    max-width: 180px;
+    margin: 0.5rem auto;
+}
+
+.strikeMapLegend {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    padding: 0.25rem;
+}
+
+.legendColor {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .fightStatisticsSection {
+        padding: 2rem 1rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.5rem;
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .strikeMapGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .strikeMapSection {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .fightStatisticsSection {
+        padding: 1.5rem 0.75rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.25rem;
+    }
+
+    .statsCard {
+        padding: 1rem;
+    }
+
+    .statRow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}
+

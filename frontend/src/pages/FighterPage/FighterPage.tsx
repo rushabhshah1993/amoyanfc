@@ -10,6 +10,7 @@ import OpponentsGrid from '../../components/OpponentsGrid/OpponentsGrid';
 import CompetitionHistory from '../../components/CompetitionHistory/CompetitionHistory';
 import Streaks from '../../components/Streaks/Streaks';
 import Performance from '../../components/Performance/Performance';
+import FightStatistics from '../../components/FightStatistics/FightStatistics';
 import { getCountryFlag } from '../../utils/countryFlags';
 import './FighterPage.css';
 
@@ -71,6 +72,43 @@ interface GlobalRank {
     score?: number;
 }
 
+interface FightStats {
+    avgFightTime?: number;
+    finishingMoves?: string[];
+    grappling?: {
+        accuracy?: number;
+        defence?: number;
+    };
+    significantStrikes?: {
+        accuracy?: number;
+        attempted?: number;
+        defence?: number;
+        landed?: number;
+        landedPerMinute?: number;
+        positions?: {
+            clinching?: number;
+            ground?: number;
+            standing?: number;
+        };
+    };
+    strikeMap?: {
+        head: { absorb: number; strike: number };
+        torso: { absorb: number; strike: number };
+        leg: { absorb: number; strike: number };
+    };
+    submissions?: {
+        attemptsPer15Mins?: number;
+        average?: number;
+    };
+    takedowns?: {
+        accuracy?: number;
+        attempted?: number;
+        avgTakedownsLandedPerMin?: number;
+        defence?: number;
+        landed?: number;
+    };
+}
+
 interface Fighter {
     id: string;
     firstName: string;
@@ -82,6 +120,7 @@ interface Fighter {
     debutInformation?: DebutInformation;
     globalRank?: GlobalRank;
     physicalAttributes?: any;
+    fightStats?: FightStats;
     opponentsHistory?: any[];
     competitionHistory?: any[];
     streaks?: Streak[];
@@ -328,8 +367,6 @@ const FighterPage: React.FC = () => {
                 </div>
             )}
 
-            <PhysicalAttributes attributes={fighter.physicalAttributes} />
-
             <div className="fighter-performance-section">
                 <Performance 
                     fighter={fighter}
@@ -340,6 +377,13 @@ const FighterPage: React.FC = () => {
                     size="lg"
                 />
             </div>
+
+            <FightStatistics 
+                fightStats={fighter.fightStats}
+                fighterName={`${fighter.firstName} ${fighter.lastName}`}
+            />
+
+            <PhysicalAttributes attributes={fighter.physicalAttributes} />
 
             <CompetitionHistory competitionHistory={fighter.competitionHistory || []} />
 
