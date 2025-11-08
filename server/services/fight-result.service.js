@@ -658,6 +658,39 @@ function checkSeasonCompletion(competition) {
 
 /**
  * ====================================================================================
+ * UPDATE CURRENT ROUND FOR DIVISION (LEAGUE ONLY)
+ * ====================================================================================
+ * Updates the currentRound field to reflect the latest completed fight
+ */
+function updateDivisionCurrentRound(competition, divisionNumber, roundNumber, competitionType) {
+    if (competitionType !== 'league') {
+        console.log(`\n⏭️  Current Round Update: Skipped (cup competition)`);
+        return;
+    }
+    
+    console.log(`\n🔄 Updating Current Round for Division ${divisionNumber}...`);
+    
+    const division = competition.leagueData.divisions.find(
+        d => d.divisionNumber === divisionNumber
+    );
+    
+    if (!division) {
+        console.warn(`   ⚠️  Division ${divisionNumber} not found`);
+        return;
+    }
+    
+    // Update currentRound to the highest round number with at least one completed fight
+    const oldCurrentRound = division.currentRound || 0;
+    if (roundNumber > oldCurrentRound) {
+        division.currentRound = roundNumber;
+        console.log(`   ✓ Updated currentRound: ${oldCurrentRound} → ${roundNumber}`);
+    } else {
+        console.log(`   ℹ️  currentRound unchanged: ${oldCurrentRound} (fight was in round ${roundNumber})`);
+    }
+}
+
+/**
+ * ====================================================================================
  * HANDLE CUP BRACKET PROGRESSION
  * ====================================================================================
  * Advances winners to next round or marks champion for cup competitions
@@ -1265,6 +1298,9 @@ export async function applyFightResult(
         // Calculate and save round standings (league only)
         console.log(`\n🎯 About to calculate standings - Competition Type: ${competitionType}, Division: ${divisionNumber}, Round: ${roundNumber}`);
         await calculateAndSaveRoundStandings(competition, fightIdentifier, divisionNumber, roundNumber, competitionType, session);
+        
+        // Update division currentRound (league only)
+        updateDivisionCurrentRound(competition, divisionNumber, roundNumber, competitionType);
         
         // Handle cup bracket progression (cup only)
         await handleCupBracketProgression(competition, fightIdentifier, generatedResult.winnerId, competitionType, session);

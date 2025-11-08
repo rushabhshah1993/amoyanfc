@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
     faSpinner, 
     faChevronLeft,
-    faTrophy
+    faTrophy,
+    faClock
 } from '@fortawesome/free-solid-svg-icons';
-import { GET_SEASON_DETAILS } from '../../services/queries';
+import { GET_SEASON_DETAILS, GET_ROUND_STANDINGS_BY_ROUND } from '../../services/queries';
 import SeasonRanking from '../../components/SeasonRanking';
 import SeasonTimeline from '../../components/SeasonTimeline';
 import styles from './LeagueSeasonPage.module.css';
@@ -50,6 +51,159 @@ interface Season {
     seasonMeta: SeasonMeta;
     leagueData?: LeagueData;
 }
+
+// Component for individual division card with leader fetching
+interface DivisionCardProps {
+    division: {
+        meta: LeagueDivisionMeta;
+        data?: Division;
+    };
+    season: Season;
+    competitionId: string;
+    seasonId: string;
+    hasDivisions: boolean;
+}
+
+const DivisionCard: React.FC<DivisionCardProps> = ({
+    division,
+    season,
+    competitionId,
+    seasonId,
+    hasDivisions
+}) => {
+    const navigate = useNavigate();
+    
+    // For active seasons, we want to check the latest round for standings
+    // If currentRound is 0, we still check Round 1 in case fights have been completed but currentRound hasn't been updated
+    const roundToCheck = division.data?.currentRound && division.data.currentRound > 0 
+        ? division.data.currentRound 
+        : 1;
+    
+    const queryVariables = {
+        competitionId,
+        seasonNumber: season.seasonMeta.seasonNumber,
+        divisionNumber: division.meta.divisionNumber,
+        roundNumber: roundToCheck
+    };
+    
+    // Only skip if season is not active
+    const shouldSkip = !season.isActive;
+    
+    // Fetch current leader if season is active and has current round
+    const { data: standingsData } = useQuery(GET_ROUND_STANDINGS_BY_ROUND, {
+        variables: queryVariables,
+        skip: shouldSkip
+    });
+
+    const leader = React.useMemo(() => {
+        if (!standingsData?.getRoundStandingsByRound?.standings) {
+            return null;
+        }
+        
+        const leaderStanding = standingsData.getRoundStandingsByRound.standings.find(
+            (s: any) => s.rank === 1
+        );
+        
+        if (!leaderStanding) {
+            return null;
+        }
+        
+        const leaderFighter = division.meta.fighters.find(f => f.id === leaderStanding.fighterId);
+        return leaderFighter || null;
+    }, [standingsData, division.meta.fighters]);
+
+    const displayFighter = season.isActive 
+        ? leader // Show current leader for active season
+        : division.meta.winners?.[0]; // Show winner for completed season
+    
+    // Get remaining participants (exclude displayed fighter)
+    const remainingFighters = division.meta.fighters.filter(
+        f => f.id !== displayFighter?.id
+    );
+
+    return (
+        <div 
+            className={styles.divisionDetailCard}
+            onClick={() => navigate(`/competition/${competitionId}/season/${seasonId}/division/${division.meta.divisionNumber}`)}
+            style={{ cursor: 'pointer' }}
+        >
+            <div className={styles.divisionDetailLeft}>
+                {displayFighter ? (
+                    <div className={styles.winnerLargeImage}>
+                        {displayFighter.profileImage ? (
+                            <img 
+                                src={displayFighter.profileImage} 
+                                alt={`${displayFighter.firstName} ${displayFighter.lastName}`}
+                            />
+                        ) : (
+                            <div className={styles.winnerLargePlaceholder}>
+                                {displayFighter.firstName.charAt(0)}{displayFighter.lastName.charAt(0)}
+                            </div>
+                        )}
+                        <div className={styles.winnerOverlay}>
+                            {season.isActive && (
+                                <div className={styles.inProgressIndicator}>
+                                    <FontAwesomeIcon icon={faClock} />
+                                </div>
+                            )}
+                            <p className={styles.winnerLabel}>
+                                {season.isActive ? 'Leader' : 'Winner'}
+                            </p>
+                            <p className={styles.winnerName}>
+                                {displayFighter.firstName} {displayFighter.lastName}
+                            </p>
+                        </div>
+                    </div>
+                ) : (
+                    <div className={styles.noWinnerPlaceholder}>
+                        <FontAwesomeIcon icon={faTrophy} />
+                        <p>Season in Progress</p>
+                    </div>
+                )}
+            </div>
+
+            <div className={styles.divisionDetailRight}>
+                <div className={styles.divisionDetailHeader}>
+                    <h2 className={styles.divisionDetailTitle}>
+                        {hasDivisions 
+                            ? (division.data?.divisionName || `Division ${division.meta.divisionNumber}`)
+                            : 'League Standings'
+                        }
+                    </h2>
+                    {division.data && season.isActive && (
+                        <p className={styles.divisionRoundInfo}>
+                            Round {division.data.currentRound} of {division.data.totalRounds}
+                        </p>
+                    )}
+                </div>
+
+                <div className={styles.participantsSection}>
+                    <h3 className={styles.participantsTitle}>Other Fighters</h3>
+                    <div className={styles.participantsThumbnails}>
+                        {remainingFighters.map((fighter) => (
+                            <div 
+                                key={fighter.id}
+                                className={styles.participantThumbnail}
+                                title={`${fighter.firstName} ${fighter.lastName}`}
+                            >
+                                {fighter.profileImage ? (
+                                    <img 
+                                        src={fighter.profileImage} 
+                                        alt={`${fighter.firstName} ${fighter.lastName}`}
+                                    />
+                                ) : (
+                                    <div className={styles.participantThumbnailPlaceholder}>
+                                        {fighter.firstName.charAt(0)}{fighter.lastName.charAt(0)}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 const LeagueSeasonPage: React.FC = () => {
     const { competitionId, seasonId } = useParams<{ competitionId: string; seasonId: string }>();
@@ -111,8 +265,8 @@ const LeagueSeasonPage: React.FC = () => {
     const season: Season = data.getCompetitionSeason;
     
     // Determine if we have divisions
-    const hasDivisions = season.seasonMeta.leagueDivisions && 
-                         season.seasonMeta.leagueDivisions.length > 0;
+    const hasDivisions = !!(season.seasonMeta.leagueDivisions && 
+                         season.seasonMeta.leagueDivisions.length > 0);
 
     // Get division data
     const divisions = hasDivisions 
@@ -153,95 +307,16 @@ const LeagueSeasonPage: React.FC = () => {
 
                 <div className={styles.divisionsSection}>
                     <div className={styles.divisionCardsGrid}>
-                        {divisions.map((division) => {
-                            const winner = season.isActive 
-                                ? null // TODO: Calculate current leader
-                                : division.meta.winners?.[0];
-                            
-                            // Get remaining participants (exclude winner)
-                            const remainingFighters = division.meta.fighters.filter(
-                                f => !division.meta.winners?.some(w => w.id === f.id)
-                            );
-
-                            return (
-                                <div 
-                                    key={division.meta.divisionNumber}
-                                    className={styles.divisionDetailCard}
-                                    onClick={() => navigate(`/competition/${competitionId}/season/${seasonId}/division/${division.meta.divisionNumber}`)}
-                                    style={{ cursor: 'pointer' }}
-                                >
-                                    <div className={styles.divisionDetailLeft}>
-                                        {winner ? (
-                                            <div className={styles.winnerLargeImage}>
-                                                {winner.profileImage ? (
-                                                    <img 
-                                                        src={winner.profileImage} 
-                                                        alt={`${winner.firstName} ${winner.lastName}`}
-                                                    />
-                                                ) : (
-                                                    <div className={styles.winnerLargePlaceholder}>
-                                                        {winner.firstName.charAt(0)}{winner.lastName.charAt(0)}
-                                                    </div>
-                                                )}
-                                                <div className={styles.winnerOverlay}>
-                                                    <p className={styles.winnerLabel}>
-                                                        {season.isActive ? 'Leader' : 'Winner'}
-                                                    </p>
-                                                    <p className={styles.winnerName}>
-                                                        {winner.firstName} {winner.lastName}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        ) : (
-                                            <div className={styles.noWinnerPlaceholder}>
-                                                <FontAwesomeIcon icon={faTrophy} />
-                                                <p>Season in Progress</p>
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    <div className={styles.divisionDetailRight}>
-                                        <div className={styles.divisionDetailHeader}>
-                                            <h2 className={styles.divisionDetailTitle}>
-                                                {hasDivisions 
-                                                    ? (division.data?.divisionName || `Division ${division.meta.divisionNumber}`)
-                                                    : 'League Standings'
-                                                }
-                                            </h2>
-                                            {division.data && season.isActive && (
-                                                <p className={styles.divisionRoundInfo}>
-                                                    Round {division.data.currentRound} of {division.data.totalRounds}
-                                                </p>
-                                            )}
-                                        </div>
-
-                                        <div className={styles.participantsSection}>
-                                            <h3 className={styles.participantsTitle}>Other Fighters</h3>
-                                            <div className={styles.participantsThumbnails}>
-                                                {remainingFighters.map((fighter) => (
-                                                    <div 
-                                                        key={fighter.id}
-                                                        className={styles.participantThumbnail}
-                                                        title={`${fighter.firstName} ${fighter.lastName}`}
-                                                    >
-                                                        {fighter.profileImage ? (
-                                                            <img 
-                                                                src={fighter.profileImage} 
-                                                                alt={`${fighter.firstName} ${fighter.lastName}`}
-                                                            />
-                                                        ) : (
-                                                            <div className={styles.participantThumbnailPlaceholder}>
-                                                                {fighter.firstName.charAt(0)}{fighter.lastName.charAt(0)}
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
+                        {divisions.map((division) => (
+                            <DivisionCard
+                                key={division.meta.divisionNumber}
+                                division={division}
+                                season={season}
+                                competitionId={competitionId!}
+                                seasonId={seasonId!}
+                                hasDivisions={hasDivisions}
+                            />
+                        ))}
                     </div>
                 </div>
 

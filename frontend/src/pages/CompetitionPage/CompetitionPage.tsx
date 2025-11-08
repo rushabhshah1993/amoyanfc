@@ -8,7 +8,7 @@ import {
     faTrophy,
     faArrowRight
 } from '@fortawesome/free-solid-svg-icons';
-import { GET_COMPETITION_META, GET_ALL_SEASONS_BY_COMPETITION } from '../../services/queries';
+import { GET_COMPETITION_META, GET_ALL_SEASONS_BY_COMPETITION, GET_ROUND_STANDINGS_BY_ROUND, GET_ALL_FIGHTERS } from '../../services/queries';
 import RobustGoogleDriveImage from '../../components/S3Image/S3Image';
 import styles from './CompetitionPage.module.css';
 
@@ -79,6 +79,193 @@ interface Season {
     cupData?: CupData;
 }
 
+// Component to fetch and display division leader for a single division
+const useDivisionLeader = (
+    competitionId: string,
+    seasonNumber: number,
+    divisionMeta: LeagueDivisionMeta,
+    divisionData: Division | undefined,
+    skip: boolean
+) => {
+    // For active seasons, check the latest round for standings
+    // If currentRound is 0, check Round 1 in case fights have been completed
+    const roundToCheck = divisionData?.currentRound && divisionData.currentRound > 0 
+        ? divisionData.currentRound 
+        : 1;
+    
+    const { data: standingsData } = useQuery(GET_ROUND_STANDINGS_BY_ROUND, {
+        variables: {
+            competitionId,
+            seasonNumber,
+            divisionNumber: divisionMeta.divisionNumber,
+            roundNumber: roundToCheck
+        },
+        skip: skip
+    });
+
+    const leader = React.useMemo(() => {
+        if (!standingsData?.getRoundStandingsByRound?.standings) {
+            return null;
+        }
+        
+        const leaderStanding = standingsData.getRoundStandingsByRound.standings.find(
+            (s: any) => s.rank === 1
+        );
+        
+        if (!leaderStanding) {
+            return null;
+        }
+        
+        // Note: divisionMeta.fighters only has id, so we return the id
+        return leaderStanding.fighterId;
+    }, [standingsData]);
+
+    return leader;
+};
+
+// Component for a single division's leader fetch
+interface DivisionLeaderFetchProps {
+    competitionId: string;
+    seasonNumber: number;
+    divisionMeta: LeagueDivisionMeta;
+    divisionData: Division | undefined;
+    skip: boolean;
+    onLeaderFound: (leaderId: string | null, divisionNumber: number) => void;
+}
+
+const DivisionLeaderFetch: React.FC<DivisionLeaderFetchProps> = ({
+    competitionId,
+    seasonNumber,
+    divisionMeta,
+    divisionData,
+    skip,
+    onLeaderFound
+}) => {
+    const leaderId = useDivisionLeader(competitionId, seasonNumber, divisionMeta, divisionData, skip);
+    
+    React.useEffect(() => {
+        onLeaderFound(leaderId, divisionMeta.divisionNumber);
+    }, [leaderId, divisionMeta.divisionNumber, onLeaderFound]);
+    
+    return null;
+};
+
+// Component for a season box that fetches all division leaders
+interface SeasonBoxProps {
+    season: Season;
+    competitionId: string;
+    allFighters: Fighter[];
+}
+
+const SeasonBox: React.FC<SeasonBoxProps> = ({ season, competitionId, allFighters }) => {
+    const navigate = useNavigate();
+    const [divisionLeaders, setDivisionLeaders] = React.useState<{ [divisionNumber: number]: string | null }>({});
+
+    const handleLeaderFound = React.useCallback((leaderId: string | null, divisionNumber: number) => {
+        setDivisionLeaders(prev => ({
+            ...prev,
+            [divisionNumber]: leaderId
+        }));
+    }, []);
+
+    // Get winners or leaders
+    const getDisplayFighters = (): Fighter[] => {
+        if (!season.isActive) {
+            // For completed seasons, show winners
+            const winners: Fighter[] = [];
+            if (season.seasonMeta.leagueDivisions && season.seasonMeta.leagueDivisions.length > 0) {
+                season.seasonMeta.leagueDivisions.forEach(division => {
+                    if (division.winners && division.winners.length > 0) {
+                        winners.push(...division.winners);
+                    }
+                });
+            } else if (season.seasonMeta.winners && season.seasonMeta.winners.length > 0) {
+                winners.push(...season.seasonMeta.winners);
+            }
+            return winners;
+        } else {
+            // For active seasons, show division leaders
+            const leaders: Fighter[] = [];
+            Object.values(divisionLeaders).forEach(leaderId => {
+                if (leaderId) {
+                    const fighter = allFighters.find(f => f.id === leaderId);
+                    if (fighter) {
+                        leaders.push(fighter);
+                    }
+                }
+            });
+            return leaders;
+        }
+    };
+
+    const displayFighters = getDisplayFighters();
+
+    return (
+        <>
+            {/* Fetch division leaders for active seasons */}
+            {season.isActive && season.seasonMeta.leagueDivisions && season.seasonMeta.leagueDivisions.map(divisionMeta => {
+                const divisionData = season.leagueData?.divisions?.find(
+                    d => d.divisionNumber === divisionMeta.divisionNumber
+                );
+                return (
+                    <DivisionLeaderFetch
+                        key={divisionMeta.divisionNumber}
+                        competitionId={competitionId}
+                        seasonNumber={season.seasonMeta.seasonNumber}
+                        divisionMeta={divisionMeta}
+                        divisionData={divisionData}
+                        skip={!season.isActive}
+                        onLeaderFound={handleLeaderFound}
+                    />
+                );
+            })}
+
+            {/* Season Box Display */}
+            <div 
+                className={styles.seasonBox}
+                onClick={() => navigate(`/competition/${competitionId}/season/${season.id}`)}
+            >
+                {/* Background Images */}
+                <div className={`${styles.seasonBoxBackground} ${displayFighters.length === 1 ? styles.singleWinner : ''}`}>
+                    {displayFighters.length > 0 ? (
+                        displayFighters.map((fighter) => (
+                            <div 
+                                key={fighter.id} 
+                                className={styles.seasonBoxImage}
+                                style={{
+                                    backgroundImage: fighter.profileImage 
+                                        ? `url(${fighter.profileImage})`
+                                        : 'linear-gradient(135deg, #4285f4 0%, #34a853 100%)'
+                                }}
+                            >
+                                {!fighter.profileImage && (
+                                    <div className={styles.seasonBoxPlaceholder}>
+                                        {fighter.firstName.charAt(0)}{fighter.lastName.charAt(0)}
+                                    </div>
+                                )}
+                            </div>
+                        ))
+                    ) : (
+                        <div className={styles.seasonBoxEmpty}>
+                            <FontAwesomeIcon icon={faTrophy} />
+                        </div>
+                    )}
+                </div>
+
+                {/* Overlay */}
+                <div className={styles.seasonBoxOverlay}>
+                    <h3 className={styles.seasonBoxTitle}>
+                        Season {season.seasonMeta.seasonNumber}
+                    </h3>
+                    {season.isActive && (
+                        <span className={styles.seasonBoxBadge}>Active</span>
+                    )}
+                </div>
+            </div>
+        </>
+    );
+};
+
 const CompetitionPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
@@ -97,31 +284,16 @@ const CompetitionPage: React.FC = () => {
         skip: !id || !data?.getCompetitionMeta
     });
 
+    const { data: fightersData } = useQuery(GET_ALL_FIGHTERS, {
+        skip: !id
+    });
+
     // Update page title when competition data is loaded
     React.useEffect(() => {
         if (data?.getCompetitionMeta) {
             document.title = `Amoyan FC | ${data.getCompetitionMeta.competitionName}`;
         }
     }, [data]);
-
-    // Helper function to get all winners for a season
-    const getSeasonWinners = (season: Season): Fighter[] => {
-        const winners: Fighter[] = [];
-        
-        // If season has divisions, collect winners from each division
-        if (season.seasonMeta.leagueDivisions && season.seasonMeta.leagueDivisions.length > 0) {
-            season.seasonMeta.leagueDivisions.forEach(division => {
-                if (division.winners && division.winners.length > 0) {
-                    winners.push(...division.winners);
-                }
-            });
-        } else if (season.seasonMeta.winners && season.seasonMeta.winners.length > 0) {
-            // Otherwise use season-level winners (for leagues without divisions or cups)
-            winners.push(...season.seasonMeta.winners);
-        }
-        
-        return winners;
-    };
 
     if (loading) {
         return (
@@ -219,54 +391,14 @@ const CompetitionPage: React.FC = () => {
                                         .sort((a: Season, b: Season) => 
                                             b.seasonMeta.seasonNumber - a.seasonMeta.seasonNumber
                                         )
-                                        .map((season: Season) => {
-                                            const winners = getSeasonWinners(season);
-
-                                            return (
-                                                <div 
-                                                    key={season.id} 
-                                                    className={styles.seasonBox}
-                                                    onClick={() => navigate(`/competition/${id}/season/${season.id}`)}
-                                                >
-                                                    {/* Background Images */}
-                                                    <div className={`${styles.seasonBoxBackground} ${winners.length === 1 ? styles.singleWinner : ''}`}>
-                                                        {winners.length > 0 ? (
-                                                            winners.map((winner) => (
-                                                                <div 
-                                                                    key={winner.id} 
-                                                                    className={styles.seasonBoxImage}
-                                                                    style={{
-                                                                        backgroundImage: winner.profileImage 
-                                                                            ? `url(${winner.profileImage})`
-                                                                            : 'linear-gradient(135deg, #4285f4 0%, #34a853 100%)'
-                                                                    }}
-                                                                >
-                                                                    {!winner.profileImage && (
-                                                                        <div className={styles.seasonBoxPlaceholder}>
-                                                                            {winner.firstName.charAt(0)}{winner.lastName.charAt(0)}
-                                                                        </div>
-                                                                    )}
-                                                                </div>
-                                                            ))
-                                                        ) : (
-                                                            <div className={styles.seasonBoxEmpty}>
-                                                                <FontAwesomeIcon icon={faTrophy} />
-                                                            </div>
-                                                        )}
-                                                    </div>
-
-                                                    {/* Overlay */}
-                                                    <div className={styles.seasonBoxOverlay}>
-                                                        <h3 className={styles.seasonBoxTitle}>
-                                                            Season {season.seasonMeta.seasonNumber}
-                                                        </h3>
-                                                        {season.isActive && (
-                                                            <span className={styles.seasonBoxBadge}>Active</span>
-                                                        )}
-                                                    </div>
-                                                </div>
-                                            );
-                                        })
+                                        .map((season: Season) => (
+                                            <SeasonBox 
+                                                key={season.id}
+                                                season={season}
+                                                competitionId={id!}
+                                                allFighters={fightersData?.getAllFighters || []}
+                                            />
+                                        ))
                                     }
                                 </div>
                             </div>
@@ -300,54 +432,14 @@ const CompetitionPage: React.FC = () => {
                                         .sort((a: Season, b: Season) => 
                                             b.seasonMeta.seasonNumber - a.seasonMeta.seasonNumber
                                         )
-                                        .map((season: Season) => {
-                                            const winners = getSeasonWinners(season);
-
-                                            return (
-                                                <div 
-                                                    key={season.id} 
-                                                    className={styles.seasonBox}
-                                                    onClick={() => navigate(`/competition/${id}/season/${season.id}`)}
-                                                >
-                                                    {/* Background Images */}
-                                                    <div className={`${styles.seasonBoxBackground} ${winners.length === 1 ? styles.singleWinner : ''}`}>
-                                                        {winners.length > 0 ? (
-                                                            winners.map((winner) => (
-                                                                <div 
-                                                                    key={winner.id} 
-                                                                    className={styles.seasonBoxImage}
-                                                                    style={{
-                                                                        backgroundImage: winner.profileImage 
-                                                                            ? `url(${winner.profileImage})`
-                                                                            : 'linear-gradient(135deg, #4285f4 0%, #34a853 100%)'
-                                                                    }}
-                                                                >
-                                                                    {!winner.profileImage && (
-                                                                        <div className={styles.seasonBoxPlaceholder}>
-                                                                            {winner.firstName.charAt(0)}{winner.lastName.charAt(0)}
-                                                                        </div>
-                                                                    )}
-                                                                </div>
-                                                            ))
-                                                        ) : (
-                                                            <div className={styles.seasonBoxEmpty}>
-                                                                <FontAwesomeIcon icon={faTrophy} />
-                                                            </div>
-                                                        )}
-                                                    </div>
-
-                                                    {/* Overlay */}
-                                                    <div className={styles.seasonBoxOverlay}>
-                                                        <h3 className={styles.seasonBoxTitle}>
-                                                            Season {season.seasonMeta.seasonNumber}
-                                                        </h3>
-                                                        {season.isActive && (
-                                                            <span className={styles.seasonBoxBadge}>Active</span>
-                                                        )}
-                                                    </div>
-                                                </div>
-                                            );
-                                        })
+                                        .map((season: Season) => (
+                                            <SeasonBox 
+                                                key={season.id}
+                                                season={season}
+                                                competitionId={id!}
+                                                allFighters={fightersData?.getAllFighters || []}
+                                            />
+                                        ))
                                     }
                                 </div>
                             </div>
