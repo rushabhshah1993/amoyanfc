@@ -1,0 +1,63 @@
+{
+  "timestamp": "2025-11-08T07:15:31.154Z",
+  "database": "gql-db",
+  "collections": [
+    {
+      "name": "fights",
+      "documentCount": 0,
+      "success": true
+    },
+    {
+      "name": "rounds",
+      "documentCount": 0,
+      "success": true
+    },
+    {
+      "name": "articles",
+      "documentCount": 1,
+      "success": true
+    },
+    {
+      "name": "competitionmetas",
+      "documentCount": 5,
+      "success": true
+    },
+    {
+      "name": "competitions",
+      "documentCount": 19,
+      "success": true
+    },
+    {
+      "name": "roundstandings",
+      "documentCount": 1752,
+      "success": true
+    },
+    {
+      "name": "fighters",
+      "documentCount": 53,
+      "success": true
+    },
+    {
+      "name": "globalranks",
+      "documentCount": 3,
+      "success": true
+    },
+    {
+      "name": "divisions",
+      "documentCount": 0,
+      "success": true
+    },
+    {
+      "name": "sessions",
+      "documentCount": 0,
+      "success": true
+    },
+    {
+      "name": "seasons",
+      "documentCount": 0,
+      "success": true
+    }
+  ],
+  "totalCollections": 11,
+  "totalDocuments": 1833
+}

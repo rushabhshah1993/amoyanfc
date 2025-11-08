@@ -67,6 +67,75 @@ amoyanfc/
 - **Backend only:** `npm run dev:server`
 - **Frontend only:** `npm run dev:frontend`
 
+### 🧪 Staging Environment (Pre-Production Testing)
+
+**NEW!** We now have a separate staging database for safe testing:
+
+📖 **Quick Start:** See **[QUICK_START.md](./QUICK_START.md)** (3 steps, < 5 minutes)
+
+📚 **Full Guide:** See **[STAGING_SETUP_GUIDE.md](./STAGING_SETUP_GUIDE.md)** (comprehensive documentation)
+
+**Quick Commands:**
+```bash
+# Verify setup
+npm run verify:staging
+
+# Copy production data to staging
+npm run migrate:staging
+
+# Test with staging database
+npm run dev:staging
+```
+
+**Key Benefits:**
+- ✅ Test features without affecting production
+- ✅ Separate `staging-amoyan` database (100% free)
+- ✅ Easy data refresh from production
+- ✅ Safe environment for experimentation
+
+## 🤖 AI Fight Generation (NEW!)
+
+Generate realistic fight descriptions and statistics using OpenAI's ChatGPT 4.1 mini model!
+
+### Features
+- **Simulate Fights**: Let AI determine the winner and create a complete fight narrative
+- **User-Selected Winner**: Choose a winner and optionally provide a description - AI expands it into a detailed story
+- **Realistic Statistics**: AI generates fight stats consistent with the description (strikes, takedowns, grappling, etc.)
+- **Fighter Data Integration**: AI considers fighter attributes, skills, streaks, and head-to-head history
+
+### Quick Setup
+1. Get an OpenAI API key from [OpenAI Platform](https://platform.openai.com/)
+2. Add to your `.env` file:
+   ```bash
+   OPENAI_API_KEY=sk-your-api-key-here
+   ```
+3. Restart your server
+
+### Documentation
+- **[AI Fight Generation Guide](./AI_FIGHT_GENERATION.md)** - Complete feature documentation
+- **[Frontend Examples](./AI_FIGHT_GENERATION_EXAMPLES.md)** - React components and usage examples
+
+### GraphQL Mutations
+```graphql
+# Simulate a fight (AI chooses winner)
+mutation SimulateFight($input: SimulateFightInput!) {
+  simulateFight(input: $input) {
+    success
+    message
+    fight { ... }
+  }
+}
+
+# Generate with user-selected winner
+mutation GenerateFightWithWinner($input: GenerateFightWithWinnerInput!) {
+  generateFightWithWinner(input: $input) {
+    success
+    message
+    fight { ... }
+  }
+}
+```
+
 ## 🐳 Production Deployment
 
 ### Using Docker Compose
@@ -95,6 +164,8 @@ amoyanfc/
 
 ## 📊 Available Scripts
 
+### Core Scripts
+
 | Script | Description |
 |--------|-------------|
 | `npm run dev` | Start both frontend and backend in development mode |
@@ -103,6 +174,16 @@ amoyanfc/
 | `npm run start` | Start both services in production mode |
 | `npm run build` | Build the frontend for production |
 | `npm run install:all` | Install dependencies for all workspaces |
+
+### Staging & Testing Scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm run verify:staging` | Verify staging environment setup |
+| `npm run migrate:staging` | Copy production data to staging database |
+| `npm run dev:staging` | Run application with staging database |
+| `npm run start:staging` | Start staging server |
+| `npm run start:production` | Start production server |
 
 ### Data Import Scripts
 

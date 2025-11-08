@@ -1,0 +1,57 @@
+[
+  {
+    "_id": "67780e1d09a4c4b25127f8f8",
+    "competitionName": "Invictus Fight League",
+    "type": "league",
+    "description": "The Invictus Fight League (IFC) is an upgrade on its predecessor, the Invictus Fighting Championship (IFC). IFL is a brutal league for female combat athletes bringing together powerful fighters in a no-holds barred, street-style fighting arena, where every bout tests the limits of strength, strategy, and endurance.",
+    "logo": "https://amoyanfc-assets.s3.amazonaws.com/competitions/ifl.png",
+    "shortName": "IFL",
+    "createdAt": "2025-01-03T16:19:41.070Z",
+    "updatedAt": "2025-10-16T10:29:08.404Z",
+    "__v": 0
+  },
+  {
+    "_id": "677810b009a4c4b25127f8fe",
+    "competitionName": "Brawl",
+    "type": "cup",
+    "description": "Brawl is a no-rules street fighting championship where eight carefully chosen fighters will compete for a huge prize money. There are no rules and no weapons, only eight stunning females with looks and fists that kill who have to destroy each other to become the champion.",
+    "logo": "https://amoyanfc-assets.s3.amazonaws.com/competitions/brawl-logo.jpg",
+    "shortName": "Brawl",
+    "createdAt": "2025-01-03T16:30:40.958Z",
+    "updatedAt": "2025-10-16T10:29:08.444Z",
+    "__v": 0
+  },
+  {
+    "_id": "67780dcc09a4c4b25127f8f6",
+    "competitionName": "Invictus Fighting Championship",
+    "type": "league",
+    "description": "The Invictus Fighting Championship (IFC) is the premier league for female combat athletes, showcasing the very best talent across all martial arts disciplines. This elite competition brings together skilled and powerful fighters in a brutal, street-style fighting arena, where every bout tests the limits of strength, strategy, and endurance.",
+    "logo": "https://amoyanfc-assets.s3.amazonaws.com/competitions/ifc.png",
+    "shortName": "IFC",
+    "createdAt": "2025-01-03T16:18:20.894Z",
+    "updatedAt": "2025-10-18T12:05:04.288Z",
+    "__v": 0
+  },
+  {
+    "_id": "6778100309a4c4b25127f8fa",
+    "competitionName": "Champions' Cup",
+    "type": "cup",
+    "description": "The Champions Cup (CC) is the pinnacle of competition in the Amoyan Fighting Championships, bringing together the fiercest female fighters for a high-stakes knockout tournament. At the end of each IFC season, the top contenders from all three divisions face off in a series of single-elimination matches. Only the strongest survive each round, battling their way to the final to claim the coveted Champions Cup title.",
+    "logo": "https://amoyanfc-assets.s3.amazonaws.com/competitions/champions-cup.png",
+    "shortName": "CC",
+    "createdAt": "2025-01-03T16:27:47.982Z",
+    "updatedAt": "2025-10-16T10:29:08.416Z",
+    "__v": 0
+  },
+  {
+    "_id": "6778103309a4c4b25127f8fc",
+    "competitionName": "Invicta Cup",
+    "type": "cup",
+    "description": "The Invicta Cup (IC) is a thrilling knockout tournament that spotlights the best and bravest fighters in the Amoyan Fighting Championships. Starting midway through the IFC/IFL season, seven fighters from all divisions are randomly selected to compete, joined by the reigning IC Champion from the previous season. These eight warriors face off in intense, elimination-style bouts, with each victory bringing them closer to the title.",
+    "logo": "https://amoyanfc-assets.s3.amazonaws.com/competitions/invicta-cup.png",
+    "shortName": "IC",
+    "createdAt": "2025-01-03T16:28:35.789Z",
+    "updatedAt": "2025-10-16T10:29:08.430Z",
+    "__v": 0
+  }
+]

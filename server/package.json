@@ -6,6 +6,12 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "dev:staging": "NODE_ENV=staging node -r dotenv/config index.js dotenv_config_path=../.env.staging",
+    "start:staging": "NODE_ENV=staging node -r dotenv/config index.js dotenv_config_path=../.env.staging",
+    "start:production": "NODE_ENV=production node -r dotenv/config index.js dotenv_config_path=../.env.production",
+    "backup:production": "node -r dotenv/config scripts/backup-production.js dotenv_config_path=../.env",
+    "migrate:staging": "node -r dotenv/config scripts/migrate-to-staging.js dotenv_config_path=../.env",
+    "verify:staging": "node scripts/verify-staging-setup.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "import:season2": "node scripts/import-season2-to-db.js",
     "calculate:season2-standings": "node scripts/calculate-season2-standings.js",
@@ -61,6 +67,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.8.1",
     "multer": "^2.0.2",
+    "openai": "^6.8.1",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.1"

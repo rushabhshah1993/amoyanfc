@@ -1,0 +1,5006 @@
+[
+  {
+    "_id": "68f5fb79db4a2d708fb3be1c",
+    "fighters": [
+      {
+        "fighterId": "676d7613eb38b2b97c6da9a9",
+        "score": 952,
+        "rank": 1,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 6,
+            "_id": "68f5fb79db4a2d708fb3be1e"
+          },
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "numberOfTitles": 5,
+            "_id": "68f5fb79db4a2d708fb3be1f"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 5,
+            "_id": "68f5fb79db4a2d708fb3be20"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 9,
+                "_id": "68f5fb79db4a2d708fb3be22"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be21"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be1d"
+      },
+      {
+        "fighterId": "676d735aeb38b2b97c6da973",
+        "score": 754.9,
+        "rank": 2,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be24"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3be26"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be25"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be23"
+      },
+      {
+        "fighterId": "676d72c5eb38b2b97c6da969",
+        "score": 718.95,
+        "rank": 3,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fb79db4a2d708fb3be28"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "numberOfTitles": 1,
+            "_id": "68f5fb79db4a2d708fb3be29"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be2a"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 2,
+            "_id": "68f5fb79db4a2d708fb3be2b"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3be2d"
+              },
+              {
+                "division": 2,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3be2e"
+              },
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3be2f"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be2c"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be27"
+      },
+      {
+        "fighterId": "676d6ecceb38b2b97c6da945",
+        "score": 716.47,
+        "rank": 4,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 2,
+            "_id": "68f5fb79db4a2d708fb3be31"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "numberOfTitles": 2,
+            "_id": "68f5fb79db4a2d708fb3be32"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fb79db4a2d708fb3be33"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 2,
+            "_id": "68f5fb79db4a2d708fb3be34"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 10,
+                "_id": "68f5fb79db4a2d708fb3be36"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be35"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be30"
+      },
+      {
+        "fighterId": "676d721aeb38b2b97c6da961",
+        "score": 657.47,
+        "rank": 5,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fb79db4a2d708fb3be38"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 3,
+            "_id": "68f5fb79db4a2d708fb3be39"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be3a"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 10,
+                "_id": "68f5fb79db4a2d708fb3be3c"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be3b"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be37"
+      },
+      {
+        "fighterId": "676d70e7eb38b2b97c6da94f",
+        "score": 649.76,
+        "rank": 6,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be3e"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3be40"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be3f"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be3d"
+      },
+      {
+        "fighterId": "676d7452eb38b2b97c6da981",
+        "score": 641.53,
+        "rank": 7,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fb79db4a2d708fb3be42"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 3,
+            "_id": "68f5fb79db4a2d708fb3be43"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be44"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 8,
+                "_id": "68f5fb79db4a2d708fb3be46"
+              },
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3be47"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be45"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be41"
+      },
+      {
+        "fighterId": "676d753ceb38b2b97c6da997",
+        "score": 612.37,
+        "rank": 8,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fb79db4a2d708fb3be49"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fb79db4a2d708fb3be4a"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3be4c"
+              },
+              {
+                "division": 2,
+                "appearances": 5,
+                "_id": "68f5fb79db4a2d708fb3be4d"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be4b"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be48"
+      },
+      {
+        "fighterId": "676d7663eb38b2b97c6da9af",
+        "score": 599.22,
+        "rank": 9,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fb79db4a2d708fb3be4f"
+          }
+        ],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3be51"
+              },
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3be52"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3be53"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be50"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be4e"
+      },
+      {
+        "fighterId": "676d740ceb38b2b97c6da97b",
+        "score": 587.89,
+        "rank": 10,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fb79db4a2d708fb3be55"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be56"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be57"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3be59"
+              },
+              {
+                "division": 2,
+                "appearances": 6,
+                "_id": "68f5fb79db4a2d708fb3be5a"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3be5b"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be58"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be54"
+      },
+      {
+        "fighterId": "676d7279eb38b2b97c6da967",
+        "score": 575.3,
+        "rank": 11,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fb79db4a2d708fb3be5d"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be5e"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3be60"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3be61"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be5f"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be5c"
+      },
+      {
+        "fighterId": "676d7631eb38b2b97c6da9ab",
+        "score": 548.51,
+        "rank": 12,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be63"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be64"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 4,
+                "_id": "68f5fb79db4a2d708fb3be66"
+              },
+              {
+                "division": 2,
+                "appearances": 4,
+                "_id": "68f5fb79db4a2d708fb3be67"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be65"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be62"
+      },
+      {
+        "fighterId": "676d749feb38b2b97c6da989",
+        "score": 543.61,
+        "rank": 13,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3be6a"
+              },
+              {
+                "division": 2,
+                "appearances": 6,
+                "_id": "68f5fb79db4a2d708fb3be6b"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be69"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be68"
+      },
+      {
+        "fighterId": "676d7136eb38b2b97c6da953",
+        "score": 542.35,
+        "rank": 14,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fb79db4a2d708fb3be6d"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be6e"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 7,
+                "_id": "68f5fb79db4a2d708fb3be70"
+              },
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3be71"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be6f"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be6c"
+      },
+      {
+        "fighterId": "676d7201eb38b2b97c6da95f",
+        "score": 541.36,
+        "rank": 15,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 2,
+            "_id": "68f5fb79db4a2d708fb3be73"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be74"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3be76"
+              },
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3be77"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3be78"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be75"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be72"
+      },
+      {
+        "fighterId": "676d7475eb38b2b97c6da985",
+        "score": 536.59,
+        "rank": 16,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be7a"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3be7c"
+              },
+              {
+                "division": 3,
+                "appearances": 5,
+                "_id": "68f5fb79db4a2d708fb3be7d"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be7b"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be79"
+      },
+      {
+        "fighterId": "676d7554eb38b2b97c6da999",
+        "score": 531.35,
+        "rank": 17,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 2,
+            "_id": "68f5fb79db4a2d708fb3be7f"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be80"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3be82"
+              },
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3be83"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3be84"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be81"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be7e"
+      },
+      {
+        "fighterId": "676d7399eb38b2b97c6da977",
+        "score": 526.85,
+        "rank": 18,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fb79db4a2d708fb3be86"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 5,
+                "_id": "68f5fb79db4a2d708fb3be88"
+              },
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3be89"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be87"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be85"
+      },
+      {
+        "fighterId": "676d70fbeb38b2b97c6da951",
+        "score": 521.98,
+        "rank": 19,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fb79db4a2d708fb3be8b"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be8c"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3be8e"
+              },
+              {
+                "division": 2,
+                "appearances": 6,
+                "_id": "68f5fb79db4a2d708fb3be8f"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be8d"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be8a"
+      },
+      {
+        "fighterId": "676d75c8eb38b2b97c6da9a3",
+        "score": 517.72,
+        "rank": 20,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fb79db4a2d708fb3be91"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3be93"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3be94"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be92"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be90"
+      },
+      {
+        "fighterId": "676d736eeb38b2b97c6da975",
+        "score": 507.66,
+        "rank": 21,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be96"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3be97"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 7,
+                "_id": "68f5fb79db4a2d708fb3be99"
+              },
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3be9a"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be98"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be95"
+      },
+      {
+        "fighterId": "676d73ddeb38b2b97c6da979",
+        "score": 506.39,
+        "rank": 22,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fb79db4a2d708fb3be9c"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 2,
+            "_id": "68f5fb79db4a2d708fb3be9d"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3be9f"
+              },
+              {
+                "division": 2,
+                "appearances": 5,
+                "_id": "68f5fb79db4a2d708fb3bea0"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3be9e"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3be9b"
+      },
+      {
+        "fighterId": "676d767ceb38b2b97c6da9b1",
+        "score": 503.8,
+        "rank": 23,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 6,
+                "_id": "68f5fb79db4a2d708fb3bea3"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bea2"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bea1"
+      },
+      {
+        "fighterId": "676d71ceeb38b2b97c6da95d",
+        "score": 496.95,
+        "rank": 24,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3bea5"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3bea7"
+              },
+              {
+                "division": 3,
+                "appearances": 6,
+                "_id": "68f5fb79db4a2d708fb3bea8"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bea6"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bea4"
+      },
+      {
+        "fighterId": "676d757aeb38b2b97c6da99d",
+        "score": 490.3,
+        "rank": 25,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3beab"
+              },
+              {
+                "division": 3,
+                "appearances": 6,
+                "_id": "68f5fb79db4a2d708fb3beac"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3beaa"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bea9"
+      },
+      {
+        "fighterId": "676d6f89eb38b2b97c6da949",
+        "score": 487.63,
+        "rank": 26,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3beae"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 7,
+                "_id": "68f5fb79db4a2d708fb3beb0"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3beaf"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bead"
+      },
+      {
+        "fighterId": "676d6fc5eb38b2b97c6da94d",
+        "score": 486.68,
+        "rank": 27,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fb79db4a2d708fb3beb2"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3beb4"
+              },
+              {
+                "division": 3,
+                "appearances": 6,
+                "_id": "68f5fb79db4a2d708fb3beb5"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3beb3"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3beb1"
+      },
+      {
+        "fighterId": "676d7250eb38b2b97c6da965",
+        "score": 480.69,
+        "rank": 28,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 7,
+                "_id": "68f5fb79db4a2d708fb3beb8"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3beb7"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3beb6"
+      },
+      {
+        "fighterId": "676d759ceb38b2b97c6da9a1",
+        "score": 479.37,
+        "rank": 29,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3beba"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3bebc"
+              },
+              {
+                "division": 3,
+                "appearances": 4,
+                "_id": "68f5fb79db4a2d708fb3bebd"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bebb"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3beb9"
+      },
+      {
+        "fighterId": "676d742deb38b2b97c6da97d",
+        "score": 478.39,
+        "rank": 30,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 3,
+            "_id": "68f5fb79db4a2d708fb3bebf"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 7,
+                "_id": "68f5fb79db4a2d708fb3bec1"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bec0"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bebe"
+      },
+      {
+        "fighterId": "676d7304eb38b2b97c6da96d",
+        "score": 467.9,
+        "rank": 31,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fb79db4a2d708fb3bec3"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3bec4"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3bec5"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3bec7"
+              },
+              {
+                "division": 2,
+                "appearances": 4,
+                "_id": "68f5fb79db4a2d708fb3bec8"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3bec9"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bec6"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bec2"
+      },
+      {
+        "fighterId": "676d7241eb38b2b97c6da963",
+        "score": 462.13,
+        "rank": 32,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fb79db4a2d708fb3becb"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3becc"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3becd"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3becf"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3bed0"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bece"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3beca"
+      },
+      {
+        "fighterId": "676d745feb38b2b97c6da983",
+        "score": 458.78,
+        "rank": 33,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fb79db4a2d708fb3bed2"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3bed3"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 3,
+            "_id": "68f5fb79db4a2d708fb3bed4"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 4,
+                "_id": "68f5fb79db4a2d708fb3bed6"
+              },
+              {
+                "division": 2,
+                "appearances": 4,
+                "_id": "68f5fb79db4a2d708fb3bed7"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bed5"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bed1"
+      },
+      {
+        "fighterId": "676d7190eb38b2b97c6da959",
+        "score": 455.61,
+        "rank": 34,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3bed9"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3bedb"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3beda"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bed8"
+      },
+      {
+        "fighterId": "676d7172eb38b2b97c6da957",
+        "score": 450.49,
+        "rank": 35,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3bede"
+              },
+              {
+                "division": 3,
+                "appearances": 6,
+                "_id": "68f5fb79db4a2d708fb3bedf"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bedd"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bedc"
+      },
+      {
+        "fighterId": "676d764eeb38b2b97c6da9ad",
+        "score": 442.48,
+        "rank": 36,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 2,
+            "_id": "68f5fb79db4a2d708fb3bee1"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 4,
+                "_id": "68f5fb79db4a2d708fb3bee3"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bee2"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bee0"
+      },
+      {
+        "fighterId": "676d74bceb38b2b97c6da98d",
+        "score": 440.12,
+        "rank": 37,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fb79db4a2d708fb3bee5"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3bee6"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3bee8"
+              },
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3bee9"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3beea"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bee7"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bee4"
+      },
+      {
+        "fighterId": "676d6fa0eb38b2b97c6da94b",
+        "score": 411.58,
+        "rank": 38,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 8,
+                "_id": "68f5fb79db4a2d708fb3beed"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3beec"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3beeb"
+      },
+      {
+        "fighterId": "676d75dfeb38b2b97c6da9a5",
+        "score": 407.09,
+        "rank": 39,
+        "titles": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "numberOfTitles": 1,
+            "_id": "68f5fb79db4a2d708fb3beef"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fb79db4a2d708fb3bef0"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 2,
+            "_id": "68f5fb79db4a2d708fb3bef1"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3bef3"
+              },
+              {
+                "division": 2,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3bef4"
+              },
+              {
+                "division": 3,
+                "appearances": 4,
+                "_id": "68f5fb79db4a2d708fb3bef5"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bef2"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3beee"
+      },
+      {
+        "fighterId": "676d748eeb38b2b97c6da987",
+        "score": 393.61,
+        "rank": 40,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3bef8"
+              },
+              {
+                "division": 2,
+                "appearances": 5,
+                "_id": "68f5fb79db4a2d708fb3bef9"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3befa"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bef7"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bef6"
+      },
+      {
+        "fighterId": "676d72dceb38b2b97c6da96b",
+        "score": 368.4,
+        "rank": 41,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3befd"
+              },
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3befe"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3befc"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3befb"
+      },
+      {
+        "fighterId": "676d751aeb38b2b97c6da995",
+        "score": 339.58,
+        "rank": 42,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3bf00"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3bf02"
+              },
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3bf03"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f5fb79db4a2d708fb3bf04"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bf01"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3beff"
+      },
+      {
+        "fighterId": "676d743eeb38b2b97c6da97f",
+        "score": 334.73,
+        "rank": 43,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3bf07"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bf06"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bf05"
+      },
+      {
+        "fighterId": "676d75faeb38b2b97c6da9a7",
+        "score": 316.94,
+        "rank": 44,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3bf0a"
+              },
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3bf0b"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3bf0c"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bf09"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bf08"
+      },
+      {
+        "fighterId": "676d7505eb38b2b97c6da993",
+        "score": 268.07,
+        "rank": 45,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3bf0f"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bf0e"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bf0d"
+      },
+      {
+        "fighterId": "676d71b4eb38b2b97c6da95b",
+        "score": 268.07,
+        "rank": 46,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3bf12"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bf11"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bf10"
+      },
+      {
+        "fighterId": "676d74efeb38b2b97c6da991",
+        "score": 264.47,
+        "rank": 47,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3bf15"
+              },
+              {
+                "division": 2,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3bf16"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f5fb79db4a2d708fb3bf17"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bf14"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bf13"
+      },
+      {
+        "fighterId": "676d7568eb38b2b97c6da99b",
+        "score": 229.01,
+        "rank": 48,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fb79db4a2d708fb3bf19"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fb79db4a2d708fb3bf1b"
+              }
+            ],
+            "_id": "68f5fb79db4a2d708fb3bf1a"
+          }
+        ],
+        "_id": "68f5fb79db4a2d708fb3bf18"
+      },
+      {
+        "fighterId": "676d7151eb38b2b97c6da955",
+        "score": 0,
+        "rank": 49,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [],
+        "_id": "68f5fb79db4a2d708fb3bf1c"
+      },
+      {
+        "fighterId": "676d731ceb38b2b97c6da96f",
+        "score": 0,
+        "rank": 50,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [],
+        "_id": "68f5fb79db4a2d708fb3bf1d"
+      },
+      {
+        "fighterId": "676d74caeb38b2b97c6da98f",
+        "score": 0,
+        "rank": 51,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [],
+        "_id": "68f5fb79db4a2d708fb3bf1e"
+      },
+      {
+        "fighterId": "676d7333eb38b2b97c6da971",
+        "score": 0,
+        "rank": 52,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [],
+        "_id": "68f5fb79db4a2d708fb3bf1f"
+      },
+      {
+        "fighterId": "676d7588eb38b2b97c6da99f",
+        "score": 0,
+        "rank": 53,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [],
+        "_id": "68f5fb79db4a2d708fb3bf20"
+      }
+    ],
+    "isCurrent": false,
+    "createdAt": "2025-10-20T09:06:01.237Z",
+    "updatedAt": "2025-10-20T09:08:03.241Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f5fbf3685baa04a8611dd4",
+    "fighters": [
+      {
+        "fighterId": "676d7613eb38b2b97c6da9a9",
+        "score": 164.5,
+        "rank": 1,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 6,
+            "_id": "68f5fbf3685baa04a8611dd6"
+          },
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "numberOfTitles": 5,
+            "_id": "68f5fbf3685baa04a8611dd7"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 5,
+            "_id": "68f5fbf3685baa04a8611dd8"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 9,
+                "_id": "68f5fbf3685baa04a8611dda"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611dd9"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611dd5"
+      },
+      {
+        "fighterId": "676d6ecceb38b2b97c6da945",
+        "score": 107.65,
+        "rank": 2,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 2,
+            "_id": "68f5fbf3685baa04a8611ddc"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "numberOfTitles": 2,
+            "_id": "68f5fbf3685baa04a8611ddd"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fbf3685baa04a8611dde"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 2,
+            "_id": "68f5fbf3685baa04a8611ddf"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 10,
+                "_id": "68f5fbf3685baa04a8611de1"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611de0"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611ddb"
+      },
+      {
+        "fighterId": "676d72c5eb38b2b97c6da969",
+        "score": 92.87,
+        "rank": 3,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fbf3685baa04a8611de3"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "numberOfTitles": 1,
+            "_id": "68f5fbf3685baa04a8611de4"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611de5"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 2,
+            "_id": "68f5fbf3685baa04a8611de6"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611de8"
+              },
+              {
+                "division": 2,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611de9"
+              },
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611dea"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611de7"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611de2"
+      },
+      {
+        "fighterId": "676d721aeb38b2b97c6da961",
+        "score": 91.49,
+        "rank": 4,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fbf3685baa04a8611dec"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 3,
+            "_id": "68f5fbf3685baa04a8611ded"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611dee"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 10,
+                "_id": "68f5fbf3685baa04a8611df0"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611def"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611deb"
+      },
+      {
+        "fighterId": "676d7452eb38b2b97c6da981",
+        "score": 87.69,
+        "rank": 5,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fbf3685baa04a8611df2"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 3,
+            "_id": "68f5fbf3685baa04a8611df3"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611df4"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 8,
+                "_id": "68f5fbf3685baa04a8611df6"
+              },
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611df7"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611df5"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611df1"
+      },
+      {
+        "fighterId": "676d735aeb38b2b97c6da973",
+        "score": 79.9,
+        "rank": 6,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611df9"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611dfb"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611dfa"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611df8"
+      },
+      {
+        "fighterId": "676d753ceb38b2b97c6da997",
+        "score": 78.65,
+        "rank": 7,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fbf3685baa04a8611dfd"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fbf3685baa04a8611dfe"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611e00"
+              },
+              {
+                "division": 2,
+                "appearances": 5,
+                "_id": "68f5fbf3685baa04a8611e01"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611dff"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611dfc"
+      },
+      {
+        "fighterId": "676d740ceb38b2b97c6da97b",
+        "score": 74.99,
+        "rank": 8,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fbf3685baa04a8611e03"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e04"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e05"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611e07"
+              },
+              {
+                "division": 2,
+                "appearances": 6,
+                "_id": "68f5fbf3685baa04a8611e08"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611e09"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e06"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e02"
+      },
+      {
+        "fighterId": "676d7201eb38b2b97c6da95f",
+        "score": 72.99,
+        "rank": 9,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 2,
+            "_id": "68f5fbf3685baa04a8611e0b"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e0c"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611e0e"
+              },
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611e0f"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611e10"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e0d"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e0a"
+      },
+      {
+        "fighterId": "676d7554eb38b2b97c6da999",
+        "score": 72.17,
+        "rank": 10,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 2,
+            "_id": "68f5fbf3685baa04a8611e12"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e13"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611e15"
+              },
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611e16"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611e17"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e14"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e11"
+      },
+      {
+        "fighterId": "676d7663eb38b2b97c6da9af",
+        "score": 71.22,
+        "rank": 11,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fbf3685baa04a8611e19"
+          }
+        ],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611e1b"
+              },
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611e1c"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611e1d"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e1a"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e18"
+      },
+      {
+        "fighterId": "676d7136eb38b2b97c6da953",
+        "score": 69.85,
+        "rank": 12,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fbf3685baa04a8611e1f"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e20"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 7,
+                "_id": "68f5fbf3685baa04a8611e22"
+              },
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611e23"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e21"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e1e"
+      },
+      {
+        "fighterId": "676d70e7eb38b2b97c6da94f",
+        "score": 69.12,
+        "rank": 13,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e25"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611e27"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e26"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e24"
+      },
+      {
+        "fighterId": "676d7279eb38b2b97c6da967",
+        "score": 67.61,
+        "rank": 14,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fbf3685baa04a8611e29"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e2a"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611e2c"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611e2d"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e2b"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e28"
+      },
+      {
+        "fighterId": "676d70fbeb38b2b97c6da951",
+        "score": 66.69,
+        "rank": 15,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fbf3685baa04a8611e2f"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e30"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611e32"
+              },
+              {
+                "division": 2,
+                "appearances": 6,
+                "_id": "68f5fbf3685baa04a8611e33"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e31"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e2e"
+      },
+      {
+        "fighterId": "676d73ddeb38b2b97c6da979",
+        "score": 66.61,
+        "rank": 16,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fbf3685baa04a8611e35"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 2,
+            "_id": "68f5fbf3685baa04a8611e36"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611e38"
+              },
+              {
+                "division": 2,
+                "appearances": 5,
+                "_id": "68f5fbf3685baa04a8611e39"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e37"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e34"
+      },
+      {
+        "fighterId": "676d7631eb38b2b97c6da9ab",
+        "score": 66.37,
+        "rank": 17,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e3b"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e3c"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 4,
+                "_id": "68f5fbf3685baa04a8611e3e"
+              },
+              {
+                "division": 2,
+                "appearances": 4,
+                "_id": "68f5fbf3685baa04a8611e3f"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e3d"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e3a"
+      },
+      {
+        "fighterId": "676d7399eb38b2b97c6da977",
+        "score": 65.87,
+        "rank": 18,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fbf3685baa04a8611e41"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 5,
+                "_id": "68f5fbf3685baa04a8611e43"
+              },
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611e44"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e42"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e40"
+      },
+      {
+        "fighterId": "676d745feb38b2b97c6da983",
+        "score": 65.68,
+        "rank": 19,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fbf3685baa04a8611e46"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e47"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 3,
+            "_id": "68f5fbf3685baa04a8611e48"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 4,
+                "_id": "68f5fbf3685baa04a8611e4a"
+              },
+              {
+                "division": 2,
+                "appearances": 4,
+                "_id": "68f5fbf3685baa04a8611e4b"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e49"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e45"
+      },
+      {
+        "fighterId": "676d736eeb38b2b97c6da975",
+        "score": 63.5,
+        "rank": 20,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e4d"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e4e"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 7,
+                "_id": "68f5fbf3685baa04a8611e50"
+              },
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611e51"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e4f"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e4c"
+      },
+      {
+        "fighterId": "676d7304eb38b2b97c6da96d",
+        "score": 62.9,
+        "rank": 21,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fbf3685baa04a8611e53"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e54"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e55"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611e57"
+              },
+              {
+                "division": 2,
+                "appearances": 4,
+                "_id": "68f5fbf3685baa04a8611e58"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611e59"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e56"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e52"
+      },
+      {
+        "fighterId": "676d75c8eb38b2b97c6da9a3",
+        "score": 62.17,
+        "rank": 22,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fbf3685baa04a8611e5b"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611e5d"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611e5e"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e5c"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e5a"
+      },
+      {
+        "fighterId": "676d749feb38b2b97c6da989",
+        "score": 61.47,
+        "rank": 23,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611e61"
+              },
+              {
+                "division": 2,
+                "appearances": 6,
+                "_id": "68f5fbf3685baa04a8611e62"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e60"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e5f"
+      },
+      {
+        "fighterId": "676d7475eb38b2b97c6da985",
+        "score": 60.72,
+        "rank": 24,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e64"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611e66"
+              },
+              {
+                "division": 3,
+                "appearances": 5,
+                "_id": "68f5fbf3685baa04a8611e67"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e65"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e63"
+      },
+      {
+        "fighterId": "676d75dfeb38b2b97c6da9a5",
+        "score": 58.98,
+        "rank": 25,
+        "titles": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "numberOfTitles": 1,
+            "_id": "68f5fbf3685baa04a8611e69"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fbf3685baa04a8611e6a"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 2,
+            "_id": "68f5fbf3685baa04a8611e6b"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611e6d"
+              },
+              {
+                "division": 2,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611e6e"
+              },
+              {
+                "division": 3,
+                "appearances": 4,
+                "_id": "68f5fbf3685baa04a8611e6f"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e6c"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e68"
+      },
+      {
+        "fighterId": "676d7241eb38b2b97c6da963",
+        "score": 58.68,
+        "rank": 26,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fbf3685baa04a8611e71"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e72"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e73"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611e75"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611e76"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e74"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e70"
+      },
+      {
+        "fighterId": "676d6fc5eb38b2b97c6da94d",
+        "score": 58.52,
+        "rank": 27,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f5fbf3685baa04a8611e78"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611e7a"
+              },
+              {
+                "division": 3,
+                "appearances": 6,
+                "_id": "68f5fbf3685baa04a8611e7b"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e79"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e77"
+      },
+      {
+        "fighterId": "676d742deb38b2b97c6da97d",
+        "score": 57.29,
+        "rank": 28,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 3,
+            "_id": "68f5fbf3685baa04a8611e7d"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 7,
+                "_id": "68f5fbf3685baa04a8611e7f"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e7e"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e7c"
+      },
+      {
+        "fighterId": "676d74bceb38b2b97c6da98d",
+        "score": 55.85,
+        "rank": 29,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f5fbf3685baa04a8611e81"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e82"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611e84"
+              },
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611e85"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611e86"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e83"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e80"
+      },
+      {
+        "fighterId": "676d71ceeb38b2b97c6da95d",
+        "score": 55.77,
+        "rank": 30,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e88"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611e8a"
+              },
+              {
+                "division": 3,
+                "appearances": 6,
+                "_id": "68f5fbf3685baa04a8611e8b"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e89"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e87"
+      },
+      {
+        "fighterId": "676d6f89eb38b2b97c6da949",
+        "score": 54.61,
+        "rank": 31,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e8d"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 7,
+                "_id": "68f5fbf3685baa04a8611e8f"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e8e"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e8c"
+      },
+      {
+        "fighterId": "676d759ceb38b2b97c6da9a1",
+        "score": 54.37,
+        "rank": 32,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611e91"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611e93"
+              },
+              {
+                "division": 3,
+                "appearances": 4,
+                "_id": "68f5fbf3685baa04a8611e94"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e92"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e90"
+      },
+      {
+        "fighterId": "676d767ceb38b2b97c6da9b1",
+        "score": 53.8,
+        "rank": 33,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 6,
+                "_id": "68f5fbf3685baa04a8611e97"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e96"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e95"
+      },
+      {
+        "fighterId": "676d757aeb38b2b97c6da99d",
+        "score": 53.66,
+        "rank": 34,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611e9a"
+              },
+              {
+                "division": 3,
+                "appearances": 6,
+                "_id": "68f5fbf3685baa04a8611e9b"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e99"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e98"
+      },
+      {
+        "fighterId": "676d7250eb38b2b97c6da965",
+        "score": 52.12,
+        "rank": 35,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 7,
+                "_id": "68f5fbf3685baa04a8611e9e"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611e9d"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e9c"
+      },
+      {
+        "fighterId": "676d764eeb38b2b97c6da9ad",
+        "score": 50.55,
+        "rank": 36,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 2,
+            "_id": "68f5fbf3685baa04a8611ea0"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 4,
+                "_id": "68f5fbf3685baa04a8611ea2"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611ea1"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611e9f"
+      },
+      {
+        "fighterId": "676d7172eb38b2b97c6da957",
+        "score": 49.5,
+        "rank": 37,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611ea5"
+              },
+              {
+                "division": 3,
+                "appearances": 6,
+                "_id": "68f5fbf3685baa04a8611ea6"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611ea4"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611ea3"
+      },
+      {
+        "fighterId": "676d7190eb38b2b97c6da959",
+        "score": 49.16,
+        "rank": 38,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611ea8"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611eaa"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611ea9"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611ea7"
+      },
+      {
+        "fighterId": "676d6fa0eb38b2b97c6da94b",
+        "score": 49.08,
+        "rank": 39,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 8,
+                "_id": "68f5fbf3685baa04a8611ead"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611eac"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611eab"
+      },
+      {
+        "fighterId": "676d748eeb38b2b97c6da987",
+        "score": 45.89,
+        "rank": 40,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611eb0"
+              },
+              {
+                "division": 2,
+                "appearances": 5,
+                "_id": "68f5fbf3685baa04a8611eb1"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611eb2"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611eaf"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611eae"
+      },
+      {
+        "fighterId": "676d751aeb38b2b97c6da995",
+        "score": 39.58,
+        "rank": 41,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611eb4"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611eb6"
+              },
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611eb7"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f5fbf3685baa04a8611eb8"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611eb5"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611eb3"
+      },
+      {
+        "fighterId": "676d72dceb38b2b97c6da96b",
+        "score": 39.14,
+        "rank": 42,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611ebb"
+              },
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611ebc"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611eba"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611eb9"
+      },
+      {
+        "fighterId": "676d743eeb38b2b97c6da97f",
+        "score": 34.73,
+        "rank": 43,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611ebf"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611ebe"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611ebd"
+      },
+      {
+        "fighterId": "676d75faeb38b2b97c6da9a7",
+        "score": 34.08,
+        "rank": 44,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611ec2"
+              },
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611ec3"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611ec4"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611ec1"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611ec0"
+      },
+      {
+        "fighterId": "676d74efeb38b2b97c6da991",
+        "score": 29.69,
+        "rank": 45,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611ec7"
+              },
+              {
+                "division": 2,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611ec8"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f5fbf3685baa04a8611ec9"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611ec6"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611ec5"
+      },
+      {
+        "fighterId": "676d7505eb38b2b97c6da993",
+        "score": 28.07,
+        "rank": 46,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611ecc"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611ecb"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611eca"
+      },
+      {
+        "fighterId": "676d71b4eb38b2b97c6da95b",
+        "score": 28.07,
+        "rank": 47,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611ecf"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611ece"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611ecd"
+      },
+      {
+        "fighterId": "676d7568eb38b2b97c6da99b",
+        "score": 25.78,
+        "rank": 48,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f5fbf3685baa04a8611ed1"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f5fbf3685baa04a8611ed3"
+              }
+            ],
+            "_id": "68f5fbf3685baa04a8611ed2"
+          }
+        ],
+        "_id": "68f5fbf3685baa04a8611ed0"
+      },
+      {
+        "fighterId": "676d7151eb38b2b97c6da955",
+        "score": 0,
+        "rank": 49,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [],
+        "_id": "68f5fbf3685baa04a8611ed4"
+      },
+      {
+        "fighterId": "676d731ceb38b2b97c6da96f",
+        "score": 0,
+        "rank": 50,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [],
+        "_id": "68f5fbf3685baa04a8611ed5"
+      },
+      {
+        "fighterId": "676d74caeb38b2b97c6da98f",
+        "score": 0,
+        "rank": 51,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [],
+        "_id": "68f5fbf3685baa04a8611ed6"
+      },
+      {
+        "fighterId": "676d7333eb38b2b97c6da971",
+        "score": 0,
+        "rank": 52,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [],
+        "_id": "68f5fbf3685baa04a8611ed7"
+      },
+      {
+        "fighterId": "676d7588eb38b2b97c6da99f",
+        "score": 0,
+        "rank": 53,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [],
+        "_id": "68f5fbf3685baa04a8611ed8"
+      }
+    ],
+    "isCurrent": false,
+    "createdAt": "2025-10-20T09:08:03.297Z",
+    "updatedAt": "2025-10-20T09:33:48.325Z",
+    "__v": 0
+  },
+  {
+    "_id": "68f601fce1327e7e99312b5e",
+    "fighters": [
+      {
+        "fighterId": "676d7613eb38b2b97c6da9a9",
+        "score": 85.75,
+        "rank": 1,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 6,
+            "_id": "68f601fce1327e7e99312b60"
+          },
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "numberOfTitles": 5,
+            "_id": "68f601fce1327e7e99312b61"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 5,
+            "_id": "68f601fce1327e7e99312b62"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 9,
+                "_id": "68f601fce1327e7e99312b64"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312b63"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312b5f"
+      },
+      {
+        "fighterId": "676d6ecceb38b2b97c6da945",
+        "score": 46.76,
+        "rank": 2,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 2,
+            "_id": "68f601fce1327e7e99312b66"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "numberOfTitles": 2,
+            "_id": "68f601fce1327e7e99312b67"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f601fce1327e7e99312b68"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 2,
+            "_id": "68f601fce1327e7e99312b69"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 10,
+                "_id": "68f601fce1327e7e99312b6b"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312b6a"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312b65"
+      },
+      {
+        "fighterId": "676d721aeb38b2b97c6da961",
+        "score": 34.89,
+        "rank": 3,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f601fce1327e7e99312b6d"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 3,
+            "_id": "68f601fce1327e7e99312b6e"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312b6f"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 10,
+                "_id": "68f601fce1327e7e99312b71"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312b70"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312b6c"
+      },
+      {
+        "fighterId": "676d7452eb38b2b97c6da981",
+        "score": 32.3,
+        "rank": 4,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f601fce1327e7e99312b73"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 3,
+            "_id": "68f601fce1327e7e99312b74"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312b75"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 8,
+                "_id": "68f601fce1327e7e99312b77"
+              },
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312b78"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312b76"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312b72"
+      },
+      {
+        "fighterId": "676d72c5eb38b2b97c6da969",
+        "score": 30.26,
+        "rank": 5,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f601fce1327e7e99312b7a"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "numberOfTitles": 1,
+            "_id": "68f601fce1327e7e99312b7b"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312b7c"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 2,
+            "_id": "68f601fce1327e7e99312b7d"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312b7f"
+              },
+              {
+                "division": 2,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312b80"
+              },
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312b81"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312b7e"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312b79"
+      },
+      {
+        "fighterId": "676d745feb38b2b97c6da983",
+        "score": 26.37,
+        "rank": 6,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f601fce1327e7e99312b83"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312b84"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 3,
+            "_id": "68f601fce1327e7e99312b85"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 4,
+                "_id": "68f601fce1327e7e99312b87"
+              },
+              {
+                "division": 2,
+                "appearances": 4,
+                "_id": "68f601fce1327e7e99312b88"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312b86"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312b82"
+      },
+      {
+        "fighterId": "676d7554eb38b2b97c6da999",
+        "score": 26.25,
+        "rank": 7,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 2,
+            "_id": "68f601fce1327e7e99312b8a"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312b8b"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312b8d"
+              },
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312b8e"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312b8f"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312b8c"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312b89"
+      },
+      {
+        "fighterId": "676d7201eb38b2b97c6da95f",
+        "score": 26.15,
+        "rank": 8,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 2,
+            "_id": "68f601fce1327e7e99312b91"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312b92"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312b94"
+              },
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312b95"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312b96"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312b93"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312b90"
+      },
+      {
+        "fighterId": "676d753ceb38b2b97c6da997",
+        "score": 25.28,
+        "rank": 9,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f601fce1327e7e99312b98"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f601fce1327e7e99312b99"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312b9b"
+              },
+              {
+                "division": 2,
+                "appearances": 5,
+                "_id": "68f601fce1327e7e99312b9c"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312b9a"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312b97"
+      },
+      {
+        "fighterId": "676d75dfeb38b2b97c6da9a5",
+        "score": 24.17,
+        "rank": 10,
+        "titles": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "numberOfTitles": 1,
+            "_id": "68f601fce1327e7e99312b9e"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f601fce1327e7e99312b9f"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 2,
+            "_id": "68f601fce1327e7e99312ba0"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312ba2"
+              },
+              {
+                "division": 2,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312ba3"
+              },
+              {
+                "division": 3,
+                "appearances": 4,
+                "_id": "68f601fce1327e7e99312ba4"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312ba1"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312b9d"
+      },
+      {
+        "fighterId": "676d740ceb38b2b97c6da97b",
+        "score": 23.7,
+        "rank": 11,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f601fce1327e7e99312ba6"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312ba7"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312ba8"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312baa"
+              },
+              {
+                "division": 2,
+                "appearances": 6,
+                "_id": "68f601fce1327e7e99312bab"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312bac"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312ba9"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312ba5"
+      },
+      {
+        "fighterId": "676d73ddeb38b2b97c6da979",
+        "score": 22.64,
+        "rank": 12,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f601fce1327e7e99312bae"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 2,
+            "_id": "68f601fce1327e7e99312baf"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312bb1"
+              },
+              {
+                "division": 2,
+                "appearances": 5,
+                "_id": "68f601fce1327e7e99312bb2"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312bb0"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312bad"
+      },
+      {
+        "fighterId": "676d7136eb38b2b97c6da953",
+        "score": 22.6,
+        "rank": 13,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f601fce1327e7e99312bb4"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312bb5"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 7,
+                "_id": "68f601fce1327e7e99312bb7"
+              },
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312bb8"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312bb6"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312bb3"
+      },
+      {
+        "fighterId": "676d7304eb38b2b97c6da96d",
+        "score": 22.4,
+        "rank": 14,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f601fce1327e7e99312bba"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312bbb"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312bbc"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312bbe"
+              },
+              {
+                "division": 2,
+                "appearances": 4,
+                "_id": "68f601fce1327e7e99312bbf"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312bc0"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312bbd"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312bb9"
+      },
+      {
+        "fighterId": "676d70fbeb38b2b97c6da951",
+        "score": 21.16,
+        "rank": 15,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f601fce1327e7e99312bc2"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312bc3"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312bc5"
+              },
+              {
+                "division": 2,
+                "appearances": 6,
+                "_id": "68f601fce1327e7e99312bc6"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312bc4"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312bc1"
+      },
+      {
+        "fighterId": "676d7399eb38b2b97c6da977",
+        "score": 19.77,
+        "rank": 16,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f601fce1327e7e99312bc8"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 5,
+                "_id": "68f601fce1327e7e99312bca"
+              },
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312bcb"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312bc9"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312bc7"
+      },
+      {
+        "fighterId": "676d736eeb38b2b97c6da975",
+        "score": 19.09,
+        "rank": 17,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312bcd"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312bce"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 7,
+                "_id": "68f601fce1327e7e99312bd0"
+              },
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312bd1"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312bcf"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312bcc"
+      },
+      {
+        "fighterId": "676d7663eb38b2b97c6da9af",
+        "score": 18.42,
+        "rank": 18,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f601fce1327e7e99312bd3"
+          }
+        ],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312bd5"
+              },
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312bd6"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312bd7"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312bd4"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312bd2"
+      },
+      {
+        "fighterId": "676d7241eb38b2b97c6da963",
+        "score": 18.33,
+        "rank": 19,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f601fce1327e7e99312bd9"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312bda"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312bdb"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312bdd"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312bde"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312bdc"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312bd8"
+      },
+      {
+        "fighterId": "676d7631eb38b2b97c6da9ab",
+        "score": 18.16,
+        "rank": 20,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312be0"
+          },
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312be1"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 4,
+                "_id": "68f601fce1327e7e99312be3"
+              },
+              {
+                "division": 2,
+                "appearances": 4,
+                "_id": "68f601fce1327e7e99312be4"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312be2"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312bdf"
+      },
+      {
+        "fighterId": "676d74bceb38b2b97c6da98d",
+        "score": 17.42,
+        "rank": 21,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f601fce1327e7e99312be6"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312be7"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312be9"
+              },
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312bea"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312beb"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312be8"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312be5"
+      },
+      {
+        "fighterId": "676d7279eb38b2b97c6da967",
+        "score": 16.84,
+        "rank": 22,
+        "titles": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "numberOfTitles": 1,
+            "_id": "68f601fce1327e7e99312bed"
+          }
+        ],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312bee"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312bf0"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312bf1"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312bef"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312bec"
+      },
+      {
+        "fighterId": "676d75c8eb38b2b97c6da9a3",
+        "score": 16.61,
+        "rank": 23,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f601fce1327e7e99312bf3"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312bf5"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312bf6"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312bf4"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312bf2"
+      },
+      {
+        "fighterId": "676d6fc5eb38b2b97c6da94d",
+        "score": 15.71,
+        "rank": 24,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 2,
+            "_id": "68f601fce1327e7e99312bf8"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312bfa"
+              },
+              {
+                "division": 3,
+                "appearances": 6,
+                "_id": "68f601fce1327e7e99312bfb"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312bf9"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312bf7"
+      },
+      {
+        "fighterId": "676d742deb38b2b97c6da97d",
+        "score": 15.18,
+        "rank": 25,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 3,
+            "_id": "68f601fce1327e7e99312bfd"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 7,
+                "_id": "68f601fce1327e7e99312bff"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312bfe"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312bfc"
+      },
+      {
+        "fighterId": "676d749feb38b2b97c6da989",
+        "score": 13.26,
+        "rank": 26,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312c02"
+              },
+              {
+                "division": 2,
+                "appearances": 6,
+                "_id": "68f601fce1327e7e99312c03"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c01"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c00"
+      },
+      {
+        "fighterId": "676d7475eb38b2b97c6da985",
+        "score": 13.14,
+        "rank": 27,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312c05"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312c07"
+              },
+              {
+                "division": 3,
+                "appearances": 5,
+                "_id": "68f601fce1327e7e99312c08"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c06"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c04"
+      },
+      {
+        "fighterId": "676d6fa0eb38b2b97c6da94b",
+        "score": 12.83,
+        "rank": 28,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 8,
+                "_id": "68f601fce1327e7e99312c0b"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c0a"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c09"
+      },
+      {
+        "fighterId": "676d735aeb38b2b97c6da973",
+        "score": 12.4,
+        "rank": 29,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778100309a4c4b25127f8fa",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312c0d"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312c0f"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c0e"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c0c"
+      },
+      {
+        "fighterId": "676d759ceb38b2b97c6da9a1",
+        "score": 11.87,
+        "rank": 30,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312c11"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312c13"
+              },
+              {
+                "division": 3,
+                "appearances": 4,
+                "_id": "68f601fce1327e7e99312c14"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c12"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c10"
+      },
+      {
+        "fighterId": "676d71ceeb38b2b97c6da95d",
+        "score": 11.65,
+        "rank": 31,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312c16"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312c18"
+              },
+              {
+                "division": 3,
+                "appearances": 6,
+                "_id": "68f601fce1327e7e99312c19"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c17"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c15"
+      },
+      {
+        "fighterId": "676d764eeb38b2b97c6da9ad",
+        "score": 11.35,
+        "rank": 32,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 2,
+            "_id": "68f601fce1327e7e99312c1b"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 4,
+                "_id": "68f601fce1327e7e99312c1d"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c1c"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c1a"
+      },
+      {
+        "fighterId": "676d6f89eb38b2b97c6da949",
+        "score": 11.31,
+        "rank": 33,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312c1f"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 7,
+                "_id": "68f601fce1327e7e99312c21"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c20"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c1e"
+      },
+      {
+        "fighterId": "676d748eeb38b2b97c6da987",
+        "score": 11.11,
+        "rank": 34,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312c24"
+              },
+              {
+                "division": 2,
+                "appearances": 5,
+                "_id": "68f601fce1327e7e99312c25"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312c26"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c23"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c22"
+      },
+      {
+        "fighterId": "676d70e7eb38b2b97c6da94f",
+        "score": 11.05,
+        "rank": 35,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312c28"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312c2a"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c29"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c27"
+      },
+      {
+        "fighterId": "676d757aeb38b2b97c6da99d",
+        "score": 10,
+        "rank": 36,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312c2d"
+              },
+              {
+                "division": 3,
+                "appearances": 6,
+                "_id": "68f601fce1327e7e99312c2e"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c2c"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c2b"
+      },
+      {
+        "fighterId": "676d751aeb38b2b97c6da995",
+        "score": 9.58,
+        "rank": 37,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312c30"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312c32"
+              },
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312c33"
+              },
+              {
+                "division": 3,
+                "appearances": 3,
+                "_id": "68f601fce1327e7e99312c34"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c31"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c2f"
+      },
+      {
+        "fighterId": "676d7172eb38b2b97c6da957",
+        "score": 9.41,
+        "rank": 38,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312c37"
+              },
+              {
+                "division": 3,
+                "appearances": 6,
+                "_id": "68f601fce1327e7e99312c38"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c36"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c35"
+      },
+      {
+        "fighterId": "676d7250eb38b2b97c6da965",
+        "score": 9.26,
+        "rank": 39,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 7,
+                "_id": "68f601fce1327e7e99312c3b"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c3a"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c39"
+      },
+      {
+        "fighterId": "676d767ceb38b2b97c6da9b1",
+        "score": 8.8,
+        "rank": 40,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 6,
+                "_id": "68f601fce1327e7e99312c3e"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c3d"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c3c"
+      },
+      {
+        "fighterId": "676d7190eb38b2b97c6da959",
+        "score": 8.52,
+        "rank": 41,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312c40"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312c42"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c41"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c3f"
+      },
+      {
+        "fighterId": "676d72dceb38b2b97c6da96b",
+        "score": 6.21,
+        "rank": 42,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312c45"
+              },
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312c46"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c44"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c43"
+      },
+      {
+        "fighterId": "676d74efeb38b2b97c6da991",
+        "score": 6.21,
+        "rank": 43,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312c49"
+              },
+              {
+                "division": 2,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312c4a"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312c4b"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c48"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c47"
+      },
+      {
+        "fighterId": "676d75faeb38b2b97c6da9a7",
+        "score": 5.79,
+        "rank": 44,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 1,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312c4e"
+              },
+              {
+                "division": 2,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312c4f"
+              },
+              {
+                "division": 3,
+                "appearances": 1,
+                "_id": "68f601fce1327e7e99312c50"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c4d"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c4c"
+      },
+      {
+        "fighterId": "676d7568eb38b2b97c6da99b",
+        "score": 5.46,
+        "rank": 45,
+        "titles": [],
+        "cupAppearances": [
+          {
+            "competitionId": "6778103309a4c4b25127f8fc",
+            "appearances": 1,
+            "_id": "68f601fce1327e7e99312c52"
+          }
+        ],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312c54"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c53"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c51"
+      },
+      {
+        "fighterId": "676d743eeb38b2b97c6da97f",
+        "score": 4.73,
+        "rank": 46,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312c57"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c56"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c55"
+      },
+      {
+        "fighterId": "676d7505eb38b2b97c6da993",
+        "score": 4.07,
+        "rank": 47,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312c5a"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c59"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c58"
+      },
+      {
+        "fighterId": "676d71b4eb38b2b97c6da95b",
+        "score": 4.07,
+        "rank": 48,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [
+          {
+            "competitionId": "67780dcc09a4c4b25127f8f6",
+            "divisionAppearances": [
+              {
+                "division": 3,
+                "appearances": 2,
+                "_id": "68f601fce1327e7e99312c5d"
+              }
+            ],
+            "_id": "68f601fce1327e7e99312c5c"
+          }
+        ],
+        "_id": "68f601fce1327e7e99312c5b"
+      },
+      {
+        "fighterId": "676d7151eb38b2b97c6da955",
+        "score": 0,
+        "rank": 49,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [],
+        "_id": "68f601fce1327e7e99312c5e"
+      },
+      {
+        "fighterId": "676d731ceb38b2b97c6da96f",
+        "score": 0,
+        "rank": 50,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [],
+        "_id": "68f601fce1327e7e99312c5f"
+      },
+      {
+        "fighterId": "676d74caeb38b2b97c6da98f",
+        "score": 0,
+        "rank": 51,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [],
+        "_id": "68f601fce1327e7e99312c60"
+      },
+      {
+        "fighterId": "676d7333eb38b2b97c6da971",
+        "score": 0,
+        "rank": 52,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [],
+        "_id": "68f601fce1327e7e99312c61"
+      },
+      {
+        "fighterId": "676d7588eb38b2b97c6da99f",
+        "score": 0,
+        "rank": 53,
+        "titles": [],
+        "cupAppearances": [],
+        "leagueAppearances": [],
+        "_id": "68f601fce1327e7e99312c62"
+      }
+    ],
+    "isCurrent": true,
+    "createdAt": "2025-10-20T09:33:48.367Z",
+    "updatedAt": "2025-10-20T09:33:48.367Z",
+    "__v": 0
+  }
+]
