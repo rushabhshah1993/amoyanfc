@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faArrowLeft, faUser, faBalanceScale } from '@fortawesome/free-solid-svg-icons';
-import { GET_FIGHT_BY_ID, GET_CUP_FIGHT_BY_ID, GET_FIGHTER_INFORMATION, GET_ALL_FIGHTERS, GET_SEASON_DETAILS } from '../../services/queries';
+import { GET_FIGHT_BY_ID, GET_CUP_FIGHT_BY_ID, GET_FIGHTER_INFORMATION, GET_ALL_FIGHTERS, GET_SEASON_DETAILS, SIMULATE_FIGHT, GENERATE_FIGHT_WITH_WINNER } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
 import Performance from '../../components/Performance/Performance';
 import CompactHeadToHead from '../../components/CompactHeadToHead/CompactHeadToHead';
-import { prepareFightResultPayload } from '../../services/fightResultService';
 import styles from './FightPage.module.css';
 import BodySilhouette from './BodySilhouette';
 
-// Mock data for testing scheduled fights - TO BE REMOVED LATER
+// Mock data for development/testing of scheduled fight UI
+// Accessed via: http://localhost:3000/fight/scheduled-mock
+// This allows testing the fight page UI without needing real fight data
 import { mockScheduledFight } from '../../mocks/fight-scheduled.mock';
 
 interface Fighter {
@@ -103,7 +104,8 @@ const FightPage: React.FC = () => {
     // Check if this is a cup fight from navigation state
     const isCupFight = location.state?.isCupFight || false;
     
-    // TEMPORARY: Check if using mock data
+    // Development mode: Check if using mock data for UI testing
+    // Access via: http://localhost:3000/fight/scheduled-mock
     const useMockData = fightId === 'scheduled-mock';
 
     // Fetch fight data using appropriate query (skip if using mock data)
@@ -112,8 +114,7 @@ const FightPage: React.FC = () => {
         skip: !fightId || useMockData
     });
 
-    // TEMPORARY: Use mock data for testing scheduled fights
-    // This will be removed once backend integration is complete
+    // Use mock data for development/testing, otherwise use real fight data from GraphQL
     const rawFight = useMockData ? mockScheduledFight : (data?.getCupFightById || data?.getFightById || null);
     
     // Extract fighter IDs for queries (works for both mock and real data)
@@ -137,6 +138,10 @@ const FightPage: React.FC = () => {
         variables: { id: competitionId },
         skip: !competitionId || useMockData
     });
+
+    // AI Fight Generation Mutations
+    const [simulateFightMutation, { loading: simulatingFight }] = useMutation(SIMULATE_FIGHT);
+    const [generateFightWithWinnerMutation, { loading: generatingFight }] = useMutation(GENERATE_FIGHT_WITH_WINNER);
     
     // Use real fighter data from MongoDB if available, otherwise fall back to mock/raw data
     const fighter1Full = fighter1Data?.getFighterInformation;
@@ -534,314 +539,92 @@ const FightPage: React.FC = () => {
         );
     };
 
-    // ============ HELPER FUNCTION TO PREPARE CHATGPT PAYLOAD ============
-    const prepareFightPayload = (winnerId: string | null = null, description: string | null = null) => {
-        if (!fighter1Full || !fighter2Full || !fighter1 || !fighter2) return null;
-
-        // Helper to get last 5 fights for a fighter
-        const getLastFiveFights = (fighterData: any) => {
-            if (!fighterData.opponentsHistory) return [];
-
-            // Flatten all fights from all opponents
-            const allFights: any[] = [];
-            fighterData.opponentsHistory.forEach((opponentHistory: any) => {
-                if (opponentHistory.details) {
-                    opponentHistory.details.forEach((detail: any) => {
-                        // Find competition name from competitionHistory
-                        const compMeta = fighterData.competitionHistory?.find(
-                            (ch: any) => ch.competitionId === detail.competitionId
-                        )?.competitionMeta;
-
-                        allFights.push({
-                            outcome: detail.isWinner ? 'win' : 'loss',
-                            opponentId: opponentHistory.opponentId,
-                            competitionName: compMeta?.competitionName || 'Unknown',
-                            date: detail.date || null // Will need to add date field to GraphQL query if not present
-                        });
-                    });
-                }
-            });
-
-            // Sort by date (most recent first) and take top 5
-            // Note: If date is not available, we'll need to sort by season/round
-            return allFights
-                .filter(f => f.date)
-                .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-                .slice(0, 5);
-        };
-
-        // Helper to get current active streak
-        const getCurrentStreak = (fighterData: any) => {
-            if (!fighterData.streaks) return null;
-
-            const activeStreak = fighterData.streaks.find((streak: any) => streak.active === true);
-            if (!activeStreak) return null;
-
-            return {
-                type: activeStreak.type,
-                count: activeStreak.count,
-                startDate: activeStreak.start ? 
-                    new Date(activeStreak.start.season, 0, 1).toISOString() : null, // Approximate date
-                endDate: activeStreak.end ? 
-                    new Date(activeStreak.end.season, 11, 31).toISOString() : null, // Approximate date
-                active: activeStreak.active
-            };
-        };
-
-        // Calculate head-to-head summary
-        const headToHeadSummary = realHeadToHeadData.reduce((acc, comp) => {
-            acc.totalFights += comp.totalFights;
-            acc.fighter1Wins += comp.fighter1Wins;
-            acc.fighter2Wins += comp.fighter2Wins;
-            return acc;
-        }, { totalFights: 0, fighter1Wins: 0, fighter2Wins: 0 });
-
-        const payload = {
-            fighter1Id: fighter1.id,
-            fighter2Id: fighter2.id,
-            winnerId: winnerId,
-            userDescription: description,
-            headToHead: headToHeadSummary,
-            fighter1: {
-                skillset: fighter1Full.skillset || [],
-                physicalAttributes: fighter1Full.physicalAttributes || {},
-                lastFiveFights: getLastFiveFights(fighter1Full),
-                currentStreak: getCurrentStreak(fighter1Full)
-            },
-            fighter2: {
-                skillset: fighter2Full.skillset || [],
-                physicalAttributes: fighter2Full.physicalAttributes || {},
-                lastFiveFights: getLastFiveFights(fighter2Full),
-                currentStreak: getCurrentStreak(fighter2Full)
-            }
-        };
-
-        return payload;
-    };
-
-    // ============ PLACEHOLDER API FUNCTIONS ============
-    // These will be replaced with actual API calls later
+    // ============ AI FIGHT GENERATION HANDLERS ============
     
     const handleSimulateFightConfirm = async () => {
-        console.log('Simulating fight between:', fighter1?.firstName, 'and', fighter2?.firstName);
-        
-        // Prepare payload for ChatGPT
-        const chatGPTPayload = prepareFightPayload(null, null); // No winner, no description for simulation
-        console.log('ChatGPT Input Payload:', JSON.stringify(chatGPTPayload, null, 2));
-        
-        // TODO: Call OpenAI API to simulate fight
-        // const chatGPTResponse = await simulateFightWithAI(chatGPTPayload);
-        
-        // MOCK: Simulate ChatGPT response for testing
-        const mockChatGPTResponse = {
-            winner: fighter1!.id, // Mock: fighter1 wins
-            date: new Date().toISOString(),
-            genAIDescription: "This is a simulated AI-generated fight description.",
-            isSimulated: true,
-            fighterStats: [
-                {
-                    fighterId: fighter1!.id,
-                    stats: {
-                        fightTime: 12.5,
-                        finishingMove: "Armbar",
-                        grappling: { accuracy: 80, defence: 10 },
-                        significantStrikes: {
-                            accuracy: 75,
-                            attempted: 40,
-                            defence: 9,
-                            landed: 30,
-                            landedPerMinute: 2.4,
-                            positions: { clinching: 5, ground: 12, standing: 13 }
-                        },
-                        strikeMap: {
-                            head: { absorb: 4, strike: 15 },
-                            torso: { absorb: 2, strike: 10 },
-                            leg: { absorb: 1, strike: 5 }
-                        },
-                        submissions: { attemptsPer15Mins: 2.5, average: 1.8 },
-                        takedowns: {
-                            accuracy: 65,
-                            attempted: 5,
-                            avgTakedownsLandedPerMin: 0.3,
-                            defence: 2,
-                            landed: 3
-                        }
-                    }
-                },
-                {
-                    fighterId: fighter2!.id,
-                    stats: {
-                        fightTime: 12.5,
-                        finishingMove: null,
-                        grappling: { accuracy: 70, defence: 8 },
-                        significantStrikes: {
-                            accuracy: 68,
-                            attempted: 35,
-                            defence: 11,
-                            landed: 24,
-                            landedPerMinute: 1.9,
-                            positions: { clinching: 4, ground: 9, standing: 11 }
-                        },
-                        strikeMap: {
-                            head: { absorb: 6, strike: 10 },
-                            torso: { absorb: 4, strike: 8 },
-                            leg: { absorb: 2, strike: 6 }
-                        },
-                        submissions: { attemptsPer15Mins: 1.5, average: 1.0 },
-                        takedowns: {
-                            accuracy: 55,
-                            attempted: 4,
-                            avgTakedownsLandedPerMin: 0.2,
-                            defence: 3,
-                            landed: 2
-                        }
-                    }
-                }
-            ]
-        };
+        if (!fight || !fighter1 || !fighter2) {
+            alert('Fight data not available');
+            return;
+        }
+
+        console.log('Simulating fight between:', fighter1.firstName, 'and', fighter2.firstName);
 
         try {
-            // Prepare MongoDB update payload
-            const mongoDBPayload = prepareFightResultPayload(
-                fightId!,
-                fight!.competitionContext.competitionId,
-                fight!.competitionContext.seasonNumber,
-                fight!.competitionContext.divisionNumber!,
-                fight!.competitionContext.roundNumber,
-                fighter1Full,
-                fighter2Full,
-                competitionFull,
-                mockChatGPTResponse
-            );
+            const result = await simulateFightMutation({
+                variables: {
+                    input: {
+                        competitionId: fight.competitionContext.competitionId,
+                        seasonNumber: fight.competitionContext.seasonNumber,
+                        divisionNumber: fight.competitionContext.divisionNumber || null,
+                        roundNumber: fight.competitionContext.roundNumber,
+                        fightIndex: 0, // You may need to determine the correct index based on your data
+                        fighter1Id: fighter1.id,
+                        fighter2Id: fighter2.id,
+                        fightDate: new Date().toISOString()
+                    }
+                },
+                refetchQueries: [
+                    { query: isCupFight ? GET_CUP_FIGHT_BY_ID : GET_FIGHT_BY_ID, variables: { id: fightId } },
+                    { query: GET_SEASON_DETAILS, variables: { id: competitionId } }
+                ]
+            });
 
-            console.log('MongoDB Update Payload:', JSON.stringify(mongoDBPayload, null, 2));
-
-            // TODO: Send to backend to update MongoDB
-            // await updateFightResult(mongoDBPayload);
-
-            setActionMode('none');
-            alert('Fight simulated! Check console for MongoDB payload.');
-        } catch (error) {
-            console.error('Error preparing fight result:', error);
-            alert('Error preparing fight result. Check console for details.');
+            if (result.data?.simulateFight?.success) {
+                setActionMode('none');
+                alert('Fight simulated successfully! The AI has determined the winner and generated fight statistics.');
+                // The page will automatically refresh with new data due to refetchQueries
+            } else {
+                throw new Error(result.data?.simulateFight?.message || 'Failed to simulate fight');
+            }
+        } catch (error: any) {
+            console.error('Error simulating fight:', error);
+            alert(`Error simulating fight: ${error.message || 'Unknown error'}`);
         }
     };
 
     const handleChooseWinnerSubmit = async () => {
-        if (!selectedWinner) {
-            alert('Please select a winner');
+        if (!selectedWinner || !fight || !fighter1 || !fighter2) {
+            alert('Please select a winner and ensure fight data is available');
             return;
         }
-        
+
         console.log('Chosen winner:', selectedWinner);
         console.log('Fight description:', fightDescription);
-        console.log('Fight ID:', fightId);
-        
-        // Prepare payload for ChatGPT (with winner and description)
-        const chatGPTPayload = prepareFightPayload(
-            selectedWinner, 
-            fightDescription || null
-        );
-        console.log('ChatGPT Input Payload:', JSON.stringify(chatGPTPayload, null, 2));
-        
-        // TODO: Call OpenAI API to get fight stats based on winner
-        // const chatGPTResponse = await generateFightStatsWithAI(chatGPTPayload);
-        
-        // MOCK: Simulate ChatGPT response with user-selected winner
-        const mockChatGPTResponse = {
-            winner: selectedWinner,
-            date: new Date().toISOString(),
-            userDescription: fightDescription || undefined,
-            genAIDescription: "AI-generated analysis of the fight based on the outcome.",
-            isSimulated: false, // User chose the winner
-            fighterStats: [
-                {
-                    fighterId: fighter1!.id,
-                    stats: {
-                        fightTime: 14.0,
-                        finishingMove: selectedWinner === fighter1!.id ? "Triangle Choke" : null,
-                        grappling: { accuracy: 82, defence: 11 },
-                        significantStrikes: {
-                            accuracy: 77,
-                            attempted: 42,
-                            defence: 10,
-                            landed: 32,
-                            landedPerMinute: 2.3,
-                            positions: { clinching: 6, ground: 13, standing: 13 }
-                        },
-                        strikeMap: {
-                            head: { absorb: 5, strike: 14 },
-                            torso: { absorb: 3, strike: 11 },
-                            leg: { absorb: 2, strike: 7 }
-                        },
-                        submissions: { attemptsPer15Mins: 2.2, average: 1.6 },
-                        takedowns: {
-                            accuracy: 68,
-                            attempted: 6,
-                            avgTakedownsLandedPerMin: 0.29,
-                            defence: 2,
-                            landed: 4
-                        }
-                    }
-                },
-                {
-                    fighterId: fighter2!.id,
-                    stats: {
-                        fightTime: 14.0,
-                        finishingMove: selectedWinner === fighter2!.id ? "Knockout" : null,
-                        grappling: { accuracy: 72, defence: 9 },
-                        significantStrikes: {
-                            accuracy: 70,
-                            attempted: 37,
-                            defence: 12,
-                            landed: 26,
-                            landedPerMinute: 1.9,
-                            positions: { clinching: 5, ground: 10, standing: 11 }
-                        },
-                        strikeMap: {
-                            head: { absorb: 7, strike: 11 },
-                            torso: { absorb: 5, strike: 9 },
-                            leg: { absorb: 3, strike: 6 }
-                        },
-                        submissions: { attemptsPer15Mins: 1.7, average: 1.2 },
-                        takedowns: {
-                            accuracy: 60,
-                            attempted: 5,
-                            avgTakedownsLandedPerMin: 0.21,
-                            defence: 4,
-                            landed: 3
-                        }
-                    }
-                }
-            ]
-        };
 
         try {
-            // Prepare MongoDB update payload
-            const mongoDBPayload = prepareFightResultPayload(
-                fightId!,
-                fight!.competitionContext.competitionId,
-                fight!.competitionContext.seasonNumber,
-                fight!.competitionContext.divisionNumber!,
-                fight!.competitionContext.roundNumber,
-                fighter1Full,
-                fighter2Full,
-                competitionFull,
-                mockChatGPTResponse
-            );
+            const result = await generateFightWithWinnerMutation({
+                variables: {
+                    input: {
+                        competitionId: fight.competitionContext.competitionId,
+                        seasonNumber: fight.competitionContext.seasonNumber,
+                        divisionNumber: fight.competitionContext.divisionNumber || null,
+                        roundNumber: fight.competitionContext.roundNumber,
+                        fightIndex: 0, // You may need to determine the correct index based on your data
+                        fighter1Id: fighter1.id,
+                        fighter2Id: fighter2.id,
+                        winnerId: selectedWinner,
+                        userDescription: fightDescription || null,
+                        fightDate: new Date().toISOString()
+                    }
+                },
+                refetchQueries: [
+                    { query: isCupFight ? GET_CUP_FIGHT_BY_ID : GET_FIGHT_BY_ID, variables: { id: fightId } },
+                    { query: GET_SEASON_DETAILS, variables: { id: competitionId } }
+                ]
+            });
 
-            console.log('MongoDB Update Payload:', JSON.stringify(mongoDBPayload, null, 2));
-
-            // TODO: Send to backend to update MongoDB
-            // await updateFightResult(mongoDBPayload);
-            
-            setActionMode('none');
-            setSelectedWinner(null);
-            setFightDescription('');
-            alert('Winner recorded! Check console for MongoDB payload.');
-        } catch (error) {
-            console.error('Error preparing fight result:', error);
-            alert('Error preparing fight result. Check console for details.');
+            if (result.data?.generateFightWithWinner?.success) {
+                setActionMode('none');
+                setSelectedWinner(null);
+                setFightDescription('');
+                alert('Fight generated successfully! The AI has created fight statistics based on your selected winner.');
+                // The page will automatically refresh with new data due to refetchQueries
+            } else {
+                throw new Error(result.data?.generateFightWithWinner?.message || 'Failed to generate fight');
+            }
+        } catch (error: any) {
+            console.error('Error generating fight with winner:', error);
+            alert(`Error generating fight: ${error.message || 'Unknown error'}`);
         }
     };
 

@@ -1,4 +1,30 @@
 /**
+ * ⚠️⚠️⚠️ REFERENCE FILE ONLY - NOT ACTIVELY USED ⚠️⚠️⚠️
+ * 
+ * This file is kept for REFERENCE and DOCUMENTATION purposes only.
+ * 
+ * CURRENT IMPLEMENTATION (November 8, 2025):
+ * All fight result processing now happens on the BACKEND:
+ * → Location: server/services/fight-result.service.js
+ * → Triggered by: GraphQL mutations (simulateFight, generateFightWithWinner)
+ * → Handles: All 8 MongoDB update steps + IC/CC season creation
+ * 
+ * WHY THIS FILE STILL EXISTS:
+ * - Documents the fight result data structure
+ * - Reference for understanding MongoDB update flow
+ * - Useful for debugging and comparison
+ * - Educational purposes for new developers
+ * 
+ * DO NOT USE THIS FILE IN PRODUCTION CODE!
+ * 
+ * See also:
+ * - frontend/src/utils/fightService.README.md
+ * - BACKEND_FIGHT_RESULT_IMPLEMENTATION.md
+ * - FIGHT_RESULT_SERVICE_README.md
+ * 
+ * ========================================================================
+ * ORIGINAL DOCUMENTATION (kept for reference):
+ * ========================================================================
  * Fight Result Service
  * Handles preparation of fight result data for MongoDB updates
  * All updates are prepared in a single payload to minimize database requests

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/client';
-import { GET_COMPETITIONS, GET_ALL_FIGHTERS } from '../../services/queries';
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_COMPETITIONS, GET_ALL_FIGHTERS, CREATE_COMPETITION_SEASON } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
 import styles from './CreateSeasonPage.module.css';
 
@@ -52,6 +52,9 @@ const CreateSeasonPage: React.FC = () => {
     // Fetch competitions and fighters
     const { data: competitionsData, loading: competitionsLoading } = useQuery(GET_COMPETITIONS);
     const { data: fightersData, loading: fightersLoading } = useQuery(GET_ALL_FIGHTERS);
+    
+    // Mutation for creating season
+    const [createSeasonMutation, { loading: creatingSeason, error: createSeasonError }] = useMutation(CREATE_COMPETITION_SEASON);
 
     const competitions: CompetitionMeta[] = competitionsData?.getAllCompetitionsMeta || [];
     const allFighters: Fighter[] = fightersData?.getAllFighters || [];
@@ -465,20 +468,34 @@ const CreateSeasonPage: React.FC = () => {
             console.log('='.repeat(80));
             console.log(JSON.stringify(seasonData, null, 2));
 
-            // TODO: Make API call to save season to MongoDB
-            // const response = await fetch('/api/seasons', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(seasonData),
-            // });
-            // 
-            // if (!response.ok) {
-            //     throw new Error('Failed to create season');
-            // }
-            
-            alert('Season data generated successfully! Check console for detailed fight information.');
+            // Save season to MongoDB using GraphQL mutation
+            console.log('\n📤 Saving season to MongoDB...');
+            const result = await createSeasonMutation({
+                variables: {
+                    input: seasonData
+                }
+            });
+
+            if (result.data?.createCompetitionSeason) {
+                const createdSeason = result.data.createCompetitionSeason;
+                console.log('\n✅ Season saved to MongoDB successfully!');
+                console.log(`   Season ID: ${createdSeason.id}`);
+                console.log(`   Season Number: ${createdSeason.seasonMeta.seasonNumber}`);
+                
+                alert(`Season ${createdSeason.seasonMeta.seasonNumber} created successfully!\nSeason ID: ${createdSeason.id}`);
+                
+                // Reset form after successful creation
+                setFormData({
+                    competitionMetaId: '',
+                    seasonNumber: 1,
+                    numberOfDivisions: 3,
+                    divisions: [],
+                    fighterOfTheSeasonPrizeInGbp: 10000
+                });
+                setCurrentStep('basic');
+            } else {
+                throw new Error('Failed to create season - no data returned');
+            }
         } catch (error) {
             console.error('❌ Error creating season:', error);
             alert(`Error creating season: ${error instanceof Error ? error.message : 'Unknown error'}`);

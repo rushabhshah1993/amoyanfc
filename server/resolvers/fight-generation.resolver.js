@@ -13,6 +13,7 @@ import { Competition } from "../models/competition.model.js";
 
 /* Service imports */
 import { generateFightResult } from "../services/openai-fight.service.js";
+import { applyFightResult } from "../services/fight-result.service.js";
 
 /* Utility imports */
 import { catchAsyncErrors } from "../utils.js";
@@ -21,20 +22,18 @@ import { catchAsyncErrors } from "../utils.js";
 import { NotFoundError, ValidationError } from "../error.js";
 
 /**
- * Helper function to find a specific fight in a competition
+ * Helper function to validate fight exists
  */
-function findFight(competition, divisionNumber, roundNumber, fightIndex) {
+function validateFight(competition, divisionNumber, roundNumber, fightIndex) {
     let fight = null;
-    let division = null;
-    let round = null;
 
     if (competition.competitionMeta.type === 'league') {
-        division = competition.leagueData.divisions.find(d => d.divisionNumber === divisionNumber);
+        const division = competition.leagueData.divisions.find(d => d.divisionNumber === divisionNumber);
         if (!division) {
             throw new NotFoundError(`Division ${divisionNumber} not found`);
         }
 
-        round = division.rounds.find(r => r.roundNumber === roundNumber);
+        const round = division.rounds.find(r => r.roundNumber === roundNumber);
         if (!round) {
             throw new NotFoundError(`Round ${roundNumber} not found in division ${divisionNumber}`);
         }
@@ -57,28 +56,7 @@ function findFight(competition, divisionNumber, roundNumber, fightIndex) {
         throw new ValidationError(`Unsupported competition type: ${competition.competitionMeta.type}`);
     }
 
-    return { fight, division, round };
-}
-
-/**
- * Updates a fight with generated results
- */
-function updateFightWithResults(fight, generatedResult, isSimulated, userDescription, fightDate) {
-    fight.winner = generatedResult.winnerId;
-    fight.genAIDescription = generatedResult.userDescription;
-    fight.isSimulated = isSimulated;
-    fight.fighterStats = generatedResult.fighterStats;
-    fight.fightStatus = 'completed';
-    
-    if (!isSimulated && userDescription) {
-        fight.userDescription = userDescription;
-    }
-    
-    if (fightDate) {
-        fight.date = fightDate;
-    } else if (!fight.date) {
-        fight.date = new Date();
-    }
+    return fight;
 }
 
 const fightGenerationResolver = {
@@ -107,14 +85,14 @@ const fightGenerationResolver = {
 
             // Fetch the competition
             const competition = await Competition.findById(competitionId)
-                .populate('competitionMeta');
+                .populate('competitionMetaId');
 
             if (!competition) {
                 throw new NotFoundError('Competition not found');
             }
 
-            // Find the specific fight
-            const { fight, division, round } = findFight(
+            // Validate fight exists
+            const fight = validateFight(
                 competition,
                 divisionNumber,
                 roundNumber,
@@ -152,19 +130,32 @@ const fightGenerationResolver = {
                 null  // userDescription
             );
 
-            // Update the fight with generated results
-            updateFightWithResults(fight, generatedResult, true, null, fightDate);
+            // Apply complete fight result (all 8 steps + transaction)
+            const result = await applyFightResult(
+                competitionId,
+                seasonNumber,
+                divisionNumber,
+                roundNumber,
+                fightIndex,
+                fighter1Id,
+                fighter2Id,
+                generatedResult,
+                true, // isSimulated
+                null, // userDescription
+                fightDate || new Date()
+            );
 
-            // Save the updated competition
-            await competition.save();
+            console.log(`Fight simulated successfully. Winner: ${result.winner}`);
 
-            console.log(`Fight simulated successfully. Winner: ${generatedResult.winnerId}`);
+            // Fetch updated competition to return
+            const updatedCompetition = await Competition.findById(competitionId)
+                .populate('competitionMetaId');
 
             return {
                 success: true,
                 message: 'Fight simulated successfully',
-                fight: fight,
-                competition: competition
+                fight: validateFight(updatedCompetition, divisionNumber, roundNumber, fightIndex),
+                competition: updatedCompetition
             };
         }),
 
@@ -197,14 +188,14 @@ const fightGenerationResolver = {
 
             // Fetch the competition
             const competition = await Competition.findById(competitionId)
-                .populate('competitionMeta');
+                .populate('competitionMetaId');
 
             if (!competition) {
                 throw new NotFoundError('Competition not found');
             }
 
-            // Find the specific fight
-            const { fight, division, round } = findFight(
+            // Validate fight exists
+            const fight = validateFight(
                 competition,
                 divisionNumber,
                 roundNumber,
@@ -244,19 +235,32 @@ const fightGenerationResolver = {
                 userDescription
             );
 
-            // Update the fight with generated results
-            updateFightWithResults(fight, generatedResult, false, userDescription, fightDate);
-
-            // Save the updated competition
-            await competition.save();
+            // Apply complete fight result (all 8 steps + transaction)
+            const result = await applyFightResult(
+                competitionId,
+                seasonNumber,
+                divisionNumber,
+                roundNumber,
+                fightIndex,
+                fighter1Id,
+                fighter2Id,
+                generatedResult,
+                false, // isSimulated
+                userDescription,
+                fightDate || new Date()
+            );
 
             console.log('Fight generated successfully with user-selected winner');
+
+            // Fetch updated competition to return
+            const updatedCompetition = await Competition.findById(competitionId)
+                .populate('competitionMetaId');
 
             return {
                 success: true,
                 message: 'Fight generated successfully',
-                fight: fight,
-                competition: competition
+                fight: validateFight(updatedCompetition, divisionNumber, roundNumber, fightIndex),
+                competition: updatedCompetition
             };
         })
     }

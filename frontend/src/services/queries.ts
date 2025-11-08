@@ -781,3 +781,167 @@ export const DELETE_ARTICLE = gql`
         }
     }
 `;
+
+// ==================== Fight Generation Mutations ====================
+
+export const SIMULATE_FIGHT = gql`
+    mutation SimulateFight($input: SimulateFightInput!) {
+        simulateFight(input: $input) {
+            success
+            message
+            fight {
+                _id
+                fighter1
+                fighter2
+                winner
+                fightIdentifier
+                date
+                genAIDescription
+                isSimulated
+                fightStatus
+                fighterStats {
+                    fighterId
+                    stats {
+                        fightTime
+                        finishingMove
+                        grappling {
+                            accuracy
+                            defence
+                        }
+                        significantStrikes {
+                            accuracy
+                            attempted
+                            defence
+                            landed
+                            landedPerMinute
+                            positions {
+                                clinching
+                                ground
+                                standing
+                            }
+                        }
+                        strikeMap {
+                            head {
+                                absorb
+                                strike
+                            }
+                            torso {
+                                absorb
+                                strike
+                            }
+                            leg {
+                                absorb
+                                strike
+                            }
+                        }
+                        submissions {
+                            attemptsPer15Mins
+                            average
+                        }
+                        takedowns {
+                            accuracy
+                            attempted
+                            avgTakedownsLandedPerMin
+                            defence
+                            landed
+                        }
+                    }
+                }
+            }
+            competition {
+                id
+            }
+        }
+    }
+`;
+
+export const GENERATE_FIGHT_WITH_WINNER = gql`
+    mutation GenerateFightWithWinner($input: GenerateFightWithWinnerInput!) {
+        generateFightWithWinner(input: $input) {
+            success
+            message
+            fight {
+                _id
+                fighter1
+                fighter2
+                winner
+                fightIdentifier
+                date
+                userDescription
+                genAIDescription
+                isSimulated
+                fightStatus
+                fighterStats {
+                    fighterId
+                    stats {
+                        fightTime
+                        finishingMove
+                        grappling {
+                            accuracy
+                            defence
+                        }
+                        significantStrikes {
+                            accuracy
+                            attempted
+                            defence
+                            landed
+                            landedPerMinute
+                            positions {
+                                clinching
+                                ground
+                                standing
+                            }
+                        }
+                        strikeMap {
+                            head {
+                                absorb
+                                strike
+                            }
+                            torso {
+                                absorb
+                                strike
+                            }
+                            leg {
+                                absorb
+                                strike
+                            }
+                        }
+                        submissions {
+                            attemptsPer15Mins
+                            average
+                        }
+                        takedowns {
+                            accuracy
+                            attempted
+                            avgTakedownsLandedPerMin
+                            defence
+                            landed
+                        }
+                    }
+                }
+            }
+            competition {
+                id
+            }
+        }
+    }
+`;
+
+// ==================== Season Creation Mutation ====================
+
+export const CREATE_COMPETITION_SEASON = gql`
+    mutation CreateCompetitionSeason($input: CompetitionSeasonInput!) {
+        createCompetitionSeason(input: $input) {
+            id
+            competitionMetaId
+            isActive
+            seasonMeta {
+                seasonNumber
+                startDate
+                endDate
+            }
+            createdAt
+            updatedAt
+        }
+    }
+`;
