@@ -8,6 +8,7 @@
 const fightGenerationTypeDef = `#graphql
     """
     Input for simulating a fight where AI chooses the winner
+    Works for both league and cup competitions
     """
     input SimulateFightInput {
         """
@@ -21,12 +22,12 @@ const fightGenerationTypeDef = `#graphql
         seasonNumber: Int!
 
         """
-        Division number (for league competitions)
+        Division number (required for league competitions, optional for cup competitions)
         """
         divisionNumber: Int
 
         """
-        Round number
+        Round number (required for league competitions, can be any value for cup competitions as fightIndex is used)
         """
         roundNumber: Int!
 
@@ -53,6 +54,7 @@ const fightGenerationTypeDef = `#graphql
 
     """
     Input for generating a fight with user-selected winner
+    Works for both league and cup competitions
     """
     input GenerateFightWithWinnerInput {
         """
@@ -66,12 +68,12 @@ const fightGenerationTypeDef = `#graphql
         seasonNumber: Int!
 
         """
-        Division number (for league competitions)
+        Division number (required for league competitions, optional for cup competitions)
         """
         divisionNumber: Int
 
         """
-        Round number
+        Round number (required for league competitions, can be any value for cup competitions as fightIndex is used)
         """
         roundNumber: Int!
 

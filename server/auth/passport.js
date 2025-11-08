@@ -1,6 +1,3 @@
-import dotenv from 'dotenv';
-dotenv.config({ path: '../.env' });
-
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';

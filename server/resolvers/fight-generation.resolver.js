@@ -44,8 +44,17 @@ function findFight(competition, divisionNumber, roundNumber, fightIndex) {
             throw new NotFoundError(`Fight at index ${fightIndex} not found`);
         }
     } else if (competition.competitionMeta.type === 'cup') {
-        // TODO: Add cup support if needed
-        throw new ValidationError('Cup competitions are not yet supported for AI fight generation');
+        // For cup competitions, fights are stored in a flat array
+        if (!competition.cupData || !competition.cupData.fights) {
+            throw new NotFoundError('Cup data not found for this competition');
+        }
+
+        fight = competition.cupData.fights[fightIndex];
+        if (!fight) {
+            throw new NotFoundError(`Fight at index ${fightIndex} not found in cup competition`);
+        }
+    } else {
+        throw new ValidationError(`Unsupported competition type: ${competition.competitionMeta.type}`);
     }
 
     return { fight, division, round };
