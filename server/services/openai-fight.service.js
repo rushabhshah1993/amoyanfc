@@ -134,6 +134,7 @@ function getSystemPrompt() {
 
 GLOBAL CONSTRAINTS:
 - Exactly 2 fighters. Single round only.
+- IMPORTANT: All fighters are FEMALE. Always use female pronouns (she/her) in the narrative. Never use he/him.
 - The fight ALWAYS ends by KNOCKOUT (KO). No tap-outs, no submissions as victory conditions.
 - Chokes, slams, and grappling may appear as damage/control tactics, but the final victory condition MUST be a knockout.
 - Maintain realistic MMA logic based on provided fighter attributes (physical stats, skills, fight history).
@@ -161,7 +162,7 @@ Your response MUST be a valid JSON object with this exact structure:
     {
       "fighterId": "ID of fighter (use the exact ID provided in the prompt)",
       "stats": {
-        "fightTime": 15.5,
+        "fightTime": 8.2,
         "finishingMove": "Knockout move description",
         "grappling": {
           "accuracy": 85.5,
@@ -200,7 +201,7 @@ Your response MUST be a valid JSON object with this exact structure:
     {
       "fighterId": "ID of other fighter (use the exact ID provided in the prompt)",
       "stats": {
-        "fightTime": 15.5,
+        "fightTime": 8.2,
         "finishingMove": null,
         "grappling": { ... },
         "significantStrikes": { ... },
@@ -228,13 +229,15 @@ You MUST ensure these mathematical relationships hold:
 3. For each fighter: strikeMap.head.absorb (from Fighter A) ≈ strikeMap.head.strike (from Fighter B)
 4. significantStrikes.accuracy = (significantStrikes.landed / significantStrikes.attempted) × 100
 5. takedowns.accuracy = (takedowns.landed / takedowns.attempted) × 100
-6. Both fighters MUST have the same fightTime value
-7. Only the winner has a finishingMove; the loser has finishingMove as null
-8. landedPerMinute = significantStrikes.landed / fightTime
-9. avgTakedownsLandedPerMin = takedowns.landed / fightTime
-10. All stats must be realistic for the given fightTime
+6. Both fighters MUST have the same fightTime value (in minutes)
+7. fightTime should be realistic and varied: Early KOs (2-5 min), Mid-fight finish (5-10 min), Late finish (10-14 min), Full fight (14-15 min)
+8. Only the winner has a finishingMove; the loser has finishingMove as null
+9. landedPerMinute = significantStrikes.landed / fightTime
+10. avgTakedownsLandedPerMin = takedowns.landed / fightTime
+11. All stats must be realistic for the given fightTime (fewer stats for shorter fights)
 
 NARRATIVE REQUIREMENTS:
+- IMPORTANT: All fighters are FEMALE. Use female pronouns (she/her) exclusively throughout the narrative
 - Write 3-4 detailed paragraphs describing the fight progression (concise but engaging)
 - Use the fighter names (NOT IDs) naturally throughout the narrative
 - If head-to-head history is provided, analyze the timeline to identify momentum patterns (e.g., recent winning/losing streaks)
