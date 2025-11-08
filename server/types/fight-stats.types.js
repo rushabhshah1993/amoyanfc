@@ -9,6 +9,21 @@ const fightStatsTypes = `#graphql
         takedowns: TakedownData
     }
 
+    type IndividualFighterStats {
+        fighterId: ID
+        stats: FightStatistics
+    }
+
+    type FightStatistics {
+        fightTime: Float
+        finishingMove: String
+        grappling: GrapplingData
+        significantStrikes: SignificantStrikesData
+        strikeMap: StrikeMapData
+        submissions: SubmissionData
+        takedowns: TakedownData
+    }
+
     type GrapplingData {
         accuracy: Float
         defence: Float

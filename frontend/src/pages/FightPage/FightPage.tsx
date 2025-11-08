@@ -542,12 +542,45 @@ const FightPage: React.FC = () => {
     // ============ AI FIGHT GENERATION HANDLERS ============
     
     const handleSimulateFightConfirm = async () => {
-        if (!fight || !fighter1 || !fighter2) {
+        if (!fight || !fighter1 || !fighter2 || !competitionFull) {
             alert('Fight data not available');
             return;
         }
 
         console.log('Simulating fight between:', fighter1.firstName, 'and', fighter2.firstName);
+
+        // Calculate the correct fightIndex from competition data
+        let fightIndex = 0;
+        
+        if (isCupFight) {
+            // For cup competitions, find fight in cupData.fights array
+            const fights = competitionFull.cupData?.fights || [];
+            fightIndex = fights.findIndex((f: any) => f._id === fightId || f.fightIdentifier === fight.fightIdentifier);
+        } else {
+            // For league competitions, find fight in division/round structure
+            const division = competitionFull.leagueData?.divisions?.find(
+                (d: any) => d.divisionNumber === fight.competitionContext.divisionNumber
+            );
+            
+            if (division) {
+                const round = division.rounds?.find(
+                    (r: any) => r.roundNumber === fight.competitionContext.roundNumber
+                );
+                
+                if (round) {
+                    fightIndex = round.fights?.findIndex(
+                        (f: any) => f._id === fightId || f.fightIdentifier === fight.fightIdentifier
+                    ) || 0;
+                }
+            }
+        }
+
+        if (fightIndex === -1) {
+            alert('Could not find fight in competition data. Please try again.');
+            return;
+        }
+
+        console.log('Calculated fightIndex:', fightIndex);
 
         try {
             const result = await simulateFightMutation({
@@ -557,7 +590,7 @@ const FightPage: React.FC = () => {
                         seasonNumber: fight.competitionContext.seasonNumber,
                         divisionNumber: fight.competitionContext.divisionNumber || null,
                         roundNumber: fight.competitionContext.roundNumber,
-                        fightIndex: 0, // You may need to determine the correct index based on your data
+                        fightIndex,
                         fighter1Id: fighter1.id,
                         fighter2Id: fighter2.id,
                         fightDate: new Date().toISOString()
@@ -583,13 +616,46 @@ const FightPage: React.FC = () => {
     };
 
     const handleChooseWinnerSubmit = async () => {
-        if (!selectedWinner || !fight || !fighter1 || !fighter2) {
+        if (!selectedWinner || !fight || !fighter1 || !fighter2 || !competitionFull) {
             alert('Please select a winner and ensure fight data is available');
             return;
         }
 
         console.log('Chosen winner:', selectedWinner);
         console.log('Fight description:', fightDescription);
+
+        // Calculate the correct fightIndex from competition data
+        let fightIndex = 0;
+        
+        if (isCupFight) {
+            // For cup competitions, find fight in cupData.fights array
+            const fights = competitionFull.cupData?.fights || [];
+            fightIndex = fights.findIndex((f: any) => f._id === fightId || f.fightIdentifier === fight.fightIdentifier);
+        } else {
+            // For league competitions, find fight in division/round structure
+            const division = competitionFull.leagueData?.divisions?.find(
+                (d: any) => d.divisionNumber === fight.competitionContext.divisionNumber
+            );
+            
+            if (division) {
+                const round = division.rounds?.find(
+                    (r: any) => r.roundNumber === fight.competitionContext.roundNumber
+                );
+                
+                if (round) {
+                    fightIndex = round.fights?.findIndex(
+                        (f: any) => f._id === fightId || f.fightIdentifier === fight.fightIdentifier
+                    ) || 0;
+                }
+            }
+        }
+
+        if (fightIndex === -1) {
+            alert('Could not find fight in competition data. Please try again.');
+            return;
+        }
+
+        console.log('Calculated fightIndex:', fightIndex);
 
         try {
             const result = await generateFightWithWinnerMutation({
@@ -599,7 +665,7 @@ const FightPage: React.FC = () => {
                         seasonNumber: fight.competitionContext.seasonNumber,
                         divisionNumber: fight.competitionContext.divisionNumber || null,
                         roundNumber: fight.competitionContext.roundNumber,
-                        fightIndex: 0, // You may need to determine the correct index based on your data
+                        fightIndex,
                         fighter1Id: fighter1.id,
                         fighter2Id: fighter2.id,
                         winnerId: selectedWinner,

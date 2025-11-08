@@ -1841,7 +1841,7 @@ export const getUpcomingFights = (competitions: Array<any>) => {
                     const fighter2Data = fighterMap.get(nextFight.fighter2) || { id: nextFight.fighter2 };
 
                     upcomingFights.push({
-                        fightId: nextFight.fightIdentifier,
+                        fightId: nextFight._id || nextFight.fightIdentifier,
                         fightIdentifier: nextFight.fightIdentifier,
                         competitionName,
                         competitionLogo,
@@ -1865,7 +1865,7 @@ export const getUpcomingFights = (competitions: Array<any>) => {
                         date: nextFight.date
                     });
 
-                    console.log(`   🥊 ${competitionName} S${seasonNumber} D${divisionNumber}: ${nextFight.fightIdentifier}`);
+                    console.log(`   🥊 ${competitionName} S${seasonNumber} D${divisionNumber}: ${nextFight.fightIdentifier} (ID: ${nextFight._id})`);
                 }
             }
         } else {
@@ -1905,7 +1905,7 @@ export const getUpcomingFights = (competitions: Array<any>) => {
                     const fighter2Data = fighterMap.get(fight.fighter2) || { id: fight.fighter2 };
 
                     upcomingFights.push({
-                        fightId: fight.fightIdentifier,
+                        fightId: fight._id || fight.fightIdentifier,
                         fightIdentifier: fight.fightIdentifier,
                         competitionName,
                         competitionLogo,
@@ -1928,7 +1928,7 @@ export const getUpcomingFights = (competitions: Array<any>) => {
                         date: fight.date
                     });
 
-                    console.log(`   🏆 ${competitionName} S${seasonNumber}: ${fight.fightIdentifier} (${roundName})`);
+                    console.log(`   🏆 ${competitionName} S${seasonNumber}: ${fight.fightIdentifier} (${roundName}) (ID: ${fight._id})`);
                     
                     // Only show one upcoming fight per cup competition
                     break;

@@ -71,7 +71,7 @@ const fightTypeDef = `#graphql
         It represents the statistics shared by ChatGPT
         at the conclusion of a fight.
         """
-        fighterStats: FightStats
+        fighterStats: [IndividualFighterStats]
 
         """
         The property that defines whether the fight is 
@@ -79,61 +79,6 @@ const fightTypeDef = `#graphql
         value of this property is pending.
         """
         fightStatus: String
-    }
-
-    """
-    Represents the statistics for a single fighter in a specific fight
-    """
-    type IndividualFighterStats {
-        """
-        The ID of the fighter
-        """
-        fighterId: ID
-
-        """
-        The statistics for this fighter in this fight
-        """
-        stats: FightStatistics
-    }
-
-    """
-    Represents the actual statistics from a fight
-    """
-    type FightStatistics {
-        """
-        The time taken for the fight to complete
-        """
-        fightTime: Float
-
-        """
-        The finishing move used by the winner
-        """
-        finishingMove: String
-
-        """
-        Grappling statistics
-        """
-        grappling: GrapplingData
-
-        """
-        Significant strikes statistics
-        """
-        significantStrikes: SignificantStrikesData
-
-        """
-        Strike map showing strikes by body part
-        """
-        strikeMap: StrikeMapData
-
-        """
-        Submission statistics
-        """
-        submissions: SubmissionData
-
-        """
-        Takedown statistics
-        """
-        takedowns: TakedownData
     }
 
     """

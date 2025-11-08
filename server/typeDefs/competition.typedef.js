@@ -4,7 +4,6 @@ import fightStatsInput from "../inputs/fight-stats.input.js";
 
 /* Types imports */
 import competitionTypes from "../types/competition.types.js";
-import fightStatsTypes from "../types/fight-stats.types.js";
 
 const competitionTypeDef = `#graphql
     """
@@ -139,7 +138,6 @@ const competitionTypeDef = `#graphql
 
     ${competitionTypes}
     ${competitionInputs}
-    ${fightStatsTypes}
     ${fightStatsInput}
 `;
 
