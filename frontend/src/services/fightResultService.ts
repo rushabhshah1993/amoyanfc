@@ -1805,6 +1805,18 @@ export const getUpcomingFights = (competitions: Array<any>) => {
                 const divisionNumber = division.divisionNumber;
                 const divisionName = division.divisionName || `Division ${divisionNumber}`;
 
+                // Get fighter roster for this division from seasonMeta
+                const divisionMeta = competition.seasonMeta?.leagueDivisions?.find(
+                    (d: any) => d.divisionNumber === divisionNumber
+                );
+                const fighters = divisionMeta?.fighters || [];
+
+                // Create fighter lookup map
+                const fighterMap = new Map();
+                fighters.forEach((fighter: any) => {
+                    fighterMap.set(fighter.id, fighter);
+                });
+
                 // Find first fight without a winner
                 let nextFight = null;
 
@@ -1824,6 +1836,10 @@ export const getUpcomingFights = (competitions: Array<any>) => {
                 }
 
                 if (nextFight) {
+                    // Enrich fighter data
+                    const fighter1Data = fighterMap.get(nextFight.fighter1) || { id: nextFight.fighter1 };
+                    const fighter2Data = fighterMap.get(nextFight.fighter2) || { id: nextFight.fighter2 };
+
                     upcomingFights.push({
                         fightId: nextFight.fightIdentifier,
                         fightIdentifier: nextFight.fightIdentifier,
@@ -1835,10 +1851,16 @@ export const getUpcomingFights = (competitions: Array<any>) => {
                         divisionName,
                         roundNumber: nextFight.roundNumber,
                         fighter1: {
-                            id: nextFight.fighter1
+                            id: fighter1Data.id,
+                            firstName: fighter1Data.firstName,
+                            lastName: fighter1Data.lastName,
+                            profileImage: fighter1Data.profileImage
                         },
                         fighter2: {
-                            id: nextFight.fighter2
+                            id: fighter2Data.id,
+                            firstName: fighter2Data.firstName,
+                            lastName: fighter2Data.lastName,
+                            profileImage: fighter2Data.profileImage
                         },
                         date: nextFight.date
                     });
@@ -1850,6 +1872,13 @@ export const getUpcomingFights = (competitions: Array<any>) => {
             // CUP: Get next fight where both fighters are determined
             const fights = competition.cupData?.fights || [];
             const currentStage = competition.cupData?.currentStage;
+            
+            // Get cup participants for fighter details
+            const cupParticipants = competition.seasonMeta?.cupParticipants?.fighters || [];
+            const fighterMap = new Map();
+            cupParticipants.forEach((fighter: any) => {
+                fighterMap.set(fighter.id, fighter);
+            });
 
             for (const fight of fights) {
                 // Check if fight has no winner and both fighters are set
@@ -1871,6 +1900,10 @@ export const getUpcomingFights = (competitions: Array<any>) => {
                         roundName = 'Finals';
                     }
 
+                    // Enrich fighter data
+                    const fighter1Data = fighterMap.get(fight.fighter1) || { id: fight.fighter1 };
+                    const fighter2Data = fighterMap.get(fight.fighter2) || { id: fight.fighter2 };
+
                     upcomingFights.push({
                         fightId: fight.fightIdentifier,
                         fightIdentifier: fight.fightIdentifier,
@@ -1881,10 +1914,16 @@ export const getUpcomingFights = (competitions: Array<any>) => {
                         roundNumber,
                         roundName,
                         fighter1: {
-                            id: fight.fighter1
+                            id: fighter1Data.id,
+                            firstName: fighter1Data.firstName,
+                            lastName: fighter1Data.lastName,
+                            profileImage: fighter1Data.profileImage
                         },
                         fighter2: {
-                            id: fight.fighter2
+                            id: fighter2Data.id,
+                            firstName: fighter2Data.firstName,
+                            lastName: fighter2Data.lastName,
+                            profileImage: fighter2Data.profileImage
                         },
                         date: fight.date
                     });

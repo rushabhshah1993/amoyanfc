@@ -282,6 +282,65 @@ export const GET_ALL_COMPETITIONS_META = gql`
     }
 `;
 
+export const GET_ACTIVE_COMPETITIONS = gql`
+    query GetActiveCompetitions {
+        filterCompetitions(filter: { isActive: true }) {
+            id
+            competitionMetaId
+            isActive
+            competitionMeta {
+                id
+                competitionName
+                logo
+                shortName
+                type
+            }
+            seasonMeta {
+                seasonNumber
+                leagueDivisions {
+                    divisionNumber
+                    fighters {
+                        id
+                        firstName
+                        lastName
+                        profileImage
+                    }
+                }
+            }
+            leagueData {
+                divisions {
+                    divisionNumber
+                    divisionName
+                    currentRound
+                    totalRounds
+                    rounds {
+                        roundNumber
+                        fights {
+                            _id
+                            fighter1
+                            fighter2
+                            winner
+                            fightIdentifier
+                            date
+                        }
+                    }
+                }
+            }
+            cupData {
+                fights {
+                    _id
+                    fighter1
+                    fighter2
+                    winner
+                    fightIdentifier
+                    date
+                }
+                currentStage
+            }
+        }
+    }
+`;
+
 export const GET_ALL_SEASONS_BY_COMPETITION = gql`
     query GetAllSeasonsByCompetitionCategory($competitionMetaId: ID!) {
         getAllSeasonsByCompetitionCategory(competitionMetaId: $competitionMetaId) {

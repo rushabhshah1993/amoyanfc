@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faTrophy, faMedal, faNewspaper, faHandFist, faCakeCandles, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { useQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
-import { GET_ALL_FIGHTERS_WITH_STATS, GET_ALL_ARTICLES } from '../../services/queries';
+import { GET_ALL_FIGHTERS_WITH_STATS, GET_ALL_ARTICLES, GET_ACTIVE_COMPETITIONS } from '../../services/queries';
+import { getUpcomingFights } from '../../services/fightResultService';
 import S3Image from '../../components/S3Image/S3Image';
 import styles from './HomePage.module.css';
 
@@ -84,6 +85,10 @@ const HomePage: React.FC = () => {
         fetchPolicy: 'cache-first',
     });
 
+    const { loading: loadingCompetitions, data: competitionsData } = useQuery(GET_ACTIVE_COMPETITIONS, {
+        fetchPolicy: 'cache-first',
+    });
+
     useEffect(() => {
         document.title = 'Amoyan FC | Home';
     }, []);
@@ -106,6 +111,12 @@ const HomePage: React.FC = () => {
     }, [fightersData]);
 
     const topArticles = articlesData?.getAllArticles?.results || [];
+
+    // Get upcoming fights
+    const upcomingFights = useMemo(() => {
+        if (!competitionsData?.filterCompetitions) return [];
+        return getUpcomingFights(competitionsData.filterCompetitions);
+    }, [competitionsData]);
 
     // Calculate upcoming birthdays
     const upcomingBirthdays = useMemo(() => {
@@ -312,10 +323,86 @@ const HomePage: React.FC = () => {
                             <FontAwesomeIcon icon={faHandFist} className={styles.sectionIcon} />
                             <h3 className={styles.sectionTitle}>Upcoming Fights</h3>
                         </div>
-                        <div className={styles.noContent}>
-                            <FontAwesomeIcon icon={faHandFist} />
-                            <p>No upcoming fights scheduled</p>
-                        </div>
+                        {loadingCompetitions ? (
+                            <div className={styles.noContent}>
+                                <FontAwesomeIcon icon={faSpinner} spin />
+                                <p>Loading fights...</p>
+                            </div>
+                        ) : upcomingFights.length > 0 ? (
+                            <div className={styles.upcomingFightsList}>
+                                {upcomingFights.map((fight) => (
+                                    <div 
+                                        key={fight.fightId} 
+                                        className={styles.upcomingFightCard}
+                                        onClick={() => navigate(`/fight/${fight.fightId}`)}
+                                    >
+                                        <div className={styles.fightCompetitionHeader}>
+                                            {fight.competitionLogo && (
+                                                <img src={fight.competitionLogo} alt={fight.competitionName} className={styles.competitionLogo} />
+                                            )}
+                                            <span className={styles.competitionInfo}>
+                                                {fight.competitionName} S{fight.seasonNumber}
+                                                {fight.divisionName && ` • ${fight.divisionName}`}
+                                            </span>
+                                        </div>
+                                        <div className={styles.fightMatchup}>
+                                            <div className={styles.fightFighter}>
+                                                {fight.fighter1.profileImage ? (
+                                                    <div className={styles.fighterImageWrapper}>
+                                                        <S3Image
+                                                            src={fight.fighter1.profileImage}
+                                                            alt={`${fight.fighter1.firstName} ${fight.fighter1.lastName}`}
+                                                            className={styles.fighterImage}
+                                                            disableHoverScale={true}
+                                                        />
+                                                    </div>
+                                                ) : (
+                                                    <div className={styles.fighterImagePlaceholder}>
+                                                        {fight.fighter1.firstName?.charAt(0)}{fight.fighter1.lastName?.charAt(0)}
+                                                    </div>
+                                                )}
+                                                <span className={styles.fighterName}>
+                                                    {fight.fighter1.firstName} {fight.fighter1.lastName}
+                                                </span>
+                                            </div>
+                                            <div className={styles.vsText}>VS</div>
+                                            <div className={styles.fightFighter}>
+                                                {fight.fighter2.profileImage ? (
+                                                    <div className={styles.fighterImageWrapper}>
+                                                        <S3Image
+                                                            src={fight.fighter2.profileImage}
+                                                            alt={`${fight.fighter2.firstName} ${fight.fighter2.lastName}`}
+                                                            className={styles.fighterImage}
+                                                            disableHoverScale={true}
+                                                        />
+                                                    </div>
+                                                ) : (
+                                                    <div className={styles.fighterImagePlaceholder}>
+                                                        {fight.fighter2.firstName?.charAt(0)}{fight.fighter2.lastName?.charAt(0)}
+                                                    </div>
+                                                )}
+                                                <span className={styles.fighterName}>
+                                                    {fight.fighter2.firstName} {fight.fighter2.lastName}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className={styles.fightDetails}>
+                                            {fight.competitionType === 'league' && (
+                                                <span>Round {fight.roundNumber}</span>
+                                            )}
+                                            {fight.competitionType === 'cup' && fight.roundName && (
+                                                <span>{fight.roundName}</span>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className={styles.noContent}>
+                                <FontAwesomeIcon icon={faHandFist} />
+                                <p>No upcoming fights scheduled</p>
+                            </div>
+                        )}
                     </div>
                 </div>
 

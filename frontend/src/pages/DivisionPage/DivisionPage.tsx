@@ -111,13 +111,15 @@ const DivisionPage: React.FC = () => {
             if (roundNumber >= 1 && roundNumber <= division.totalRounds) {
               setSelectedRound(roundNumber);
             } else {
-              // Invalid round number, default to current round
-              setSelectedRound(division.currentRound || division.totalRounds);
-              setSearchParams({ round: String(division.currentRound || division.totalRounds) });
+              // Invalid round number, default to current round or round 1
+              const defaultRound = division.currentRound > 0 ? division.currentRound : 1;
+              setSelectedRound(defaultRound);
+              setSearchParams({ round: String(defaultRound) });
             }
           } else {
             // No round param, set to current round and update URL
-            const defaultRound = division.currentRound || division.totalRounds;
+            // If currentRound is 0 or not set, default to round 1 (not last round)
+            const defaultRound = division.currentRound > 0 ? division.currentRound : 1;
             setSelectedRound(defaultRound);
             setSearchParams({ round: String(defaultRound) });
           }
