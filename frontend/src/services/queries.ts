@@ -189,6 +189,7 @@ export const GET_FIGHTER_INFORMATION = gql`
                     round
                     fightId
                     isWinner
+                    date
                 }
             }
             competitionHistory {

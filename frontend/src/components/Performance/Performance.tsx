@@ -12,6 +12,7 @@ interface FightDetail {
     round: number;
     fightId: string;
     isWinner: boolean;
+    date?: string;
 }
 
 interface OpponentHistory {
@@ -92,6 +93,14 @@ const Performance: React.FC<PerformanceProps> = ({
                 opponentId: opponent.opponentId
             }))
         );
+        
+        console.log('Performance Component Debug:', {
+            fighterName: `${fighter.firstName} ${fighter.lastName}`,
+            totalFights: allFights.length,
+            competitionId,
+            hasTemporalContext: currentSeason != null && currentDivision != null && currentRound != null,
+            uniqueCompetitions: Array.from(new Set(allFights.map(f => f.competitionId))).length
+        });
 
         // Filter to show only fights BEFORE the current fight (if context provided)
         // This shows the last N fights chronologically before the current fight
@@ -115,8 +124,26 @@ const Performance: React.FC<PerformanceProps> = ({
             filteredFights = allFights.filter(fight => fight.competitionId === competitionId);
         }
 
-        // Sort chronologically (by season -> division -> round)
+        // Sort chronologically by actual date (if available), otherwise by season/division/round
         const sortedFights = [...filteredFights].sort((a, b) => {
+            // If both have dates, sort by date
+            if (a.date && b.date) {
+                return new Date(a.date).getTime() - new Date(b.date).getTime();
+            }
+            // If only one has a date, prioritize the one without date as older
+            if (a.date && !b.date) return 1;
+            if (!a.date && b.date) return -1;
+            
+            // Fallback to season/division/round for fights without dates (or same competition)
+            // But we need to handle cross-competition sorting better
+            // For now, if different competitions, sort by season/division/round within each competition
+            if (a.competitionId !== b.competitionId) {
+                // Different competitions - if both have dates, we already sorted above
+                // Otherwise, keep original order or sort by competition ID
+                return a.competitionId.localeCompare(b.competitionId);
+            }
+            
+            // Same competition - sort by season/division/round
             if (a.season !== b.season) return a.season - b.season;
             if (a.division !== b.division) return a.division - b.division;
             return a.round - b.round;
@@ -125,6 +152,20 @@ const Performance: React.FC<PerformanceProps> = ({
         // Take the last N fights (most recent) and order them based on sortOrder
         // slice(-count) takes the last N elements
         const recentFights = sortedFights.slice(-count);
+        
+        console.log('Performance Filtering:', {
+            totalFights: allFights.length,
+            afterFiltering: filteredFights.length,
+            afterSorting: sortedFights.length,
+            displayingCount: recentFights.length,
+            lastFewFights: sortedFights.slice(-5).map(f => ({
+                comp: f.competitionId.substring(0, 8),
+                season: f.season,
+                div: f.division,
+                round: f.round,
+                date: f.date ? new Date(f.date).toLocaleDateString() : 'no date'
+            }))
+        });
         
         // Apply sort order (asc = oldest first, desc = newest first)
         const limitedFights = sortOrder === 'desc' ? recentFights.reverse() : recentFights;

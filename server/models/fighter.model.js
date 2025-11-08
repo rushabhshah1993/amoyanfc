@@ -171,7 +171,8 @@ const competitionDetailsSchema = new Schema({
     divisionId: { type: Number },
     roundId: { type: Number },
     fightId: { type: Schema.Types.ObjectId, ref: 'Fight' },
-    isWinner: Boolean
+    isWinner: Boolean,
+    date: { type: Date }
 })
 
 /**
