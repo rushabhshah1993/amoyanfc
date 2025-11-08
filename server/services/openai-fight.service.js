@@ -8,6 +8,7 @@
  */
 
 import OpenAI from 'openai';
+import { validateFightResponse, autoFixResponse } from './openai-fight-validator.js';
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -80,7 +81,7 @@ function formatFighterData(fighter) {
  * Formats head-to-head history between two fighters
  * @param {Object} fighter1 - First fighter object
  * @param {Object} fighter2 - Second fighter object
- * @returns {Object} Head-to-head statistics
+ * @returns {Object} Head-to-head statistics with timeline
  */
 function formatHeadToHeadHistory(fighter1, fighter2) {
     const fighter1History = fighter1.opponentsHistory?.find(
@@ -92,16 +93,35 @@ function formatHeadToHeadHistory(fighter1, fighter2) {
             totalFights: 0,
             fighter1Wins: 0,
             fighter2Wins: 0,
-            details: []
+            timeline: []
         };
     }
+
+    // Sort details chronologically (oldest to newest)
+    const sortedDetails = [...(fighter1History.details || [])].sort((a, b) => {
+        // Sort by season, then by round
+        if (a.season !== b.season) {
+            return a.season - b.season;
+        }
+        return (a.roundId || 0) - (b.roundId || 0);
+    });
+
+    // Create a timeline showing who won each fight
+    // AI will analyze this for momentum patterns
+    const timeline = sortedDetails.map((detail, index) => ({
+        fightNumber: index + 1,
+        season: detail.season,
+        round: detail.roundId,
+        winner: detail.isWinner ? fighter1.firstName + ' ' + fighter1.lastName : fighter2.firstName + ' ' + fighter2.lastName,
+        winnerId: detail.isWinner ? fighter1._id.toString() : fighter2._id.toString()
+    }));
 
     return {
         totalFights: fighter1History.totalFights || 0,
         fighter1Wins: fighter1History.totalWins || 0,
         fighter2Wins: fighter1History.totalLosses || 0,
         winPercentage: fighter1History.winPercentage || 0,
-        details: fighter1History.details || []
+        timeline: timeline // Raw chronological data - AI will analyze momentum
     };
 }
 
@@ -217,6 +237,8 @@ You MUST ensure these mathematical relationships hold:
 NARRATIVE REQUIREMENTS:
 - Write 3-4 detailed paragraphs describing the fight progression (concise but engaging)
 - Use the fighter names (NOT IDs) naturally throughout the narrative
+- If head-to-head history is provided, analyze the timeline to identify momentum patterns (e.g., recent winning/losing streaks)
+- Consider psychological factors: a fighter on a winning streak may have confidence; a fighter breaking a losing streak may have tactical improvements
 - Show realistic fight tempo and momentum shifts
 - Include specific techniques, positions, and tactical decisions
 - Build tension toward the knockout finish
@@ -314,33 +336,26 @@ Remember: This MUST end in a knockout. Return the response as a valid JSON objec
 
         const result = JSON.parse(completion.choices[0].message.content);
         
-        // Validate the response structure
-        if (!result.genAIDescription || !result.winnerId || !result.fighterStats) {
-            throw new Error('Invalid response structure from AI. Missing required fields.');
-        }
-
-        // Validate fighter IDs are correct
-        const fighterIds = result.fighterStats.map(stats => stats.fighterId);
-        if (!fighterIds.includes(fighter1Id) || !fighterIds.includes(fighter2Id)) {
-            console.warn('AI returned incorrect fighter IDs. Fixing...');
-            // Fix the IDs if AI messed them up
-            result.fighterStats = result.fighterStats.map((stats, index) => ({
-                ...stats,
-                fighterId: index === 0 ? fighter1Id : fighter2Id
-            }));
-        }
-
-        // Validate winner ID
-        if (result.winnerId !== fighter1Id && result.winnerId !== fighter2Id) {
-            console.warn('AI returned incorrect winner ID. Attempting to fix...');
-            // Try to determine winner from the stats (who has the finishing move)
-            const winnerStats = result.fighterStats.find(s => s.stats.finishingMove);
-            if (winnerStats) {
-                result.winnerId = winnerStats.fighterId;
-            } else {
-                // Default to fighter1 if we can't determine
-                result.winnerId = fighter1Id;
+        // Comprehensive schema validation
+        const validation = validateFightResponse(result, fighter1Id, fighter2Id);
+        
+        if (!validation.isValid) {
+            console.error('AI response validation failed:', validation.errors);
+            console.log('Attempting to auto-fix response...');
+            
+            // Try to auto-fix common issues
+            const fixedResult = autoFixResponse(result, fighter1Id, fighter2Id);
+            
+            // Validate again after fixing
+            const revalidation = validateFightResponse(fixedResult, fighter1Id, fighter2Id);
+            
+            if (!revalidation.isValid) {
+                console.error('Auto-fix failed. Remaining errors:', revalidation.errors);
+                throw new Error(`AI response validation failed: ${revalidation.errors.join(', ')}`);
             }
+            
+            console.log('Response auto-fixed successfully');
+            return fixedResult;
         }
 
         return result;
@@ -442,33 +457,47 @@ Return the response as a valid JSON object with "genAIDescription", "winnerId" (
 
         const result = JSON.parse(completion.choices[0].message.content);
         
-        // Validate the response structure
-        if (!result.genAIDescription || !result.winnerId || !result.fighterStats) {
-            throw new Error('Invalid response structure from AI. Missing required fields.');
+        // Comprehensive schema validation
+        const validation = validateFightResponse(result, fighter1Id, fighter2Id);
+        
+        if (!validation.isValid) {
+            console.error('AI response validation failed:', validation.errors);
+            console.log('Attempting to auto-fix response...');
+            
+            // Try to auto-fix common issues
+            const fixedResult = autoFixResponse(result, fighter1Id, fighter2Id);
+            
+            // Force the correct winner
+            if (fixedResult.winnerId !== winnerId) {
+                console.warn(`Forcing correct winner: ${winnerId}`);
+                fixedResult.winnerId = winnerId;
+            }
+            
+            // Validate again after fixing
+            const revalidation = validateFightResponse(fixedResult, fighter1Id, fighter2Id);
+            
+            if (!revalidation.isValid) {
+                console.error('Auto-fix failed. Remaining errors:', revalidation.errors);
+                throw new Error(`AI response validation failed: ${revalidation.errors.join(', ')}`);
+            }
+            
+            console.log('Response auto-fixed successfully');
+            return fixedResult;
         }
-
-        // Validate fighter IDs are correct
-        const fighterIds = result.fighterStats.map(stats => stats.fighterId);
-        if (!fighterIds.includes(fighter1Id) || !fighterIds.includes(fighter2Id)) {
-            console.warn('AI returned incorrect fighter IDs. Fixing...');
-            // Fix the IDs if AI messed them up
-            result.fighterStats = result.fighterStats.map((stats, index) => ({
-                ...stats,
-                fighterId: index === 0 ? fighter1Id : fighter2Id
-            }));
-        }
-
-        // Validate winner ID matches user-selected winner
+        
+        // Additional check: ensure winner ID matches user selection
         if (result.winnerId !== winnerId) {
-            console.warn(`AI returned incorrect winner ID. Expected ${winnerId}, got ${result.winnerId}. Fixing...`);
+            console.warn(`AI chose different winner. Forcing user-selected winner: ${winnerId}`);
             result.winnerId = winnerId;
-        }
-
-        // Ensure the winner has a finishing move
-        const winnerStatsIndex = result.fighterStats.findIndex(s => s.fighterId === winnerId);
-        if (winnerStatsIndex !== -1 && !result.fighterStats[winnerStatsIndex].stats.finishingMove) {
-            console.warn('Winner is missing finishingMove. Adding default...');
-            result.fighterStats[winnerStatsIndex].stats.finishingMove = 'Knockout strike';
+            
+            // Update finishing moves accordingly
+            result.fighterStats.forEach(fs => {
+                if (fs.fighterId === winnerId && !fs.stats.finishingMove) {
+                    fs.stats.finishingMove = 'Knockout strike';
+                } else if (fs.fighterId !== winnerId) {
+                    fs.stats.finishingMove = null;
+                }
+            });
         }
 
         return result;
