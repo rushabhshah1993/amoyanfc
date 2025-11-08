@@ -17,9 +17,9 @@ const fightStatsInput = `#graphql
     input SignificantStrikesInput {
         accuracy: Float
         attempted: Int
-        defence: Int
+        defence: Float
         landed: Int
-        landedPerMinute: Int
+        landedPerMinute: Float
         positions: SignificantStrikePositionsInput
     }
 
@@ -41,15 +41,15 @@ const fightStatsInput = `#graphql
     }
 
     input SubmissionInput {
-        attemptsPer15Mins: Int
-        average: Int
+        attemptsPer15Mins: Float
+        average: Float
     }
 
     input TakedownInput {
         accuracy: Float
         attempted: Int
         avgTakedownsLandedPerMin: Float
-        defence: Int
+        defence: Float
         landed: Int
     }
 `;

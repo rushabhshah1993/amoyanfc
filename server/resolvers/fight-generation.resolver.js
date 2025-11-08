@@ -26,8 +26,14 @@ import { NotFoundError, ValidationError } from "../error.js";
  */
 function validateFight(competition, divisionNumber, roundNumber, fightIndex) {
     let fight = null;
+    
+    // Get the competition type (handle both competitionMeta and competitionMetaId field names)
+    const competitionMeta = competition.competitionMeta || competition.competitionMetaId;
+    if (!competitionMeta) {
+        throw new ValidationError('Competition metadata not found or not populated');
+    }
 
-    if (competition.competitionMeta.type === 'league') {
+    if (competitionMeta.type === 'league') {
         const division = competition.leagueData.divisions.find(d => d.divisionNumber === divisionNumber);
         if (!division) {
             throw new NotFoundError(`Division ${divisionNumber} not found`);
@@ -42,7 +48,7 @@ function validateFight(competition, divisionNumber, roundNumber, fightIndex) {
         if (!fight) {
             throw new NotFoundError(`Fight at index ${fightIndex} not found`);
         }
-    } else if (competition.competitionMeta.type === 'cup') {
+    } else if (competitionMeta.type === 'cup') {
         // For cup competitions, fights are stored in a flat array
         if (!competition.cupData || !competition.cupData.fights) {
             throw new NotFoundError('Cup data not found for this competition');
@@ -53,7 +59,7 @@ function validateFight(competition, divisionNumber, roundNumber, fightIndex) {
             throw new NotFoundError(`Fight at index ${fightIndex} not found in cup competition`);
         }
     } else {
-        throw new ValidationError(`Unsupported competition type: ${competition.competitionMeta.type}`);
+        throw new ValidationError(`Unsupported competition type: ${competitionMeta.type}`);
     }
 
     return fight;

@@ -850,9 +850,24 @@ export const SIMULATE_FIGHT = gql`
             message
             fight {
                 _id
-                fighter1
-                fighter2
-                winner
+                fighter1 {
+                    id
+                    firstName
+                    lastName
+                    profileImage
+                }
+                fighter2 {
+                    id
+                    firstName
+                    lastName
+                    profileImage
+                }
+                winner {
+                    id
+                    firstName
+                    lastName
+                    profileImage
+                }
                 fightIdentifier
                 date
                 genAIDescription
@@ -921,9 +936,24 @@ export const GENERATE_FIGHT_WITH_WINNER = gql`
             message
             fight {
                 _id
-                fighter1
-                fighter2
-                winner
+                fighter1 {
+                    id
+                    firstName
+                    lastName
+                    profileImage
+                }
+                fighter2 {
+                    id
+                    firstName
+                    lastName
+                    profileImage
+                }
+                winner {
+                    id
+                    firstName
+                    lastName
+                    profileImage
+                }
                 fightIdentifier
                 date
                 userDescription

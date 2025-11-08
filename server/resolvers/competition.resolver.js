@@ -19,6 +19,44 @@ import { autoTriggerGlobalRankingIfNeeded } from './global-ranking-trigger.resol
 const competitionResolver = {
     Date: GraphQLDateTime,
     
+    // Field resolvers for Fight type to handle fighter1, fighter2, winner
+    // These automatically populate Fighter objects when queried
+    Fight: {
+        fighter1: async (parent) => {
+            // If already populated as an object, return it
+            if (parent.fighter1 && typeof parent.fighter1 === 'object' && parent.fighter1.firstName) {
+                return parent.fighter1;
+            }
+            // If it's an ID, fetch the fighter
+            if (parent.fighter1) {
+                return await Fighter.findById(parent.fighter1);
+            }
+            return null;
+        },
+        fighter2: async (parent) => {
+            // If already populated as an object, return it
+            if (parent.fighter2 && typeof parent.fighter2 === 'object' && parent.fighter2.firstName) {
+                return parent.fighter2;
+            }
+            // If it's an ID, fetch the fighter
+            if (parent.fighter2) {
+                return await Fighter.findById(parent.fighter2);
+            }
+            return null;
+        },
+        winner: async (parent) => {
+            // If already populated as an object, return it
+            if (parent.winner && typeof parent.winner === 'object' && parent.winner.firstName) {
+                return parent.winner;
+            }
+            // If it's an ID, fetch the fighter
+            if (parent.winner) {
+                return await Fighter.findById(parent.winner);
+            }
+            return null;
+        }
+    },
+    
     Query: {
         /**
          * Fetches a list of all the competitions.

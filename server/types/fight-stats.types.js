@@ -32,9 +32,9 @@ const fightStatsTypes = `#graphql
     type SignificantStrikesData {
         accuracy: Float
         attempted: Int
-        defence: Int
+        defence: Float
         landed: Int
-        landedPerMinute: Int
+        landedPerMinute: Float
         positions: SignificantStrikePositionsData
     }
 
@@ -56,15 +56,15 @@ const fightStatsTypes = `#graphql
     }
 
     type SubmissionData {
-        attemptsPer15Mins: Int
-        average: Int
+        attemptsPer15Mins: Float
+        average: Float
     }
 
     type TakedownData {
         accuracy: Float
         attempted: Int
         avgTakedownsLandedPerMin: Float
-        defence: Int
+        defence: Float
         landed: Int
     }
 `;

@@ -66,7 +66,7 @@ const DivisionPage: React.FC = () => {
   });
 
   // Get standings for the selected round
-  const { data: standingsData, loading: standingsLoading } = useQuery(GET_ROUND_STANDINGS_BY_ROUND, {
+  const { data: standingsData, loading: standingsLoading, refetch: refetchStandings } = useQuery(GET_ROUND_STANDINGS_BY_ROUND, {
     variables: {
       competitionId,
       seasonNumber: seasonNumber,
@@ -75,6 +75,25 @@ const DivisionPage: React.FC = () => {
     },
     skip: !competitionId || !selectedRound || !seasonNumber,
   });
+
+  // Debug: Log standings data
+  useEffect(() => {
+    console.log('\n📊 STANDINGS QUERY STATE:');
+    console.log('   - Loading:', standingsLoading);
+    console.log('   - Competition ID:', competitionId);
+    console.log('   - Season Number:', seasonNumber);
+    console.log('   - Division Number:', divisionNumber);
+    console.log('   - Round Number:', selectedRound);
+    console.log('   - Data:', standingsData);
+    
+    if (standingsData?.getRoundStandingsByRound) {
+      console.log('   ✅ STANDINGS FOUND:');
+      console.log('      - Standings:', standingsData.getRoundStandingsByRound.standings);
+      console.log('      - Number of fighters:', standingsData.getRoundStandingsByRound.standings?.length || 0);
+    } else if (standingsData !== undefined) {
+      console.log('   ❌ NO STANDINGS DATA');
+    }
+  }, [standingsData, standingsLoading, competitionId, seasonNumber, divisionNumber, selectedRound]);
 
   // Scroll to top when component loads
   useEffect(() => {
@@ -145,7 +164,14 @@ const DivisionPage: React.FC = () => {
     }
 
     if (!standingsData?.getRoundStandingsByRound?.standings) {
-      return <div className={styles.noData}>No standings available</div>;
+      return (
+        <div className={styles.noData}>
+          <p>No standings available for Round {selectedRound}</p>
+          <p style={{ fontSize: '0.9rem', color: '#888', marginTop: '0.5rem' }}>
+            Standings will appear after the first fight in this round is completed
+          </p>
+        </div>
+      );
     }
 
     const standings = standingsData.getRoundStandingsByRound.standings;

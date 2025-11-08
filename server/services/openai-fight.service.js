@@ -323,6 +323,9 @@ Based on all this data, follow this process:
 Remember: This MUST end in a knockout. Return the response as a valid JSON object with "genAIDescription", "winnerId", and "fighterStats".`;
 
     try {
+        console.log('⏱️  Starting OpenAI API call...');
+        const startTime = Date.now();
+        
         const completion = await openai.chat.completions.create({
             model: "gpt-4o-mini",
             messages: [
@@ -334,7 +337,23 @@ Remember: This MUST end in a knockout. Return the response as a valid JSON objec
             max_tokens: 2000  // Reduced from 3000 for cost efficiency
         });
 
+        const apiDuration = Date.now() - startTime;
+        console.log(`✅ OpenAI API responded in ${apiDuration}ms (${(apiDuration / 1000).toFixed(2)}s)`);
+
         const result = JSON.parse(completion.choices[0].message.content);
+        
+        // Log the response for debugging
+        console.log('\n📋 OpenAI Response Structure:');
+        console.log('   - genAIDescription:', result.genAIDescription ? `${result.genAIDescription.substring(0, 100)}...` : 'MISSING');
+        console.log('   - winnerId:', result.winnerId || 'MISSING');
+        console.log('   - fighterStats count:', result.fighterStats?.length || 0);
+        if (result.fighterStats && result.fighterStats.length > 0) {
+            result.fighterStats.forEach((fs, idx) => {
+                console.log(`   - Fighter ${idx + 1} (${fs.fighterId}):`);
+                console.log(`     * finishingMove: ${fs.stats?.finishingMove || 'null'}`);
+                console.log(`     * fightTime: ${fs.stats?.fightTime || 'MISSING'}`);
+            });
+        }
         
         // Comprehensive schema validation
         const validation = validateFightResponse(result, fighter1Id, fighter2Id);
@@ -444,6 +463,9 @@ INSTRUCTIONS FOR STATISTICS:
 Return the response as a valid JSON object with "genAIDescription", "winnerId" (must be ${winnerId}), and "fighterStats".`;
 
     try {
+        console.log('⏱️  Starting OpenAI API call (with specified winner)...');
+        const startTime = Date.now();
+        
         const completion = await openai.chat.completions.create({
             model: "gpt-4o-mini",
             messages: [
@@ -454,8 +476,24 @@ Return the response as a valid JSON object with "genAIDescription", "winnerId" (
             temperature: 0.7,
             max_tokens: 2000  // Reduced from 3000 for cost efficiency
         });
+        
+        const apiDuration = Date.now() - startTime;
+        console.log(`✅ OpenAI API responded in ${apiDuration}ms (${(apiDuration / 1000).toFixed(2)}s)`);
 
         const result = JSON.parse(completion.choices[0].message.content);
+        
+        // Log the response for debugging
+        console.log('\n📋 OpenAI Response Structure (with winner):');
+        console.log('   - genAIDescription:', result.genAIDescription ? `${result.genAIDescription.substring(0, 100)}...` : 'MISSING');
+        console.log('   - winnerId:', result.winnerId || 'MISSING');
+        console.log('   - fighterStats count:', result.fighterStats?.length || 0);
+        if (result.fighterStats && result.fighterStats.length > 0) {
+            result.fighterStats.forEach((fs, idx) => {
+                console.log(`   - Fighter ${idx + 1} (${fs.fighterId}):`);
+                console.log(`     * finishingMove: ${fs.stats?.finishingMove || 'null'}`);
+                console.log(`     * fightTime: ${fs.stats?.fightTime || 'MISSING'}`);
+            });
+        }
         
         // Comprehensive schema validation
         const validation = validateFightResponse(result, fighter1Id, fighter2Id);

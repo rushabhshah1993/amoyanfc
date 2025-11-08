@@ -33,8 +33,18 @@ async function updateCompetitionFight(
 ) {
     console.log('\n📝 Step 1-2: Updating Competition Fight Document...');
     
+    console.log('📊 Generated Result Object:');
+    console.log('   - winnerId:', generatedResult.winnerId);
+    console.log('   - genAIDescription:', generatedResult.genAIDescription ? `${generatedResult.genAIDescription.substring(0, 80)}...` : 'MISSING');
+    console.log('   - fighterStats:', generatedResult.fighterStats?.length, 'fighters');
+    if (generatedResult.fighterStats) {
+        generatedResult.fighterStats.forEach((fs, idx) => {
+            console.log(`   - Fighter ${idx + 1}: finishingMove = ${fs.stats?.finishingMove || 'null'}`);
+        });
+    }
+    
     fight.winner = generatedResult.winnerId;
-    fight.genAIDescription = generatedResult.fightDescription;
+    fight.genAIDescription = generatedResult.genAIDescription;
     fight.isSimulated = isSimulated;
     fight.fighterStats = generatedResult.fighterStats;
     fight.fightStatus = 'completed';
@@ -49,9 +59,16 @@ async function updateCompetitionFight(
         fight.date = new Date();
     }
     
-    console.log(`   ✓ Fight ${fight.fightIdentifier} updated`);
-    console.log(`   ✓ Winner: ${generatedResult.winnerId}`);
+    console.log(`\n   ✓ Fight ${fight.fightIdentifier} updated`);
+    console.log(`   ✓ Winner: ${fight.winner}`);
     console.log(`   ✓ Date: ${fight.date}`);
+    console.log(`   ✓ AI Description: ${fight.genAIDescription ? 'Saved (' + fight.genAIDescription.length + ' chars)' : 'MISSING'}`);
+    console.log(`   ✓ Fighter Stats: ${fight.fighterStats?.length || 0} fighters`);
+    if (fight.fighterStats) {
+        fight.fighterStats.forEach((fs, idx) => {
+            console.log(`      - Fighter ${idx + 1}: finishingMove = ${fs.stats?.finishingMove || 'null'}`);
+        });
+    }
 }
 
 /**
@@ -489,7 +506,14 @@ async function calculateAndSaveRoundStandings(
     });
     
     // Save to RoundStandings collection
-    await RoundStandings.findOneAndUpdate(
+    console.log('   📝 Saving standings to database...');
+    console.log('      - Competition ID:', competition._id);
+    console.log('      - Season Number:', competition.seasonMeta.seasonNumber);
+    console.log('      - Division Number:', divisionNumber);
+    console.log('      - Round Number:', roundNumber);
+    console.log('      - Fight Identifier:', fightIdentifier);
+    
+    const savedStandings = await RoundStandings.findOneAndUpdate(
         {
             competitionId: competition._id,
             seasonNumber: competition.seasonMeta.seasonNumber,
@@ -510,7 +534,8 @@ async function calculateAndSaveRoundStandings(
         }
     );
     
-    console.log(`   ✓ Round standings saved to database`);
+    console.log(`   ✓ Round standings saved to database (ID: ${savedStandings._id})`);
+    console.log(`   ✓ Saved ${standings.length} fighter standings`);
 }
 
 /**
@@ -1149,6 +1174,7 @@ export async function applyFightResult(
     console.log('   APPLYING FIGHT RESULT');
     console.log('========================================');
     
+    const dbStartTime = Date.now();
     const session = await Fighter.startSession();
     session.startTransaction();
     
@@ -1218,8 +1244,8 @@ export async function applyFightResult(
         
         await updateFighterCompetitionHistory(fighter1, competition.competitionMetaId._id, fighter1IsWinner);
         await updateFighterSeasonDetails(fighter1, competition.competitionMetaId._id, seasonNumber, divisionNumber, fighter1IsWinner, competitionType);
-        await updateFighterOpponentsHistory(fighter1, fighter2Id, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fightIdentifier, fighter1IsWinner, fight.date);
-        await updateFighterDebutInformation(fighter1, competition.competitionMetaId._id, seasonNumber, fightIdentifier, fight.date);
+        await updateFighterOpponentsHistory(fighter1, fighter2Id, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fight._id, fighter1IsWinner, fight.date);
+        await updateFighterDebutInformation(fighter1, competition.competitionMetaId._id, seasonNumber, fight._id, fight.date);
         await updateFighterStreaks(fighter1, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fighter2Id, fighter1IsWinner);
         await updateFighterFightStats(fighter1, fighter1Stats);
         
@@ -1230,12 +1256,13 @@ export async function applyFightResult(
         
         await updateFighterCompetitionHistory(fighter2, competition.competitionMetaId._id, fighter2IsWinner);
         await updateFighterSeasonDetails(fighter2, competition.competitionMetaId._id, seasonNumber, divisionNumber, fighter2IsWinner, competitionType);
-        await updateFighterOpponentsHistory(fighter2, fighter1Id, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fightIdentifier, fighter2IsWinner, fight.date);
-        await updateFighterDebutInformation(fighter2, competition.competitionMetaId._id, seasonNumber, fightIdentifier, fight.date);
+        await updateFighterOpponentsHistory(fighter2, fighter1Id, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fight._id, fighter2IsWinner, fight.date);
+        await updateFighterDebutInformation(fighter2, competition.competitionMetaId._id, seasonNumber, fight._id, fight.date);
         await updateFighterStreaks(fighter2, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fighter1Id, fighter2IsWinner);
         await updateFighterFightStats(fighter2, fighter2Stats);
         
         // Calculate and save round standings (league only)
+        console.log(`\n🎯 About to calculate standings - Competition Type: ${competitionType}, Division: ${divisionNumber}, Round: ${roundNumber}`);
         await calculateAndSaveRoundStandings(competition, fightIdentifier, divisionNumber, roundNumber, competitionType, session);
         
         // Handle cup bracket progression (cup only)
@@ -1278,6 +1305,9 @@ export async function applyFightResult(
         
         // Commit transaction
         await session.commitTransaction();
+        
+        const dbDuration = Date.now() - dbStartTime;
+        console.log(`⏱️  Database operations completed in ${dbDuration}ms (${(dbDuration / 1000).toFixed(2)}s)`);
         
         console.log('\n✅ ========================================');
         console.log('   ALL UPDATES COMMITTED SUCCESSFULLY');
