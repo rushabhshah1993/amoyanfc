@@ -67,7 +67,7 @@ const fightSchema = new Schema({
     genAIDescription: String, 
     isSimulated: { type: Boolean, default: false },
     fighterStats: [fightStatsSchema],
-    fightStatus: { type: String, enum: ['pending', 'completed'], default: 'pending' }
+    fightStatus: { type: String, enum: ['scheduled', 'pending', 'completed'], default: 'scheduled' }
 });
 
 /**

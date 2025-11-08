@@ -22,8 +22,8 @@ interface DivisionConfig {
     divisionNumber: number;
     divisionName: string;
     numberOfFighters: number;
-    fightFeeInGbp: number;
-    winningPrizeInGbp: number;
+    fightFeeInEur: number;
+    prizeMoneyInEur: number;
     selectedFighters: string[];
 }
 
@@ -32,7 +32,7 @@ interface SeasonFormData {
     seasonNumber: number;
     numberOfDivisions: number;
     divisions: DivisionConfig[];
-    fighterOfTheSeasonPrizeInGbp: number;
+    fighterOfTheSeasonPrizeMoneyInEur: number;
 }
 
 const CreateSeasonPage: React.FC = () => {
@@ -41,7 +41,7 @@ const CreateSeasonPage: React.FC = () => {
         seasonNumber: 1,
         numberOfDivisions: 3,
         divisions: [],
-        fighterOfTheSeasonPrizeInGbp: 10000
+        fighterOfTheSeasonPrizeMoneyInEur: 10000
     });
 
     const [currentStep, setCurrentStep] = useState<'basic' | 'divisions' | 'fighters'>('basic');
@@ -64,7 +64,8 @@ const CreateSeasonPage: React.FC = () => {
         const newDivisions: DivisionConfig[] = [];
         for (let i = 1; i <= formData.numberOfDivisions; i++) {
             const existingDiv = formData.divisions.find(d => d.divisionNumber === i);
-            if (existingDiv) {
+            if (existingDiv && existingDiv.fightFeeInEur !== undefined && existingDiv.prizeMoneyInEur !== undefined) {
+                // Existing division with correct field names
                 newDivisions.push(existingDiv);
             } else {
                 // Default values based on standard rules
@@ -84,15 +85,16 @@ const CreateSeasonPage: React.FC = () => {
 
                 newDivisions.push({
                     divisionNumber: i,
-                    divisionName: '',
-                    numberOfFighters: defaultFighters,
-                    fightFeeInGbp: defaultFee,
-                    winningPrizeInGbp: defaultPrize,
-                    selectedFighters: []
+                    divisionName: existingDiv?.divisionName || '',
+                    numberOfFighters: existingDiv?.numberOfFighters || defaultFighters,
+                    fightFeeInEur: defaultFee,
+                    prizeMoneyInEur: defaultPrize,
+                    selectedFighters: existingDiv?.selectedFighters || []
                 });
             }
         }
         setFormData(prev => ({ ...prev, divisions: newDivisions }));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [formData.numberOfDivisions]);
 
     // Get already selected fighter IDs across all divisions
@@ -126,7 +128,7 @@ const CreateSeasonPage: React.FC = () => {
         const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
-            [name]: name === 'seasonNumber' || name === 'numberOfDivisions' || name === 'fighterOfTheSeasonPrizeInGbp'
+            [name]: name === 'seasonNumber' || name === 'numberOfDivisions' || name === 'fighterOfTheSeasonPrizeMoneyInEur'
                 ? parseInt(value) || 0
                 : value
         }));
@@ -185,7 +187,7 @@ const CreateSeasonPage: React.FC = () => {
         if (!formData.competitionMetaId) newErrors.competitionMetaId = 'Please select a competition';
         if (formData.seasonNumber < 1) newErrors.seasonNumber = 'Season number must be at least 1';
         if (formData.numberOfDivisions < 1) newErrors.numberOfDivisions = 'Must have at least 1 division';
-        if (formData.fighterOfTheSeasonPrizeInGbp < 0) newErrors.fighterOfTheSeasonPrizeInGbp = 'Prize money cannot be negative';
+        if (formData.fighterOfTheSeasonPrizeMoneyInEur < 0) newErrors.fighterOfTheSeasonPrizeMoneyInEur = 'Prize money cannot be negative';
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -198,10 +200,10 @@ const CreateSeasonPage: React.FC = () => {
             if (div.numberOfFighters < 2) {
                 newErrors[`div${div.divisionNumber}_fighters`] = `Division ${div.divisionNumber} must have at least 2 fighters`;
             }
-            if (div.fightFeeInGbp < 0) {
+            if (div.fightFeeInEur < 0) {
                 newErrors[`div${div.divisionNumber}_fee`] = `Division ${div.divisionNumber} fight fee cannot be negative`;
             }
-            if (div.winningPrizeInGbp < 0) {
+            if (div.prizeMoneyInEur < 0) {
                 newErrors[`div${div.divisionNumber}_prize`] = `Division ${div.divisionNumber} winning prize cannot be negative`;
             }
         });
@@ -368,23 +370,22 @@ const CreateSeasonPage: React.FC = () => {
 
         const perFightFeePerDivision = formData.divisions.map(div => ({
             divisionNumber: div.divisionNumber,
-            fightFeeInGbp: div.fightFeeInGbp
+            fightFeeInEur: div.fightFeeInEur
         }));
 
         const winningFeePerDivision = formData.divisions.map(div => ({
             divisionNumber: div.divisionNumber,
-            prizeMoneyInGbp: div.winningPrizeInGbp
+            prizeMoneyInEur: div.prizeMoneyInEur
         }));
 
         const seasonData = {
             competitionMetaId: formData.competitionMetaId,
-            competitionMeta: selectedCompetition,
             isActive: true,
             seasonMeta: {
                 seasonNumber: formData.seasonNumber,
                 startDate: null, // Will be set when first fight happens
                 endDate: null, // Will be set when last fight happens
-                leagueDivisions: leagueDivisions,
+                leagueDivision: leagueDivisions,
                 cupParticipants: null
             },
             leagueData: {
@@ -398,7 +399,7 @@ const CreateSeasonPage: React.FC = () => {
                     fightersPerDivision: fightersPerDivision,
                     perFightFeePerDivision: perFightFeePerDivision,
                     winningFeePerDivision: winningFeePerDivision,
-                    fighterOfTheSeasonPrizeMoneyInGbp: formData.fighterOfTheSeasonPrizeInGbp,
+                    fighterOfTheSeasonPrizeMoneyInEur: formData.fighterOfTheSeasonPrizeMoneyInEur,
                     pointsPerWin: 3
                 },
                 cupConfiguration: null
@@ -490,7 +491,7 @@ const CreateSeasonPage: React.FC = () => {
                     seasonNumber: 1,
                     numberOfDivisions: 3,
                     divisions: [],
-                    fighterOfTheSeasonPrizeInGbp: 10000
+                    fighterOfTheSeasonPrizeMoneyInEur: 10000
                 });
                 setCurrentStep('basic');
             } else {
@@ -589,18 +590,18 @@ const CreateSeasonPage: React.FC = () => {
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label htmlFor="fighterOfTheSeasonPrizeInGbp">Fighter of the Season Prize (GBP) *</label>
+                            <label htmlFor="fighterOfTheSeasonPrizeMoneyInEur">Fighter of the Season Prize (EUR) *</label>
                             <input
                                 type="number"
-                                id="fighterOfTheSeasonPrizeInGbp"
-                                name="fighterOfTheSeasonPrizeInGbp"
+                                id="fighterOfTheSeasonPrizeMoneyInEur"
+                                name="fighterOfTheSeasonPrizeMoneyInEur"
                                 min="0"
                                 step="100"
-                                value={formData.fighterOfTheSeasonPrizeInGbp}
+                                value={formData.fighterOfTheSeasonPrizeMoneyInEur}
                                 onChange={handleBasicInputChange}
-                                className={errors.fighterOfTheSeasonPrizeInGbp ? styles.error : ''}
+                                className={errors.fighterOfTheSeasonPrizeMoneyInEur ? styles.error : ''}
                             />
-                            {errors.fighterOfTheSeasonPrizeInGbp && <span className={styles.errorMessage}>{errors.fighterOfTheSeasonPrizeInGbp}</span>}
+                            {errors.fighterOfTheSeasonPrizeMoneyInEur && <span className={styles.errorMessage}>{errors.fighterOfTheSeasonPrizeMoneyInEur}</span>}
                         </div>
 
                         <div className={styles.stepActions}>
@@ -653,15 +654,15 @@ const CreateSeasonPage: React.FC = () => {
 
                                     <div className={styles.formGroup}>
                                         <label htmlFor={`fightFee${division.divisionNumber}`}>
-                                            Per Fight Fee (GBP) *
+                                            Per Fight Fee (EUR) *
                                         </label>
                                         <input
                                             type="number"
                                             id={`fightFee${division.divisionNumber}`}
                                             min="0"
                                             step="100"
-                                            value={division.fightFeeInGbp}
-                                            onChange={(e) => handleDivisionConfigChange(division.divisionNumber, 'fightFeeInGbp', parseInt(e.target.value) || 0)}
+                                            value={division.fightFeeInEur}
+                                            onChange={(e) => handleDivisionConfigChange(division.divisionNumber, 'fightFeeInEur', parseInt(e.target.value) || 0)}
                                             className={errors[`div${division.divisionNumber}_fee`] ? styles.error : ''}
                                         />
                                         {errors[`div${division.divisionNumber}_fee`] && (
@@ -671,15 +672,15 @@ const CreateSeasonPage: React.FC = () => {
 
                                     <div className={styles.formGroup}>
                                         <label htmlFor={`winningPrize${division.divisionNumber}`}>
-                                            Winning Prize (GBP) *
+                                            Winning Prize (EUR) *
                                         </label>
                                         <input
                                             type="number"
                                             id={`winningPrize${division.divisionNumber}`}
                                             min="0"
                                             step="100"
-                                            value={division.winningPrizeInGbp}
-                                            onChange={(e) => handleDivisionConfigChange(division.divisionNumber, 'winningPrizeInGbp', parseInt(e.target.value) || 0)}
+                                            value={division.prizeMoneyInEur}
+                                            onChange={(e) => handleDivisionConfigChange(division.divisionNumber, 'prizeMoneyInEur', parseInt(e.target.value) || 0)}
                                             className={errors[`div${division.divisionNumber}_prize`] ? styles.error : ''}
                                         />
                                         {errors[`div${division.divisionNumber}_prize`] && (

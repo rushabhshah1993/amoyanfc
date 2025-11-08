@@ -94,7 +94,7 @@ The mutation saves the complete season structure:
       fightersPerDivision: [...],
       perFightFeePerDivision: [...],
       winningFeePerDivision: [...],
-      fighterOfTheSeasonPrizeMoneyInGbp: number,
+      fighterOfTheSeasonPrizeMoneyInEur: number,
       pointsPerWin: 3
     }
   }
@@ -358,16 +358,16 @@ To test the full cycle:
         { divisionNumber: 3, numberOfFighters: 16 }
       ],
       perFightFeePerDivision: [
-        { divisionNumber: 1, fightFeeInGbp: 5000 },
-        { divisionNumber: 2, fightFeeInGbp: 3000 },
-        { divisionNumber: 3, fightFeeInGbp: 2000 }
+        { divisionNumber: 1, fightFeeInEur: 5000 },
+        { divisionNumber: 2, fightFeeInEur: 3000 },
+        { divisionNumber: 3, fightFeeInEur: 2000 }
       ],
       winningFeePerDivision: [
-        { divisionNumber: 1, prizeMoneyInGbp: 50000 },
-        { divisionNumber: 2, prizeMoneyInGbp: 30000 },
-        { divisionNumber: 3, prizeMoneyInGbp: 20000 }
+        { divisionNumber: 1, prizeMoneyInEur: 50000 },
+        { divisionNumber: 2, prizeMoneyInEur: 30000 },
+        { divisionNumber: 3, prizeMoneyInEur: 20000 }
       ],
-      fighterOfTheSeasonPrizeMoneyInGbp: 10000,
+      fighterOfTheSeasonPrizeMoneyInEur: 10000,
       pointsPerWin: 3
     }
   },
