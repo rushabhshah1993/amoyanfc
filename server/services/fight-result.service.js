@@ -347,13 +347,22 @@ async function updateFighterFightStats(fighter, chatGPTStats) {
     // Update finishing moves (array of unique strings)
     const currentFinishingMoves = currentStats.finishingMoves || [];
     const newFinishingMove = chatGPTStats.finishingMove;
+    console.log(`   - Current finishing moves:`, currentFinishingMoves);
+    console.log(`   - New finishing move:`, newFinishingMove);
     if (newFinishingMove && !currentFinishingMoves.includes(newFinishingMove)) {
         currentFinishingMoves.push(newFinishingMove);
+        console.log(`   ✓ Added finishing move: ${newFinishingMove}`);
+    } else if (newFinishingMove) {
+        console.log(`   ℹ️  Finishing move already exists: ${newFinishingMove}`);
+    } else {
+        console.log(`   ℹ️  No finishing move (loser)`)
     }
+    console.log(`   - Updated finishing moves:`, currentFinishingMoves);
     
     // Build updated stats with averaging
     fighter.fightStats = {
         fightsCount: newCount,
+        avgFightTime: avg(currentStats.avgFightTime, chatGPTStats.fightTime),
         finishingMoves: currentFinishingMoves,
         grappling: {
             accuracy: avg(currentStats.grappling?.accuracy, chatGPTStats.grappling?.accuracy),
@@ -679,13 +688,45 @@ function updateDivisionCurrentRound(competition, divisionNumber, roundNumber, co
         return;
     }
     
-    // Update currentRound to the highest round number with at least one completed fight
+    // Find the round that was just completed
+    const round = division.rounds?.find(r => r.roundNumber === roundNumber);
+    
+    if (!round) {
+        console.warn(`   ⚠️  Round ${roundNumber} not found in division`);
+        return;
+    }
+    
+    // Count total fights and completed fights in this round
+    const totalFights = round.fights?.length || 0;
+    const completedFights = round.fights?.filter(f => f.winner).length || 0;
+    
+    console.log(`   📊 Round ${roundNumber} Status: ${completedFights}/${totalFights} fights complete`);
+    
     const oldCurrentRound = division.currentRound || 0;
-    if (roundNumber > oldCurrentRound) {
-        division.currentRound = roundNumber;
-        console.log(`   ✓ Updated currentRound: ${oldCurrentRound} → ${roundNumber}`);
+    
+    // Only update currentRound if ALL fights in this round are complete
+    if (completedFights === totalFights && totalFights > 0) {
+        // Check if this is the last round
+        if (roundNumber >= division.totalRounds) {
+            // All rounds complete - keep currentRound at totalRounds
+            if (oldCurrentRound !== division.totalRounds) {
+                division.currentRound = division.totalRounds;
+                console.log(`   ✅ Division Complete! All ${division.totalRounds} rounds finished.`);
+            } else {
+                console.log(`   ✅ Division already marked complete`);
+            }
+        } else {
+            // Move to next round
+            const newCurrentRound = roundNumber + 1;
+            if (newCurrentRound > oldCurrentRound) {
+                division.currentRound = newCurrentRound;
+                console.log(`   ✓ All fights in Round ${roundNumber} complete! Updated currentRound: ${oldCurrentRound} → ${newCurrentRound}`);
+            } else {
+                console.log(`   ℹ️  currentRound unchanged: ${oldCurrentRound}`);
+            }
+        }
     } else {
-        console.log(`   ℹ️  currentRound unchanged: ${oldCurrentRound} (fight was in round ${roundNumber})`);
+        console.log(`   ℹ️  currentRound unchanged: ${oldCurrentRound} (Round ${roundNumber} still in progress)`);
     }
 }
 

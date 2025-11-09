@@ -31,17 +31,17 @@ const fightStatsTypes = `#graphql
 
     type SignificantStrikesData {
         accuracy: Float
-        attempted: Int
+        attempted: Float
         defence: Float
-        landed: Int
+        landed: Float
         landedPerMinute: Float
         positions: SignificantStrikePositionsData
     }
 
     type SignificantStrikePositionsData {
-        clinching: Int
-        ground: Int
-        standing: Int
+        clinching: Float
+        ground: Float
+        standing: Float
     }
 
     type StrikeMapData {
@@ -51,8 +51,8 @@ const fightStatsTypes = `#graphql
     }
 
     type StrikeMapMetricData {
-        absorb: Int
-        strike: Int
+        absorb: Float
+        strike: Float
     }
 
     type SubmissionData {
@@ -62,10 +62,10 @@ const fightStatsTypes = `#graphql
 
     type TakedownData {
         accuracy: Float
-        attempted: Int
+        attempted: Float
         avgTakedownsLandedPerMin: Float
         defence: Float
-        landed: Int
+        landed: Float
     }
 `;
 

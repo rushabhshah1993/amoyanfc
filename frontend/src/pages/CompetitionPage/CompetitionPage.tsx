@@ -39,6 +39,7 @@ interface Division {
     divisionName?: string;
     currentRound?: number;
     totalRounds?: number;
+    rounds?: any[]; // Allow flexible typing for carry-forward logic
 }
 
 interface CupParticipants {
@@ -87,20 +88,41 @@ const useDivisionLeader = (
     divisionData: Division | undefined,
     skip: boolean
 ) => {
-    // For active seasons, check the latest round for standings
-    // If currentRound is 0, check Round 1 in case fights have been completed
-    const roundToCheck = divisionData?.currentRound && divisionData.currentRound > 0 
-        ? divisionData.currentRound 
-        : 1;
+    // Determine which round to fetch standings from
+    // If current round has no completed fights, fetch from previous round
+    const getRoundToFetch = (): number => {
+        const currentRound = divisionData?.currentRound && divisionData.currentRound > 0 
+            ? divisionData.currentRound 
+            : 1;
+        
+        // If we have rounds data, check if current round has completed fights
+        if (divisionData?.rounds && currentRound > 1) {
+            const round = divisionData.rounds.find((r: any) => r.roundNumber === currentRound);
+            
+            if (round && round.fights && round.fights.length > 0) {
+                const hasCompletedFights = round.fights.some((fight: any) => fight.winner);
+                
+                if (!hasCompletedFights) {
+                    // No completed fights, fetch from previous round
+                    return currentRound - 1;
+                }
+            }
+        }
+        
+        return currentRound;
+    };
+    
+    const roundToFetch = getRoundToFetch();
     
     const { data: standingsData } = useQuery(GET_ROUND_STANDINGS_BY_ROUND, {
         variables: {
             competitionId,
             seasonNumber,
             divisionNumber: divisionMeta.divisionNumber,
-            roundNumber: roundToCheck
+            roundNumber: roundToFetch
         },
-        skip: skip
+        skip: skip,
+        fetchPolicy: 'network-only' // Always fetch fresh data
     });
 
     const leader = React.useMemo(() => {

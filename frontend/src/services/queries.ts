@@ -431,6 +431,15 @@ export const GET_ALL_SEASONS_BY_COMPETITION = gql`
                     divisionName
                     currentRound
                     totalRounds
+                    rounds {
+                        roundNumber
+                        fights {
+                            _id
+                            fighter1
+                            fighter2
+                            winner
+                        }
+                    }
                 }
             }
             cupData {

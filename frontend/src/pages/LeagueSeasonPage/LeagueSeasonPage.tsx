@@ -31,6 +31,7 @@ interface Division {
     divisionName?: string;
     currentRound?: number;
     totalRounds?: number;
+    rounds?: any[]; // Allow flexible typing for carry-forward logic
 }
 
 interface SeasonMeta {
@@ -73,17 +74,36 @@ const DivisionCard: React.FC<DivisionCardProps> = ({
 }) => {
     const navigate = useNavigate();
     
-    // For active seasons, we want to check the latest round for standings
-    // If currentRound is 0, we still check Round 1 in case fights have been completed but currentRound hasn't been updated
-    const roundToCheck = division.data?.currentRound && division.data.currentRound > 0 
-        ? division.data.currentRound 
-        : 1;
+    // Determine which round to fetch standings from
+    // If current round has no completed fights, fetch from previous round
+    const getRoundToFetch = (): number => {
+        const currentRound = division.data?.currentRound && division.data.currentRound > 0 
+            ? division.data.currentRound 
+            : 1;
+        
+        // If we have rounds data, check if current round has completed fights
+        if (division.data?.rounds && currentRound > 1) {
+            const round = division.data.rounds.find((r: any) => r.roundNumber === currentRound);
+            if (round && round.fights && round.fights.length > 0) {
+                const hasCompletedFights = round.fights.some((fight: any) => fight.winner);
+                if (!hasCompletedFights) {
+                    // No completed fights, fetch from previous round
+                    console.log(`📋 Division ${division.meta.divisionNumber}: Round ${currentRound} has no completed fights, fetching Round ${currentRound - 1} standings`);
+                    return currentRound - 1;
+                }
+            }
+        }
+        
+        return currentRound;
+    };
+    
+    const roundToFetch = getRoundToFetch();
     
     const queryVariables = {
         competitionId,
         seasonNumber: season.seasonMeta.seasonNumber,
         divisionNumber: division.meta.divisionNumber,
-        roundNumber: roundToCheck
+        roundNumber: roundToFetch
     };
     
     // Only skip if season is not active
@@ -92,7 +112,8 @@ const DivisionCard: React.FC<DivisionCardProps> = ({
     // Fetch current leader if season is active and has current round
     const { data: standingsData } = useQuery(GET_ROUND_STANDINGS_BY_ROUND, {
         variables: queryVariables,
-        skip: shouldSkip
+        skip: shouldSkip,
+        fetchPolicy: 'network-only' // Always fetch fresh data
     });
 
     const leader = React.useMemo(() => {

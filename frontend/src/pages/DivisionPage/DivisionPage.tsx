@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -65,15 +65,43 @@ const DivisionPage: React.FC = () => {
     skip: !seasonId,
   });
 
-  // Get standings for the selected round
+  // Determine which round to fetch standings from
+  // If current round has no completed fights, fetch from previous round
+  const { roundToFetch, isCarriedForward } = useMemo(() => {
+    if (!divisionData || !selectedRound) {
+      return { roundToFetch: selectedRound || 1, isCarriedForward: false };
+    }
+
+    // Find the selected round's data
+    const round = divisionData.rounds?.find(r => r.roundNumber === selectedRound);
+    
+    if (!round || !round.fights || round.fights.length === 0) {
+      // No fights data available, use selected round
+      return { roundToFetch: selectedRound, isCarriedForward: false };
+    }
+
+    // Check if any fights in this round are complete (have a winner)
+    const hasCompletedFights = round.fights.some(fight => fight.winner);
+
+    if (!hasCompletedFights && selectedRound > 1) {
+      // No completed fights in this round, fetch from previous round
+      console.log(`📋 Round ${selectedRound} has no completed fights, fetching Round ${selectedRound - 1} standings`);
+      return { roundToFetch: selectedRound - 1, isCarriedForward: true };
+    }
+
+    return { roundToFetch: selectedRound, isCarriedForward: false };
+  }, [divisionData, selectedRound]);
+
+  // Get standings for the calculated round
   const { data: standingsData, loading: standingsLoading, refetch: refetchStandings } = useQuery(GET_ROUND_STANDINGS_BY_ROUND, {
     variables: {
       competitionId,
       seasonNumber: seasonNumber,
       divisionNumber: parseInt(divisionNumber || '1'),
-      roundNumber: selectedRound,
+      roundNumber: roundToFetch,
     },
-    skip: !competitionId || !selectedRound || !seasonNumber,
+    skip: !competitionId || !roundToFetch || !seasonNumber,
+    fetchPolicy: 'network-only', // Always fetch fresh data
   });
 
   // Debug: Log standings data
@@ -83,7 +111,9 @@ const DivisionPage: React.FC = () => {
     console.log('   - Competition ID:', competitionId);
     console.log('   - Season Number:', seasonNumber);
     console.log('   - Division Number:', divisionNumber);
-    console.log('   - Round Number:', selectedRound);
+    console.log('   - Selected Round:', selectedRound);
+    console.log('   - Fetching Round:', roundToFetch);
+    console.log('   - Is Carried Forward:', isCarriedForward);
     console.log('   - Data:', standingsData);
     
     if (standingsData?.getRoundStandingsByRound) {
@@ -93,7 +123,7 @@ const DivisionPage: React.FC = () => {
     } else if (standingsData !== undefined) {
       console.log('   ❌ NO STANDINGS DATA');
     }
-  }, [standingsData, standingsLoading, competitionId, seasonNumber, divisionNumber, selectedRound]);
+  }, [standingsData, standingsLoading, competitionId, seasonNumber, divisionNumber, selectedRound, roundToFetch, isCarriedForward]);
 
   // Scroll to top when component loads
   useEffect(() => {
@@ -210,7 +240,14 @@ const DivisionPage: React.FC = () => {
 
     return (
       <div className={styles.standingsTableContainer}>
-        <h2>Standings after Round {selectedRound}</h2>
+        <h2>
+          Standings after Round {isCarriedForward ? roundToFetch : selectedRound}
+          {isCarriedForward && (
+            <span style={{ fontSize: '0.85rem', color: '#888', marginLeft: '0.5rem' }}>
+              (Carried forward - Round {selectedRound} in progress)
+            </span>
+          )}
+        </h2>
         <table className={styles.standingsTable}>
           <thead>
             <tr>

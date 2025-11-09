@@ -135,6 +135,12 @@ function getSystemPrompt() {
 GLOBAL CONSTRAINTS:
 - Exactly 2 fighters. Single round only.
 - IMPORTANT: All fighters are FEMALE. Always use female pronouns (she/her) in the narrative. Never use he/him.
+- WINNER SELECTION: Either fighter can win. Do NOT bias towards the first fighter listed. Determine the winner based SOLELY on:
+  * Physical attributes (height, weight, reach, etc.)
+  * Skill levels (boxing, kicking, grappling, wrestling, etc.)
+  * Recent performance and momentum (winning/losing streaks)
+  * Head-to-head history (if provided)
+  The outcome should vary naturally - sometimes Fighter 1 wins, sometimes Fighter 2 wins
 - The fight ALWAYS ends by KNOCKOUT (KO). No tap-outs, no submissions as victory conditions.
 - Chokes, slams, and grappling may appear as damage/control tactics, but the final victory condition MUST be a knockout.
 - Maintain realistic MMA logic based on provided fighter attributes (physical stats, skills, fight history).
@@ -142,15 +148,17 @@ GLOBAL CONSTRAINTS:
 - Tone: Cinematic, grounded, with psychological intensity. Exciting but realistic.
 
 FINISHING MOVE RULES (CRITICAL):
-- The "finishingMove" MUST be a knockout strike, such as, but not limited to:
-  * "Roundhouse kick to the head"
-  * "Spinning back kick to the temple"
-  * "Flying knee to the chin"
-  * "Hook to the jaw"
-  * "Axe kick"
-  * "Uppercut"
-  * "Head kick"
-  * "Overhand right"
+- The "finishingMove" MUST be a knockout strike that matches your fight narrative
+- BE CREATIVE and vary the finishing moves - don't repeat the same moves across different fights
+- The finishing move should feel earned based on the fight's progression and the winner's fighting style
+- Examples of knockout strikes (but CREATE YOUR OWN based on the narrative):
+  * Head strikes: "Roundhouse kick to the head", "Hook to the jaw", "Uppercut", "Overhand right", "Head kick", "Superman punch", "Spinning backfist to the temple", "Left hook to the temple"
+  * Knee strikes: "Flying knee to the chin", "Knee to the head from clinch", "Jumping knee strike"
+  * Spinning/Flashy: "Spinning back kick to the temple", "Spinning heel kick", "Tornado kick", "Axe kick", "Spinning elbow"
+  * Ground finishes: "Ground and pound", "Elbow strikes from mount", "Hammerfist to the temple"
+  * Body shots leading to head: "Liver shot followed by head kick", "Body kick followed by overhand right"
+- Feel free to add specific details like "right hook", "left high kick", "switch kick to the jaw", etc.
+- Match the finishing move to the fighter's strengths (e.g., if they're a kickboxer, use kicks; if they're a brawler, use punches)
 - Grappling and submission attempts can be part of the fight narrative, but the fight MUST end with a knockout strike.
 
 OUTPUT CONTRACT:
@@ -162,52 +170,52 @@ Your response MUST be a valid JSON object with this exact structure:
     {
       "fighterId": "ID of fighter (use the exact ID provided in the prompt)",
       "stats": {
-        "fightTime": 8.2,
-        "finishingMove": "Knockout move description",
+        "fightTime": <number: calculate realistic fight duration in minutes based on knockout timing>,
+        "finishingMove": "Knockout move description (only for winner)",
         "grappling": {
-          "accuracy": 85.5,
-          "defence": 12
+          "accuracy": <number: percentage of successful grappling exchanges>,
+          "defence": <number: successful grappling defenses>
         },
         "significantStrikes": {
-          "accuracy": 78.2,
-          "attempted": 45,
-          "defence": 8,
-          "landed": 35,
-          "landedPerMinute": 2.3,
+          "accuracy": <number: percentage calculated from landed/attempted>,
+          "attempted": <number: total strikes thrown>,
+          "defence": <number: strikes defended>,
+          "landed": <number: strikes that connected>,
+          "landedPerMinute": <number: calculate from landed/fightTime>,
           "positions": {
-            "clinching": 5,
-            "ground": 15,
-            "standing": 15
+            "clinching": <number: strikes in clinch>,
+            "ground": <number: ground strikes>,
+            "standing": <number: standing strikes>
           }
         },
         "strikeMap": {
-          "head": { "absorb": 3, "strike": 12 },
-          "torso": { "absorb": 2, "strike": 8 },
-          "leg": { "absorb": 1, "strike": 5 }
+          "head": { "absorb": <number>, "strike": <number> },
+          "torso": { "absorb": <number>, "strike": <number> },
+          "leg": { "absorb": <number>, "strike": <number> }
         },
         "submissions": {
-          "attemptsPer15Mins": 2.1,
-          "average": 1.5
+          "attemptsPer15Mins": <number: submission attempts normalized to 15 min>,
+          "average": <number: average submission attempts>
         },
         "takedowns": {
-          "accuracy": 70.0,
-          "attempted": 4,
-          "avgTakedownsLandedPerMin": 0.26,
-          "defence": 1,
-          "landed": 3
+          "accuracy": <number: percentage calculated from landed/attempted>,
+          "attempted": <number: takedown attempts>,
+          "avgTakedownsLandedPerMin": <number: calculate from landed/fightTime>,
+          "defence": <number: successful takedown defenses>,
+          "landed": <number: successful takedowns>
         }
       }
     },
     {
       "fighterId": "ID of other fighter (use the exact ID provided in the prompt)",
       "stats": {
-        "fightTime": 8.2,
+        "fightTime": <same fightTime as above>,
         "finishingMove": null,
-        "grappling": { ... },
-        "significantStrikes": { ... },
-        "strikeMap": { ... },
-        "submissions": { ... },
-        "takedowns": { ... }
+        "grappling": { <calculate for this fighter> },
+        "significantStrikes": { <calculate for this fighter> },
+        "strikeMap": { <calculate for this fighter - their strikes should match opponent's absorbs> },
+        "submissions": { <calculate for this fighter> },
+        "takedowns": { <calculate for this fighter> }
       }
     }
   ]
@@ -230,7 +238,12 @@ You MUST ensure these mathematical relationships hold:
 4. significantStrikes.accuracy = (significantStrikes.landed / significantStrikes.attempted) × 100
 5. takedowns.accuracy = (takedowns.landed / takedowns.attempted) × 100
 6. Both fighters MUST have the same fightTime value (in minutes)
-7. fightTime should be realistic and varied: Early KOs (2-5 min), Mid-fight finish (5-10 min), Late finish (10-14 min), Full fight (14-15 min)
+7. fightTime MUST vary between fights - DO NOT use the same value every time:
+   - Early knockout: 2-5 minutes (one fighter dominates quickly)
+   - Mid-fight finish: 5-10 minutes (competitive fight with decisive moment)
+   - Late finish: 10-14 minutes (back-and-forth battle)
+   - Full fight: 14-15 minutes (evenly matched until final moments)
+   Choose fightTime based on how you narrate the fight's pace and ending
 8. Only the winner has a finishingMove; the loser has finishingMove as null
 9. landedPerMinute = significantStrikes.landed / fightTime
 10. avgTakedownsLandedPerMin = takedowns.landed / fightTime
@@ -242,10 +255,15 @@ NARRATIVE REQUIREMENTS:
 - Use the fighter names (NOT IDs) naturally throughout the narrative
 - If head-to-head history is provided, analyze the timeline to identify momentum patterns (e.g., recent winning/losing streaks)
 - Consider psychological factors: a fighter on a winning streak may have confidence; a fighter breaking a losing streak may have tactical improvements
+- Consider fighter attributes and specializations when crafting the narrative:
+  * If a fighter has high "Boxing" skill, they might use more punches and combinations
+  * If a fighter has high "Kicking" skill, they might use more kicks and leg attacks
+  * If a fighter has high "Grappling" or "Wrestling", they might use more takedowns and ground control
+  * The finishing move should align with the winner's strongest attributes
 - Show realistic fight tempo and momentum shifts
 - Include specific techniques, positions, and tactical decisions
 - Build tension toward the knockout finish
-- Describe the knockout moment vividly and conclusively
+- Describe the knockout moment vividly and conclusively with a UNIQUE finishing strike
 - The narrative should make the statistics you generate feel earned and logical
 
 STATISTICAL GENERATION PROCESS (CRITICAL):
@@ -313,17 +331,22 @@ ${JSON.stringify(headToHeadData, null, 2)}
 
 INSTRUCTIONS:
 Based on all this data, follow this process:
-1. Analyze both fighters' strengths and weaknesses
-2. Consider their physical attributes, skills, and recent performances
-3. Determine a realistic winner
-4. Generate a detailed, exciting fight description (3-4 paragraphs) that culminates in a knockout
-5. Go through your fight description sentence-by-sentence
-6. For each sentence, identify the specific actions (strikes, takedowns, positions) and which fighter performed them
-7. Generate accurate statistics for both fighters based on this sentence-by-sentence analysis
-8. Use the fighter IDs (${fighter1Id} and ${fighter2Id}) in your JSON response for "winnerId" and "fighterId" fields
-9. Use the fighter names (${fighter1Data.name} and ${fighter2Data.name}) naturally in the narrative text
+1. Analyze both fighters' strengths and weaknesses objectively
+2. Consider their physical attributes, skills, recent performances, and head-to-head history
+3. IMPORTANT: Either fighter can win. Do NOT favor Fighter 1 just because they are listed first. The winner should be determined SOLELY by realistic analysis of their attributes, skills, and recent form.
+4. Determine a realistic winner based on your analysis - the outcome should vary naturally across different fights
+5. Generate a detailed, exciting fight description (3-4 paragraphs) that culminates in a knockout
+6. Go through your fight description sentence-by-sentence
+7. For each sentence, identify the specific actions (strikes, takedowns, positions) and which fighter performed them
+8. Generate accurate statistics for both fighters based on this sentence-by-sentence analysis
+9. Use the fighter IDs (${fighter1Id} and ${fighter2Id}) in your JSON response for "winnerId" and "fighterId" fields
+10. Use the fighter names (${fighter1Data.name} and ${fighter2Data.name}) naturally in the narrative text
 
-Remember: This MUST end in a knockout. Return the response as a valid JSON object with "genAIDescription", "winnerId", and "fighterStats".`;
+Remember: 
+- This MUST end in a knockout
+- Either fighter can win - there is NO inherent advantage to being listed first
+- Base the winner on realistic factors: skills, attributes, recent form, momentum
+- Return the response as a valid JSON object with "genAIDescription", "winnerId", and "fighterStats".`;
 
     try {
         console.log('⏱️  Starting OpenAI API call...');
