@@ -10,7 +10,8 @@ interface GoogleLoginButtonProps {
 const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({ onLogin }) => {
     const handleGoogleLogin = () => {
         // Redirect to Google OAuth endpoint
-        window.location.href = 'http://localhost:4000/auth/google';
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:4000';
+        window.location.href = `${backendUrl}/auth/google`;
     };
 
     return (

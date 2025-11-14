@@ -1,0 +1,8 @@
+{
+  "watch": ["*.js", "**/*.js"],
+  "ext": "js,json",
+  "ignore": ["node_modules/", "scripts/"],
+  "env": {},
+  "exec": "node -r dotenv/config index.js dotenv_config_path=../.env"
+}
+

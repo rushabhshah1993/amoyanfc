@@ -205,7 +205,7 @@ const VersusPage: React.FC = () => {
 
             for (const compId of uniqueCompIds) {
                 try {
-                    const response = await fetch(process.env.REACT_APP_GRAPHQL_URI || 'http://localhost:4000/graphql', {
+                    const response = await fetch(process.env.REACT_APP_API_URL || 'http://localhost:4000/graphql', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({

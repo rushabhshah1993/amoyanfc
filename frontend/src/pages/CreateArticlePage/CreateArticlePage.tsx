@@ -217,7 +217,8 @@ const CreateArticlePage: React.FC = () => {
                 formData.append('media', file);
                 formData.append('articleId', articleId);
                 
-                const response = await fetch('http://localhost:4000/api/upload/article-media', {
+                const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:4000';
+                const response = await fetch(`${backendUrl}/api/upload/article-media`, {
                     method: 'POST',
                     body: formData,
                 });
@@ -239,7 +240,8 @@ const CreateArticlePage: React.FC = () => {
                 formData.append('media', file);
                 formData.append('articleId', articleId);
                 
-                const response = await fetch('http://localhost:4000/api/upload/article-media', {
+                const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:4000';
+                const response = await fetch(`${backendUrl}/api/upload/article-media`, {
                     method: 'POST',
                     body: formData,
                 });
@@ -309,7 +311,8 @@ const CreateArticlePage: React.FC = () => {
         formData.append('articleId', articleId);
         
         try {
-            const response = await fetch('http://localhost:4000/api/upload/article-thumbnail', {
+            const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:4000';
+            const response = await fetch(`${backendUrl}/api/upload/article-thumbnail`, {
                 method: 'POST',
                 body: formData,
             });

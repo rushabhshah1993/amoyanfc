@@ -61,7 +61,8 @@ export const checkAuthentication = createAsyncThunk<boolean>(
                 console.warn('Apollo Client failed, trying direct fetch:', apolloError);
                 
                 // Fallback to direct fetch
-                const response = await fetch('http://localhost:4000/graphql', {
+                const backendUrl = process.env.REACT_APP_API_URL || 'http://localhost:4000/graphql';
+                const response = await fetch(backendUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -94,7 +95,8 @@ export const fetchUserData = createAsyncThunk<User | null>(
         try {
             
             // Try direct fetch first to avoid Apollo Client issues
-            const response = await fetch('http://localhost:4000/graphql', {
+            const backendUrl = process.env.REACT_APP_API_URL || 'http://localhost:4000/graphql';
+            const response = await fetch(backendUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
