@@ -69,6 +69,7 @@ export const GET_ALL_FIGHTERS = gql`
             firstName
             lastName
             profileImage
+            skillset
             location {
                 city
                 country
