@@ -398,6 +398,14 @@ export const GET_ACTIVE_COMPETITIONS = gql`
                         profileImage
                     }
                 }
+                cupParticipants {
+                    fighters {
+                        id
+                        firstName
+                        lastName
+                        profileImage
+                    }
+                }
             }
             leagueData {
                 divisions {
@@ -428,6 +436,11 @@ export const GET_ACTIVE_COMPETITIONS = gql`
                     date
                 }
                 currentStage
+            }
+            config {
+                cupConfiguration {
+                    stages
+                }
             }
         }
     }

@@ -1028,7 +1028,7 @@ async function checkAndCreateICSeasonIfNeeded(competition, session) {
             leagueData: null,
             cupData: {
                 fights: round1Fights,
-                currentStage: 'Quarter-finals',
+                currentStage: 'Round 1',
                 rounds: null
             },
             config: {
@@ -1038,7 +1038,7 @@ async function checkAndCreateICSeasonIfNeeded(competition, session) {
                     numberOfFighters: 8,
                     perFightFeeInEur: 10000,
                     winningFeeInEur: 100000,
-                    stages: ['Quarter-finals', 'Semi-finals', 'Finals']
+                    stages: ['Round 1', 'Semi-finals', 'Finals']
                 }
             },
             linkedLeagueSeason: {
@@ -1192,7 +1192,7 @@ async function checkAndCreateCCSeasonIfNeeded(competition, session) {
             leagueData: null,
             cupData: {
                 fights: round1Fights,
-                currentStage: 'Quarter-finals',
+                currentStage: 'Round 1',
                 rounds: null
             },
             config: {
@@ -1202,7 +1202,7 @@ async function checkAndCreateCCSeasonIfNeeded(competition, session) {
                     numberOfFighters: 8,
                     perFightFeeInEur: 15000,
                     winningFeeInEur: 150000,
-                    stages: ['Quarter-finals', 'Semi-finals', 'Finals']
+                    stages: ['Round 1', 'Semi-finals', 'Finals']
                 }
             },
             linkedLeagueSeason: {

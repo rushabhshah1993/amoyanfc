@@ -1,0 +1,16 @@
+======================================================================
+BACKUP SUMMARY
+======================================================================
+
+Date: 2025-11-15T16:42:53.307Z
+Database: staging-amoyan
+
+Collections Backed Up:
+- Fighters: 53 documents
+- Competitions: 20 documents
+- Round Standings: 1790 documents
+
+Purpose: Backup taken before completing fights to 25% for IC creation testing
+
+Backup Location: /Users/rushabhshah/Personal Projects/amoyanfc/backups/staging-2025-11-15T16-42-52
+======================================================================

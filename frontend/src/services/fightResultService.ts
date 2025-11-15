@@ -1890,14 +1890,13 @@ export const getUpcomingFights = (competitions: Array<any>) => {
                     const parts = fight.fightIdentifier.split('-');
                     const roundNumber = parseInt(parts[2]?.substring(1) || '0');
                     
-                    // Determine round name
+                    // Determine round name based on cup configuration stages
+                    const stages = competition.config?.cupConfiguration?.stages || ['Round 1', 'Semi-finals', 'Finals'];
                     let roundName = currentStage || 'Unknown';
-                    if (fight.fightIdentifier.includes('R1')) {
-                        roundName = 'Quarter-finals';
-                    } else if (fight.fightIdentifier.includes('R2')) {
-                        roundName = 'Semi-finals';
-                    } else if (fight.fightIdentifier.includes('R3')) {
-                        roundName = 'Finals';
+                    
+                    // Map round number to stage name
+                    if (roundNumber >= 1 && roundNumber <= stages.length) {
+                        roundName = stages[roundNumber - 1];
                     }
 
                     // Enrich fighter data
