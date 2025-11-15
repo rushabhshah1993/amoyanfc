@@ -871,7 +871,7 @@ const FightPage: React.FC = () => {
                                 <Performance 
                                     fighter={fighter1Full}
                                     allFighters={allFighters}
-                                    competitionId={fight.competitionContext.competitionId}
+                                    competitionId={competitionFull?.competitionMetaId || fight.competitionContext.competitionId}
                                     competitionType={competitionType}
                                     currentSeason={fight.competitionContext.seasonNumber}
                                     currentDivision={isCupFight ? undefined : fight.competitionContext.divisionNumber}
@@ -1404,7 +1404,7 @@ const FightPage: React.FC = () => {
                                 <Performance 
                                     fighter={fighter2Full}
                                     allFighters={allFighters}
-                                    competitionId={fight.competitionContext.competitionId}
+                                    competitionId={competitionFull?.competitionMetaId || fight.competitionContext.competitionId}
                                     competitionType={competitionType}
                                     currentSeason={fight.competitionContext.seasonNumber}
                                     currentDivision={isCupFight ? undefined : fight.competitionContext.divisionNumber}

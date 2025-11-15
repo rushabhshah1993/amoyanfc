@@ -462,6 +462,7 @@ export const GET_SEASON_DETAILS = gql`
     query GetCompetitionSeason($id: ID!) {
         getCompetitionSeason(id: $id) {
             id
+            competitionMetaId
             isActive
             seasonMeta {
                 seasonNumber

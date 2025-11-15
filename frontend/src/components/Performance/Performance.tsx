@@ -140,16 +140,24 @@ const Performance: React.FC<PerformanceProps> = ({
             });
         }
 
-        // For LEAGUE competitions in FightPage - keep existing logic
+        // For LEAGUE competitions in FightPage - show only fights from the same competition
         let filteredFights = allFights;
         
-        if (currentSeason != null && currentDivision != null && currentRound != null) {
+        if (currentSeason != null && currentDivision != null && currentRound != null && competitionId) {
+            // LEAGUE fights: Filter by competition first (e.g., only IFC, not IFL)
+            // Then by season/division/round
             filteredFights = allFights.filter(fight => {
+                // Must be from the same competition (e.g., only IFC across all seasons, not IFL)
+                if (fight.competitionId !== competitionId) return false;
+                
                 const fightDivision = fight.division ?? 0;
                 const fightRound = fight.round ?? 0;
                 
+                // Include fights from previous seasons
                 if (fight.season < currentSeason) return true;
+                // Include fights from current season, previous divisions
                 if (fight.season === currentSeason && fightDivision < currentDivision) return true;
+                // Include fights from current season-division, previous rounds
                 if (fight.season === currentSeason && fightDivision === currentDivision && fightRound < currentRound) return true;
                 return false;
             });
