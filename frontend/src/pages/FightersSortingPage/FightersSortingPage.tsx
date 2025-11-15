@@ -35,6 +35,60 @@ interface CompetitionHistory {
     totalLosses: number;
 }
 
+interface GrapplingData {
+    accuracy?: number;
+    defence?: number;
+}
+
+interface SignificantStrikePositionsData {
+    clinching?: number;
+    ground?: number;
+    standing?: number;
+}
+
+interface SignificantStrikesData {
+    accuracy?: number;
+    attempted?: number;
+    defence?: number;
+    landed?: number;
+    landedPerMinute?: number;
+    positions?: SignificantStrikePositionsData;
+}
+
+interface StrikeMapMetricData {
+    absorb?: number;
+    strike?: number;
+}
+
+interface StrikeMapData {
+    head?: StrikeMapMetricData;
+    torso?: StrikeMapMetricData;
+    leg?: StrikeMapMetricData;
+}
+
+interface SubmissionData {
+    attemptsPer15Mins?: number;
+    average?: number;
+}
+
+interface TakedownData {
+    accuracy?: number;
+    attempted?: number;
+    avgTakedownsLandedPerMin?: number;
+    defence?: number;
+    landed?: number;
+}
+
+interface FightStats {
+    avgFightTime?: number;
+    finishingMoves?: string[];
+    grappling?: GrapplingData;
+    significantStrikes?: SignificantStrikesData;
+    strikeMap?: StrikeMapData;
+    submissions?: SubmissionData;
+    takedowns?: TakedownData;
+}
+
 // IFC Competition Meta ID
 const IFC_COMPETITION_META_ID = '67780dcc09a4c4b25127f8f6';
 
@@ -56,6 +110,7 @@ interface Fighter {
     highestWinStreak: number;
     highestLoseStreak: number;
     competitionHistory?: CompetitionHistory[];
+    fightStats?: FightStats;
 }
 
 type SortMetric = 
@@ -78,7 +133,31 @@ type SortMetric =
     | 'durability'
     | 'strength'
     | 'endurance'
-    | 'agility';
+    | 'agility'
+    | 'avgFightTime'
+    | 'grapplingAccuracy'
+    | 'grapplingDefence'
+    | 'sigStrikesAccuracy'
+    | 'sigStrikesAttempted'
+    | 'sigStrikesDefence'
+    | 'sigStrikesLanded'
+    | 'sigStrikesLandedPerMin'
+    | 'sigStrikesPosClinching'
+    | 'sigStrikesPosGround'
+    | 'sigStrikesPosStanding'
+    | 'strikeMapHeadAbsorb'
+    | 'strikeMapHeadStrike'
+    | 'strikeMapTorsoAbsorb'
+    | 'strikeMapTorsoStrike'
+    | 'strikeMapLegAbsorb'
+    | 'strikeMapLegStrike'
+    | 'submissionsAttemptsPer15Mins'
+    | 'submissionsAverage'
+    | 'takedownsAccuracy'
+    | 'takedownsAttempted'
+    | 'takedownsAvgLandedPerMin'
+    | 'takedownsDefence'
+    | 'takedownsLanded';
 
 const metricLabels: Record<SortMetric, string> = {
     age: 'Age',
@@ -100,7 +179,31 @@ const metricLabels: Record<SortMetric, string> = {
     durability: 'Durability (1-10)',
     strength: 'Strength (1-10)',
     endurance: 'Endurance (1-10)',
-    agility: 'Agility (1-10)'
+    agility: 'Agility (1-10)',
+    avgFightTime: 'Average Fight Time (minutes)',
+    grapplingAccuracy: 'Grappling Accuracy (%)',
+    grapplingDefence: 'Grappling Defence',
+    sigStrikesAccuracy: 'Significant Strikes Accuracy (%)',
+    sigStrikesAttempted: 'Significant Strikes Attempted',
+    sigStrikesDefence: 'Significant Strikes Defence',
+    sigStrikesLanded: 'Significant Strikes Landed',
+    sigStrikesLandedPerMin: 'Significant Strikes Landed Per Minute',
+    sigStrikesPosClinching: 'Significant Strikes - Clinching',
+    sigStrikesPosGround: 'Significant Strikes - Ground',
+    sigStrikesPosStanding: 'Significant Strikes - Standing',
+    strikeMapHeadAbsorb: 'Head Strikes Absorbed',
+    strikeMapHeadStrike: 'Head Strikes Landed',
+    strikeMapTorsoAbsorb: 'Torso Strikes Absorbed',
+    strikeMapTorsoStrike: 'Torso Strikes Landed',
+    strikeMapLegAbsorb: 'Leg Strikes Absorbed',
+    strikeMapLegStrike: 'Leg Strikes Landed',
+    submissionsAttemptsPer15Mins: 'Submission Attempts Per 15 Minutes',
+    submissionsAverage: 'Average Submissions',
+    takedownsAccuracy: 'Takedown Accuracy (%)',
+    takedownsAttempted: 'Takedowns Attempted',
+    takedownsAvgLandedPerMin: 'Average Takedowns Landed Per Minute',
+    takedownsDefence: 'Takedown Defence',
+    takedownsLanded: 'Takedowns Landed'
 };
 
 const getMetricValue = (fighter: Fighter, metric: SortMetric): number => {
@@ -182,6 +285,79 @@ const getMetricValue = (fighter: Fighter, metric: SortMetric): number => {
         case 'agility':
             return fighter.physicalAttributes?.agility ?? -1;
         
+        // Fight Stats
+        case 'avgFightTime':
+            return fighter.fightStats?.avgFightTime ?? -1;
+        
+        case 'grapplingAccuracy':
+            return fighter.fightStats?.grappling?.accuracy ?? -1;
+        
+        case 'grapplingDefence':
+            return fighter.fightStats?.grappling?.defence ?? -1;
+        
+        case 'sigStrikesAccuracy':
+            return fighter.fightStats?.significantStrikes?.accuracy ?? -1;
+        
+        case 'sigStrikesAttempted':
+            return fighter.fightStats?.significantStrikes?.attempted ?? -1;
+        
+        case 'sigStrikesDefence':
+            return fighter.fightStats?.significantStrikes?.defence ?? -1;
+        
+        case 'sigStrikesLanded':
+            return fighter.fightStats?.significantStrikes?.landed ?? -1;
+        
+        case 'sigStrikesLandedPerMin':
+            return fighter.fightStats?.significantStrikes?.landedPerMinute ?? -1;
+        
+        case 'sigStrikesPosClinching':
+            return fighter.fightStats?.significantStrikes?.positions?.clinching ?? -1;
+        
+        case 'sigStrikesPosGround':
+            return fighter.fightStats?.significantStrikes?.positions?.ground ?? -1;
+        
+        case 'sigStrikesPosStanding':
+            return fighter.fightStats?.significantStrikes?.positions?.standing ?? -1;
+        
+        case 'strikeMapHeadAbsorb':
+            return fighter.fightStats?.strikeMap?.head?.absorb ?? -1;
+        
+        case 'strikeMapHeadStrike':
+            return fighter.fightStats?.strikeMap?.head?.strike ?? -1;
+        
+        case 'strikeMapTorsoAbsorb':
+            return fighter.fightStats?.strikeMap?.torso?.absorb ?? -1;
+        
+        case 'strikeMapTorsoStrike':
+            return fighter.fightStats?.strikeMap?.torso?.strike ?? -1;
+        
+        case 'strikeMapLegAbsorb':
+            return fighter.fightStats?.strikeMap?.leg?.absorb ?? -1;
+        
+        case 'strikeMapLegStrike':
+            return fighter.fightStats?.strikeMap?.leg?.strike ?? -1;
+        
+        case 'submissionsAttemptsPer15Mins':
+            return fighter.fightStats?.submissions?.attemptsPer15Mins ?? -1;
+        
+        case 'submissionsAverage':
+            return fighter.fightStats?.submissions?.average ?? -1;
+        
+        case 'takedownsAccuracy':
+            return fighter.fightStats?.takedowns?.accuracy ?? -1;
+        
+        case 'takedownsAttempted':
+            return fighter.fightStats?.takedowns?.attempted ?? -1;
+        
+        case 'takedownsAvgLandedPerMin':
+            return fighter.fightStats?.takedowns?.avgTakedownsLandedPerMin ?? -1;
+        
+        case 'takedownsDefence':
+            return fighter.fightStats?.takedowns?.defence ?? -1;
+        
+        case 'takedownsLanded':
+            return fighter.fightStats?.takedowns?.landed ?? -1;
+        
         default:
             return 0;
     }
@@ -209,6 +385,40 @@ const formatMetricValue = (fighter: Fighter, metric: SortMetric): string => {
         case 'winPercentageOverall':
         case 'winPercentageIFC':
             return `${value.toFixed(1)}%`;
+        
+        // Fight Stats formatting
+        case 'avgFightTime':
+            return `${value.toFixed(1)} min`;
+        
+        case 'grapplingAccuracy':
+        case 'sigStrikesAccuracy':
+        case 'takedownsAccuracy':
+            return `${value.toFixed(1)}%`;
+        
+        case 'sigStrikesLandedPerMin':
+        case 'takedownsAvgLandedPerMin':
+        case 'submissionsAttemptsPer15Mins':
+        case 'submissionsAverage':
+            return value.toFixed(2);
+        
+        case 'grapplingDefence':
+        case 'sigStrikesAttempted':
+        case 'sigStrikesDefence':
+        case 'sigStrikesLanded':
+        case 'sigStrikesPosClinching':
+        case 'sigStrikesPosGround':
+        case 'sigStrikesPosStanding':
+        case 'strikeMapHeadAbsorb':
+        case 'strikeMapHeadStrike':
+        case 'strikeMapTorsoAbsorb':
+        case 'strikeMapTorsoStrike':
+        case 'strikeMapLegAbsorb':
+        case 'strikeMapLegStrike':
+        case 'takedownsAttempted':
+        case 'takedownsDefence':
+        case 'takedownsLanded':
+            return value.toString();
+        
         default:
             return value.toString();
     }

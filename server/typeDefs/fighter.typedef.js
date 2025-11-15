@@ -120,6 +120,7 @@ const fighterTypeDef = `#graphql
         highestLoseStreak: Int
         globalRank: GlobalRankData
         competitionHistory: [CompetitionHistoryData]
+        fightStats: FightStats
     }
 
     """

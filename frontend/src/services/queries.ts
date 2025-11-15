@@ -136,6 +136,51 @@ export const GET_ALL_FIGHTERS_WITH_STATS = gql`
                 totalWins
                 totalLosses
             }
+            fightStats {
+                avgFightTime
+                finishingMoves
+                grappling {
+                    accuracy
+                    defence
+                }
+                significantStrikes {
+                    accuracy
+                    attempted
+                    defence
+                    landed
+                    landedPerMinute
+                    positions {
+                        clinching
+                        ground
+                        standing
+                    }
+                }
+                strikeMap {
+                    head {
+                        absorb
+                        strike
+                    }
+                    torso {
+                        absorb
+                        strike
+                    }
+                    leg {
+                        absorb
+                        strike
+                    }
+                }
+                submissions {
+                    attemptsPer15Mins
+                    average
+                }
+                takedowns {
+                    accuracy
+                    attempted
+                    avgTakedownsLandedPerMin
+                    defence
+                    landed
+                }
+            }
         }
     }
 `;
