@@ -1,0 +1,9 @@
+{
+  "timestamp": "2025-11-14T16:24:23.225Z",
+  "collections": {
+    "fighters": 53,
+    "competitions": 19
+  },
+  "purpose": "Pre-migration backup for opponent history dates",
+  "mongodbUri": "mongodb+srv://***@amoyancluster.vl6hc.mongodb.net/gql-db?retryWrites=true&w=majority&appName=AmoyanCluster."
+}

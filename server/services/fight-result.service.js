@@ -201,8 +201,8 @@ async function updateFighterOpponentsHistory(
     const newDetail = {
         competitionId: competitionMetaId,
         season: seasonNumber,
-        division: divisionNumber,
-        round: roundNumber,
+        divisionId: divisionNumber,  // MongoDB schema uses divisionId
+        roundId: roundNumber,        // MongoDB schema uses roundId
         fightId,
         isWinner,
         date: fightDate

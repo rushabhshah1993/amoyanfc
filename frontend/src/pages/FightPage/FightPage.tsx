@@ -106,6 +106,9 @@ const FightPage: React.FC = () => {
     // Check if this is a cup fight from navigation state
     const isCupFight = location.state?.isCupFight || false;
     
+    // Determine competition type for Performance component
+    const competitionType: 'league' | 'cup' = isCupFight ? 'cup' : 'league';
+    
     // Development mode: Check if using mock data for UI testing
     // Access via: http://localhost:3000/fight/scheduled-mock
     const useMockData = fightId === 'scheduled-mock';
@@ -119,29 +122,6 @@ const FightPage: React.FC = () => {
     // Use mock data for development/testing, otherwise use real fight data from GraphQL
     const rawFight = useMockData ? mockScheduledFight : (data?.getCupFightById || data?.getFightById || null);
     
-    // Debug: Log fight data received from GraphQL
-    useEffect(() => {
-        if (rawFight) {
-            console.log('\n🥊 FIGHT DATA RECEIVED:');
-            console.log('   - Fight ID:', rawFight.id);
-            console.log('   - Fight Identifier:', rawFight.fightIdentifier);
-            console.log('   - Fight Status:', rawFight.fightStatus);
-            console.log('   - Fighter 1:', rawFight.fighter1?.firstName, rawFight.fighter1?.lastName);
-            console.log('   - Fighter 2:', rawFight.fighter2?.firstName, rawFight.fighter2?.lastName);
-            console.log('   - Winner:', rawFight.winner?.firstName, rawFight.winner?.lastName || 'No winner yet');
-            console.log('   - User Description:', rawFight.userDescription ? `${rawFight.userDescription.substring(0, 50)}...` : 'MISSING');
-            console.log('   - AI Description:', rawFight.genAIDescription ? `${rawFight.genAIDescription.substring(0, 50)}...` : 'MISSING');
-            console.log('   - Is Simulated:', rawFight.isSimulated);
-            console.log('   - Fighter Stats:', rawFight.fighterStats?.length || 0, 'fighters');
-            if (rawFight.fighterStats) {
-                rawFight.fighterStats.forEach((fs: any, idx: number) => {
-                    console.log(`      - Fighter ${idx + 1}:`, fs.fighterId);
-                    console.log(`        * finishingMove:`, fs.stats?.finishingMove || 'null');
-                    console.log(`        * fightTime:`, fs.stats?.fightTime || 'MISSING');
-                });
-            }
-        }
-    }, [rawFight]);
     
     // Extract fighter IDs for queries (works for both mock and real data)
     const fighter1Id = rawFight?.fighter1?.id;
@@ -203,7 +183,6 @@ const FightPage: React.FC = () => {
         }
 
         // Debug: Log the first detail to see the actual field names
-        console.log('Head-to-Head Debug - First fight detail:', opponentHistory.details[0]);
 
         // Group fights by competition
         const fightsByCompetition: { [key: string]: any } = {};
@@ -252,7 +231,6 @@ const FightPage: React.FC = () => {
         });
 
         // Debug: Log the transformed head-to-head data
-        console.log('Head-to-Head Debug - Transformed data:', headToHeadData);
         
         return headToHeadData;
     };
@@ -573,7 +551,6 @@ const FightPage: React.FC = () => {
             return;
         }
 
-        console.log('Simulating fight between:', fighter1.firstName, 'and', fighter2.firstName);
 
         // Calculate the correct fightIndex from competition data
         let fightIndex = 0;
@@ -606,7 +583,6 @@ const FightPage: React.FC = () => {
             return;
         }
 
-        console.log('Calculated fightIndex:', fightIndex);
 
         try {
             setLoadingMessage('Preparing fight data...');
@@ -647,10 +623,6 @@ const FightPage: React.FC = () => {
             });
 
             if (result.data?.simulateFight?.success) {
-                console.log('\n✅ SIMULATE FIGHT SUCCESS:');
-                console.log('   - Fight data:', result.data.simulateFight.fight);
-                console.log('   - genAIDescription:', result.data.simulateFight.fight?.genAIDescription ? 'Present' : 'MISSING');
-                console.log('   - Winner:', result.data.simulateFight.fight?.winner);
                 
                 setLoadingMessage('Fight simulated successfully!');
                 setTimeout(() => {
@@ -663,7 +635,6 @@ const FightPage: React.FC = () => {
                 throw new Error(result.data?.simulateFight?.message || 'Failed to simulate fight');
             }
         } catch (error: any) {
-            console.error('Error simulating fight:', error);
             setLoadingMessage('');
             alert(`Error simulating fight: ${error.message || 'Unknown error'}`);
         }
@@ -675,8 +646,6 @@ const FightPage: React.FC = () => {
             return;
         }
 
-        console.log('Chosen winner:', selectedWinner);
-        console.log('Fight description:', fightDescription);
 
         // Calculate the correct fightIndex from competition data
         let fightIndex = 0;
@@ -709,7 +678,6 @@ const FightPage: React.FC = () => {
             return;
         }
 
-        console.log('Calculated fightIndex:', fightIndex);
 
         try {
             setLoadingMessage('Preparing fight data with selected winner...');
@@ -752,11 +720,6 @@ const FightPage: React.FC = () => {
             });
 
             if (result.data?.generateFightWithWinner?.success) {
-                console.log('\n✅ GENERATE FIGHT WITH WINNER SUCCESS:');
-                console.log('   - Fight data:', result.data.generateFightWithWinner.fight);
-                console.log('   - genAIDescription:', result.data.generateFightWithWinner.fight?.genAIDescription ? 'Present' : 'MISSING');
-                console.log('   - userDescription:', result.data.generateFightWithWinner.fight?.userDescription ? 'Present' : 'MISSING');
-                console.log('   - Winner:', result.data.generateFightWithWinner.fight?.winner);
                 
                 setLoadingMessage('Fight generated successfully!');
                 setTimeout(() => {
@@ -771,7 +734,6 @@ const FightPage: React.FC = () => {
                 throw new Error(result.data?.generateFightWithWinner?.message || 'Failed to generate fight');
             }
         } catch (error: any) {
-            console.error('Error generating fight with winner:', error);
             setLoadingMessage('');
             alert(`Error generating fight: ${error.message || 'Unknown error'}`);
         }
@@ -909,6 +871,8 @@ const FightPage: React.FC = () => {
                                 <Performance 
                                     fighter={fighter1Full}
                                     allFighters={allFighters}
+                                    competitionId={fight.competitionContext.competitionId}
+                                    competitionType={competitionType}
                                     currentSeason={fight.competitionContext.seasonNumber}
                                     currentDivision={isCupFight ? undefined : fight.competitionContext.divisionNumber}
                                     currentRound={isCupFight ? undefined : fight.competitionContext.roundNumber}
@@ -1359,14 +1323,6 @@ const FightPage: React.FC = () => {
                                         )}
                                         {activeTab === 'description' && (
                                             <div className={styles.descriptionTab}>
-                                                {(() => {
-                                                    console.log('🎨 Description Tab Debug:');
-                                                    console.log('   - userDescription exists:', !!fight.userDescription);
-                                                    console.log('   - genAIDescription exists:', !!fight.genAIDescription);
-                                                    console.log('   - userDescription value:', fight.userDescription);
-                                                    console.log('   - genAIDescription value:', fight.genAIDescription);
-                                                    return null;
-                                                })()}
                                                 {fight.userDescription && (
                                                     <div className={styles.descriptionSection}>
                                                         <h4 className={styles.descriptionSectionTitle}>
@@ -1448,6 +1404,8 @@ const FightPage: React.FC = () => {
                                 <Performance 
                                     fighter={fighter2Full}
                                     allFighters={allFighters}
+                                    competitionId={fight.competitionContext.competitionId}
+                                    competitionType={competitionType}
                                     currentSeason={fight.competitionContext.seasonNumber}
                                     currentDivision={isCupFight ? undefined : fight.competitionContext.divisionNumber}
                                     currentRound={isCupFight ? undefined : fight.competitionContext.roundNumber}

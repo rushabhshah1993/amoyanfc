@@ -189,6 +189,21 @@
     font-style: italic;
 }
 
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1rem;
+    color: var(--text-secondary);
+}
+
+.loadingContainer p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
 /* Large Size Variants */
 .performanceContainerLg {
     width: 100%;

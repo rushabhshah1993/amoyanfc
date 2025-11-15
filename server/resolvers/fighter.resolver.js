@@ -324,6 +324,7 @@ const fighterResolver = {
                                 round: detail.roundId,
                                 fightId: detail.fightId,
                                 isWinner: detail.isWinner,
+                                date: detail.date ? detail.date.toISOString() : null,
                                 competition,
                                 fight: fight[0]?.leagueData?.divisions?.rounds?.fights
                             }

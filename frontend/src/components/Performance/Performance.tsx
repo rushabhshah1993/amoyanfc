@@ -8,8 +8,10 @@ import styles from './Performance.module.css';
 interface FightDetail {
     competitionId: string;
     season: number;
-    division: number;
-    round: number;
+    division?: number;
+    round?: number;
+    divisionId?: number;  // Legacy field name
+    roundId?: number;     // Legacy field name
     fightId: string;
     isWinner: boolean;
     date?: string;
@@ -63,6 +65,7 @@ interface PerformanceProps {
     currentDivision?: number;
     currentRound?: number;
     size?: 'default' | 'lg';
+    competitionType?: 'league' | 'cup';
 }
 
 const Performance: React.FC<PerformanceProps> = ({
@@ -76,10 +79,11 @@ const Performance: React.FC<PerformanceProps> = ({
     currentSeason,
     currentDivision,
     currentRound,
-    size = 'default'
+    size = 'default',
+    competitionType
 }) => {
     const navigate = useNavigate();
-
+    
     // Extract and process fight history
     const fightHistory = useMemo(() => {
         if (!fighter.opponentsHistory || fighter.opponentsHistory.length === 0) {
@@ -87,90 +91,99 @@ const Performance: React.FC<PerformanceProps> = ({
         }
 
         // Flatten all fights from all opponents
+        // Normalize field names: some fights use division/round, others use divisionId/roundId
         const allFights: FightWithOpponent[] = fighter.opponentsHistory.flatMap(opponent =>
             opponent.details.map(detail => ({
                 ...detail,
+                division: detail.division ?? detail.divisionId,
+                round: detail.round ?? detail.roundId,
                 opponentId: opponent.opponentId
             }))
         );
-        
-        console.log('Performance Component Debug:', {
-            fighterName: `${fighter.firstName} ${fighter.lastName}`,
-            totalFights: allFights.length,
-            competitionId,
-            hasTemporalContext: currentSeason != null && currentDivision != null && currentRound != null,
-            uniqueCompetitions: Array.from(new Set(allFights.map(f => f.competitionId))).length
-        });
 
-        // Filter to show only fights BEFORE the current fight (if context provided)
-        // This shows the last N fights chronologically before the current fight
+        // For FighterPage and CUP: Simple flattened array of last N fights
+        if (!competitionType || competitionType === 'cup') {
+            // Sort all fights chronologically
+            const sortedFights = [...allFights].sort((a, b) => {
+                // Sort by date if available
+                if (a.date && b.date) {
+                    return new Date(a.date).getTime() - new Date(b.date).getTime();
+                }
+                if (a.date && !b.date) return 1;
+                if (!a.date && b.date) return -1;
+                
+                // Fallback: sort by season/division/round across ALL competitions
+                if (a.season !== b.season) return a.season - b.season;
+                if ((a.division ?? 0) !== (b.division ?? 0)) return (a.division ?? 0) - (b.division ?? 0);
+                return (a.round ?? 0) - (b.round ?? 0);
+            });
+
+            // Take the last N fights
+            const recentFights = sortedFights.slice(-count);
+            
+            // Apply sort order (asc = oldest first, desc = newest first)
+            const limitedFights = sortOrder === 'desc' ? [...recentFights].reverse() : recentFights;
+
+            // Enrich with opponent and competition information
+            return limitedFights.map(fight => {
+                const opponent = allFighters.find(f => f.id === fight.opponentId);
+                const competition = fighter.competitionHistory?.find(
+                    comp => comp.competitionId === fight.competitionId
+                );
+
+                return {
+                    ...fight,
+                    opponentName: opponent ? `${opponent.firstName} ${opponent.lastName}` : 'Unknown',
+                    opponentImage: opponent?.profileImage,
+                    competitionName: competition?.competitionMeta?.competitionName || 'Unknown Competition'
+                };
+            });
+        }
+
+        // For LEAGUE competitions in FightPage - keep existing logic
         let filteredFights = allFights;
         
         if (currentSeason != null && currentDivision != null && currentRound != null) {
-            // Filter to fights that happened BEFORE the current fight
-            // Note: We don't filter by competitionId here because we want ALL fights chronologically before this moment
             filteredFights = allFights.filter(fight => {
-                // Fight is before if:
-                // 1. Season is less than current season, OR
-                // 2. Same season, division is less than current division, OR
-                // 3. Same season and division, round is less than current round
+                const fightDivision = fight.division ?? 0;
+                const fightRound = fight.round ?? 0;
+                
                 if (fight.season < currentSeason) return true;
-                if (fight.season === currentSeason && fight.division < currentDivision) return true;
-                if (fight.season === currentSeason && fight.division === currentDivision && fight.round < currentRound) return true;
+                if (fight.season === currentSeason && fightDivision < currentDivision) return true;
+                if (fight.season === currentSeason && fightDivision === currentDivision && fightRound < currentRound) return true;
                 return false;
             });
         } else if (competitionId) {
-            // No temporal context, just filter by competition
             filteredFights = allFights.filter(fight => fight.competitionId === competitionId);
         }
 
-        // Sort chronologically by actual date (if available), otherwise by season/division/round
         const sortedFights = [...filteredFights].sort((a, b) => {
-            // If both have dates, sort by date
-            if (a.date && b.date) {
-                return new Date(a.date).getTime() - new Date(b.date).getTime();
-            }
-            // If only one has a date, prioritize the one without date as older
-            if (a.date && !b.date) return 1;
-            if (!a.date && b.date) return -1;
+            // Get chronological sort values for both fights
+            // For fights with dates, use the date; for fights without dates, use season as proxy
+            const getChronologicalValue = (fight: FightWithOpponent): number => {
+                if (fight.date) {
+                    return new Date(fight.date).getTime();
+                }
+                // For fights without dates, use season number as a rough proxy
+                // Multiply by a large number to separate seasons, add division/round for finer sorting
+                // This puts Season 1 before Season 2, etc.
+                return (fight.season * 100000000) + ((fight.division || 0) * 100000) + ((fight.round || 0) * 1000);
+            };
             
-            // Fallback to season/division/round for fights without dates (or same competition)
-            // But we need to handle cross-competition sorting better
-            // For now, if different competitions, sort by season/division/round within each competition
-            if (a.competitionId !== b.competitionId) {
-                // Different competitions - if both have dates, we already sorted above
-                // Otherwise, keep original order or sort by competition ID
-                return a.competitionId.localeCompare(b.competitionId);
+            const aValue = getChronologicalValue(a);
+            const bValue = getChronologicalValue(b);
+            
+            if (aValue !== bValue) {
+                return aValue - bValue;
             }
             
-            // Same competition - sort by season/division/round
-            if (a.season !== b.season) return a.season - b.season;
-            if (a.division !== b.division) return a.division - b.division;
-            return a.round - b.round;
+            // If values are equal, fall back to competition ID for stable sorting
+            return a.competitionId.localeCompare(b.competitionId);
         });
 
-        // Take the last N fights (most recent) and order them based on sortOrder
-        // slice(-count) takes the last N elements
         const recentFights = sortedFights.slice(-count);
-        
-        console.log('Performance Filtering:', {
-            totalFights: allFights.length,
-            afterFiltering: filteredFights.length,
-            afterSorting: sortedFights.length,
-            displayingCount: recentFights.length,
-            lastFewFights: sortedFights.slice(-5).map(f => ({
-                comp: f.competitionId.substring(0, 8),
-                season: f.season,
-                div: f.division,
-                round: f.round,
-                date: f.date ? new Date(f.date).toLocaleDateString() : 'no date'
-            }))
-        });
-        
-        // Apply sort order (asc = oldest first, desc = newest first)
-        const limitedFights = sortOrder === 'desc' ? recentFights.reverse() : recentFights;
+        const limitedFights = sortOrder === 'desc' ? [...recentFights].reverse() : recentFights;
 
-        // Enrich with opponent and competition information
         return limitedFights.map(fight => {
             const opponent = allFighters.find(f => f.id === fight.opponentId);
             const competition = fighter.competitionHistory?.find(
@@ -184,14 +197,14 @@ const Performance: React.FC<PerformanceProps> = ({
                 competitionName: competition?.competitionMeta?.competitionName || 'Unknown Competition'
             };
         });
-    }, [fighter, allFighters, competitionId, count, sortOrder, currentSeason, currentDivision, currentRound]);
+    }, [fighter, allFighters, competitionId, count, sortOrder, currentSeason, currentDivision, currentRound, competitionType]);
 
     const handleFightClick = (fightId: string) => {
         navigate(`/fight/${fightId}`);
     };
 
     if (fightHistory.length === 0) {
-        return null; // Don't show component if no fights available
+        return null;
     }
 
     const sizeClasses = {
@@ -252,4 +265,3 @@ const Performance: React.FC<PerformanceProps> = ({
 };
 
 export default Performance;
-

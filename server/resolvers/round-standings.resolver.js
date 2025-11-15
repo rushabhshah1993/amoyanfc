@@ -33,14 +33,14 @@ const roundStandingsResolvers = {
         console.log('   - Division Number:', divisionNumber);
         console.log('   - Round Number:', roundNumber);
         
-        // Find the last fight of the round (highest fight number)
+        // Find the last fight of the round (most recently updated)
         const standings = await RoundStandings.findOne({
           competitionId,
           seasonNumber,
           divisionNumber,
           roundNumber
         })
-        .sort({ fightIdentifier: -1 }) // Sort descending to get last fight
+        .sort({ updatedAt: -1 }) // Sort by timestamp to get most recent standings
         .limit(1);
         
         if (!standings) {
