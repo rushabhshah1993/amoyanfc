@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import S3Image from '../S3Image/S3Image';
 import styles from './CompactHeadToHead.module.css';
 
@@ -33,9 +33,10 @@ interface CompactHeadToHeadProps {
     fighter1: Fighter;
     fighter2: Fighter;
     headToHeadData: CompetitionHeadToHead[];
+    loading?: boolean;
 }
 
-const CompactHeadToHead: React.FC<CompactHeadToHeadProps> = ({ fighter1, fighter2, headToHeadData }) => {
+const CompactHeadToHead: React.FC<CompactHeadToHeadProps> = ({ fighter1, fighter2, headToHeadData, loading = false }) => {
     const navigate = useNavigate();
     const hasNoFights = headToHeadData.length === 0 || headToHeadData.every(comp => comp.totalFights === 0);
 
@@ -52,6 +53,21 @@ const CompactHeadToHead: React.FC<CompactHeadToHeadProps> = ({ fighter1, fighter
             competitionLogo: comp.competitionLogo
         }))
     );
+
+    // Show loading state
+    if (loading) {
+        return (
+            <div className={styles.compactHeadToHead}>
+                <h3 className={styles.sectionTitle}>Head-to-Head History</h3>
+                <div className={styles.emptyState}>
+                    <p className={styles.emptyMessage}>
+                        <FontAwesomeIcon icon={faUser} spin style={{ marginRight: '0.5rem' }} />
+                        Loading fight history...
+                    </p>
+                </div>
+            </div>
+        );
+    }
 
     if (hasNoFights) {
         return (

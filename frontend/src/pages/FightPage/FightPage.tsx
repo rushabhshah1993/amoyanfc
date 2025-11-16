@@ -140,15 +140,18 @@ const FightPage: React.FC = () => {
     const fighter2Id = rawFight?.fighter2?.id;
 
     // Fetch full fighter data for both fighters (this works even with mock data)
-    const { data: fighter1Data } = useQuery(GET_FIGHTER_INFORMATION, {
+    const { data: fighter1Data, loading: loadingFighter1 } = useQuery(GET_FIGHTER_INFORMATION, {
         variables: { id: fighter1Id },
         skip: !fighter1Id
     });
 
-    const { data: fighter2Data } = useQuery(GET_FIGHTER_INFORMATION, {
+    const { data: fighter2Data, loading: loadingFighter2 } = useQuery(GET_FIGHTER_INFORMATION, {
         variables: { id: fighter2Id },
         skip: !fighter2Id
     });
+
+    // Track if fighter data is still loading
+    const loadingFighterData = loadingFighter1 || loadingFighter2;
 
     // Fetch full competition data (needed for season completion check)
     const competitionId = rawFight?.competitionContext?.competitionId;
@@ -878,10 +881,10 @@ const FightPage: React.FC = () => {
                         </div>
                         
                         {/* Performance Component for Fighter 1 */}
-                        {fighter1Full && (
+                        {(fighter1Full || loadingFighter1) && (
                             <div className={styles.fighterPerformance}>
                                 <Performance 
-                                    fighter={fighter1Full}
+                                    fighter={fighter1Full || { id: '', firstName: '', lastName: '' }}
                                     allFighters={allFighters}
                                     competitionId={competitionFull?.competitionMetaId || fight.competitionContext.competitionId}
                                     competitionType={competitionType}
@@ -892,6 +895,7 @@ const FightPage: React.FC = () => {
                                     showOpponentName={false}
                                     sortOrder="asc"
                                     title="Last 5 Fights"
+                                    loading={loadingFighter1}
                                 />
                             </div>
                         )}
@@ -974,6 +978,7 @@ const FightPage: React.FC = () => {
                                     fighter1={fighter1}
                                     fighter2={fighter2}
                                     headToHeadData={realHeadToHeadData}
+                                    loading={loadingFighterData}
                                 />
                             </div>
                         )}
@@ -1411,10 +1416,10 @@ const FightPage: React.FC = () => {
                         </div>
                         
                         {/* Performance Component for Fighter 2 */}
-                        {fighter2Full && (
+                        {(fighter2Full || loadingFighter2) && (
                             <div className={styles.fighterPerformance}>
                                 <Performance 
-                                    fighter={fighter2Full}
+                                    fighter={fighter2Full || { id: '', firstName: '', lastName: '' }}
                                     allFighters={allFighters}
                                     competitionId={competitionFull?.competitionMetaId || fight.competitionContext.competitionId}
                                     competitionType={competitionType}
@@ -1425,6 +1430,7 @@ const FightPage: React.FC = () => {
                                     showOpponentName={false}
                                     sortOrder="asc"
                                     title="Last 5 Fights"
+                                    loading={loadingFighter2}
                                 />
                             </div>
                         )}

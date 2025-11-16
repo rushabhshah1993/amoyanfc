@@ -66,6 +66,7 @@ interface PerformanceProps {
     currentRound?: number;
     size?: 'default' | 'lg';
     competitionType?: 'league' | 'cup';
+    loading?: boolean;
 }
 
 const Performance: React.FC<PerformanceProps> = ({
@@ -80,7 +81,8 @@ const Performance: React.FC<PerformanceProps> = ({
     currentDivision,
     currentRound,
     size = 'default',
-    competitionType
+    competitionType,
+    loading = false
 }) => {
     const navigate = useNavigate();
     
@@ -211,10 +213,6 @@ const Performance: React.FC<PerformanceProps> = ({
         navigate(`/fight/${fightId}`);
     };
 
-    if (fightHistory.length === 0) {
-        return null;
-    }
-
     const sizeClasses = {
         container: size === 'lg' ? styles.performanceContainerLg : styles.performanceContainer,
         title: size === 'lg' ? styles.performanceTitleLg : styles.performanceTitle,
@@ -226,6 +224,25 @@ const Performance: React.FC<PerformanceProps> = ({
     };
 
     const thumbnailSize = size === 'lg' ? 110 : 45;
+
+    // Show loading state
+    if (loading) {
+        return (
+            <div className={sizeClasses.container}>
+                <h2 className={sizeClasses.title}>{title}</h2>
+                <div className={sizeClasses.timeline}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', color: 'var(--text-secondary)' }}>
+                        <FontAwesomeIcon icon={faUser} spin style={{ marginRight: '0.5rem' }} />
+                        Loading performance...
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    if (fightHistory.length === 0) {
+        return null;
+    }
 
     return (
         <div className={sizeClasses.container}>
