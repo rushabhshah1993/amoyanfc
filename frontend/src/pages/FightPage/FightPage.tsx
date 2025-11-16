@@ -103,24 +103,36 @@ const FightPage: React.FC = () => {
     const [fightDescription, setFightDescription] = useState<string>('');
     const [loadingMessage, setLoadingMessage] = useState<string>('');
 
-    // Check if this is a cup fight from navigation state
-    const isCupFight = location.state?.isCupFight || false;
-    
-    // Determine competition type for Performance component
-    const competitionType: 'league' | 'cup' = isCupFight ? 'cup' : 'league';
-    
     // Development mode: Check if using mock data for UI testing
     // Access via: http://localhost:3000/fight/scheduled-mock
     const useMockData = fightId === 'scheduled-mock';
 
-    // Fetch fight data using appropriate query (skip if using mock data)
-    const { loading, error, data } = useQuery(isCupFight ? GET_CUP_FIGHT_BY_ID : GET_FIGHT_BY_ID, {
+    // Try to fetch as league fight
+    const { loading: loadingLeague, error: errorLeague, data: dataLeague } = useQuery(GET_FIGHT_BY_ID, {
         variables: { id: fightId },
         skip: !fightId || useMockData
     });
 
-    // Use mock data for development/testing, otherwise use real fight data from GraphQL
-    const rawFight = useMockData ? mockScheduledFight : (data?.getCupFightById || data?.getFightById || null);
+    // Try to fetch as cup fight
+    const { loading: loadingCup, error: errorCup, data: dataCup } = useQuery(GET_CUP_FIGHT_BY_ID, {
+        variables: { id: fightId },
+        skip: !fightId || useMockData
+    });
+
+    // Determine which query succeeded
+    const loading = loadingLeague || loadingCup;
+    const rawFight = useMockData 
+        ? mockScheduledFight 
+        : (dataLeague?.getFightById || dataCup?.getCupFightById || null);
+    
+    // Determine if this is a cup fight based on which query returned data
+    const isCupFight = !!dataCup?.getCupFightById;
+    
+    // Determine competition type for Performance component
+    const competitionType: 'league' | 'cup' = isCupFight ? 'cup' : 'league';
+    
+    // Only show error if both queries failed and we're not using mock data
+    const error = !useMockData && !rawFight && (errorLeague || errorCup);
     
     
     // Extract fighter IDs for queries (works for both mock and real data)
