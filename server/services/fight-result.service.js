@@ -114,9 +114,11 @@ async function updateFighterCompetitionHistory(fighter, competitionMetaId, isWin
 
 /**
  * ====================================================================================
- * STEP 4: UPDATE FIGHTER SEASON DETAILS (LEAGUE ONLY)
+ * STEP 4: UPDATE FIGHTER SEASON DETAILS
  * ====================================================================================
- * Updates fights, wins, losses, points, winPercentage for this season/division
+ * Updates fights, wins, losses, points, winPercentage for this season
+ * For leagues: tracks division and points
+ * For cups: tracks finalCupPosition instead of division/points
  */
 async function updateFighterSeasonDetails(
     fighter,
@@ -124,14 +126,9 @@ async function updateFighterSeasonDetails(
     seasonNumber,
     divisionNumber,
     isWinner,
-    competitionType
+    competitionType,
+    fightIdentifier = null
 ) {
-    // Skip for cup competitions
-    if (competitionType === 'cup') {
-        console.log(`   ⏭️  Step 4: Skipped season details (cup competition)`);
-        return;
-    }
-    
     console.log(`\n📈 Step 4: Updating Season Details for ${fighter.firstName} ${fighter.lastName}...`);
     
     const competitionHistory = fighter.competitionHistory.find(
@@ -144,33 +141,90 @@ async function updateFighterSeasonDetails(
     }
     
     const seasonDetails = competitionHistory.seasonDetails || [];
-    const existingSeason = seasonDetails.find(
-        sd => sd.seasonNumber === seasonNumber && sd.divisionNumber === divisionNumber
-    );
     
-    if (existingSeason) {
-        existingSeason.fights += 1;
-        if (isWinner) {
-            existingSeason.wins += 1;
-            existingSeason.points += POINTS_PER_WIN;
-        } else {
-            existingSeason.losses += 1;
+    if (competitionType === 'cup') {
+        // For cup competitions, find by season only (no division)
+        let existingSeason = seasonDetails.find(
+            sd => sd.seasonNumber === seasonNumber && sd.divisionNumber === null
+        );
+        
+        // Determine final cup position from fight identifier
+        let finalCupPosition = 'Round 1'; // Default
+        if (fightIdentifier) {
+            if (fightIdentifier.includes('-FN')) {
+                finalCupPosition = 'Finals';
+            } else if (fightIdentifier.includes('-SF')) {
+                finalCupPosition = 'Semifinals';
+            } else if (fightIdentifier.match(/-R(\d+)-/)) {
+                const roundMatch = fightIdentifier.match(/-R(\d+)-/);
+                finalCupPosition = `Round ${roundMatch[1]}`;
+            }
         }
-        existingSeason.winPercentage = (existingSeason.wins / existingSeason.fights) * 100;
         
-        console.log(`   ✓ Updated S${seasonNumber} D${divisionNumber}: ${existingSeason.wins}W-${existingSeason.losses}L, ${existingSeason.points} pts`);
+        if (existingSeason) {
+            existingSeason.fights += 1;
+            if (isWinner) {
+                existingSeason.wins += 1;
+            } else {
+                existingSeason.losses += 1;
+            }
+            existingSeason.winPercentage = (existingSeason.wins / existingSeason.fights) * 100;
+            // Update finalCupPosition to the furthest round reached
+            existingSeason.finalCupPosition = finalCupPosition;
+            
+            console.log(`   ✓ Updated S${seasonNumber} (Cup): ${existingSeason.wins}W-${existingSeason.losses}L, ${finalCupPosition}`);
+        } else {
+            // First fight in this season - increment numberOfSeasonAppearances
+            competitionHistory.numberOfSeasonAppearances = (competitionHistory.numberOfSeasonAppearances || 0) + 1;
+            
+            competitionHistory.seasonDetails.push({
+                seasonNumber,
+                divisionNumber: null,
+                fights: 1,
+                wins: isWinner ? 1 : 0,
+                losses: isWinner ? 0 : 1,
+                points: null,
+                winPercentage: isWinner ? 100 : 0,
+                finalCupPosition
+            });
+            
+            console.log(`   ✨ Created new season details: S${seasonNumber} (Cup), ${finalCupPosition}`);
+            console.log(`   📊 Total season appearances: ${competitionHistory.numberOfSeasonAppearances}`);
+        }
     } else {
-        competitionHistory.seasonDetails.push({
-            seasonNumber,
-            divisionNumber,
-            fights: 1,
-            wins: isWinner ? 1 : 0,
-            losses: isWinner ? 0 : 1,
-            points: isWinner ? POINTS_PER_WIN : 0,
-            winPercentage: isWinner ? 100 : 0
-        });
+        // For league competitions, find by season AND division
+        let existingSeason = seasonDetails.find(
+            sd => sd.seasonNumber === seasonNumber && sd.divisionNumber === divisionNumber
+        );
         
-        console.log(`   ✨ Created new season details: S${seasonNumber} D${divisionNumber}`);
+        if (existingSeason) {
+            existingSeason.fights += 1;
+            if (isWinner) {
+                existingSeason.wins += 1;
+                existingSeason.points += POINTS_PER_WIN;
+            } else {
+                existingSeason.losses += 1;
+            }
+            existingSeason.winPercentage = (existingSeason.wins / existingSeason.fights) * 100;
+            
+            console.log(`   ✓ Updated S${seasonNumber} D${divisionNumber}: ${existingSeason.wins}W-${existingSeason.losses}L, ${existingSeason.points} pts`);
+        } else {
+            // First fight in this season/division - increment numberOfSeasonAppearances
+            competitionHistory.numberOfSeasonAppearances = (competitionHistory.numberOfSeasonAppearances || 0) + 1;
+            
+            competitionHistory.seasonDetails.push({
+                seasonNumber,
+                divisionNumber,
+                fights: 1,
+                wins: isWinner ? 1 : 0,
+                losses: isWinner ? 0 : 1,
+                points: isWinner ? POINTS_PER_WIN : 0,
+                winPercentage: isWinner ? 100 : 0
+            });
+            
+            console.log(`   ✨ Created new season details: S${seasonNumber} D${divisionNumber}`);
+            console.log(`   📊 Total season appearances: ${competitionHistory.numberOfSeasonAppearances}`);
+        }
     }
 }
 
@@ -1384,7 +1438,7 @@ export async function applyFightResult(
         console.log(`${'='.repeat(70)}`);
         
         await updateFighterCompetitionHistory(fighter1, competition.competitionMetaId._id, fighter1IsWinner);
-        await updateFighterSeasonDetails(fighter1, competition.competitionMetaId._id, seasonNumber, divisionNumber, fighter1IsWinner, competitionType);
+        await updateFighterSeasonDetails(fighter1, competition.competitionMetaId._id, seasonNumber, divisionNumber, fighter1IsWinner, competitionType, fightIdentifier);
         await updateFighterOpponentsHistory(fighter1, fighter2Id, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fight._id, fighter1IsWinner, fight.date);
         await updateFighterDebutInformation(fighter1, competition.competitionMetaId._id, seasonNumber, fight._id, fight.date);
         await updateFighterStreaks(fighter1, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fighter2Id, fighter1IsWinner);
@@ -1396,7 +1450,7 @@ export async function applyFightResult(
         console.log(`${'='.repeat(70)}`);
         
         await updateFighterCompetitionHistory(fighter2, competition.competitionMetaId._id, fighter2IsWinner);
-        await updateFighterSeasonDetails(fighter2, competition.competitionMetaId._id, seasonNumber, divisionNumber, fighter2IsWinner, competitionType);
+        await updateFighterSeasonDetails(fighter2, competition.competitionMetaId._id, seasonNumber, divisionNumber, fighter2IsWinner, competitionType, fightIdentifier);
         await updateFighterOpponentsHistory(fighter2, fighter1Id, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fight._id, fighter2IsWinner, fight.date);
         await updateFighterDebutInformation(fighter2, competition.competitionMetaId._id, seasonNumber, fight._id, fight.date);
         await updateFighterStreaks(fighter2, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fighter1Id, fighter2IsWinner);
