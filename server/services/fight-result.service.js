@@ -906,7 +906,19 @@ async function checkAndCreateICSeasonIfNeeded(competition, session) {
             return;
         }
         
-        // 3. Find previous IC champion
+        // 3. Check if there's already an active IC season
+        const activeICSeasons = await Competition.find({
+            competitionMetaId: icMeta._id,
+            isActive: true
+        }).session(session);
+        
+        if (activeICSeasons.length > 0) {
+            console.log('   ⏭️  Skipping: An active IC season already exists');
+            console.log(`      Active IC: ${activeICSeasons[0]._id} (S${activeICSeasons[0].seasonMeta.seasonNumber})`);
+            return;
+        }
+        
+        // 4. Find previous IC champion
         const previousICSeason = await Competition.findOne({
             competitionMetaId: icMeta._id
         })
@@ -920,7 +932,7 @@ async function checkAndCreateICSeasonIfNeeded(competition, session) {
         console.log(`   👑 Previous IC champion: ${previousChampion ? previousChampion.toString().substring(0, 8) + '...' : 'None'}`);
         console.log(`   📊 New IC season number: ${newICSeasonNumber}`);
         
-        // 4. Get all fighters from current league season
+        // 5. Get all fighters from current league season
         const allLeagueFighters = [];
         const divisionFightersMap = new Map();
         
@@ -932,7 +944,7 @@ async function checkAndCreateICSeasonIfNeeded(competition, session) {
         
         console.log(`   👥 Total league fighters: ${allLeagueFighters.length}`);
         
-        // 5. Select 8 fighters (1 champion + 7 from league)
+        // 6. Select 8 fighters (1 champion + 7 from league)
         const selectedFighters = [];
         
         // Add previous champion if exists and is in current league
@@ -986,7 +998,7 @@ async function checkAndCreateICSeasonIfNeeded(competition, session) {
         
         console.log(`   ✅ Selected 8 fighters for IC season`);
         
-        // 6. Create random pairings for Round 1 (4 fights)
+        // 7. Create random pairings for Round 1 (4 fights)
         const shuffledFighters = [...selectedFighters].sort(() => Math.random() - 0.5);
         const round1Fights = [];
         
@@ -1011,7 +1023,7 @@ async function checkAndCreateICSeasonIfNeeded(competition, session) {
             console.log(`   🥊 Fight ${i + 1}: ${fighter1.toString().substring(0, 8)}... vs ${fighter2.toString().substring(0, 8)}...`);
         }
         
-        // 7. Create IC season document
+        // 8. Create IC season document
         const newICSeason = new Competition({
             competitionMetaId: icMeta._id,
             isActive: true,
@@ -1092,11 +1104,23 @@ async function checkAndCreateCCSeasonIfNeeded(competition, session) {
         }).session(session);
         
         if (existingCCSeasons.length > 0) {
-            console.log('   ⏭️  Skipping: IC season already exists for this league season');
+            console.log('   ⏭️  Skipping: CC season already exists for this league season');
             return;
         }
         
-        // 3. Find latest CC season number
+        // 3. Check if there's already an active CC season
+        const activeCCSeasons = await Competition.find({
+            competitionMetaId: ccMeta._id,
+            isActive: true
+        }).session(session);
+        
+        if (activeCCSeasons.length > 0) {
+            console.log('   ⏭️  Skipping: An active CC season already exists');
+            console.log(`      Active CC: ${activeCCSeasons[0]._id} (S${activeCCSeasons[0].seasonMeta.seasonNumber})`);
+            return;
+        }
+        
+        // 4. Find latest CC season number
         const latestCCSeason = await Competition.findOne({
             competitionMetaId: ccMeta._id
         })
@@ -1107,7 +1131,7 @@ async function checkAndCreateCCSeasonIfNeeded(competition, session) {
         const newCCSeasonNumber = (latestCCSeason?.seasonMeta?.seasonNumber || 0) + 1;
         console.log(`   📊 New CC season number: ${newCCSeasonNumber}`);
         
-        // 4. Query final standings for all 3 divisions
+        // 5. Query final standings for all 3 divisions
         const selectedFighters = [];
         
         for (let divisionNumber = 1; divisionNumber <= 3; divisionNumber++) {
@@ -1150,7 +1174,7 @@ async function checkAndCreateCCSeasonIfNeeded(competition, session) {
         
         console.log(`   ✅ Selected 8 fighters for CC season`);
         
-        // 5. Create random pairings for Round 1 (4 fights)
+        // 6. Create random pairings for Round 1 (4 fights)
         const shuffledFighters = [...selectedFighters].sort(() => Math.random() - 0.5);
         const round1Fights = [];
         
@@ -1175,7 +1199,7 @@ async function checkAndCreateCCSeasonIfNeeded(competition, session) {
             console.log(`   🥊 Fight ${i + 1}: ${fighter1.toString().substring(0, 8)}... vs ${fighter2.toString().substring(0, 8)}...`);
         }
         
-        // 6. Create CC season document
+        // 7. Create CC season document
         const newCCSeason = new Competition({
             competitionMetaId: ccMeta._id,
             isActive: true,

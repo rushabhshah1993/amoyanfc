@@ -320,21 +320,33 @@ const competitionResolver = {
             // Support both 'competition' and 'competitionId' field names for backward compatibility
             const competitionId = parent.competition || parent.competitionId;
             if (!competitionId) return null;
-            const competitionMeta = await CompetitionMeta.findById(competitionId);
-            if (!competitionMeta) throw new NotFoundError('Linked competition not found');
+            
+            // competitionId is a reference to Competition (season), not CompetitionMeta
+            const competition = await Competition.findById(competitionId);
+            if (!competition) throw new NotFoundError('Linked competition not found');
+            
+            // Get the CompetitionMeta from the Competition
+            const competitionMeta = await CompetitionMeta.findById(competition.competitionMetaId);
+            if (!competitionMeta) throw new NotFoundError('Competition meta not found');
+            
             return competitionMeta;
         }),
         season: catchAsyncErrors(async(parent) => {
-            // Support both 'season' and 'seasonId' field names for backward compatibility
-            const seasonId = parent.season || parent.seasonId;
-            if (!seasonId) return null;
-            const season = await Competition.findById(seasonId);
-            if (!season) throw new NotFoundError('Linked season not found');
+            // Support both 'season' and 'seasonNumber' field names for backward compatibility
+            const competitionId = parent.competition || parent.competitionId;
+            const seasonNumber = parent.seasonNumber;
+            
+            if (!competitionId) return null;
+            
+            // competitionId is a reference to Competition (season)
+            const competition = await Competition.findById(competitionId);
+            if (!competition) throw new NotFoundError('Linked season not found');
+            
             // Return season ID along with seasonMeta data
             return {
-                id: season._id,
-                seasonNumber: season.seasonMeta.seasonNumber,
-                leagueDivisions: season.seasonMeta.leagueDivisions
+                id: competition._id,
+                seasonNumber: competition.seasonMeta.seasonNumber,
+                leagueDivisions: competition.seasonMeta.leagueDivisions
             };
         })
     }
