@@ -614,7 +614,7 @@ const FightPage: React.FC = () => {
                         competitionId: fight.competitionContext.competitionId,
                         seasonNumber: fight.competitionContext.seasonNumber,
                         divisionNumber: fight.competitionContext.divisionNumber || null,
-                        roundNumber: fight.competitionContext.roundNumber,
+                        roundNumber: fight.competitionContext.roundNumber || 1, // Default to 1 for cup competitions
                         fightIndex,
                         fighter1Id: fighter1.id,
                         fighter2Id: fighter2.id,
@@ -709,7 +709,7 @@ const FightPage: React.FC = () => {
                         competitionId: fight.competitionContext.competitionId,
                         seasonNumber: fight.competitionContext.seasonNumber,
                         divisionNumber: fight.competitionContext.divisionNumber || null,
-                        roundNumber: fight.competitionContext.roundNumber,
+                        roundNumber: fight.competitionContext.roundNumber || 1, // Default to 1 for cup competitions
                         fightIndex,
                         fighter1Id: fighter1.id,
                         fighter2Id: fighter2.id,

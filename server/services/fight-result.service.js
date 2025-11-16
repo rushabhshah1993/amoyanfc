@@ -777,34 +777,76 @@ async function handleCupBracketProgression(
     const nextRoundNumber = roundNumber + 1;
     const nextFightNumber = Math.ceil(fightNumber / 2);
     const isFirstFighterSlot = fightNumber % 2 === 1;
-    const nextFightIdentifier = `${parts[0]}-S${parts[1].substring(1)}-R${nextRoundNumber}-F${nextFightNumber}`;
+    
+    // Map round numbers to stage codes
+    // For cup competitions: R1, R2 (if exists), SF (semifinals), FN (finals)
+    // The knockoutRounds includes all rounds: for 8 fighters, knockoutRounds=3 (R1, SF, FN)
+    let nextStageCode;
+    if (nextRoundNumber === knockoutRounds) {
+        nextStageCode = 'FN'; // Finals
+    } else if (nextRoundNumber === knockoutRounds - 1) {
+        nextStageCode = 'SF'; // Semifinals
+    } else {
+        nextStageCode = `R${nextRoundNumber}`; // Earlier rounds
+    }
+    
+    const nextFightIdentifier = `${parts[0]}-S${parts[1].substring(1)}-${nextStageCode}-F${nextFightNumber}`;
     
     console.log(`   ➡️  Winner advances to: ${nextFightIdentifier} as ${isFirstFighterSlot ? 'Fighter 1' : 'Fighter 2'}`);
     
-    // Find or create next fight
+    // Find the existing fight for the next round
     const existingFight = competition.cupData.fights.find(f => f.fightIdentifier === nextFightIdentifier);
     
     if (existingFight) {
+        // Update the appropriate fighter slot
         if (isFirstFighterSlot) {
             existingFight.fighter1 = winnerId;
         } else {
             existingFight.fighter2 = winnerId;
         }
-        console.log(`   ✓ Updated existing fight`);
+        console.log(`   ✓ Updated existing fight: ${nextFightIdentifier}`);
     } else {
-        competition.cupData.fights.push({
-            fighter1: isFirstFighterSlot ? winnerId : null,
-            fighter2: isFirstFighterSlot ? null : winnerId,
-            winner: null,
-            fightIdentifier: nextFightIdentifier,
-            date: null,
-            userDescription: null,
-            genAIDescription: null,
-            isSimulated: false,
-            fighterStats: [],
-            fightStatus: 'scheduled'
-        });
-        console.log(`   ✨ Created new fight for next round`);
+        // The fight doesn't exist yet. We need to determine if we should create it now.
+        // We can only create a fight when BOTH fighters are known.
+        
+        // Get the current stage code
+        let currentStageCode;
+        if (roundNumber === knockoutRounds) {
+            currentStageCode = 'FN';
+        } else if (roundNumber === knockoutRounds - 1) {
+            currentStageCode = 'SF';
+        } else {
+            currentStageCode = `R${roundNumber}`;
+        }
+        
+        // Calculate which two previous fights feed into this next fight
+        const previousFight1Number = (nextFightNumber - 1) * 2 + 1;
+        const previousFight2Number = (nextFightNumber - 1) * 2 + 2;
+        const previousFight1Identifier = `${parts[0]}-S${parts[1].substring(1)}-${currentStageCode}-F${previousFight1Number}`;
+        const previousFight2Identifier = `${parts[0]}-S${parts[1].substring(1)}-${currentStageCode}-F${previousFight2Number}`;
+        
+        // Find both previous fights
+        const prevFight1 = competition.cupData.fights.find(f => f.fightIdentifier === previousFight1Identifier);
+        const prevFight2 = competition.cupData.fights.find(f => f.fightIdentifier === previousFight2Identifier);
+        
+        // Check if both previous fights have winners
+        if (prevFight1?.winner && prevFight2?.winner) {
+            // Both winners are known, create the next fight
+            competition.cupData.fights.push({
+                fighter1: prevFight1.winner,
+                fighter2: prevFight2.winner,
+                fightIdentifier: nextFightIdentifier,
+                isSimulated: false,
+                fighterStats: [],
+                fightStatus: 'scheduled'
+            });
+            console.log(`   ✨ Created new fight: ${nextFightIdentifier} (both fighters known)`);
+        } else {
+            // Only one winner is known, don't create the fight yet
+            console.log(`   ⏳ Waiting for other fight to complete before creating ${nextFightIdentifier}`);
+            console.log(`      Previous Fight 1 (${previousFight1Identifier}): ${prevFight1?.winner ? '✓ Has winner' : '✗ No winner'}`);
+            console.log(`      Previous Fight 2 (${previousFight2Identifier}): ${prevFight2?.winner ? '✓ Has winner' : '✗ No winner'}`);
+        }
     }
 }
 
