@@ -808,11 +808,24 @@ async function handleCupBracketProgression(
     
     // Parse fight identifier
     const parts = fightIdentifier.split('-');
-    const roundNumber = parseInt(parts[2].substring(1));
+    const stageCode = parts[2];
     const fightNumber = parseInt(parts[3].substring(1));
     const knockoutRounds = competition.config?.cupConfiguration?.knockoutRounds || 3;
     
-    console.log(`   📊 Round ${roundNumber}, Fight ${fightNumber}`);
+    // Map stage code to round number
+    let roundNumber;
+    if (stageCode === 'FN') {
+        roundNumber = knockoutRounds; // Finals is always the last round
+    } else if (stageCode === 'SF') {
+        roundNumber = knockoutRounds - 1; // Semifinals is second-to-last
+    } else if (stageCode.startsWith('R')) {
+        roundNumber = parseInt(stageCode.substring(1));
+    } else {
+        console.error(`   ❌ Unknown stage code: ${stageCode}`);
+        return;
+    }
+    
+    console.log(`   📊 Stage: ${stageCode}, Round ${roundNumber}, Fight ${fightNumber}`);
     
     // Check if this is the final
     if (roundNumber === knockoutRounds) {
@@ -863,15 +876,8 @@ async function handleCupBracketProgression(
         // The fight doesn't exist yet. We need to determine if we should create it now.
         // We can only create a fight when BOTH fighters are known.
         
-        // Get the current stage code
-        let currentStageCode;
-        if (roundNumber === knockoutRounds) {
-            currentStageCode = 'FN';
-        } else if (roundNumber === knockoutRounds - 1) {
-            currentStageCode = 'SF';
-        } else {
-            currentStageCode = `R${roundNumber}`;
-        }
+        // Use the stage code from the fight identifier (already parsed above)
+        const currentStageCode = stageCode;
         
         // Calculate which two previous fights feed into this next fight
         const previousFight1Number = (nextFightNumber - 1) * 2 + 1;
