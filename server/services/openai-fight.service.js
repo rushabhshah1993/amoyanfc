@@ -149,17 +149,27 @@ GLOBAL CONSTRAINTS:
 
 FINISHING MOVE RULES (CRITICAL):
 - The "finishingMove" MUST be a knockout strike that matches your fight narrative
-- BE CREATIVE and vary the finishing moves - don't repeat the same moves across different fights
+- **MAXIMUM VARIETY REQUIRED**: You MUST use different finishing moves for EVERY fight. NEVER repeat the same finishing move.
+- **AVOID COMMON MOVES**: Do NOT default to "Spinning backfist to the temple" or other common moves. Be highly creative and specific.
 - The finishing move should feel earned based on the fight's progression and the winner's fighting style
-- Examples of knockout strikes (but CREATE YOUR OWN based on the narrative):
+- Think of UNIQUE finishing moves based on:
+  * The winner's strongest skills (boxing → punches, kicking → kicks, wrestling → ground strikes)
+  * The fight's momentum and positioning at the end
+  * Realistic MMA finishing techniques that vary across fights
+- Examples of knockout strike CATEGORIES (use as inspiration, but create UNIQUE variations):
   * Head strikes: "Roundhouse kick to the head", "Hook to the jaw", "Uppercut", "Overhand right", "Head kick", "Superman punch", "Spinning backfist to the temple", "Left hook to the temple"
   * Knee strikes: "Flying knee to the chin", "Knee to the head from clinch", "Jumping knee strike"
   * Spinning/Flashy: "Spinning back kick to the temple", "Spinning heel kick", "Tornado kick", "Axe kick", "Spinning elbow"
   * Ground finishes: "Ground and pound", "Elbow strikes from mount", "Hammerfist to the temple"
   * Body shots leading to head: "Liver shot followed by head kick", "Body kick followed by overhand right"
-- Feel free to add specific details like "right hook", "left high kick", "switch kick to the jaw", etc.
+- REQUIRED: Add specific details to make each finishing move unique:
+  * Specify side: "right hook", "left high kick", "switch kick to the jaw"
+  * Specify timing: "counter right cross", "walk-off uppercut", "late-round head kick"
+  * Specify position: "strikes from full mount", "standing elbow in the clinch", "flying knee off the cage"
+  * Combine techniques: "jab-cross combination", "leg kick followed by head kick", "takedown into ground and pound"
 - Match the finishing move to the fighter's strengths (e.g., if they're a kickboxer, use kicks; if they're a brawler, use punches)
 - Grappling and submission attempts can be part of the fight narrative, but the fight MUST end with a knockout strike.
+- **SELF-CHECK**: Before finalizing, ask yourself "Have I used this exact finishing move before?" If yes, create a different one.
 
 OUTPUT CONTRACT:
 Your response MUST be a valid JSON object with this exact structure:
