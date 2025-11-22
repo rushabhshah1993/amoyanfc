@@ -8,6 +8,7 @@ import styles from './GlobalRankings.module.css';
 // Competition IDs
 const COMPETITION_IDS = {
     IFC: '67780dcc09a4c4b25127f8f6',
+    IFL: '67780e1d09a4c4b25127f8f8',
     CHAMPIONS_CUP: '6778100309a4c4b25127f8fa',
     INVICTA_CUP: '6778103309a4c4b25127f8fc'
 };
@@ -95,8 +96,10 @@ const GlobalRankings: React.FC<GlobalRankingsProps> = ({ rankedFighters }) => {
             }
             const overallWinPercentage = totalFights > 0 ? (totalWins / totalFights) * 100 : 0;
 
-            // Get league titles (IFC)
-            const leagueTitles = rf.titles.find(t => t.competitionId === COMPETITION_IDS.IFC)?.numberOfTitles || 0;
+            // Get league titles (IFC + IFL combined)
+            const ifcTitles = rf.titles.find(t => t.competitionId === COMPETITION_IDS.IFC)?.numberOfTitles || 0;
+            const iflTitles = rf.titles.find(t => t.competitionId === COMPETITION_IDS.IFL)?.numberOfTitles || 0;
+            const leagueTitles = ifcTitles + iflTitles;
 
             // Get CC titles
             const ccTitles = rf.titles.find(t => t.competitionId === COMPETITION_IDS.CHAMPIONS_CUP)?.numberOfTitles || 0;
@@ -108,11 +111,21 @@ const GlobalRankings: React.FC<GlobalRankingsProps> = ({ rankedFighters }) => {
             const ccAppearances = rf.cupAppearances.find(c => c.competitionId === COMPETITION_IDS.CHAMPIONS_CUP)?.appearances || 0;
             const icAppearances = rf.cupAppearances.find(c => c.competitionId === COMPETITION_IDS.INVICTA_CUP)?.appearances || 0;
 
-            // Get division appearances
+            // Get division appearances (check both IFC and IFL)
             const ifcLeague = rf.leagueAppearances.find(l => l.competitionId === COMPETITION_IDS.IFC);
-            const div1Apps = ifcLeague?.divisionAppearances.find(d => d.division === 1)?.appearances || 0;
-            const div2Apps = ifcLeague?.divisionAppearances.find(d => d.division === 2)?.appearances || 0;
-            const div3Apps = ifcLeague?.divisionAppearances.find(d => d.division === 3)?.appearances || 0;
+            const iflLeague = rf.leagueAppearances.find(l => l.competitionId === COMPETITION_IDS.IFL);
+            
+            const ifcDiv1 = ifcLeague?.divisionAppearances.find(d => d.division === 1)?.appearances || 0;
+            const ifcDiv2 = ifcLeague?.divisionAppearances.find(d => d.division === 2)?.appearances || 0;
+            const ifcDiv3 = ifcLeague?.divisionAppearances.find(d => d.division === 3)?.appearances || 0;
+            
+            const iflDiv1 = iflLeague?.divisionAppearances.find(d => d.division === 1)?.appearances || 0;
+            const iflDiv2 = iflLeague?.divisionAppearances.find(d => d.division === 2)?.appearances || 0;
+            const iflDiv3 = iflLeague?.divisionAppearances.find(d => d.division === 3)?.appearances || 0;
+            
+            const div1Apps = ifcDiv1 + iflDiv1;
+            const div2Apps = ifcDiv2 + iflDiv2;
+            const div3Apps = ifcDiv3 + iflDiv3;
 
             // Get longest win streak
             const winStreaks = rf.fighter.streaks?.filter(s => s.type === 'win') || [];
