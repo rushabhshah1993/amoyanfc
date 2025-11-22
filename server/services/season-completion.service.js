@@ -59,15 +59,16 @@ const isCupSeasonCompleted = (cupCompetition) => {
     return false;
   }
 
-  const knockoutRounds = cupCompetition.config?.cupConfiguration?.knockoutRounds || 3;
   const fights = cupCompetition.cupData.fights;
 
-  // Find fights in the final round
+  // Find fights in the final round (stage code: FN)
   const finalRoundFights = fights.filter(fight => {
-    // Parse fight identifier: "CC-S3-R3-F1"
+    // Parse fight identifier: "CC-S6-FN-F1" or old format "CC-S3-R3-F1"
     const parts = fight.fightIdentifier.split('-');
-    const roundNumber = parseInt(parts[2].substring(1));
-    return roundNumber === knockoutRounds;
+    const stageCode = parts[2];
+    
+    // Check for finals stage code
+    return stageCode === 'FN' || stageCode.includes('FINAL');
   });
 
   if (finalRoundFights.length === 0) {
