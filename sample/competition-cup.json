@@ -134,8 +134,8 @@
     }
   },
   "linkedLeagueSeason": {
-    "competitionId": "507f1f77bcf86cd799439011",
-    "seasonId": "507f1f77bcf86cd799439012"
+    "competition": "507f1f77bcf86cd799439011",
+    "season": "507f1f77bcf86cd799439012"
   },
   "createdAt": "2024-06-01T00:00:00Z",
   "updatedAt": "2024-06-15T20:30:00Z"

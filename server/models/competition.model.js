@@ -233,12 +233,12 @@ const seasonConfigurationSchema = new Schema({
 /**
  * Schema definition for a league season closely tagged to a cup competition
  * @typedef {Object} linkedLeagueSeasonSchema
- * @property {ObjectId} competitionId - The unique competition ID which is closely associated to the cup competition
- * @property {Number} seasonNumber - The season number of the competition which is closely associated to the cup competition
+ * @property {ObjectId} competition - The CompetitionMeta ID of the league competition (IFL or IFC)
+ * @property {ObjectId} season - The Competition ID (season document) of the league competition
  */
 const linkedLeagueSeasonSchema = new Schema({
-    competitionId: { type: Schema.Types.ObjectId, ref: 'Competition' },
-    seasonNumber: { type: Number }
+    competition: { type: Schema.Types.ObjectId, ref: 'CompetitionMeta' },
+    season: { type: Schema.Types.ObjectId, ref: 'Competition' }
 })
 
 /**

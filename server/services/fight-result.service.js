@@ -999,8 +999,8 @@ async function checkAndCreateICSeasonIfNeeded(competition, session) {
         
         // 2. Check if IC season already exists for this league season
         const existingICSeasons = await Competition.find({
-            'linkedLeagueSeason.competitionId': competition._id,
-            'linkedLeagueSeason.seasonNumber': competition.seasonMeta.seasonNumber
+            'linkedLeagueSeason.competition': competition.competitionMetaId,
+            'linkedLeagueSeason.season': competition._id
         }).session(session);
         
         if (existingICSeasons.length > 0) {
@@ -1156,8 +1156,8 @@ async function checkAndCreateICSeasonIfNeeded(competition, session) {
                 }
             },
             linkedLeagueSeason: {
-                competitionId: competition._id,
-                seasonNumber: competition.seasonMeta.seasonNumber
+                competition: competition.competitionMetaId,
+                season: competition._id
             }
         });
         
@@ -1178,6 +1178,206 @@ async function checkAndCreateICSeasonIfNeeded(competition, session) {
 
 /**
  * ====================================================================================
+ * POPULATE DIVISION WINNERS
+ * ====================================================================================
+ * Updates seasonMeta.leagueDivisions[].winners with rank 1 fighters from final standings
+ */
+async function populateDivisionWinners(competition, session) {
+    console.log(`\n🏆 Populating Division Winners...`);
+    
+    try {
+        for (let divisionNumber = 1; divisionNumber <= 3; divisionNumber++) {
+            // Get final standings for this division
+            // Note: Not using .session(session) because standings were created in previous transactions
+            const finalStandings = await RoundStandings.findOne({
+                competitionId: competition.competitionMetaId,
+                seasonNumber: competition.seasonMeta.seasonNumber,
+                divisionNumber: divisionNumber
+            })
+            .sort({ roundNumber: -1 })
+            .limit(1);
+            
+            if (!finalStandings || !finalStandings.standings) {
+                console.warn(`   ⚠️  No standings found for Division ${divisionNumber}`);
+                continue;
+            }
+            
+            // Find all fighters with rank 1 (handles ties)
+            const winners = finalStandings.standings
+                .filter(s => s.rank === 1)
+                .map(s => s.fighterId);
+            
+            if (winners.length === 0) {
+                console.warn(`   ⚠️  No rank 1 fighter found in Division ${divisionNumber}`);
+                continue;
+            }
+            
+            // Update the division's winners array
+            const divisionMeta = competition.seasonMeta.leagueDivisions.find(
+                ld => ld.divisionNumber === divisionNumber
+            );
+            
+            if (divisionMeta) {
+                divisionMeta.winners = winners;
+                
+                const emoji = divisionNumber === 1 ? '🥇' : divisionNumber === 2 ? '🥈' : '🥉';
+                if (winners.length === 1) {
+                    console.log(`   ${emoji} Division ${divisionNumber} Winner: ${winners[0].toString().substring(0, 8)}...`);
+                } else {
+                    console.log(`   ${emoji} Division ${divisionNumber} Winners (tie): ${winners.map(w => w.toString().substring(0, 8) + '...').join(', ')}`);
+                }
+            }
+        }
+        
+        console.log(`   ✅ Division winners populated successfully`);
+        
+    } catch (error) {
+        console.error('   ❌ Error populating division winners:', error.message);
+        throw error;
+    }
+}
+
+/**
+ * ====================================================================================
+ * UPDATE CUP WINNER TITLE
+ * ====================================================================================
+ * Updates title for cup champion (cup only)
+ */
+async function updateCupWinnerTitle(competition, session) {
+    console.log(`\n🏆 Updating Cup Winner Title...`);
+    
+    try {
+        if (!competition.seasonMeta.winners || competition.seasonMeta.winners.length === 0) {
+            console.warn(`   ⚠️  No cup winner found`);
+            return;
+        }
+        
+        const winnerId = competition.seasonMeta.winners[0];
+        const fighter = await Fighter.findById(winnerId).session(session);
+        
+        if (!fighter) {
+            console.warn(`   ⚠️  Winner fighter not found: ${winnerId.toString().substring(0, 8)}...`);
+            return;
+        }
+        
+        // Find or create competition history
+        let compHistory = fighter.competitionHistory.find(
+            ch => ch.competitionId.toString() === competition.competitionMetaId.toString()
+        );
+        
+        if (!compHistory) {
+            console.warn(`   ⚠️  No competition history for ${fighter.firstName} ${fighter.lastName}`);
+            return;
+        }
+        
+        // Initialize titles if not exists
+        if (!compHistory.titles) {
+            compHistory.titles = { totalTitles: 0, details: [] };
+        }
+        
+        // Check if title already exists for this season
+        const existingTitle = compHistory.titles.details.find(
+            t => t.seasonNumber === competition.seasonMeta.seasonNumber
+        );
+        
+        if (!existingTitle) {
+            // Add new title (no divisionNumber for cup competitions)
+            compHistory.titles.details.push({
+                competitionSeasonId: competition._id,
+                seasonNumber: competition.seasonMeta.seasonNumber,
+                divisionNumber: null
+            });
+            
+            compHistory.titles.totalTitles = (compHistory.titles.totalTitles || 0) + 1;
+            
+            await fighter.save({ session });
+            
+            console.log(`   ✅ ${fighter.firstName} ${fighter.lastName}: Cup title added (Total: ${compHistory.titles.totalTitles})`);
+        } else {
+            console.log(`   ℹ️  ${fighter.firstName} ${fighter.lastName}: Title already exists`);
+        }
+        
+        console.log(`   ✅ Cup winner title updated`);
+        
+    } catch (error) {
+        console.error('   ❌ Error updating cup winner title:', error.message);
+        throw error;
+    }
+}
+
+/**
+ * ====================================================================================
+ * UPDATE DIVISION WINNER TITLES
+ * ====================================================================================
+ * Updates titles for division winners (league only)
+ */
+async function updateDivisionWinnerTitles(competition, session) {
+    console.log(`\n🏆 Updating Division Winner Titles...`);
+    
+    try {
+        for (const divisionMeta of competition.seasonMeta.leagueDivisions) {
+            if (!divisionMeta.winners || divisionMeta.winners.length === 0) {
+                continue;
+            }
+            
+            for (const winnerId of divisionMeta.winners) {
+                const fighter = await Fighter.findById(winnerId).session(session);
+                
+                if (!fighter) {
+                    console.warn(`   ⚠️  Fighter ${winnerId.toString().substring(0, 8)}... not found`);
+                    continue;
+                }
+                
+                // Find or create competition history
+                let compHistory = fighter.competitionHistory.find(
+                    ch => ch.competitionId.toString() === competition.competitionMetaId.toString()
+                );
+                
+                if (!compHistory) {
+                    console.warn(`   ⚠️  No competition history for ${fighter.firstName} ${fighter.lastName}`);
+                    continue;
+                }
+                
+                // Initialize titles if not exists
+                if (!compHistory.titles) {
+                    compHistory.titles = { totalTitles: 0, details: [] };
+                }
+                
+                // Check if title already exists for this season/division
+                const existingTitle = compHistory.titles.details.find(
+                    t => t.seasonNumber === competition.seasonMeta.seasonNumber && 
+                         t.divisionNumber === divisionMeta.divisionNumber
+                );
+                
+                if (!existingTitle) {
+                    // Add new title
+                    compHistory.titles.details.push({
+                        competitionSeasonId: competition._id,
+                        seasonNumber: competition.seasonMeta.seasonNumber,
+                        divisionNumber: divisionMeta.divisionNumber
+                    });
+                    
+                    compHistory.titles.totalTitles = (compHistory.titles.totalTitles || 0) + 1;
+                    
+                    await fighter.save({ session });
+                    
+                    console.log(`   ✅ Division ${divisionMeta.divisionNumber} - ${fighter.firstName} ${fighter.lastName}: Title added (Total: ${compHistory.titles.totalTitles})`);
+                } else {
+                    console.log(`   ℹ️  Division ${divisionMeta.divisionNumber} - ${fighter.firstName} ${fighter.lastName}: Title already exists`);
+                }
+            }
+        }
+        
+        console.log(`   ✅ Division winner titles updated`);
+        
+    } catch (error) {
+        console.error('   ❌ Error updating division winner titles:', error.message);
+        throw error;
+    }
+}
+
+/**
+ * ====================================================================================
  * CHECK AND CREATE CC SEASON (100% LEAGUE COMPLETION)
  * ====================================================================================
  * Creates Champions Cup season when league is 100% complete
@@ -1186,11 +1386,11 @@ async function checkAndCreateCCSeasonIfNeeded(competition, session) {
     console.log(`\n🏆 Checking if CC Season should be created...`);
     
     try {
-        // 1. Query CC competition meta
+        // 1. Query CC competition meta (read-only, no session needed)
         const ccMeta = await CompetitionMeta.findOne({
-            competitionName: 'Champions Cup',
+            competitionName: "Champions' Cup",
             type: 'cup'
-        }).session(session);
+        });
         
         if (!ccMeta) {
             console.error('   ❌ Error: CC competition meta not found');
@@ -1199,22 +1399,22 @@ async function checkAndCreateCCSeasonIfNeeded(competition, session) {
         
         console.log(`   ✓ Found CC meta: ${ccMeta._id}`);
         
-        // 2. Check if CC season already exists for this league season
+        // 2. Check if CC season already exists for this league season (read-only, no session needed)
         const existingCCSeasons = await Competition.find({
-            'linkedLeagueSeason.competitionId': competition._id,
-            'linkedLeagueSeason.seasonNumber': competition.seasonMeta.seasonNumber
-        }).session(session);
+            'linkedLeagueSeason.competition': competition.competitionMetaId,
+            'linkedLeagueSeason.season': competition._id
+        });
         
         if (existingCCSeasons.length > 0) {
             console.log('   ⏭️  Skipping: CC season already exists for this league season');
             return;
         }
         
-        // 3. Check if there's already an active CC season
+        // 3. Check if there's already an active CC season (read-only, no session needed)
         const activeCCSeasons = await Competition.find({
             competitionMetaId: ccMeta._id,
             isActive: true
-        }).session(session);
+        });
         
         if (activeCCSeasons.length > 0) {
             console.log('   ⏭️  Skipping: An active CC season already exists');
@@ -1222,13 +1422,12 @@ async function checkAndCreateCCSeasonIfNeeded(competition, session) {
             return;
         }
         
-        // 4. Find latest CC season number
+        // 4. Find latest CC season number (read-only, no session needed)
         const latestCCSeason = await Competition.findOne({
             competitionMetaId: ccMeta._id
         })
         .sort({ 'seasonMeta.seasonNumber': -1 })
-        .limit(1)
-        .session(session);
+        .limit(1);
         
         const newCCSeasonNumber = (latestCCSeason?.seasonMeta?.seasonNumber || 0) + 1;
         console.log(`   📊 New CC season number: ${newCCSeasonNumber}`);
@@ -1237,14 +1436,14 @@ async function checkAndCreateCCSeasonIfNeeded(competition, session) {
         const selectedFighters = [];
         
         for (let divisionNumber = 1; divisionNumber <= 3; divisionNumber++) {
+            // Note: Not using .session(session) because standings were created in previous transactions
             const finalStandings = await RoundStandings.findOne({
-                competitionId: competition._id,
+                competitionId: competition.competitionMetaId,
                 seasonNumber: competition.seasonMeta.seasonNumber,
                 divisionNumber: divisionNumber
             })
             .sort({ roundNumber: -1 })
-            .limit(1)
-            .session(session);
+            .limit(1);
             
             if (!finalStandings || !finalStandings.standings) {
                 console.error(`   ❌ Error: No standings found for Division ${divisionNumber}`);
@@ -1332,8 +1531,8 @@ async function checkAndCreateCCSeasonIfNeeded(competition, session) {
                 }
             },
             linkedLeagueSeason: {
-                competitionId: competition._id,
-                seasonNumber: competition.seasonMeta.seasonNumber
+                competition: competition.competitionMetaId,
+                season: competition._id
             }
         });
         
@@ -1348,6 +1547,8 @@ async function checkAndCreateCCSeasonIfNeeded(competition, session) {
         
     } catch (error) {
         console.error('   ❌ Error creating CC season:', error.message);
+        console.error('   Full error:', error);
+        console.error('   Stack:', error.stack);
         throw error; // Will trigger transaction rollback
     }
 }
@@ -1478,6 +1679,17 @@ export async function applyFightResult(
             competition.isActive = false;
             competition.seasonMeta.endDate = new Date();
             console.log(`\n🏁 Season marked as complete`);
+            
+            // Populate division winners (league only)
+            if (competitionType === 'league') {
+                await populateDivisionWinners(competition, session);
+                await updateDivisionWinnerTitles(competition, session);
+            }
+            
+            // Update cup winner title (cup only)
+            if (competitionType === 'cup') {
+                await updateCupWinnerTitle(competition, session);
+            }
             
             // Create CC season at 100% completion (league only)
             if (competitionType === 'league') {
