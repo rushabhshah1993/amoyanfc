@@ -169,7 +169,7 @@ const competitionDetailsSchema = new Schema({
     competitionId: { type: Schema.Types.ObjectId, ref: 'CompetitionMeta' },
     season: { type: Number },
     divisionId: { type: Number },
-    roundId: { type: Number },
+    roundId: { type: Schema.Types.Mixed }, // Can be Number (league) or String (cup stage code like "SF", "FN")
     fightId: { type: Schema.Types.ObjectId, ref: 'Fight' },
     isWinner: Boolean,
     date: { type: Date }

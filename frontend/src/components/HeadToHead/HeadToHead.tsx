@@ -23,7 +23,7 @@ interface CompetitionHeadToHead {
         winner: string; // fighter ID
         season: number;
         division?: number;
-        round: number;
+        round: number | string; // Can be number or stage code like "SF", "FN"
         fightId: string;
     }[];
 }
@@ -33,6 +33,35 @@ interface HeadToHeadProps {
     fighter2: Fighter;
     headToHeadData: CompetitionHeadToHead[];
 }
+
+// Helper function to format round name for both league and cup competitions
+const formatRoundName = (round: number | string | null | undefined, hasDivision: boolean): string => {
+    // Handle null/undefined
+    if (round === null || round === undefined) {
+        return hasDivision ? 'Round -' : 'Cup Fight';
+    }
+    
+    // If it's a league fight (has division), just return "Round X"
+    if (hasDivision) {
+        return `Round ${round}`;
+    }
+    
+    // For cup fights, handle stage codes
+    const roundStr = String(round);
+    
+    if (roundStr === 'FN' || roundStr.includes('FINAL')) {
+        return 'Finals';
+    } else if (roundStr === 'SF' || roundStr.includes('SEMI')) {
+        return 'Semifinals';
+    } else if (roundStr.startsWith('R')) {
+        // R1, R2, etc.
+        const roundNum = roundStr.substring(1);
+        return `Round ${roundNum}`;
+    } else {
+        // Fallback for numeric round numbers or unknown
+        return `Round ${round}`;
+    }
+};
 
 const HeadToHead: React.FC<HeadToHeadProps> = ({ fighter1, fighter2, headToHeadData }) => {
     const navigate = useNavigate();
@@ -153,7 +182,7 @@ const HeadToHead: React.FC<HeadToHeadProps> = ({ fighter1, fighter2, headToHeadD
                                                         <div className={styles.fightLocation}>
                                                             Season {fight.season}
                                                             {fight.division && <><br />Division {fight.division}</>}
-                                                            <br />Round {fight.round}
+                                                            <br />{formatRoundName(fight.round, !!fight.division)}
                                                         </div>
                                                     </div>
                                                 </div>

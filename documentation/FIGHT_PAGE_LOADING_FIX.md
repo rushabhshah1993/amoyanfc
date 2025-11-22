@@ -190,3 +190,6 @@ To test the fix:
 2. `frontend/src/components/Performance/Performance.tsx`
 3. `frontend/src/pages/FightPage/FightPage.tsx`
 
+
+
+

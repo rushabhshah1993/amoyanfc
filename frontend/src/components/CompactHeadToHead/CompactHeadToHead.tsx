@@ -23,7 +23,7 @@ interface CompetitionHeadToHead {
         winner: string; // fighter ID
         season: number;
         division?: number;
-        round: number;
+        round: number | string; // Can be number or stage code like "SF", "FN"
         fightId: string;
         date?: string;
     }[];
@@ -35,6 +35,34 @@ interface CompactHeadToHeadProps {
     headToHeadData: CompetitionHeadToHead[];
     loading?: boolean;
 }
+
+// Helper function to format round name for both league and cup competitions
+const formatRoundName = (round: number | string | null | undefined, hasDivision: boolean): string => {
+    // Handle null/undefined
+    if (round === null || round === undefined) {
+        return hasDivision ? 'R-' : 'Cup';
+    }
+    
+    // If it's a league fight (has division), just return "RX" format
+    if (hasDivision) {
+        return `R${round}`;
+    }
+    
+    // For cup fights, handle stage codes
+    const roundStr = String(round);
+    
+    if (roundStr === 'FN' || roundStr.includes('FINAL')) {
+        return 'Finals';
+    } else if (roundStr === 'SF' || roundStr.includes('SEMI')) {
+        return 'SF';
+    } else if (roundStr.startsWith('R')) {
+        // R1, R2, etc.
+        return roundStr;
+    } else {
+        // Fallback for numeric round numbers
+        return `R${round}`;
+    }
+};
 
 const CompactHeadToHead: React.FC<CompactHeadToHeadProps> = ({ fighter1, fighter2, headToHeadData, loading = false }) => {
     const navigate = useNavigate();
@@ -189,7 +217,7 @@ const CompactHeadToHead: React.FC<CompactHeadToHeadProps> = ({ fighter1, fighter
                                     <span className={styles.cardLocation}>
                                         S{fight.season}
                                         {fight.division && ` • D${fight.division}`}
-                                        {` • R${fight.round}`}
+                                        {` • ${formatRoundName(fight.round, !!fight.division)}`}
                                     </span>
                                 </div>
 

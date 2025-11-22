@@ -27,9 +27,9 @@ const fightGenerationTypeDef = `#graphql
         divisionNumber: Int
 
         """
-        Round number (required for league competitions, can be any value for cup competitions as fightIndex is used)
+        Round number (required for league competitions, null for cup competitions as fightIndex is used)
         """
-        roundNumber: Int!
+        roundNumber: Int
 
         """
         Fight index within the round
@@ -73,9 +73,9 @@ const fightGenerationTypeDef = `#graphql
         divisionNumber: Int
 
         """
-        Round number (required for league competitions, can be any value for cup competitions as fightIndex is used)
+        Round number (required for league competitions, null for cup competitions as fightIndex is used)
         """
-        roundNumber: Int!
+        roundNumber: Int
 
         """
         Fight index within the round

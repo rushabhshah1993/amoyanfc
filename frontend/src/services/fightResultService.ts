@@ -1887,16 +1887,28 @@ export const getUpcomingFights = (competitions: Array<any>) => {
 
                 if (hasNoWinner && bothFightersSet) {
                     // Parse fight identifier to get round info
+                    // Format: IC-S5-SF-F1 or IC-S5-R1-F1
                     const parts = fight.fightIdentifier.split('-');
-                    const roundNumber = parseInt(parts[2]?.substring(1) || '0');
+                    const stageCode = parts[2]; // Could be R1, R2, SF, FN, etc.
                     
-                    // Determine round name based on cup configuration stages
+                    // Determine round name based on stage code
                     const stages = competition.config?.cupConfiguration?.stages || ['Round 1', 'Semi-finals', 'Finals'];
                     let roundName = currentStage || 'Unknown';
+                    let roundNumber = 0;
                     
-                    // Map round number to stage name
-                    if (roundNumber >= 1 && roundNumber <= stages.length) {
-                        roundName = stages[roundNumber - 1];
+                    // Map stage code to round name
+                    if (stageCode === 'FN' || stageCode.includes('FINAL')) {
+                        roundName = stages[stages.length - 1] || 'Finals';
+                        roundNumber = stages.length;
+                    } else if (stageCode === 'SF' || stageCode.includes('SEMI')) {
+                        roundName = stages[stages.length - 2] || 'Semifinals';
+                        roundNumber = stages.length - 1;
+                    } else if (stageCode.startsWith('R')) {
+                        // R1, R2, etc.
+                        roundNumber = parseInt(stageCode.substring(1)) || 1;
+                        if (roundNumber >= 1 && roundNumber <= stages.length) {
+                            roundName = stages[roundNumber - 1];
+                        }
                     }
 
                     // Enrich fighter data

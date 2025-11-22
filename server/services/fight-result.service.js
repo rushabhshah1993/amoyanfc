@@ -14,6 +14,7 @@ import { Fighter } from '../models/fighter.model.js';
 import { Competition } from '../models/competition.model.js';
 import { CompetitionMeta } from '../models/competition-meta.model.js';
 import { RoundStandings } from '../models/round-standings.model.js';
+import { autoTriggerGlobalRankingIfNeeded } from '../resolvers/global-ranking-trigger.resolver.js';
 
 const POINTS_PER_WIN = 3;
 
@@ -243,7 +244,8 @@ async function updateFighterOpponentsHistory(
     roundNumber,
     fightId,
     isWinner,
-    fightDate
+    fightDate,
+    fightIdentifier = null
 ) {
     console.log(`\n🥊 Step 5-6: Updating Opponents History for ${fighter.firstName} ${fighter.lastName}...`);
     
@@ -252,11 +254,20 @@ async function updateFighterOpponentsHistory(
         oh => oh.opponentId.toString() === opponentId.toString()
     );
     
+    // For cup fights, extract stage code from fightIdentifier (e.g., "IC-S5-SF-F1" -> "SF")
+    let roundValue = roundNumber;
+    if (roundNumber === null && fightIdentifier) {
+        const parts = fightIdentifier.split('-');
+        if (parts.length >= 3) {
+            roundValue = parts[2]; // Extract stage code (R1, SF, FN, etc.)
+        }
+    }
+    
     const newDetail = {
         competitionId: competitionMetaId,
         season: seasonNumber,
         divisionId: divisionNumber,  // MongoDB schema uses divisionId
-        roundId: roundNumber,        // MongoDB schema uses roundId
+        roundId: roundValue,         // MongoDB schema uses roundId (now stores stage code for cups)
         fightId,
         isWinner,
         date: fightDate
@@ -707,9 +718,9 @@ function checkSeasonCompletion(competition) {
         
         return allComplete;
     } else {
-        // Cup competition
+        // Cup competition - check if final fight(s) are complete
         const fights = competition.cupData?.fights || [];
-        const finalFights = fights.filter(f => f.fightIdentifier.includes('-R3-'));
+        const finalFights = fights.filter(f => f.fightIdentifier.includes('-FN-')); // Finals stage
         if (finalFights.length === 0) return false;
         
         const allFinalsComplete = finalFights.every(f => f.fightStatus === 'completed' || f.winner);
@@ -999,6 +1010,7 @@ async function checkAndCreateICSeasonIfNeeded(competition, session) {
         
         // 2. Check if IC season already exists for this league season
         const existingICSeasons = await Competition.find({
+            competitionMetaId: icMeta._id,
             'linkedLeagueSeason.competition': competition.competitionMetaId,
             'linkedLeagueSeason.season': competition._id
         }).session(session);
@@ -1239,6 +1251,176 @@ async function populateDivisionWinners(competition, session) {
 
 /**
  * ====================================================================================
+ * POPULATE FINAL POSITIONS FOR ALL FIGHTERS
+ * ====================================================================================
+ * Updates finalPosition for all fighters based on final standings (league only)
+ */
+async function populateFinalPositions(competition, session) {
+    console.log(`\n📊 Populating Final Positions...`);
+    
+    try {
+        for (const divisionMeta of competition.seasonMeta.leagueDivisions) {
+            console.log(`\n  Division ${divisionMeta.divisionNumber}:`);
+            
+            // Get final standings for this division
+            const finalStandings = await RoundStandings.findOne({
+                competitionId: competition.competitionMetaId,
+                seasonNumber: competition.seasonMeta.seasonNumber,
+                divisionNumber: divisionMeta.divisionNumber
+            })
+            .sort({ roundNumber: -1 })
+            .limit(1);
+            
+            if (!finalStandings || !finalStandings.standings) {
+                console.warn(`    ⚠️  No final standings found`);
+                continue;
+            }
+            
+            // Update each fighter's finalPosition
+            for (const standing of finalStandings.standings) {
+                const fighter = await Fighter.findById(standing.fighterId);
+                
+                if (!fighter) {
+                    console.warn(`    ⚠️  Fighter ${standing.fighterId.toString().substring(0, 8)}... not found`);
+                    continue;
+                }
+                
+                // Find competition history
+                // competitionMetaId might be populated, so extract _id
+                const compMetaId = competition.competitionMetaId._id || competition.competitionMetaId;
+                const compHistory = fighter.competitionHistory.find(
+                    ch => ch.competitionId.toString() === compMetaId.toString()
+                );
+                
+                if (!compHistory) {
+                    console.warn(`    ⚠️  No comp history for ${fighter.firstName} ${fighter.lastName}`);
+                    continue;
+                }
+                
+                // Find season details using .find() on the array
+                const seasonDetail = compHistory.seasonDetails.find(
+                    sd => sd.seasonNumber === competition.seasonMeta.seasonNumber && 
+                          sd.divisionNumber === divisionMeta.divisionNumber
+                );
+                
+                if (!seasonDetail) {
+                    console.warn(`    ⚠️  No season details for ${fighter.firstName} ${fighter.lastName} S${competition.seasonMeta.seasonNumber} D${divisionMeta.divisionNumber}`);
+                    continue;
+                }
+                
+                // Set final position from standings rank
+                seasonDetail.finalPosition = standing.rank;
+                
+                await fighter.save({ session });
+                
+                console.log(`    ✅ ${fighter.firstName} ${fighter.lastName}: Position ${standing.rank} (${standing.wins}W, ${standing.points} pts)`);
+            }
+        }
+        
+        console.log(`\n   ✅ Final positions populated successfully`);
+        
+    } catch (error) {
+        console.error('   ❌ Error populating final positions:', error.message);
+        throw error;
+    }
+}
+
+/**
+ * ====================================================================================
+ * POPULATE FINAL CUP POSITIONS FOR ALL PARTICIPANTS
+ * ====================================================================================
+ * Updates finalCupPosition for all cup participants based on how far they got (cup only)
+ */
+async function populateFinalCupPositions(competition, session) {
+    console.log(`\n🏆 Populating Final Cup Positions...`);
+    
+    try {
+        const stages = competition.config?.cupConfiguration?.stages || ['Round 1', 'Semi-finals', 'Finals'];
+        const allFighters = competition.seasonMeta.cupParticipants?.fighters || [];
+        
+        // Determine final position for each fighter based on their last fight
+        for (const fighterId of allFighters) {
+            const fighter = await Fighter.findById(fighterId);
+            
+            if (!fighter) {
+                console.warn(`   ⚠️  Fighter ${fighterId.toString().substring(0, 8)}... not found`);
+                continue;
+            }
+            
+            // Find competition history
+            // competitionMetaId might be populated, so extract _id
+            const compMetaId = competition.competitionMetaId._id || competition.competitionMetaId;
+            const compHistory = fighter.competitionHistory.find(
+                ch => ch.competitionId.toString() === compMetaId.toString()
+            );
+            
+            if (!compHistory) {
+                console.warn(`   ⚠️  No comp history for ${fighter.firstName} ${fighter.lastName}`);
+                continue;
+            }
+            
+            // Find season details
+            const seasonDetail = compHistory.seasonDetails.find(
+                sd => sd.seasonNumber === competition.seasonMeta.seasonNumber
+            );
+            
+            if (!seasonDetail) {
+                console.warn(`   ⚠️  No season details for ${fighter.firstName} ${fighter.lastName} S${competition.seasonMeta.seasonNumber}`);
+                continue;
+            }
+            
+            // Determine final cup position based on wins/losses in this cup
+            let finalCupPosition = stages[0]; // Default to first round
+            
+            // Check if they are the champion
+            if (competition.seasonMeta.winners?.length > 0 && 
+                competition.seasonMeta.winners[0].toString() === fighterId.toString()) {
+                finalCupPosition = 'Champion';
+            } else {
+                // Find their last fight to determine position
+                const fighterFights = competition.cupData.fights.filter(
+                    f => (f.fighter1?.toString() === fighterId.toString() || 
+                          f.fighter2?.toString() === fighterId.toString()) &&
+                         (f.fightStatus === 'completed' || f.winner)
+                );
+                
+                if (fighterFights.length > 0) {
+                    // Get the stage of their last fight
+                    const lastFight = fighterFights[fighterFights.length - 1];
+                    const identifier = lastFight.fightIdentifier;
+                    
+                    // Extract stage from identifier (e.g., "IC-S5-SF-F1" -> "SF")
+                    const parts = identifier.split('-');
+                    const stageCode = parts[2];
+                    
+                    // Map stage code to position name
+                    if (stageCode === 'FN' || stageCode.includes('FINAL')) {
+                        finalCupPosition = stages[stages.length - 1]; // Finals
+                    } else if (stageCode === 'SF' || stageCode.includes('SEMI')) {
+                        finalCupPosition = stages[stages.length - 2]; // Semi-finals
+                    } else {
+                        finalCupPosition = stages[0]; // Round 1
+                    }
+                }
+            }
+            
+            seasonDetail.finalCupPosition = finalCupPosition;
+            
+            await fighter.save({ session });
+            
+            console.log(`   ✅ ${fighter.firstName} ${fighter.lastName}: ${finalCupPosition}`);
+        }
+        
+        console.log(`\n   ✅ Final cup positions populated successfully`);
+        
+    } catch (error) {
+        console.error('   ❌ Error populating final cup positions:', error.message);
+        throw error;
+    }
+}
+
+/**
+ * ====================================================================================
  * UPDATE CUP WINNER TITLE
  * ====================================================================================
  * Updates title for cup champion (cup only)
@@ -1253,16 +1435,19 @@ async function updateCupWinnerTitle(competition, session) {
         }
         
         const winnerId = competition.seasonMeta.winners[0];
-        const fighter = await Fighter.findById(winnerId).session(session);
+        // Don't use session for reading fighter data
+        const fighter = await Fighter.findById(winnerId);
         
         if (!fighter) {
             console.warn(`   ⚠️  Winner fighter not found: ${winnerId.toString().substring(0, 8)}...`);
             return;
         }
         
-        // Find or create competition history
+        // Find competition history for this cup
+        // competitionMetaId might be populated, so extract _id
+        const compMetaId = competition.competitionMetaId._id || competition.competitionMetaId;
         let compHistory = fighter.competitionHistory.find(
-            ch => ch.competitionId.toString() === competition.competitionMetaId.toString()
+            ch => ch.competitionId.toString() === compMetaId.toString()
         );
         
         if (!compHistory) {
@@ -1307,9 +1492,208 @@ async function updateCupWinnerTitle(competition, session) {
 
 /**
  * ====================================================================================
- * UPDATE DIVISION WINNER TITLES
+ * UPDATE CUP POSITIONS FOR NON-FINALISTS
+ * ====================================================================================
+ * Updates final cup positions for participants who didn't reach the finals
+ * (Finals participants get their positions updated during main fight processing)
+ */
+async function updateCupWinnerTitleAndPositions(competition, session) {
+    console.log(`\n🏆 Updating Cup Positions for Non-Finalists...`);
+    
+    try {
+        const compMetaId = competition.competitionMetaId._id || competition.competitionMetaId;
+        const allParticipantIds = competition.seasonMeta.cupParticipants?.fighters || [];
+        
+        if (allParticipantIds.length === 0) {
+            console.warn(`   ⚠️  No cup participants found`);
+            return;
+        }
+        
+        // Find the finals fight to identify finalists (they're already updated in main loop)
+        const finalFight = competition.cupData.fights.find(f => f.fightIdentifier.includes('-FN-'));
+        const finalistIds = finalFight ? [
+            finalFight.fighter1?.toString(),
+            finalFight.fighter2?.toString()
+        ].filter(Boolean) : [];
+        
+        // Process all non-finalist participants
+        for (const fighterId of allParticipantIds) {
+            // Skip finalists - they were already updated in the main fight processing loop
+            if (finalistIds.includes(fighterId.toString())) {
+                console.log(`   ⏭️  Skipping finalist: ${fighterId.toString().substring(0, 8)}... (already updated)`);
+                continue;
+            }
+            // Use session to get the latest version from this transaction
+            const fighter = await Fighter.findById(fighterId).session(session);
+            
+            if (!fighter) {
+                console.log(`   ❌ Fighter not found: ${fighterId.toString().substring(0, 8)}...`);
+                continue;
+            }
+            
+            let compHistory = fighter.competitionHistory.find(
+                ch => ch.competitionId.toString() === compMetaId.toString()
+            );
+            
+            if (!compHistory) {
+                console.log(`   ❌ Competition history not found for ${fighter.firstName} ${fighter.lastName}`);
+                continue;
+            }
+            
+            let seasonDetail = compHistory.seasonDetails.find(
+                sd => sd.seasonNumber === competition.seasonMeta.seasonNumber
+            );
+            
+            if (!seasonDetail) {
+                console.log(`   ❌ Season ${competition.seasonMeta.seasonNumber} not found for ${fighter.firstName} ${fighter.lastName}`);
+                continue;
+            }
+            
+            // Update final cup position if not already set
+            if (!seasonDetail.finalCupPosition || seasonDetail.finalCupPosition === 'Round 1') {
+                const fighterFights = competition.cupData.fights.filter(
+                    f => (f.fighter1?.toString() === fighterId.toString() || 
+                          f.fighter2?.toString() === fighterId.toString()) &&
+                         (f.fightStatus === 'completed' || f.winner)
+                );
+                
+                if (fighterFights.length > 0) {
+                    const lastFight = fighterFights[fighterFights.length - 1];
+                    
+                    if (lastFight.fightIdentifier.includes('-FN-')) {
+                        seasonDetail.finalCupPosition = 'Finals';
+                    } else if (lastFight.fightIdentifier.includes('-SF-')) {
+                        seasonDetail.finalCupPosition = 'Semifinals';
+                    } else {
+                        seasonDetail.finalCupPosition = 'Round 1';
+                    }
+                    
+                    await fighter.save({ session });
+                    console.log(`   ✅ ${fighter.firstName} ${fighter.lastName}: ${seasonDetail.finalCupPosition}`);
+                } else {
+                    console.log(`   ⚠️  ${fighter.firstName} ${fighter.lastName}: No completed fights found`);
+                }
+            } else {
+                console.log(`   ℹ️  ${fighter.firstName} ${fighter.lastName}: Position already set (${seasonDetail.finalCupPosition})`);
+            }
+        }
+        
+        console.log(`   ✅ Cup positions updated for non-finalists`);
+        
+    } catch (error) {
+        console.error('   ❌ Error updating cup winner title and positions:', error.message);
+        throw error;
+    }
+}
+
+/**
+ * ====================================================================================
+ * UPDATE DIVISION WINNER TITLES AND POSITIONS (COMBINED)
+ * ====================================================================================
+ * Updates titles for winners AND final positions for all fighters in one pass
+ * This avoids Mongoose version conflicts from multiple saves on same document
+ */
+async function updateDivisionWinnerTitlesAndPositions(competition, session) {
+    console.log(`\n🏆 Updating Division Winner Titles and Final Positions...`);
+    
+    try {
+        const compMetaId = competition.competitionMetaId._id || competition.competitionMetaId;
+        
+        for (const divisionMeta of competition.seasonMeta.leagueDivisions) {
+            console.log(`\n  Division ${divisionMeta.divisionNumber}:`);
+            
+            // Get final standings for this division
+            const finalStandings = await RoundStandings.findOne({
+                competitionId: compMetaId,
+                seasonNumber: competition.seasonMeta.seasonNumber,
+                divisionNumber: divisionMeta.divisionNumber
+            })
+            .sort({ roundNumber: -1 })
+            .limit(1);
+            
+            if (!finalStandings || !finalStandings.standings) {
+                console.warn(`    ⚠️  No final standings found`);
+                continue;
+            }
+            
+            // Process each fighter in standings
+            for (const standing of finalStandings.standings) {
+                const fighter = await Fighter.findById(standing.fighterId);
+                
+                if (!fighter) continue;
+                
+                // Find competition history
+                const compHistory = fighter.competitionHistory.find(
+                    ch => ch.competitionId.toString() === compMetaId.toString()
+                );
+                
+                if (!compHistory) continue;
+                
+                // Find season details
+                const seasonDetail = compHistory.seasonDetails.find(
+                    sd => sd.seasonNumber === competition.seasonMeta.seasonNumber && 
+                          sd.divisionNumber === divisionMeta.divisionNumber
+                );
+                
+                if (!seasonDetail) continue;
+                
+                // Update final position for ALL fighters
+                seasonDetail.finalPosition = standing.rank;
+                
+                // Check if this fighter is a division winner
+                const isWinner = divisionMeta.winners?.some(
+                    w => w.toString() === standing.fighterId.toString()
+                );
+                
+                if (isWinner) {
+                    // Initialize titles if not exists
+                    if (!compHistory.titles) {
+                        compHistory.titles = { totalTitles: 0, details: [] };
+                    }
+                    
+                    // Check if title already exists
+                    const existingTitle = compHistory.titles.details.find(
+                        t => t.seasonNumber === competition.seasonMeta.seasonNumber && 
+                             t.divisionNumber === divisionMeta.divisionNumber
+                    );
+                    
+                    if (!existingTitle) {
+                        // Add new title
+                        compHistory.titles.details.push({
+                            competitionSeasonId: competition._id,
+                            seasonNumber: competition.seasonMeta.seasonNumber,
+                            divisionNumber: divisionMeta.divisionNumber
+                        });
+                        
+                        compHistory.titles.totalTitles = (compHistory.titles.totalTitles || 0) + 1;
+                        
+                        console.log(`    🏆 ${fighter.firstName} ${fighter.lastName}: Position ${standing.rank} + TITLE (Total: ${compHistory.titles.totalTitles})`);
+                    } else {
+                        console.log(`    ✅ ${fighter.firstName} ${fighter.lastName}: Position ${standing.rank} (title exists)`);
+                    }
+                } else {
+                    console.log(`    ✅ ${fighter.firstName} ${fighter.lastName}: Position ${standing.rank}`);
+                }
+                
+                // Save once with all updates
+                await fighter.save({ session });
+            }
+        }
+        
+        console.log(`\n   ✅ Division winner titles and final positions updated successfully`);
+        
+    } catch (error) {
+        console.error('   ❌ Error updating titles and positions:', error.message);
+        throw error;
+    }
+}
+
+/**
+ * ====================================================================================
+ * UPDATE DIVISION WINNER TITLES (OLD - DEPRECATED)
  * ====================================================================================
  * Updates titles for division winners (league only)
+ * NOTE: This is now handled by updateDivisionWinnerTitlesAndPositions
  */
 async function updateDivisionWinnerTitles(competition, session) {
     console.log(`\n🏆 Updating Division Winner Titles...`);
@@ -1321,20 +1705,25 @@ async function updateDivisionWinnerTitles(competition, session) {
             }
             
             for (const winnerId of divisionMeta.winners) {
-                const fighter = await Fighter.findById(winnerId).session(session);
+                // Don't use session for reading fighter data (causes issues finding existing data)
+                const fighter = await Fighter.findById(winnerId);
                 
                 if (!fighter) {
                     console.warn(`   ⚠️  Fighter ${winnerId.toString().substring(0, 8)}... not found`);
                     continue;
                 }
                 
-                // Find or create competition history
+                // Find competition history for this league
+                // competitionMetaId might be populated, so extract _id
+                const compMetaId = competition.competitionMetaId._id || competition.competitionMetaId;
                 let compHistory = fighter.competitionHistory.find(
-                    ch => ch.competitionId.toString() === competition.competitionMetaId.toString()
+                    ch => ch.competitionId.toString() === compMetaId.toString()
                 );
                 
                 if (!compHistory) {
                     console.warn(`   ⚠️  No competition history for ${fighter.firstName} ${fighter.lastName}`);
+                    console.warn(`   Looking for CompMeta ID: ${compMetaId.toString()}`);
+                    console.warn(`   Fighter has ${fighter.competitionHistory.length} competition entries`);
                     continue;
                 }
                 
@@ -1401,6 +1790,7 @@ async function checkAndCreateCCSeasonIfNeeded(competition, session) {
         
         // 2. Check if CC season already exists for this league season (read-only, no session needed)
         const existingCCSeasons = await Competition.find({
+            competitionMetaId: ccMeta._id,
             'linkedLeagueSeason.competition': competition.competitionMetaId,
             'linkedLeagueSeason.season': competition._id
         });
@@ -1646,7 +2036,7 @@ export async function applyFightResult(
         
         await updateFighterCompetitionHistory(fighter1, competition.competitionMetaId._id, fighter1IsWinner);
         await updateFighterSeasonDetails(fighter1, competition.competitionMetaId._id, seasonNumber, divisionNumber, fighter1IsWinner, competitionType, fightIdentifier);
-        await updateFighterOpponentsHistory(fighter1, fighter2Id, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fight._id, fighter1IsWinner, fight.date);
+        await updateFighterOpponentsHistory(fighter1, fighter2Id, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fight._id, fighter1IsWinner, fight.date, fightIdentifier);
         await updateFighterDebutInformation(fighter1, competition.competitionMetaId._id, seasonNumber, fight._id, fight.date);
         await updateFighterStreaks(fighter1, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fighter2Id, fighter1IsWinner);
         await updateFighterFightStats(fighter1, fighter1Stats);
@@ -1658,7 +2048,7 @@ export async function applyFightResult(
         
         await updateFighterCompetitionHistory(fighter2, competition.competitionMetaId._id, fighter2IsWinner);
         await updateFighterSeasonDetails(fighter2, competition.competitionMetaId._id, seasonNumber, divisionNumber, fighter2IsWinner, competitionType, fightIdentifier);
-        await updateFighterOpponentsHistory(fighter2, fighter1Id, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fight._id, fighter2IsWinner, fight.date);
+        await updateFighterOpponentsHistory(fighter2, fighter1Id, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fight._id, fighter2IsWinner, fight.date, fightIdentifier);
         await updateFighterDebutInformation(fighter2, competition.competitionMetaId._id, seasonNumber, fight._id, fight.date);
         await updateFighterStreaks(fighter2, competition.competitionMetaId._id, seasonNumber, divisionNumber, roundNumber, fighter1Id, fighter2IsWinner);
         await updateFighterFightStats(fighter2, fighter2Stats);
@@ -1683,12 +2073,13 @@ export async function applyFightResult(
             // Populate division winners (league only)
             if (competitionType === 'league') {
                 await populateDivisionWinners(competition, session);
-                await updateDivisionWinnerTitles(competition, session);
+                // Batch titles and positions together to avoid version conflicts
+                await updateDivisionWinnerTitlesAndPositions(competition, session);
             }
             
-            // Update cup winner title (cup only)
+            // Update cup winner title and positions (cup only)
             if (competitionType === 'cup') {
-                await updateCupWinnerTitle(competition, session);
+                await updateCupWinnerTitleAndPositions(competition, session);
             }
             
             // Create CC season at 100% completion (league only)
@@ -1714,6 +2105,34 @@ export async function applyFightResult(
             console.log(`\n🎉 First fight of the season! Setting createdAt timestamp`);
         }
         
+        // For cup finals, add title to the winner before saving
+        if (competitionType === 'cup' && fightIdentifier.includes('-FN-')) {
+            const winner = fighter1IsWinner ? fighter1 : fighter2;
+            const compHistory = winner.competitionHistory.find(
+                ch => ch.competitionId.toString() === competition.competitionMetaId._id.toString()
+            );
+            
+            if (compHistory) {
+                if (!compHistory.titles) {
+                    compHistory.titles = { totalTitles: 0, details: [] };
+                }
+                
+                const existingTitle = compHistory.titles.details.find(
+                    t => t.seasonNumber === seasonNumber
+                );
+                
+                if (!existingTitle) {
+                    compHistory.titles.details.push({
+                        competitionSeasonId: competition._id,
+                        seasonNumber,
+                        divisionNumber: null
+                    });
+                    compHistory.titles.totalTitles = (compHistory.titles.totalTitles || 0) + 1;
+                    console.log(`\n🏆 ${winner.firstName} ${winner.lastName}: Cup title added (Total: ${compHistory.titles.totalTitles})`);
+                }
+            }
+        }
+        
         // Save all changes
         await competition.save({ session });
         await fighter1.save({ session });
@@ -1728,6 +2147,23 @@ export async function applyFightResult(
         console.log('\n✅ ========================================');
         console.log('   ALL UPDATES COMMITTED SUCCESSFULLY');
         console.log('========================================\n');
+        
+        // Auto-trigger global ranking ONLY when CC (Champions Cup) completes (non-blocking)
+        // CC is the last competition to complete, so we only check once per season
+        // This runs AFTER transaction commits, so it won't affect the fight result
+        if (isSeasonComplete && competitionType === 'cup') {
+            // Check if this is Champions Cup (not IC)
+            const competitionName = competition.competitionMetaId?.competitionName || 
+                                   (await CompetitionMeta.findById(competition.competitionMetaId))?.competitionName;
+            
+            if (competitionName === "Champions' Cup") {
+                console.log('\n🔍 Champions Cup completed - checking if global ranking should be triggered...');
+                autoTriggerGlobalRankingIfNeeded(competition).catch(err => {
+                    console.error('⚠️  Error in auto-trigger global ranking:', err.message);
+                    // Don't throw - we don't want to fail the fight result if ranking fails
+                });
+            }
+        }
         
         return {
             success: true,
