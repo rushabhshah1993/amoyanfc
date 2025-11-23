@@ -71,8 +71,9 @@ app.use(session({
         touchAfter: 24 * 3600 // Lazy session update
     }),
     cookie: {
-        secure: process.env.NODE_ENV === 'production',
+        secure: process.env.NODE_ENV === 'production', // true in production (https only)
         httpOnly: true,
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'none' for cross-origin
         maxAge: 24 * 60 * 60 * 1000 // 24 hours
     }
 }));
