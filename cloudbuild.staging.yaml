@@ -25,31 +25,8 @@ steps:
       - 'push'
       - 'gcr.io/$PROJECT_ID/amoyanfc-backend-staging:latest'
 
-  # Deploy to Cloud Run (Staging)
-  # Note: Environment variables are set separately using gcloud run services update
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
-    args:
-      - 'run'
-      - 'deploy'
-      - 'amoyanfc-backend-staging'
-      - '--image'
-      - 'gcr.io/$PROJECT_ID/amoyanfc-backend-staging:$BUILD_ID'
-      - '--region'
-      - 'us-central1'
-      - '--platform'
-      - 'managed'
-      - '--allow-unauthenticated'
-      - '--memory'
-      - '2Gi'
-      - '--cpu'
-      - '1'
-      - '--timeout'
-      - '300s'
-      - '--max-instances'
-      - '3'
-      - '--min-instances'
-      - '0'
+  # Note: Deployment is handled separately by deploy-backend-staging.sh
+  # This allows us to set environment variables from .env.staging
 
 # Store the built images
 images:

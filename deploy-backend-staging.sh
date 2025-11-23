@@ -30,8 +30,8 @@ gcloud config set project amoyanfc-staging
 echo -e "${BLUE}📦 Building Docker image...${NC}"
 gcloud builds submit --config=cloudbuild.staging.yaml
 
-# Get environment variables from .env.staging
-echo -e "${BLUE}🔧 Loading environment variables...${NC}"
+echo ""
+echo -e "${BLUE}🔧 Loading environment variables from .env.staging...${NC}"
 MONGODB_URI=$(grep MONGODB_URI .env.staging | cut -d '=' -f2-)
 JWT_SECRET=$(grep JWT_SECRET .env.staging | cut -d '=' -f2-)
 GOOGLE_CLIENT_ID=$(grep GOOGLE_CLIENT_ID .env.staging | cut -d '=' -f2-)
@@ -41,11 +41,19 @@ AWS_ACCESS_KEY_ID=$(grep AWS_ACCESS_KEY_ID .env.staging | cut -d '=' -f2-)
 AWS_SECRET_ACCESS_KEY=$(grep AWS_SECRET_ACCESS_KEY .env.staging | cut -d '=' -f2-)
 OPENAI_API_KEY=$(grep OPENAI_API_KEY .env.staging | cut -d '=' -f2-)
 
-# Update Cloud Run service with environment variables
-echo -e "${BLUE}⚙️  Updating Cloud Run with environment variables...${NC}"
-gcloud run services update amoyanfc-backend-staging \
+# Deploy to Cloud Run with environment variables
+echo -e "${BLUE}🚢 Deploying to Cloud Run with environment variables...${NC}"
+gcloud run deploy amoyanfc-backend-staging \
+  --image=gcr.io/amoyanfc-staging/amoyanfc-backend-staging:latest \
   --region=us-central1 \
-  --update-env-vars="MONGODB_URI=${MONGODB_URI},JWT_SECRET=${JWT_SECRET},GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID},GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET},AUTHORIZED_GOOGLE_ID=${AUTHORIZED_GOOGLE_ID},AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID},AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY},OPENAI_API_KEY=${OPENAI_API_KEY},FRONTEND_URL=https://amoyanfc-staging.web.app,GOOGLE_REDIRECT_URI=https://amoyanfc-staging.web.app/auth/google/callback,AWS_REGION=us-east-1,AWS_S3_BUCKET=amoyanfc-assets,CLOUDFRONT_DOMAIN=https://E2JUFP5XP02KD2.cloudfront.net,NODE_ENV=staging,PORT=8080"
+  --platform=managed \
+  --allow-unauthenticated \
+  --memory=2Gi \
+  --cpu=1 \
+  --timeout=300s \
+  --max-instances=3 \
+  --min-instances=0 \
+  --set-env-vars="MONGODB_URI=${MONGODB_URI},JWT_SECRET=${JWT_SECRET},GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID},GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET},AUTHORIZED_GOOGLE_ID=${AUTHORIZED_GOOGLE_ID},AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID},AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY},OPENAI_API_KEY=${OPENAI_API_KEY},FRONTEND_URL=https://amoyanfc-staging.web.app,GOOGLE_REDIRECT_URI=https://amoyanfc-staging.web.app/auth/google/callback,AWS_REGION=us-east-1,AWS_S3_BUCKET=amoyanfc-assets,CLOUDFRONT_DOMAIN=https://E2JUFP5XP02KD2.cloudfront.net,NODE_ENV=staging,PORT=8080"
 
 # Get the service URL
 BACKEND_URL=$(gcloud run services describe amoyanfc-backend-staging --region=us-central1 --format='value(status.url)')
