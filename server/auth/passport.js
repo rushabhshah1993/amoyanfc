@@ -10,8 +10,18 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.GOOGLE_REDIRECT_URI
 }, async (accessToken, refreshToken, profile, done) => {
     try {
-        // Temporarily disable authorization check to get Google User ID
+        console.log('🔐 Google OAuth callback received');
+        console.log('   Profile ID:', profile.id);
+        console.log('   Authorized ID:', process.env.AUTHORIZED_GOOGLE_ID);
+        
+        // Check if user is authorized
+        if (!process.env.AUTHORIZED_GOOGLE_ID) {
+            console.error('❌ AUTHORIZED_GOOGLE_ID not set in environment variables!');
+            return done(null, false, { message: 'Server configuration error' });
+        }
+
         if (profile.id !== process.env.AUTHORIZED_GOOGLE_ID) {
+            console.warn('⚠️  Unauthorized login attempt:', profile.email);
             return done(null, false, { message: 'Unauthorized Google account' });
         }
 
@@ -22,9 +32,11 @@ passport.use(new GoogleStrategy({
             name: profile.displayName,
             picture: profile.photos[0].value
         };
+        
+        console.log('✅ User authorized:', user.email);
         return done(null, user);
     } catch (error) {
-        console.error('Error in Google OAuth callback:', error);
+        console.error('❌ Error in Google OAuth callback:', error);
         return done(error, null);
     }
 }));

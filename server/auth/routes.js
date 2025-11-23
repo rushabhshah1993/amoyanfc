@@ -12,21 +12,37 @@ router.get('/google',
 
 // Google OAuth callback route
 router.get('/google/callback',
-    passport.authenticate('google', { failureRedirect: '/login' }),
+    passport.authenticate('google', { 
+        failureRedirect: `${process.env.FRONTEND_URL || 'http://localhost:3000'}/login?error=auth_failed`,
+        session: true
+    }),
     (req, res) => {
-        // Generate JWT token
-        const token = generateToken(req.user);
-        
-        // Store token in httpOnly cookie for security
-        res.cookie('authToken', token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
-            maxAge: 24 * 60 * 60 * 1000 // 24 hours
-        });
+        try {
+            if (!req.user) {
+                console.error('No user in request after authentication');
+                return res.redirect(`${process.env.FRONTEND_URL || 'http://localhost:3000'}/login?error=no_user`);
+            }
 
-        // Redirect to frontend with success
-        res.redirect(`${process.env.FRONTEND_URL || 'http://localhost:3000'}?login=success`);
+            // Generate JWT token
+            const token = generateToken(req.user);
+            
+            // Store token in httpOnly cookie for security
+            // sameSite: 'none' required for cross-origin (Firebase → Cloud Run)
+            res.cookie('authToken', token, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+                maxAge: 24 * 60 * 60 * 1000 // 24 hours
+            });
+
+            console.log('✅ User authenticated successfully:', req.user.email);
+
+            // Redirect to frontend with success
+            res.redirect(`${process.env.FRONTEND_URL || 'http://localhost:3000'}?login=success`);
+        } catch (error) {
+            console.error('❌ Error in OAuth callback:', error);
+            res.redirect(`${process.env.FRONTEND_URL || 'http://localhost:3000'}/login?error=callback_failed`);
+        }
     }
 );
 

@@ -58,25 +58,50 @@ app.use(cors({
 }));
 
 // Configure session
-app.use(session({
+// In production/staging (Cloud Run), use memory store since we rely on JWT
+// In local development, can use MongoStore if needed
+const isProduction = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging';
+
+const sessionConfig = {
     secret: process.env.JWT_SECRET || 'fallback-secret',
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI,
-        mongoOptions: {
-            serverSelectionTimeoutMS: 5000, // Fail fast if can't connect
-            socketTimeoutMS: 45000,
-        },
-        touchAfter: 24 * 3600 // Lazy session update
-    }),
     cookie: {
-        secure: process.env.NODE_ENV === 'production', // true in production (https only)
+        secure: isProduction, // true in production (https only)
         httpOnly: true,
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'none' for cross-origin
+        sameSite: isProduction ? 'none' : 'lax', // 'none' for cross-origin
         maxAge: 24 * 60 * 60 * 1000 // 24 hours
     }
-}));
+};
+
+// Only use MongoStore in local development
+// In Cloud Run, we use JWT tokens (stateless auth) instead of sessions
+if (!isProduction && process.env.MONGODB_URI) {
+    try {
+        const sessionStore = MongoStore.create({
+            mongoUrl: process.env.MONGODB_URI,
+            mongoOptions: {
+                serverSelectionTimeoutMS: 10000,
+                socketTimeoutMS: 45000,
+            },
+            touchAfter: 24 * 3600,
+            stringify: false
+        });
+        
+        sessionStore.on('error', (error) => {
+            console.error('Session store error:', error);
+        });
+        
+        sessionConfig.store = sessionStore;
+        console.log('✅ Using MongoDB session store');
+    } catch (error) {
+        console.warn('⚠️  MongoDB session store failed, using memory store:', error.message);
+    }
+} else {
+    console.log('ℹ️  Using memory session store (Cloud Run mode - JWT-based auth)');
+}
+
+app.use(session(sessionConfig));
 
 // Initialize Passport
 app.use(passport.initialize());
