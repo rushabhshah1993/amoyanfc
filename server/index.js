@@ -1,6 +1,21 @@
 /* Load environment variables FIRST */
 import dotenv from 'dotenv';
-dotenv.config({ path: '../.env' });
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { existsSync } from 'fs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const envPath = join(__dirname, '../.env');
+
+// Only load .env file if it exists (for local development)
+// In production (Cloud Run), env vars come from the service configuration
+if (existsSync(envPath)) {
+    dotenv.config({ path: envPath });
+    console.log('✅ Loaded environment variables from .env file');
+} else {
+    console.log('ℹ️  No .env file found, using environment variables from system');
+}
 
 import express from 'express';
 import http from 'http';
@@ -48,7 +63,12 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI
+        mongoUrl: process.env.MONGODB_URI,
+        mongoOptions: {
+            serverSelectionTimeoutMS: 5000, // Fail fast if can't connect
+            socketTimeoutMS: 45000,
+        },
+        touchAfter: 24 * 3600 // Lazy session update
     }),
     cookie: {
         secure: process.env.NODE_ENV === 'production',
@@ -99,7 +119,12 @@ app.use(
     })
 );
 
+// Start listening FIRST (so Cloud Run knows we're alive)
 await new Promise((resolve) => httpServer.listen({port: PORT}, resolve));
-await connectDB();
-
 console.log(`🚀 Server listening on port ${PORT}`);
+
+// Then connect to MongoDB (non-blocking for health checks)
+connectDB().catch(err => {
+    console.error('❌ MongoDB connection failed:', err);
+    // Don't exit - let health checks work
+});

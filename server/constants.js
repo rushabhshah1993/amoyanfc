@@ -1,4 +1,5 @@
-export const PORT = 4000;
+// Use Cloud Run's PORT env var (defaults to 8080) or fallback to 4000 for local dev
+export const PORT = process.env.PORT || 4000;
 
 // Compeitition Types
 export const COMPETITION_TYPES = {
