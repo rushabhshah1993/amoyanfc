@@ -53,7 +53,7 @@ gcloud run deploy amoyanfc-backend-staging \
   --timeout=300s \
   --max-instances=3 \
   --min-instances=0 \
-  --set-env-vars="MONGODB_URI=${MONGODB_URI},JWT_SECRET=${JWT_SECRET},GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID},GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET},AUTHORIZED_GOOGLE_ID=${AUTHORIZED_GOOGLE_ID},AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID},AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY},OPENAI_API_KEY=${OPENAI_API_KEY},FRONTEND_URL=https://amoyanfc-staging.web.app,GOOGLE_REDIRECT_URI=https://amoyanfc-staging.web.app/auth/google/callback,AWS_REGION=us-east-1,AWS_S3_BUCKET=amoyanfc-assets,CLOUDFRONT_DOMAIN=https://E2JUFP5XP02KD2.cloudfront.net,NODE_ENV=staging,PORT=8080"
+  --set-env-vars="MONGODB_URI=${MONGODB_URI},JWT_SECRET=${JWT_SECRET},GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID},GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET},AUTHORIZED_GOOGLE_ID=${AUTHORIZED_GOOGLE_ID},AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID},AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY},OPENAI_API_KEY=${OPENAI_API_KEY},FRONTEND_URL=https://amoyanfc-staging.web.app,GOOGLE_REDIRECT_URI=https://amoyanfc-staging.web.app/auth/google/callback,AWS_REGION=us-east-1,AWS_S3_BUCKET=amoyanfc-assets,CLOUDFRONT_DOMAIN=https://E2JUFP5XP02KD2.cloudfront.net,NODE_ENV=staging"
 
 # Get the service URL
 BACKEND_URL=$(gcloud run services describe amoyanfc-backend-staging --region=us-central1 --format='value(status.url)')
