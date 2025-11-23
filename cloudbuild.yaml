@@ -2,7 +2,7 @@
 # This builds and deploys the Express backend to Cloud Run
 
 steps:
-  # Build the Docker image
+  # Build the Docker image (backend only)
   - name: 'gcr.io/cloud-builders/docker'
     args: 
       - 'build'
@@ -10,20 +10,8 @@ steps:
       - 'gcr.io/$PROJECT_ID/amoyanfc-backend:$BUILD_ID'
       - '-t'
       - 'gcr.io/$PROJECT_ID/amoyanfc-backend:latest'
-      - '--build-arg'
-      - 'REACT_APP_API_URL=https://placeholder.run.app/graphql'
-      - '--build-arg'
-      - 'REACT_APP_BACKEND_URL=https://placeholder.run.app'
-      - '--build-arg'
-      - 'REACT_APP_COMPETITION_ID_IFC=PRODUCTION_IFC_ID'
-      - '--build-arg'
-      - 'REACT_APP_COMPETITION_ID_IFL=PRODUCTION_IFL_ID'
-      - '--build-arg'
-      - 'REACT_APP_COMPETITION_ID_CC=PRODUCTION_CC_ID'
-      - '--build-arg'
-      - 'REACT_APP_COMPETITION_ID_IC=PRODUCTION_IC_ID'
       - '-f'
-      - 'Dockerfile'
+      - 'Dockerfile.backend'
       - '.'
 
   # Push the Docker image to Google Container Registry

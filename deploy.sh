@@ -81,24 +81,9 @@ print_success "All pre-deployment checks passed!"
 echo ""
 
 # ======================================================================
-# STEP 2: Build Frontend
+# STEP 2: Deploy Backend to Cloud Run (First)
 # ======================================================================
-print_info "Step 2: Building frontend..."
-
-# Load environment variables for frontend build
-export $(cat .env.${ENVIRONMENT} | grep REACT_APP | xargs)
-
-cd frontend
-npm run build
-cd ..
-
-print_success "Frontend built successfully!"
-echo ""
-
-# ======================================================================
-# STEP 3: Deploy Backend to Cloud Run
-# ======================================================================
-print_info "Step 3: Deploying backend to Cloud Run..."
+print_info "Step 2: Deploying backend to Cloud Run..."
 
 # Set the correct Google Cloud project
 if [ "$ENVIRONMENT" = "production" ]; then
@@ -128,6 +113,25 @@ print_success "Backend deployed successfully!"
 # Get the backend URL
 BACKEND_URL=$(gcloud run services describe ${SERVICE_NAME} --region=us-central1 --format='value(status.url)')
 print_success "Backend URL: ${BACKEND_URL}"
+echo ""
+
+# ======================================================================
+# STEP 3: Build Frontend with Backend URL
+# ======================================================================
+print_info "Step 3: Building frontend with backend URL..."
+
+# Load environment variables for frontend build
+export $(cat .env.${ENVIRONMENT} | grep REACT_APP | xargs)
+
+# Override API URL with actual backend URL
+export REACT_APP_API_URL="${BACKEND_URL}/graphql"
+export REACT_APP_BACKEND_URL="${BACKEND_URL}"
+
+cd frontend
+npm run build
+cd ..
+
+print_success "Frontend built successfully!"
 echo ""
 
 # ======================================================================

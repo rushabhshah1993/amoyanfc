@@ -1,0 +1,39 @@
+# Backend-only Dockerfile for Cloud Run
+FROM node:18-alpine AS base
+
+# Production image
+FROM base AS runner
+WORKDIR /app
+
+# Set NODE_ENV
+ENV NODE_ENV=production
+
+# Copy package files
+COPY package*.json ./
+COPY server/package*.json ./server/
+
+# Install production dependencies
+WORKDIR /app/server
+RUN npm ci --only=production
+
+# Copy server code
+COPY server/ /app/server/
+
+# Create non-root user
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 appuser && \
+    chown -R appuser:nodejs /app
+
+USER appuser
+
+# Expose port (Cloud Run uses $PORT environment variable)
+ENV PORT=8080
+EXPOSE 8080
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s \
+  CMD node -e "require('http').get('http://localhost:8080/graphql', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
+
+# Start the application
+CMD ["node", "index.js"]
+

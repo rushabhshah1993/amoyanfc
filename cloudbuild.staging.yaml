@@ -2,7 +2,7 @@
 # This builds and deploys the Express backend to Cloud Run (Staging)
 
 steps:
-  # Build the Docker image
+  # Build the Docker image (backend only)
   - name: 'gcr.io/cloud-builders/docker'
     args: 
       - 'build'
@@ -10,20 +10,8 @@ steps:
       - 'gcr.io/$PROJECT_ID/amoyanfc-backend-staging:$BUILD_ID'
       - '-t'
       - 'gcr.io/$PROJECT_ID/amoyanfc-backend-staging:latest'
-      - '--build-arg'
-      - 'REACT_APP_API_URL=https://placeholder.run.app/graphql'
-      - '--build-arg'
-      - 'REACT_APP_BACKEND_URL=https://placeholder.run.app'
-      - '--build-arg'
-      - 'REACT_APP_COMPETITION_ID_IFC=67780dcc09a4c4b25127f8f6'
-      - '--build-arg'
-      - 'REACT_APP_COMPETITION_ID_IFL=67780e1d09a4c4b25127f8f8'
-      - '--build-arg'
-      - 'REACT_APP_COMPETITION_ID_CC=6778100309a4c4b25127f8fa'
-      - '--build-arg'
-      - 'REACT_APP_COMPETITION_ID_IC=6778103309a4c4b25127f8fc'
       - '-f'
-      - 'Dockerfile'
+      - 'Dockerfile.backend'
       - '.'
 
   # Push the Docker image to Google Container Registry
@@ -38,6 +26,7 @@ steps:
       - 'gcr.io/$PROJECT_ID/amoyanfc-backend-staging:latest'
 
   # Deploy to Cloud Run (Staging)
+  # Note: Environment variables are set separately using gcloud run services update
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
@@ -51,8 +40,6 @@ steps:
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
-      - '--set-env-vars'
-      - 'NODE_ENV=staging'
       - '--memory'
       - '2Gi'
       - '--cpu'
