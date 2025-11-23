@@ -5,12 +5,13 @@ import { faTrophy, faMedal, faFire } from '@fortawesome/free-solid-svg-icons';
 import S3Image from '../S3Image/S3Image';
 import styles from './GlobalRankings.module.css';
 
-// Competition IDs
+// Competition IDs - Configurable via environment variables
+// Falls back to staging IDs if not set
 const COMPETITION_IDS = {
-    IFC: '67780dcc09a4c4b25127f8f6',
-    IFL: '67780e1d09a4c4b25127f8f8',
-    CHAMPIONS_CUP: '6778100309a4c4b25127f8fa',
-    INVICTA_CUP: '6778103309a4c4b25127f8fc'
+    IFC: process.env.REACT_APP_COMPETITION_ID_IFC || '67780dcc09a4c4b25127f8f6',
+    IFL: process.env.REACT_APP_COMPETITION_ID_IFL || '67780e1d09a4c4b25127f8f8',
+    CHAMPIONS_CUP: process.env.REACT_APP_COMPETITION_ID_CC || '6778100309a4c4b25127f8fa',
+    INVICTA_CUP: process.env.REACT_APP_COMPETITION_ID_IC || '6778103309a4c4b25127f8fc'
 };
 
 interface CompetitionMeta {

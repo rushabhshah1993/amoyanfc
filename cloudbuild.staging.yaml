@@ -1,0 +1,66 @@
+# Google Cloud Build configuration for staging backend deployment
+# This builds and deploys the Express backend to Cloud Run (Staging)
+
+steps:
+  # Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: 
+      - 'build'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/amoyanfc-backend-staging:$SHORT_SHA'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/amoyanfc-backend-staging:latest'
+      - '-f'
+      - 'Dockerfile'
+      - '.'
+
+  # Push the Docker image to Google Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: 
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/amoyanfc-backend-staging:$SHORT_SHA'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: 
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/amoyanfc-backend-staging:latest'
+
+  # Deploy to Cloud Run (Staging)
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'amoyanfc-backend-staging'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/amoyanfc-backend-staging:$SHORT_SHA'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--set-env-vars'
+      - 'NODE_ENV=staging'
+      - '--memory'
+      - '2Gi'
+      - '--cpu'
+      - '1'
+      - '--timeout'
+      - '300s'
+      - '--max-instances'
+      - '3'
+      - '--min-instances'
+      - '0'
+
+# Store the built images
+images:
+  - 'gcr.io/$PROJECT_ID/amoyanfc-backend-staging:$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/amoyanfc-backend-staging:latest'
+
+# Timeout for the entire build
+timeout: '1200s'
+
+# Machine type for the build
+options:
+  machineType: 'N1_HIGHCPU_8'
+

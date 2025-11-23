@@ -35,6 +35,9 @@ RUN cd frontend && npm run build
 FROM base AS runner
 WORKDIR /app
 
+# Set NODE_ENV
+ENV NODE_ENV=production
+
 # Copy production dependencies
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/server/node_modules ./server/node_modules
@@ -47,14 +50,19 @@ COPY server/ ./server/
 
 # Create non-root user
 RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN adduser --system --uid 1001 appuser
 
 # Change ownership
-RUN chown -R nextjs:nodejs /app
-USER nextjs
+RUN chown -R appuser:nodejs /app
+USER appuser
 
-# Expose port
-EXPOSE 4000
+# Expose port (Cloud Run uses $PORT environment variable)
+ENV PORT=8080
+EXPOSE 8080
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s \
+  CMD node -e "require('http').get('http://localhost:8080/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
 
 # Start the application
-CMD ["npm", "run", "start:server"]
+CMD ["node", "server/index.js"]
