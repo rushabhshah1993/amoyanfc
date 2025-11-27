@@ -62,10 +62,12 @@ export const checkAuthentication = createAsyncThunk<boolean>(
                 
                 // Fallback to direct fetch
                 const backendUrl = process.env.REACT_APP_API_URL || 'http://localhost:4000/graphql';
+                const token = localStorage.getItem('authToken');
                 const response = await fetch(backendUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        ...(token ? { 'Authorization': `Bearer ${token}` } : {})
                     },
                     credentials: 'include',
                     body: JSON.stringify({
@@ -96,10 +98,12 @@ export const fetchUserData = createAsyncThunk<User | null>(
             
             // Try direct fetch first to avoid Apollo Client issues
             const backendUrl = process.env.REACT_APP_API_URL || 'http://localhost:4000/graphql';
+            const token = localStorage.getItem('authToken');
             const response = await fetch(backendUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
                 },
                 credentials: 'include',
                 body: JSON.stringify({
@@ -129,8 +133,12 @@ export const logoutUser = createAsyncThunk<AuthResponse>(
             const { data } = await client.mutate({
                 mutation: LOGOUT
             });
+            // Clear token from localStorage
+            localStorage.removeItem('authToken');
             return data.logout;
         } catch (error) {
+            // Clear token even if logout fails
+            localStorage.removeItem('authToken');
             throw error;
         }
     }

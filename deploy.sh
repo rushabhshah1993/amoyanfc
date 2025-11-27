@@ -71,10 +71,16 @@ command -v gcloud >/dev/null 2>&1 || {
 }
 
 # Check if .env file exists
-if [ ! -f ".env.${ENVIRONMENT}" ]; then
-    print_error ".env.${ENVIRONMENT} file not found!"
-    echo "Please create it from .env.${ENVIRONMENT}.template"
-    exit 1
+if [ "$ENVIRONMENT" = "production" ]; then
+    if [ ! -f ".env" ]; then
+        print_error ".env file not found!"
+        exit 1
+    fi
+else
+    if [ ! -f ".env.staging" ]; then
+        print_error ".env.staging file not found!"
+        exit 1
+    fi
 fi
 
 print_success "All pre-deployment checks passed!"
@@ -102,7 +108,11 @@ gcloud builds submit --config=${CONFIG_FILE}
 
 # Set environment variables from .env file
 print_info "Setting environment variables..."
-ENV_VARS=$(cat .env.${ENVIRONMENT} | grep -v '^#' | grep -v '^$' | grep -v 'REACT_APP' | tr '\n' ',' | sed 's/,$//')
+if [ "$ENVIRONMENT" = "production" ]; then
+    ENV_VARS=$(cat .env | grep -v '^#' | grep -v '^$' | grep -v 'REACT_APP' | tr '\n' ',' | sed 's/,$//')
+else
+    ENV_VARS=$(cat .env.staging | grep -v '^#' | grep -v '^$' | grep -v 'REACT_APP' | tr '\n' ',' | sed 's/,$//')
+fi
 
 gcloud run services update ${SERVICE_NAME} \
     --region=us-central1 \
@@ -121,7 +131,11 @@ echo ""
 print_info "Step 3: Building frontend with backend URL..."
 
 # Load environment variables for frontend build
-export $(cat .env.${ENVIRONMENT} | grep REACT_APP | xargs)
+if [ "$ENVIRONMENT" = "production" ]; then
+    export $(cat .env | grep REACT_APP | xargs)
+else
+    export $(cat .env.staging | grep REACT_APP | xargs)
+fi
 
 # Override API URL with actual backend URL
 export REACT_APP_API_URL="${BACKEND_URL}/graphql"

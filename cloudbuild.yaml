@@ -1,5 +1,5 @@
-# Google Cloud Build configuration for backend deployment
-# This builds and deploys the Express backend to Cloud Run
+# Google Cloud Build configuration for production backend deployment
+# This builds the Express backend to Cloud Run (Production)
 
 steps:
   # Build the Docker image (backend only)
@@ -25,32 +25,8 @@ steps:
       - 'push'
       - 'gcr.io/$PROJECT_ID/amoyanfc-backend:latest'
 
-  # Deploy to Cloud Run (Production)
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
-    args:
-      - 'run'
-      - 'deploy'
-      - 'amoyanfc-backend-prod'
-      - '--image'
-      - 'gcr.io/$PROJECT_ID/amoyanfc-backend:$BUILD_ID'
-      - '--region'
-      - 'us-central1'
-      - '--platform'
-      - 'managed'
-      - '--allow-unauthenticated'
-      - '--set-env-vars'
-      - 'NODE_ENV=production'
-      - '--memory'
-      - '2Gi'
-      - '--cpu'
-      - '2'
-      - '--timeout'
-      - '300s'
-      - '--max-instances'
-      - '10'
-      - '--min-instances'
-      - '1'
+  # Note: Deployment is handled separately by deploy-backend-production.sh
+  # This allows us to set environment variables from .env.production
 
 # Store the built images
 images:

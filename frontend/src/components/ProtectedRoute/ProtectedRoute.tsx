@@ -19,9 +19,15 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
             // Check if we're returning from OAuth callback
             const urlParams = new URLSearchParams(window.location.search);
             const loginSuccess = urlParams.get('login');
+            const token = urlParams.get('token');
             
-            if (loginSuccess === 'success') {
-                // Clear the URL parameter
+            if (loginSuccess === 'success' && token) {
+                // Store token in localStorage (for cross-domain API requests)
+                localStorage.setItem('authToken', token);
+                
+                console.log('✅ Auth token stored from OAuth callback');
+                
+                // Clear the URL parameters (remove token from URL for security)
                 window.history.replaceState({}, document.title, window.location.pathname);                
             }
             

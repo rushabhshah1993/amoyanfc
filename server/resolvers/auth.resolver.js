@@ -27,7 +27,19 @@ export const authResolvers = {
 
 // Authentication context middleware for GraphQL
 export const authContext = async ({ req, res }) => {
-    const token = req.cookies?.authToken;
+    // Try Authorization header first (for cross-domain), then cookie (for same-domain)
+    let token = null;
+    
+    // Check Authorization header
+    const authHeader = req.headers.authorization;
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+        token = authHeader.substring(7); // Remove 'Bearer ' prefix
+    }
+    
+    // Fallback to cookie
+    if (!token) {
+        token = req.cookies?.authToken;
+    }
     
     if (!token) {
         return { user: null, res };

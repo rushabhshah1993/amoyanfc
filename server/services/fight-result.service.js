@@ -195,35 +195,35 @@ async function updateFighterSeasonDetails(
     } else {
         // For league competitions, find by season AND division
         let existingSeason = seasonDetails.find(
-            sd => sd.seasonNumber === seasonNumber && sd.divisionNumber === divisionNumber
-        );
-        
-        if (existingSeason) {
-            existingSeason.fights += 1;
-            if (isWinner) {
-                existingSeason.wins += 1;
-                existingSeason.points += POINTS_PER_WIN;
-            } else {
-                existingSeason.losses += 1;
-            }
-            existingSeason.winPercentage = (existingSeason.wins / existingSeason.fights) * 100;
-            
-            console.log(`   ✓ Updated S${seasonNumber} D${divisionNumber}: ${existingSeason.wins}W-${existingSeason.losses}L, ${existingSeason.points} pts`);
+        sd => sd.seasonNumber === seasonNumber && sd.divisionNumber === divisionNumber
+    );
+    
+    if (existingSeason) {
+        existingSeason.fights += 1;
+        if (isWinner) {
+            existingSeason.wins += 1;
+            existingSeason.points += POINTS_PER_WIN;
         } else {
+            existingSeason.losses += 1;
+        }
+        existingSeason.winPercentage = (existingSeason.wins / existingSeason.fights) * 100;
+        
+        console.log(`   ✓ Updated S${seasonNumber} D${divisionNumber}: ${existingSeason.wins}W-${existingSeason.losses}L, ${existingSeason.points} pts`);
+    } else {
             // First fight in this season/division - increment numberOfSeasonAppearances
             competitionHistory.numberOfSeasonAppearances = (competitionHistory.numberOfSeasonAppearances || 0) + 1;
             
-            competitionHistory.seasonDetails.push({
-                seasonNumber,
-                divisionNumber,
-                fights: 1,
-                wins: isWinner ? 1 : 0,
-                losses: isWinner ? 0 : 1,
-                points: isWinner ? POINTS_PER_WIN : 0,
-                winPercentage: isWinner ? 100 : 0
-            });
-            
-            console.log(`   ✨ Created new season details: S${seasonNumber} D${divisionNumber}`);
+        competitionHistory.seasonDetails.push({
+            seasonNumber,
+            divisionNumber,
+            fights: 1,
+            wins: isWinner ? 1 : 0,
+            losses: isWinner ? 0 : 1,
+            points: isWinner ? POINTS_PER_WIN : 0,
+            winPercentage: isWinner ? 100 : 0
+        });
+        
+        console.log(`   ✨ Created new season details: S${seasonNumber} D${divisionNumber}`);
             console.log(`   📊 Total season appearances: ${competitionHistory.numberOfSeasonAppearances}`);
         }
     }
@@ -903,14 +903,14 @@ async function handleCupBracketProgression(
         // Check if both previous fights have winners
         if (prevFight1?.winner && prevFight2?.winner) {
             // Both winners are known, create the next fight
-            competition.cupData.fights.push({
+        competition.cupData.fights.push({
                 fighter1: prevFight1.winner,
                 fighter2: prevFight2.winner,
-                fightIdentifier: nextFightIdentifier,
-                isSimulated: false,
-                fighterStats: [],
-                fightStatus: 'scheduled'
-            });
+            fightIdentifier: nextFightIdentifier,
+            isSimulated: false,
+            fighterStats: [],
+            fightStatus: 'scheduled'
+        });
             console.log(`   ✨ Created new fight: ${nextFightIdentifier} (both fighters known)`);
         } else {
             // Only one winner is known, don't create the fight yet

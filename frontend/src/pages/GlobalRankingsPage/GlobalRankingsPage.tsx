@@ -122,7 +122,7 @@ const GlobalRankingsPage: React.FC = () => {
             
             <div className={styles.footer}>
                 <p className={styles.updateInfo}>
-                    Last updated: {new Date(globalRankData.updatedAt).toLocaleDateString('en-US', {
+                    Last updated: {new Date(parseInt(globalRankData.updatedAt)).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric'
