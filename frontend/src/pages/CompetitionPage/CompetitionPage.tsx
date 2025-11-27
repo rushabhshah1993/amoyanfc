@@ -206,9 +206,20 @@ const SeasonBox: React.FC<SeasonBoxProps> = ({ season, competitionId, allFighter
             }
             return winners;
         } else {
-            // For active seasons, show division leaders
+            // For active seasons, only show leaders if we have valid standings data
+            // Check if we have division leaders from standings
+            const leaderIds = Object.values(divisionLeaders);
+            const hasValidLeaders = leaderIds.some(id => id !== null && id !== undefined);
+            
+            if (!hasValidLeaders) {
+                // No standings data yet (season hasn't started or no fights completed)
+                // Return empty array to show trophy placeholder
+                return [];
+            }
+            
+            // Show division leaders from standings
             const leaders: Fighter[] = [];
-            Object.values(divisionLeaders).forEach(leaderId => {
+            leaderIds.forEach(leaderId => {
                 if (leaderId) {
                     const fighter = allFighters.find(f => f.id === leaderId);
                     if (fighter) {
