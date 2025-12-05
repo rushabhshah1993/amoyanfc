@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage, faVideo, faUpload, faTimes, faPlus, faUser } from '@fortawesome/free-solid-svg-icons';
-import { CREATE_ARTICLE, GET_ALL_FIGHTERS, GET_ALL_COMPETITIONS_META } from '../../services/queries';
+import { CREATE_ARTICLE, DELETE_ARTICLE, GET_ALL_FIGHTERS, GET_ALL_COMPETITIONS_META } from '../../services/queries';
 import S3Image from '../../components/S3Image/S3Image';
 import styles from './CreateArticlePage.module.css';
 
@@ -55,6 +55,7 @@ const CreateArticlePage: React.FC = () => {
     
     // Create article mutation
     const [createArticle, { loading: creating }] = useMutation(CREATE_ARTICLE);
+    const [deleteArticle] = useMutation(DELETE_ARTICLE);
     
     // Get all fighters for tagging
     const { data: fightersData } = useQuery(GET_ALL_FIGHTERS);
@@ -483,6 +484,17 @@ const CreateArticlePage: React.FC = () => {
                 if (thumbArticleId) {
                     thumbnailUrl = await uploadThumbnailToS3(thumbArticleId);
                     console.log('Thumbnail uploaded:', thumbnailUrl);
+                    
+                    // Delete the temporary article after thumbnail upload
+                    try {
+                        await deleteArticle({
+                            variables: { id: thumbArticleId }
+                        });
+                        console.log('Temporary article deleted:', thumbArticleId);
+                    } catch (deleteError) {
+                        console.error('Failed to delete temporary article:', deleteError);
+                        // Don't fail the article creation if deletion fails
+                    }
                 }
             }
             
