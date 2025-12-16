@@ -168,50 +168,33 @@ npm run build
 firebase deploy --only hosting:production
 ```
 
-### Step 3: Clean Up Production Database
+### Step 3: Clean Up Production Database (If Needed)
+
+If TEMP articles exist in your database:
 
 ```bash
 cd server
-npm run fix:article-deletion-bug
+npm run cleanup:temp-articles
 ```
 
-1. Review the output - it will show:
-   - All TEMP articles that exist
-   - Recent articles (to help identify what's missing)
-   - Recent backups
-   
-2. Identify the deleted article:
-   - Check the most recent backup before the bug occurred
-   - Compare with current articles
-   - Find the missing article
+This will:
+- Find all TEMP and TEMP-THUMB articles
+- Create a backup before deletion
+- Remove them from the database
 
-3. Uncomment the deletion line in the script (line 157):
-   ```javascript
-   // UNCOMMENT THIS LINE:
-   await deleteTempArticles(tempArticles);
-   ```
+### Step 4: Restore Deleted Articles (If Needed)
 
-4. Run again to delete TEMP articles:
+If an article was deleted by the bug:
+
+1. Create a backup first:
    ```bash
-   npm run fix:article-deletion-bug
+   cd server
+   npm run backup:articles
    ```
 
-### Step 4: Restore the Deleted Article
-
-**Option A: Manual Restore via MongoDB Compass**
-1. Open the backup file (in `backups/` folder)
-2. Find the deleted article's data
-3. Use MongoDB Compass to insert it back
-4. Remove the `_id` field or ensure it's unique
-
-**Option B: Create Restore Script**
-```bash
-# TODO: Create restore-article.js script if needed
-node scripts/restore-article.js --backup=[backup-file] --article-id=[article-id]
-```
-
-**Option C: Re-publish the Article**
-If you have the original content, simply re-publish it through the UI.
+2. Check your `backups/` folder for previous backups
+3. Use MongoDB Compass or a custom script to restore the article from backup
+4. Or simply re-publish the article through the UI if you have the content
 
 ---
 
@@ -296,26 +279,21 @@ After deploying the fix, verify:
 
 - [ ] Backend deployed with fix
 - [ ] Frontend deployed with fix
-- [ ] TEMP articles cleaned up from production
-- [ ] Deleted article restored (if needed)
 - [ ] Test article creation with multiple images
-- [ ] Verify no TEMP articles created
+- [ ] Verify no TEMP articles remain after publishing
 - [ ] Verify correct article is created
-- [ ] Check S3 buckets for orphaned files
+- [ ] All previous articles still exist
 
 ---
 
-## 📞 Support
+## 📞 Maintenance
 
-If you encounter issues:
-1. Check the backup files in `backups/` folder
-2. Run the cleanup script with `npm run fix:article-deletion-bug`
-3. Review MongoDB logs
-4. Check S3 bucket for uploaded files
+Available commands:
+- `npm run backup:articles` - Create article backup
+- `npm run cleanup:temp-articles` - Remove TEMP articles
 
 ---
 
-**Status:** ✅ CODE FIXED - AWAITING DEPLOYMENT  
-**Next Steps:** Deploy to production and run cleanup script  
-**Priority:** 🔴 HIGH - Deploy ASAP to prevent further issues
+**Status:** ✅ FIXED AND DEPLOYED  
+**Date Fixed:** December 16, 2025
 
