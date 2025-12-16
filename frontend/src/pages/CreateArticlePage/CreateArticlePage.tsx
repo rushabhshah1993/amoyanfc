@@ -431,6 +431,8 @@ const CreateArticlePage: React.FC = () => {
             
             // Step 2: Upload content media BEFORE creating the article
             let finalContent = content;
+            let contentTempArticleId: string | null = null;
+            
             if (contentImages.size > 0 || contentVideos.size > 0) {
                 toast.update(publishingToast, { 
                     render: `Uploading ${contentImages.size + contentVideos.size} media file(s) to S3...`,
@@ -453,6 +455,7 @@ const CreateArticlePage: React.FC = () => {
                 const uploadArticleId = tempData?.createArticle?.id;
                 
                 if (uploadArticleId) {
+                    contentTempArticleId = uploadArticleId;
                     // Upload all media and get updated content with S3 URLs
                     finalContent = await uploadContentMediaToS3(uploadArticleId, content);
                     console.log('Content media uploaded, S3 URLs replaced');
@@ -529,6 +532,19 @@ const CreateArticlePage: React.FC = () => {
             
             if (!articleId) {
                 throw new Error('Failed to create article: No article ID returned');
+            }
+            
+            // Step 5: Clean up temporary articles (if any were created)
+            if (contentTempArticleId) {
+                try {
+                    await deleteArticle({
+                        variables: { id: contentTempArticleId }
+                    });
+                    console.log('Content temp article deleted:', contentTempArticleId);
+                } catch (deleteError) {
+                    console.error('Failed to delete content temp article:', deleteError);
+                    // Don't fail the article creation if deletion fails
+                }
             }
             
             // Success toast

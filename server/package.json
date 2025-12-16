@@ -45,7 +45,9 @@
     "restore:all-standings": "node scripts/restore-all-standings-SAFE.js",
     "protect:all-standings": "node scripts/protect-all-standings.js",
     "backup:standings": "node scripts/backup-current-standings.js",
-    "audit:indexes": "node scripts/audit-database-indexes.js"
+    "audit:indexes": "node scripts/audit-database-indexes.js",
+    "backup:articles": "node scripts/backup-articles-now.js",
+    "cleanup:temp-articles": "node scripts/cleanup-temp-articles.js"
   },
   "type": "module",
   "author": "Rushabh Mulraj Shah",

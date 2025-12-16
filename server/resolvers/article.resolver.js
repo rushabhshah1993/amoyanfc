@@ -133,7 +133,7 @@ const articleResolver = {
          * @throws {Error} - If an error occurs during article deletion.
          */
         deleteArticle: catchAsyncErrors(async(_, { id }) => {
-            let deletedArticle = await Articles.findOneAndDelete(id);
+            let deletedArticle = await Articles.findByIdAndDelete(id);
             if(!deletedArticle) {
                 throw new NotFoundError("Article not found");
             }
