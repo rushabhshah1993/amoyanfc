@@ -15,23 +15,29 @@ import mongoose from 'mongoose';
 
 // Competition Meta IDs
 const COMPETITION_IDS = {
+  IFC: '67780dcc09a4c4b25127f8f6',
+  IFL: '67780e1d09a4c4b25127f8f8',
   CHAMPIONS_CUP: '6778100309a4c4b25127f8fa',
   INVICTA_CUP: '6778103309a4c4b25127f8fc'
 };
 
+const LEAGUE_META_IDS = [COMPETITION_IDS.IFC, COMPETITION_IDS.IFL];
+
 /**
- * Get league titles for a fighter from any league competition
+ * Get league titles for a fighter from IFC + IFL combined
  */
-function getLeagueTitles(fighter, leagueCompetitionMetaId) {
+function getLeagueTitles(fighter) {
   if (!fighter.competitionHistory || !Array.isArray(fighter.competitionHistory)) {
     return 0;
   }
-
-  const leagueHistory = fighter.competitionHistory.find(
-    comp => comp.competitionId && comp.competitionId.toString() === leagueCompetitionMetaId
-  );
-
-  return leagueHistory?.titles?.totalTitles || 0;
+  let total = 0;
+  for (const metaId of LEAGUE_META_IDS) {
+    const entry = fighter.competitionHistory.find(
+      comp => comp.competitionId && comp.competitionId.toString() === metaId
+    );
+    total += entry?.titles?.totalTitles || 0;
+  }
+  return total;
 }
 
 /**
@@ -65,30 +71,27 @@ function getCupAppearances(fighter, competitionId) {
 }
 
 /**
- * Get division appearances for league competition
+ * Get division appearances for a fighter from IFC + IFL combined
  */
-function getDivisionAppearances(fighter, leagueCompetitionMetaId) {
+function getDivisionAppearances(fighter) {
   const divisionCounts = { 1: 0, 2: 0, 3: 0 };
 
   if (!fighter.competitionHistory || !Array.isArray(fighter.competitionHistory)) {
     return divisionCounts;
   }
 
-  const leagueHistory = fighter.competitionHistory.find(
-    comp => comp.competitionId && comp.competitionId.toString() === leagueCompetitionMetaId
-  );
-
-  if (!leagueHistory?.seasonDetails || !Array.isArray(leagueHistory.seasonDetails)) {
-    return divisionCounts;
+  for (const metaId of LEAGUE_META_IDS) {
+    const leagueHistory = fighter.competitionHistory.find(
+      comp => comp.competitionId && comp.competitionId.toString() === metaId
+    );
+    if (!leagueHistory?.seasonDetails || !Array.isArray(leagueHistory.seasonDetails)) continue;
+    leagueHistory.seasonDetails.forEach(season => {
+      const division = season.divisionNumber;
+      if (division >= 1 && division <= 3) {
+        divisionCounts[division]++;
+      }
+    });
   }
-
-  // Count appearances per division across all seasons
-  leagueHistory.seasonDetails.forEach(season => {
-    const division = season.divisionNumber;
-    if (division >= 1 && division <= 3) {
-      divisionCounts[division]++;
-    }
-  });
 
   return divisionCounts;
 }
@@ -134,17 +137,17 @@ function getOverallWinPercentage(fighter) {
 }
 
 /**
- * Calculate global ranking score for a fighter
+ * Calculate global ranking score for a fighter (uses IFC + IFL for league parts)
  */
-function calculateGlobalScore(fighter, leagueCompetitionMetaId) {
+function calculateGlobalScore(fighter) {
   // Get all required metrics
   const winPercentage = getOverallWinPercentage(fighter);
-  const leagueTitles = getLeagueTitles(fighter, leagueCompetitionMetaId);
+  const leagueTitles = getLeagueTitles(fighter);
   const ccTitles = getCupTitles(fighter, COMPETITION_IDS.CHAMPIONS_CUP);
   const icTitles = getCupTitles(fighter, COMPETITION_IDS.INVICTA_CUP);
   const ccAppearances = getCupAppearances(fighter, COMPETITION_IDS.CHAMPIONS_CUP);
   const icAppearances = getCupAppearances(fighter, COMPETITION_IDS.INVICTA_CUP);
-  const divisionAppearances = getDivisionAppearances(fighter, leagueCompetitionMetaId);
+  const divisionAppearances = getDivisionAppearances(fighter);
   const longestWinStreak = getLongestWinStreak(fighter);
 
   // Calculate score using the formula
@@ -233,40 +236,39 @@ function buildCupAppearancesArray(fighter) {
 }
 
 /**
- * Build league appearances array for global rank document
+ * Build league appearances array for global rank document (IFC + IFL, one entry per league)
  */
-function buildLeagueAppearancesArray(fighter, leagueCompetitionMetaId) {
+function buildLeagueAppearancesArray(fighter) {
   const leagueAppearances = [];
 
   if (!fighter.competitionHistory || !Array.isArray(fighter.competitionHistory)) {
     return leagueAppearances;
   }
 
-  const leagueHistory = fighter.competitionHistory.find(
-    comp => comp.competitionId && comp.competitionId.toString() === leagueCompetitionMetaId
-  );
+  for (const metaId of LEAGUE_META_IDS) {
+    const leagueHistory = fighter.competitionHistory.find(
+      comp => comp.competitionId && comp.competitionId.toString() === metaId
+    );
+    if (!leagueHistory?.seasonDetails || !Array.isArray(leagueHistory.seasonDetails)) continue;
 
-  if (!leagueHistory?.seasonDetails || !Array.isArray(leagueHistory.seasonDetails)) {
-    return leagueAppearances;
-  }
+    const divisionCounts = { 1: 0, 2: 0, 3: 0 };
+    leagueHistory.seasonDetails.forEach(season => {
+      const d = season.divisionNumber;
+      if (d >= 1 && d <= 3) divisionCounts[d]++;
+    });
 
-  const divisionAppearances = getDivisionAppearances(fighter, leagueCompetitionMetaId);
-  const divisionArray = [];
-
-  for (let division = 1; division <= 3; division++) {
-    if (divisionAppearances[division] > 0) {
-      divisionArray.push({
-        division,
-        appearances: divisionAppearances[division]
+    const divisionArray = [];
+    for (let division = 1; division <= 3; division++) {
+      if (divisionCounts[division] > 0) {
+        divisionArray.push({ division, appearances: divisionCounts[division] });
+      }
+    }
+    if (divisionArray.length > 0) {
+      leagueAppearances.push({
+        competitionId: new mongoose.Types.ObjectId(metaId),
+        divisionAppearances: divisionArray
       });
     }
-  }
-
-  if (divisionArray.length > 0) {
-    leagueAppearances.push({
-      competitionId: new mongoose.Types.ObjectId(leagueCompetitionMetaId),
-      divisionAppearances: divisionArray
-    });
   }
 
   return leagueAppearances;
@@ -298,10 +300,10 @@ export const calculateAndSaveGlobalRankings = async (leagueCompetitionMetaId) =>
       };
     }
 
-    // Calculate scores for all fighters
+    // Calculate scores for all fighters (IFC + IFL for league titles and division apps)
     console.log('\n🔢 Calculating global scores...');
     const fightersWithScores = allFighters.map(fighter => {
-      const { score, breakdown } = calculateGlobalScore(fighter, leagueCompetitionMetaId);
+      const { score, breakdown } = calculateGlobalScore(fighter);
       
       return {
         fighter,
@@ -313,17 +315,32 @@ export const calculateAndSaveGlobalRankings = async (leagueCompetitionMetaId) =>
     // Sort by score (descending)
     fightersWithScores.sort((a, b) => b.score - a.score);
 
-    // Assign ranks
+    // Previous snapshot for rank change: the one that is currently isCurrent (before we overwrite)
+    const previousDoc = await GlobalRank.findOne({ isCurrent: true }).lean();
+    const previousRankByFighterId = new Map();
+    if (previousDoc?.fighters?.length) {
+      previousDoc.fighters.forEach(f => {
+        const id = f.fighterId?.toString?.() ?? f.fighterId;
+        if (id) previousRankByFighterId.set(id, f.rank);
+      });
+    }
+
+    // Assign ranks and previousRank/rankChange
     const rankedFighters = fightersWithScores.map((item, index) => {
       const rank = index + 1;
+      const fighterIdStr = item.fighter._id.toString();
+      const previousRank = previousRankByFighterId.get(fighterIdStr) ?? null;
+      const rankChange = previousRank != null ? previousRank - rank : null;
       
       return {
         fighterId: item.fighter._id,
         score: item.score,
         rank,
+        previousRank: previousRank ?? undefined,
+        rankChange: rankChange != null ? rankChange : undefined,
         titles: buildTitlesArray(item.fighter),
         cupAppearances: buildCupAppearancesArray(item.fighter),
-        leagueAppearances: buildLeagueAppearancesArray(item.fighter, leagueCompetitionMetaId),
+        leagueAppearances: buildLeagueAppearancesArray(item.fighter),
         breakdown: item.breakdown // For logging purposes
       };
     });
@@ -353,6 +370,8 @@ export const calculateAndSaveGlobalRankings = async (leagueCompetitionMetaId) =>
         fighterId: rf.fighterId,
         score: rf.score,
         rank: rf.rank,
+        previousRank: rf.previousRank ?? null,
+        rankChange: rf.rankChange ?? null,
         titles: rf.titles,
         cupAppearances: rf.cupAppearances,
         leagueAppearances: rf.leagueAppearances
@@ -413,5 +432,36 @@ export const calculateAndSaveGlobalRankings = async (leagueCompetitionMetaId) =>
       error: error.message
     };
   }
+};
+
+/**
+ * Calculate global ranking data only (IFC + IFL for league). Does not save.
+ * Used by one-time recalc script and for testing.
+ * @returns {Promise<{ rankedFighters: Array, allFighters: Array }>}
+ */
+export const calculateGlobalRankingsData = async () => {
+  const allFighters = await Fighter.find({ isArchived: { $ne: true } }).lean();
+  if (allFighters.length === 0) return { rankedFighters: [], allFighters: [] };
+
+  const fightersWithScores = allFighters.map(fighter => {
+    const { score, breakdown } = calculateGlobalScore(fighter);
+    return { fighter, score, breakdown };
+  });
+  fightersWithScores.sort((a, b) => b.score - a.score);
+
+  const rankedFighters = fightersWithScores.map((item, index) => {
+    const rank = index + 1;
+    return {
+      fighterId: item.fighter._id,
+      score: item.score,
+      rank,
+      titles: buildTitlesArray(item.fighter),
+      cupAppearances: buildCupAppearancesArray(item.fighter),
+      leagueAppearances: buildLeagueAppearancesArray(item.fighter),
+      breakdown: item.breakdown
+    };
+  });
+
+  return { rankedFighters, allFighters };
 };
 

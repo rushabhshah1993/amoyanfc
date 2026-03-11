@@ -3,6 +3,8 @@ const globalRankTypes = `#graphql
         fighterId: ID!
         score: Float
         rank: Int
+        previousRank: Int
+        rankChange: Int
         titles: [TitleData]
         cupAppearances: [CupAppsData]
         leagueAppearances: [LeagueAppsData]

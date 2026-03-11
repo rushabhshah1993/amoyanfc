@@ -52,6 +52,8 @@ const leagueAppearances = new Schema({
  * @property {ObjectId} fighterId - A unique ID assigned to every fighter
  * @property {Number} score - A cumulative score which decides the rank of a fighter
  * @property {Number} rank - The rank of a fighter
+ * @property {Number} [previousRank] - Rank in the immediately previous GlobalRank snapshot (for UI growth indicator)
+ * @property {Number} [rankChange] - previousRank - rank (positive = moved up; null if new in this snapshot)
  * @property {Array.<Object>} titles - A list of competitions and the number of titles won by the fighter in that competition, referred by `titlesSchema`
  * @property {Array.<Object>} cupAppearances - A list of cup competitions and the fighter's appearances in that competition, referred by `cupAppearancesSchema`
  * @property {Array.<Object>} leagueAppearances - A list of league competitions and the number of appearances of the fighter in that competition, referred by `leagueAppearances`
@@ -60,6 +62,8 @@ const fighterSchema = new Schema({
     fighterId: { type: Schema.Types.ObjectId, ref: 'Fighter', required: true },
     score: { type: Number, required: true },
     rank: { type: Number, required: true },
+    previousRank: { type: Number, default: null },
+    rankChange: { type: Number, default: null },
     titles: [titlesSchema],
     cupAppearances: [cupAppearancesSchema],
     leagueAppearances: [leagueAppearances]
