@@ -63,6 +63,8 @@ interface RankedFighter {
     fighterId: string;
     score: number;
     rank: number;
+    previousRank?: number | null;
+    rankChange?: number | null;
     titles: TitleData[];
     cupAppearances: CupAppearance[];
     leagueAppearances: LeagueAppearance[];

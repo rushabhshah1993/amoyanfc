@@ -94,7 +94,7 @@ print_info "Step 2: Deploying backend to Cloud Run..."
 # Set the correct Google Cloud project
 if [ "$ENVIRONMENT" = "production" ]; then
     gcloud config set project amoyanfc
-    SERVICE_NAME="amoyanfc-backend-prod"
+    SERVICE_NAME="amoyanfc-backend"
     CONFIG_FILE="cloudbuild.yaml"
 else
     gcloud config set project amoyanfc-staging
@@ -102,16 +102,31 @@ else
     CONFIG_FILE="cloudbuild.staging.yaml"
 fi
 
-# Build and deploy using Cloud Build
+# Build and push Docker image using Cloud Build
 print_info "Building Docker image..."
 gcloud builds submit --config=${CONFIG_FILE}
+
+# Deploy the new image to Cloud Run (creates new revision)
+if [ "$ENVIRONMENT" = "production" ]; then
+    print_info "Deploying new image to Cloud Run..."
+    gcloud run deploy ${SERVICE_NAME} \
+        --image=gcr.io/amoyanfc/amoyanfc-backend:latest \
+        --region=us-central1 \
+        --platform=managed
+else
+    print_info "Deploying new image to Cloud Run..."
+    gcloud run deploy ${SERVICE_NAME} \
+        --image=gcr.io/amoyanfc-staging/amoyanfc-backend-staging:latest \
+        --region=us-central1 \
+        --platform=managed
+fi
 
 # Set environment variables from .env file
 print_info "Setting environment variables..."
 if [ "$ENVIRONMENT" = "production" ]; then
-    ENV_VARS=$(cat .env | grep -v '^#' | grep -v '^$' | grep -v 'REACT_APP' | tr '\n' ',' | sed 's/,$//')
+    ENV_VARS=$(cat .env | grep -v '^#' | grep -v '^$' | grep -v 'REACT_APP' | grep -v '^PORT=' | tr '\n' ',' | sed 's/,$//')
 else
-    ENV_VARS=$(cat .env.staging | grep -v '^#' | grep -v '^$' | grep -v 'REACT_APP' | tr '\n' ',' | sed 's/,$//')
+    ENV_VARS=$(cat .env.staging | grep -v '^#' | grep -v '^$' | grep -v 'REACT_APP' | grep -v '^PORT=' | tr '\n' ',' | sed 's/,$//')
 fi
 
 gcloud run services update ${SERVICE_NAME} \
@@ -129,6 +144,9 @@ echo ""
 # STEP 3: Build Frontend with Backend URL
 # ======================================================================
 print_info "Step 3: Building frontend with backend URL..."
+
+# Avoid ESLint warnings failing the build (CI is often set in deploy environments)
+export CI=false
 
 # Load environment variables for frontend build
 if [ "$ENVIRONMENT" = "production" ]; then

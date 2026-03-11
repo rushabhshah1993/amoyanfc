@@ -100,6 +100,8 @@ const globalRankResolver = {
                     fighterId: fighter.fighterId,
                     score: fighter.score,
                     rank: fighter.rank,
+                    previousRank: fighter.previousRank ?? null,
+                    rankChange: fighter.rankChange ?? null,
                     titles: fighter.titles,
                     cupAppearances: fighter.cupAppearances,
                     leagueAppearances: fighter.leagueAppearances,

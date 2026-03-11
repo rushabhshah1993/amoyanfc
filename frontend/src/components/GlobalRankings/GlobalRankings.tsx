@@ -71,6 +71,8 @@ interface RankedFighter {
     fighterId: string;
     score: number;
     rank: number;
+    previousRank?: number | null;
+    rankChange?: number | null;
     titles: TitleData[];
     cupAppearances: CupAppearance[];
     leagueAppearances: LeagueAppearance[];
@@ -177,6 +179,7 @@ const GlobalRankings: React.FC<GlobalRankingsProps> = ({ rankedFighters }) => {
                     <thead>
                         <tr>
                             <th className={styles.rankColumn}>Rank</th>
+                            <th className={styles.changeColumn} title="Change vs previous ranking">Change</th>
                             <th className={styles.fighterColumn}>Fighter</th>
                             <th className={styles.scoreColumn}>Score</th>
                             <th className={styles.statColumn}>Win %</th>
@@ -211,6 +214,19 @@ const GlobalRankings: React.FC<GlobalRankingsProps> = ({ rankedFighters }) => {
                                         {getRankBadge(rf.rank)}
                                         <span className={styles.rankNumber}>{rf.rank}</span>
                                     </div>
+                                </td>
+                                <td className={styles.changeCell}>
+                                    {rf.rankChange != null ? (
+                                        rf.rankChange > 0 ? (
+                                            <span className={styles.rankChangeUp}>+{rf.rankChange}</span>
+                                        ) : rf.rankChange < 0 ? (
+                                            <span className={styles.rankChangeDown}>{rf.rankChange}</span>
+                                        ) : (
+                                            <span className={styles.rankChangeSame}>—</span>
+                                        )
+                                    ) : (
+                                        <span className={styles.rankChangeNew}>—</span>
+                                    )}
                                 </td>
                                 <td className={styles.fighterCell}>
                                     <div className={styles.fighterInfo}>

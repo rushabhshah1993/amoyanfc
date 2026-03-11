@@ -11,6 +11,8 @@ export const GET_CURRENT_GLOBAL_RANK = gql`
                 fighterId
                 score
                 rank
+                previousRank
+                rankChange
                 titles {
                     competitionId
                     numberOfTitles

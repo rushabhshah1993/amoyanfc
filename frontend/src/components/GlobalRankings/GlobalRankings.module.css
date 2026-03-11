@@ -59,6 +59,11 @@
     text-align: center !important;
 }
 
+.changeColumn {
+    width: 70px;
+    text-align: center !important;
+}
+
 .fighterColumn {
     width: 250px;
 }
@@ -122,6 +127,35 @@
 .bronzeMedal {
     color: #cd7f32;
     font-size: 1.2rem;
+}
+
+.changeCell {
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.rankChangeUp {
+    color: #22c55e;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.rankChangeDown {
+    color: #ef4444;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.rankChangeSame {
+    color: var(--text-secondary);
+    font-weight: 300;
+    font-size: 0.95rem;
+}
+
+.rankChangeNew {
+    color: var(--text-secondary);
+    font-weight: 300;
+    font-size: 0.95rem;
 }
 
 .fighterCell {
@@ -269,6 +303,7 @@
     .rankCell,
     .fighterCell,
     .scoreCell,
+    .changeCell,
     .statCell {
         padding: 1.25rem 0.75rem;
     }
